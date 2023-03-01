@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellerRegisterComponent } from './seller-register/seller-register.component';
 import { VerifyotpforsellerComponent } from './verifyotpforseller/verifyotpforseller.component';
 import { CreatepasswordsellerComponent } from './createpasswordseller/createpasswordseller.component';
+import { SellerformobileComponent } from './sellerformobile/sellerformobile.component';
+import { SellerforotpComponent } from './sellerforotp/sellerforotp.component';
+import { UpdatepasswordsellerComponent } from './updatepasswordseller/updatepasswordseller.component';
+import { ChangeSellerComponent } from './change-seller/change-seller.component';
 
 
 
@@ -13,7 +17,11 @@ import { CreatepasswordsellerComponent } from './createpasswordseller/createpass
     SellerLoginComponent,
     SellerRegisterComponent,
     VerifyotpforsellerComponent,
-    CreatepasswordsellerComponent
+    CreatepasswordsellerComponent,
+    SellerformobileComponent,
+    SellerforotpComponent,
+    UpdatepasswordsellerComponent,
+    ChangeSellerComponent
   ],
   imports: [
     CommonModule,

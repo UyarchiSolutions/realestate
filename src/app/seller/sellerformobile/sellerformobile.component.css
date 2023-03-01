@@ -56,62 +56,67 @@
   height: fit-content;
 }
 
-.main h1 {
+.main h1,
+.main h5 {
   text-align: center;
   color: var(--brown);
   font-family: var(--ralewaybold);
   margin: 20px 0;
+  font-weight: 700;
 }
 
-.form {
-  width: 70%;
-  margin: 50px auto;
-
-
+.main>h3 {
+  text-align: center;
+  color: var(--brown);
+  font-family: var(--ralewaybold);
+  margin: 40px 0;
+  font-weight: 700;
 }
 
-.form div {
-  width: 100%;
-
+.otp-field {
+  width: 75%;
   display: flex;
-  margin: 20px 0;
+  margin: 50px auto 0 auto;
   align-items: center;
   justify-content: space-between;
 }
 
 label {
-  width: 20% !important;
+  width: 40% !important;
+  color: var(--brown) !important;
+  font-weight: 500 !important;
 
 }
 
-.form div input {
+.otp-field>div {
+  width: 60%;
+}
+
+.otp-field input {
   padding: 10px;
-  width: 70%;
+  width: 100%;
   background: none;
   border: none;
   border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
 }
 
-.forgot-password {
+.otp-field>div>p {
   font-size: 10px;
-  margin-top: -15px;
   text-align: right;
-  text-decoration: underline;
+  font-weight: 500;
+  margin: 5px;
   cursor: pointer;
+  text-decoration: underline;
 }
 
-.login-btn button {
-  border: none;
-  padding: 15px 70px;
+.verify-btn {
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.verify-btn>button {
   background-color: var(--brown);
   color: white;
-  margin-left: 30%;
-  cursor: pointer;
-}
-.error-msg{
-  color: red;
-}
-a{
-  cursor: pointer;
-
+  padding: 10px 50px;
+  border: none;
 }

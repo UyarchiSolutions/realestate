@@ -10,6 +10,7 @@ import { CreatepasswordComponent } from './createpassword/createpassword.compone
 import { BuyerForgotComponent } from './buyer-forgot/buyer-forgot.component';
 import { BuyerSendotpComponent } from './buyer-sendotp/buyer-sendotp.component';
 import { UpdatepasswordbuyerComponent } from './updatepasswordbuyer/updatepasswordbuyer.component';
+import { ChangeBuyerComponent } from './change-buyer/change-buyer.component';
 
 
 
@@ -22,7 +23,8 @@ import { UpdatepasswordbuyerComponent } from './updatepasswordbuyer/updatepasswo
     CreatepasswordComponent,
     BuyerForgotComponent,
     BuyerSendotpComponent,
-    UpdatepasswordbuyerComponent
+    UpdatepasswordbuyerComponent,
+    ChangeBuyerComponent
   ],
   imports: [
     CommonModule,

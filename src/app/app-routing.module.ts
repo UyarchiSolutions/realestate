@@ -3,15 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuyerForgotComponent } from './buyer/buyer-forgot/buyer-forgot.component';
 import { BuyerSendotpComponent } from './buyer/buyer-sendotp/buyer-sendotp.component';
 import { BuyerloginComponent } from './buyer/buyerlogin/buyerlogin.component';
+import { ChangeBuyerComponent } from './buyer/change-buyer/change-buyer.component';
 import { CheckmailComponent } from './buyer/checkmail/checkmail.component';
 import { CreatepasswordComponent } from './buyer/createpassword/createpassword.component';
 import { RegisterComponent } from './buyer/register/register.component';
 import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { HomeComponent } from './home/home.component';
+import { ChangeSellerComponent } from './seller/change-seller/change-seller.component';
 import { CreatepasswordsellerComponent } from './seller/createpasswordseller/createpasswordseller.component';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
 import { SellerRegisterComponent } from './seller/seller-register/seller-register.component';
+import { SellerformobileComponent } from './seller/sellerformobile/sellerformobile.component';
+import { SellerforotpComponent } from './seller/sellerforotp/sellerforotp.component';
+import { UpdatepasswordsellerComponent } from './seller/updatepasswordseller/updatepasswordseller.component';
 import { VerifyotpforsellerComponent } from './seller/verifyotpforseller/verifyotpforseller.component';
 
 const routes: Routes = [
@@ -24,11 +29,17 @@ const routes: Routes = [
   {path:'buyer-forgot',component:BuyerForgotComponent},
   {path:'buyer-sendotp',component:BuyerSendotpComponent},
   {path:'buyer-update',component:UpdatepasswordbuyerComponent},
+  {path:'changepassword-buyer',component:ChangeBuyerComponent},
+
   // seller
   {path:"sellerLogin",component:SellerLoginComponent},
   {path:"seller-register",component:SellerRegisterComponent},
   {path:'varifi-seller',component:VerifyotpforsellerComponent},
-  {path:'createPassword-seller',component:CreatepasswordsellerComponent}
+  {path:'createPassword-seller',component:CreatepasswordsellerComponent},
+  {path:'sendMobile-seller',component:SellerformobileComponent},
+  {path:'sent-otp',component:SellerforotpComponent},
+  {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
+  {path:'changepassword-seller',component:ChangeSellerComponent}
 ];
 
 @NgModule({
