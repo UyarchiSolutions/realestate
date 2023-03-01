@@ -1,10 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BuyerForgotComponent } from './buyer/buyer-forgot/buyer-forgot.component';
+import { BuyerSendotpComponent } from './buyer/buyer-sendotp/buyer-sendotp.component';
+import { BuyerloginComponent } from './buyer/buyerlogin/buyerlogin.component';
+import { CheckmailComponent } from './buyer/checkmail/checkmail.component';
+import { CreatepasswordComponent } from './buyer/createpassword/createpassword.component';
+import { RegisterComponent } from './buyer/register/register.component';
+import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
+import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
+import { HomeComponent } from './home/home.component';
+import { CreatepasswordsellerComponent } from './seller/createpasswordseller/createpasswordseller.component';
+import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
+import { SellerRegisterComponent } from './seller/seller-register/seller-register.component';
+import { VerifyotpforsellerComponent } from './seller/verifyotpforseller/verifyotpforseller.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:"",component:HomeComponent},
+  {path:'buyerLogin',component:BuyerloginComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'check-mail',component:CheckmailComponent},
+  {path:'verify-mail',component:VerifyOtpComponent},
+  {path:'createPassword',component:CreatepasswordComponent},
+  {path:'buyer-forgot',component:BuyerForgotComponent},
+  {path:'buyer-sendotp',component:BuyerSendotpComponent},
+  {path:'buyer-update',component:UpdatepasswordbuyerComponent},
+  // seller
+  {path:"sellerLogin",component:SellerLoginComponent},
+  {path:"seller-register",component:SellerRegisterComponent},
+  {path:'varifi-seller',component:VerifyotpforsellerComponent},
+  {path:'createPassword-seller',component:CreatepasswordsellerComponent}
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,50 @@
+<div class="container">
+
+
+
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+
+    <div class="top-ad">
+
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+
+    <h1 style="font-weight: 700;">Log In to post your property
+
+      <!-- For Post your Property Login--
+
+  Log In to post your property -->
+    </h1>
+    <div class="form">
+      <form [formGroup]="loginForm">
+        <div>
+          <label style="width:500px">Email :</label>
+          <input type="email" placeholder="Enter Your Email ID" formControlName="email">
+        </div>
+        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('email')?.invalid">
+          <label style="width:500px"></label>
+          <p>Email is required !</p>
+        </div>
+        <div>
+          <label>Password :</label>
+          <input type="password" placeholder="Enter Your Password" formControlName="password">
+        </div>
+        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('password')?.invalid">
+          <label style="width:500px"></label>
+          <p>Password is required !</p>
+        </div>
+        <p class="forgot-password ">Forgot Password !</p>
+
+        <div class="login-btn">
+          <button type="button" (click)="submitted()">Log In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+</div>

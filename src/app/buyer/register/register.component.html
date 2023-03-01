@@ -1,0 +1,68 @@
+<div class="container">
+
+
+
+
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+
+    <div class="top-ad">
+
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+
+    <h1 style="font-weight: 700;">Register to the world of real-estate</h1>
+
+
+    <div class="form">
+      <form [formGroup]="loginForm">
+        <div>
+          <label>Name :</label>
+          <input type="email" placeholder="Enter Your name" formControlName="userName">
+        </div>
+        <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('userName')?.invalid">
+          <label></label>
+         <p>Name Number is require!</p>
+        </div>
+        <div>
+          <label>Mobile Number :</label>
+          <input type="number" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile">
+        </div>
+        <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('mobile')?.invalid">
+          <label></label>
+         <p>Mobile Number is require!</p>
+        </div>
+        <div>
+          <label>Email :</label>
+          <input type="email" placeholder="Enter Your Email ID"  formControlName="email">
+        </div>
+        <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('email')?.invalid">
+          <label></label>
+         <p>Email is require!</p>
+        </div>
+        <div class="buyer-tenant">
+          <div>
+            <input type="radio" formControlName="Role" value="Buyer">Buyer
+          </div>
+          <div>
+            <input type="radio" formControlName="Role" value="Tenant">Tenant
+          </div>
+        </div>
+        <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('Role')?.invalid">
+          <label></label>
+         <p>Role is require!</p>
+        </div>
+        <div class="login-btn">
+          <button type="button" (click)="onSubmitted()">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+
+
+</div>

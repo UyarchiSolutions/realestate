@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+    <div class="top-ad">
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+    <h1>Check Your Mobile For OTP</h1>
+    <form [formGroup]="otp_Form">
+      <div class="otp-field">
+        <label>OTP :</label>
+        <div>
+          <input type="text" placeholder="Enter OTP" formControlName="otp">
+          <div>
+            <!-- <p *ngIf="isSubmit&&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p> -->
+            <a (click)="resend()">Resent OTP !</a>
+          </div>
+        </div>
+      </div>
+
+    </form>
+    <div class="verify-btn">
+      <button (click)="submitOTP()">Verify</button>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+</div>
