@@ -10,6 +10,7 @@ import { RegisterComponent } from './buyer/register/register.component';
 import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { HomeComponent } from './home/home.component';
+import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ChangeSellerComponent } from './seller/change-seller/change-seller.component';
 import { CreatepasswordsellerComponent } from './seller/createpasswordseller/createpasswordseller.component';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
@@ -18,6 +19,7 @@ import { SellerformobileComponent } from './seller/sellerformobile/sellerformobi
 import { SellerforotpComponent } from './seller/sellerforotp/sellerforotp.component';
 import { UpdatepasswordsellerComponent } from './seller/updatepasswordseller/updatepasswordseller.component';
 import { VerifyotpforsellerComponent } from './seller/verifyotpforseller/verifyotpforseller.component';
+import { StartPostingComponent } from './start-posting/start-posting.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -39,7 +41,9 @@ const routes: Routes = [
   {path:'sendMobile-seller',component:SellerformobileComponent},
   {path:'sent-otp',component:SellerforotpComponent},
   {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
-  {path:'changepassword-seller',component:ChangeSellerComponent}
+  {path:'changepassword-seller',component:ChangeSellerComponent},
+  {path:'start-posting',component:StartPostingComponent},
+  {path:'Residential-Rent',component:ResiRentPopupComponent}
 ];
 
 @NgModule({
