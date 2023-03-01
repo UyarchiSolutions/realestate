@@ -1,21 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { BuyerForgotComponent } from './buyer-forgot.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('BuyerForgotComponent', () => {
+  let component: BuyerForgotComponent;
+  let fixture: ComponentFixture<BuyerForgotComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ BuyerForgotComponent ]
     })
     .compileComponents();
 
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(BuyerForgotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,21 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { SellerRegisterComponent } from './seller-register.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('SellerRegisterComponent', () => {
+  let component: SellerRegisterComponent;
+  let fixture: ComponentFixture<SellerRegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ SellerRegisterComponent ]
     })
     .compileComponents();
 
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(SellerRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

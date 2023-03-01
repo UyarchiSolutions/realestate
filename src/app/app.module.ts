@@ -1,30 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { Cookie } from 'ng2-cookies';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BuyerModule } from './buyer/buyer.module';
 import { HeaderComponent } from './header/header.component';
-import { OwnerComponent } from './owner/owner.component';
-import { StartPostingComponent } from './start-posting/start-posting.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { SellerModule } from './seller/seller.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartPostingComponent,
-    OwnerComponent,
-    HeaderComponent
-   
-
-    
+    HomeComponent,
+    HeaderComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-  
-    
+    BuyerModule,
+    SellerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

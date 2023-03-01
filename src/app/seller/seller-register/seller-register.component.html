@@ -1,0 +1,68 @@
+<div class="container">
+
+
+
+
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+
+    <div class="top-ad">
+
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+
+    <h1 style="font-weight: 700;">Register to post your property</h1>
+
+
+    <div class="form">
+      <form [formGroup]="loginForm">
+        <div class="form-data">
+          <label>Name :</label>
+          <input type="email" placeholder="Enter Your name" formControlName="userName">
+        </div>
+        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('userName')?.invalid">
+          <label></label>
+         <p>Name is required!</p>
+        </div>
+        <div class="form-data">
+          <label>Mobile Number :</label>
+          <input type="number" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile">
+        </div>
+        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('mobile')?.invalid">
+          <label></label>
+         <p>Mobile Number is required!</p>
+        </div>
+        <div class="form-data">
+          <label>Email :</label>
+          <input type="email" placeholder="Enter Your Email ID"  formControlName="email">
+        </div>
+        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('email')?.invalid">
+          <label></label>
+         <p>Email is required!</p>
+        </div>
+        <div class="buyer-tenant form-data">
+          <div>
+            <input type="radio" formControlName="ownerType" value="Seller">Seller
+          </div>
+          <div>
+            <input type="radio" formControlName="ownerType" value="Owner">Owner
+          </div>
+        </div>
+        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('ownerType')?.invalid">
+          <label></label>
+         <p>Role is require!</p>
+        </div>
+        <div class="login-btn">
+          <button type="button" (click)="onSubmitted()">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+
+
+</div>

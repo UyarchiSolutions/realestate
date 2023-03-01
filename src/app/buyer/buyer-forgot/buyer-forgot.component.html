@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+    <div class="top-ad">
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+    <h1>Forgot Password</h1>
+    <div class="form">
+      <form [formGroup]="ForgotPassword">
+        <div class="otp-field">
+          <label>Registered Mobile Number :</label>
+          <div>
+            <input type="text" placeholder="Enter Mobile" formControlName="number">
+          </div>
+        </div>
+
+        <!-- <div class="error-msg" *ngIf="isDisplay&&ForgotPassword.get('number')?.invalid">
+          <label></label>
+          <div>
+            <span>Hey chii password ah 1st uh potu thola</span>
+          </div>
+        </div> -->
+        <div class="verify-btn">
+          <button (click)="submitOTP()">Send OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+
+
+</div>
