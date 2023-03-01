@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BuyerService } from '../buyer.service';
+import { BuyerService } from 'src/app/buyer/buyer.service';
 
 @Component({
-  selector: 'app-updatepasswordbuyer',
-  templateUrl: './updatepasswordbuyer.component.html',
-  styleUrls: ['./updatepasswordbuyer.component.css']
+  selector: 'app-updatepasswordseller',
+  templateUrl: './updatepasswordseller.component.html',
+  styleUrls: ['./updatepasswordseller.component.css']
 })
-export class UpdatepasswordbuyerComponent implements OnInit{
+export class UpdatepasswordsellerComponent {
   password = this.fb.group({
     password: new FormControl('',Validators.required),
     confirmPassword: new FormControl('',Validators.required),

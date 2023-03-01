@@ -65,4 +65,7 @@ export class BuyerloginComponent {
     let expires: string = `expires=${d.toUTCString()}`;
     document.cookie = `buyer=${token}; ${expires}`;
   }
+  forgotPass(){
+    this.route.navigate(['/buyer-forgot'])
+   }
 }

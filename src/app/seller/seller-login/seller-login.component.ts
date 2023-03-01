@@ -63,4 +63,7 @@ export class SellerLoginComponent {
     let expires: string = `expires=${d.toUTCString()}`;
     document.cookie = `tokens=${token}; ${expires}`;
   }
+  forgot(){
+    this.route.navigate(['/sendMobile-seller'])
+  }
 }
