@@ -1,0 +1,145 @@
+.container{
+    display: flex;
+}
+.sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+
+}
+.main{
+    width: 70%;
+    background-color:var(--sandal);
+
+    margin: 10px 0px;
+
+}
+textarea{
+    padding: 10px;
+    width: 50%;
+    background: none;
+
+    border: solid rgba(0, 0, 0, 0.212) 1px;
+    position:relative ;
+}
+.main h2{
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+ 
+    color: #473B32;
+    font-family: var(--raleway);
+    font-weight: 700;
+}
+.ad{
+    width: 15%;
+   background-image: url(../../assets/images/ad-post.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 717px;
+    margin: 10px;
+}
+.sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+}
+.sidebar-content-list span{
+    display: flex;
+    align-items: center;
+}
+.sidebar-content-list svg{
+    margin-right: 10px;
+}
+
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+.top-ad{
+    height: fit-content;
+}
+.main h1{
+    text-align: center;
+    color: var(--brown);
+    font-family: var(--ralewaybold);
+    margin: 20px 0;
+}
+.form{
+    width: 70%;
+    margin:50px auto;
+   
+    
+}
+.form div{
+width: 100%;
+
+display: flex;
+margin: 20px 0;
+align-items: center;
+justify-content: space-between;
+}
+label{
+    width: 25% !important;
+
+}
+.form div select,input{
+    padding: 10px;
+    width: 50%;
+    background: none;
+    border: none;
+    border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
+    position:relative ;
+}
+.forgot-password{
+    font-size: 10px;
+    margin-top: -15px;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-btn button{
+    border: none;
+    padding: 15px 70px;
+    background-color: var(--brown);
+    color: white;
+    margin-left: 30%;
+    cursor: pointer;
+}
+  nav{
+    display: flex;
+    justify-content: space-between;
+    color: var(--sandal);
+    background-color: var(--brown);
+  }
+  nav p{
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border-right: solid var(--sandal) 1px;
+  }
+.nav-active{
+    background-color: var(--sandal);
+    color: var(--brown);
+}
+.save-continue{
+    display: flex;
+    flex-direction: row;
+    justify-content: center !important;
+}
+.save-continue button{
+    width: fit-content;
+    padding: 15px 50px;
+    background-color: var(--brown);
+    color: white;
+    border: none;
+}
+.floors div{
+    width: 50%;
+    display: flex;
+    margin: 0 !important;
+}
+.floors select{
+    width: 48% !important;
+}
