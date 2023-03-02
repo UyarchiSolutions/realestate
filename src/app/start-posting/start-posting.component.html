@@ -76,7 +76,8 @@
 
         <div class="form">
             <div class="select-city">
-                <input name="Select City">
+                <input name="Select City" ngx-google-places-autocomplete [options]="options"
+                (onAddressChange)="onAddressChange($event)" >
             </div>
             <p style="margin: 20px 0;cursor: pointer;">Property type</p>
             <div class="residential-commercial" >
@@ -90,14 +91,15 @@
             <div class="property-ad-type">
                 <p>Select Property Ad Type</p>
                 <div class="property-select">
-                   
+                            
+
                         <form [formGroup]="firstform" (ngSubmit)="strpost()">
                             <div class="property-select-type">
-                                <input type="radio" value="rent" name="type" formControlName="type">
+                                <input type="radio" value="rent" formControlName="type">
                                 <p>Rent</p>
                             </div>
                             <div class="property-select-type">
-                                <input type="radio" value="Sale" name="type" formControlName="type">
+                                <input type="radio" value="Sale" formControlName="type">
                                 <p>Sale</p>
                             </div>
                             <button type="submit" >Start Posting</button>

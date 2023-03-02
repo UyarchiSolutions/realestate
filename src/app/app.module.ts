@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Cookie } from 'ng2-cookies';
 
@@ -10,13 +10,22 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SellerModule } from './seller/seller.module';
 import { StartPostingComponent } from './start-posting/start-posting.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { RrPropertyDetailsComponent } from './rr-property-details/rr-property-details.component';
+import { RrLocationDetailsComponent } from './rr-location-details/rr-location-details.component';
+import { AgmMap } from '@agm/core/lib/directives';
+import { AgmCoreModule } from '@agm/core';
+import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    StartPostingComponent
+    StartPostingComponent,
+    RrPropertyDetailsComponent,
+    RrLocationDetailsComponent,
+    RrRentalDetailsComponent
 
   ],
   imports: [
@@ -24,8 +33,14 @@ import { StartPostingComponent } from './start-posting/start-posting.component';
     AppRoutingModule,
     BuyerModule,
     SellerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GooglePlaceModule,
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
+    }),
   ],
+  exports: [ ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

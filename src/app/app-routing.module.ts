@@ -11,6 +11,9 @@ import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/update
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { HomeComponent } from './home/home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
+import { RrLocationDetailsComponent } from './rr-location-details/rr-location-details.component';
+import { RrPropertyDetailsComponent } from './rr-property-details/rr-property-details.component';
+import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.component';
 import { ChangeSellerComponent } from './seller/change-seller/change-seller.component';
 import { CreatepasswordsellerComponent } from './seller/createpasswordseller/createpasswordseller.component';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
@@ -43,7 +46,9 @@ const routes: Routes = [
   {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
   {path:'changepassword-seller',component:ChangeSellerComponent},
   {path:'start-posting',component:StartPostingComponent},
-  {path:'Residential-Rent',component:ResiRentPopupComponent}
+  {path:'residential-rent',component:RrPropertyDetailsComponent},
+  {path:'residentaial-rent-location-details',component:RrLocationDetailsComponent},
+  {path:'residentaial-rent-rental-details',component:RrRentalDetailsComponent}
 ];
 
 @NgModule({

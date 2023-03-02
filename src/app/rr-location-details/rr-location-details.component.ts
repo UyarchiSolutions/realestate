@@ -1,10 +1,161 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Address } from 'ng-google-places-autocomplete';
+import { PostPropertyService } from '../services/post-property.service';
+import { AgmMap } from '@agm/core';
 
 @Component({
   selector: 'app-rr-location-details',
   templateUrl: './rr-location-details.component.html',
   styleUrls: ['./rr-location-details.component.css']
 })
-export class RrLocationDetailsComponent {
+export class RrLocationDetailsComponent  implements OnInit{
+
+  id:any;
+  lat: any = 13.0827;
+  long: any = 80.2707;
+  latitude:any;
+  longtitude:any;
+  rrlocform:any = this.fb.group({
+    city: new FormControl ('',Validators.required),
+    Area: new FormControl ('',Validators.required),
+    Landmark: new FormControl ('',Validators.required),
+    Pincode: new FormControl ('',Validators.required),
+    BuildingName: new FormControl ('',Validators.required),
+    Address: new FormControl ('',Validators.required),
+    lat:new FormControl ('',Validators.required),
+    long:new FormControl ('',Validators.required),
+    addressLoaction: new FormControl(),
+    direction:new FormControl ('',Validators.required)
+  })
+  myAddres: any;
+
+
+  constructor(private arouter:ActivatedRoute,
+   private fb:FormBuilder ,private router:Router, private service:PostPropertyService,){
+
+  }
+ 
+
+  ngOnInit(): void {
+
+
+    this.arouter.queryParams.subscribe(params => {
+      console.log(params);
+      this.id=params['id'];
+      console.log(this.id,"this is id from rrp"); 
+      navigator.geolocation.getCurrentPosition((position: any) => {
+        this.latitude = position.coords.latitude;
+        this.longtitude = position.coords.longitude;
+        this.rrlocform.patchValue({
+          lat: this.latitude,
+          long: this.longtitude
+        })
+      })
+    })
+    }
+
+    OnSubmit(){
+      var data={
+        landMark:this.rrlocform.get('Landmark')?.value,
+        pineCode:this.rrlocform.get('Pincode')?.value,
+        BuildingName:this.rrlocform.get('BuildingName')?.value,
+        lat:this.rrlocform.get('lat')?.value,
+        long:this.rrlocform.get('long')?.value,
+        Address:this.rrlocform.get('addressLoaction')?.value,
+        city:this.rrlocform.get('city')?.value,
+        udsArea:this.rrlocform.get('Area')?.value,
+        buildingDirection:this.rrlocform.get('Area')?.value,
+      }
+        this.service.formput(this.id,data).subscribe((res:any)=>{
+
+          console.log(res);
+          var postdata ={
+            id:res._id
+          }
+          var queryString = new URLSearchParams(postdata).toString();
+          this.router.navigateByUrl('/residentaial-rent-rental-details?' + queryString);
+          console.log(res);
+         
+         })
+
+    }
+    back(count:any){
+      if(count == 0){
+        var data ={
+         id:this.id
+       }
+       var queryString = new URLSearchParams(data).toString();
+       this.router.navigateByUrl('/residential-rent?' + queryString);
+  
+       this.service.formget(this.id).subscribe((res:any)=>{
+       
+  
+       })
+      }
+      if(count == 1){
+        var data ={
+         id:this.id
+       }
+       var queryString = new URLSearchParams(data).toString();
+       this.router.navigateByUrl('/residentaial-rent-location-details?' + queryString);
+  
+       this.service.formget(this.id).subscribe((res:any)=>{
+       })
+      }
+      if(count == 2){
+        var data ={
+         id:this.id
+       }
+       var queryString = new URLSearchParams(data).toString();
+       this.router.navigateByUrl('/residentaial-rent-rental-details?' + queryString);
+  
+       this.service.formget(this.id).subscribe((res:any)=>{
+       })
+      }
+    }
+      
+
+
+    // address for map
+    
+  handleAddressChange(address: Address) {
+    // this.myAddres = address.formatted_address
+    this.latitude = address.geometry.location.lat();
+    this.longtitude = address.geometry.location.lng();
+   
+    this.rrlocform.patchValue({
+      lat: this.latitude,
+      long: this.longtitude,
+    })
+  }
+  options: any = {
+    componentRestrictions: { country: 'IN' }
+  }
+
+  draggEnded($event: any) {
+    this.rrlocform.patchValue({
+      lat: $event.latLng.lat(),
+      long: $event.latLng.lng()
+    })
+    console.log(this.rrlocform.get('lat')?.value,this.rrlocform.get('long')?.value,"dfnhjkdhdfghfg")
+    this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
+      if (res.results.length != 0) {
+        this.myAddres = res.results[0].formatted_address
+      
+        this.rrlocform.patchValue({
+          addressLoaction: this.myAddres,
+
+        })
+      }
+    })
+  }
+  parseFloat(value: any) {
+    return parseFloat(value);
+  }
 
 }
+
+
+

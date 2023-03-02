@@ -51,64 +51,102 @@
     <div class="main">
  
 <nav>
-    <p class="navbar-links nav-active">Property details</p>
-    <p class="navbar-links">Location Details</p>
-    <p class="navbar-links">Rental Details</p>
+    <p class="navbar-links nav-active" (click)="back(0)"  >Property details</p>
+    <p class="navbar-links" (click)="back(1)" >Location Details</p>
+    <p class="navbar-links" (click)="back(2)">Rental Details</p>
     <p class="navbar-links">Amenities</p>
     <p class="navbar-links">Gallery</p>
     <p class="navbar-links">Additional Details </p>
 </nav>
 
 
-
+<form [formGroup]="propform" (ngSubmit)="propsub()">
 <div class="property-details">
     <h2>Property Details</h2>
     <div class="form">
     <div>
         <label>Property Type :</label>
-       <select><option>Property Type</option>
-        <option>Property Type</option>
+       <select formControlName="propertytype">
+        <option value="Property Type" selected>Property Type</option>
+        <option value="Apartments">Apartments</option>
+        <option value="Independent house / Villa">Independent house / Villa</option>
+        <option value="Gated communtiy">Gated communtiy </option>
         </select>
     </div>
 
     <div class="floors">
         <label>Floors :</label>
      <div>
-        <select>
-            <option>Total Floors</option>
+        <select formControlName="totalfloor">
+            <option >Total Floors</option>
+            <option value="Ground floor">Ground floor</option>
+            <option *ngFor="let num of numarray" value="{{num}}">{{num}} floor</option>
         </select>
-        <select>
-            <option>On Floors</option>
+        <select formControlName="onfloor">
+            <option >On Floors</option>
+            <option value="Ground floor">Ground floor</option>
+            <option *ngFor="let num of numarray" value="{{num}}">{{num}} floor</option>
         </select>
      </div>
     </div>
 
     <div>
         <label>Age of Property :</label>
-        <select><option>Age of Property</option></select>
+        <select formControlName="AgeofProperty">
+            <option selected>Age of Property</option>
+            <option value="less than year">less than year</option>
+            <option value="1 to 3 years">1 to 3 years</option>
+            <option value="3 to 5 years">3 to 5 years</option>
+            <option value="5 to 10 years">5 to 10 years</option>
+            <option value="10+ years">10+ years</option>
+        </select>
     </div>
 
     <div>
         <label>BHK Type :</label>
-       <select><option>BHK Type</option></select>
+       <select formControlName="BHKType">
+        <option>BHK Type</option>
+        <option value="1RK">1 RK</option>
+        <option value="1BHK">1 BHK</option>
+        <option value="2BHK">2 BHK</option>
+        <option value="3BHK">3 BHK</option>
+        <option value="4BHK">4 BHK</option>
+        <option value="5+BHK">5+ BHK</option>
+    </select>
     </div>
 
     <div>
         <label>Build up Area :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;margin-top: 0;height: fit-content;margin-bottom: 0 !important;">
-        <input style="width: 90%;"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
+        <input type="number" style="width: 90%;" formControlName="BuildupArea"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
      </div>
     </div>
 
     <div>
         <label>Rent Preference :</label>
-       <select><option>Rent Preference</option></select>
+       <select formControlName="RentPreference">
+        <option>Rent Preference</option>
+        <option value="family">family</option>
+        <option value="bachelor">Bachelor</option>
+        <option value="company">Company</option>
+        <option value="any">any</option>
+    </select>
     </div>
 
     <div>
         <label>Facing Direction :</label>
-       <select><option>Facing Direction</option></select>
+       <select  formControlName="FacingDirection">
+        <option >Facing Direction</option>
+        <option value="North">North</option>
+        <option value="South">South</option>
+        <option value="East">East</option>
+        <option value="West">West</option>
+        <option value="Northeast">Northeast</option>
+        <option value="Northwest">Northwest</option>
+        <option value="Southeast">Southeast</option>
+        <option value="Southwest">Southwest</option>
+    </select>
     </div>
 
     <div style="display: flex;
@@ -116,41 +154,21 @@
         <label>Description :</label>
        <!-- <input type="text"> -->
        <div style="width: 50%;padding-top: 0;position: relative;">
-       <textarea style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100"></textarea>
+       <textarea style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100"
+        formControlName="Description"></textarea>
        <p style="position: absolute;bottom: 5px;right: 10px;font-size: 12px;opacity: 50%;">0/100</p>
     </div>
     </div>
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit">Save & Continue</button>
 </div>
 
 
 </div>
 
 </div>
+<div class="ad"></div>
     
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="ad"></div>
-    
-    
-    </div>
+</form>   
+  
