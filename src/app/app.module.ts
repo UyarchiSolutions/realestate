@@ -29,7 +29,8 @@ import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
     RrLocationDetailsComponent,
     RrRentalDetailsComponent,
     RrAmentitesComponent,
-    RrGalleryComponent
+    RrGalleryComponent,
+  
 
   ],
   imports: [

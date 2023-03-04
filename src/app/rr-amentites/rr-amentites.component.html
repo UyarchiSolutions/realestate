@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links nav-active">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links" (click)="back(0)">Property details</p>
+            <p class="navbar-links " (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
+            <p class="navbar-links">Gallery</p>
+            <p class="navbar-links">Additional Details </p>
+        </nav>
 
 
 
@@ -68,56 +68,121 @@
 
 
     <div class="form">
+       
         <div>
             <label>Furnishing Status :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="fsv" *ngIf="fsv" ></p> <p *ngIf="!fsv" style="opacity: 0.5;">Furnishing Status</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="furstav('Fully Furnished')" >Fully Furnished</a></li>
+              <li><a class="dropdown-item" (click)="furstav('Semi Furnished')">Semi Furnished</a></li>
+              <li><a class="dropdown-item" (click)="furstav('UnFurnished')">UnFurnished</a></li>
+            </ul>
+          </div>
         </div>
 
+       
         <div>
             <label>Water Supply :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="wsv" *ngIf="wsv" ></p> <p *ngIf="!wsv" style="opacity: 0.5;">Water Supply</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="wassupv('Bore well')" >Bore well</a></li>
+              <li><a class="dropdown-item" (click)="wassupv('Corporation')">Corporation</a></li>
+              <li><a class="dropdown-item" (click)="wassupv('Both')">Both</a></li>
+            </ul>
+          </div>
         </div>
-
+        
         <div>
             <label>Bathroom :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="brv" *ngIf="brv" ></p> <p *ngIf="!brv" style="opacity: 0.5;">No of Bathroom</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="bathrv('1 Bathroom')" >1 Bathroom</a></li>
+              <li><a class="dropdown-item" (click)="bathrv('2 Bathroom')" >2 Bathroom</a></li>
+              <li><a class="dropdown-item" (click)="bathrv('3 Bathroom')" >3 Bathroom</a></li>
+              <li><a class="dropdown-item" (click)="bathrv('4 Bathroom')" >4 Bathroom</a></li>
+              <li><a class="dropdown-item" (click)="bathrv('5 Bathroom')" >5 Bathroom</a></li>
+             
+            </ul>
+          </div>
         </div>
 
+        
         <div>
             <label>Bathroom Type :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="btv" *ngIf="btv" ></p> <p *ngIf="!btv" style="opacity: 0.5;">Bathroom Type</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="bathTv('Attached')" >Attached</a></li>
+              <li><a class="dropdown-item" (click)="bathTv('Common')">Common</a></li>
+              <li><a class="dropdown-item" (click)="bathTv('Both')">Both</a></li>
+            </ul>
+          </div>
         </div>
+
 
         <div>
             <label>Toilet Type :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="ttv" *ngIf="ttv" ></p> <p *ngIf="!ttv" style="opacity: 0.5;">Toilet Type</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="toilTv('Indian')" >Indian</a></li>
+              <li><a class="dropdown-item" (click)="toilTv('Western')">Western</a></li>
+              <li><a class="dropdown-item" (click)="toilTv('Both')">Both</a></li>
+            </ul>
+          </div>
         </div>
 
+        
         <div>
             <label>Balconies :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="bv" *ngIf="bv" ></p> <p *ngIf="!bv" style="opacity: 0.5;">Balconies</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="balTv('1 Balcony')" >1 Balcony</a></li>
+              <li><a class="dropdown-item" (click)="balTv('2 Balcony')" >2 Balcony</a></li>
+              <li><a class="dropdown-item" (click)="balTv('3 Balcony')" >3 Balcony</a></li>
+              <li><a class="dropdown-item" (click)="balTv('4 Balcony')" >4 Balcony</a></li>
+              <li><a class="dropdown-item" (click)="balTv('5+ Balcony')" >5+ Balcony</a></li>
+            
+            </ul>
+          </div>
         </div>
 
         <div class="non-veg-allowed">
             <label>Non-Veg Allowed</label>
             <div>
                 <div>
-                    <input type="radio">Yes
+                    <input type="radio" name="NV">Yes
                 </div>
                 <div>
-                    <input type="radio">No
+                    <input type="radio" name="NV">No
                 </div>
             </div>
         </div>
@@ -126,19 +191,31 @@
             <label>Gated Security</label>
             <div>
                 <div>
-                    <input type="radio">Yes
+                    <input type="radio" name="gs">Yes
                 </div>
                 <div>
-                    <input type="radio">No
+                    <input type="radio" name="gs">No
                 </div>
             </div>
         </div>
 
+       
         <div>
             <label>Parking :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="pv" *ngIf="pv" ></p> <p *ngIf="!pv" style="opacity: 0.5;">Parking</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="parkTv('Car')" >Car</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('Bike')" >Bike</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('Both')" >Both</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('None')" >None</a></li>
+           
+            </ul>
+          </div>
         </div>
   
 
@@ -147,40 +224,107 @@
         Floooring Type :
     </label>
     <div class="flooring-type">
-        <div>
-            <label>Kitchen</label>
-            <select>
-                <option>Option</option>
-            </select>
-
+        
+        <div >
+            <label>Kitchen :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
+        
+            <p [innerHTML]="kv" *ngIf="kv" ></p> <p *ngIf="!kv" style="opacity: 0.5;">Select</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="floor('Virtrified Tiles')" >Virtrified Tiles</a></li>
+              <li><a class="dropdown-item" (click)="floor('Mosaic')" >Mosaic</a></li>
+              <li><a class="dropdown-item" (click)="floor('Marble/Granite')" >Marble/Granite</a></li>
+              <li><a class="dropdown-item" (click)="floor('Wooden')" >Wooden</a></li>
+              <li><a class="dropdown-item" (click)="floor('Cement')" >Cement</a></li>
+           
+           
+            </ul>
+          </div>
         </div>
-        <div>
-            <label>Hall Floor</label>
-            <select>
-                <option>Option</option>
-            </select>
-
+      
+        <div >
+            <label>Hall Floor :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
+        
+            <p [innerHTML]="hfv" *ngIf="hfv" ></p> <p *ngIf="!hfv" style="opacity: 0.5;">Select</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="floor1('Virtrified Tiles')" >Virtrified Tiles</a></li>
+              <li><a class="dropdown-item" (click)="floor1('Mosaic')" >Mosaic</a></li>
+              <li><a class="dropdown-item" (click)="floor1('Marble/Granite')" >Marble/Granite</a></li>
+              <li><a class="dropdown-item" (click)="floor1('Wooden')" >Wooden</a></li>
+              <li><a class="dropdown-item" (click)="floor1('Cement')" >Cement</a></li>
+        
+           
+           
+            </ul>
+          </div>
         </div>
-        <div>
-            <label>Bedroom</label>
-            <select>
-                <option>Option</option>
-            </select>
-
+        <div >
+            <label>Bedroom :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
+        
+            <p [innerHTML]="bev" *ngIf="bev" ></p> <p *ngIf="!bev" style="opacity: 0.5;">Select</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="floor2('Virtrified Tiles')" >Virtrified Tiles</a></li>
+              <li><a class="dropdown-item" (click)="floor2('Mosaic')" >Mosaic</a></li>
+              <li><a class="dropdown-item" (click)="floor2('Marble/Granite')" >Marble/Granite</a></li>
+              <li><a class="dropdown-item" (click)="floor2('Wooden')" >Wooden</a></li>
+              <li><a class="dropdown-item" (click)="floor2('Cement')" >Cement</a></li>
+           
+           
+           
+            </ul>
+          </div>
         </div>
-        <div>
-            <label>Bathroom</label>
-            <select>
-                <option>Option</option>
-            </select>
-
+      
+        <div >
+            <label>Bathroom :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
+        
+            <p [innerHTML]="barv" *ngIf="barv" ></p> <p *ngIf="!barv" style="opacity: 0.5;">Select</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="floor3('Virtrified Tiles')" >Virtrified Tiles</a></li>
+              <li><a class="dropdown-item" (click)="floor3('Mosaic')" >Mosaic</a></li>
+              <li><a class="dropdown-item" (click)="floor3('Marble/Granite')" >Marble/Granite</a></li>
+              <li><a class="dropdown-item" (click)="floor3('Wooden')" >Wooden</a></li>
+              <li><a class="dropdown-item" (click)="floor3('Cement')" >Cement</a></li>
+           
+           
+            </ul>
+          </div>
         </div>
-        <div>
-            <label>Balcony</label>
-            <select>
-                <option>Option</option>
-            </select>
-
+       
+        <div >
+            <label>Balcony :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
+        
+            <p [innerHTML]="balv" *ngIf="balv" ></p> <p *ngIf="!balv" style="opacity: 0.5;">Select</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="floor4('Virtrified Tiles')" >Virtrified Tiles</a></li>
+              <li><a class="dropdown-item" (click)="floor4('Mosaic')" >Mosaic</a></li>
+              <li><a class="dropdown-item" (click)="floor4('Marble/Granite')" >Marble/Granite</a></li>
+              <li><a class="dropdown-item" (click)="floor4('Wooden')" >Wooden</a></li>
+              <li><a class="dropdown-item" (click)="floor4('Cement')" >Cement</a></li>
+              
+           
+           
+            </ul>
+          </div>
         </div>
     </div>
   </div> 
@@ -188,7 +332,7 @@
   <div>
     <label>Amenities :</label>
     <div style="width: 50%; flex-direction: column;margin: 0 !important;">
- <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;">
+ <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;"  (click)="show(1)">
  <div class="selected-amenities">
 <p>Club House<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
@@ -200,49 +344,7 @@
         </svg>
         </p>
 
-        <p>Security<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-            </svg>
-            </p>
-
-            <p>24Hr Backup<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                </svg>
-                </p>
-
-                <p>Rain Water Harvesting<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                    </svg>
-                    </p>
-
-                    <p>Play Area<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                        </svg>
-                        </p>
-
-                        <p>Swimming Pool<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                            </svg>
-                            </p>
-
-                            <p>Security<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                                </svg>
-                                </p>
-                                <p>Play Area<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                                    </svg>
-                                    </p>
-            
-                                    <p>Swimming Pool<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                                        </svg>
-                                        </p>
-            
-                                        <p>Security<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-                                            </svg>
-                                            </p>
+        
 
  </div>
 </div>
@@ -293,15 +395,134 @@
 
 
     <!-- amenities popup -->
+   <div   class="popup" *ngIf="showModal===1">
+<div class="dummy" (click)="close()">
 
-    <div class="popup">
-
-
-<div class="popup-container">
+</div>
+<div class="popup-container rr-con">
     <p>Amenities</p>
     <div>
-    <span><input type="radio">Club House</span>
+    <span><input type="checkbox">Club House</span>
     </div>
+    <div>
+        <span><input type="checkbox">Badminton Court</span>
+        </div>
+        <div>
+            <span><input type="checkbox">Health Facilities</span>
+            </div>
+            <div>
+                <span><input type="checkbox">Security</span>
+                </div>
+                <div>
+                    <span><input type="checkbox">Basket Ball Court</span>
+                    </div>
+                    <div>
+                        <span><input type="checkbox">Recreation Facilities</span>
+                        </div>
+                        <div>
+                            <span><input type="checkbox">24Hr Backup</span>
+                            </div>
+                            <div>
+                                <span><input type="checkbox">Play Area</span>
+                                </div>
+                                <div>
+                                    <span><input type="checkbox">WIFI</span>
+                                    </div>
+                                    <div>
+                                        <span><input type="checkbox">Rain Water Harvesting</span>
+                                        </div>
+                                        <div>
+                                            <span><input type="checkbox">Swimming Pool </span>
+                                            </div>
+                                            <div>
+                                                <span><input type="checkbox">Broadband Internet </span>
+                                                </div>
+                                                <div>
+                                                    <span><input type="checkbox"> Maintenance Staff</span>
+                                                    </div>
+                                                    <div>
+                                                        <span><input type="checkbox"> Tennis Court</span>
+                                                        </div>
+                                                        <div>
+                                                            <span><input type="checkbox"> Temple</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><input type="checkbox"> Intercom</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span><input type="checkbox"> Gymnasium</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span><input type="checkbox"> Lift</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <span><input type="checkbox"> Garden</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span><input type="checkbox"> Indoor Games</span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <span><input type="checkbox"> Air Conditioner</span>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <span><input type="checkbox"> Community Hall</span>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <span><input type="checkbox"> Bank/Atm</span>
+                                                                                            </div>
+                                                                                            <div>
+                                                                                                <span><input type="checkbox">Electricity Full </span>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <span><input type="checkbox">Cafeteria </span>
+                                                                                                    </div>
+                                                                                                    <div>
+                                                                                                        <span><input type="checkbox"> Servant room</span>
+                                                                                                        </div>
+
+
+                                                                                                        <div>
+                                                                                                            <span><input type="checkbox">  Electricity Partial</span>
+                                                                                                            </div>
+
+                                                                                                            <div>
+                                                                                                                <span><input type="checkbox">  Library</span>
+                                                                                                                </div>
+
+                                                                                                                <div>
+                                                                                                                    <span><input type="checkbox">  Gas Pipeline</span>
+                                                                                                                    </div>
+
+                                                                                                                    <div>
+                                                                                                                        <span><input type="checkbox">  House keeping</span>
+                                                                                                                        </div>
+
+                                                                                                                        <div>
+                                                                                                                            <span><input type="checkbox">  Fire safety</span>
+                                                                                                                            </div>
+
+                                                                                                                            <div>
+                                                                                                                                <span><input type="checkbox">  Park</span>
+                                                                                                                                </div>
+
+                                                                                                                                <div>
+                                                                                                                                    <span><input type="checkbox">Visitor Parking</span>
+                                                                                                                                    </div>
+
+                                                                                                                                    <div>
+                                                                                                                                        <span><input type="checkbox">Shopping center</span>
+                                                                                                                                        </div>
+
+                                                                                                                                        <div>
+                                                                                                                                            <span><input type="checkbox">  Sewage Treatment Plant</span>
+                                                                                                                                            </div>
+                                    
+<div class="save-btn">
+    <button (click)="close()">Save</button>
+</div>
+
 </div>
 
     </div>
+
+    

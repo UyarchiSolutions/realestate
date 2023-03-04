@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links nav-active">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links" (click)="back(0)">Property details</p>
+            <p class="navbar-links " (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
+            <p class="navbar-links">Gallery</p>
+            <p class="navbar-links">Additional Details </p>
+        </nav>
 
 
 

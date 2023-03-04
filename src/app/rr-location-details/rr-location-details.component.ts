@@ -116,6 +116,16 @@ export class RrLocationDetailsComponent  implements OnInit{
        this.service.formget(this.id).subscribe((res:any)=>{
        })
       }
+      if(count == 3){
+        var data ={
+         id:this.id
+       }
+       var queryString = new URLSearchParams(data).toString();
+       this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+  
+       this.service.formget(this.id).subscribe((res:any)=>{
+       })
+      }
     }
       
 

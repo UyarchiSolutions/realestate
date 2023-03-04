@@ -14,14 +14,8 @@ export class RrPropertyDetailsComponent  implements OnInit{
   id! :any;
   
   propform:any = this.fb.group({
-    propertytype : new FormControl('',Validators.required),
-    totalfloor : new FormControl('',Validators.required),
-    onfloor : new FormControl('',Validators.required),
-    AgeofProperty : new FormControl('',Validators.required),
-    BHKType : new FormControl('',Validators.required),
+  
     BuildupArea : new FormControl('',Validators.required),
-    RentPreference : new FormControl('',Validators.required),
-    FacingDirection : new FormControl('',Validators.required),
     Description : new FormControl('',Validators.required)
    
   });
@@ -37,6 +31,8 @@ export class RrPropertyDetailsComponent  implements OnInit{
   ngOnInit(): void {
 
     this.createnumfloor();
+    console.log(this.numarray);
+   
     this.arouter.queryParams.subscribe(params => {
       console.log(params);
       this.id=params['id'];
@@ -57,14 +53,14 @@ export class RrPropertyDetailsComponent  implements OnInit{
   }
   propsub(){
     var data={
-      propertType:this.propform.get('propertytype')?.value,
-      noOfFloor:this.propform.get('totalfloor')?.value,
-      floorNo:this.propform.get('onfloor')?.value,
-      ageOfBuilding:this.propform.get('AgeofProperty')?.value,
-      BHKType:this.propform.get('BHKType')?.value,
+      propertType:this.pv,
+      noOfFloor:this.tfv,
+      floorNo:this.ofv,
+      ageOfBuilding:this.aop,
+      BHKType:this.bhkv,
       BuildedSize:this.propform.get('BuildupArea')?.value,
-      buildingDirection:this.propform.get('FacingDirection')?.value,
-      RentPrefer:this.propform.get('RentPreference')?.value,
+      buildingDirection:this.fdv,
+      RentPrefer:this.rpv,
       discription:this.propform.get('Description')?.value
      }
      console.log(data);
@@ -84,6 +80,7 @@ export class RrPropertyDetailsComponent  implements OnInit{
     for (var i = 1; i <= 99; i++) {
       this.numarray.push(i);
    }
+   
   }
   updateform(){
 
@@ -136,17 +133,89 @@ export class RrPropertyDetailsComponent  implements OnInit{
      this.service.formget(this.id).subscribe((res:any)=>{
      })
     }
+    if(count == 3){
+      var data ={
+       id:this.id
+     }
+     var queryString = new URLSearchParams(data).toString();
+     this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+
+     this.service.formget(this.id).subscribe((res:any)=>{
+     })
+    }
   }
   nave:boolean=false;
   nav(){
     
     this.nave=!this.nave;
   }
+
   pv:any;
   propertyv(a:any){
-
-    this.pv = a.target.value;
+    this.pv = a;
     console.log(this.pv);
+  }
+
+  tfv:any;
+  totalfloorforon!:any;
+
+  groundFloorv(a:any,total:any){
+
+    this.tfv = a;
+    this.totalfloorforon = total;
+    console.log(this.tfv,this.totalfloorforon);
+
+    
+    this.floorarraygenerate();
+   console.log(this.floorarray);
+
+   
+  }
+
+  floorarray: any=[];
+
+  floorarraygenerate(){
+
+      
+    for (var i = 1; i <= this.totalfloorforon; i++) {
+      this.floorarray.push(i);
+   }
+  }
+  ofv:any;
+  onFloorv(a:any){
+
+    this.ofv = a;
+    console.log(this.ofv);
+   
+  }
+  aop:any;
+  ageofpropv(a:any){
+
+    this.aop =a;
+    console.log(this.aop);
+  }
+
+  bhkv:any;
+
+  bhktyev(a:any){
+
+    this.bhkv =a;
+    console.log(this.bhkv);
+  }
+  rpv:any;
+
+  rentprefv(a:any){
+
+    this.rpv =a;
+    console.log(this.rpv);
+  }
+
+  fdv:any;
+
+  faceDirectv(a:any){
+
+    this.fdv =a;
+    console.log(this.fdv);
   }
 
 }

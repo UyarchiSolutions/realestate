@@ -51,8 +51,9 @@ const routes: Routes = [
   {path:'residential-rent',component:RrPropertyDetailsComponent},
   {path:'residentaial-rent-location-details',component:RrLocationDetailsComponent},
   {path:'residentaial-rent-rental-details',component:RrRentalDetailsComponent},
-  {path:'residentaial-rent-amentites',component:RrAmentitesComponent},
-  {path:'residentaial-rent-gallery',component:RrGalleryComponent}
+  
+  {path:'residentaial-rent-gallery',component:RrGalleryComponent},
+  {path:'residentaial-rent-amentites',component:RrAmentitesComponent}
 ];
 
 @NgModule({

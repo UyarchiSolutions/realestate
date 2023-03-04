@@ -51,10 +51,10 @@
     <div class="main">
  
 <nav>
-    <p class="navbar-links nav-active">Property details</p>
-    <p class="navbar-links">Location Details</p>
-    <p class="navbar-links">Rental Details</p>
-    <p class="navbar-links">Amenities</p>
+    <p class="navbar-links nav-active"  (click)="back(0)">Property details</p>
+    <p class="navbar-links" (click)="back(1)">Location Details</p>
+    <p class="navbar-links" (click)="back(2)">Rental Details</p>
+    <p class="navbar-links" (click)="back(3)">Amenities</p>
     <p class="navbar-links">Gallery</p>
     <p class="navbar-links">Additional Details </p>
 </nav>
@@ -62,6 +62,7 @@
 
 
 <div class="property-details">
+    <form [formGroup]="propform" (ngSubmit)="propsub()">
     <h2>Property Details</h2>
     <div class="form">
     <div>
@@ -69,66 +70,61 @@
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-        <p [innerHTML]="pv">Property Type</p>
+        <p [innerHTML]="pv"></p> <p *ngIf="!pv" style="opacity: 0.5;">Property Type</p>
       
-        <ul class="dropdown-menu select-filed-options" (change)="propertyv($event)" >
+        <ul class="dropdown-menu select-filed-options" >
 
-          <li><a class="dropdown-item" value="Apartment">Apartment</a></li>
-          <li><a class="dropdown-item" value="Individual House/Villa">Individual House/Villa</a></li>
-          <li><a class="dropdown-item" value="Gated Community">Gated Community</a></li>
+          <li><a class="dropdown-item" (click)="propertyv('Apartment')" >Apartment</a></li>
+          <li><a class="dropdown-item" (click)="propertyv('Individual House/Villa')">Individual House/Villa</a></li>
+          <li><a class="dropdown-item" (click)="propertyv('Gated Communit')">Gated Community</a></li>
         </ul>
       </div>
     </div>
     
 
-    <div class="floors">
+    <div class="floors" >
         <label>Floors :</label>
-        <div style="position: static !important;">
-            <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div style="position: static !important;"  >
+            <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" >
     
-                Total Floors
+              <p  [innerHTML]="tfv"></p> <p p *ngIf="!tfv" style="opacity: 0.5;"> Total Floors</p>
             
-              <ul class="dropdown-menu select-filed-options">
-                <li><a class="dropdown-item" href="#">Ground Floor</a></li>
-                <li><a class="dropdown-item" href="#"> 1 Floor</a></li>
-                <li><a class="dropdown-item" href="#">2 Floor</a></li>
-                <li><a class="dropdown-item" href="#">3 Floor</a></li>
-                <li><a class="dropdown-item" href="#">4 Floor</a></li>
-                <li><a class="dropdown-item" href="#">5+ Floor</a></li>
+              <ul class="dropdown-menu select-filed-options" >
+                <li><a class="dropdown-item" (click)="groundFloorv('Ground Floor',0)" >Ground Floor</a></li>
+                <li  *ngFor="let countf of numarray"><a class="dropdown-item"  (click)="groundFloorv(countf +' Floor', countf)" > {{countf}} floors</a></li>
+                
               </ul>
             </div>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    
-            On Floor
         
-          <ul class="dropdown-menu select-filed-options">
-            <li><a class="dropdown-item" href="#">Groud Floor</a></li>
-            <li><a class="dropdown-item" href="#"> 1 Floor</a></li>
-            <li><a class="dropdown-item" href="#">2 Floor</a></li>
-            <li><a class="dropdown-item" href="#">3 Floor</a></li>
-            <li><a class="dropdown-item" href="#">4 Floor</a></li>
-            <li><a class="dropdown-item" href="#">5+ Floor</a></li>
-          </ul>
-        </div>
+            <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+                <p  [innerHTML]="ofv"></p> <p p *ngIf="!ofv" style="opacity: 0.5;"> On Floors</p>
+            
+              <ul class="dropdown-menu select-filed-options">
+                <li><a class="dropdown-item" >Groud Floor</a></li>
+                <li *ngFor="let onflo of floorarray"><a class="dropdown-item" (click)="onFloorv(onflo +' Floor' )"> {{onflo}} Floor</a></li>
+               
+              </ul>
+            </div>
       
     </div>
 </div>
 
+        
     <div>
         <label>Age of Property :</label>
        
             
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            Age of Property
+            <p  [innerHTML]="aop"></p> <p p *ngIf="!aop" style="opacity: 0.5;"> Age of Property</p> 
         
           <ul class="dropdown-menu select-filed-options">
-            <li><a class="dropdown-item" href="#"> Less than Year</a></li>
-            <li><a class="dropdown-item" href="#"> 1 to 3 Years</a></li>
-            <li><a class="dropdown-item" href="#">3 to 5 Years</a></li>
-            <li><a class="dropdown-item" href="#">5 to 10 Years</a></li>
-            <li><a class="dropdown-item" href="#">10+ Years</a></li>
+            <li><a class="dropdown-item" (click)="ageofpropv('Less than Year')" > Less than Year</a></li>
+            <li><a class="dropdown-item" (click)="ageofpropv('1 to 3 Years')" > 1 to 3 Years</a></li>
+            <li><a class="dropdown-item" (click)="ageofpropv('3 to 5 Years')">3 to 5 Years</a></li>
+            <li><a class="dropdown-item"  (click)="ageofpropv('5 to 10 Years')">5 to 10 Years</a></li>
+            <li><a class="dropdown-item" (click)="ageofpropv('10+ Years')">10+ Years</a></li>
           </ul>
         </div>
     </div>
@@ -138,20 +134,20 @@
      
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-       BHK Type
+            <p  [innerHTML]="bhkv"></p> <p p *ngIf="!bhkv"style="opacity: 0.5;" > BHK Type</p>  
         
           <ul class="dropdown-menu select-filed-options">
-            <li><a class="dropdown-item" href="#">1RK</a></li>
-            <li><a class="dropdown-item" href="#"> 1 BHK</a></li>
-            <li><a class="dropdown-item" href="#">2  BHK</a></li>
-            <li><a class="dropdown-item" href="#">3 BHK</a></li>
-            <li><a class="dropdown-item" href="#">4 BHK</a></li>
-            <li><a class="dropdown-item" href="#"> 5 BHK</a></li>
-            <li><a class="dropdown-item" href="#">6  BHK</a></li>
-            <li><a class="dropdown-item" href="#">7 BHK</a></li>
-            <li><a class="dropdown-item" href="#">8 BHK</a></li>
-            <li><a class="dropdown-item" href="#">9 BHK</a></li>
-            <li><a class="dropdown-item" href="#">10 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('1RK')" >1RK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('1 BHK')" >1 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('2 BHK')" >2 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('3 BHK')" >3 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('4 BHK')" >4 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('5 BHK')" >5 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('6 BHK')" >6 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('7 BHK')" >7 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('8 BHK')" >8 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('9 BHK')" >9 BHK</a></li>
+            <li><a class="dropdown-item" (click)="bhktyev('10 BHK')" >10 BHK</a></li>
           </ul>
         </div>
     </div>
@@ -160,7 +156,7 @@
         <label>Build up Area :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;margin-top: 0;height: fit-content;margin-bottom: 0 !important;">
-        <input style="width: 90%;"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
+        <input style="width: 90%;" formControlName="BuildupArea"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
      </div>
     </div>
 
@@ -169,13 +165,13 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            Rent Preference
+            <p  [innerHTML]="rpv"></p> <p  *ngIf="!rpv" style="opacity: 0.5;" > Rent Preference</p>  
         
           <ul class="dropdown-menu select-filed-options">
-            <li><a class="dropdown-item" href="#">Family</a></li>
-            <li><a class="dropdown-item" href="#"> Bachelor</a></li>
-            <li><a class="dropdown-item" href="#">Company</a></li>
-            <li><a class="dropdown-item" href="#">Any</a></li>
+            <li><a class="dropdown-item" (click)="rentprefv('Family')" >Family</a></li>
+            <li><a class="dropdown-item" (click)="rentprefv('Bachelor')"> Bachelor</a></li>
+            <li><a class="dropdown-item"  (click)="rentprefv('Company')">Company</a></li>
+            <li><a class="dropdown-item"  (click)="rentprefv('Any')">Any</a></li>
      
           </ul>
         </div>
@@ -185,17 +181,17 @@
         <label>Facing Direction :</label>
         <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            Facing Direction
+            <p  [innerHTML]="fdv"></p> <p  *ngIf="!fdv" style="opacity: 0.5;"> Facing Direction</p>
         
           <ul class="dropdown-menu select-filed-options">
-            <li><a class="dropdown-item" href="#">North</a></li>
-            <li><a class="dropdown-item" href="#"> South</a></li>
-            <li><a class="dropdown-item" href="#">East</a></li>
-            <li><a class="dropdown-item" href="#">West</a></li>
-            <li><a class="dropdown-item" href="#">North East</a></li>
-            <li><a class="dropdown-item" href="#"> South East</a></li>
-            <li><a class="dropdown-item" href="#">North West</a></li>
-            <li><a class="dropdown-item" href="#">South West </a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('North')" >North</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('South')">South</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('East')">East</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('West')">West</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('North East')">North East</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('South East')">South East</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('North West')" >North West</a></li>
+            <li><a class="dropdown-item" (click)="faceDirectv('South West')">South West </a></li>
             
      
           </ul>
@@ -207,18 +203,18 @@
         <label>Description :</label>
        <!-- <input type="text"> -->
        <div style="width: 50%;padding-top: 0;position: relative;">
-       <textarea style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100"></textarea>
-       <p style="position: absolute;bottom: 5px;right: 10px;font-size: 12px;opacity: 50%;">0/100</p>
+       <textarea formControlName="Description" style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100" #description></textarea>
+       <p style="position: absolute;bottom: 5px;right: 10px;font-size: 12px;opacity: 50%;"> {{ description.value.length }}/100</p>
     </div>
     </div>
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit">Save & Continue</button>
 </div>
 
 
 </div>
-
+</form>
 </div>
     
 
