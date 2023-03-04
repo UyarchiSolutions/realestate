@@ -71,7 +71,7 @@ textarea{
    
     
 }
-.form div{
+.form>div{
 width: 100%;
 
 display: flex;
@@ -91,6 +91,7 @@ label{
     border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
     position:relative ;
 }
+
 .forgot-password{
     font-size: 10px;
     margin-top: -15px;
@@ -135,11 +136,16 @@ label{
     color: white;
     border: none;
 }
-.floors div{
+.floors>div{
     width: 50%;
     display: flex;
     margin: 0 !important;
+    justify-content: space-between;
 }
-.floors select{
+.floors>div>div{
     width: 48% !important;
 }
+.dropdown-item:hover{
+    color:var(--brown) !important
+}
+

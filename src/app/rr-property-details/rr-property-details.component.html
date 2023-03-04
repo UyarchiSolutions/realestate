@@ -1,6 +1,6 @@
 <div class="container">
 
-
+  
 
     <div class="sidebar">
         <ul class="sidebar-content">
@@ -51,102 +51,155 @@
     <div class="main">
  
 <nav>
-    <p class="navbar-links nav-active" (click)="back(0)"  >Property details</p>
-    <p class="navbar-links" (click)="back(1)" >Location Details</p>
-    <p class="navbar-links" (click)="back(2)">Rental Details</p>
+    <p class="navbar-links nav-active">Property details</p>
+    <p class="navbar-links">Location Details</p>
+    <p class="navbar-links">Rental Details</p>
     <p class="navbar-links">Amenities</p>
     <p class="navbar-links">Gallery</p>
     <p class="navbar-links">Additional Details </p>
 </nav>
 
 
-<form [formGroup]="propform" (ngSubmit)="propsub()">
+
 <div class="property-details">
     <h2>Property Details</h2>
     <div class="form">
     <div>
         <label>Property Type :</label>
-       <select formControlName="propertytype">
-        <option value="Property Type" selected>Property Type</option>
-        <option value="Apartments">Apartments</option>
-        <option value="Independent house / Villa">Independent house / Villa</option>
-        <option value="Gated communtiy">Gated communtiy </option>
-        </select>
+   
+      <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+        <p [innerHTML]="pv">Property Type</p>
+      
+        <ul class="dropdown-menu select-filed-options" (change)="propertyv($event)" >
+
+          <li><a class="dropdown-item" value="Apartment">Apartment</a></li>
+          <li><a class="dropdown-item" value="Individual House/Villa">Individual House/Villa</a></li>
+          <li><a class="dropdown-item" value="Gated Community">Gated Community</a></li>
+        </ul>
+      </div>
     </div>
+    
 
     <div class="floors">
         <label>Floors :</label>
-     <div>
-        <select formControlName="totalfloor">
-            <option >Total Floors</option>
-            <option value="Ground floor">Ground floor</option>
-            <option *ngFor="let num of numarray" value="{{num}}">{{num}} floor</option>
-        </select>
-        <select formControlName="onfloor">
-            <option >On Floors</option>
-            <option value="Ground floor">Ground floor</option>
-            <option *ngFor="let num of numarray" value="{{num}}">{{num}} floor</option>
-        </select>
-     </div>
+        <div style="position: static !important;">
+            <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+                Total Floors
+            
+              <ul class="dropdown-menu select-filed-options">
+                <li><a class="dropdown-item" href="#">Ground Floor</a></li>
+                <li><a class="dropdown-item" href="#"> 1 Floor</a></li>
+                <li><a class="dropdown-item" href="#">2 Floor</a></li>
+                <li><a class="dropdown-item" href="#">3 Floor</a></li>
+                <li><a class="dropdown-item" href="#">4 Floor</a></li>
+                <li><a class="dropdown-item" href="#">5+ Floor</a></li>
+              </ul>
+            </div>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            On Floor
+        
+          <ul class="dropdown-menu select-filed-options">
+            <li><a class="dropdown-item" href="#">Groud Floor</a></li>
+            <li><a class="dropdown-item" href="#"> 1 Floor</a></li>
+            <li><a class="dropdown-item" href="#">2 Floor</a></li>
+            <li><a class="dropdown-item" href="#">3 Floor</a></li>
+            <li><a class="dropdown-item" href="#">4 Floor</a></li>
+            <li><a class="dropdown-item" href="#">5+ Floor</a></li>
+          </ul>
+        </div>
+      
     </div>
+</div>
 
     <div>
         <label>Age of Property :</label>
-        <select formControlName="AgeofProperty">
-            <option selected>Age of Property</option>
-            <option value="less than year">less than year</option>
-            <option value="1 to 3 years">1 to 3 years</option>
-            <option value="3 to 5 years">3 to 5 years</option>
-            <option value="5 to 10 years">5 to 10 years</option>
-            <option value="10+ years">10+ years</option>
-        </select>
+       
+            
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            Age of Property
+        
+          <ul class="dropdown-menu select-filed-options">
+            <li><a class="dropdown-item" href="#"> Less than Year</a></li>
+            <li><a class="dropdown-item" href="#"> 1 to 3 Years</a></li>
+            <li><a class="dropdown-item" href="#">3 to 5 Years</a></li>
+            <li><a class="dropdown-item" href="#">5 to 10 Years</a></li>
+            <li><a class="dropdown-item" href="#">10+ Years</a></li>
+          </ul>
+        </div>
     </div>
 
     <div>
         <label>BHK Type :</label>
-       <select formControlName="BHKType">
-        <option>BHK Type</option>
-        <option value="1RK">1 RK</option>
-        <option value="1BHK">1 BHK</option>
-        <option value="2BHK">2 BHK</option>
-        <option value="3BHK">3 BHK</option>
-        <option value="4BHK">4 BHK</option>
-        <option value="5+BHK">5+ BHK</option>
-    </select>
+     
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+       BHK Type
+        
+          <ul class="dropdown-menu select-filed-options">
+            <li><a class="dropdown-item" href="#">1RK</a></li>
+            <li><a class="dropdown-item" href="#"> 1 BHK</a></li>
+            <li><a class="dropdown-item" href="#">2  BHK</a></li>
+            <li><a class="dropdown-item" href="#">3 BHK</a></li>
+            <li><a class="dropdown-item" href="#">4 BHK</a></li>
+            <li><a class="dropdown-item" href="#"> 5 BHK</a></li>
+            <li><a class="dropdown-item" href="#">6  BHK</a></li>
+            <li><a class="dropdown-item" href="#">7 BHK</a></li>
+            <li><a class="dropdown-item" href="#">8 BHK</a></li>
+            <li><a class="dropdown-item" href="#">9 BHK</a></li>
+            <li><a class="dropdown-item" href="#">10 BHK</a></li>
+          </ul>
+        </div>
     </div>
 
     <div>
         <label>Build up Area :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;margin-top: 0;height: fit-content;margin-bottom: 0 !important;">
-        <input type="number" style="width: 90%;" formControlName="BuildupArea"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
+        <input style="width: 90%;"><p style="width: 10%;  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;">Sq.ft</p>
      </div>
     </div>
 
     <div>
         <label>Rent Preference :</label>
-       <select formControlName="RentPreference">
-        <option>Rent Preference</option>
-        <option value="family">family</option>
-        <option value="bachelor">Bachelor</option>
-        <option value="company">Company</option>
-        <option value="any">any</option>
-    </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            Rent Preference
+        
+          <ul class="dropdown-menu select-filed-options">
+            <li><a class="dropdown-item" href="#">Family</a></li>
+            <li><a class="dropdown-item" href="#"> Bachelor</a></li>
+            <li><a class="dropdown-item" href="#">Company</a></li>
+            <li><a class="dropdown-item" href="#">Any</a></li>
+     
+          </ul>
+        </div>
     </div>
 
     <div>
         <label>Facing Direction :</label>
-       <select  formControlName="FacingDirection">
-        <option >Facing Direction</option>
-        <option value="North">North</option>
-        <option value="South">South</option>
-        <option value="East">East</option>
-        <option value="West">West</option>
-        <option value="Northeast">Northeast</option>
-        <option value="Northwest">Northwest</option>
-        <option value="Southeast">Southeast</option>
-        <option value="Southwest">Southwest</option>
-    </select>
+        <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            Facing Direction
+        
+          <ul class="dropdown-menu select-filed-options">
+            <li><a class="dropdown-item" href="#">North</a></li>
+            <li><a class="dropdown-item" href="#"> South</a></li>
+            <li><a class="dropdown-item" href="#">East</a></li>
+            <li><a class="dropdown-item" href="#">West</a></li>
+            <li><a class="dropdown-item" href="#">North East</a></li>
+            <li><a class="dropdown-item" href="#"> South East</a></li>
+            <li><a class="dropdown-item" href="#">North West</a></li>
+            <li><a class="dropdown-item" href="#">South West </a></li>
+            
+     
+          </ul>
+        </div>
     </div>
 
     <div style="display: flex;
@@ -154,21 +207,40 @@
         <label>Description :</label>
        <!-- <input type="text"> -->
        <div style="width: 50%;padding-top: 0;position: relative;">
-       <textarea style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100"
-        formControlName="Description"></textarea>
+       <textarea style="width: 100%;min-height: 150px;margin-top:-10px;" maxlength="100"></textarea>
        <p style="position: absolute;bottom: 5px;right: 10px;font-size: 12px;opacity: 50%;">0/100</p>
     </div>
     </div>
 
 <div class="save-continue">
-    <button type="submit">Save & Continue</button>
+    <button>Save & Continue</button>
 </div>
 
 
 </div>
 
 </div>
-<div class="ad"></div>
     
-</form>   
-  
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <div class="ad"></div>
+    
+</div>

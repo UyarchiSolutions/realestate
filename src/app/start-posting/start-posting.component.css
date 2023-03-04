@@ -77,11 +77,9 @@
     text-align: center;
     padding: 20px;
     cursor: pointer;
+    transition: background-color 0.5s ease;
 }
-.residential{
-    background-color: var(--lightbrown);
-    color: white;
-}
+
 .property-ad-type{
     width: 40%;
     margin: auto;
@@ -105,3 +103,22 @@
     background-color: var(--brown);
     color: white;
 }
+.redtext{
+    color: red !important;
+    font-size: 0.8rem !important;
+}
+.selected{
+    background-color: var(--lightbrown);
+    color: white;
+}
+.residential-commercial div:hover{
+    background-color: var(--lightbrown);
+    color: white;
+    
+}
+.residential-commercial div:active{
+    background-color: var(--brown);
+    color: white;
+    
+}
+

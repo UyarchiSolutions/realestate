@@ -16,6 +16,8 @@ import { RrLocationDetailsComponent } from './rr-location-details/rr-location-de
 import { AgmMap } from '@agm/core/lib/directives';
 import { AgmCoreModule } from '@agm/core';
 import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.component';
+import { RrAmentitesComponent } from './rr-amentites/rr-amentites.component';
+import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.
     StartPostingComponent,
     RrPropertyDetailsComponent,
     RrLocationDetailsComponent,
-    RrRentalDetailsComponent
+    RrRentalDetailsComponent,
+    RrAmentitesComponent,
+    RrGalleryComponent
 
   ],
   imports: [

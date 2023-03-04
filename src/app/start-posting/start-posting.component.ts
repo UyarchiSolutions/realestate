@@ -14,6 +14,7 @@ export class StartPostingComponent implements OnInit {
 
   property!:any;
   data!:any;
+  submitted: boolean= false;
 
  firstform: any = this.fb.group({
    type : new FormControl('',Validators.required)
@@ -31,36 +32,47 @@ ngOnInit(): void {
   
 }
 
-onAddressChange(address: Address) {
-   this.data = address.formatted_address
-  
-
-}
-
 options: any = {
     componentRestrictions: { country: 'IN' }
   }
 
+check:boolean=false;
+check1:boolean=false;
+
  Residential(){
   
+  this.check=true;
+  this.check1=false;
   this.property="Residential";
 
  }
+
  Commercial(){
+
+  this.check1=true;
+  this.check=false;
   this.property="Commercial";
  }
 
+
+
+ 
  strpost(){
 
-  var val= this.firstform.value;
 
-  console.log("first data uploaded"); 
+  
+  this.submitted = true;
+
+  console.log(this.submitted);
+  if(this.firstform.valid){
+
+
   var data ={
     HouseOrCommercialType:this.property,
     Type:this.firstform.get('type')?.value,
     formatedAddress:this.data
   }
-  console.log(data);
+  
 
   this.service.fpost(data).subscribe((res:any)=>{
     console.log('response got',res);
@@ -70,11 +82,13 @@ options: any = {
     var postdata ={
       id:res._id
     }
-    var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residential-rent?' + queryString);
-    console.log("recevied by backend")
-    }
-  })
 
- }
+    var queryString = new URLSearchParams(postdata).toString();
+    this.router.navigateByUrl('/residential-rent?' + queryString); }
+    
+    
+    })
+
+    }
+  }
 }

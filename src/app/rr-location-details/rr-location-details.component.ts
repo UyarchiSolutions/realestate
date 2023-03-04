@@ -17,16 +17,17 @@ export class RrLocationDetailsComponent  implements OnInit{
   long: any = 80.2707;
   latitude:any;
   longtitude:any;
+
+  submitted:boolean=false;
   rrlocform:any = this.fb.group({
-    city: new FormControl ('',Validators.required),
-    Area: new FormControl ('',Validators.required),
+   
     Landmark: new FormControl ('',Validators.required),
-    Pincode: new FormControl ('',Validators.required),
+    Pincode: new FormControl ('',[Validators.required,Validators.pattern("^[0-9]*$")]),
     BuildingName: new FormControl ('',Validators.required),
     Address: new FormControl ('',Validators.required),
     lat:new FormControl ('',Validators.required),
     long:new FormControl ('',Validators.required),
-    addressLoaction: new FormControl(),
+    addressLoaction: new FormControl('',[Validators.required, Validators.max(6)]),
     direction:new FormControl ('',Validators.required)
   })
   myAddres: any;
@@ -57,6 +58,9 @@ export class RrLocationDetailsComponent  implements OnInit{
     }
 
     OnSubmit(){
+
+      this.submitted = true;
+      if( this.rrlocform.valid ){
       var data={
         landMark:this.rrlocform.get('Landmark')?.value,
         pineCode:this.rrlocform.get('Pincode')?.value,
@@ -64,8 +68,6 @@ export class RrLocationDetailsComponent  implements OnInit{
         lat:this.rrlocform.get('lat')?.value,
         long:this.rrlocform.get('long')?.value,
         Address:this.rrlocform.get('addressLoaction')?.value,
-        city:this.rrlocform.get('city')?.value,
-        udsArea:this.rrlocform.get('Area')?.value,
         buildingDirection:this.rrlocform.get('Area')?.value,
       }
         this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -79,7 +81,7 @@ export class RrLocationDetailsComponent  implements OnInit{
           console.log(res);
          
          })
-
+        }
     }
     back(count:any){
       if(count == 0){

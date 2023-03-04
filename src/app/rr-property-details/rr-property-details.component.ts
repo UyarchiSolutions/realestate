@@ -33,7 +33,7 @@ export class RrPropertyDetailsComponent  implements OnInit{
 
 
   }
-
+  toggleState = false;
   ngOnInit(): void {
 
     this.createnumfloor();
@@ -44,6 +44,15 @@ export class RrPropertyDetailsComponent  implements OnInit{
       this.updateform();
     }
   );
+
+  }
+  show(){
+    this.toggleState = !this.toggleState
+  }
+  select_property(e:any){
+    console.log(e)
+    this.propform.get('propertytype').setValue(e)
+  
 
   }
   propsub(){
@@ -127,6 +136,17 @@ export class RrPropertyDetailsComponent  implements OnInit{
      this.service.formget(this.id).subscribe((res:any)=>{
      })
     }
+  }
+  nave:boolean=false;
+  nav(){
+    
+    this.nave=!this.nave;
+  }
+  pv:any;
+  propertyv(a:any){
+
+    this.pv = a.target.value;
+    console.log(this.pv);
   }
 
 }

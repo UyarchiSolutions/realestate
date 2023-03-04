@@ -75,39 +75,43 @@
 
 
         <div class="form">
-            <div class="select-city">
-                <input name="Select City" ngx-google-places-autocomplete [options]="options"
-                (onAddressChange)="onAddressChange($event)" >
-            </div>
+         
             <p style="margin: 20px 0;cursor: pointer;">Property type</p>
             <div class="residential-commercial" >
-                <div class="residential" (click)="Residential()">
+                <div class="residential" [ngClass]="{'selected': check}" (click)="Residential()">
                     Residential
                 </div>
-                <div class="commercial" (click)="Commercial()" >
+                <div class="commercial" (click)="Commercial()" [ngClass]="{'selected': check1}" >
                     Commercial
                 </div>
             </div>
+            
             <div class="property-ad-type">
+              <form [formGroup]="firstform" (ngSubmit)="strpost()">
                 <p>Select Property Ad Type</p>
-                <div class="property-select">
+                    <div class="property-select">
                             
 
-                        <form [formGroup]="firstform" (ngSubmit)="strpost()">
+                       
                             <div class="property-select-type">
                                 <input type="radio" value="rent" formControlName="type">
                                 <p>Rent</p>
                             </div>
+
                             <div class="property-select-type">
                                 <input type="radio" value="Sale" formControlName="type">
                                 <p>Sale</p>
                             </div>
-                            <button type="submit" >Start Posting</button>
-                        </form>
-                </div>
+
+    
+                   </div>
+                
+                 <button type="submit">Start Posting</button>
+                 <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
+                 <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P>
+                </form>
             </div>
         </div>
     </div>
-    <div class="ad">
-    </div>
+    <div class="ad"></div>
 </div>
