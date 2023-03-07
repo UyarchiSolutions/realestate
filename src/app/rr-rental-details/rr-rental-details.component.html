@@ -55,8 +55,8 @@
             <p class="navbar-links" (click)="back(1)">Location Details</p>
             <p class="navbar-links nav-active" (click)="back(2)">Rental Details</p>
             <p class="navbar-links" (click)="back(3)">Amenities</p>
-            <p class="navbar-links">Gallery</p>
-            <p class="navbar-links">Additional Details </p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links"(click)="back(5)">Additional Details </p>
         </nav>
         
 
@@ -114,11 +114,21 @@
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
-        <select style="width: 45%;font-size: 12px;" formControlName="MrSq" >
+        <!-- <select   formControlName="MrSq">
+ 
+            <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
+            <option value="Per Month"  > Per Month</option>
+        </select>  -->
+        <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            <option value="Per Sq.ft/Month">Per Sq.ft/Month</option>
-            <option value="Per Month" selected> Per Month</option>
-        </select>
+            <p [innerHTML]="mainmon" *ngIf="mainmon"></p> <p *ngIf="!mainmon">Select</p>
+              
+                <ul class="dropdown-menu select-filed-options" >
+        
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Sq.ft/Month')" >Per Sq.ft/Month</a></li>
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Month')">Per Month</a></li>
+                </ul>
+              </div>
     </div>
     </div>
 
@@ -140,6 +150,7 @@
 </div>
 </form>
 
+<!-- lease -->
 </div>
 <div class="Location-details" *ngIf="switch == 'lease'">
     <h2>Lease Details</h2>
@@ -148,13 +159,13 @@
     <p class="rent-lease-active" (click)="rent()" [ngClass]="{'selected': check}">Rent</p>
     <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1}">Lease</p>
 </div>
-<form [formGroup]="leaseform" (ngSubmit)="rentsub()">
+<form [formGroup]="leaseform" (ngSubmit)="leasesub()">
 
     <div class="form">
  
 
     <div class="expected-rent">
-        <label>Expected Deposit :</label>
+        <label>Expected Lease :</label>
    <div>
     <input type="text" placeholder="Deposit Amount" formControlName="LExpectedDeposit">
     <div class="negotiable">
@@ -185,12 +196,17 @@
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
-        <select style="width: 45%;font-size: 12px;" formControlName="LMrSq">
-            
-            
-            <option value="Per Sq.ft/Month">Per Sq.ft/Month</option>
-            <option value="Per Month" selected> Per Month</option>
-        </select>
+        <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+            <p [innerHTML]="Lmainmon" *ngIf="Lmainmon"></p><p *ngIf="!Lmainmon">Select</p>
+              
+              
+                <ul class="dropdown-menu select-filed-options" >
+        
+                  <li><a class="dropdown-item" (click)="Lmainmonv('Per Sq.ft/Month')" >Per Sq.ft/Month</a></li>
+                  <li><a class="dropdown-item" (click)="Lmainmonv('Per Month')">Per Month</a></li>
+                </ul>
+              </div>
     </div>
     </div>
 

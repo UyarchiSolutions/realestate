@@ -55,8 +55,8 @@
     <p class="navbar-links" (click)="back(1)">Location Details</p>
     <p class="navbar-links" (click)="back(2)">Rental Details</p>
     <p class="navbar-links" (click)="back(3)">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
+    <p class="navbar-links" (click)="back(4)">Gallery</p>
+    <p class="navbar-links" (click)="back(5)">Additional Details </p>
 </nav>
 
 
@@ -91,7 +91,7 @@
             
               <ul class="dropdown-menu select-filed-options" >
                 <li><a class="dropdown-item" (click)="groundFloorv('Ground Floor',0)" >Ground Floor</a></li>
-                <li  *ngFor="let countf of numarray"><a class="dropdown-item"  (click)="groundFloorv(countf +' Floor', countf)" > {{countf}} floors</a></li>
+                <li value="{{countf}}" (click)="data($event)"  *ngFor="let countf of myarray">{{countf}} floors</li>
                 
               </ul>
             </div>
@@ -100,15 +100,16 @@
     
                 <p  [innerHTML]="ofv"></p> <p p *ngIf="!ofv" style="opacity: 0.5;"> On Floors</p>
             
-              <ul class="dropdown-menu select-filed-options">
+              <ul class="dropdown-menu select-filed-options" *ngFor="let floor of floorarray">
                 <li><a class="dropdown-item" >Groud Floor</a></li>
-                <li *ngFor="let onflo of floorarray"><a class="dropdown-item" (click)="onFloorv(onflo +' Floor' )"> {{onflo}} Floor</a></li>
-               
+                <li *ngFor="let floor of arr">{{floor}} Floor</li>
+                
               </ul>
             </div>
       
     </div>
 </div>
+
 
         
     <div>

@@ -45,11 +45,22 @@ export class RrRentalDetailsComponent implements OnInit{
 
     
   }
-  maintanceVal:any;
+  maintanceVal='Include Maintenance';
   maintance(a:any){
     this.maintanceVal=a;
     console.log(this.maintanceVal);
+  }
+  mainmon='';
 
+  mainmonv(a:any){
+
+    this.mainmon=a;
+  }
+  Lmainmon='';
+
+  Lmainmonv(a:any){
+
+    this.Lmainmon=a;
   }
   rentsub(){
 
@@ -60,7 +71,7 @@ export class RrRentalDetailsComponent implements OnInit{
       depositeAmount:this.rentform.get('ExpectedDeposit').value,
       depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
-      squareFT:this.rentform.get('MrSq').value
+      squareFT:this.mainmon
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
@@ -83,7 +94,7 @@ export class RrRentalDetailsComponent implements OnInit{
       depositeAmount:this.leaseform.get('LExpectedDeposit').value,
       depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
-      squareFT:this.leaseform.get('LMrSq').value
+      squareFT:this.Lmainmon
     }
     console.log(data);
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -154,6 +165,15 @@ export class RrRentalDetailsComponent implements OnInit{
 
      this.service.formget(this.id).subscribe((res:any)=>{
      })
+    }
+    if(count == 4){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
     }
   }
 }

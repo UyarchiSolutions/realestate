@@ -28,8 +28,12 @@ export class RrPropertyDetailsComponent  implements OnInit{
 
   }
   toggleState = false;
+  myarray:any=[];
   ngOnInit(): void {
-
+    for (let i = 0; i < 99; i++) {
+      this.myarray.push(i);
+      console.log(this.myarray);
+    }
     this.createnumfloor();
     console.log(this.numarray);
    
@@ -41,6 +45,14 @@ export class RrPropertyDetailsComponent  implements OnInit{
     }
   );
 
+  }
+  arr:any=[];
+  data(val:any){
+    this.arr=[]
+    console.log(val.target.value,"sdsdsfdf")
+    for(let i=0;i<=val.target.value;i++){
+     this.arr.push(i)
+    }
   }
   show(){
     this.toggleState = !this.toggleState
@@ -77,9 +89,10 @@ export class RrPropertyDetailsComponent  implements OnInit{
   }
   createnumfloor(){
 
-    for (var i = 1; i <= 99; i++) {
+    for (let i = 0; i < 99; i++) {
       this.numarray.push(i);
-   }
+  
+    }
    
   }
   updateform(){
@@ -143,6 +156,15 @@ export class RrPropertyDetailsComponent  implements OnInit{
      this.service.formget(this.id).subscribe((res:any)=>{
      })
     }
+    if(count == 4){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
   }
   nave:boolean=false;
   nav(){
@@ -167,7 +189,7 @@ export class RrPropertyDetailsComponent  implements OnInit{
 
     
     this.floorarraygenerate();
-   console.log(this.floorarray);
+   console.log(this.floorarray,"fgfhgfhghgjfgy");
 
    
   }
@@ -176,10 +198,12 @@ export class RrPropertyDetailsComponent  implements OnInit{
 
   floorarraygenerate(){
 
-      
-    for (var i = 1; i <= this.totalfloorforon; i++) {
-      this.floorarray.push(i);
-   }
+     
+    this.numarray=[];
+    console.log(this.totalfloorforon,'floor on')
+    for(let i=0;i<=this.totalfloorforon.value;i++){
+     this.floorarray.push(i)
+    }
   }
   ofv:any;
   onFloorv(a:any){

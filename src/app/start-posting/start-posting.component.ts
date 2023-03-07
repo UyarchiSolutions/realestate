@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class StartPostingComponent implements OnInit {
   myAddres!: string; 
 
-  property!:any;
+  
   data!:any;
   submitted: boolean= false;
 
@@ -36,9 +36,9 @@ options: any = {
     componentRestrictions: { country: 'IN' }
   }
 
-check:boolean=false;
+check:boolean=true;
 check1:boolean=false;
-
+property="Residential";
  Residential(){
   
   this.check=true;
@@ -76,7 +76,7 @@ check1:boolean=false;
 
   this.service.fpost(data).subscribe((res:any)=>{
     console.log('response got',res);
-    if(this.property = 'Residential' && this.firstform.get('type')?.value == 'rent'){ 
+    if(this.property == 'Residential' && this.firstform.get('type')?.value == 'rent'){ 
 
     
     var postdata ={

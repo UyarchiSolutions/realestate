@@ -152,6 +152,13 @@
     left: 50%;
     transform: translate(-50%,-50%);
    }
+   .when-hover video{
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   }
    .image-gallery .images:hover .when-hover{
     visibility: visible;
 

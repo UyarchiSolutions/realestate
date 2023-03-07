@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links ">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links nav-active">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links"  (click)="back(0)">Property details</p>
+            <p class="navbar-links" (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links" (click)="back(3)">Amenities</p>
+            <p class="navbar-links " (click)="back(4)" >Gallery</p>
+            <p class="navbar-links nav-active" (click)="back(5)">Additional Details </p>
+        </nav>
 
 
 
@@ -67,25 +67,25 @@
 
 
 
-    <div class="form">
+    <div class="form" [formGroup]="adform" (ngSubmit)="Onsubmit()">
         <div>
             <label>Available Form :</label>
-       <input type="Date">
+       <input type="Date" formControlName="datetostart">
         </div>
 
         <div>
             <label>Contact Name :</label>
-    <input type="text" placeholder="Contact Name">
+    <input type="text" placeholder="Contact Name" formControlName="contactname">
         </div>
 
         <div>
             <label>Contact Number 1 :</label>
-    <input type="text" placeholder="Contact Number">
+    <input type="text" placeholder="Contact Number" formControlName="cnumber">
         </div>
 
         <div>
             <label>Contact Number 2 :</label>
-    <input type="text" placeholder="Contact Number 2">
+    <input type="text" placeholder="Contact Number 2" formControlName="c2number">
         </div>
 
 
@@ -104,7 +104,7 @@
 
 
 <div class="save-continue">
-    <button>Preview & Post</button>
+    <button type="submit" (click)="Onsubmit()">Preview & Post</button>
 </div>
 
 

@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links">Amenities</p>
-    <p class="navbar-links nav-active">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links"  (click)="back(0)">Property details</p>
+            <p class="navbar-links" (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links" (click)="back(3)">Amenities</p>
+            <p class="navbar-links nav-active" (click)="back(4)" >Gallery</p>
+            <p class="navbar-links" (click)="back(5)">Additional Details </p>
+        </nav>
 
 
 
@@ -69,20 +69,40 @@
    
 <div class="upload-image">
     <label>Photos :</label>
-    <input type="file">
+    <input type="file" id="image" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
+
+<!-- <div class="col-sm-10 col-md-8">
+                  <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
+                  color: white;
+                  padding: 5px;
+                  border-radius: 8px;" [multiple]="5" accept="image/gif, image/jpeg, image/png" />
+                  <label for="Uploadss" class="resume-upload" style="background-color: blue;
+                  color: white;
+                  padding: 5px;
+                  border-radius: 8px;"><span>Choose
+                      Image</span></label>
+                  <div>
+                    <p *ngIf="this.plan_dt.totalImage < gallery.length">You can post only{{this.plan_dt.totalImage}}
+                      images</p> -->
+                  <!-- </div>
+                </div> --> 
 
 
 </div>
 
 <div class="image-gallery">
-    <div class="images"><img  src="../../assets/images/house.jpg">
-    <div class="when-hover">
-        <img src="../../assets/images/image-remove-btn.png">
-    </div>
-    </div>
-    <div class="images"><img  src="../../assets/images/house.jpg">
+ 
+    <div class="images" *ngFor="let preview of imagePreview; let i = index">
+        
+        <img  [src]="preview"  >
         <div class="when-hover">
-            <img src="../../assets/images/image-remove-btn.png">
+            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
+            </div>
+    </div>
+    <!-- <div class="images">
+        <img  src="../../assets/images/house.jpg">
+        <div class="when-hover">
+        <img src="../../assets/images/image-remove-btn.png">
         </div>
         </div>
         <div class="images"><img  src="../../assets/images/house.jpg">
@@ -99,21 +119,23 @@
                     <div class="when-hover">
                         <img src="../../assets/images/image-remove-btn.png">
                     </div>
-                    </div>
+                    </div> -->
 
 
 </div>
 
 <div class="upload-video">
     <label>Video :</label>
-    <input type="file">
+    <input type="file" (change)="onvidselect($event)" id="videoinput">
+    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
 </div>
 
 
 <div class="image-gallery">
-    <div class="images"><img  src="../../assets/images/house.jpg">
+    <div class="images">
+        <video [src]="videoSrc" *ngIf="videoSrc" controls style="width:200px"></video>
     <div class="when-hover">
-        <img src="../../assets/images/image-remove-btn.png">
+        <img src="../../assets/images/image-remove-btn.png" (click)="removevid()">
     </div>
     </div>
   
@@ -126,7 +148,7 @@
 </div>
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button (click)=uploadimg()>Save & Continue</button>
 </div>
 
 

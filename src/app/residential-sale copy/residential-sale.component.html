@@ -54,7 +54,7 @@
     <ul>
         <li>Chennai ></li>
         <li>Residential ></li>
-        <li>Rent</li>
+        <li>Sale</li>
     </ul>
 </nav>
 
@@ -73,10 +73,10 @@
 </div>
 <div class="submitted-details">
     <div>
-        <label>Property Type :</label><p>{{data}}</p>
+        <label>Property Type :</label><p>Apartment</p>
     </div>
     <div>
-        <label>BHK Type</label><p>{{data.BHKType}}</p>
+        <label>BHK Type</label><p>2 BHK</p>
     </div>
     <div>
         <label>Total Floors/ on Floor :</label><p>2/4</p>
@@ -88,7 +88,7 @@
         <label>USD/Land Size :</label><p>1220 sq. ft</p>
     </div>
     <div>
-        <label>Built up area :</label><p>{{data.BuildedSize}}</p>
+        <label>Built up area :</label><p>1120 sq. ft</p>
     </div>
     <div>
         <label>Age of property :</label><p>5 Years</p>
@@ -347,12 +347,9 @@
     
     
     </div>
-    <video [src]="data.Videos"></video>
     <p style="font-weight: 500;">Videos :</p>
     <div class="image-gallery">
-        <div class="images">
-            <img  src="../../assets/images/house.jpg">
-            
+        <div class="images"><img  src="../../assets/images/house.jpg">
         <div class="when-hover">
             <img src="../../assets/images/image-remove-btn.png">
         </div>

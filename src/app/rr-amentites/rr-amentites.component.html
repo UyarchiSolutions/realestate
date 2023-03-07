@@ -55,8 +55,8 @@
             <p class="navbar-links " (click)="back(1)">Location Details</p>
             <p class="navbar-links" (click)="back(2)">Rental Details</p>
             <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
-            <p class="navbar-links">Gallery</p>
-            <p class="navbar-links">Additional Details </p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links" (click)="back(5)">Additional Details </p>
         </nav>
 
 
@@ -179,10 +179,10 @@
             <label>Non-Veg Allowed</label>
             <div>
                 <div>
-                    <input type="radio" name="NV">Yes
+                    <input type="radio" name="NV"  (click)="nvallowed('yes')">Yes
                 </div>
                 <div>
-                    <input type="radio" name="NV">No
+                    <input type="radio" name="NV"  (click)="nvallowed('no')">No
                 </div>
             </div>
         </div>
@@ -191,10 +191,10 @@
             <label>Gated Security</label>
             <div>
                 <div>
-                    <input type="radio" name="gs">Yes
+                    <input type="radio" name="gs" (click)="gsallowed('no')">Yes
                 </div>
                 <div>
-                    <input type="radio" name="gs">No
+                    <input type="radio" name="gs" (click)="gsallowed('no')">No
                 </div>
             </div>
         </div>
@@ -329,22 +329,16 @@
     </div>
   </div> 
 
-  <div>
+  <div >
     <label>Amenities :</label>
     <div style="width: 50%; flex-direction: column;margin: 0 !important;">
- <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;"  (click)="show(1)">
- <div class="selected-amenities">
-<p>Club House<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
+ <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;" (click)="show(1)">
+ <div class="selected-amenities" >
+<p *ngFor="let amt of amenities">{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path (click)="deleteAmit(amt)" fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
     </svg>
     </p>
 
-    <p>Badminton Court<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-        </svg>
-        </p>
-
-        
 
  </div>
 </div>
@@ -355,9 +349,8 @@
 
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit" (click)="submit()">Save & Continue</button>
 </div>
-
 
 </div>
 
@@ -402,119 +395,118 @@
 <div class="popup-container rr-con">
     <p>Amenities</p>
     <div>
-    <span><input type="checkbox">Club House</span>
+    <span><input type="checkbox"  [(ngModel)]="checked1" (change)="updateAmit($event)" value="Club House" >Club House</span>
     </div>
     <div>
-        <span><input type="checkbox">Badminton Court</span>
+        <span><input type="checkbox" [(ngModel)]="checked1" (change)="updateAmit($event)" value="Badminton Court">Badminton Court</span>
         </div>
         <div>
-            <span><input type="checkbox">Health Facilities</span>
+            <span><input type="checkbox" [(ngModel)]="checked2" (change)="updateAmit($event)" value="Health Facilities">Health Facilities</span>
             </div>
             <div>
-                <span><input type="checkbox">Security</span>
+                <span><input type="checkbox" [(ngModel)]="checked3" (change)="updateAmit($event)" value="Security">Security</span>
                 </div>
                 <div>
-                    <span><input type="checkbox">Basket Ball Court</span>
+                    <span><input type="checkbox" [(ngModel)]="checked4" (change)="updateAmit($event)" value="Basket Ball Court">Basket Ball Court</span>
                     </div>
                     <div>
-                        <span><input type="checkbox">Recreation Facilities</span>
+                        <span><input type="checkbox" [(ngModel)]="checked5" (change)="updateAmit($event)" value="Recreation Facilities">Recreation Facilities</span>
                         </div>
                         <div>
-                            <span><input type="checkbox">24Hr Backup</span>
+                            <span><input type="checkbox" [(ngModel)]="checked6" (change)="updateAmit($event)" value="24Hr Backup">24Hr Backup</span>
                             </div>
                             <div>
-                                <span><input type="checkbox">Play Area</span>
+                                <span><input type="checkbox" [(ngModel)]="checked7" (change)="updateAmit($event)" value="Play Area">Play Area</span>
                                 </div>
                                 <div>
-                                    <span><input type="checkbox">WIFI</span>
+                                    <span><input type="checkbox" [(ngModel)]="checked8" (change)="updateAmit($event)" value="WIFI">WIFI</span>
                                     </div>
                                     <div>
-                                        <span><input type="checkbox">Rain Water Harvesting</span>
+                                        <span><input type="checkbox" [(ngModel)]="checked9" (change)="updateAmit($event)" value="Rain Water Harvesting">Rain Water Harvesting</span>
                                         </div>
                                         <div>
-                                            <span><input type="checkbox">Swimming Pool </span>
+                                            <span><input type="checkbox" [(ngModel)]="checked10" (change)="updateAmit($event)" value="Swimming Pool">Swimming Pool </span>
                                             </div>
                                             <div>
-                                                <span><input type="checkbox">Broadband Internet </span>
+                                                <span><input type="checkbox" [(ngModel)]="checked11" (change)="updateAmit($event)" value="Broadband Internet">Broadband Internet </span>
                                                 </div>
                                                 <div>
-                                                    <span><input type="checkbox"> Maintenance Staff</span>
+                                                    <span><input type="checkbox" [(ngModel)]="checked12" (change)="updateAmit($event)" value="Maintenance Staff"> Maintenance Staff</span>
                                                     </div>
                                                     <div>
-                                                        <span><input type="checkbox"> Tennis Court</span>
+                                                        <span><input type="checkbox" [(ngModel)]="checked13" (change)="updateAmit($event)" value="Tennis Court"> Tennis Court</span>
                                                         </div>
                                                         <div>
-                                                            <span><input type="checkbox"> Temple</span>
+                                                            <span><input type="checkbox" [(ngModel)]="checked14" (change)="updateAmit($event)" value="Temple"> Temple</span>
                                                             </div>
                                                             <div>
-                                                                <span><input type="checkbox"> Intercom</span>
+                                                                <span><input type="checkbox" [(ngModel)]="checked15" (change)="updateAmit($event)" value="Intercom"> Intercom</span>
                                                                 </div>
                                                                 <div>
-                                                                    <span><input type="checkbox"> Gymnasium</span>
+                                                                    <span><input type="checkbox" [(ngModel)]="checked16" (change)="updateAmit($event)" value="Gymnasium"> Gymnasium</span>
                                                                     </div>
                                                                     <div>
-                                                                        <span><input type="checkbox"> Lift</span>
+                                                                        <span><input type="checkbox" [(ngModel)]="checked17" (change)="updateAmit($event)" value="Lift"> Lift</span>
                                                                         </div>
                                                                         <div>
-                                                                            <span><input type="checkbox"> Garden</span>
+                                                                            <span><input type="checkbox" [(ngModel)]="checked18" (change)="updateAmit($event)" value="Garden"> Garden</span>
                                                                             </div>
                                                                             <div>
-                                                                                <span><input type="checkbox"> Indoor Games</span>
+                                                                                <span><input type="checkbox" [(ngModel)]="checked19" (change)="updateAmit($event)" value="Indoor Games"> Indoor Games</span>
                                                                                 </div>
                                                                                 <div>
-                                                                                    <span><input type="checkbox"> Air Conditioner</span>
+                                                                                    <span><input type="checkbox" [(ngModel)]="checked20" (change)="updateAmit($event)" value="Air Conditioner"> Air Conditioner</span>
                                                                                     </div>
                                                                                     <div>
-                                                                                        <span><input type="checkbox"> Community Hall</span>
+                                                                                        <span><input type="checkbox" [(ngModel)]="checked21" (change)="updateAmit($event)" value="Community Hall"> Community Hall</span>
                                                                                         </div>
                                                                                         <div>
-                                                                                            <span><input type="checkbox"> Bank/Atm</span>
+                                                                                            <span><input type="checkbox" [(ngModel)]="checked22" (change)="updateAmit($event)" value="Bank/Atm"> Bank/Atm</span>
                                                                                             </div>
                                                                                             <div>
-                                                                                                <span><input type="checkbox">Electricity Full </span>
+                                                                                                <span><input type="checkbox" [(ngModel)]="checked23" (change)="updateAmit($event)" value="Electricity Full">Electricity Full </span>
                                                                                                 </div>
                                                                                                 <div>
-                                                                                                    <span><input type="checkbox">Cafeteria </span>
                                                                                                     </div>
                                                                                                     <div>
-                                                                                                        <span><input type="checkbox"> Servant room</span>
+                                                                                                        <span><input type="checkbox" [(ngModel)]="checked24" (change)="updateAmit($event)" value="Servant room"> Servant room</span>
                                                                                                         </div>
 
 
                                                                                                         <div>
-                                                                                                            <span><input type="checkbox">  Electricity Partial</span>
+                                                                                                            <span><input type="checkbox" [(ngModel)]="checked25" (change)="updateAmit($event)" value="Electricity Partial">  Electricity Partial</span>
                                                                                                             </div>
 
                                                                                                             <div>
-                                                                                                                <span><input type="checkbox">  Library</span>
+                                                                                                                <span><input type="checkbox" [(ngModel)]="checked26" (change)="updateAmit($event)" value="Library">  Library</span>
                                                                                                                 </div>
 
                                                                                                                 <div>
-                                                                                                                    <span><input type="checkbox">  Gas Pipeline</span>
+                                                                                                                    <span><input type="checkbox" [(ngModel)]="checked27" (change)="updateAmit($event)" value="Gas Pipeline">  Gas Pipeline</span>
                                                                                                                     </div>
 
                                                                                                                     <div>
-                                                                                                                        <span><input type="checkbox">  House keeping</span>
+                                                                                                                        <span><input type="checkbox" [(ngModel)]="checked28" (change)="updateAmit($event)" value="House keeping">  House keeping</span>
                                                                                                                         </div>
 
                                                                                                                         <div>
-                                                                                                                            <span><input type="checkbox">  Fire safety</span>
+                                                                                                                            <span><input type="checkbox" [(ngModel)]="checked29" (change)="updateAmit($event)" value="Fire safety">  Fire safety</span>
                                                                                                                             </div>
 
                                                                                                                             <div>
-                                                                                                                                <span><input type="checkbox">  Park</span>
+                                                                                                                                <span><input type="checkbox" [(ngModel)]="checked30" (change)="updateAmit($event)" value="Park">  Park</span>
                                                                                                                                 </div>
 
                                                                                                                                 <div>
-                                                                                                                                    <span><input type="checkbox">Visitor Parking</span>
+                                                                                                                                    <span><input type="checkbox" [(ngModel)]="checked31" (change)="updateAmit($event)" value="Visitor Parking">Visitor Parking</span>
                                                                                                                                     </div>
 
                                                                                                                                     <div>
-                                                                                                                                        <span><input type="checkbox">Shopping center</span>
+                                                                                                                                        <span><input type="checkbox" [(ngModel)]="checked32" (change)="updateAmit($event)" value="Shopping center">Shopping center</span>
                                                                                                                                         </div>
 
                                                                                                                                         <div>
-                                                                                                                                            <span><input type="checkbox">  Sewage Treatment Plant</span>
+                                                                                                                                            <span><input type="checkbox" [(ngModel)]="checked33" (change)="updateAmit($event)" value="Sewage Treatment Plant">  Sewage Treatment Plant</span>
                                                                                                                                             </div>
                                     
 <div class="save-btn">

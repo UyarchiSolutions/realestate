@@ -18,6 +18,7 @@ import { AgmCoreModule } from '@agm/core';
 import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.component';
 import { RrAmentitesComponent } from './rr-amentites/rr-amentites.component';
 import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
+import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additional-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
     RrRentalDetailsComponent,
     RrAmentitesComponent,
     RrGalleryComponent,
+    RrAdditionalDetailsComponent
   
 
   ],
