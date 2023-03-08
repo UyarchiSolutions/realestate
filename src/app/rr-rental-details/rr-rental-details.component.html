@@ -62,12 +62,12 @@
 
 
 
-<div class="Location-details" *ngIf="switch == 'rent'">
+<div class="Location-details" *ngIf="switch == 'rent' || data.rentDetails == 'rent' ">
     <h2>Rental Details</h2>
 
 <div class="rent-lease">
-    <p class="rent-lease-active" (click)="rent()"  [ngClass]="{'selected': check}">Rent</p>
-    <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1}">Lease</p>
+    <p class="rent-lease-active" (click)="rent()"  [ngClass]="{'selected': check || data.rentDetails == 'rent'}" >Rent</p>
+    <p class="rent-lease-active"  (click)="lease()"  >Lease</p>
 </div>
 <form [formGroup]="rentform" (ngSubmit)="rentsub()">
 
@@ -121,7 +121,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            <p [innerHTML]="mainmon" *ngIf="mainmon"></p> <p *ngIf="!mainmon">Select</p>
+            <p [innerHTML]="mainmon" *ngIf="mainmon "></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT"></p><p *ngIf="!mainmon && !data.squareFT">Select</p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -152,12 +152,12 @@
 
 <!-- lease -->
 </div>
-<div class="Location-details" *ngIf="switch == 'lease'">
+<div class="Location-details" *ngIf="switch == 'lease' || data.rentDetails == 'lease'">
     <h2>Lease Details</h2>
 
 <div class="rent-lease">
-    <p class="rent-lease-active" (click)="rent()" [ngClass]="{'selected': check}">Rent</p>
-    <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1}">Lease</p>
+    <p class="rent-lease-active" (click)="rent()" >Rent</p>
+    <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1 || data.rentDetails == 'lease'}">Lease</p>
 </div>
 <form [formGroup]="leaseform" (ngSubmit)="leasesub()">
 
@@ -198,7 +198,7 @@
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            <p [innerHTML]="Lmainmon" *ngIf="Lmainmon"></p><p *ngIf="!Lmainmon">Select</p>
+            <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon"></p><p *ngIf="!Lmainmon && !data.squareFT">Select</p>
               
               
                 <ul class="dropdown-menu select-filed-options" >

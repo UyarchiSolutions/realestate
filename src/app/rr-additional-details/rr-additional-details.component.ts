@@ -34,7 +34,14 @@ ngOnInit(): void {
     console.log(this.id,"this is id from sp");
     
   });
-  
+  this.service.formget(this.id).subscribe((res:any)=>{
+    this.adform.patchValue({
+      datetostart:res.availabilityDate,
+      contactname:res.contactName,
+      cnumber:res.primaryContactNumber,
+      c2number:res.secondaryContactNumber
+    })
+  })
 
 }
 
@@ -60,12 +67,6 @@ Onsubmit(){
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
     console.log(res);
    })
-
-
-
-
-
-    
      
 }
 

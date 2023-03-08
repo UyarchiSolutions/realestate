@@ -10,6 +10,7 @@ import { PostPropertyService } from '../services/post-property.service';
 })
 export class RrAmentitesComponent implements OnInit {
   id: any;
+  data:any;
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +38,7 @@ export class RrAmentitesComponent implements OnInit {
     balCony:new FormControl(),
     Amenities :new FormControl()
   })
-
+  checkarr:any =[];
   ngOnInit(): void {
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
@@ -46,7 +47,9 @@ export class RrAmentitesComponent implements OnInit {
 
       this.updateform();
     });
-
+    if(this.amenities == this.checkarr){
+      this.amshow = false;
+    }
     
   }
   submited=false;
@@ -90,27 +93,16 @@ export class RrAmentitesComponent implements OnInit {
   updateform(){
 
     this.service.formget(this.id).subscribe((res:any)=>{
-        console.log(res.furnishingStatus,'value patched');
-
+       
+        this.data=res;
       this.myform.patchValue({
-        furnishingStatus:res.furnishingStatus,
-        waterSupply:res.waterSupply,
-        bathRoomCount:res.bathRoomCount,
-        bathRoomType:res.bathRoomType,
-        toiletType:res.toiletType,
-        balconyCount:res.balconyCount,
+     
         Non_veg:res.Non_veg,
-       gate_Security:res.gate_Security,
-      parkingFacilities:res.parkingFacilities,
-      kitchen:res.kitchen,
-      hall_FLoor:res.hall_FLoor,
-      bedRoom:res.bedRoom,
-      bathRoom:res.bathRoom,
-      balCony:res.balCony,
-      Amenities:res.Amenities 
+       gate_Security:res.gate_Security
+     
 
       })
-      console.log(this.myform.value,"working fine")
+     
     })
   
 
@@ -324,14 +316,25 @@ export class RrAmentitesComponent implements OnInit {
       this.service.formget(this.id).subscribe((res:any)=>{
       })
     }
+    if(count == 5){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
   }
   showModal = -1;
-
+  
+  amshow= false;
   show(index: number) {
     this.showModal = index;
   }
   close() {
     this.showModal = -1;
+    this.amshow=true;
   }
   
 }

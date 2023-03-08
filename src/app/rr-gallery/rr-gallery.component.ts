@@ -201,5 +201,18 @@ export class RrGalleryComponent implements OnInit{
       this.service.formget(this.id).subscribe((res:any)=>{
       })
     }
+    if(count == 5){
+      var postdata ={
+
+
+
+        
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
   }
 }

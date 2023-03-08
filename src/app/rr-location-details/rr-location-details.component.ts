@@ -55,6 +55,7 @@ export class RrLocationDetailsComponent  implements OnInit{
         })
       })
     })
+    this.updateform();
     }
 
     OnSubmit(){
@@ -67,8 +68,9 @@ export class RrLocationDetailsComponent  implements OnInit{
         BuildingName:this.rrlocform.get('BuildingName')?.value,
         lat:this.rrlocform.get('lat')?.value,
         long:this.rrlocform.get('long')?.value,
-        Address:this.rrlocform.get('addressLoaction')?.value,
-        buildingDirection:this.rrlocform.get('Area')?.value,
+        Address:this.rrlocform.get('Address')?.value,
+        buildingDirection:this.rrlocform.get('direction')?.value,
+        formatedAddress:this.rrlocform.get('addressLoaction')?.value
       }
         this.service.formput(this.id,data).subscribe((res:any)=>{
 
@@ -82,6 +84,22 @@ export class RrLocationDetailsComponent  implements OnInit{
          
          })
         }
+    }
+    updateform(){
+      this.service.formget(this.id).subscribe((res:any)=>{
+        this.rrlocform.patchValue({
+
+          Landmark:res.landMark,
+          Pincode:res.pineCode,
+          BuildingName:res.BuildingName,
+          lat:res.lat,
+          long:res.long,
+          addressLoaction:res.formatedAddress,
+          direction:res.buildingDirection,
+          Address:res.Address
+
+        })
+      })
     }
     back(count:any){
       if(count == 0){
@@ -125,6 +143,24 @@ export class RrLocationDetailsComponent  implements OnInit{
   
        this.service.formget(this.id).subscribe((res:any)=>{
        })
+      }
+      if(count == 4){
+        var postdata ={
+          id:this.id
+        }
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+        this.service.formget(this.id).subscribe((res:any)=>{
+        })
+      }
+      if(count == 5){
+        var postdata ={
+          id:this.id
+        }
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+        this.service.formget(this.id).subscribe((res:any)=>{
+        })
       }
     }
       

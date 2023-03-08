@@ -52,8 +52,7 @@
  
 <nav>
     <ul>
-        <li>Chennai ></li>
-        <li>Residential ></li>
+        <li>Residential></li>
         <li>Rent</li>
     </ul>
 </nav>
@@ -73,34 +72,26 @@
 </div>
 <div class="submitted-details">
     <div>
-        <label>Property Type :</label><p>{{data}}</p>
+        <label>Property Type :</label><p>{{data.propertType}}</p>
     </div>
     <div>
         <label>BHK Type</label><p>{{data.BHKType}}</p>
     </div>
     <div>
-        <label>Total Floors/ on Floor :</label><p>2/4</p>
-    </div>
-    <div>
-        <label>Ownership Type :</label><p>Self owned</p>
-    </div>
-    <div>
-        <label>USD/Land Size :</label><p>1220 sq. ft</p>
+        <label>Total Floors/ on Floor :</label><p>{{data.noOfFloor}}/{{data.floorNo}}</p>
     </div>
     <div>
         <label>Built up area :</label><p>{{data.BuildedSize}}</p>
     </div>
     <div>
-        <label>Age of property :</label><p>5 Years</p>
+        <label>Age of property :</label><p>{{data.ageOfBuilding}}</p>
     </div>
     <div>
-        <label>Facing direction :</label><p>South</p>
+        <label>Facing direction :</label><p>{{data.buildingDirection}}</p>
     </div>
     <div>
-        <label>Description :</label><p>A home, or domicile, is a space used as a 
-            permanent or semi-permanent residence for 
-            one or many humans, and sometimes 
-            various companion animals</p>
+        <label>Description :</label>
+    <p>{{data.discription}}</p>
     </div>
 
 </div>
@@ -118,36 +109,33 @@
 </div>
 <div class="submitted-details">
     <div>
-        <label>City :</label><p>Chennai</p>
+        <label>Building Name :</label><p>{{data.BuildingName}}</p>
     </div>
     <div>
-        <label>Area :</label><p>Alwarpet</p>
+        <label>Address :</label><p>{{data.Address}}</p>
+    </div>
+ 
+    <div>
+        <label>landmark :</label><p>{{data.landMark}}</p>
     </div>
     <div>
-        <label>landmark :</label><p>Kauveri Coffee</p>
+        <label>Pincode :</label><p>{{data.pineCode}}</p>
     </div>
-    <div>
-        <label>Pincode :</label><p>600026</p>
-    </div>
-    <div>
-        <label>Building Name :</label><p>ABCD</p>
-    </div>
+  
     <div class="address">
         <label>Address :</label>
         <div>
 
-        <p>no 10, Alwarpet Street, Alwarpet,
-            Chennai - 026</p>
+        <p>{{data.Address}}</p>
            <span><svg style="margin-right: 10px;" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.99961 15.451L2.4741 10.9255C1.57905 10.0304 0.96952 8.89002 0.722581 7.64855C0.475642 6.40707 0.602388 5.12025 1.08679 3.95081C1.57119 2.78136 2.3915 1.78183 3.44397 1.07859C4.49644 0.375351 5.73381 0 6.99961 0C8.26541 0 9.50278 0.375351 10.5552 1.07859C11.6077 1.78183 12.428 2.78136 12.9124 3.95081C13.3968 5.12025 13.5236 6.40707 13.2766 7.64855C13.0297 8.89002 12.4202 10.0304 11.5251 10.9255L6.99961 15.451ZM10.5196 9.91994C11.2157 9.22377 11.6897 8.33681 11.8818 7.37123C12.0738 6.40565 11.9752 5.40481 11.5984 4.49527C11.2217 3.58573 10.5836 2.80834 9.76506 2.2614C8.94648 1.71445 7.9841 1.42253 6.99961 1.42253C6.01512 1.42253 5.05274 1.71445 4.23416 2.2614C3.41558 2.80834 2.77756 3.58573 2.40079 4.49527C2.02402 5.40481 1.92542 6.40565 2.11744 7.37123C2.30947 8.33681 2.78351 9.22377 3.47961 9.91994L6.99961 13.4399L10.5196 9.91994ZM6.99961 7.82216C6.62241 7.82216 6.26066 7.67232 5.99395 7.4056C5.72723 7.13889 5.57739 6.77714 5.57739 6.39994C5.57739 6.02275 5.72723 5.661 5.99395 5.39428C6.26066 5.12756 6.62241 4.97772 6.99961 4.97772C7.37681 4.97772 7.73855 5.12756 8.00527 5.39428C8.27199 5.661 8.42183 6.02275 8.42183 6.39994C8.42183 6.77714 8.27199 7.13889 8.00527 7.4056C7.73855 7.67232 7.37681 7.82216 6.99961 7.82216Z" fill="#222222"/>
-            </svg>Anna Salai, Teynampet, Chennai
+            </svg>{{data.formatedAddress}}
             </span>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.570533721995!2d80.24096211953211!3d13.042505607195638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52664bee9ee4b3%3A0xd784456618700862!2sTeynampet%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1676636389590!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
     <div>
-        <label>Add Direction :</label><p>no 10, Alwarpet Street, Alwarpet,
-            Chennai - 026</p>
+        <label>Add Direction :</label><p>{{data.buildingDirection}}</p>
     </div>
   
 
@@ -165,10 +153,13 @@
 </div>
 <div class="submitted-details">
     <div>
-        <label>Expected Price :</label><p>₹11,10,000</p>
+        <label>Expected Rent :</label><p style="margin-left: 170px;">{{data.MonthlyRentFrom}}</p><p Ngif="data.RentNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
     </div>
     <div>
-        <label>Maintenance</label><p>Exclude Maintenance, ₹2000/month</p>
+        <label>Advance Amount :</label><p style="margin-left: 170px;">{{data.depositeAmount}}</p><p Ngif="data.depositeNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
+    </div>
+    <div>
+        <label>Maintenance:</label><p style="width:100%;margin-left: 170px; " Ngif="data.maintainenceCost" >Exclude Maintenance,₹{{data.maintainenceCost}}{{data.squareFT}} </p><p  *ngIf="!data.maintainenceCost">Include Maintenance</p>
     </div>
 
 </div>
@@ -184,41 +175,42 @@
     </svg>      
 </div>
 <div class="submitted-details">
+
     <div>
-        <label>Power Backup :</label><p>Full</p>
+        <label>Furnishing Status :</label><p>{{data.furnishingStatus}}</p>
     </div>
     <div>
-        <label>Furnishing Status :</label><p>Furnished</p>
+        <label>Water supply :</label><p>{{data.waterSupply}}</p>
     </div>
     <div>
-        <label>Water supply :</label><p>Both</p>
+        <label>Bathroom :</label><p>{{data.bathRoomCount}}</p>
     </div>
     <div>
-        <label>Bathroom :</label><p>2 Bathrooms</p>
+        <label>Bathroom Type :</label><p>{{data.bathRoomType}}</p>
     </div>
     <div>
-        <label>Bathroom Type :</label><p>Attached</p>
+        <label>Toilet Type :</label><p>{{data.toiletType}}</p>
     </div>
     <div>
-        <label>Toilet Type :</label><p>Indian</p>
+        <label>Balconies :</label><p>{{data.balconyCount}}</p>
     </div>
     <div>
-        <label>Balconies :</label><p>2 Balcony</p>
+        <label>Gated Security :</label><p>{{data.Non_veg}}</p>
     </div>
     <div>
-        <label>Gated Security :</label><p>No</p>
+        <label>Non-veg Allowed :</label><p>{{data.gate_Security}}</p>
     </div>
     <div>
-        <label>Parking :</label><p>Both</p>
+        <label>Parking :</label><p>{{data.parkingFacilities}}</p>
     </div>
     <div>
         <label>Flooring Type :</label>
         <ul>
-            <li>Kitchen - Verified tiles </li>
-            <li>Hall Floor - Verified tiles </li>
-            <li>Bed Room  - Verified tiles </li>
-            <li>Bathroom - Verified tiles </li>
-            <li>Balcony - Verified tiles </li>
+            <li>Kitchen - {{data.kitchen}}</li>
+            <li>Hall Floor - {{data.hall_FLoor}}</li>
+            <li>Bed Room  -{{data.bedRoom}}</li>
+            <li>Bathroom -{{data.bathRoom}}</li>
+            <li>Balcony -{{data.balCony}}</li>
         </ul>
 
 </div>
@@ -347,7 +339,7 @@
     
     
     </div>
-    <video [src]="data.Videos"></video>
+    
     <p style="font-weight: 500;">Videos :</p>
     <div class="image-gallery">
         <div class="images">
@@ -376,35 +368,18 @@
 </div>
 <div class="submitted-details">
     <div>
-        <label>Available from  :</label><p>02/03/2023</p>
+        <label>Available from  :</label><p>{{data.availabilityDate}}</p>
     </div>
     <div>
-        <label>Contact name : </label><p>Aravinddaya</p>
+        <label>Contact name : </label><p>{{data.contactName}}</p>
     </div>
     <div>
-        <label>Contact number 1 :</label><p>9090909090</p>
+        <label>Contact number 1 :</label><p>{{data.primaryContactNumber}}</p>
     </div>
     <div>
-        <label>Contact number 2 :</label><p>9898989898</p>
+        <label>Contact number 2 :</label><p>{{data.secondaryContactNumber}}</p>
     </div>
-    <div>
-        <label>Have  you paid Property tax?</label><p>Yes</p>
-    </div>
-    <div>
-        <label>Do You have Sale deed Certificate?</label><p>Yes</p>
-    </div>
-    <div>
-        <label>Do you have occupancy certificate?</label><p>No</p>
-    </div>
-    <div>
-        <label>Do you have Completion certificate?</label><p>Yes</p>
-    </div>
-    <div>
-        <label>Description :</label><p>A home, or domicile, is a space used as a 
-            permanent or semi-permanent residence for 
-            one or many humans, and sometimes 
-            various companion animals</p>
-    </div>
+   
 
 </div>
 </div>

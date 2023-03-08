@@ -55,8 +55,8 @@
     <p class="navbar-links nav-active" (click)="back(1)">Location Details</p>
     <p class="navbar-links" (click)="back(2)">Rental Details</p>
     <p class="navbar-links" (click)="back(3)">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
+    <p class="navbar-links" (click)="back(4)">Gallery</p>
+    <p class="navbar-links" (click)="back(5)">Additional Details </p>
 </nav>
 
 
@@ -81,8 +81,8 @@
         <label>Pincode :</label>
   <input type="text" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
     </div>
-    <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
-    <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p>
+    <!-- <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+    <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p> -->
 
    
     <div>

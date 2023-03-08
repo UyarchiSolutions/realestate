@@ -74,7 +74,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="fsv" *ngIf="fsv" ></p> <p *ngIf="!fsv" style="opacity: 0.5;">Furnishing Status</p>
+            <p [innerHTML]="fsv" *ngIf="fsv" ></p>
+            <p [innerText]="data.furnishingStatus" *ngIf="!fsv && data.furnishingStatus"></p>
+            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5;">Furnishing Status</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -91,7 +93,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="wsv" *ngIf="wsv" ></p> <p *ngIf="!wsv" style="opacity: 0.5;">Water Supply</p>
+            <p [innerHTML]="wsv" *ngIf="wsv" ></p>
+            <p [innerText]="data.waterSupply" *ngIf="!wsv && data.waterSupply"></p>
+            <p *ngIf="!wsv  && !data.waterSupply" style="opacity: 0.5;">Water Supply</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -107,7 +111,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="brv" *ngIf="brv" ></p> <p *ngIf="!brv" style="opacity: 0.5;">No of Bathroom</p>
+            <p [innerHTML]="brv" *ngIf="brv" ></p>
+            <p [innerText]="data.bathRoomCount" *ngIf="!brv && data.bathRoomCount "></p> 
+            <p *ngIf="!brv && !data.bathRoomCount " style="opacity: 0.5;">No of Bathroom</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -115,7 +121,7 @@
               <li><a class="dropdown-item" (click)="bathrv('2 Bathroom')" >2 Bathroom</a></li>
               <li><a class="dropdown-item" (click)="bathrv('3 Bathroom')" >3 Bathroom</a></li>
               <li><a class="dropdown-item" (click)="bathrv('4 Bathroom')" >4 Bathroom</a></li>
-              <li><a class="dropdown-item" (click)="bathrv('5 Bathroom')" >5 Bathroom</a></li>
+              <li><a class="dropdown-item" (click)="bathrv('5+ Bathroom')" >5+ Bathroom</a></li>
              
             </ul>
           </div>
@@ -127,7 +133,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="btv" *ngIf="btv" ></p> <p *ngIf="!btv" style="opacity: 0.5;">Bathroom Type</p>
+            <p [innerHTML]="btv" *ngIf="btv" ></p> 
+            <p [innerText]="data.bathRoomType"  *ngIf="!btv && data.bathRoomType "></p> 
+            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5;">Bathroom Type</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -144,7 +152,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="ttv" *ngIf="ttv" ></p> <p *ngIf="!ttv" style="opacity: 0.5;">Toilet Type</p>
+            <p [innerHTML]="ttv" *ngIf="ttv" ></p> 
+            <p [innerHTML]="data.toiletType" *ngIf="!ttv && data.toiletType"></p>
+            <p *ngIf="!ttv && !data.toiletType" style="opacity: 0.5;">Toilet Type</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -161,7 +171,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="bv" *ngIf="bv" ></p> <p *ngIf="!bv" style="opacity: 0.5;">Balconies</p>
+            <p [innerHTML]="bv" *ngIf="bv" ></p>
+            <p [innerHTML]="data.balconyCount" *ngIf="data.balconyCount"></p>
+            <p *ngIf="!bv && !data.balconyCount" style="opacity: 0.5;">Balconies</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -179,10 +191,10 @@
             <label>Non-Veg Allowed</label>
             <div>
                 <div>
-                    <input type="radio" name="NV"  (click)="nvallowed('yes')">Yes
+                    <input type="radio" name="NV"  (click)="nvallowed('yes')" [checked]="data.Non_veg == 'yes'">Yes
                 </div>
                 <div>
-                    <input type="radio" name="NV"  (click)="nvallowed('no')">No
+                    <input type="radio" name="NV"  (click)="nvallowed('no')"  [checked]="data.Non_veg == 'no'">No
                 </div>
             </div>
         </div>
@@ -191,10 +203,10 @@
             <label>Gated Security</label>
             <div>
                 <div>
-                    <input type="radio" name="gs" (click)="gsallowed('no')">Yes
+                    <input type="radio" name="gs" (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">Yes
                 </div>
                 <div>
-                    <input type="radio" name="gs" (click)="gsallowed('no')">No
+                    <input type="radio" name="gs" (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">No
                 </div>
             </div>
         </div>
@@ -205,7 +217,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
-            <p [innerHTML]="pv" *ngIf="pv" ></p> <p *ngIf="!pv" style="opacity: 0.5;">Parking</p>
+            <p [innerHTML]="pv" *ngIf="pv" ></p>
+            <p [innerText]="data.parkingFacilities" *ngIf="data.parkingFacilities"></p>
+             <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5;">Parking</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -230,7 +244,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
-            <p [innerHTML]="kv" *ngIf="kv" ></p> <p *ngIf="!kv" style="opacity: 0.5;">Select</p>
+            <p [innerHTML]="kv" *ngIf="kv" ></p>
+            <p [innerText]="data.kitchen" *ngIf="data.kitchen"></p>
+            <p *ngIf="!kv && !data.kitchen" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -250,7 +266,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
-            <p [innerHTML]="hfv" *ngIf="hfv" ></p> <p *ngIf="!hfv" style="opacity: 0.5;">Select</p>
+            <p [innerHTML]="hfv" *ngIf="hfv" ></p> 
+            <p [innerText]="data.hall_FLoor" *ngIf="data.hall_FLoor"></p>
+            <p *ngIf="!hfv && !data.hall_FLoor" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -270,7 +288,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
-            <p [innerHTML]="bev" *ngIf="bev" ></p> <p *ngIf="!bev" style="opacity: 0.5;">Select</p>
+            <p [innerHTML]="bev" *ngIf="bev" ></p> 
+            <p [innerText]="data.bedRoom" *ngIf="data.bedRoom"></p>
+            <p *ngIf="!bev && !data.bedRoom" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -291,7 +311,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
-            <p [innerHTML]="barv" *ngIf="barv" ></p> <p *ngIf="!barv" style="opacity: 0.5;">Select</p>
+            <p [innerHTML]="barv" *ngIf="barv" ></p>
+            <p [innerHTML]="data.bathRoom" *ngIf="data.bathRoom"></p>
+             <p *ngIf="!barv && !data.bathRoom" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -311,7 +333,9 @@
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
-            <p [innerHTML]="balv" *ngIf="balv" ></p> <p *ngIf="!balv" style="opacity: 0.5;">Select</p>
+            <p [innerHTML]="balv" *ngIf="balv" ></p>
+            <p [innerHTML]="data.balCony" *ngIf="data.balCony"></p>
+            <p *ngIf="!balv && !data.balCony " style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
     
@@ -333,7 +357,7 @@
     <label>Amenities :</label>
     <div style="width: 50%; flex-direction: column;margin: 0 !important;">
  <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;" (click)="show(1)">
- <div class="selected-amenities" >
+ <div class="selected-amenities"  *ngIf="amshow"  >
 <p *ngFor="let amt of amenities">{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path (click)="deleteAmit(amt)" fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
     </svg>

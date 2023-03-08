@@ -12,6 +12,7 @@ export class RrRentalDetailsComponent implements OnInit{
  
 
   id:any;
+  data:any;
 
   rentform:any= this.fb.group({
     ExpectedRent: new FormControl(),
@@ -19,7 +20,7 @@ export class RrRentalDetailsComponent implements OnInit{
     ExpectedDeposit:new FormControl(),
     ExpectedDepositNegotiable:new FormControl(),
     ExcludeMaintenance:new FormControl(),
-    MrSq: new FormBuilder()
+    MrSq: new FormControl()
 
   })
 
@@ -27,7 +28,7 @@ export class RrRentalDetailsComponent implements OnInit{
     LExpectedDeposit:new FormControl(),
     LExpectedDepositNegotiable:new FormControl(),
     LExcludeMaintenance:new FormControl(),
-    LMrSq: new FormBuilder()
+    LMrSq: new FormControl()
   })
 
   constructor(private fb:FormBuilder,private arouter: ActivatedRoute,
@@ -40,12 +41,34 @@ export class RrRentalDetailsComponent implements OnInit{
       console.log(params);
       this.id=params['id'];
       console.log(this.id,"this is id from sp");
-      
+      this.switch ='rent';
     });
 
-    
+    this.service.formget(this.id).subscribe((res:any)=>{
+
+      this.data = res;
+      if(this.data.rentDetails=='rent')
+      this.rentform.patchValue({
+        ExpectedRent:res.MonthlyRentFrom,
+        ExpectedRentNegotiable:res.RentNegociable,
+        ExpectedDeposit:res.depositeAmount,
+        ExpectedDepositNegotiable:res.depositeNegociable,
+        ExcludeMaintenance:res.maintainenceCost
+      })
+      else{
+        this.leaseform.patchValue({
+          
+          LExpectedDeposit:res.depositeAmount,
+          LExpectedDepositNegotiable:res.depositeNegociable,
+          LExcludeMaintenance:res.maintainenceCost
+        }) 
+      }
+
+    })
+
   }
   maintanceVal='Include Maintenance';
+
   maintance(a:any){
     this.maintanceVal=a;
     console.log(this.maintanceVal);
@@ -172,6 +195,15 @@ export class RrRentalDetailsComponent implements OnInit{
       }
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
+    if(count == 5){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
       this.service.formget(this.id).subscribe((res:any)=>{
       })
     }

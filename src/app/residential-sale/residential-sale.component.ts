@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
@@ -10,6 +11,7 @@ import { PostPropertyService } from '../services/post-property.service';
 export class ResidentialSaleComponent implements OnInit {
 
   id:any;
+  date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
   constructor(
     
     private arouter: ActivatedRoute,
@@ -38,5 +40,6 @@ export class ResidentialSaleComponent implements OnInit {
       this.data = res;
       console.log(this.data);
     })
+    
   }
 }
