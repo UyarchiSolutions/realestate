@@ -1,1 +1,37 @@
-<p>change-buyer works!</p>
+<div class="container">
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+    <div class="top-ad">
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+    <h1>Change Password</h1>
+    <form [formGroup]="changeFrom">
+      <div class="otp-field">
+        <label>Old Password :</label>
+        <div>
+          <input type="text" placeholder="Enter Old Password" formControlName="oldPassword">
+        </div>
+      </div>
+      <div class="otp-field" style="margin-top: 20px;">
+        <label>New Password :</label>
+        <div>
+          <input type="text" placeholder="Enter New Password" formControlName="newPassword">
+        </div>
+      </div>
+      <div class="otp-field" style="margin-top: 20px;">
+        <label>Confirm Password :</label>
+        <div>
+          <input type="text" placeholder="Re-enter Password" formControlName="confirmPassword">
+        </div>
+      </div>
+      <div class="verify-btn">
+        <button (click)="onSubmit()">Change Password</button>
+      </div>
+    </form>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+</div>

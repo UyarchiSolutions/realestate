@@ -31,7 +31,6 @@ export class ChangeBuyerComponent {
   onSubmit(){
   this.isSubmit=true;
   console.log(this.changeFrom.get('newPassword').value !="" && this.changeFrom.get('confirmPassword').value !="","not workji")
-
   if(this.changeFrom.valid){
     this.buyerService.changePasswordForbuyer(this.changeFrom.value).subscribe((res:any) => {
       this.changeFrom.reset()
@@ -43,7 +42,7 @@ export class ChangeBuyerComponent {
         this.oldPassword=false;
       }
     })
+    this.route.navigate(['/'])
   }
-
   }
 }
