@@ -1,0 +1,124 @@
+.container{
+    display: flex;
+}
+.sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+
+}
+.main{
+    width: 70%;
+    background-color:var(--sandal);
+
+    margin: 10px 0px;
+
+}
+.main h2{
+    margin-top: 30px;
+    margin-left: 50px;
+    color: #473B32;
+    font-family: var(--ralewaybold);
+    font-weight: 700;
+}
+.ad{
+    width: 15%;
+   background-image: url(../../assets/images/ad-post.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 717px;
+    margin: 10px;
+}
+.sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+   
+}
+.sidebar-content-list span{
+    display: flex;
+    align-items: center;
+}
+.sidebar-content-list svg{
+    margin-right: 10px;
+}
+
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+.form{
+    width: 550px;
+
+    margin: 50px auto;
+}
+.select-city{
+  display: flex;
+  justify-content: center;
+}
+.select-city input{
+    width: 60%;
+    padding: 10px;
+    border: none;
+    background: none;
+    border-bottom: solid var(--brown) 1px;
+}
+.form p{
+    text-align: center;
+    color: var(--brown);
+}
+.residential-commercial{
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.residential-commercial div{
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.property-ad-type{
+    width: 40%;
+    margin: auto;
+}
+.property-select{
+    display: flex;
+    margin: 20px 0;
+}
+.property-select-type{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.property-select-type input{
+    margin: 0 10px;
+}
+.property-ad-type button{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    background-color: var(--brown);
+    color: white;
+}
+.redtext{
+    color: red !important;
+    font-size: 0.8rem !important;
+}
+.selected{
+    background-color: var(--lightbrown);
+    color: white;
+}
+.residential-commercial div:hover{
+    background-color: var(--lightbrown);
+    color: white;
+    
+}
+.residential-commercial div:active{
+    background-color: var(--brown);
+    color: white;
+    
+}
+
