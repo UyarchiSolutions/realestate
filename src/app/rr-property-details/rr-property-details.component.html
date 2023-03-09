@@ -145,7 +145,7 @@
               aria-expanded="false"
             >
               <p [innerHTML]="pv"></p>
-              <p [innerHTML]="data.propertType" *ngIf="!pv" ></p>
+              <p [innerHTML]="data.propertType" *ngIf="data.propertType && !pv" ></p>
               <p *ngIf="!pv && !data.propertType" style="opacity: 0.5">Property Type</p>
 
               <ul class="dropdown-menu select-filed-options">
@@ -176,19 +176,20 @@
               <div class="dropdown select-field">
 
                 <p [innerHTML]="tfv" *ngIf="tfv" type="button" data-bs-toggle="dropdown" aria-expanded="false"></p>
-                <p  *ngIf="!tfv" style="opacity: 0.5"   type="button"
+                <p  *ngIf="!tfv && !data.noOfFloor" style="opacity: 0.5"   type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">Total Floors</p>
+                <p [innerText]="data.noOfFloor" *ngIf="!tfv &&  data.noOfFloor "  data-bs-toggle="dropdown" aria-expanded="false" ></p>
                 
                 <ul class="dropdown-menu select-filed-options">
                   <li>
                     <a class="dropdown-item" (click)="groundFloorv(0)"
-                    aria-expanded="false" >Ground Floor</a
+                    data-bs-toggle="dropdown" aria-expanded="false" >Ground Floor</a
                     >
                   </li>
                   <li
                     (click)="groundFloorv(countf)"
                     *ngFor="let countf of myarray"
-                    aria-expanded="false"
+                    data-bs-toggle="dropdown" aria-expanded="false"
                   >
                     {{ countf }} floors
                   </li>
@@ -202,13 +203,16 @@
                   aria-expanded="false" *ngIf="ofv"
                 ></p>
                 <p  data-bs-toggle="dropdown"
-                aria-expanded="false" *ngIf="!ofv" style="opacity: 0.5">On Floors</p>
-                <p></p>
+                aria-expanded="false" *ngIf="!ofv && !data.floorNo " style="opacity: 0.5">On Floors</p>
+                <p [innerText]="data.floorNo" *ngIf="!ofv && data.floorNo " data-bs-toggle="dropdown"
+                aria-expanded="false" ></p>
                 
 
                 <ul class="dropdown-menu select-filed-options">
-                  <li><a class="dropdown-item" (click)="onFloorv(0)" >Groud Floor</a></li>
-                  <li *ngFor="let floor of numarray" (click)="onFloorv(floor)">{{ floor }} Floors</li>
+                  <li><a class="dropdown-item" (click)="onFloorv(0)" data-bs-toggle="dropdown"
+                    aria-expanded="false" >Groud Floor</a></li>
+                  <li *ngFor="let floor of numarray" (click)="onFloorv(floor)" data-bs-toggle="dropdown"
+                  aria-expanded="false">{{ floor }} Floors</li>
                 </ul>
               </div>
             </div>
@@ -382,8 +386,8 @@
               aria-expanded="false"
             >
               <p [innerHTML]="fdv"></p>
-              <p [innerHTML]="data.buildingDirection" *ngIf="!fdv" ></p>
-              <p *ngIf="!fdv && !data.buildingDirection" style="opacity: 0.5">Facing Direction</p>
+              <p [innerHTML]="data.facingDirection" *ngIf="!fdv" ></p>
+              <p *ngIf="!fdv && !data.facingDirection" style="opacity: 0.5">Facing Direction </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
@@ -454,8 +458,11 @@
             </div>
           </div>
 
-          <div class="save-continue">
-            <button type="submit">Save & Continue</button>
+          <div class="save-continue" >
+            <button type="submit" >Save & Continue</button>
+          </div>
+          <div class="save-continue" >
+            <button type="submit" (click)="routetopreview()">Save</button>
           </div>
         </div>
       </form>

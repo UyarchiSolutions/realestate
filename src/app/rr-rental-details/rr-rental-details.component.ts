@@ -10,7 +10,7 @@ import { PostPropertyService } from '../services/post-property.service';
 })
 export class RrRentalDetailsComponent implements OnInit{
  
-
+  formSubmitted = false;
   id:any;
   data:any;
 
@@ -34,43 +34,62 @@ export class RrRentalDetailsComponent implements OnInit{
   constructor(private fb:FormBuilder,private arouter: ActivatedRoute,
     private service:PostPropertyService,
     private router:Router){}
-  
+    switch='rent';
   ngOnInit(): void {
+
     
+    console.log(this.switch);
+   
     this.arouter.queryParams.subscribe(params => {
       console.log(params);
       this.id=params['id'];
       console.log(this.id,"this is id from sp");
-      this.switch ='rent';
+      
     });
+
 
     this.service.formget(this.id).subscribe((res:any)=>{
 
-      this.data = res;
-      if(this.data.rentDetails=='rent')
+      this.data=res;
+
+      console.log(res);
+      if(this.data.rentDetails=='rent'){
       this.rentform.patchValue({
         ExpectedRent:res.MonthlyRentFrom,
         ExpectedRentNegotiable:res.RentNegociable,
         ExpectedDeposit:res.depositeAmount,
         ExpectedDepositNegotiable:res.depositeNegociable,
-        ExcludeMaintenance:res.maintainenceCost
-      })
-      else{
+        ExcludeMaintenance:res.maintainenceCost,
+        
+        
+      });console.log('value patched') ;
+      this.switch= this.data.rentDetails;
+      this.maintanceVal= this.data.MaintenanceStatus }
+
+      if(this.data.rentDetails=='lease'){
         this.leaseform.patchValue({
           
           LExpectedDeposit:res.depositeAmount,
           LExpectedDepositNegotiable:res.depositeNegociable,
           LExcludeMaintenance:res.maintainenceCost
-        }) 
-      }
-
+        }); 
+        
+        this.LmaintanceVal= this.data.MaintenanceStatus 
+      this.switch= this.data.rentDetails;}
+      
     })
-
+  console.log(this.switch,'end')
   }
   maintanceVal='Include Maintenance';
 
   maintance(a:any){
     this.maintanceVal=a;
+    console.log(this.maintanceVal);
+  }
+  LmaintanceVal='Include Maintenance';
+
+  Lmaintance(a:any){
+    this.LmaintanceVal=a;
     console.log(this.maintanceVal);
   }
   mainmon='';
@@ -79,7 +98,7 @@ export class RrRentalDetailsComponent implements OnInit{
 
     this.mainmon=a;
   }
-  Lmainmon='';
+  Lmainmon:any;
 
   Lmainmonv(a:any){
 
@@ -94,8 +113,10 @@ export class RrRentalDetailsComponent implements OnInit{
       depositeAmount:this.rentform.get('ExpectedDeposit').value,
       depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
-      squareFT:this.mainmon
+      squareFT:this.mainmon,
+      MaintenanceStatus:this.maintanceVal,
     }
+    console.log(data);
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
       
@@ -105,6 +126,7 @@ export class RrRentalDetailsComponent implements OnInit{
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
       console.log(res);
+      this.formSubmitted=true;
     })
 
   }
@@ -117,7 +139,8 @@ export class RrRentalDetailsComponent implements OnInit{
       depositeAmount:this.leaseform.get('LExpectedDeposit').value,
       depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
-      squareFT:this.Lmainmon
+      squareFT:this.Lmainmon,
+      MaintenanceStatus:this.LmaintanceVal,
     }
     console.log(data);
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -128,11 +151,12 @@ export class RrRentalDetailsComponent implements OnInit{
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
       console.log(res);
+      this.formSubmitted=true;
     })
 
 
   }
-  switch:any='rent';
+ 
   check:boolean=true;
   check1:boolean=false;
   rent(){
@@ -144,6 +168,16 @@ export class RrRentalDetailsComponent implements OnInit{
     this.switch='lease';
     this.check = false;
     this.check1= true;
+  }
+  routetopreview(){
+
+    var data = {
+      id: this.id,
+    };
+    var queryString = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+
+    this.service.formget(this.id).subscribe((res: any) => {});
   }
 
   back(count:any){

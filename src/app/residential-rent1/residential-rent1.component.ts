@@ -1,27 +1,26 @@
 import { formatDate } from '@angular/common';
-import { Component,OnInit } from '@angular/core';
+import { Component,Injectable,OnInit,TemplateRef  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-residential-sale',
-  templateUrl: './residential-sale.component.html',
-  styleUrls: ['./residential-sale.component.css']
+  selector: 'app-residential-rent1',
+  templateUrl: './residential-rent1.component.html',
+  styleUrls: ['./residential-rent1.component.css']
 })
-export class ResidentialSaleComponent implements OnInit {
-
+export class ResidentialRent1Component implements OnInit{
+  
   id:any;
   date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
-  constructor(
-    
+  
+  constructor(  
     private arouter: ActivatedRoute,
     private service: PostPropertyService,
-    private router: Router
-  ){
-
+    private router: Router){
+  
   }
   ngOnInit(): void {
-
     this.arouter.queryParams.subscribe(params => {
       console.log(params);
       this.id=params['id'];

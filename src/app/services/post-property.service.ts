@@ -29,7 +29,7 @@ export class PostPropertyService {
       long:long
     }
     const queryString =new URLSearchParams(data).toString()
-    return this.http.get(this.baseURL+`supplier/getMap/Location?`+queryString)
+    return this.http.get(this.baseURL+'supplier/getMap/Location?'+queryString)
   }
   uploadvid(id:any,vid:any){
     return this.http.put(this.baseURL + 'VideoUploads/'+id,vid)

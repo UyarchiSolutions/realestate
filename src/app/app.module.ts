@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Cookie } from 'ng2-cookies';
@@ -19,6 +19,11 @@ import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.
 import { RrAmentitesComponent } from './rr-amentites/rr-amentites.component';
 import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
 import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additional-details.component';
+import { CommonModule } from '@angular/common';
+
+import { ResidentialRent1Component } from './residential-rent1/residential-rent1.component';
+import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +36,13 @@ import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additio
     RrRentalDetailsComponent,
     RrAmentitesComponent,
     RrGalleryComponent,
-    RrAdditionalDetailsComponent
-  
+    RrAdditionalDetailsComponent,
+    // ResidentialRent1Component,
+    ResidentialRentComponent
+    
+    
+    
+    
 
   ],
   imports: [
@@ -43,9 +53,11 @@ import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additio
     ReactiveFormsModule,
     GooglePlaceModule,
     FormsModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
     }),
+    
   ],
   exports: [ ReactiveFormsModule],
   providers: [],

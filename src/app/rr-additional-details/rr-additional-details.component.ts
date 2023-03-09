@@ -69,6 +69,16 @@ Onsubmit(){
    })
      
 }
+routetopreview(){
+
+  var data = {
+    id: this.id,
+  };
+  var queryString = new URLSearchParams(data).toString();
+  this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+
+  this.service.formget(this.id).subscribe((res: any) => {});
+}
 
 back(count:any){
   if(count == 0){

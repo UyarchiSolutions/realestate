@@ -99,7 +99,18 @@ export class RrLocationDetailsComponent  implements OnInit{
           Address:res.Address
 
         })
+        console.log(res);
       })
+    }
+    routetopreview(){
+
+      var data = {
+        id: this.id,
+      };
+      var queryString = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+  
+      this.service.formget(this.id).subscribe((res: any) => {});
     }
     back(count:any){
       if(count == 0){
@@ -172,11 +183,13 @@ export class RrLocationDetailsComponent  implements OnInit{
     // this.myAddres = address.formatted_address
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
+    console.log(address.geometry.location.lat(),address.geometry.location.lng(),'handle change');
    
     this.rrlocform.patchValue({
       lat: this.latitude,
       long: this.longtitude,
     })
+    console.log(this.rrlocform.get('lat')?.value,this.rrlocform.get('long')?.value,"dfnhjkdhdfghfg");
   }
   options: any = {
     componentRestrictions: { country: 'IN' }
@@ -187,17 +200,19 @@ export class RrLocationDetailsComponent  implements OnInit{
       lat: $event.latLng.lat(),
       long: $event.latLng.lng()
     })
+    console.log($event.latLng.lat(),$event.latLng.lng(),'event');
     console.log(this.rrlocform.get('lat')?.value,this.rrlocform.get('long')?.value,"dfnhjkdhdfghfg")
     this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
-      if (res.results.length != 0) {
-        this.myAddres = res.results[0].formatted_address
+      console.log(res)
+       
+        this.myAddres = res[0].formatted_address
       
         this.rrlocform.patchValue({
           addressLoaction: this.myAddres,
 
         })
       }
-    })
+    )
   }
   parseFloat(value: any) {
     return parseFloat(value);

@@ -172,7 +172,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
             <p [innerHTML]="bv" *ngIf="bv" ></p>
-            <p [innerHTML]="data.balconyCount" *ngIf="data.balconyCount"></p>
+            <p [innerHTML]="data.balconyCount" *ngIf="!bv && data.balconyCount"></p>
             <p *ngIf="!bv && !data.balconyCount" style="opacity: 0.5;">Balconies</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -218,7 +218,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
             <p [innerHTML]="pv" *ngIf="pv" ></p>
-            <p [innerText]="data.parkingFacilities" *ngIf="data.parkingFacilities"></p>
+            <p [innerText]="data.parkingFacilities" *ngIf="!pv && data.parkingFacilities"></p>
              <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5;">Parking</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -245,7 +245,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
             <p [innerHTML]="kv" *ngIf="kv" ></p>
-            <p [innerText]="data.kitchen" *ngIf="data.kitchen"></p>
+            <p [innerText]="data.kitchen" *ngIf="!kv && data.kitchen"></p>
             <p *ngIf="!kv && !data.kitchen" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -267,7 +267,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
             <p [innerHTML]="hfv" *ngIf="hfv" ></p> 
-            <p [innerText]="data.hall_FLoor" *ngIf="data.hall_FLoor"></p>
+            <p [innerText]="data.hall_FLoor" *ngIf=" !hfv && data.hall_FLoor"></p>
             <p *ngIf="!hfv && !data.hall_FLoor" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -289,7 +289,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
             <p [innerHTML]="bev" *ngIf="bev" ></p> 
-            <p [innerText]="data.bedRoom" *ngIf="data.bedRoom"></p>
+            <p [innerText]="data.bedRoom" *ngIf="!bev  && data.bedRoom"></p>
             <p *ngIf="!bev && !data.bedRoom" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -312,7 +312,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
             <p [innerHTML]="barv" *ngIf="barv" ></p>
-            <p [innerHTML]="data.bathRoom" *ngIf="data.bathRoom"></p>
+            <p [innerHTML]="data.bathRoom" *ngIf="!barv && data.bathRoom"></p>
              <p *ngIf="!barv && !data.bathRoom" style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -334,7 +334,7 @@
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
         
             <p [innerHTML]="balv" *ngIf="balv" ></p>
-            <p [innerHTML]="data.balCony" *ngIf="data.balCony"></p>
+            <p [innerHTML]="data.balCony" *ngIf="!balv && data.balCony"></p>
             <p *ngIf="!balv && !data.balCony " style="opacity: 0.5;">Select</p>
           
             <ul class="dropdown-menu select-filed-options" >
@@ -374,6 +374,10 @@
 
 <div class="save-continue">
     <button type="submit" (click)="submit()">Save & Continue</button>
+</div>
+
+<div class="save-continue">
+    <button type="submit" (click)="routetopreview()">Save </button>
 </div>
 
 </div>

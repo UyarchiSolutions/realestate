@@ -152,14 +152,17 @@
     </svg>      
 </div>
 <div class="submitted-details">
-    <div>
-        <label>Expected Rent :</label><p style="margin-left: 170px;">{{data.MonthlyRentFrom}}</p><p Ngif="data.RentNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
+    <div ngIf="data.Type == 'rent'">
+        <label>Expected Rent :</label><p style="margin-left: 170px;">{{data.MonthlyRentFrom}}</p><p *ngIf="data.RentNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
+    </div>
+    <div  ngIf="false">
+        <label>Expected Lease :</label><p style="margin-left: 170px;">{{data.MonthlyRentFrom}}</p><p *ngIf="data.RentNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
     </div>
     <div>
-        <label>Advance Amount :</label><p style="margin-left: 170px;">{{data.depositeAmount}}</p><p Ngif="data.depositeNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
+        <label>Advance Amount :</label><p style="margin-left: 170px;">{{data.depositeAmount}}</p><p *ngIf="data.depositeNegociable == 'true'" style="color:grey;position: relative; right: 90px; font-size: 0.8rem; top: 4px;">Negotiable</p>
     </div>
     <div>
-        <label>Maintenance:</label><p style="width:100%;margin-left: 170px; " Ngif="data.maintainenceCost" >Exclude Maintenance,₹{{data.maintainenceCost}}{{data.squareFT}} </p><p  *ngIf="!data.maintainenceCost">Include Maintenance</p>
+        <label>Maintenance:</label><p style="width:100%;margin-left: 170px; " *ngIf="data.MaintenanceStatus == 'Exclude Maintenance'" >Exclude Maintenance,₹{{data.maintainenceCost}}{{data.squareFT}} </p><p  Ngif="data.MaintenanceStatus">Include Maintenance</p>
     </div>
 
 </div>

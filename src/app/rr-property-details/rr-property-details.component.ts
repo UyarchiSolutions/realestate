@@ -15,6 +15,7 @@ export class RrPropertyDetailsComponent implements OnInit {
   myarray: any = [];
   data:any;
   submitted= false;
+  isSaved=false;
 
   propform: any = this.fb.group({
     BuildupArea: new FormControl('', Validators.required),
@@ -47,7 +48,7 @@ export class RrPropertyDetailsComponent implements OnInit {
 
       this.data=res;
     })
-
+    console.log(this.isSaved);
   }
   arr: any = [];
 
@@ -66,11 +67,11 @@ export class RrPropertyDetailsComponent implements OnInit {
       ageOfBuilding: this.aop,
       BHKType: this.bhkv,
       BuildedSize: this.propform.get('BuildupArea')?.value,
-      buildingDirection: this.fdv,
+      facingDirection: this.fdv,
       RentPrefer: this.rpv,
       discription: this.propform.get('Description')?.value,
     };
-    
+    console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
       var postdata = {
         id: res._id,
@@ -81,7 +82,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       );
       console.log(res);
     });
-
+    this.switchbutton();
   }
 
   updateform() {
@@ -95,9 +96,37 @@ export class RrPropertyDetailsComponent implements OnInit {
         BuildupArea: res.BuildedSize,
         RentPreference: res.RentPrefer,
         Description: res.discription,
-        FacingDirection: res.buildingDirection,
-      });
+        facingDirection: res.facingDirection,
+      }); console.log(res.facingDirection);
     });
+  }
+  switchbutton(){
+    this.isSaved= true;
+  }
+  routetopreview(){
+    var data = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
+      BuildedSize: this.propform.get('BuildupArea')?.value,
+      facingDirection: this.fdv,
+      RentPrefer: this.rpv,
+      discription: this.propform.get('Description')?.value,
+    };
+    console.log(data);
+    this.service.formput(this.id, data).subscribe((res: any) => {
+      console.log('updated')
+    })
+
+    var postdata = {
+      id: this.id,
+    };
+    var queryString = new URLSearchParams(postdata).toString();
+    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+
+    this.service.formget(this.id).subscribe((res: any) => {});
   }
   back(count: any) {
     if (count == 0) {
@@ -196,7 +225,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       this.tfv = 'Ground Floor';
     }
 
-    this.ofv = a + 'Floors';
+    this.ofv = a + ' Floors';
     console.log(this.ofv);
   }
   aop: any;

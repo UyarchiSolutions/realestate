@@ -62,11 +62,11 @@
 
 
 
-<div class="Location-details" *ngIf="switch == 'rent' || data.rentDetails == 'rent' ">
+<div class="Location-details" *ngIf="switch == '' || switch == 'rent'  ">
     <h2>Rental Details</h2>
 
 <div class="rent-lease">
-    <p class="rent-lease-active" (click)="rent()"  [ngClass]="{'selected': check || data.rentDetails == 'rent'}" >Rent</p>
+    <p class="rent-lease-active" (click)="rent()"  [ngClass]="{'selected': check || switch== 'rent'}" >Rent</p>
     <p class="rent-lease-active"  (click)="lease()"  >Lease</p>
 </div>
 <form [formGroup]="rentform" (ngSubmit)="rentsub()">
@@ -121,7 +121,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            <p [innerHTML]="mainmon" *ngIf="mainmon "></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT"></p><p *ngIf="!mainmon && !data.squareFT">Select</p>
+           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -133,6 +133,7 @@
     </div>
 
     <div></div>
+
   
 
    
@@ -145,6 +146,9 @@
 <div class="save-continue">
     <button type="submit">Save & Continue</button>
 </div>
+<div class="save-continue">
+    <button (click)="routetopreview()">Save</button>
+</div>
 
 
 </div>
@@ -152,12 +156,12 @@
 
 <!-- lease -->
 </div>
-<div class="Location-details" *ngIf="switch == 'lease' || data.rentDetails == 'lease'">
+<div class="Location-details" *ngIf="switch == 'lease'">
     <h2>Lease Details</h2>
 
 <div class="rent-lease">
     <p class="rent-lease-active" (click)="rent()" >Rent</p>
-    <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1 || data.rentDetails == 'lease'}">Lease</p>
+    <p class="rent-lease-active"  (click)="lease()" [ngClass]="{'selected': check1 || switch== 'lease'}">Lease</p>
 </div>
 <form [formGroup]="leaseform" (ngSubmit)="leasesub()">
 
@@ -181,24 +185,24 @@
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-    <p [innerHTML]="maintanceVal" *ngIf="maintanceVal"></p><p *ngIf="!maintanceVal">Maintenance</p>
+    <p [innerHTML]="LmaintanceVal" *ngIf="LmaintanceVal"></p><p *ngIf="!LmaintanceVal">Maintenance</p>
       
         <ul class="dropdown-menu select-filed-options" >
 
-          <li><a class="dropdown-item" (click)="maintance('Include Maintenance')" >Include Maintenance</a></li>
-          <li><a class="dropdown-item" (click)="maintance('Exclude Maintenance')">Exclude Maintenance</a></li>
+          <li><a class="dropdown-item" (click)="Lmaintance('Include Maintenance')" >Include Maintenance</a></li>
+          <li><a class="dropdown-item" (click)="Lmaintance('Exclude Maintenance')">Exclude Maintenance</a></li>
         </ul>
       </div>
     </div>
 
-    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+    <div *ngIf="LmaintanceVal=='Exclude Maintenance'">
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-            <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon"></p><p *ngIf="!Lmainmon && !data.squareFT">Select</p>
+           <p *ngIf="!Lmainmon && !data.squareFT  "> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon"></p>
               
               
                 <ul class="dropdown-menu select-filed-options" >
@@ -211,6 +215,7 @@
     </div>
 
     <div></div>
+
   
 
    
@@ -222,6 +227,9 @@
 
 <div class="save-continue">
     <button type="submit">Save & Continue</button>
+</div>
+<div class="save-continue">
+    <button (click)="routetopreview()">Save</button>
 </div>
 
 

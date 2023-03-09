@@ -11,7 +11,9 @@ import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/update
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { HomeComponent } from './home/home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
-import { ResidentialSaleComponent } from './residential-sale/residential-sale.component';
+import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
+
+import { ResidentialRent1Component } from './residential-rent1/residential-rent1.component';
 import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additional-details.component';
 import { RrAmentitesComponent } from './rr-amentites/rr-amentites.component';
 import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
@@ -58,7 +60,8 @@ const routes: Routes = [
   {path:'residentaial-rent-amentites',component:RrAmentitesComponent},
   {path:'residentaial-rent-gallery',component:RrGalleryComponent},
   {path:'residentaial-rent-details',component:RrAdditionalDetailsComponent},
-  {path:'residentaial-rent-preview',component:ResidentialSaleComponent}
+  {path:'residentaial-rent-preview',component:ResidentialRentComponent},
+
 ];
 
 @NgModule({

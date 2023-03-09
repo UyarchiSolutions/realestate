@@ -58,21 +58,21 @@ export class RrAmentitesComponent implements OnInit {
     this.submited=true;
 
     var data ={
-      furnishingStatus:this.myform.get('furnishingStatus')?.value,
-      waterSupply:this.myform.get('waterSupply')?.value,
-      bathRoomCount:this.myform.get('bathRoomCount')?.value,
-      bathRoomType:this.myform.get('bathRoomType')?.value,
-      toiletType:this.myform.get('toiletType')?.value,
-      balconyCount:this.myform.get('balconyCount')?.value,
+      furnishingStatus:this.fsv,
+      waterSupply:this.wsv,
+      bathRoomCount:this.brv,
+      bathRoomType:this.btv,
+      toiletType:this.ttv,
+      balconyCount:this.bv,
       Non_veg:this.myform.get('Non_veg')?.value,
-      gate_Security:this.myform.get('gate_Security')?.value,
-      parkingFacilities:this.myform.get('parkingFacilities')?.value,
-      kitchen:this.myform.get('kitchen')?.value,
-      hall_FLoor:this.myform.get('hall_FLoor')?.value,
-      bedRoom:this.myform.get('bedRoom')?.value,
-      bathRoom:this.myform.get('bathRoom')?.value,
-      balCony:this.myform.get('balCony')?.value,
-      Amenities:this.myform.get('Amenities')?.value,
+      gate_Security: this.myform.get('gate_Security')?.value,
+      parkingFacilities:this.pv,
+      kitchen:this.kv,
+      hall_FLoor:this.hfv,
+      bedRoom:this.bev,
+      bathRoom:this.barv,
+      balCony:this.balv,
+      Amenities:this.amenities,
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -264,6 +264,16 @@ export class RrAmentitesComponent implements OnInit {
 
     }
     console.log('deleted',this.amenities);
+  }
+  routetopreview(){
+
+    var data = {
+      id: this.id,
+    };
+    var queryString = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+
+    this.service.formget(this.id).subscribe((res: any) => {});
   }
 
   back(count: any) {
