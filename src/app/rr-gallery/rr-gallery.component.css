@@ -133,6 +133,9 @@
    
    
     }
+    .video{
+        width: fit-content !important;
+    }
     .image-gallery img{
         width: 100%;
     }
@@ -153,7 +156,7 @@
     transform: translate(-50%,-50%);
    }
    .when-hover video{
-    width: 30px;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;

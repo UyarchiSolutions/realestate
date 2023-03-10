@@ -22,12 +22,12 @@ export class RrLocationDetailsComponent  implements OnInit{
   rrlocform:any = this.fb.group({
    
     Landmark: new FormControl ('',Validators.required),
-    Pincode: new FormControl ('',[Validators.required,Validators.pattern("^[0-9]*$")]),
+    Pincode: new FormControl ('',[Validators.required]),
     BuildingName: new FormControl ('',Validators.required),
     Address: new FormControl ('',Validators.required),
     lat:new FormControl ('',Validators.required),
     long:new FormControl ('',Validators.required),
-    addressLoaction: new FormControl('',[Validators.required, Validators.max(6)]),
+    addressLoaction: new FormControl('',[Validators.required]),
     direction:new FormControl ('',Validators.required)
   })
   myAddres: any;
@@ -103,11 +103,22 @@ export class RrLocationDetailsComponent  implements OnInit{
       })
     }
     routetopreview(){
+      var data={
+        landMark:this.rrlocform.get('Landmark')?.value,
+        pineCode:this.rrlocform.get('Pincode')?.value,
+        BuildingName:this.rrlocform.get('BuildingName')?.value,
+        lat:this.rrlocform.get('lat')?.value,
+        long:this.rrlocform.get('long')?.value,
+        Address:this.rrlocform.get('Address')?.value,
+        buildingDirection:this.rrlocform.get('direction')?.value,
+        formatedAddress:this.rrlocform.get('addressLoaction')?.value
+      }
+        this.service.formput(this.id,data).subscribe((res:any)=>{});
 
-      var data = {
+      var postdata = {
         id: this.id,
       };
-      var queryString = new URLSearchParams(data).toString();
+      var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
   
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -183,13 +194,14 @@ export class RrLocationDetailsComponent  implements OnInit{
     // this.myAddres = address.formatted_address
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
-    console.log(address.geometry.location.lat(),address.geometry.location.lng(),'handle change');
+   
    
     this.rrlocform.patchValue({
       lat: this.latitude,
       long: this.longtitude,
+      
     })
-    console.log(this.rrlocform.get('lat')?.value,this.rrlocform.get('long')?.value,"dfnhjkdhdfghfg");
+    
   }
   options: any = {
     componentRestrictions: { country: 'IN' }

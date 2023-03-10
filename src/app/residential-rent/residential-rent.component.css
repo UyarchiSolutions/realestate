@@ -155,11 +155,13 @@ nav ul li{
     flex-wrap: wrap;
   margin: 0 !important;
     row-gap: 10px;
-    column-gap: 10px;
+    column-gap: 20px;
 
 }
 .image-gallery .images{
-    width: 115px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -168,8 +170,12 @@ nav ul li{
 
 
 }
+.video{
+    min-width: 200px;
+}
 .image-gallery img{
     width: 100%;
+    box-shadow: 0 0 2px black;
 }
 .remove-border{
     border-bottom: none !important;

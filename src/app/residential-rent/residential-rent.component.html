@@ -124,7 +124,7 @@
   <div class="main">
     <nav>
       <ul>
-        <li>Residential></li>
+        <li>Residential &gt; </li>
         <li>Rent</li>
       </ul>
     </nav>
@@ -242,10 +242,10 @@
                   </svg>
                   {{ data.formatedAddress }}
                 </span>
-                <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="data.lag" [longitude]="data.long"
-                [zoom]="10" [usePanning]="true">
-                <agm-marker [markerDraggable]="true"
-                  [latitude]="data.lag"
+                <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="13.0827" [longitude]="80.2707"
+                [zoom]="6" [usePanning]="true">
+                <agm-marker
+                  [latitude]="data.lat"
                   [longitude]="data.long"></agm-marker>
               </agm-map>
               </div>
@@ -469,46 +469,18 @@
           <div class="submitted-details">
             <p style="font-weight: 500">Images :</p>
             <div class="image-gallery">
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
+              <div class="images" *ngFor="let img of data.image; let i = index">
+                <img [src]="'https://uyarchicrm.click/'+ img" (click)="imgslider(i)" width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
+                
               </div>
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
-              </div>
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
-              </div>
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
-              </div>
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
-              </div>
+            
             </div>
 
             <p style="font-weight: 500">Videos :</p>
             <div class="image-gallery">
-              <div class="images">
-                <img src="../../assets/images/house.jpg" />
+              <div class="images video"  *ngFor="let vid of data.videos">
+               <video [src]=" vid"  width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#videopopup"></video>
 
-                <div class="when-hover">
-                  <img src="../../assets/images/image-remove-btn.png" />
-                </div>
               </div>
             </div>
           </div>
@@ -564,3 +536,47 @@
 
   <div class="ad"></div>
 </div>
+<!-- Modal for image -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item" [ngClass]="{active: imgSliderCheker == i }"     *ngFor="let img of data.image; let i = index">
+            <img [src]="'https://uyarchicrm.click/'+ img" class="d-block w-100" alt="..."> 
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+
+<!-- modal for video -->
+<div class="modal fade" id="videopopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"  *ngFor="let vid of data.videos">
+      <video [src]="vid" controls></video>
+    </div>
+ </div>
+</div> 
+
+
+

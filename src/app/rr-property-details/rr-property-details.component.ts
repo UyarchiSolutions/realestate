@@ -34,7 +34,7 @@ export class RrPropertyDetailsComponent implements OnInit {
   ngOnInit(): void {
     for (let i = 0; i < 99; i++) {
       this.myarray.push(i);
-      console.log(this.myarray);
+    
     }
 
     this.arouter.queryParams.subscribe((params) => {
@@ -60,6 +60,8 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.propform.get('propertytype').setValue(e);
   }
   propsub() {
+   
+    
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -71,6 +73,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       RentPrefer: this.rpv,
       discription: this.propform.get('Description')?.value,
     };
+    
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
       var postdata = {
@@ -83,6 +86,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       console.log(res);
     });
     this.switchbutton();
+  
   }
 
   updateform() {
@@ -127,6 +131,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => {});
+    
   }
   back(count: any) {
     if (count == 0) {
@@ -191,7 +196,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.nave = !this.nave;
   }
 
-  pv: any;
+  pv:any;
   propertyv(a: any) {
     this.pv = a;
     console.log(this.pv);

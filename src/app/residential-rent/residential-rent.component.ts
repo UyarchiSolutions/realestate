@@ -22,24 +22,29 @@ export class ResidentialRentComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    
     this.arouter.queryParams.subscribe(params => {
-      console.log(params);
       this.id=params['id'];
-      console.log(this.id,"this is id from sp");
-      
     });
     this.getalldata();
+   
+    
   }
   data:any;
 
   getalldata(){
-    console.log('inside');
+    
     this.service.formget(this.id).subscribe((res:any)=>{
   
       this.data = res;
-      console.log(this.data);
+     
     })
     
+  }
+  imgSliderCheker:any;
+  imgslider(a:any){
+
+    this.imgSliderCheker = a;
   }
   Redirect(count:any){
     if(count == 0){
@@ -50,9 +55,8 @@ export class ResidentialRentComponent implements OnInit {
      this.router.navigateByUrl('/residential-rent?' + queryString);
 
      this.service.formget(this.id).subscribe((res:any)=>{
-     
-
      })
+     
     }
     if(count == 1){
       var data ={

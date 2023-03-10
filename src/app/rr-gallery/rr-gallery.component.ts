@@ -12,6 +12,7 @@ import { PostPropertyService } from '../services/post-property.service';
 export class RrGalleryComponent implements OnInit{
   gallery!: any[];
   gallaryview!: any[];
+  data:any;
   imageform : any = this.fb.group({
     images:this.fb.array([
       this.fb.control(null),
@@ -45,6 +46,10 @@ export class RrGalleryComponent implements OnInit{
       console.log(this.id,"this is id from sp");
       
     });
+    this.service.formget(this.id).subscribe((res:any)=>{
+
+      this.data = res;
+    })
   }
   changeImage(img: any) {
     this.gallery = [];
@@ -82,6 +87,7 @@ export class RrGalleryComponent implements OnInit{
   }
   removeimg(index: number){
    
+    console.log('remove working');
     this.imageform.get('images').get(index.toString()).setValue(null);
     this.imagePreview.splice(index,1);
     const input= document.getElementById('imageinput') as HTMLInputElement;
@@ -115,8 +121,16 @@ export class RrGalleryComponent implements OnInit{
     
   }
   submit(){
-  
     this.uploadimg();
+    this.uploadvid();
+    var postdata ={
+
+      id:this.id
+    }
+    var queryString = new URLSearchParams(postdata).toString();
+    this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+    this.service.formget(this.id).subscribe((res:any)=>{
+    })
   }
   uploadvid(){
     const formdata = new FormData();
@@ -129,28 +143,24 @@ export class RrGalleryComponent implements OnInit{
   }
 
   uploadimg(){
-
     const formdata = new FormData();
     const images = this.imageform.get('images') as FormArray;
-    let image = [];
-    let data = [];
-    for(let i=0; i< images.length;i++){
-      const file = images.at(i).value;
-      
-      if (file){
-        formdata.append(`images[${i}]`,file);
-
-        image.push(file);
-
+    console.log(images.value  )
+    const files: Array<File> =images.value;
+    for (let i = 0; i < files.length; i++) {
+      if(files[i] !=null){
+      formdata.append('image', files[i], files[i]['name']);
       }
     }
-    console.log(formdata);
     this.service.uploadimg(this.id,formdata).subscribe((res:any)=>{
       console.log(res);
     })
-  }
+  } 
   routetopreview(){
 
+    this.uploadimg();
+    this.uploadvid();
+    
     var data = {
       id: this.id,
     };

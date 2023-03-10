@@ -197,42 +197,6 @@ export class RrAmentitesComponent implements OnInit {
     this.myform.get('gate_Security').setValue(a);
 
   }
-
-  checked = false;
-  checked1 = false;
-  checked2 = false;
-  checked3 = false;
-  checked4 = false;
-  checked5 = false;
-  checked6 = false;
-  checked7 = false;
-  checked8 = false;
-  checked9 = false;
-  checked10 = false;
-  checked11 = false;
-  checked12 = false;
-  checked13 = false;
-  checked14 = false;
-  checked15 = false;
-  checked16 = false;
-  checked17 = false;
-  checked18 = false;
-  checked19 = false;
-  checked20 = false;
-  checked21 = false;
-  checked22 = false;
-  checked23 = false;
-  checked24 = false;
-  checked25 = false;
-  checked26 = false;
-  checked27 = false;
-  checked28 = false;
-  checked29 = false;
-  checked30 = false;
-  checked31 = false;
-  checked32 = false;
-  checked33 = false;
-
   amenities: any = [];
 
   amtsub(){
@@ -240,7 +204,6 @@ export class RrAmentitesComponent implements OnInit {
   }
   updateAmit(v: any) {
     
-
     if (v.target.checked) {
       var val = v.target.value;
       this.amenities.push(val);
@@ -248,7 +211,6 @@ export class RrAmentitesComponent implements OnInit {
       let index = this.amenities.findIndex((res: any) => res == v.target.value);
       if (index != -1) {
         this.amenities.splice(index, 1);
-        
       }
     }
 
@@ -265,12 +227,59 @@ export class RrAmentitesComponent implements OnInit {
     }
     console.log('deleted',this.amenities);
   }
-  routetopreview(){
+  is_chckked(val:any){
+      let index=this.amenities.findIndex((a:any)=>a==val);
+      if(index==-1){
+        return false;
+      }
+      else{
+        return true;
+      }
+  }
+  // deleteAmit(v:any){
 
-    var data = {
+  //   let index = this.amit.indexOf(v);
+    
+  //   if (index > -1) {
+  //   this.amit.splice(index, 1);
+    
+
+  //   }
+  //   console.log('deleted',this.amit);
+  // }
+  Amenities:any=
+    ['Club House','Badminton Court','Health Facilities','Security','Basket Ball Court'
+     ,'Recreation Facilities','24Hr Backup','Play Area','WIFI','Rain Water Harvesting',
+    'Swimming Pool','Broadband Internet','Maintenance Staff','Tennis Court',
+  'Temple','Intercom','Gymnasium','Lift','Garden','Indoor Games','Air Conditioner',
+   'Community Hall','Bank/Atm','Intercom','Electricity Full','Cafeteria','Servant room',
+  'Electricity Partial','Library','Gas Pipeline','House keeping','Fire safety','Park',
+'Visitor Parking','Shopping center','Sewage Treatment Plant'];
+   
+  routetopreview(){
+    var data ={
+      furnishingStatus:this.fsv,
+      waterSupply:this.wsv,
+      bathRoomCount:this.brv,
+      bathRoomType:this.btv,
+      toiletType:this.ttv,
+      balconyCount:this.bv,
+      Non_veg:this.myform.get('Non_veg')?.value,
+      gate_Security: this.myform.get('gate_Security')?.value,
+      parkingFacilities:this.pv,
+      kitchen:this.kv,
+      hall_FLoor:this.hfv,
+      bedRoom:this.bev,
+      bathRoom:this.barv,
+      balCony:this.balv,
+      Amenities:this.amenities,
+
+    }
+    this.service.formput(this.id,data).subscribe((res:any)=>{})
+    var postdata = {
       id: this.id,
     };
-    var queryString = new URLSearchParams(data).toString();
+    var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => {});
@@ -346,7 +355,28 @@ export class RrAmentitesComponent implements OnInit {
     this.showModal = -1;
     this.amshow=true;
   }
-  
+  // amtie: any = [
+  //   {name:'Club House',issubmit:false},
+  //   {name:'Batmition Cort',issubmit:false},
+  //   {name:'Security', issubmit:false}
+  // ]
+  // amit:any=[];
+  // addamit(e:any,a:any ){
+    
+  //   console.log(a);
+  //   if (a == 'true') {
+  //     var val = e;
+  //     this.amit.push(val);
+  //   } else {
+  //     let index = this.amit.findIndex((res: any) => res == e.name);
+  //     if (index != -1) {
+  //       this.amit.splice(index, 1);
+        
+  //     }
+  //   }
+
+
+  // }
 }
 
 

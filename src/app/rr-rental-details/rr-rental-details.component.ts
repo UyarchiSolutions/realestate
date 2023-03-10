@@ -116,7 +116,7 @@ export class RrRentalDetailsComponent implements OnInit{
       squareFT:this.mainmon,
       MaintenanceStatus:this.maintanceVal,
     }
-    console.log(data);
+    
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
       
@@ -142,7 +142,7 @@ export class RrRentalDetailsComponent implements OnInit{
       squareFT:this.Lmainmon,
       MaintenanceStatus:this.LmaintanceVal,
     }
-    console.log(data);
+  
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
       var postdata ={
@@ -171,10 +171,38 @@ export class RrRentalDetailsComponent implements OnInit{
   }
   routetopreview(){
 
-    var data = {
+         if(this.switch == 'rent')  {
+          var data={
+            rentDetails:this.switch,
+            MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
+            RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
+            depositeAmount:this.rentform.get('ExpectedDeposit').value,
+            depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
+            maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+          }
+          
+          this.service.formput(this.id,data).subscribe((res:any)=>{});
+         }  
+         if(this.switch == 'lease'){
+          var ldata={
+
+            rentDetails:this.switch,
+            depositeAmount:this.leaseform.get('LExpectedDeposit').value,
+            depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
+            maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
+            squareFT:this.Lmainmon,
+            MaintenanceStatus:this.LmaintanceVal,
+          }
+        
+          this.service.formput(this.id,ldata).subscribe((res:any)=>{});
+         }
+
+    var postdata = {
       id: this.id,
     };
-    var queryString = new URLSearchParams(data).toString();
+    var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => {});

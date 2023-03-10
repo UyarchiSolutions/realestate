@@ -171,7 +171,7 @@
     <div class="expected-rent">
         <label>Expected Lease :</label>
    <div>
-    <input type="text" placeholder="Deposit Amount" formControlName="LExpectedDeposit">
+    <input type="text" placeholder="Expected Lease" formControlName="LExpectedDeposit">
     <div class="negotiable">
         <input type="checkbox" formControlName="LExpectedDepositNegotiable"><label>Negotiable</label>
     </div>
@@ -202,7 +202,7 @@
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="!Lmainmon && !data.squareFT  "> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon"></p>
+           <p *ngIf="!Lmainmon && !data.squareFT  "> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon && data.squareFT"></p>
               
               
                 <ul class="dropdown-menu select-filed-options" >
