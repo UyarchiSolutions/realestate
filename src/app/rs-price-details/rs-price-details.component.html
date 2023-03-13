@@ -50,14 +50,15 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links nav-active">Rental Details</p>
-    <p class="navbar-links">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links"  (click)="back(0)">Property details</p>
+            <p class="navbar-links" (click)="back(1)">Location Details</p>
+            <p class="navbar-links nav-active" (click)="back(2)">Price Details</p>
+            <p class="navbar-links" (click)="back(3)">Amenities</p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links"(click)="back(5)">Additional Details </p>
+        </nav>
+        
 
 
 
@@ -65,32 +66,66 @@
     <h2>Price Details</h2>
 
 
-
+<form [formGroup]="priceform" (ngSubmit)="rentsub()">
 
     <div class="form">
     <div class="expected-rent">
         <label>Expected Price :</label>
-   <div>
-    <input type="text" placeholder="Price Amount">
+   <div >
+    <input type="text" placeholder="Expected Price" formControlName="ExpectedPrice">
     <div class="negotiable">
-        <div class="negotiable-radio">
-        <input  type="radio"><label>Negotiable</label></div>
-        <div>
-        <input type="radio"><label>Currently in Loan</label></div>
+        <input type="checkbox" formControlName="ExpectedpricetNegotiable" ><label>Negotiable</label>
+    </div>
+    <div class="negotiable">
+        <input type="checkbox" formControlName="CurrentlyInLoan" ><label>Currently In Loan</label>
     </div>
    </div>
     </div>
 
+ 
   
 
+ 
     <div>
-        <label>Maintenance :</label>
-     
-        <select class="maintenance-select"><option>Select</option></select>
+        <label>Maintenance : </label>
    
+      <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+    <p [innerHTML]="maintanceVal" *ngIf="maintanceVal"></p><p *ngIf="!maintanceVal">Maintenance</p>
+      
+        <ul class="dropdown-menu select-filed-options" >
+
+          <li><a class="dropdown-item" (click)="maintance('Include Maintenance')" >Include Maintenance</a></li>
+          <li><a class="dropdown-item" (click)="maintance('Exclude Maintenance')">Exclude Maintenance</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+        <label>Exclude Maintenance :</label>
+     <div style="width: 50%; display: flex;
+     align-items: flex-end;">
+        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <!-- <select   formControlName="MrSq">
+ 
+            <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
+            <option value="Per Month"  > Per Month</option>
+        </select>  -->
+        <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+              
+                <ul class="dropdown-menu select-filed-options" >
+        
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Sq.ft/Month')" >Per Sq.ft/Month</a></li>
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Month')">Per Month</a></li>
+                </ul>
+              </div>
+    </div>
     </div>
 
     <div></div>
+
   
 
    
@@ -101,14 +136,19 @@
 
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit" >Save & Continue</button>
+</div>
+<div class="save-continue">
+    <button (click)="routetopreview()" >Save</button>
 </div>
 
 
 </div>
+</form>
+
 
 </div>
-    
+
 
     </div>
     

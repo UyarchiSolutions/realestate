@@ -20,6 +20,13 @@ import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
 import { RrLocationDetailsComponent } from './rr-location-details/rr-location-details.component';
 import { RrPropertyDetailsComponent } from './rr-property-details/rr-property-details.component';
 import { RrRentalDetailsComponent } from './rr-rental-details/rr-rental-details.component'
+import { RsAdditionalDetailsComponent } from './rs-additional-details/rs-additional-details.component';
+import { RsAmenitiesComponent } from './rs-amenities/rs-amenities.component';
+import { RsGalleryComponent } from './rs-gallery/rs-gallery.component';
+import { RsLocationDetailsComponent } from './rs-location-details/rs-location-details.component';
+import { RsPriceDetailsComponent } from './rs-price-details/rs-price-details.component';
+import { RsPropertyDetailsComponent } from './rs-property-details/rs-property-details.component';
+import { RsResidentialSalePreviewComponent } from './rs-residential-sale-preview/rs-residential-sale-preview.component';
 import { ChangeSellerComponent } from './seller/change-seller/change-seller.component';
 import { CreatepasswordsellerComponent } from './seller/createpasswordseller/createpasswordseller.component';
 import { SellerLoginComponent } from './seller/seller-login/seller-login.component';
@@ -61,6 +68,14 @@ const routes: Routes = [
   {path:'residentaial-rent-gallery',component:RrGalleryComponent},
   {path:'residentaial-rent-details',component:RrAdditionalDetailsComponent},
   {path:'residentaial-rent-preview',component:ResidentialRentComponent},
+
+  {path:'residential-sale-property',component:RsPropertyDetailsComponent},
+  {path:'residential-sale-location-details',component:RsLocationDetailsComponent},
+  {path:'residential-sale-price-details',component:RsPriceDetailsComponent},
+  {path:'residential-sale-amentites',component:RsAmenitiesComponent},
+  {path:'residential-sale-gallery',component:RsGalleryComponent},
+  {path:'residential-sale-add-details',component:RsAdditionalDetailsComponent},
+  {path:'residential-sale-preview',component:RsResidentialSalePreviewComponent},
 
 ];
 

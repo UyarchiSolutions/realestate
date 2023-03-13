@@ -49,6 +49,7 @@ export class RrGalleryComponent implements OnInit{
     this.service.formget(this.id).subscribe((res:any)=>{
 
       this.data = res;
+      console.log(res);
     })
   }
   changeImage(img: any) {
@@ -67,11 +68,13 @@ export class RrGalleryComponent implements OnInit{
   }
   onFileselect(e:any){
 
+    this.imageform.get('images').reset();
+    this.imagePreview= [];
     const files = e.target.files;
     
     for(let i=0;i < files.length && i<=5;i++){
       const file = files[i];
-      
+   
      const images = this.imageform.get('images') as FormArray;
      images.at(i).setValue(file);
 
@@ -136,8 +139,8 @@ export class RrGalleryComponent implements OnInit{
     const formdata = new FormData();
     formdata.append('video',this.selectedfile);
     this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
-
-      console.log(res);
+      window.location.reload();
+      
     })
 
   }
@@ -151,9 +154,11 @@ export class RrGalleryComponent implements OnInit{
       if(files[i] !=null){
       formdata.append('image', files[i], files[i]['name']);
       }
+      console.log(formdata);
     }
     this.service.uploadimg(this.id,formdata).subscribe((res:any)=>{
-      console.log(res);
+      
+      window.location.reload();
     })
   } 
   routetopreview(){
@@ -167,7 +172,9 @@ export class RrGalleryComponent implements OnInit{
     var queryString = new URLSearchParams(data).toString();
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
-    this.service.formget(this.id).subscribe((res: any) => {});
+    this.service.formget(this.id).subscribe((res: any) => {
+      
+    });
   }
   back(count:any){
     if(count == 0){

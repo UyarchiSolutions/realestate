@@ -144,10 +144,10 @@
 
 
 <div class="save-continue">
-    <button type="submit">Save & Continue</button>
+    <button type="submit" *ngIf="!data.rentDetails">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()">Save</button>
+    <button (click)="routetopreview()" *ngIf="data.rentDetails">Save</button>
 </div>
 
 
@@ -226,10 +226,10 @@
 
 
 <div class="save-continue">
-    <button type="submit">Save & Continue</button>
+    <button type="submit" *ngIf="!data.rentDetails">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()">Save</button>
+    <button (click)="routetopreview()" *ngIf="data.rentDetails">Save</button>
 </div>
 
 

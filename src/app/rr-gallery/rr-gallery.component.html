@@ -150,10 +150,10 @@
 </div>
 
 <div class="save-continue">
-    <button (click)="submit()">Save & Continue</button>
+    <button (click)="submit()" *ngIf="!data.image">Save & Continue</button>
 </div>
 <div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()">Save</button>
+    <button (click)="routetopreview()" *ngIf="data.image">Save</button>
 </div>
 
 

@@ -31,6 +31,8 @@ export class RrLocationDetailsComponent  implements OnInit{
     direction:new FormControl ('',Validators.required)
   })
   myAddres: any;
+  
+  datares: any;
 
 
   constructor(private arouter:ActivatedRoute,
@@ -87,6 +89,8 @@ export class RrLocationDetailsComponent  implements OnInit{
     }
     updateform(){
       this.service.formget(this.id).subscribe((res:any)=>{
+
+        this.datares= res;
         this.rrlocform.patchValue({
 
           Landmark:res.landMark,
@@ -121,7 +125,9 @@ export class RrLocationDetailsComponent  implements OnInit{
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
   
-      this.service.formget(this.id).subscribe((res: any) => {});
+      this.service.formget(this.id).subscribe((res: any) => {
+        location.reload();
+      });
     }
     back(count:any){
       if(count == 0){

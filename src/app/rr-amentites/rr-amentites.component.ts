@@ -38,7 +38,7 @@ export class RrAmentitesComponent implements OnInit {
     balCony:new FormControl(),
     Amenities :new FormControl()
   })
-  checkarr:any =[];
+  
   ngOnInit(): void {
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
@@ -47,9 +47,7 @@ export class RrAmentitesComponent implements OnInit {
 
       this.updateform();
     });
-    if(this.amenities == this.checkarr){
-      this.amshow = false;
-    }
+  
     
   }
   submited=false;
@@ -98,9 +96,9 @@ export class RrAmentitesComponent implements OnInit {
       this.myform.patchValue({
      
         Non_veg:res.Non_veg,
-       gate_Security:res.gate_Security
+       gate_Security:res.gate_Security,
      
-
+        this:this.amenities =res.amenities,
       })
      
     })
@@ -236,23 +234,13 @@ export class RrAmentitesComponent implements OnInit {
         return true;
       }
   }
-  // deleteAmit(v:any){
 
-  //   let index = this.amit.indexOf(v);
-    
-  //   if (index > -1) {
-  //   this.amit.splice(index, 1);
-    
-
-  //   }
-  //   console.log('deleted',this.amit);
-  // }
   Amenities:any=
     ['Club House','Badminton Court','Health Facilities','Security','Basket Ball Court'
      ,'Recreation Facilities','24Hr Backup','Play Area','WIFI','Rain Water Harvesting',
     'Swimming Pool','Broadband Internet','Maintenance Staff','Tennis Court',
   'Temple','Intercom','Gymnasium','Lift','Garden','Indoor Games','Air Conditioner',
-   'Community Hall','Bank/Atm','Intercom','Electricity Full','Cafeteria','Servant room',
+   'Community Hall','Bank/Atm','Electricity Full','Cafeteria','Servant room',
   'Electricity Partial','Library','Gas Pipeline','House keeping','Fire safety','Park',
 'Visitor Parking','Shopping center','Sewage Treatment Plant'];
    
@@ -282,7 +270,10 @@ export class RrAmentitesComponent implements OnInit {
     var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
-    this.service.formget(this.id).subscribe((res: any) => {});
+    this.service.formget(this.id).subscribe((res: any) => {
+      location.reload();
+    });
+    
   }
 
   back(count: any) {

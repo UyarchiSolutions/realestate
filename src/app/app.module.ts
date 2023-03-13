@@ -23,6 +23,14 @@ import { CommonModule } from '@angular/common';
 
 import { ResidentialRent1Component } from './residential-rent1/residential-rent1.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
+import { RsPropertyDetailsComponent } from './rs-property-details/rs-property-details.component';
+import { RsLocationDetailsComponent } from './rs-location-details/rs-location-details.component';
+import { RsPriceDetailsComponent } from './rs-price-details/rs-price-details.component';
+import { RsAmenitiesComponent } from './rs-amenities/rs-amenities.component';
+import { RsGalleryComponent } from './rs-gallery/rs-gallery.component';
+import { RsAdditionalDetailsComponent } from './rs-additional-details/rs-additional-details.component';
+import { RsResidentialSalePreviewComponent } from './rs-residential-sale-preview/rs-residential-sale-preview.component';
+
 
 
 @NgModule({
@@ -38,7 +46,14 @@ import { ResidentialRentComponent } from './residential-rent/residential-rent.co
     RrGalleryComponent,
     RrAdditionalDetailsComponent,
     // ResidentialRent1Component,
-    ResidentialRentComponent
+    ResidentialRentComponent,
+    RsPropertyDetailsComponent,
+    RsLocationDetailsComponent,
+    RsPriceDetailsComponent,
+    RsAmenitiesComponent,
+    RsGalleryComponent,
+    RsAdditionalDetailsComponent,
+    RsResidentialSalePreviewComponent
     
     
     

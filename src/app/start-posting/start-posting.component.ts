@@ -86,7 +86,15 @@ property="Residential";
     var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residential-rent?' + queryString); }
     
-    
+    if( this.property == 'Residential' && this.firstform.get('type')?.value == 'sale'){
+      var postdata ={
+        id:res._id
+      }
+  
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residential-sale-property?' + queryString);
+    }
+
     })
 
     }

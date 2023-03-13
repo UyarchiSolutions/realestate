@@ -32,7 +32,7 @@ export class RrPropertyDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    for (let i = 0; i < 99; i++) {
+    for (let i = 1; i < 99; i++) {
       this.myarray.push(i);
     
     }
@@ -130,7 +130,8 @@ export class RrPropertyDetailsComponent implements OnInit {
     var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
-    this.service.formget(this.id).subscribe((res: any) => {});
+    this.service.formget(this.id).subscribe((res: any) => 
+    {location.reload();});
     
   }
   back(count: any) {
@@ -218,7 +219,7 @@ export class RrPropertyDetailsComponent implements OnInit {
 
   floorarraygenerate(val:any) {
     this.numarray = [];
-    for (let i = 0; i <= val; i++) {
+    for (let i = 1; i <= val; i++) {
       this.numarray.push(i);
     }
     console.log( this.numarray )
@@ -226,12 +227,14 @@ export class RrPropertyDetailsComponent implements OnInit {
   ofv: any;
   
   onFloorv(a: any) {
-    if (a == 0) {
-      this.tfv = 'Ground Floor';
+    if ('Groud Floor') {
+      this.ofv = 'Ground Floor';
+    
     }
-
+ if (a != 'Groud Floor'){
     this.ofv = a + ' Floors';
     console.log(this.ofv);
+ }
   }
   aop: any;
   ageofpropv(a: any) {

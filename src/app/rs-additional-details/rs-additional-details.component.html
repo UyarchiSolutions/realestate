@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links ">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links nav-active">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links"  (click)="back(0)">Property details</p>
+            <p class="navbar-links" (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Price Details</p>
+            <p class="navbar-links" (click)="back(3)">Amenities</p>
+            <p class="navbar-links " (click)="back(4)" >Gallery</p>
+            <p class="navbar-links nav-active" (click)="back(5)">Additional Details </p>
+        </nav>
 
 
 
@@ -67,25 +67,25 @@
 
 
 
-    <div class="form">
+    <div class="form" [formGroup]="adform" (ngSubmit)="Onsubmit()">
         <div>
             <label>Available Form :</label>
-       <input type="Date">
+       <input type="Date" formControlName="datetostart">
         </div>
 
         <div>
             <label>Contact Name :</label>
-    <input type="text" placeholder="Contact Name">
+    <input type="text" placeholder="Contact Name" formControlName="contactname">
         </div>
 
         <div>
             <label>Contact Number 1 :</label>
-    <input type="text" placeholder="Contact Number">
+    <input type="text" placeholder="Contact Number" formControlName="cnumber">
         </div>
 
         <div>
             <label>Contact Number 2 :</label>
-    <input type="text" placeholder="Contact Number 2">
+    <input type="text" placeholder="Contact Number 2" formControlName="c2number">
         </div>
 
 
@@ -93,14 +93,14 @@
     <div>
         <label>Have  you paid Property tax?</label>
         <div class="answer-select">
-<div class="yes">
-    <input type="radio">Yes
+<div class="yes" >
+    <input type="radio"  name="paidpropety"  formControlName="paidpropety" value="Yes">Yes
 </div>
 <div class="no">
-    <input type="radio">No
+    <input type="radio"  name="paidpropety"  formControlName="paidpropety" value="No">No
 </div>
 <div class="dont-know">
-    <input type="radio">Dont Know
+    <input type="radio"  name="paidpropety"  formControlName="paidpropety" value="Dont Know">Dont Know
 </div>
 
         </div>
@@ -113,29 +113,44 @@
         <label>Do You have Sale deed Certificate?</label>
         <div class="answer-select">
 <div class="yes">
-    <input type="radio">Yes
+    <input type="radio"  name="Saledeed"  formControlName="Saledeed" value="Yes">Yes
 </div>
 <div class="no">
-    <input type="radio">No
+    <input type="radio"  name="Saledeed" formControlName="Saledeed" value="No">No
 </div>
-<div class="dont-know">
-    <input type="radio">Dont Know
+<div class="dont-know" >
+    <input type="radio"  name="Saledeed" formControlName="Saledeed" value="Dont Know">Dont Know
 </div>
 
         </div>
     </div>
 
     <div>
-        <label>Do you have occupancy certificate?</label>
+        <label>Do you have Occupancy certificate?</label>
         <div class="answer-select">
 <div class="yes">
-    <input type="radio">Yes
+    <input type="radio"  name="occuCerf"  formControlName="occuCerf" value="Yes">Yes
 </div>
 <div class="no">
-    <input type="radio">No
+    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="No">No
 </div>
 <div class="dont-know">
-    <input type="radio">Dont Know
+    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="Dont Know">Dont Know
+</div>
+
+        </div>
+    </div>
+    <div *ngIf=" this.adform.get('occuCerf')?.value == 'No' || this.adform.get('occuCerf')?.value == 'Dont Know' ">
+        <label>Do you have Completion certificate?</label>
+        <div class="answer-select">
+<div class="yes">
+    <input type="radio"  name="comCert"  formControlName="comCert" value="Yes">Yes
+</div>
+<div class="no">
+    <input type="radio" name="comCert"  formControlName="comCert" value="No">No
+</div>
+<div class="dont-know">
+    <input type="radio" name="comCert"  formControlName="comCert" value="Dont Know">Dont Know
 </div>
 
         </div>
@@ -157,7 +172,7 @@
 
 
 <div class="save-continue">
-    <button>Post</button>
+    <button (click)="Onsubmit()" >Post</button>
 </div>
 
 

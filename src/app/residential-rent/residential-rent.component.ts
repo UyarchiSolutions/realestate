@@ -41,6 +41,7 @@ export class ResidentialRentComponent implements OnInit {
     })
     
   }
+ 
   imgSliderCheker:any;
   imgslider(a:any){
 

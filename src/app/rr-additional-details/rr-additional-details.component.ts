@@ -77,7 +77,9 @@ routetopreview(){
   var queryString = new URLSearchParams(data).toString();
   this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
-  this.service.formget(this.id).subscribe((res: any) => {});
+  this.service.formget(this.id).subscribe((res: any) => {
+    location.reload();
+  });
 }
 
 back(count:any){
