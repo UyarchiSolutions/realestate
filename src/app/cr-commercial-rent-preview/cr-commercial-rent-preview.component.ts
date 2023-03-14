@@ -1,0 +1,109 @@
+import { formatDate } from '@angular/common';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostPropertyService } from '../services/post-property.service';
+
+@Component({
+  selector: 'app-cr-commercial-rent-preview',
+  templateUrl: './cr-commercial-rent-preview.component.html',
+  styleUrls: ['./cr-commercial-rent-preview.component.css']
+})
+export class CrCommercialRentPreviewComponent {
+  
+  
+    
+    id:any;
+    date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
+    
+    constructor(private arouter: ActivatedRoute,
+      private service: PostPropertyService,
+      private router: Router){
+  
+    }
+    ngOnInit(): void {
+      
+      this.arouter.queryParams.subscribe(params => {
+        this.id=params['id'];
+      });
+      this.getalldata();
+     
+      
+    }
+    data:any;
+  
+    getalldata(){
+      
+      this.service.formget(this.id).subscribe((res:any)=>{
+    
+        this.data = res;
+       
+      })
+      
+    }
+   
+    imgSliderCheker:any;
+    imgslider(a:any){
+  
+      this.imgSliderCheker = a;
+    }
+    Redirect(count: any) {
+      if (count == 0) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 1) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/commercial-rent-location-details?' + queryString
+        );
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 2) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/commercial-rent-rental-details?' + queryString
+        );
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 3) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 4) {
+        var postdata = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 5) {
+        var postdata = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+    }
+  }
+  
+

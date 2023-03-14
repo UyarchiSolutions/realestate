@@ -69,8 +69,8 @@ property="Residential";
 
   var data ={
     HouseOrCommercialType:this.property,
-    Type:this.firstform.get('type')?.value,
-    formatedAddress:this.data
+    Type:this.firstform.get('type')?.value
+    
   }
   
 
@@ -93,6 +93,14 @@ property="Residential";
   
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residential-sale-property?' + queryString);
+    }
+    if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'rent'){
+      var postdata ={
+        id:res._id
+      }
+  
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/commercial-rent-property?' + queryString);
     }
 
     })

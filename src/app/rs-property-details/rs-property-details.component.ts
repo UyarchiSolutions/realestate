@@ -134,70 +134,13 @@ export class RsPropertyDetailsComponent implements OnInit {
       id: this.id,
     };
     var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+    this.router.navigateByUrl('/residential-sale-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => 
     {location.reload();});
     
   }
-  back(count: any) {
-    if (count == 0) {
-      var data = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residential-sale?' + queryString);
 
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-    if (count == 1) {
-      var data = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl(
-        '/residential-sale-location-details?' + queryString
-      );
-
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-    if (count == 2) {
-      var data = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl(
-        '/residentaial-rent-rental-details?' + queryString
-      );
-
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-    if (count == 3) {
-      var data = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
-
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-    if (count == 4) {
-      var postdata = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-    if (count == 5) {
-      var postdata = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
-      this.service.formget(this.id).subscribe((res: any) => {});
-    }
-  }
   nave: boolean = false;
   nav() {
     this.nave = !this.nave;
@@ -271,6 +214,68 @@ export class RsPropertyDetailsComponent implements OnInit {
   faceDirectv(a: any) {
     this.fdv = a;
     console.log(this.fdv);
+  }
+  back(count:any){
+    if(count == 0){
+      var data ={
+       id:this.id
+     }
+     var queryString = new URLSearchParams(data).toString();
+     this.router.navigateByUrl('/residential-sale-property?' + queryString);
+
+     this.service.formget(this.id).subscribe((res:any)=>{
+     
+
+     })
+    }
+    if(count == 1){
+      var data ={
+       id:this.id
+     }
+     var queryString = new URLSearchParams(data).toString();
+     this.router.navigateByUrl('/residential-sale-location-details?' + queryString);
+
+     this.service.formget(this.id).subscribe((res:any)=>{
+     })
+    }
+    if(count == 2){
+      var data ={
+       id:this.id
+     }
+     var queryString = new URLSearchParams(data).toString();
+     this.router.navigateByUrl('/residential-sale-price-details?' + queryString);
+
+     this.service.formget(this.id).subscribe((res:any)=>{
+     })
+    }
+    if(count == 3){
+      var data ={
+       id:this.id
+     }
+     var queryString = new URLSearchParams(data).toString();
+     this.router.navigateByUrl('/residential-sale-amentites?' + queryString);
+
+     this.service.formget(this.id).subscribe((res:any)=>{
+     })
+    }
+    if(count == 4){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residential-sale-gallery?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
+    if(count == 5){
+      var postdata ={
+        id:this.id
+      }
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl('/residential-sale-add-details?' + queryString);
+      this.service.formget(this.id).subscribe((res:any)=>{
+      })
+    }
   }
 }
 

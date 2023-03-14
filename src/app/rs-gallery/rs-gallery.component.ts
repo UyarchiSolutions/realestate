@@ -140,9 +140,7 @@ export class RsGalleryComponent implements OnInit{
       const formdata = new FormData();
       formdata.append('video',this.selectedfile);
       this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
-        window.location.reload();
-        
-      })
+       })
   
     }
   
@@ -171,7 +169,7 @@ export class RsGalleryComponent implements OnInit{
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/residential-sale-preview?' + queryString);
   
       this.service.formget(this.id).subscribe((res: any) => {
         

@@ -52,14 +52,15 @@ export class RsPriceDetailsComponent implements OnInit {
         this.priceform.patchValue({
           ExpectedPrice:res.expectedPrice,
           ExpectedpricetNegotiable:res.RentNegociable,
-          CurrentlyInLoan:res.depositeAmount,
+       
           ExpectedDepositNegotiable:res.depositeNegociable,
           ExcludeMaintenance:res.maintainenceCost,
+          CurrentlyInLoan:res.current_in_loan
           
           
         });console.log('value patched') ;
         
-        this.maintanceVal= this.data.MaintenanceStatus }
+         }
   
       
         
@@ -68,15 +69,11 @@ export class RsPriceDetailsComponent implements OnInit {
     maintanceVal='Include Maintenance';
   
     maintance(a:any){
+      console.log(this.maintanceVal);
       this.maintanceVal=a;
-      console.log(this.maintanceVal);
+      
     }
-    LmaintanceVal='Include Maintenance';
-  
-    Lmaintance(a:any){
-      this.LmaintanceVal=a;
-      console.log(this.maintanceVal);
-    }
+
     mainmon='';
   
     mainmonv(a:any){
@@ -140,7 +137,7 @@ export class RsPriceDetailsComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/residential-sale-preview?' + queryString);
   
       this.service.formget(this.id).subscribe((res: any) => {
         location.reload();
@@ -195,7 +192,7 @@ export class RsPriceDetailsComponent implements OnInit {
           id:this.id
         }
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+        this.router.navigateByUrl('/residential-sale-gallery?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
       }
@@ -204,7 +201,7 @@ export class RsPriceDetailsComponent implements OnInit {
           id:this.id
         }
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+        this.router.navigateByUrl('/residential-sale-add-details?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
       }

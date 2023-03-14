@@ -30,6 +30,13 @@ import { RsAmenitiesComponent } from './rs-amenities/rs-amenities.component';
 import { RsGalleryComponent } from './rs-gallery/rs-gallery.component';
 import { RsAdditionalDetailsComponent } from './rs-additional-details/rs-additional-details.component';
 import { RsResidentialSalePreviewComponent } from './rs-residential-sale-preview/rs-residential-sale-preview.component';
+import { CrPropertyDetailsComponent } from './cr-property-details/cr-property-details.component';
+import { CrRentalDetailsComponent } from './cr-rental-details/cr-rental-details.component';
+import { CrLocationDetailsComponent } from './cr-location-details/cr-location-details.component';
+import { CrAmenitiesComponent } from './cr-amenities/cr-amenities.component';
+import { CrGalleryComponent } from './cr-gallery/cr-gallery.component';
+import { CrAdditionalDetailsComponent } from './cr-additional-details/cr-additional-details.component';
+import { CrCommercialRentPreviewComponent } from './cr-commercial-rent-preview/cr-commercial-rent-preview.component';
 
 
 
@@ -53,7 +60,15 @@ import { RsResidentialSalePreviewComponent } from './rs-residential-sale-preview
     RsAmenitiesComponent,
     RsGalleryComponent,
     RsAdditionalDetailsComponent,
-    RsResidentialSalePreviewComponent
+    RsResidentialSalePreviewComponent,
+    //CommercialRent
+    CrPropertyDetailsComponent,
+    CrRentalDetailsComponent,
+    CrLocationDetailsComponent,
+    CrAmenitiesComponent,
+    CrGalleryComponent,
+    CrAdditionalDetailsComponent,
+    CrCommercialRentPreviewComponent
     
     
     

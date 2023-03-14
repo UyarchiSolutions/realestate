@@ -13,6 +13,7 @@ export class RsAmenitiesComponent implements OnInit {
 
     id: any;
     data:any;
+none: any;
   
     constructor(
       private fb: FormBuilder,
@@ -102,7 +103,7 @@ export class RsAmenitiesComponent implements OnInit {
           Non_veg:res.Non_veg,
          gate_Security:res.gate_Security,
        
-          this:this.amenities =res.amenities,
+         
         })
        
       })
@@ -291,7 +292,7 @@ export class RsAmenitiesComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/residential-sale-preview?' + queryString);
   
       this.service.formget(this.id).subscribe((res: any) => {
         location.reload();

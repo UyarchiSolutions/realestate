@@ -91,16 +91,16 @@ export class RrAmentitesComponent implements OnInit {
   updateform(){
 
     this.service.formget(this.id).subscribe((res:any)=>{
-       
+        console.log(res,453453)
         this.data=res;
       this.myform.patchValue({
      
         Non_veg:res.Non_veg,
-       gate_Security:res.gate_Security,
-     
-        this:this.amenities =res.amenities,
+       gate_Security:res.gate_Security
+       
       })
-     
+    
+      
     })
   
 

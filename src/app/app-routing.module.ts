@@ -9,6 +9,13 @@ import { CreatepasswordComponent } from './buyer/createpassword/createpassword.c
 import { RegisterComponent } from './buyer/register/register.component';
 import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
+import { CrAdditionalDetailsComponent } from './cr-additional-details/cr-additional-details.component';
+import { CrAmenitiesComponent } from './cr-amenities/cr-amenities.component';
+import { CrCommercialRentPreviewComponent } from './cr-commercial-rent-preview/cr-commercial-rent-preview.component';
+import { CrGalleryComponent } from './cr-gallery/cr-gallery.component';
+import { CrLocationDetailsComponent } from './cr-location-details/cr-location-details.component';
+import { CrPropertyDetailsComponent } from './cr-property-details/cr-property-details.component';
+import { CrRentalDetailsComponent } from './cr-rental-details/cr-rental-details.component';
 import { HomeComponent } from './home/home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
@@ -59,11 +66,10 @@ const routes: Routes = [
   {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
   {path:'changepassword-seller',component:ChangeSellerComponent},
   {path:'start-posting',component:StartPostingComponent},
+
   {path:'residential-rent',component:RrPropertyDetailsComponent},
   {path:'residentaial-rent-location-details',component:RrLocationDetailsComponent},
   {path:'residentaial-rent-rental-details',component:RrRentalDetailsComponent},
-  
- 
   {path:'residentaial-rent-amentites',component:RrAmentitesComponent},
   {path:'residentaial-rent-gallery',component:RrGalleryComponent},
   {path:'residentaial-rent-details',component:RrAdditionalDetailsComponent},
@@ -76,6 +82,14 @@ const routes: Routes = [
   {path:'residential-sale-gallery',component:RsGalleryComponent},
   {path:'residential-sale-add-details',component:RsAdditionalDetailsComponent},
   {path:'residential-sale-preview',component:RsResidentialSalePreviewComponent},
+
+  {path:'commercial-rent-property',component:CrPropertyDetailsComponent},
+  {path:'commercial-rent-rental-details',component:CrRentalDetailsComponent},
+  {path:'commercial-rent-location-details',component:CrLocationDetailsComponent},
+  {path:'commercial-rent-gallery',component:CrGalleryComponent},
+  {path:'commercial-rent-amenities',component:CrAmenitiesComponent},
+  {path:'commercial-rent-add-details',component:CrAdditionalDetailsComponent},
+  {path:'commercial-rent-preview',component:CrCommercialRentPreviewComponent}
 
 ];
 

@@ -138,9 +138,7 @@ export class RrGalleryComponent implements OnInit{
   uploadvid(){
     const formdata = new FormData();
     formdata.append('video',this.selectedfile);
-    this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
-      window.location.reload();
-      
+    this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{ 
     })
 
   }

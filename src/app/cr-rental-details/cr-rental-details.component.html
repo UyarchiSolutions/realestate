@@ -50,14 +50,15 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links nav-active">Rental Details</p>
-    <p class="navbar-links">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links"  (click)="back(0)">Property details</p>
+            <p class="navbar-links" (click)="back(1)">Location Details</p>
+            <p class="navbar-links nav-active" (click)="back(2)">Price Details</p>
+            <p class="navbar-links" (click)="back(3)">Amenities</p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links"(click)="back(5)">Additional Details </p>
+        </nav>
+        
 
 
 
@@ -65,49 +66,114 @@
     <h2>Rental Details</h2>
 
 
+<form [formGroup]="priceform" (ngSubmit)="rentsub()">
+
     <div class="form">
     <div class="expected-rent">
         <label>Expected Rent :</label>
-   <div>
-    <input type="text" placeholder="Rent Amount">
+   <div >
+    <input type="text" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
-        <input type="radio"><label>Negotiable</label>
-    </div>
-   </div>
+        <input type="checkbox" formControlName="ExpectedrenttNegotiable" ><label>Negotiable</label>
     </div>
 
+   </div>
+    </div>
     <div class="expected-rent">
         <label>Advance Amount :</label>
-   <div>
-    <input type="text" placeholder="Advance Amount">
+   <div >
+    <input type="text" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
-        <input type="radio"><label>Negotiable</label>
+        <input type="checkbox" formControlName="AdvanceAmountNegotiable" ><label>Negotiable</label>
     </div>
+
    </div>
     </div>
-
     <div>
         <label>Lease Duration :</label>
-     
-        <select class="maintenance-select"><option>Select</option></select>
-   
-    </div>
+        <div
+          class="dropdown select-field"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <p [innerHTML]="ldv" *ngIf="ldv"></p>
+          <p [innerHTML]="data.leaseDuration" *ngIf="!ldv && data.leaseDuration" ></p>
+          <p *ngIf="!ldv && !data.leaseDuration" style="opacity: 0.5">Select </p>
+
+          <ul class="dropdown-menu select-filed-options">
+            <li *ngFor="let lease of leasearray">
+              <a class="dropdown-item" (click)="leaseDur(lease)"
+                >{{lease}}</a
+              >
+           </li>
+          </ul>
+        </div>
+      </div>
+    <div>
+        <label>Lock in Period :</label>
+        <div
+          class="dropdown select-field"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <p [innerHTML]="lipv" *ngIf="lipv"></p>
+          <p [innerHTML]="data.lock_in_period" *ngIf="!lipv && data.lock_in_period" ></p>
+          <p *ngIf="!lipv && !data.lock_in_period" style="opacity: 0.5">Select </p>
+
+          <ul class="dropdown-menu select-filed-options">
+            <li *ngFor="let lease of leasearray">
+              <a class="dropdown-item" (click)="lockDur(lease)"
+                >{{lease}}</a
+              >
+           </li>
+          </ul>
+        </div>
+      </div>
+
+ 
 
     <div>
-        <label>Lock in Period:</label>
-     
-        <select class="maintenance-select"><option>Select</option></select>
+        <label>Maintenance : </label>
    
+      <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+    <p [innerHTML]="maintanceVal" *ngIf="maintanceVal"></p><p *ngIf="!maintanceVal && data.MaintenanceStatus ">Maintenance</p><p [innerHTML]="data.MaintenanceStatus" *ngIf="data.MaintenanceStatus && !maintanceVal"></p>
+      
+        <ul class="dropdown-menu select-filed-options" >
+
+          <li><a class="dropdown-item" (click)="maintance('Include Maintenance')" >Include Maintenance</a></li>
+          <li><a class="dropdown-item" (click)="maintance('Exclude Maintenance')">Exclude Maintenance</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div>
-        <label>maintenance :</label>
-     
-        <select class="maintenance-select"><option>Select</option></select>
-   
+    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+        <label>Exclude Maintenance :</label>
+     <div style="width: 50%; display: flex;
+     align-items: flex-end;">
+        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <!-- <select   formControlName="MrSq">
+ 
+            <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
+            <option value="Per Month"  > Per Month</option>
+        </select>  -->
+        <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+              
+                <ul class="dropdown-menu select-filed-options" >
+        
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Sq.ft/Month')" >Per Sq.ft/Month</a></li>
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Month')">Per Month</a></li>
+                </ul>
+              </div>
+    </div>
     </div>
 
     <div></div>
+
   
 
    
@@ -118,14 +184,19 @@
 
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit"  *ngIf="!data.expectedPrice">Save & Continue</button>
+</div>
+<div class="save-continue">
+    <button (click)="routetopreview()"  *ngIf="data.expectedPrice">Save</button>
 </div>
 
 
 </div>
+</form>
+
 
 </div>
-    
+
 
     </div>
     

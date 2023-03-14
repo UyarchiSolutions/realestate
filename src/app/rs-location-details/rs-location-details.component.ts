@@ -34,6 +34,7 @@ export class RsLocationDetailsComponent implements OnInit{
     myAddres: any;
     
     datares: any;
+  data: any;
   
   
     constructor(private arouter:ActivatedRoute,
@@ -49,15 +50,21 @@ export class RsLocationDetailsComponent implements OnInit{
         console.log(params);
         this.id=params['id'];
         console.log(this.id,"this is id from rrp"); 
-        navigator.geolocation.getCurrentPosition((position: any) => {
-          this.latitude = position.coords.latitude;
-          this.longtitude = position.coords.longitude;
-          this.rrlocform.patchValue({
-            lat: this.latitude,
-            long: this.longtitude
-          })
+
+       
+      })
+      navigator.geolocation.getCurrentPosition((position: any) => {
+        this.latitude = position.coords.latitude;
+        this.longtitude = position.coords.longitude;
+        this.rrlocform.patchValue({
+          lat: this.latitude,
+          long: this.longtitude
         })
       })
+      this.service.formget(this.id).subscribe((res:any)=>{
+        this.data= res;
+      })
+
       this.updateform();
       }
   
@@ -124,7 +131,7 @@ export class RsLocationDetailsComponent implements OnInit{
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+        this.router.navigateByUrl('/residential-sale-preview?' + queryString);
     
         this.service.formget(this.id).subscribe((res: any) => {
           location.reload();
@@ -195,9 +202,14 @@ export class RsLocationDetailsComponent implements OnInit{
   
   
       // address for map
-      
+ 
     handleAddressChange(address: Address) {
-      // this.myAddres = address.formatted_address
+     this.myAddres = address.formatted_address;
+     this.rrlocform.patchValue({
+      addressLoaction: this.myAddres,
+
+    })
+     console.log( this.myAddres,"ddfada");
       this.latitude = address.geometry.location.lat();
       this.longtitude = address.geometry.location.lng();
      
@@ -207,7 +219,7 @@ export class RsLocationDetailsComponent implements OnInit{
         long: this.longtitude,
         
       })
-      
+   
     }
     options: any = {
       componentRestrictions: { country: 'IN' }
@@ -218,8 +230,7 @@ export class RsLocationDetailsComponent implements OnInit{
         lat: $event.latLng.lat(),
         long: $event.latLng.lng()
       })
-      console.log($event.latLng.lat(),$event.latLng.lng(),'event');
-      console.log(this.rrlocform.get('lat')?.value,this.rrlocform.get('long')?.value,"dfnhjkdhdfghfg")
+    
       this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
         console.log(res)
          

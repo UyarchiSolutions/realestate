@@ -479,10 +479,10 @@
             </div>
   
             <div class="save-continue" >
-              <button type="submit"  >Save & Continue</button>
+              <button type="submit"   *ngIf="!data.propertType" >Save & Continue</button>
             </div>
             <div class="save-continue" >
-              <button type="submit"  (click)="routetopreview()">Save</button>
+              <button type="button"  (click)="routetopreview()" *ngIf="data.propertType">Save</button>
             </div>
           </div>
         </form>
