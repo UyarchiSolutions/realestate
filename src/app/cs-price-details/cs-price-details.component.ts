@@ -1,25 +1,23 @@
-import { Component,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
 @Component({
-  selector: 'app-cr-rental-details',
-  templateUrl: './cr-rental-details.component.html',
-  styleUrls: ['./cr-rental-details.component.css']
+  selector: 'app-cs-price-details',
+  templateUrl: './cs-price-details.component.html',
+  styleUrls: ['./cs-price-details.component.css']
 })
-export class CrRentalDetailsComponent implements OnInit {
+export class CsPriceDetailsComponent {
 
-
-
+      
       id:any;
       data:any;
     
       priceform:any= this.fb.group({
-        ExpectedRent: new FormControl(),
-        ExpectedrenttNegotiable:new FormControl(),
-        AdvanceAmountNegotiable:new FormControl(),
-        AdvanceAmount:new FormControl(),
+        ExpectedPrice: new FormControl(),
+        ExpectedpricetNegotiable:new FormControl(),
+        CurrentlyInLoan:new FormControl(),
         ExcludeMaintenance:new FormControl(),
         MrSq: new FormControl()
     
@@ -31,7 +29,10 @@ export class CrRentalDetailsComponent implements OnInit {
         private router:Router){}
        
       ngOnInit(): void {
-  
+    
+        
+        
+       
         this.arouter.queryParams.subscribe(params => {
           console.log(params);
           this.id=params['id'];
@@ -47,21 +48,22 @@ export class CrRentalDetailsComponent implements OnInit {
           console.log(res);
           
           this.priceform.patchValue({
-            ExpectedRent:res.expectedPrice,
-            ExpectedrenttNegotiable:res.RentNegociable,
-            AdvanceAmount :res.AdvanceAmt,
-            AdvanceAmountNegotiable:res.depositeNegociable,
+            ExpectedPrice:res.expectedPrice,
+            ExpectedpricetNegotiable:res.RentNegociable,
+            CurrentlyInLoan:res.current_in_loan,
+            ExpectedDepositNegotiable:res.depositeNegociable,
             ExcludeMaintenance:res.maintainenceCost,
-            CurrentlyInLoan:res.current_in_loan
-            
-            
-          });this.maintanceVal= res.MaintenanceStatus ;
-          this.mainmon=res.squareFT;
-         
-          console.log('valuepatche',res.RentNegociable,res.depositeNegociable);
           
-           })
-           this.leaseloop();
+            
+          });this.maintanceVal=res.MaintenanceStatus;
+          this.mainmon=res.squareFT;
+          console.log('value patched') ;
+          
+           }
+    
+        
+          
+        )
       }
       maintanceVal='Include Maintenance';
     
@@ -70,11 +72,8 @@ export class CrRentalDetailsComponent implements OnInit {
         this.maintanceVal=a;
         
       }
-      check(){
-        console.log(this.priceform.get('ExpectedrenttNegotiable').value)
-      }
   
-      mainmon='';
+      mainmon:any;
     
       mainmonv(a:any){
     
@@ -86,31 +85,15 @@ export class CrRentalDetailsComponent implements OnInit {
     
         this.Lmainmon=a;
       }
-      ldv:any;
-      leasearray: any= [];
-      leaseDur(a:any){
-        this.ldv=a;
-      }
-      lipv:any;
-      lockDur(a:any){
-        this.lipv=a;
-      }
-      leaseloop(){
-        for(let i = 1; i<=13; i++){
-          this.leasearray.push(i +' Years' )
-        }
-      }
       rentsub(){
     
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
-          RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
-          AdvanceAmt:this.priceform.get('AdvanceAmount').value,
-          depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,
+          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+         
+          current_in_loan:this.priceform.get('CurrentlyInLoan').value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-          leaseDuration:this.ldv,
-          lock_in_period:this.lipv,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
         }
@@ -122,7 +105,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+          this.router.navigateByUrl('/commercial-sale-amenities?' + queryString);
           console.log(res);
           
         })
@@ -133,18 +116,17 @@ export class CrRentalDetailsComponent implements OnInit {
      
     
       routetopreview(){
+    
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
-          RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
-          AdvanceAmt:this.priceform.get('AdvanceAmount').value,
-          depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,
+          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+         
+          current_in_loan:this.priceform.get('CurrentlyInLoan').value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-          leaseDuration:this.ldv,
-          lock_in_period:this.lipv,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
-        }  
+        }   
              
               this.service.formput(this.id,data).subscribe((res:any)=>{});
             
@@ -154,7 +136,7 @@ export class CrRentalDetailsComponent implements OnInit {
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+        this.router.navigateByUrl('/commercial-sale-preview?' + queryString);
     
         this.service.formget(this.id).subscribe((res: any) => {
           location.reload();
@@ -167,7 +149,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+          this.router.navigateByUrl('/commercial-sale-property?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -177,7 +159,7 @@ export class CrRentalDetailsComponent implements OnInit {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-location-details?' + queryString
+            '/commercial-sale-location-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -188,7 +170,7 @@ export class CrRentalDetailsComponent implements OnInit {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-rental-details?' + queryString
+            '/commercial-sale-price-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -198,7 +180,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+          this.router.navigateByUrl('/commercial-sale-amenities?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -207,7 +189,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+          this.router.navigateByUrl('/commercial-sale-gallery?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
         if (count == 5) {
@@ -215,7 +197,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+          this.router.navigateByUrl('/commercial-sale-add-details?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
       }

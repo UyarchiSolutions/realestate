@@ -357,31 +357,25 @@
     <label>Amenities :</label>
     <div style="width: 50%; flex-direction: column;margin: 0 !important;">
  <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;" (click)="show(1)">
- <div class="selected-amenities"   >
 
-<p *ngFor="let amt of amenities" >{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <div class="selected-amenities" *ngIf="showami"  >
+
+<p *ngFor="let amt of SelectedAmenities" >{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path (click)="deleteAmit(amt)" fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
     </svg>
     </p>
   </div>
-    <div class="selected-amenities"  *ngIf="data.Amenities"  >
-<p *ngFor="let amt of data.Amenities">{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path (click)="deleteAmit(amt)" fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-    </svg>
-    </p>
-
-
- </div>
+ 
 </div>
 </div>
    
 
 <div class="save-continue">
-    <button type="submit" (click)="submit()" *ngIf="!data.waterSupply">Save & Continue</button>
+    <button type="submit" (click)="submit()" *ngIf="!data.final">Save & Continue</button>
 </div>
 
 <div class="save-continue">
-    <button type="submit" (click)="routetopreview()" *ngIf="data.waterSupply">Save </button>
+    <button type="submit" (click)="routetopreview()" *ngIf="data.final">Save </button>
 </div>
 
 </div>
@@ -406,7 +400,7 @@
 <div class="popup-container rr-con">
     <p>Amenities</p>
     <div *ngFor="let item of Amenities; index as i">
-    <span><input type="checkbox"   (change)="updateAmit($event)" value="{{item}}"  [checked]="is_chckked(item)">{{item}}</span>
+    <span><input type="checkbox"   (change)="updateAmit($event)" value="{{item}}"  [checked]="is_chckked(item)" >{{item}}</span>
     </div>
     
 <div class="save-btn">

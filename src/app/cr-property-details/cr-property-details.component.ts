@@ -145,7 +145,7 @@ export class CrPropertyDetailsComponent {
     
   }
   property = ['Office Space','Co working','Shop','Show room','Other business'
-              ,'Industrial shed','Godwon/Warehouse','Industrial/Building','Restaurant/Cafe']
+              ,'Industrial shed','Godown/Warehouse','Industrial/Building','Restaurant/Cafe']
   building= ['Apartment Type','Business park','Mall','Standalone Building','Independent shop']
 
   nave: boolean = false;
@@ -164,22 +164,33 @@ export class CrPropertyDetailsComponent {
 
   groundFloorv(total: any) {
     console.log(total,'ground');
-    if (total == 'a') {
+    if (total == 'Full Building') {
       this.tfv = 'Full Building';
+      console.log('1 st')
     }
-    if (total == 'b') {
+    if (total == 'Lower Basement') {
       this.tfv = 'Lower Basement';
     }
-    if (total == 'c') {
+    if (total == 'Upper Basement') {
       this.tfv = 'Upper Basement';
     }
-    if (total == 'd') {
+    if (total == '0') {
       this.tfv = 'Ground Floor';
     }
-     else {
-      this.tfv = total + ' Floors';
-    }
+  
+   
+  }
+  numberFloorv(total: any){
+
+    this.tfv = total + ' Floors';
+    console.log('number',total);
     this.floorarraygenerate(total);
+  }
+  numFloorv(a: any){
+
+    this.ofv = a + ' Floors';
+    console.log('number',a);
+    
   }
 
   floorarray: any = [];
@@ -197,23 +208,20 @@ export class CrPropertyDetailsComponent {
   ofv: any;
   
   onFloorv(a: any) {
-    console.log(a,'on flor');
+    console.log(a,'on flor value ');
     if (a == 'Full Building') {
-      this.tfv = 'Full Building';
+      this.ofv = 'Full Building';
     }
     if (a == 'Lower Basement') {
-      this.tfv = 'Lower Basement';
+      this.ofv = 'Lower Basement';
     }
     if (a == 'Upper Basement') {
-      this.tfv = 'Upper Basement';
+      this.ofv = 'Upper Basement';
     }
     if (a == 'Ground Floor') {
-      this.tfv = 'Ground Floor';
+      this.ofv = 'Ground Floor';
     }
-   else{
-    this.ofv = a + ' Floors';
-    console.log(this.ofv);
- }
+   
   }
   aop: any;
   ageofpropv(a: any) {

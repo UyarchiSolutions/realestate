@@ -37,13 +37,15 @@ export class CrAdditionalDetailsComponent {
       
     });
     this.service.formget(this.id).subscribe((res:any)=>{
+
+      this.data=res;
       this.adform.patchValue({
         datetostart:res.availabilityDate,
         contactname:res.contactName,
         cnumber:res.primaryContactNumber,
         c2number:res.secondaryContactNumber,
         preOccupancy:res.preOccupy
-      })
+      });
     })
   
   }
@@ -56,7 +58,7 @@ export class CrAdditionalDetailsComponent {
       contactName:this.adform.get('contactname')?.value,
       primaryContactNumber:this.adform.get('cnumber')?.value,
       secondaryContactNumber:this.adform.get('c2number')?.value,
-      preOccupy:this.adform.get('preOccupancy')?.value,
+      preOccupy:this.pov,
       
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -72,6 +74,10 @@ export class CrAdditionalDetailsComponent {
       console.log(res);
      })
        
+  }
+  pov:any;
+  PrevOccup(a:any){
+    this.pov=a;
   }
   routetopreview(){
   

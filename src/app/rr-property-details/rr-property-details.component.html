@@ -162,7 +162,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="propertyv('Gated Communit')"
+                  <a class="dropdown-item" (click)="propertyv('Gated Community')"
                     >Gated Community</a
                   >
                 </li>
@@ -459,10 +459,10 @@
           </div>
 
           <div class="save-continue" >
-            <button type="submit" *ngIf="!data.propertType">Save & Continue</button>
+            <button type="submit" *ngIf="!data.final">Save & Continue</button>
           </div>
           <div class="save-continue" >
-            <button type="submit" *ngIf="data.propertType" (click)="routetopreview()">Save</button>
+            <button type="submit" *ngIf="data.final" (click)="routetopreview()">Save</button>
           </div>
         </div>
       </form>

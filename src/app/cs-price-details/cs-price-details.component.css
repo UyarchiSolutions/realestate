@@ -67,15 +67,17 @@
 width: 100%;
 display: flex;
 margin: 20px 0;
-align-items: flex-start;
+align-items: center;
 justify-content: space-between;
 }
 .expected-rent{
     align-items: flex-start !important;
 }
-
+option{
+    font-size: 12px;
+}
 label{
-    width: 25% !important;
+    width: 30% !important;
     margin-top: 10px;
 }
 .negotiable label{
@@ -101,9 +103,9 @@ label{
     width: fit-content !important;
     margin-right: 10px;
 }
-.form  select,input{
+.form div  select,input{
     padding: 10px;
-    width: 50%;
+    width: 100%;
     background: none;
     border: none;
     border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
@@ -153,7 +155,27 @@ label{
     display: flex;
     align-items: flex-start !important;
 }
-
+.address label{
+    margin-top: 10px;
+}
+.address div{
+    width: 70%;
+    display: flex;
+    flex-direction: column ;
+    align-items: flex-start;
+    margin: 0 !important;
+}
+.address div span{
+    margin: 20px 0 10px 0;
+    display: flex;
+    align-items: center;
+}
+.address div span svg{
+    margin-right: 5px;
+}
+.address input{
+    width: 100% !important;
+}
 .rent-lease{
     display: flex;
     width: fit-content;
@@ -166,142 +188,18 @@ label{
     cursor: pointer;
 }
 .rent-lease-active{
+    background-color:white;
+    color: black;
+}
+.rent-lease-active:hover{
     background-color:var(--lightbrown) !important;
     color: white;
 }
-.non-veg-allowed div{
-    width: 50%;
-    margin: 0 !important;
-    justify-content: unset !important; 
-
-}
-.non-veg-allowed div div{
-    justify-content: unset !important;
-    width: 30%;
-}
-.flooring-type{
-    width: 50% !important;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 !important;
-    margin-top: 10px !important;
-    row-gap: 20px;
-
-}
-.flooring-type>div{
-    width: 48%;
-    display: flex;
-    align-items: flex-start !important;
-    flex-direction: column;
-    margin: 0 !important;
-}
-.flooring-type div label{
-    font-size: 13px;
-    margin-top: 0 !important;
-    width: 100% !important;
-}
-.flooring-type>div>div{
-    width: 100% !important;
-}
-.flooring-type-section{
-    display: flex;
-    align-items: flex-start !important;
-}
-/* .flooring-type-section label{
-    margin-top: 10px;
-} */
-.selected-amenities{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: unset !important;
-    border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
-    padding-bottom: 10px;
-}
-.selected-amenities>p{
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-
-    background-color: white;
-    padding: 3px 5px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-   margin: 5px ;
-}
-.selected-amenities>p>svg{
-    width: 9px;
-    height: 9px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-/* 
-popup */
-
-.popup{
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.500);
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.dummy{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-}
-.popup-container{
-    width: 800px;
-    height: fit-content;
-    background-color: var(--sandal);
-    border-radius: 5px;
-    padding: 20px 40px;
-}
-.popup-container>p{
-    width: 100%;
-    font-size: 18px;
-    color: var(--brown);
-    font-weight: bold;
-}
-.popup-container{
-    display: flex;
-    flex-wrap: wrap;
-position: relative;
-z-index: 5;
-    gap: 5px;
-}
-.popup>.popup-container>div{
-    display: flex;
-    justify-content: unset;
-    width: 30%;
-}
-.popup-container>div>span{
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    padding: 3px 5px;
-    color: var(--brown);
-    font-weight: 500;
- 
-}
-.popup-container>div>span>input{
-    margin-right: 5px;
-}
-.save-btn{
-    width: 100% !important;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center !important;
-}
-.save-btn>button{
-    background-color: var(--brown);
+.selected{
+    background-color:var(--lightbrown) !important;
     color: white;
-    width: fit-content !important;
-    border: none;
-    padding: 8px 20px;
+}
+.rent-lease-active:active{
+    background-color:brown !important;
+    color: white;
 }

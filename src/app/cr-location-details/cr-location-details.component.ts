@@ -90,7 +90,7 @@ export class CrLocationDetailsComponent {
                 id:res._id
               }
               var queryString = new URLSearchParams(postdata).toString();
-              this.router.navigateByUrl('/commercial-rent-rental-details??' + queryString);
+              this.router.navigateByUrl('/commercial-rent-rental-details?' + queryString);
               console.log(res);
              
              })

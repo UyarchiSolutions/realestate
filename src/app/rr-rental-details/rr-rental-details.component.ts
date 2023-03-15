@@ -51,6 +51,8 @@ export class RrRentalDetailsComponent implements OnInit{
     this.service.formget(this.id).subscribe((res:any)=>{
 
       this.data=res;
+      
+     
 
       console.log(res);
       if(this.data.rentDetails=='rent'){
@@ -64,7 +66,8 @@ export class RrRentalDetailsComponent implements OnInit{
         
       });console.log('value patched') ;
       this.switch= this.data.rentDetails;
-      this.maintanceVal= this.data.MaintenanceStatus }
+      this.maintanceVal= this.data.MaintenanceStatus;
+      this.mainmon=res.squareFT; }
 
       if(this.data.rentDetails=='lease'){
         this.leaseform.patchValue({
@@ -74,11 +77,15 @@ export class RrRentalDetailsComponent implements OnInit{
           LExcludeMaintenance:res.maintainenceCost
         }); 
         
-        this.LmaintanceVal= this.data.MaintenanceStatus 
-      this.switch= this.data.rentDetails;}
+        this.LmaintanceVal= this.data.MaintenanceStatus; 
+      this.switch= this.data.rentDetails;
+      this.Lmainmon=res.squareFT;}
       
     })
   console.log(this.switch,'end')
+  }
+  checkd(){
+    console.log(this.leaseform.get('LExpectedDepositNegotiable').value)
   }
   maintanceVal='Include Maintenance';
 
@@ -142,7 +149,7 @@ export class RrRentalDetailsComponent implements OnInit{
       squareFT:this.Lmainmon,
       MaintenanceStatus:this.LmaintanceVal,
     }
-  
+    console.log(data);
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
       var postdata ={
@@ -195,7 +202,7 @@ export class RrRentalDetailsComponent implements OnInit{
             squareFT:this.Lmainmon,
             MaintenanceStatus:this.LmaintanceVal,
           }
-        
+          console.log(ldata);
           this.service.formput(this.id,ldata).subscribe((res:any)=>{});
          }
 

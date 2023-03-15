@@ -97,6 +97,7 @@ none: any;
   
       this.service.formget(this.id).subscribe((res:any)=>{
          
+        this.amenities= res.Amenities;
           this.data=res;
         this.myform.patchValue({
        
@@ -363,10 +364,12 @@ none: any;
       }
     }
     showModal = -1;
-    
+    showami=false;
+
     amshow= false;
     show(index: number) {
       this.showModal = index;
+      this.showami =true;
     }
     close() {
       this.showModal = -1;

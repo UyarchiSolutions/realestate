@@ -18,10 +18,11 @@
     width: 70%;
     margin: auto;
     margin-top: 30px;
- 
+  
     color: #473B32;
     font-family: var(--raleway);
     font-weight: 700;
+
 }
 .ad{
     width: 15%;
@@ -57,47 +58,8 @@
     font-family: var(--ralewaybold);
     margin: 20px 0;
 }
-.form{
-    width: 70%;
-    margin:50px auto;
-   
-    
-}
-.form div{
-width: 100%;
 
-display: flex;
-margin: 20px 0;
-align-items: center;
-justify-content: space-between;
-}
-label{
-    width: 25% !important;
 
-}
-.form div select,input{
-    padding: 10px;
-    width: 50%;
-    background: none;
-    border: none;
-    border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
-    position:relative ;
-}
-textarea{
-    padding: 10px;
-    width: 50%;
-    background: none;
-
-    border: solid rgba(0, 0, 0, 0.212) 1px;
-    position:relative ;
-}
-.forgot-password{
-    font-size: 10px;
-    margin-top: -15px;
-    text-align: right;
-    text-decoration: underline;
-    cursor: pointer;
-}
 
 .login-btn button{
     border: none;
@@ -135,25 +97,73 @@ textarea{
     color: white;
     border: none;
 }
-.floors div{
-    width: 50%;
-    display: flex;
-    margin: 0 !important;
-}
-.floors select{
-    width: 48% !important;
-}
-.radio-select div{
-    width: 50%;
-    margin: 0 !important;
-    justify-content: unset !important; 
 
+.upload-section{
+    width: 70%;
+    margin:50px auto;
+    
 }
-.radio-select div div{
-    justify-content: unset !important;
-    width: 50%;
-}
-.radio-select input{
-    width: fit-content;
-    margin-right: 5px;
-}
+.upload-section div{
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    }
+    label{
+        width: 25% !important;
+
+    }
+
+    .image-gallery{
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center !important;
+        row-gap: 10px;
+        column-gap: 10px;
+   
+    }
+    .image-gallery .images{
+        width: 115px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        position: relative;
+   
+   
+    }
+    .video{
+        width: fit-content !important;
+    }
+    .image-gallery img{
+        width: 100%;
+    }
+   .when-hover{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.527);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+   }
+   .when-hover img{
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   }
+   .when-hover video{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   }
+   .image-gallery .images:hover .when-hover{
+    visibility: visible;
+
+   }
+  

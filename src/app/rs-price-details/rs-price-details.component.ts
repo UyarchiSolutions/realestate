@@ -59,6 +59,8 @@ export class RsPriceDetailsComponent implements OnInit {
           
           
         });console.log('value patched') ;
+          this.mainmon=res.squareFT;
+          this.maintanceVal=res.MaintenanceStatus;
         
          }
   

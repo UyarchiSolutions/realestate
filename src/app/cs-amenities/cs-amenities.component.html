@@ -50,14 +50,14 @@
     </div>
     <div class="main">
  
-<nav>
-    <p class="navbar-links ">Property details</p>
-    <p class="navbar-links ">Location Details</p>
-    <p class="navbar-links ">Rental Details</p>
-    <p class="navbar-links nav-active">Amenities</p>
-    <p class="navbar-links">Gallery</p>
-    <p class="navbar-links">Additional Details </p>
-</nav>
+        <nav>
+            <p class="navbar-links" (click)="back(0)">Property details</p>
+            <p class="navbar-links " (click)="back(1)">Location Details</p>
+            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links" (click)="back(5)">Additional Details </p>
+        </nav>
 
 
 
@@ -67,109 +67,151 @@
 
 
 
-    <div class="form">
+    <div class="form" [formGroup]="myform">
+       
         <div>
             <label>Furnishing Status :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="fsv" *ngIf="fsv" ></p>
+            <p [innerText]="data.furnishingStatus" *ngIf="!fsv && data.furnishingStatus"></p>
+            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5;">Furnishing Status</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="furstav('Fully Furnished')" >Fully Furnished</a></li>
+              <li><a class="dropdown-item" (click)="furstav('Semi Furnished')">Semi Furnished</a></li>
+              <li><a class="dropdown-item" (click)="furstav('UnFurnished')">UnFurnished</a></li>
+            </ul>
+          </div>
         </div>
         <div>
             <label>Parking :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="pv" *ngIf="pv" ></p>
+            <p [innerText]="data.parkingFacilities" *ngIf="!pv && data.parkingFacilities"></p>
+             <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5;">Parking</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="parkTv('Public And Reserved')" >Public And Reserved</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('Public')" >Public</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('Reserved')" >Reserved</a></li>
+              <li><a class="dropdown-item" (click)="parkTv('None')" >None</a></li>
+           
+            </ul>
+          </div>
         </div>
-
-
+  
         <div>
-            <label>Power Backup:</label>
-         <select>
-            <option>option</option>
-         </select>
+            <label>Power Backup :</label>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="pb" *ngIf="pb" ></p>
+            <p [innerText]="data.powerBackup" *ngIf="!pb && data.powerBackup"></p>
+            <p *ngIf="!pb && !data.powerBackup" style="opacity: 0.5;">Power Backup </p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="powerbv('Full')" >Full</a></li>
+              <li><a class="dropdown-item" (click)="powerbv('DG Backup')">DG Backup</a></li>
+              <li><a class="dropdown-item" (click)="powerbv('Need to Arrange')">Need to Arrange</a></li>
+            </ul>
+          </div>
         </div>
-
         <div>
             <label>Washroom :</label>
-         <select>
-            <option>option</option>
-         </select>
+       
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="btv" *ngIf="btv" ></p> 
+            <p [innerText]="data.bathRoomType"  *ngIf="!btv && data.bathRoomType "></p> 
+            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5;">Washroom</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="bathTv('Private')" >Private</a></li>
+              <li><a class="dropdown-item" (click)="bathTv('Common')">Common</a></li>
+              <li><a class="dropdown-item" (click)="bathTv('No washroom')">No washroom</a></li>
+            </ul>
+          </div>
         </div>
-
         <div>
             <label>Lift :</label>
-         <select>
-            <option>option</option>
-         </select>
-        </div>
-
-        <div>
-            <label>Toilet Type :</label>
-         <select>
-            <option>option</option>
-         </select>
-        </div>
-
-
-
-        <div class="non-veg-allowed water-storage">
-            <label>Water Storage Facility</label>
-            <div>
-                <div>
-                    <input type="radio">Yes
-                </div>
-                <div>
-                    <input type="radio">No
-                </div>
-            </div>
-        </div>
        
+          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        
+            <p [innerHTML]="lft" *ngIf="lft" ></p> 
+            <p [innerText]="data.Lift"  *ngIf="!lft && data.Lift "></p> 
+            <p *ngIf="!lft && !data.Lift" style="opacity: 0.5;">Lift</p>
+          
+            <ul class="dropdown-menu select-filed-options" >
+    
+              <li><a class="dropdown-item" (click)="liftTv('Personal')" >Personal</a></li>
+              <li><a class="dropdown-item" (click)="liftTv('Common')">Common</a></li>
+              <li><a class="dropdown-item" (click)="liftTv('No')">No</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="non-veg-allowed gated-security">
-            <label>Security</label>
+            <label>Water Storage facility:</label>
             <div>
                 <div>
-                    <input type="radio">Yes
+                    <input type="radio" name="waterFacility"  [checked]="data.waterStorage == 'yes'" formControlName="waterFacility" value="yes">Yes
                 </div>
                 <div>
-                    <input type="radio">No
+                    <input type="radio" name="waterFacility"  [checked]="data.waterStorage == 'no'" formControlName="waterFacility" value="no">No
+                </div>
+            </div>
+        </div>
+        <div class="non-veg-allowed gated-security">
+            <label>Security:</label>
+            <div>
+                <div>
+                    <input type="radio" name="Security"  [checked]="data.security == 'yes'" formControlName="Security" value="yes">Yes
+                </div>
+                <div>
+                    <input type="radio" name="Security"  [checked]="data.security == 'no'" formControlName="Security" value="no">No
+                </div>
+            </div>
+        </div>
+        <div class="non-veg-allowed gated-security">
+            <label>Escalator:</label>
+            <div>
+                <div>
+                    <input type="radio" name="Escalator"  [checked]="data.escalator == 'yes'"  formControlName="Escalator" value="yes">Yes
+                </div>
+                <div>
+                    <input type="radio" name="Escalator"  [checked]="data.escalator == 'no'" formControlName="Escalator" value="no">No
+                </div>
+            </div>
+        </div>
+        <div class="non-veg-allowed gated-security">
+            <label>WIFI:</label>
+            <div>
+                <div>
+                    <input type="radio" name="WIFI"  [checked]="data.gate_Security == 'yes'" formControlName="WIFI" value="yes">Yes
+                </div>
+                <div>
+                    <input type="radio" name="WIFI"  [checked]="data.gate_Security == 'no'" formControlName="WIFI" value="no">No
                 </div>
             </div>
         </div>
 
-        <div class="non-veg-allowed">
-            <label>Escalator</label>
-            <div>
-                <div>
-                    <input type="radio">Yes
-                </div>
-                <div>
-                    <input type="radio">No
-                </div>
-            </div>
-        </div>
-        <div class="non-veg-allowed">
-            <label>Wi-Fi</label>
-            <div>
-                <div>
-                    <input type="radio">Yes
-                </div>
-                <div>
-                    <input type="radio">No
-                </div>
-            </div>
-        </div>
+       
       
-  
-
-
-
-
-
 
 <div class="save-continue">
-    <button>Save & Continue</button>
+    <button type="submit" (click)="submit()" *ngIf="!data.powerBackup">Save & Continue</button>
 </div>
 
+<div class="save-continue">
+    <button type="submit" (click)="routetopreview()"  *ngIf="data.powerBackup">Save </button>
+</div>
 
 </div>
 
@@ -178,24 +220,13 @@
 
     </div>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     <div class="ad"></div>
     
     
     </div>
+
+
+
+    

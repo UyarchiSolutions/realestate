@@ -50,138 +50,86 @@
     </div>
     <div class="main">
  
-        <nav>
-            <p class="navbar-links"  (click)="back(0)">Property details</p>
-            <p class="navbar-links" (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Rental Details</p>
-            <p class="navbar-links" (click)="back(3)">Amenities</p>
-            <p class="navbar-links nav-active" (click)="back(4)" >Gallery</p>
-            <p class="navbar-links" (click)="back(5)">Additional Details </p>
-        </nav>
+<nav>
+    <p class="navbar-links" (click)="back(0)">Property details</p>
+    <p class="navbar-links nav-active" (click)="back(1)">Location Details</p>
+    <p class="navbar-links" (click)="back(2)">Price Details</p>
+    <p class="navbar-links" (click)="back(3)">Amenities</p>
+    <p class="navbar-links" (click)="back(4)">Gallery</p>
+    <p class="navbar-links" (click)="back(5)">Additional Details </p>
+</nav>
 
 
-
+<form [formGroup]="rrlocform" (ngSubmit)="OnSubmit()">
 <div class="Location-details">
-    <h2>Gallery</h2>
-
-<div class="upload-section">
+    <h2>Location Details</h2>
+    <div class="form">
+  
+     <div>
+            <label>Building Name :</label>
+         <input type="text" placeholder="Enter Building Name" formControlName="BuildingName">
+    </div>
+        <!-- <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p> -->
+    
+        <div>
+            <label>Address:</label>
+         <input type="text" placeholder="Enter Address " formControlName="Address">
+    </div>
+    <!-- <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p> -->
+   
+    <div>
+        <label>Pincode :</label>
+  <input type="text" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
+    </div>
+    <!-- <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+    <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p> -->
 
    
-<div class="upload-image">
-    <label>Photos :</label>
-    <input type="file" id="image" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
-
-<!-- <div class="col-sm-10 col-md-8">
-                  <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;" [multiple]="5" accept="image/gif, image/jpeg, image/png" />
-                  <label for="Uploadss" class="resume-upload" style="background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;"><span>Choose
-                      Image</span></label>
-                  <div>
-                    <p *ngIf="this.plan_dt.totalImage < gallery.length">You can post only{{this.plan_dt.totalImage}}
-                      images</p> -->
-                  <!-- </div>
-                </div> --> 
-
-
-</div>
-
-<div class="image-gallery">
- 
-    <div class="images"  *ngFor="let preview of imagePreview; let i = index">
-        
-        <img  [src]="preview"    width="200px" height="150ox">
-        <div class="when-hover">
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
+    <div>
+        <label>Landmark :</label>
+  <input type="text" placeholder="Enter landmark" formControlName="Landmark">
     </div>
+    <!-- <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Pincode </p> -->
 
- 
-</div>
-<div class="image-gallery" *ngIf="data.image" >
-                    
-    <div class="images" *ngFor="let img of data.image ; let i = index">
-        
-        <img  [src]="'https://uyarchicrm.click/' + img" width="200px" height="150ox" >
-        <div >
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
-    </div>
- 
-</div>
+    <div class="address">
+        <label>Select location Via Map :</label>
+        <div>
+      <span style="min-width: 100%;"><svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.99961 15.451L2.4741 10.9255C1.57905 10.0304 0.96952 8.89002 0.722581 7.64855C0.475642 6.40707 0.602388 5.12025 1.08679 3.95081C1.57119 2.78136 2.3915 1.78183 3.44397 1.07859C4.49644 0.375351 5.73381 0 6.99961 0C8.26541 0 9.50278 0.375351 10.5552 1.07859C11.6077 1.78183 12.428 2.78136 12.9124 3.95081C13.3968 5.12025 13.5236 6.40707 13.2766 7.64855C13.0297 8.89002 12.4202 10.0304 11.5251 10.9255L6.99961 15.451ZM10.5196 9.91994C11.2157 9.22377 11.6897 8.33681 11.8818 7.37123C12.0738 6.40565 11.9752 5.40481 11.5984 4.49527C11.2217 3.58573 10.5836 2.80834 9.76506 2.2614C8.94648 1.71445 7.9841 1.42253 6.99961 1.42253C6.01512 1.42253 5.05274 1.71445 4.23416 2.2614C3.41558 2.80834 2.77756 3.58573 2.40079 4.49527C2.02402 5.40481 1.92542 6.40565 2.11744 7.37123C2.30947 8.33681 2.78351 9.22377 3.47961 9.91994L6.99961 13.4399L10.5196 9.91994ZM6.99961 7.82216C6.62241 7.82216 6.26066 7.67232 5.99395 7.4056C5.72723 7.13889 5.57739 6.77714 5.57739 6.39994C5.57739 6.02275 5.72723 5.661 5.99395 5.39428C6.26066 5.12756 6.62241 4.97772 6.99961 4.97772C7.37681 4.97772 7.73855 5.12756 8.00527 5.39428C8.27199 5.661 8.42183 6.02275 8.42183 6.39994C8.42183 6.77714 8.27199 7.13889 8.00527 7.4056C7.73855 7.67232 7.37681 7.82216 6.99961 7.82216Z" fill="#222222"/>
+        </svg><input class="location-field" ngx-google-places-autocomplete [options]="options"
+        (onAddressChange)="handleAddressChange($event)" style="min-width: 90% !important;padding: 10px;" type="text" formControlName="addressLoaction">
+        </span>
 
-<div class="upload-video">
-    <label>Video :</label>
-    <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
-</div>
-
-
-<div class="image-gallery"  *ngIf="videoSrc">
-    
-    <div class="images video">
-        <video [src]="videoSrc" *ngIf="videoSrc" controls style="width:200px"></video>
-    <div class="when-hover">
-        <img src="../../assets/images/image-remove-btn.png" (click)="removevid()">
+        <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="lat" [longitude]="long"
+                [zoom]="10" [usePanning]="true">
+                <agm-marker (dragEnd)="draggEnded($event)" [markerDraggable]="true"
+                  [latitude]="parseFloat(rrlocform.get('lat')?.value)"
+                  [longitude]="parseFloat(rrlocform.get('long')?.value)"></agm-marker>
+              </agm-map>
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7774.085275645583!2d80.24697922125611!3d13.032956813262508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b4687f6ae9%3A0x671019410bd08a22!2sAlwarpet%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1676542904958!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
     </div>
     </div>
-  
-      
-          
 
 
-</div>
-<div class="image-gallery" *ngIf="data.videos">
-    
-    <div class="images video" *ngFor="let vid of data.videos">
-        <video [src]="vid" controls style="width:200px"></video>
-  
+
+    <div>
+        <label> Direction :</label>
+       <input type="text" placeholder="Direction to Tenants" formControlName="direction">
     </div>
-  
-      
-          
-
-
-</div>
-
-</div>
 
 <div class="save-continue">
-    <button (click)="submit()" *ngIf="!data.final">Save & Continue</button>
+    <button type="submit"  *ngIf="!data.landMark" >Save & Continue</button>
 </div>
-<div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+<div class="save-continue">
+    <button type="submit" (click)="routetopreview()" *ngIf="data.landMark" >Save </button> 
+    <!-- *ngIf="!data.landMark" -->
 </div>
 
-
-   
 </div>
+
+</div>
+<div class="ad"></div>
+    
+    
     
 
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="ad"></div>
-    
-    
-    </div>

@@ -121,7 +121,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="!mainmon && !data.squareFT ">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -144,10 +144,10 @@
 
 
 <div class="save-continue">
-    <button type="submit" *ngIf="!data.rentDetails">Save & Continue</button>
+    <button type="submit" *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()" *ngIf="data.rentDetails">Save</button>
+    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
 </div>
 
 
@@ -173,7 +173,7 @@
    <div>
     <input type="text" placeholder="Expected Lease" formControlName="LExpectedDeposit">
     <div class="negotiable">
-        <input type="checkbox" formControlName="LExpectedDepositNegotiable"><label>Negotiable</label>
+        <input type="checkbox" formControlName="LExpectedDepositNegotiable" (click)="checkd()"><label>Negotiable</label>
     </div>
    </div>
     </div>
@@ -226,10 +226,10 @@
 
 
 <div class="save-continue">
-    <button type="submit" *ngIf="!data.rentDetails">Save & Continue</button>
+    <button type="submit" *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()" *ngIf="data.rentDetails">Save</button>
+    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
 </div>
 
 

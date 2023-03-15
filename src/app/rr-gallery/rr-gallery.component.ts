@@ -49,23 +49,34 @@ export class RrGalleryComponent implements OnInit{
     this.service.formget(this.id).subscribe((res:any)=>{
 
       this.data = res;
+
+      // for(let i=0;i < res.image.length && i<=5;i++){
+        
+
+      //  const images = this.imageform.get('images') as FormArray;
+      //  images.at(i).setValue(res.image[i]);
+      //   console.log(res.image[i]);
+      //   this.imagePreview[i] = res.image[i];
+      // }
+ 
+      console.log(res.image,"res image")
       console.log(res);
     })
   }
-  changeImage(img: any) {
-    this.gallery = [];
-    this.gallaryview = [];
-    var filesAmount = img.target.files.length;
-    for (let i = 0; i < filesAmount; i++) {
-      const res = img.target.files[i];
-      this.gallery.push(res);
-      var reader = new FileReader();
-      reader.readAsDataURL(res);
-      reader.onload = (event) => {
-        this.gallaryview.push((<FileReader>event.target).result);
-      }
-    }
-  }
+  // changeImage(img: any) {
+  //   this.gallery = [];
+  //   this.gallaryview = [];
+  //   var filesAmount = img.target.files.length;
+  //   for (let i = 0; i < filesAmount; i++) {
+  //     const res = img.target.files[i];
+  //     this.gallery.push(res);
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(res);
+  //     reader.onload = (event) => {
+  //       this.gallaryview.push((<FileReader>event.target).result);
+  //     }
+  //   }
+  // }
   onFileselect(e:any){
 
     this.imageform.get('images').reset();
@@ -86,11 +97,13 @@ export class RrGalleryComponent implements OnInit{
 
       }
       reader.readAsDataURL(file);
+    
     }
   }
   removeimg(index: number){
    
-    console.log('remove working');
+    console.log('remove working', this.imageform.get('images').get(index.toString()));
+
     this.imageform.get('images').get(index.toString()).setValue(null);
     this.imagePreview.splice(index,1);
     const input= document.getElementById('imageinput') as HTMLInputElement;
@@ -138,8 +151,8 @@ export class RrGalleryComponent implements OnInit{
   uploadvid(){
     const formdata = new FormData();
     formdata.append('video',this.selectedfile);
-    this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{ 
-    })
+    this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
+     })
 
   }
 
@@ -164,15 +177,15 @@ export class RrGalleryComponent implements OnInit{
     this.uploadimg();
     this.uploadvid();
     
-    var data = {
-      id: this.id,
-    };
-    var queryString = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+    // var data = {
+    //   id: this.id,
+    // };
+    // var queryString = new URLSearchParams(data).toString();
+    // this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
 
-    this.service.formget(this.id).subscribe((res: any) => {
+    // this.service.formget(this.id).subscribe((res: any) => {
       
-    });
+    // });
   }
   back(count:any){
     if(count == 0){

@@ -70,7 +70,7 @@ export class RrAmentitesComponent implements OnInit {
       bedRoom:this.bev,
       bathRoom:this.barv,
       balCony:this.balv,
-      Amenities:this.amenities,
+      Amenities:this.SelectedAmenities,
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -93,6 +93,7 @@ export class RrAmentitesComponent implements OnInit {
     this.service.formget(this.id).subscribe((res:any)=>{
         console.log(res,453453)
         this.data=res;
+        this.SelectedAmenities= res.Amenities;
       this.myform.patchValue({
      
         Non_veg:res.Non_veg,
@@ -195,38 +196,41 @@ export class RrAmentitesComponent implements OnInit {
     this.myform.get('gate_Security').setValue(a);
 
   }
-  amenities: any = [];
+  SelectedAmenities: any = [];
 
   amtsub(){
-    this.myform.get('Amenities').setValue(this.amenities);
+    this.myform.get('Amenities').setValue(this.SelectedAmenities);
   }
   updateAmit(v: any) {
     
     if (v.target.checked) {
       var val = v.target.value;
-      this.amenities.push(val);
+      this.SelectedAmenities.push(val);
     } else {
-      let index = this.amenities.findIndex((res: any) => res == v.target.value);
+      let index = this.SelectedAmenities.findIndex((res: any) => res == v.target.value);
       if (index != -1) {
-        this.amenities.splice(index, 1);
+        this.SelectedAmenities.splice(index, 1);
       }
     }
 
-    console.log('updted',this.amenities);
+    console.log('updted',this.SelectedAmenities);
   }
+
   deleteAmit(v:any){
 
-    let index = this.amenities.indexOf(v);
+    let index = this.SelectedAmenities.indexOf(v);
     
     if (index > -1) {
-    this.amenities.splice(index, 1);
+    this.SelectedAmenities.splice(index, 1);
     
 
     }
-    console.log('deleted',this.amenities);
+    console.log('deleted',this.SelectedAmenities);
   }
+
   is_chckked(val:any){
-      let index=this.amenities.findIndex((a:any)=>a==val);
+
+      let index=this.SelectedAmenities.findIndex((a:any)=>a==val);
       if(index==-1){
         return false;
       }
@@ -260,7 +264,7 @@ export class RrAmentitesComponent implements OnInit {
       bedRoom:this.bev,
       bathRoom:this.barv,
       balCony:this.balv,
-      Amenities:this.amenities,
+      Amenities:this.SelectedAmenities,
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{})
@@ -337,10 +341,11 @@ export class RrAmentitesComponent implements OnInit {
     }
   }
   showModal = -1;
-  
+  showami=false;
   amshow= false;
   show(index: number) {
     this.showModal = index;
+    this.showami =true;
   }
   close() {
     this.showModal = -1;

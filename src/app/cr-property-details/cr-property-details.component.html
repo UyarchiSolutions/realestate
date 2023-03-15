@@ -187,35 +187,36 @@
                   data-bs-toggle="dropdown" aria-expanded="false">Total Floors</p>
                   <p [innerText]="data.noOfFloor" *ngIf="!tfv &&  data.noOfFloor "  data-bs-toggle="dropdown" aria-expanded="false" ></p>
                   
-                  <ul class="dropdown-menu select-filed-options">
-                    <li>
-                      <a  (click)="groundFloorv('a')" class="dropdown-item"
-                      data-bs-toggle="dropdown" aria-expanded="false" >Full Building</a
-                      >
-                    </li>
-                    <li>
-                      <a  (click)="groundFloorv('b')" class="dropdown-item"
-                      data-bs-toggle="dropdown" aria-expanded="false" >Lower Basement</a
-                      >
-                    </li>
-                    <li>
-                      <a  (click)="groundFloorv('c')" class="dropdown-item"
-                      data-bs-toggle="dropdown" aria-expanded="false" >Upper Basement</a
-                      >
-                    </li>
-                    <li>
-                      <a  (click)="groundFloorv('d')" class="dropdown-item"
-                      data-bs-toggle="dropdown" aria-expanded="false" >Ground Floor</a
-                      >
-                    </li>
-                    <li
-                      (click)="groundFloorv(countf)"
-                      *ngFor="let countf of myarray"
-                      data-bs-toggle="dropdown" aria-expanded="false"
-                    ><a  > {{ countf }} Floors</a>
-                     
-                    </li>
-                  </ul>
+                  
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a class="dropdown-item" (click)="groundFloorv('Full Building')"
+                    data-bs-toggle="dropdown" aria-expanded="false" >Full Building</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="groundFloorv('Lower Basement')"
+                    data-bs-toggle="dropdown" aria-expanded="false" >Lower Basement</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="groundFloorv('Upper Basement')"
+                    data-bs-toggle="dropdown" aria-expanded="false" >Upper Basement</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="groundFloorv(0)"
+                    data-bs-toggle="dropdown" aria-expanded="false" >Ground Floor</a
+                    >
+                  </li>
+                  <li
+                    (click)="numberFloorv(countf)"
+                    *ngFor="let countf of myarray"
+                    data-bs-toggle="dropdown" aria-expanded="false"
+                  >
+                    {{ countf }} floors
+                  </li>
+                </ul>
                 </div>
   
                 <div class="dropdown select-field">
@@ -231,20 +232,20 @@
                   
   
                   <ul class="dropdown-menu select-filed-options">
+                    <li><a class="dropdown-item" (click)="onFloorv('Full Building')" data-bs-toggle="dropdown"
+                      aria-expanded="false" >Full Building</a></li>
 
-                    <li > <a (click)="onFloorv('Full Building')"  >Full Building</a></li>
+                    <li><a class="dropdown-item" (click)="onFloorv('Lower Basement')" data-bs-toggle="dropdown"
+                      aria-expanded="false" >Lower Basement</a></li>
 
-                    <li (click)="onFloorv('Lower Basement')" >Lower Basement</li>
+                    <li><a class="dropdown-item" (click)="onFloorv('Upper Basement')" data-bs-toggle="dropdown"
+                      aria-expanded="false" >Upper Basement</a></li>
 
-                    <li (click)="onFloorv('Upper Basement')"  >Upper Basement</li>
+                    <li><a class="dropdown-item" (click)="onFloorv('Ground Floor')" data-bs-toggle="dropdown"
+                      aria-expanded="false" >Ground Floor</a></li>
 
-                    <li  (click)="onFloorv('Groud Floor')" >Groud Floor </li>
-
-                   
-
-                    <li *ngFor="let floor of numarray" (click)="onFloorv(floor)" data-bs-toggle="dropdown"
-                    aria-expanded="false"> {{ floor }} Floors </li>
-
+                    <li *ngFor="let floor of numarray" (click)="numFloorv(floor)" data-bs-toggle="dropdown"
+                    aria-expanded="false">{{ floor }} Floors</li>
                   </ul>
                 </div>
               </div>

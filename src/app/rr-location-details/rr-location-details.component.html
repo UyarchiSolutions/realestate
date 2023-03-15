@@ -69,13 +69,13 @@
             <label>Building Name :</label>
          <input type="text" placeholder="Enter Building Name" formControlName="BuildingName">
     </div>
-        <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p>
-    
+        <!-- <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p>
+     -->
         <div>
             <label>Address:</label>
          <input type="text" placeholder="Enter Address " formControlName="Address">
     </div>
-    <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p>
+    <!-- <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p> -->
    
     <div>
         <label>Pincode :</label>
@@ -89,7 +89,7 @@
         <label>Landmark :</label>
   <input type="text" placeholder="Enter landmark" formControlName="Landmark">
     </div>
-    <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+    <!-- <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Pincode </p> -->
 
     <div class="address">
         <label>Select location Via Map :</label>
@@ -100,7 +100,7 @@
         (onAddressChange)="handleAddressChange($event)" style="min-width: 90% !important;padding: 10px;" type="text" formControlName="addressLoaction">
         </span>
 
-        <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="lat" [longitude]="long"
+        <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="latitude" [longitude]="longtitude"
                 [zoom]="10" [usePanning]="true">
                 <agm-marker (dragEnd)="draggEnded($event)" [markerDraggable]="true"
                   [latitude]="parseFloat(rrlocform.get('lat')?.value)"
@@ -118,10 +118,10 @@
     </div>
 
 <div class="save-continue">
-    <button type="submit" *ngIf="!datares.BuildingName">Save & Continue</button>
+    <button type="submit" *ngIf="!datares.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button type="submit" (click)="routetopreview()" *ngIf="datares.BuildingName">Save </button>
+    <button type="submit" (click)="routetopreview()" *ngIf="datares.final">Save </button>
 </div>
 
 </div>

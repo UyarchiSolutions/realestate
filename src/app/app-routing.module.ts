@@ -16,6 +16,13 @@ import { CrGalleryComponent } from './cr-gallery/cr-gallery.component';
 import { CrLocationDetailsComponent } from './cr-location-details/cr-location-details.component';
 import { CrPropertyDetailsComponent } from './cr-property-details/cr-property-details.component';
 import { CrRentalDetailsComponent } from './cr-rental-details/cr-rental-details.component';
+import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additional-details.component';
+import { CsAmenitiesComponent } from './cs-amenities/cs-amenities.component';
+import { CsCommercialSalePreviewComponent } from './cs-commercial-sale-preview/cs-commercial-sale-preview.component';
+import { CsGalleryComponent } from './cs-gallery/cs-gallery.component';
+import { CsLocationDetailsComponent } from './cs-location-details/cs-location-details.component';
+import { CsPriceDetailsComponent } from './cs-price-details/cs-price-details.component';
+import { CsPropertyDetailsComponent } from './cs-property-details/cs-property-details.component';
 import { HomeComponent } from './home/home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
@@ -89,7 +96,15 @@ const routes: Routes = [
   {path:'commercial-rent-gallery',component:CrGalleryComponent},
   {path:'commercial-rent-amenities',component:CrAmenitiesComponent},
   {path:'commercial-rent-add-details',component:CrAdditionalDetailsComponent},
-  {path:'commercial-rent-preview',component:CrCommercialRentPreviewComponent}
+  {path:'commercial-rent-preview',component:CrCommercialRentPreviewComponent},
+
+  {path:'commercial-sale-property',component:CsPropertyDetailsComponent},
+  {path:'commercial-sale-location-details',component:CsLocationDetailsComponent},
+  {path:'commercial-sale-price-details',component:CsPriceDetailsComponent},
+  {path:'commercial-sale-amenities',component:CsAmenitiesComponent},
+  {path:'commercial-sale-gallery',component:CsGalleryComponent},
+  {path:'commercial-sale-add-details',component:CsAdditionalDetailsComponent},
+  {path:'commercial-sale-preview',component:CsCommercialSalePreviewComponent}
 
 ];
 

@@ -92,14 +92,13 @@
 
 <div class="image-gallery">
  
-    <div class="images"  *ngFor="let preview of imagePreview; let i = index">
+    <div class="images" *ngFor="let preview of imagePreview; let i = index">
         
         <img  [src]="preview"    width="200px" height="150ox">
         <div class="when-hover">
             <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
             </div>
     </div>
-
  
 </div>
 <div class="image-gallery" *ngIf="data.image" >
@@ -151,10 +150,10 @@
 </div>
 
 <div class="save-continue">
-    <button (click)="submit()" *ngIf="!data.final">Save & Continue</button>
+    <button (click)="submit()" *ngIf="!data.preOccupy" >Save & Continue</button>
 </div>
 <div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+    <button (click)="routetopreview()"  *ngIf="data.preOccupy">Save</button>
 </div>
 
 

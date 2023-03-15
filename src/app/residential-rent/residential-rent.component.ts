@@ -21,6 +21,7 @@ export class ResidentialRentComponent implements OnInit {
     private router: Router){
 
   }
+ 
   ngOnInit(): void {
     
     this.arouter.queryParams.subscribe(params => {
@@ -28,10 +29,20 @@ export class ResidentialRentComponent implements OnInit {
     });
     this.getalldata();
    
-    
+    this.finalfunction();
   }
   data:any;
+  lastone='final';
+  finalfunction(){
+    var postdata =
+    {
+      final:this.lastone
+    }
 
+    this.service.formput(this.id,postdata).subscribe((res:any)=>{
+      console.log(res.final);
+    })
+  }
   getalldata(){
     
     this.service.formget(this.id).subscribe((res:any)=>{
@@ -46,6 +57,10 @@ export class ResidentialRentComponent implements OnInit {
   imgslider(a:any){
 
     this.imgSliderCheker = a;
+
+  }
+  imgSLnonw(){
+    this.imgSliderCheker='';
   }
   Redirect(count:any){
     if(count == 0){

@@ -21,14 +21,14 @@ export class RrLocationDetailsComponent  implements OnInit{
   submitted:boolean=false;
   rrlocform:any = this.fb.group({
    
-    Landmark: new FormControl ('',Validators.required),
-    Pincode: new FormControl ('',[Validators.required]),
-    BuildingName: new FormControl ('',Validators.required),
-    Address: new FormControl ('',Validators.required),
-    lat:new FormControl ('',Validators.required),
-    long:new FormControl ('',Validators.required),
-    addressLoaction: new FormControl('',[Validators.required]),
-    direction:new FormControl ('',Validators.required)
+    Landmark: new FormControl (''),
+    Pincode: new FormControl ('',),
+    BuildingName: new FormControl (''),
+    Address: new FormControl (''),
+    lat:new FormControl (''),
+    long:new FormControl (''),
+    addressLoaction: new FormControl(''),
+    direction:new FormControl ('')
   })
   myAddres: any;
   
@@ -196,19 +196,24 @@ export class RrLocationDetailsComponent  implements OnInit{
 
     // address for map
     
-  handleAddressChange(address: Address) {
-    // this.myAddres = address.formatted_address
-    this.latitude = address.geometry.location.lat();
-    this.longtitude = address.geometry.location.lng();
-   
-   
-    this.rrlocform.patchValue({
-      lat: this.latitude,
-      long: this.longtitude,
+    handleAddressChange(address: Address) {
+      this.myAddres = address.formatted_address;
+      this.rrlocform.patchValue({
+       addressLoaction: this.myAddres,
+ 
+     })
       
-    })
+       this.latitude = address.geometry.location.lat();
+       this.longtitude = address.geometry.location.lng();
+      
+      
+       this.rrlocform.patchValue({
+         lat: this.latitude,
+         long: this.longtitude,
+         
+       })
     
-  }
+     }
   options: any = {
     componentRestrictions: { country: 'IN' }
   }

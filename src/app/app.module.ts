@@ -37,6 +37,13 @@ import { CrAmenitiesComponent } from './cr-amenities/cr-amenities.component';
 import { CrGalleryComponent } from './cr-gallery/cr-gallery.component';
 import { CrAdditionalDetailsComponent } from './cr-additional-details/cr-additional-details.component';
 import { CrCommercialRentPreviewComponent } from './cr-commercial-rent-preview/cr-commercial-rent-preview.component';
+import { CsPropertyDetailsComponent } from './cs-property-details/cs-property-details.component';
+import { CsLocationDetailsComponent } from './cs-location-details/cs-location-details.component';
+import { CsGalleryComponent } from './cs-gallery/cs-gallery.component';
+import { CsPriceDetailsComponent } from './cs-price-details/cs-price-details.component';
+import { CsCommercialSalePreviewComponent } from './cs-commercial-sale-preview/cs-commercial-sale-preview.component';
+import { CsAmenitiesComponent } from './cs-amenities/cs-amenities.component';
+import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additional-details.component';
 
 
 
@@ -68,7 +75,15 @@ import { CrCommercialRentPreviewComponent } from './cr-commercial-rent-preview/c
     CrAmenitiesComponent,
     CrGalleryComponent,
     CrAdditionalDetailsComponent,
-    CrCommercialRentPreviewComponent
+    CrCommercialRentPreviewComponent,
+    //Commericalsale
+    CsPropertyDetailsComponent,
+    CsLocationDetailsComponent,
+    CsGalleryComponent,
+    CsPriceDetailsComponent,
+    CsCommercialSalePreviewComponent,
+    CsAmenitiesComponent,
+    CsAdditionalDetailsComponent
     
     
     
@@ -83,6 +98,7 @@ import { CrCommercialRentPreviewComponent } from './cr-commercial-rent-preview/c
     ReactiveFormsModule,
     GooglePlaceModule,
     FormsModule,
+    CommonModule,
     
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',

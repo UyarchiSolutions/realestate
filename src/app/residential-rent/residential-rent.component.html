@@ -165,7 +165,12 @@
             </div>
             <div>
               <label>Built up area :</label>
-              <p>{{ data.BuildedSize }}</p>
+              <p>{{ data.BuildedSize }}.SQFT</p>
+            </div>
+            
+            <div>
+              <label>Rent Preferance :</label>
+              <p>{{ data.RentPrefer }}</p>
             </div>
             <div>
               <label>Age of property :</label>
@@ -221,9 +226,9 @@
               <label>Pincode :</label>
               <p>{{ data.pineCode }}</p>
             </div>
-
+            
             <div class="address">
-              <label>Address :</label>
+              <label>Location :</label>
               <div>
                 <p>{{ data.Address }}</p>
                 <span
@@ -242,7 +247,7 @@
                   </svg>
                   {{ data.formatedAddress }}
                 </span>
-                <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="13.0827" [longitude]="80.2707"
+                <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="data.lat" [longitude]="data.long"
                 [zoom]="6" [usePanning]="true">
                 <agm-marker
                   [latitude]="data.lat"
@@ -261,7 +266,7 @@
       <div class="property-details">
         <div class="container">
           <div class="heading">
-            <p>Price Details</p>
+            <p>Rent Details</p>
             <svg (click)="Redirect(2)"
               width="22"
               height="22"
@@ -299,7 +304,7 @@
               <label>Expected Lease :</label>
               <p style="margin-left: 170px">{{ data.depositeAmount }}</p>
               <p
-                *ngIf="data.RentNegociable == 'true'"
+                *ngIf="data.depositeNegociable == 'true'"
                 style="
                   color: grey;
                   position: relative;
@@ -311,7 +316,6 @@
                 Negotiable
               </p>
             </div>
-          
             <div *ngIf="data.rentDetails == 'rent'">
               <label>Advance Amount :</label>
               <p style="margin-left: 170px">{{ data.depositeAmount }}</p>
@@ -510,7 +514,7 @@
           <div class="submitted-details">
             <div>
               <label>Available from :</label>
-              <p>{{ data.availabilityDate }}</p>
+              <p>{{ data.availabilityDate | date:"dd/MM/YYYY" }}</p>
             </div>
             <div>
               <label>Contact name : </label>
@@ -549,7 +553,7 @@
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item" [ngClass]="{active: imgSliderCheker == i }"     *ngFor="let img of data.image; let i = index">
+          <div class="carousel-item" [ngClass]="{active: imgSliderCheker == i }" (change)="imgSLnonw()"    *ngFor="let img of data.image; let i = index">
             <img [src]="'https://uyarchicrm.click/'+ img" class="d-block w-100" alt="..."> 
           </div>
 

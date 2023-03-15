@@ -124,7 +124,7 @@
     <div class="main">
       <nav>
         <ul>
-          <li>Residential &gt; </li>
+          <li>Commercial &gt; </li>
           <li>Rent</li>
         </ul>
       </nav>
@@ -476,7 +476,7 @@
             <div class="submitted-details">
               <div>
                 <label>Available from :</label>
-                <p>{{ data.availabilityDate }}</p>
+                <p>{{ data.availabilityDate | date:"dd/MM/YYYY" }}</p>
               </div>
               <div>
                 <label>Contact name : </label>

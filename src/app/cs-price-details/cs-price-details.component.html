@@ -1,3 +1,4 @@
+
 <div class="container">
 
 
@@ -53,114 +54,102 @@
         <nav>
             <p class="navbar-links"  (click)="back(0)">Property details</p>
             <p class="navbar-links" (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links nav-active" (click)="back(2)">Price Details</p>
             <p class="navbar-links" (click)="back(3)">Amenities</p>
-            <p class="navbar-links nav-active" (click)="back(4)" >Gallery</p>
-            <p class="navbar-links" (click)="back(5)">Additional Details </p>
+            <p class="navbar-links" (click)="back(4)">Gallery</p>
+            <p class="navbar-links"(click)="back(5)">Additional Details </p>
         </nav>
+        
 
 
 
 <div class="Location-details">
-    <h2>Gallery</h2>
+    <h2>Price Details</h2>
 
-<div class="upload-section">
+
+<form [formGroup]="priceform" (ngSubmit)="rentsub()">
+
+    <div class="form">
+    <div class="expected-rent">
+        <label>Expected Price :</label>
+   <div >
+    <input type="text" placeholder="Expected Price" formControlName="ExpectedPrice">
+    <div class="negotiable">
+        <input type="checkbox" formControlName="ExpectedpricetNegotiable" ><label>Negotiable</label>
+    </div>
+    <div class="negotiable">
+        <input type="checkbox" formControlName="CurrentlyInLoan" ><label>Currently In Loan</label>
+    </div>
+   </div>
+    </div>
+
+ 
+  
+
+ 
+    <div>
+        <label>Maintenance : </label>
+   
+      <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+    <p [innerHTML]="maintanceVal" *ngIf="maintanceVal"></p><p *ngIf="!maintanceVal">Maintenance</p>
+      
+        <ul class="dropdown-menu select-filed-options" >
+
+          <li><a class="dropdown-item" (click)="maintance('Include Maintenance')" >Include Maintenance</a></li>
+          <li><a class="dropdown-item" (click)="maintance('Exclude Maintenance')">Exclude Maintenance</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+        <label>Exclude Maintenance :</label>
+     <div style="width: 50%; display: flex;
+     align-items: flex-end;">
+        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <!-- <select   formControlName="MrSq">
+ 
+            <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
+            <option value="Per Month"  > Per Month</option>
+        </select>  -->
+        <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    
+           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+              
+                <ul class="dropdown-menu select-filed-options" >
+        
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Sq.ft/Month')" >Per Sq.ft/Month</a></li>
+                  <li><a class="dropdown-item" (click)="mainmonv('Per Month')">Per Month</a></li>
+                </ul>
+              </div>
+    </div>
+    </div>
+
+    <div></div>
+
+  
 
    
-<div class="upload-image">
-    <label>Photos :</label>
-    <input type="file" id="image" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
 
-<!-- <div class="col-sm-10 col-md-8">
-                  <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;" [multiple]="5" accept="image/gif, image/jpeg, image/png" />
-                  <label for="Uploadss" class="resume-upload" style="background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;"><span>Choose
-                      Image</span></label>
-                  <div>
-                    <p *ngIf="this.plan_dt.totalImage < gallery.length">You can post only{{this.plan_dt.totalImage}}
-                      images</p> -->
-                  <!-- </div>
-                </div> --> 
+   
 
 
-</div>
 
-<div class="image-gallery">
- 
-    <div class="images"  *ngFor="let preview of imagePreview; let i = index">
-        
-        <img  [src]="preview"    width="200px" height="150ox">
-        <div class="when-hover">
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
-    </div>
-
- 
-</div>
-<div class="image-gallery" *ngIf="data.image" >
-                    
-    <div class="images" *ngFor="let img of data.image ; let i = index">
-        
-        <img  [src]="'https://uyarchicrm.click/' + img" width="200px" height="150ox" >
-        <div >
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
-    </div>
- 
-</div>
-
-<div class="upload-video">
-    <label>Video :</label>
-    <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
-</div>
-
-
-<div class="image-gallery"  *ngIf="videoSrc">
-    
-    <div class="images video">
-        <video [src]="videoSrc" *ngIf="videoSrc" controls style="width:200px"></video>
-    <div class="when-hover">
-        <img src="../../assets/images/image-remove-btn.png" (click)="removevid()">
-    </div>
-    </div>
-  
-      
-          
-
-
-</div>
-<div class="image-gallery" *ngIf="data.videos">
-    
-    <div class="images video" *ngFor="let vid of data.videos">
-        <video [src]="vid" controls style="width:200px"></video>
-  
-    </div>
-  
-      
-          
-
-
-</div>
-
-</div>
 
 <div class="save-continue">
-    <button (click)="submit()" *ngIf="!data.final">Save & Continue</button>
+    <button type="submit" *ngIf="!data.expectedPrice" >Save & Continue</button>
 </div>
-<div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+<div class="save-continue">
+    <button (click)="routetopreview()" *ngIf="data.expectedPrice" >Save</button>
 </div>
 
 
-   
 </div>
-    
+</form>
+
+
+</div>
+
 
     </div>
     
