@@ -254,7 +254,7 @@
                     </svg>
                     {{ data.formatedAddress }}
                   </span>
-                  <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="13.0827" [longitude]="80.2707"
+                  <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="data.lat" [longitude]="data.long"
                   [zoom]="6" [usePanning]="true">
                   <agm-marker
                     [latitude]="data.lat"

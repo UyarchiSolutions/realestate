@@ -74,7 +74,7 @@
    <div >
     <input type="text" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedrenttNegotiable" [checked]="data.RentNegociable"  (click)="check()"><label>Negotiable</label>
+        <input type="checkbox" formControlName="ExpectedrenttNegotiable" [value]="true" (click)="check()"><label>Negotiable</label>
     </div>
 
    </div>
@@ -84,7 +84,7 @@
    <div >
     <input type="text" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
-        <input type="checkbox" formControlName="AdvanceAmountNegotiable"   [checked]="data.depositeNegociable" ><label>Negotiable</label>
+        <input type="checkbox" formControlName="AdvanceAmountNegotiable"   [value]="true" ><label>Negotiable</label>
     </div>
 
    </div>
@@ -184,10 +184,10 @@
 
 
 <div class="save-continue">
-    <button type="submit"  *ngIf="!data.expectedPrice">Save & Continue</button>
+    <button type="submit"  *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()"  *ngIf="data.expectedPrice">Save</button>
+    <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
 </div>
 
 

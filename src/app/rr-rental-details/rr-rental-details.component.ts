@@ -58,13 +58,14 @@ export class RrRentalDetailsComponent implements OnInit{
       if(this.data.rentDetails=='rent'){
       this.rentform.patchValue({
         ExpectedRent:res.MonthlyRentFrom,
-        ExpectedRentNegotiable:res.RentNegociable,
+        ExpectedRentNegotiable:res.RentNegociable=='true'?true:null,
         ExpectedDeposit:res.depositeAmount,
-        ExpectedDepositNegotiable:res.depositeNegociable,
+        ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
         ExcludeMaintenance:res.maintainenceCost,
         
         
-      });console.log('value patched') ;
+      });
+      console.log('value patched',this.rentform.value) ;
       this.switch= this.data.rentDetails;
       this.maintanceVal= this.data.MaintenanceStatus;
       this.mainmon=res.squareFT; }
@@ -73,7 +74,7 @@ export class RrRentalDetailsComponent implements OnInit{
         this.leaseform.patchValue({
           
           LExpectedDeposit:res.depositeAmount,
-          LExpectedDepositNegotiable:res.depositeNegociable,
+          LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
           LExcludeMaintenance:res.maintainenceCost
         }); 
         
@@ -84,9 +85,7 @@ export class RrRentalDetailsComponent implements OnInit{
     })
   console.log(this.switch,'end')
   }
-  checkd(){
-    console.log(this.leaseform.get('LExpectedDepositNegotiable').value)
-  }
+
   maintanceVal='Include Maintenance';
 
   maintance(a:any){
@@ -116,13 +115,14 @@ export class RrRentalDetailsComponent implements OnInit{
     var data={
       rentDetails:this.switch,
       MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
-      RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
+      RentNegociable:this.rentform.get('ExpectedRentNegotiable').value=='true' ? true : null,
       depositeAmount:this.rentform.get('ExpectedDeposit').value,
-      depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
+      depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value ==' true' ?true:null,
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
       squareFT:this.mainmon,
       MaintenanceStatus:this.maintanceVal,
     }
+    console.log(data,3453,'rentsub');
     
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
@@ -133,7 +133,7 @@ export class RrRentalDetailsComponent implements OnInit{
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
       console.log(res);
-      this.formSubmitted=true;
+     
     })
 
   }
@@ -144,7 +144,7 @@ export class RrRentalDetailsComponent implements OnInit{
 
       rentDetails:this.switch,
       depositeAmount:this.leaseform.get('LExpectedDeposit').value,
-      depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
+      depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value == 'true' ? true :null,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
       squareFT:this.Lmainmon,
       MaintenanceStatus:this.LmaintanceVal,
@@ -189,8 +189,11 @@ export class RrRentalDetailsComponent implements OnInit{
             squareFT:this.mainmon,
             MaintenanceStatus:this.maintanceVal,
           }
-          
-          this.service.formput(this.id,data).subscribe((res:any)=>{});
+          console.log(data,4564,this.rentform.value)
+          this.service.formput(this.id,data).subscribe((res:any)=>{
+            var queryString = new URLSearchParams(postdata).toString();
+            this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+          });
          }  
          if(this.switch == 'lease'){
           var ldata={
@@ -203,18 +206,16 @@ export class RrRentalDetailsComponent implements OnInit{
             MaintenanceStatus:this.LmaintanceVal,
           }
           console.log(ldata);
-          this.service.formput(this.id,ldata).subscribe((res:any)=>{});
+          this.service.formput(this.id,ldata).subscribe((res:any)=>{
+            var queryString = new URLSearchParams(postdata).toString();
+            this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+          });
          }
 
     var postdata = {
       id: this.id,
     };
-    var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
-
-    this.service.formget(this.id).subscribe((res: any) => {
-      location.reload();
-    });
+ 
   }
 
   back(count:any){

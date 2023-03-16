@@ -82,10 +82,10 @@ export class RrGalleryComponent implements OnInit{
     this.imageform.get('images').reset();
     this.imagePreview= [];
     const files = e.target.files;
-    
+    if(files.length <= 5){
     for(let i=0;i < files.length && i<=5;i++){
       const file = files[i];
-   
+  
      const images = this.imageform.get('images') as FormArray;
      images.at(i).setValue(file);
 
@@ -99,6 +99,10 @@ export class RrGalleryComponent implements OnInit{
       reader.readAsDataURL(file);
     
     }
+
+  }  else{
+        e.target.value='';
+  }
   }
   removeimg(index: number){
    
@@ -177,15 +181,15 @@ export class RrGalleryComponent implements OnInit{
     this.uploadimg();
     this.uploadvid();
     
-    // var data = {
-    //   id: this.id,
-    // };
-    // var queryString = new URLSearchParams(data).toString();
-    // this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
-
-    // this.service.formget(this.id).subscribe((res: any) => {
-      
-    // });
+   
+    this.service.formget(this.id).subscribe((res: any) => {
+      var data = {
+        id: this.id,
+      };
+      var queryString = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+  
+    });
   }
   back(count:any){
     if(count == 0){

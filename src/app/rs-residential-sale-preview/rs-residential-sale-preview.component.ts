@@ -25,6 +25,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
         this.id=params['id'];
       });
       this.getalldata();
+      this.finalfunction();
      
       
     }
@@ -38,6 +39,17 @@ export class RsResidentialSalePreviewComponent implements OnInit {
        
       })
       
+    }
+    lastone='final';
+    finalfunction(){
+      var postdata =
+      {
+        final:this.lastone
+      }
+  
+      this.service.formput(this.id,postdata).subscribe((res:any)=>{
+        console.log(res.final);
+      })
     }
    
     imgSliderCheker:any;

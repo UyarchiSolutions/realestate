@@ -112,8 +112,13 @@ export class CsLocationDetailsComponent {
                 direction:res.buildingDirection,
                 Address:res.Address
       
-              })
+              });
               console.log(res);
+              this.latitude= res.lat;
+              this.longtitude= res.long;
+              console.log(this.latitude,this.longtitude);
+              console.log(res.lat, res.long,'dsds');
+            
             })
           }
           routetopreview(){
@@ -127,17 +132,17 @@ export class CsLocationDetailsComponent {
               buildingDirection:this.rrlocform.get('direction')?.value,
               formatedAddress:this.rrlocform.get('addressLoaction')?.value
             }
-              this.service.formput(this.id,data).subscribe((res:any)=>{});
+              this.service.formput(this.id,data).subscribe((res:any)=>{
+                var postdata = {
+                  id: this.id,
+                };
+                var queryString = new URLSearchParams(postdata).toString();
+                this.router.navigateByUrl('/commercial-sale-preview?' + queryString);
+            
+              });
       
-            var postdata = {
-              id: this.id,
-            };
-            var queryString = new URLSearchParams(postdata).toString();
-            this.router.navigateByUrl('/commercial-sale-preview?' + queryString);
-        
-            this.service.formget(this.id).subscribe((res: any) => {
-              location.reload();
-            });
+     
+          
           }
           back(count: any) {
             if (count == 0) {

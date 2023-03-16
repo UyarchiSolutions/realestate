@@ -28,7 +28,7 @@ export class CsCommercialSalePreviewComponent {
           this.id=params['id'];
         });
         this.getalldata();
-       
+       this.finalfunction();
         
       }
       data:any;
@@ -42,6 +42,17 @@ export class CsCommercialSalePreviewComponent {
         })
         
       }
+      lastone='final';
+       finalfunction(){
+     var postdata =
+      {
+      final:this.lastone
+     }
+
+      this.service.formput(this.id,postdata).subscribe((res:any)=>{
+      console.log(res.final);
+    })
+  }
      
       imgSliderCheker:any;
       imgslider(a:any){

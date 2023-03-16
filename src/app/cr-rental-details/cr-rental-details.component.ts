@@ -48,9 +48,9 @@ export class CrRentalDetailsComponent implements OnInit {
           
           this.priceform.patchValue({
             ExpectedRent:res.expectedPrice,
-            ExpectedrenttNegotiable:res.RentNegociable,
+            ExpectedrenttNegotiable:res.RentNegociable=='true'?true:null,
             AdvanceAmount :res.AdvanceAmt,
-            AdvanceAmountNegotiable:res.depositeNegociable,
+            AdvanceAmountNegotiable:res.depositeNegociable=='true'?true:null,
             ExcludeMaintenance:res.maintainenceCost,
             CurrentlyInLoan:res.current_in_loan
             
@@ -146,19 +146,14 @@ export class CrRentalDetailsComponent implements OnInit {
           MaintenanceStatus:this.maintanceVal,
         }  
              
-              this.service.formput(this.id,data).subscribe((res:any)=>{});
-            
-             
-    
-        var postdata = {
-          id: this.id,
-        };
-        var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
-    
-        this.service.formget(this.id).subscribe((res: any) => {
-          location.reload();
-        });
+              this.service.formput(this.id,data).subscribe((res:any)=>{
+                var postdata = {
+                  id: this.id,
+                };
+                var queryString = new URLSearchParams(postdata).toString();
+                this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+              });
+      
       }
     
       back(count: any) {

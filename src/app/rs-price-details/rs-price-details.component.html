@@ -74,10 +74,10 @@
    <div >
     <input type="text" placeholder="Expected Price" formControlName="ExpectedPrice">
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedpricetNegotiable" ><label>Negotiable</label>
+        <input type="checkbox" formControlName="ExpectedpricetNegotiable"  [value]="true"><label>Negotiable</label>
     </div>
     <div class="negotiable">
-        <input type="checkbox" formControlName="CurrentlyInLoan" ><label>Currently In Loan</label>
+        <input type="checkbox" formControlName="CurrentlyInLoan" [value]="true" ><label>Currently In Loan</label>
     </div>
    </div>
     </div>
@@ -136,10 +136,10 @@
 
 
 <div class="save-continue">
-    <button type="submit"  *ngIf="!data.expectedPrice">Save & Continue</button>
+    <button type="submit"  *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()"  *ngIf="data.expectedPrice">Save</button>
+    <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
 </div>
 
 

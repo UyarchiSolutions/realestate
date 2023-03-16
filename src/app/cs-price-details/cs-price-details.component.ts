@@ -49,9 +49,9 @@ export class CsPriceDetailsComponent {
           
           this.priceform.patchValue({
             ExpectedPrice:res.expectedPrice,
-            ExpectedpricetNegotiable:res.RentNegociable,
-            CurrentlyInLoan:res.current_in_loan,
-            ExpectedDepositNegotiable:res.depositeNegociable,
+            ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
+            CurrentlyInLoan:res.current_in_loan=='true'?true:null,
+            
             ExcludeMaintenance:res.maintainenceCost,
           
             

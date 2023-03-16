@@ -27,7 +27,7 @@ export class CrCommercialRentPreviewComponent {
       });
       this.getalldata();
      
-      
+      this.finalfunction();
     }
     data:any;
   
@@ -40,6 +40,17 @@ export class CrCommercialRentPreviewComponent {
       })
       
     }
+    lastone='final';
+    finalfunction(){
+    var postdata =
+    {
+      final:this.lastone
+    }
+
+    this.service.formput(this.id,postdata).subscribe((res:any)=>{
+      console.log(res.final);
+    })
+  }
    
     imgSliderCheker:any;
     imgslider(a:any){

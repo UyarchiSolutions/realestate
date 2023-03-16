@@ -69,7 +69,7 @@
     <p class="rent-lease-active" (click)="rent()"  [ngClass]="{'selected': check || switch== 'rent'}" >Rent</p>
     <p class="rent-lease-active"  (click)="lease()"  >Lease</p>
 </div>
-<form [formGroup]="rentform" (ngSubmit)="rentsub()">
+<form [formGroup]="rentform" >
 
     <div class="form">
     <div class="expected-rent">
@@ -77,7 +77,7 @@
    <div>
     <input type="text" placeholder="Rent Amount" formControlName="ExpectedRent">
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedRentNegotiable" ><label>Negotiable</label>
+        <input type="checkbox" formControlName="ExpectedRentNegotiable" [value]="true"><label>Negotiable</label>
     </div>
    </div>
     </div>
@@ -87,7 +87,7 @@
    <div>
     <input type="text" placeholder="Deposit Amount" formControlName="ExpectedDeposit">
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedDepositNegotiable"><label>Negotiable</label>
+        <input type="checkbox" formControlName="ExpectedDepositNegotiable" [value]="true" ><label>Negotiable</label>
     </div>
    </div>
     </div>
@@ -147,7 +147,7 @@
     <button type="submit" *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+    <button (click)="routetopreview()" type="button" *ngIf="data.final">Save</button>
 </div>
 
 
@@ -173,7 +173,7 @@
    <div>
     <input type="text" placeholder="Expected Lease" formControlName="LExpectedDeposit">
     <div class="negotiable">
-        <input type="checkbox" formControlName="LExpectedDepositNegotiable" (click)="checkd()"><label>Negotiable</label>
+        <input type="checkbox" formControlName="LExpectedDepositNegotiable" [value]="true" ><label>Negotiable</label>
     </div>
    </div>
     </div>

@@ -113,6 +113,8 @@ export class CrLocationDetailsComponent {
     
             })
             console.log(res);
+            this.latitude=res.lat;
+            this.longtitude=res.long;
           })
         }
         routetopreview(){

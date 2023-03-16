@@ -14,6 +14,22 @@
     margin: 10px 0px;
 
 }
+.other-features{
+    display: block;
+    border: none;
+    border-bottom:none !important;
+    margin: 0 !important;
+    position:static !important;
+    cursor: pointer;
+}
+.other-features span{
+    display: flex;
+    white-space: nowrap ;
+ 
+}
+.other-features span input{
+    margin-right: 5px;
+}
 .main h2{
     width: 70%;
     margin: auto;

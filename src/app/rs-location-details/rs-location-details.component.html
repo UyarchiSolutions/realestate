@@ -59,9 +59,8 @@
     <p class="navbar-links" (click)="back(5)">Additional Details </p>
 </nav>
 
-
-<form [formGroup]="rrlocform" (ngSubmit)="OnSubmit()">
-<div class="Location-details">
+>
+<div class="Location-details" [formGroup]="rrlocform" (ngSubmit)="OnSubmit()">
     <h2>Location Details</h2>
     <div class="form">
   
@@ -100,7 +99,7 @@
         (onAddressChange)="handleAddressChange($event)" style="min-width: 90% !important;padding: 10px;" type="text" formControlName="addressLoaction">
         </span>
 
-        <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="lat" [longitude]="long"
+        <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="latitude" [longitude]="longtitude"
                 [zoom]="10" [usePanning]="true">
                 <agm-marker (dragEnd)="draggEnded($event)" [markerDraggable]="true"
                   [latitude]="parseFloat(rrlocform.get('lat')?.value)"
@@ -118,16 +117,18 @@
     </div>
 
 <div class="save-continue">
-    <button type="submit"  *ngIf="!data.landMark">Save & Continue</button>
+    <button type="submit"  *ngIf="!data.final">Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button type="submit" (click)="routetopreview()" *ngIf="data.landMark">Save </button>
+    <button type="submit" (click)="routetopreview()" *ngIf="data.final">Save </button>
 </div>
 
 </div>
 
+</div>
 </div>
 <div class="ad"></div>
+</div>
     
     
     

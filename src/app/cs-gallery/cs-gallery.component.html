@@ -150,10 +150,10 @@
 </div>
 
 <div class="save-continue">
-    <button (click)="submit()" *ngIf="!data.preOccupy" >Save & Continue</button>
+    <button (click)="submit()" *ngIf="!data.final" >Save & Continue</button>
 </div>
 <div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()"  *ngIf="data.preOccupy">Save</button>
+    <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
 </div>
 
 

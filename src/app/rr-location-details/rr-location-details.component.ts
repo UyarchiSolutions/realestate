@@ -102,7 +102,8 @@ export class RrLocationDetailsComponent  implements OnInit{
           direction:res.buildingDirection,
           Address:res.Address
 
-        })
+        });this.latitude=res.lat;
+        this.longtitude=res.long
         console.log(res);
       })
     }

@@ -432,10 +432,14 @@
 
               <div>
                 <label >Other Feature:</label>
-                    <div>
-                    <input type="radio" [checked]="data.otherFeature =='On Main Road' " name="otfea" value="On Main Road" formGroupName="otfea" (change)="check($event)">On Main Road
-                    <input type="radio" [checked]="data.otherFeature =='Corner property' "  name="otfea" value="Corner property" formGroupName="otfea" (change)="check($event)">Corner property
-                    </div>
+                    <div class="other-features select-field">
+                      <span>
+                        <input type="radio" [checked]="data.otherFeature =='On Main Road' " name="otfea" value="On Main Road" formGroupName="otfea" (change)="check($event)">On Main Road
+                      </span>
+                      <span>
+                        <input type="radio" [checked]="data.otherFeature =='Corner property' "  name="otfea" value="Corner property" formGroupName="otfea" (change)="check($event)">Corner property
+                      </span>
+                      </div>
               </div>
 
             <div>
@@ -500,10 +504,10 @@
             </div>
   
             <div class="save-continue" >
-              <button type="submit" *ngIf="!data.propertType">Save & Continue</button>
+              <button type="submit" *ngIf="!data.final">Save & Continue</button>
             </div>
             <div class="save-continue" >
-              <button type="submit" *ngIf="data.propertType" (click)="routetopreview()">Save</button>
+              <button type="submit" *ngIf="data.final" (click)="routetopreview()">Save</button>
             </div>
           </div>
         </form>

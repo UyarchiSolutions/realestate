@@ -51,11 +51,11 @@ export class RsPriceDetailsComponent implements OnInit {
         
         this.priceform.patchValue({
           ExpectedPrice:res.expectedPrice,
-          ExpectedpricetNegotiable:res.RentNegociable,
+          ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
        
-          ExpectedDepositNegotiable:res.depositeNegociable,
+          ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
           ExcludeMaintenance:res.maintainenceCost,
-          CurrentlyInLoan:res.current_in_loan
+          CurrentlyInLoan:res.current_in_loan=='true'?true:null,
           
           
         });console.log('value patched') ;
@@ -131,10 +131,8 @@ export class RsPriceDetailsComponent implements OnInit {
         MaintenanceStatus:this.maintanceVal,
       }   
            
-            this.service.formput(this.id,data).subscribe((res:any)=>{});
-          
-           
-  
+      this.service.formput(this.id,data).subscribe((res:any)=>{
+        
       var postdata = {
         id: this.id,
       };
@@ -144,6 +142,10 @@ export class RsPriceDetailsComponent implements OnInit {
       this.service.formget(this.id).subscribe((res: any) => {
         location.reload();
       });
+      });
+          
+           
+  
     }
   
     back(count:any){
