@@ -119,6 +119,9 @@ export class RsResidentialSalePreviewComponent implements OnInit {
         })
       }
     }
+    ownerRoute(){
+      this.router.navigateByUrl('/owner?')
+    }
   }
   
 

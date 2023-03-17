@@ -74,6 +74,8 @@ export class CrLocationDetailsComponent {
           this.submitted = true;
           if( this.rrlocform.valid ){
           var data={
+            area:this.area,
+            city:this.city,
             landMark:this.rrlocform.get('Landmark')?.value,
             pineCode:this.rrlocform.get('Pincode')?.value,
             BuildingName:this.rrlocform.get('BuildingName')?.value,
@@ -119,6 +121,8 @@ export class CrLocationDetailsComponent {
         }
         routetopreview(){
           var data={
+            area:this.area,
+            city:this.city,
             landMark:this.rrlocform.get('Landmark')?.value,
             pineCode:this.rrlocform.get('Pincode')?.value,
             BuildingName:this.rrlocform.get('BuildingName')?.value,
@@ -202,25 +206,40 @@ export class CrLocationDetailsComponent {
     
     
         // address for map
-   
-      handleAddressChange(address: Address) {
-       this.myAddres = address.formatted_address;
-       this.rrlocform.patchValue({
-        addressLoaction: this.myAddres,
-  
-      })
-       console.log( this.myAddres,"ddfada");
-        this.latitude = address.geometry.location.lat();
-        this.longtitude = address.geometry.location.lng();
-       
-       
-        this.rrlocform.patchValue({
-          lat: this.latitude,
-          long: this.longtitude,
-          
-        })
+        area:any;
+        city: any;
+        handleAddressChange(address: Address) {
+          this.myAddres = address.formatted_address;
+          this.rrlocform.patchValue({
+           addressLoaction: this.myAddres,
      
-      }
+         })
+          
+           this.latitude = address.geometry.location.lat();
+           this.longtitude = address.geometry.location.lng();
+          
+          
+           this.rrlocform.patchValue({
+             lat: this.latitude,
+             long: this.longtitude,
+             
+           })
+           this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
+            console.log(res)
+             
+             
+              let address = res[0].address_components;
+              let area = address.find((component:any) => component.types.includes('locality')).long_name;
+              console.log(area);
+              this.area = area;
+    
+             let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
+              console.log(city);
+              this.city= city; 
+              
+          
+            })
+         }
       options: any = {
         componentRestrictions: { country: 'IN' }
       }
@@ -230,11 +249,20 @@ export class CrLocationDetailsComponent {
           lat: $event.latLng.lat(),
           long: $event.latLng.lng()
         })
-      
+        
         this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
           console.log(res)
            
             this.myAddres = res[0].formatted_address
+    
+            let address = res[0].address_components;
+            let area = address.find((component:any) => component.types.includes('locality')).long_name;
+            console.log(area);
+            this.area = area;
+    
+            let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
+              console.log(city);
+              this.city= city; 
           
             this.rrlocform.patchValue({
               addressLoaction: this.myAddres,

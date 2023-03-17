@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Routes } from '@angular/router';
+import { PostPropertyService } from '../services/post-property.service';
 
 @Component({
   selector: 'app-owner',
@@ -8,11 +9,69 @@ import { Router, Routes } from '@angular/router';
 })
 export class OwnerComponent implements OnInit {
 
-  constructor(){
+  data:any;
+ 
+  constructor(private service: PostPropertyService,
+    private router:Router){
 
   }
+  id:any;
   ngOnInit(): void {
+
+    this.service.getOwnerData().subscribe((res:any)=>{
+
+      this.data = res.values;
+
+      console.log(res.values);
+    })
+  }
+  editForm(id:any,rentType:any,placeType:any){
     
+    if(rentType== 'rent' && placeType == 'Residential'){
+
+
+      var postdata = {
+        id: id,
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/residential-rent?' + queryString
+      );
+    }
+    if(rentType== 'sale' && placeType == 'Residential'){
+
+
+      var postdata = {
+        id: id,
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/residential-sale-property?' + queryString
+      );
+    }
+    if(rentType== 'rent' && placeType == 'Commercial'){
+
+
+      var postdata = {
+        id: id,
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/commercial-rent-property?' + queryString
+      );
+    }
+    if(rentType== 'sale' && placeType == 'Commercial'){
+
+
+      var postdata = {
+        id: id,
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/commercial-sale-property?' + queryString
+      );
+    }
+
   }
 
 }

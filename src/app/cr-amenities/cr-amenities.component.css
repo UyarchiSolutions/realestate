@@ -172,12 +172,17 @@ label{
 .non-veg-allowed div{
     width: 50%;
     margin: 0 !important;
-    justify-content: unset !important; 
-
+    justify-content: start !important;
 }
 .non-veg-allowed div div{
-    justify-content: unset !important;
+   
     width: 30%;
+    align-items: center;
+}
+.gated-security{
+    display: flex;
+    justify-content: space-between !important; 
+    align-items: baseline !important;
 }
 .flooring-type{
     width: 50% !important;

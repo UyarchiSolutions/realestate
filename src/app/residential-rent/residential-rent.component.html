@@ -482,8 +482,8 @@
 
             <p style="font-weight: 500">Videos :</p>
             <div class="image-gallery">
-              <div class="images video"  *ngFor="let vid of data.videos">
-               <video [src]=" vid"  width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#videopopup"></video>
+              <div class="images video" >
+               <video [src]="video"  width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#videopopup"></video>
 
               </div>
             </div>
@@ -533,7 +533,8 @@
       </div>
 
       <div class="post-btn">
-        <button>Post</button>
+       
+        <button (click)="ownerRoute()">Post</button>
       </div>
     </div>
   </div>

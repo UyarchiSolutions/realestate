@@ -14,6 +14,7 @@
     margin: 10px 0px;
 
 }
+
 .main h2{
     width: 70%;
     margin: auto;
@@ -98,6 +99,8 @@ label{
     align-items: center !important;
     justify-content: unset !important;
     flex-direction: row !important;
+    width: 63% !important;
+    margin-left: 50% !important;
 }
 .negotiable input{
     width: fit-content !important;

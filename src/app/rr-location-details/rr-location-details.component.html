@@ -118,7 +118,7 @@
     </div>
 
 <div class="save-continue">
-    <button type="submit" *ngIf="!datares.final">Save & Continue</button>
+    <button type="submit" *ngIf="!datares.final" (click)="OnSubmit()">Save & Continue</button>
 </div>
 <div class="save-continue">
     <button type="submit" (click)="routetopreview()" *ngIf="datares.final">Save </button>

@@ -38,5 +38,8 @@ export class PostPropertyService {
     console.log(img)
     return this.http.put(this.baseURL+'Update/Seller/Post/'+id,img)
   }
-
+  //get data for owner
+  getOwnerData(){
+    return this.http.get(this.baseURL +'getApprover/Property/0');
+  }
 }

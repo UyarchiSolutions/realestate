@@ -157,7 +157,7 @@ export class RsGalleryComponent implements OnInit{
       }
       this.service.uploadimg(this.id,formdata).subscribe((res:any)=>{
         
-        window.location.reload();
+       
       })
     } 
     routetopreview(){
@@ -165,14 +165,14 @@ export class RsGalleryComponent implements OnInit{
       this.uploadimg();
       this.uploadvid();
       
-      var data = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residential-sale-preview?' + queryString);
+      
   
       this.service.formget(this.id).subscribe((res: any) => {
-        
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/residential-sale-preview?' + queryString);
       });
     }
     back(count:any){

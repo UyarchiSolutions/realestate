@@ -70,7 +70,7 @@
 <div class="upload-image">
     <label>Photos :</label>
     <input type="file" id="image" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
-
+   
 <!-- <div class="col-sm-10 col-md-8">
                   <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
                   color: white;
@@ -89,6 +89,7 @@
 
 
 </div>
+<p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
 
 <div class="image-gallery">
  
@@ -107,7 +108,7 @@
 <div class="upload-video">
     <label>Video :</label>
     <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
+    <p *ngIf="errmsg" style="color:red">{{viderrmsg}}</p>
 </div>
 
 

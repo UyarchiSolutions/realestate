@@ -117,6 +117,9 @@ export class CsCommercialSalePreviewComponent {
           this.service.formget(this.id).subscribe((res: any) => {});
         }
       }
+      ownerRoute(){
+        this.router.navigateByUrl('/owner?')
+      }
     }
     
   

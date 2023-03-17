@@ -44,6 +44,10 @@ import { CsPriceDetailsComponent } from './cs-price-details/cs-price-details.com
 import { CsCommercialSalePreviewComponent } from './cs-commercial-sale-preview/cs-commercial-sale-preview.component';
 import { CsAmenitiesComponent } from './cs-amenities/cs-amenities.component';
 import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additional-details.component';
+import { PropertyPostComponent } from './property-post/property-post.component';
+import { OwnerComponent } from './owner/owner.component';
+
+
 
 
 
@@ -59,7 +63,7 @@ import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additio
     RrAmentitesComponent,
     RrGalleryComponent,
     RrAdditionalDetailsComponent,
-    // ResidentialRent1Component,
+    
     ResidentialRentComponent,
     RsPropertyDetailsComponent,
     RsLocationDetailsComponent,
@@ -83,9 +87,10 @@ import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additio
     CsPriceDetailsComponent,
     CsCommercialSalePreviewComponent,
     CsAmenitiesComponent,
-    CsAdditionalDetailsComponent
-    
-    
+    CsAdditionalDetailsComponent,
+
+    PropertyPostComponent,
+    OwnerComponent
     
     
 

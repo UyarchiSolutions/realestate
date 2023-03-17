@@ -24,6 +24,8 @@ import { CsLocationDetailsComponent } from './cs-location-details/cs-location-de
 import { CsPriceDetailsComponent } from './cs-price-details/cs-price-details.component';
 import { CsPropertyDetailsComponent } from './cs-property-details/cs-property-details.component';
 import { HomeComponent } from './home/home.component';
+import { OwnerComponent } from './owner/owner.component';
+import { PropertyPostComponent } from './property-post/property-post.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
 
@@ -73,6 +75,8 @@ const routes: Routes = [
   {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
   {path:'changepassword-seller',component:ChangeSellerComponent},
   {path:'start-posting',component:StartPostingComponent},
+  {path:'property-post',component:PropertyPostComponent},
+  {path:'owner',component:OwnerComponent},
 
   {path:'residential-rent',component:RrPropertyDetailsComponent},
   {path:'residentaial-rent-location-details',component:RrLocationDetailsComponent},

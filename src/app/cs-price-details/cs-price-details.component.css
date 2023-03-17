@@ -82,6 +82,7 @@ label{
 }
 .negotiable label{
     margin-top: 0 !important;
+  
 }
 .expected-rent div{
     width: 50% !important;
@@ -98,6 +99,8 @@ label{
     align-items: center !important;
     justify-content: unset !important;
     flex-direction: row !important;
+    width: 63% !important;
+    margin-left: 50% !important;
 }
 .negotiable input{
     width: fit-content !important;
