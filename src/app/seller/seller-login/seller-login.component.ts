@@ -39,6 +39,7 @@ export class SellerLoginComponent {
 
   notfound=false;
   submitted(){
+    console.log('working');
     this.emailSubmit=true
     this.loginForm.patchValue({
       Type:"Seller"
@@ -47,7 +48,8 @@ export class SellerLoginComponent {
       this.sellerSerivece.Submit(this.loginForm.value).subscribe((res:any)=>{
         this.emailSubmit=false;
         this.setCookie(res.token.access.token);
-            // this.route.navigate(['/interstProperty'])
+
+            this.route.navigate(['/owner'])
       },error => {
         if(error.error.message == "User Not Available"){
           this.notfound=true;
@@ -65,5 +67,11 @@ export class SellerLoginComponent {
   }
   forgot(){
     this.route.navigate(['/sendMobile-seller'])
+  }
+  routeToHome(){
+    this.route.navigateByUrl('/');
+  }
+  routeToReg(){
+    this.route.navigateByUrl('/seller-register')
   }
 }

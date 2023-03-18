@@ -207,7 +207,7 @@
                     <td><p *ngIf = "v.HouseOrCommercialType == 'Residential'" >{{v.BHKType}}</p><p *ngIf= "v.HouseOrCommercialType == 'Commercial'">{{v.propertType}}</p></td>
                     <td>{{v.area}}</td>
                     <td>22</td>
-                    <td><p *ngIf = "v.Type == 'rent' && !v.expectedPrice" >₹{{v.MonthlyRentFrom/100000}}lakhs</p>
+                    <td><p *ngIf = "v.Type == 'rent' && v.MonthlyRentFrom" >₹{{v.MonthlyRentFrom/100000}}lakhs</p>
                         <p *ngIf = "v.expectedPrice " >₹{{v.expectedPrice/100000}}lakhs</p> </td>
                     <td class="view interested">
 

@@ -23,6 +23,7 @@ import { CsGalleryComponent } from './cs-gallery/cs-gallery.component';
 import { CsLocationDetailsComponent } from './cs-location-details/cs-location-details.component';
 import { CsPriceDetailsComponent } from './cs-price-details/cs-price-details.component';
 import { CsPropertyDetailsComponent } from './cs-property-details/cs-property-details.component';
+import { HeaderEmptyComponent } from './header-empty/header-empty.component';
 import { HomeComponent } from './home/home.component';
 import { OwnerComponent } from './owner/owner.component';
 import { PropertyPostComponent } from './property-post/property-post.component';

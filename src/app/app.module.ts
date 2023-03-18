@@ -46,6 +46,7 @@ import { CsAmenitiesComponent } from './cs-amenities/cs-amenities.component';
 import { CsAdditionalDetailsComponent } from './cs-additional-details/cs-additional-details.component';
 import { PropertyPostComponent } from './property-post/property-post.component';
 import { OwnerComponent } from './owner/owner.component';
+import { HeaderEmptyComponent } from './header-empty/header-empty.component';
 
 
 
@@ -90,7 +91,8 @@ import { OwnerComponent } from './owner/owner.component';
     CsAdditionalDetailsComponent,
 
     PropertyPostComponent,
-    OwnerComponent
+    OwnerComponent,
+    // HeaderEmptyComponent
     
     
 

@@ -530,7 +530,7 @@
                 <label>Do you have Occupancy certificate? :</label>
                 <p>{{ data.occuPency_certificate }}</p>
               </div>
-              <div>
+              <div *ngIf="data.Completion_certificate">
                 <label>Do you have Completion certificate? :</label>
                 <p>{{ data.Completion_certificate }}</p>
               </div>

@@ -53,7 +53,7 @@
         <nav>
             <p class="navbar-links"  (click)="back(0)">Property details</p>
             <p class="navbar-links" (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Rental Details</p>
+            <p class="navbar-links" (click)="back(2)">Price Details</p>
             <p class="navbar-links" (click)="back(3)">Amenities</p>
             <p class="navbar-links nav-active" (click)="back(4)" >Gallery</p>
             <p class="navbar-links" (click)="back(5)">Additional Details </p>
@@ -89,6 +89,7 @@
 
 
 </div>
+<p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
 
 <div class="image-gallery">
  
@@ -101,7 +102,7 @@
     </div>
  
 </div>
-<div class="image-gallery" *ngIf="data.image" >
+<!-- <div class="image-gallery" *ngIf="data.image" >
                     
     <div class="images" *ngFor="let img of data.image ; let i = index">
         
@@ -111,13 +112,14 @@
             </div>
     </div>
  
-</div>
+</div> -->
 
 <div class="upload-video">
     <label>Video :</label>
     <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
+   
 </div>
+<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</p>
 
 
 <div class="image-gallery"  *ngIf="videoSrc">
@@ -134,18 +136,13 @@
 
 
 </div>
-<div class="image-gallery" *ngIf="data.videos">
+<!-- <div class="image-gallery" *ngIf="data.videos">
     
     <div class="images video" *ngFor="let vid of data.videos">
         <video [src]="vid" controls style="width:200px"></video>
   
     </div>
-  
-      
-          
-
-
-</div>
+</div> -->
 
 </div>
 

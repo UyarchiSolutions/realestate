@@ -153,7 +153,28 @@ export class CsPropertyDetailsComponent {
     property = ['Office Space','Co working','Shop','Show room','Other business'
                 ,'Industrial shed','Godown/Warehouse','Industrial/Building','Restaurant/Cafe']
     building= ['Apartment Type','Business park','Mall','Standalone Building','Independent shop']
+    selectedBuid:any=[];
+    loopBuilding(a:any){
+      
+      let index= this.property.indexOf(a);
   
+      console.log(index);
+  
+      if(index <= 4){
+        this.selectedBuid = this.building;
+        console.log(this.selectedBuid,index <= 4);
+      }
+      if(index >= 5 && index <= 7){
+        this.selectedBuid=['Standalone Building'];
+        console.log(this.selectedBuid,index >= 5 && index <= 7);
+      }
+      if(index == 8){
+        
+        this.selectedBuid=['Business park','Mall','Standalone Building','Independent shop'];
+        console.log(this.selectedBuid,index = 8);
+      }
+  
+    }
     nave: boolean = false;
     nav() {
       this.nave = !this.nave;
@@ -163,6 +184,7 @@ export class CsPropertyDetailsComponent {
     propertyv(a: any) {
       this.pv = a;
       console.log(this.pv);
+      this.loopBuilding(a);
     }
   
     tfv: any;

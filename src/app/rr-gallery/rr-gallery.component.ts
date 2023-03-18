@@ -109,7 +109,7 @@ export class RrGalleryComponent implements OnInit {
       this.viderrmsg = 'File size must be in below 40mb';
       return;
     }
-    this.errmsg = '';
+    this.viderrmsg = '';
     this.selectedfile = file;
     const reader = new FileReader();
     reader.onload = () => {
@@ -122,7 +122,7 @@ export class RrGalleryComponent implements OnInit {
 
   removevid() {
     this.videoSrc = '';
-    this.errmsg = '';
+    this.viderrmsg = '';
     this.selectedfile = this.emptyfile;
     console.log(this.selectedfile);
     const input = document.getElementById('videoinput') as HTMLInputElement;
@@ -131,21 +131,24 @@ export class RrGalleryComponent implements OnInit {
   async submit() {
    
     await this.uploadimg();
-    await this.uploadvid();
-
-    this.service.formget(this.id).subscribe((res: any) => {
+    const formdata = new FormData();
+    formdata.append('video', this.selectedfile);
+    this.service.uploadvid(this.id, formdata).subscribe((res: any) => {
+     
       var postdata = {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
     });
+
+   
   }
   async uploadvid() {
     const formdata = new FormData();
     formdata.append('video', this.selectedfile);
     this.service.uploadvid(this.id, formdata).subscribe((res: any) => {
-      console.log(res);
+     
      
     });
   }

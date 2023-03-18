@@ -29,6 +29,7 @@ export class CrGalleryComponent {
       errmsg!:string;
       selectedfile!:File;
       id:any;
+      viderrmsg!: string;
     
     
       constructor(
@@ -53,26 +54,27 @@ export class CrGalleryComponent {
           console.log(res);
         })
       }
-      changeImage(img: any) {
-        this.gallery = [];
-        this.gallaryview = [];
-        var filesAmount = img.target.files.length;
-        for (let i = 0; i < filesAmount; i++) {
-          const res = img.target.files[i];
-          this.gallery.push(res);
-          var reader = new FileReader();
-          reader.readAsDataURL(res);
-          reader.onload = (event) => {
-            this.gallaryview.push((<FileReader>event.target).result);
-          }
-        }
-      }
+      // changeImage(img: any) {
+      //   this.gallery = [];
+      //   this.gallaryview = [];
+      //   var filesAmount = img.target.files.length;
+      //   for (let i = 0; i < filesAmount; i++) {
+      //     const res = img.target.files[i];
+      //     this.gallery.push(res);
+      //     var reader = new FileReader();
+      //     reader.readAsDataURL(res);
+      //     reader.onload = (event) => {
+      //       this.gallaryview.push((<FileReader>event.target).result);
+      //     }
+      //   }
+      // }
       onFileselect(e:any){
     
         this.imageform.get('images').reset();
         this.imagePreview= [];
         const files = e.target.files;
-        
+        if (files.length <= 5) {
+          this.errmsg ='';
         for(let i=0;i < files.length && i<=5;i++){
           const file = files[i];
        
@@ -88,6 +90,12 @@ export class CrGalleryComponent {
           }
           reader.readAsDataURL(file);
         }
+      }else {
+        e.target.value = '';
+        this.errmsg = 'Upload 5 images only';
+        return;
+      }
+
       }
       removeimg(index: number){
        
@@ -101,10 +109,10 @@ export class CrGalleryComponent {
       onvidselect(e:any){
         const file = e.target.files[0];
         if(file.size > 40* 1024 *1024){
-          this.errmsg="File size must be in below 40mb"
+          this.viderrmsg="File size must be in below 40mb"
           return;
         }
-        this.errmsg='';
+        this.viderrmsg='';
         this.selectedfile= file;
         const reader = new FileReader();
         reader .onload= ()=>{
@@ -117,16 +125,19 @@ export class CrGalleryComponent {
     
       removevid(){
         this.videoSrc ='';
-       this.errmsg='';
+       this.viderrmsg='';
        this.selectedfile= this.emptyfile ;
        console.log(this.selectedfile);
        const input= document.getElementById('videoinput') as HTMLInputElement;
        input.value = '';
         
       }
-      submit(){
-        this.uploadimg();
-        this.uploadvid();
+     async submit(){
+      await  this.uploadimg();
+        
+      const formdata = new FormData();
+      formdata.append('video',this.selectedfile);
+      this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
         var postdata ={
     
           id:this.id
@@ -135,16 +146,27 @@ export class CrGalleryComponent {
         this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
+       })
+     
       }
-      uploadvid(){
+      async   uploadvid(){
         const formdata = new FormData();
         formdata.append('video',this.selectedfile);
         this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
+          var data = {
+            id: this.id,
+          };
+          var queryString = new URLSearchParams(data).toString();
+          this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+      
+          this.service.formget(this.id).subscribe((res: any) => {
+            
+          });
          })
     
       }
     
-      uploadimg(){
+      async  uploadimg(){
         const formdata = new FormData();
         const images = this.imageform.get('images') as FormArray;
         console.log(images.value  )
@@ -160,20 +182,12 @@ export class CrGalleryComponent {
           window.location.reload();
         })
       } 
-      routetopreview(){
+      async  routetopreview(){
     
-        this.uploadimg();
-        this.uploadvid();
+        await this.uploadimg();
+        await this.uploadvid();
         
-        var data = {
-          id: this.id,
-        };
-        var queryString = new URLSearchParams(data).toString();
-        this.router.navigateByUrl('/residential-sale-preview?' + queryString);
-    
-        this.service.formget(this.id).subscribe((res: any) => {
-          
-        });
+       
       }
       back(count: any) {
         if (count == 0) {

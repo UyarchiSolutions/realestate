@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Cookie } from 'ng2-cookies/cookie';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class PostPropertyService {
 
   // startposting
   fpost( data:any ){
-   return this.http.post(this.baseURL + "createSellerPost",data )
+   return this.http.post(this.baseURL + "createSellerPost",data,{headers:{auth:Cookie.get('tokens')}} )
   }
   // property details 
   formput(id:any,data:any){

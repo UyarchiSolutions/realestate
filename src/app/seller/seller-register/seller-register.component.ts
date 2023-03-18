@@ -54,4 +54,10 @@ export class SellerRegisterComponent {
     }
 
   }
+  routeToHome(){
+    this.route.navigateByUrl('/');
+  }
+  routeToLog(){
+    this.route.navigateByUrl('/sellerLogin')
+  }
 }

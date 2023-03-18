@@ -89,6 +89,7 @@
 
 
 </div>
+<p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
 
 <div class="image-gallery">
  
@@ -101,7 +102,7 @@
     </div>
  
 </div>
-<div class="image-gallery" *ngIf="data.image" >
+<!-- <div class="image-gallery" *ngIf="data.image" >
                     
     <div class="images" *ngFor="let img of data.image ; let i = index">
         
@@ -111,13 +112,14 @@
             </div>
     </div>
  
-</div>
+</div> -->
 
 <div class="upload-video">
     <label>Video :</label>
     <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <div *ngIf="errmsg" style="color:red">{{errmsg}}</div>
+
 </div>
+<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</p>
 
 
 <div class="image-gallery"  *ngIf="videoSrc">

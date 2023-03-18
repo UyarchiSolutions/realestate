@@ -9,24 +9,26 @@ import { SellerformobileComponent } from './sellerformobile/sellerformobile.comp
 import { SellerforotpComponent } from './sellerforotp/sellerforotp.component';
 import { UpdatepasswordsellerComponent } from './updatepasswordseller/updatepasswordseller.component';
 import { ChangeSellerComponent } from './change-seller/change-seller.component';
+import { AppModule } from "../app.module";
 
 
 
 @NgModule({
-  declarations: [
-    SellerLoginComponent,
-    SellerRegisterComponent,
-    VerifyotpforsellerComponent,
-    CreatepasswordsellerComponent,
-    SellerformobileComponent,
-    SellerforotpComponent,
-    UpdatepasswordsellerComponent,
-    ChangeSellerComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        SellerLoginComponent,
+        SellerRegisterComponent,
+        VerifyotpforsellerComponent,
+        CreatepasswordsellerComponent,
+        SellerformobileComponent,
+        SellerforotpComponent,
+        UpdatepasswordsellerComponent,
+        ChangeSellerComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppModule
+    ]
 })
 export class SellerModule { }

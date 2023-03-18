@@ -168,12 +168,18 @@
                 <p [innerHTML]="bt" *ngIf="bt" ></p>
                 <p [innerHTML]="data.buildingType" *ngIf="data.buildingType && !bt" ></p>
                 <p *ngIf="!bt && !data.buildingType" style="opacity: 0.5">Building Type</p>
-  
-                <ul class="dropdown-menu select-filed-options" >
-                 <li *ngFor="let build of building ">
+
+                
+                <ul class="dropdown-menu select-filed-options"  >
+
+                 <li *ngFor="let build of selectedBuid" >
+                 
                     <a class="dropdown-item"  (click)="buildtype(build)"  >{{build}}</a>
+                  
                  </li>
-                </ul>
+                 </ul>
+               
+
               </div>
             </div>
   
@@ -448,7 +454,7 @@
             </div>
   
             <div class="save-continue" >
-              <button type="submit" *ngIf="!data.final">Save & Continue</button>
+              <button type="submit" (click)="propsub()" *ngIf="!data.final">Save & Continue</button>
             </div>
             <div class="save-continue" >
               <button type="submit" *ngIf="data.final" (click)="routetopreview()">Save</button>

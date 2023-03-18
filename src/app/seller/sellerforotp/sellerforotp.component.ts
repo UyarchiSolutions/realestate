@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BuyerService } from 'src/app/buyer/buyer.service';
+import { HeaderEmptyComponent } from 'src/app/header-empty/header-empty.component';
 
 @Component({
   selector: 'app-sellerforotp',

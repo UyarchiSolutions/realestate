@@ -120,7 +120,7 @@ export class CsAdditionalDetailsComponent {
         };
         var queryString = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
-          '/commercial-sale-rental-details?' + queryString
+          '/commercial-sale-price-details?' + queryString
         );
   
         this.service.formget(this.id).subscribe((res: any) => {});
