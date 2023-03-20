@@ -74,4 +74,5 @@ export class SellerLoginComponent {
   routeToReg(){
     this.route.navigateByUrl('/seller-register')
   }
+  
 }

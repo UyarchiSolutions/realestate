@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Routes } from '@angular/router';
+import { Cookie } from 'ng2-cookies';
 import { PostPropertyService } from '../services/post-property.service';
 
 @Component({
@@ -73,5 +74,16 @@ export class OwnerComponent implements OnInit {
     }
 
   }
+  startpostRoute(){
+    this.router.navigateByUrl('/start-posting');
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
 
+    
+  }
+ 
 }

@@ -43,4 +43,7 @@ export class PostPropertyService {
   getOwnerData(){
     return this.http.get(this.baseURL +'getApprover/Property/0');
   }
+  myAcount(){
+    return this.http.get(this.baseURL+`BuyerSeller/Profile`,{headers:{auth:Cookie.get('tokens')}})
+  }
 }

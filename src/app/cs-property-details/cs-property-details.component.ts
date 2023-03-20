@@ -184,7 +184,7 @@ export class CsPropertyDetailsComponent {
     propertyv(a: any) {
       this.pv = a;
       console.log(this.pv);
-      this.loopBuilding(a);
+      // this.loopBuilding(a);
     }
   
     tfv: any;

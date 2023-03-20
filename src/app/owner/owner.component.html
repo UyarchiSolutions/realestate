@@ -1,3 +1,4 @@
+<header-with-profile></header-with-profile>
 <div class="container">
 
 
@@ -64,7 +65,7 @@
 
 
 
-                <li class="sidebar-content-list "><span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                <li (click)="logOut()" style="cursor: pointer;" class="sidebar-content-list "><span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="18" height="18" rx="1" stroke="black" stroke-width="2" />
                             <rect x="3.75" y="4.75" width="1.5" height="1.5" stroke="black" stroke-width="1.5" />
@@ -88,9 +89,9 @@
 
                 <h5>Property Posts</h5>
                 <div class="notification" style="display: flex;min-width:fit-content;align-items: center;">
-                    <div class="postproperty"
+                    <div class="postproperty" 
                         style="min-width: fit-content !important;display: flex;color: white;margin-right:50px;align-items: center;">
-                        <a routerLink="/start-posting">Post Your propert </a> <svg style="margin-left: 10px;" width="20"
+                        <a style="cursor: pointer;" routerLink="/start-posting" (click)="startpostRoute()">Post Your propert </a> <svg style="margin-left: 10px;cursor: pointer;" width="20"
                             height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M11.5 4H3.25C2.65326 4 2.08097 4.23705 1.65901 4.65901C1.23705 5.08097 1 5.65326 1 6.25V16.75C1 17.3467 1.23705 17.919 1.65901 18.341C2.08097 18.7629 2.65326 19 3.25 19H13.75C14.3467 19 14.919 18.7629 15.341 18.341C15.7629 17.919 16 17.3467 16 16.75V8.5M5.5 14.5L19 1M19 1H13.75M19 1V6.25"
@@ -237,7 +238,7 @@
 
                     </td>
                    
-                </tr>
+                </tr> 
                 <tr>
                     <td>10-02-2023</td>
                     <td>Commercial > Rent</td>
