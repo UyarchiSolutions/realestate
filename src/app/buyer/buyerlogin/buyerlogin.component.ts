@@ -68,4 +68,10 @@ export class BuyerloginComponent {
   forgotPass(){
     this.route.navigate(['/buyer-forgot'])
    }
+   routeToReg(){
+    this.route.navigateByUrl('register')
+   }
+   routeToHome(){
+    this.route.navigateByUrl('/')
+   }
 }

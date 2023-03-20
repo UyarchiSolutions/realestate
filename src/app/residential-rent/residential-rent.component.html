@@ -287,51 +287,68 @@
           <div class="submitted-details">
             <div *ngIf="data.rentDetails == 'rent'">
               <label>Expected Rent :</label>
-              <p style="margin-left: 170px">{{ data.MonthlyRentFrom }}</p>
-              <p
+              <p style="text-align: left;">{{ data.MonthlyRentFrom }}
+                <span
+                *ngIf="data.RentNegociable == 'true'"
+                style="
+                 color: grey;
+                 
+                 font-size: 0.8rem;
+                 top: 4px;
+                "
+              >
+                Negotiable
+              </span></p>
+             
+            </div>
+
+            <!-- <div >
+              <label>Expected Rent :</label>
+              <p style="text-align: left;">{{ data.expectedPrice }} <span
                 *ngIf="data.RentNegociable == 'true'"
                 style="
                   color: grey;
-                  position: relative;
-                  right: 90px;
+                 
                   font-size: 0.8rem;
                   top: 4px;
                 "
               >
                 Negotiable
-              </p>
-            </div>
+            </span></p>
+             
+            </div> -->
+
             <div *ngIf="data.rentDetails == 'lease'">
               <label>Expected Lease :</label>
-              <p style="margin-left: 170px">{{ data.depositeAmount }}</p>
-              <p
+              <p style="text-align: left;">{{ data.depositeAmount }}
+                <span
                 *ngIf="data.depositeNegociable == 'true'"
                 style="
                   color: grey;
-                  position: relative;
-                  right: 90px;
+                
                   font-size: 0.8rem;
                   top: 4px;
                 "
               >
                 Negotiable
-              </p>
+            </span></p>
+          
             </div>
             <div *ngIf="data.rentDetails == 'rent'">
               <label>Advance Amount :</label>
-              <p style="margin-left: 170px">{{ data.depositeAmount }}</p>
-              <p
+              <p style="text-align: left;">{{ data.depositeAmount }}
+                <span
                 *ngIf="data.depositeNegociable == 'true'"
                 style="
                   color: grey;
-                  position: relative;
-                  right: 90px;
+                
                   font-size: 0.8rem;
                   top: 4px;
                 "
               >
                 Negotiable
-              </p>
+              </span></p>
+            
             </div>
             <div>
               <label>Maintenance:</label>

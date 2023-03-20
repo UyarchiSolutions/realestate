@@ -291,32 +291,30 @@
             <div class="submitted-details">
               <div >
                 <label>Expected Price :</label>
-                <p style="margin-left: 170px">{{ data.expectedPrice }}</p>
+                <p style="margin-left:0px;width: fit-content;">{{ data.expectedPrice }}</p>
+                <p
+                *ngIf="data.current_in_loan == 'true'"
+                style="
+                  padding: 0;width: fit-content;margin-left: 10px;"
+              >
+               Currently in loan
+              </p>
                 <p
                   *ngIf="data.RentNegociable == 'true'"
                   style="
-                    color: grey;
-                    position: relative;
-                    right: 90px;
-                    font-size: 0.8rem;
-                    top: 4px;
-                  "
+                  color: grey;
+                position: relative;
+                  font-size: 0.8rem;
+                  top: 1px;
+                  width: fit-content;
+                  margin-left: 10px;
+                "
                 >
                   Negotiable
                 </p>
-                <p
-                  *ngIf="data.current_in_loan == 'true'"
-                  style="
-                    color: grey;
-                    position: relative;
-                    right: 90px;
-                    font-size: 0.8rem;
-                    top: 4px;
-                  "
-                >
-                 Currently in loan
-                </p>
+              
               </div>
+              
               <div>
                 <label>Maintenance:</label>
                 <p

@@ -22,7 +22,7 @@
                 stroke-width="2"
               />
             </svg>
-            Profile</span
+            Profile</span>
           >
         </li>
   
@@ -290,19 +290,18 @@
             <div class="submitted-details">
               <div >
                 <label>Expected Rent :</label>
-                <p style="margin-left: 170px">{{ data.expectedPrice }}</p>
-                <p
+                <p style="text-align: left;">{{ data.expectedPrice }} <span
                   *ngIf="data.RentNegociable == 'true'"
                   style="
                     color: grey;
-                    position: relative;
-                    right: 90px;
+                   
                     font-size: 0.8rem;
                     top: 4px;
                   "
                 >
                   Negotiable
-                </p>
+              </span></p>
+               
               </div>
           
             

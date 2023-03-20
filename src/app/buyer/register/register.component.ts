@@ -38,4 +38,10 @@ export class RegisterComponent {
     }
 
   }
+  routeToLog(){
+    this.route.navigateByUrl('/buyerLogin');
+  }
+  routeToHome(){
+    this.route.navigateByUrl('/');
+  }
 }

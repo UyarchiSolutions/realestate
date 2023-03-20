@@ -40,8 +40,8 @@ export class PostPropertyService {
     return this.http.put(this.baseURL+'Update/Seller/Post/'+id,img)
   }
   //get data for owner
-  getOwnerData(){
-    return this.http.get(this.baseURL +'getApprover/Property/0');
+  getOwnerData(page:any,range:any){
+    return this.http.get(this.baseURL +`getApprover/Property?page=${page}&range=${range}`);
   }
   myAcount(){
     return this.http.get(this.baseURL+`BuyerSeller/Profile`,{headers:{auth:Cookie.get('tokens')}})

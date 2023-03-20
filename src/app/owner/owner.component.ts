@@ -11,21 +11,46 @@ import { PostPropertyService } from '../services/post-property.service';
 export class OwnerComponent implements OnInit {
 
   data:any;
+  
  
   constructor(private service: PostPropertyService,
     private router:Router){
 
   }
+
   id:any;
+  displaycount = 0;
+  page = 0;
+  pagetotal = 0;
+  totalcount = 0;
+  range =10;
   ngOnInit(): void {
 
-    this.service.getOwnerData().subscribe((res:any)=>{
+    this.GetData()
+   
+  }
+  GetData(){
+    this.service.getOwnerData(this.page,this.range).subscribe((res:any)=>{
+
+      console.log(res);
 
       this.data = res.values;
 
-      console.log(res.values);
+      if(this.page == 0){
+
+      let page = res.total/ (this.page + 1) ;
+      
+        console.log(res.total,'range',this.range);
+      this.displaycount = Math.ceil(page/ this.range) ;
+
+      console.log(page,'dc',this.page + 1);
+
+      
+      }
+      
     })
   }
+
   editForm(id:any,rentType:any,placeType:any){
     
     if(rentType== 'rent' && placeType == 'Residential'){
@@ -82,8 +107,31 @@ export class OwnerComponent implements OnInit {
     localStorage.clear();
     Cookie.delete('tokens');
     this.router.navigateByUrl('/');
-
-    
   }
- 
+
+
+  pagination(val: any) {
+
+    if (val == 1) {
+      this.page = this.page + 1;
+    }
+    if (val == 0) {
+      if (this.page != 0) {
+        this.page = this.page - 1;
+      }
+    }
+    this.GetData();
+  }
+  displaySelect:boolean=false;
+  Setrange(val:any){
+    this.displaySelect=true;
+    this.range= val.target.value;
+
+    console.log(this.range,'inside set range');
+
+    this.GetData();
+  }
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
 }
