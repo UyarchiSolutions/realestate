@@ -12,9 +12,11 @@ import { SellerModule } from './seller/seller.module';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
+
 import { AgmCoreModule } from '@agm/core';
 
 import { CommonModule } from '@angular/common';
+
 
 
 
@@ -28,6 +30,7 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     HomeComponent,
     HeaderComponent,
+  
 
     
 
@@ -38,6 +41,7 @@ import { CommonModule } from '@angular/common';
     BuyerModule,
     SellerModule,
     ReactiveFormsModule,
+    
 
     FormsModule,
     CommonModule,

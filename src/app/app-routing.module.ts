@@ -27,6 +27,7 @@ import { CsPropertyDetailsComponent } from './cs-property-details/cs-property-de
 import { HomeComponent } from './home/home.component';
 import { OwnerComponent } from './owner/owner.component';
 import { PropertyPostComponent } from './property-post/property-post.component';
+import { RbHomeComponent } from './rb-home/rb-home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
 
@@ -109,8 +110,10 @@ const routes: Routes = [
   {path:'commercial-sale-amenities',component:CsAmenitiesComponent},
   {path:'commercial-sale-gallery',component:CsGalleryComponent},
   {path:'commercial-sale-add-details',component:CsAdditionalDetailsComponent},
-  {path:'commercial-sale-preview',component:CsCommercialSalePreviewComponent}
+  {path:'commercial-sale-preview',component:CsCommercialSalePreviewComponent},
 
+  // forms end
+  {path:'rb',component:RbHomeComponent}
 ];
 
 @NgModule({

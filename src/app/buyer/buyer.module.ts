@@ -11,7 +11,7 @@ import { BuyerForgotComponent } from './buyer-forgot/buyer-forgot.component';
 import { BuyerSendotpComponent } from './buyer-sendotp/buyer-sendotp.component';
 import { UpdatepasswordbuyerComponent } from './updatepasswordbuyer/updatepasswordbuyer.component';
 import { ChangeBuyerComponent } from './change-buyer/change-buyer.component';
-
+import{RbHomeComponent} from '../rb-home/rb-home.component'
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { ChangeBuyerComponent } from './change-buyer/change-buyer.component';
     BuyerForgotComponent,
     BuyerSendotpComponent,
     UpdatepasswordbuyerComponent,
-    ChangeBuyerComponent
+    ChangeBuyerComponent,
+    RbHomeComponent
   ],
   imports: [
     CommonModule,

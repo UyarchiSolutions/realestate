@@ -227,12 +227,12 @@ export class RrLocationDetailsComponent  implements OnInit{
          
          
           let address = res[0].address_components;
-          let area = address.find((component:any) => component.types.includes('locality')).long_name;
-          console.log(area);
+          let area = address.find((component:any) => component.types.includes('sublocality_level_1')).long_name;
+          console.log(area,'area','inside res');
           this.area = area;
 
          let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-          console.log(city);
+          console.log(city,'city');
           this.city= city; 
           
       
@@ -254,7 +254,7 @@ export class RrLocationDetailsComponent  implements OnInit{
         this.myAddres = res[0].formatted_address
 
         let address = res[0].address_components;
-        let area = address.find((component:any) => component.types.includes('locality')).long_name;
+        let area = address.find((component:any) => component.types.includes('sublocality_level_1' || 'locality' || 'sublocality' )).long_name;
         console.log(area);
         this.area = area;
 

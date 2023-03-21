@@ -115,9 +115,9 @@ export class RrRentalDetailsComponent implements OnInit{
     var data={
       rentDetails:this.switch,
       MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
-      RentNegociable:this.rentform.get('ExpectedRentNegotiable').value=='true' ? true : null,
+      RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
       depositeAmount:this.rentform.get('ExpectedDeposit').value,
-      depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value ==' true' ?true:null,
+      depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
       squareFT:this.mainmon,
       MaintenanceStatus:this.maintanceVal,
@@ -144,7 +144,7 @@ export class RrRentalDetailsComponent implements OnInit{
 
       rentDetails:this.switch,
       depositeAmount:this.leaseform.get('LExpectedDeposit').value,
-      depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value == 'true' ? true :null,
+      depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
       squareFT:this.Lmainmon,
       MaintenanceStatus:this.LmaintanceVal,
