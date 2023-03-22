@@ -62,6 +62,7 @@ export class CrPropertyDetailsComponent {
     console.log(e);
     this.propform.get('propertytype').setValue(e);
   }
+  routerlink='commercial-rent-property';
   propsub() {
    
     
@@ -75,7 +76,8 @@ export class CrPropertyDetailsComponent {
       facingDirection: this.fdv,
       ideaFor:this.rpv,
       discription: this.propform.get('Description')?.value,
-      buildingType:this.propform.get('otfea')?.value
+      buildingType:this.bt,
+      routeLink:this.routerlink
     };
     
     console.log(data);
@@ -127,7 +129,7 @@ export class CrPropertyDetailsComponent {
       facingDirection: this.fdv,
       ideaFor:this.rpv,
       discription: this.propform.get('Description')?.value,
-      buildingType:this.propform.get('otfea')?.value
+      buildingType:this.bt
     };
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {

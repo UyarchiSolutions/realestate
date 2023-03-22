@@ -42,7 +42,7 @@ none: any;
       Amenities :new FormControl(),
       powerBackup :new FormControl()
     })
-    
+    routerlink='residential-sale-amentites';
     ngOnInit(): void {
       this.arouter.queryParams.subscribe((params) => {
         console.log(params);
@@ -75,7 +75,8 @@ none: any;
         balCony:this.balv,
         Amenities:this.amenities,
         powerBackup:this.pb,
-        kitchenType:this.kitty
+        kitchenType:this.kitty,
+        routeLink:this.routerlink
   
       }
       this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -99,6 +100,10 @@ none: any;
          
         this.amenities= res.Amenities;
           this.data=res;
+          if(res.final){
+            console.log('dsfsdf')
+            this.showami =true;
+          }
         this.myform.patchValue({
        
           Non_veg:res.Non_veg,

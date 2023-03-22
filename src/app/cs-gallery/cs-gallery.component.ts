@@ -133,9 +133,13 @@ export class CsGalleryComponent {
          input.value = '';
           
         }
+          routerlink='commercial-sale-gallery';
        async submit(){
         await  this.uploadimg();
-        
+         let data={
+      routeLink:this.routerlink,
+    }
+    this.service.formput(this.id,data);
           const formdata = new FormData();
           formdata.append('video',this.selectedfile);
           this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{

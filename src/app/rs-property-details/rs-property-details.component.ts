@@ -62,6 +62,7 @@ export class RsPropertyDetailsComponent implements OnInit {
     console.log(e);
     this.propsform.get('propertytype').setValue(e);
   }
+  routerlink='residential-sale-property';
   propsub() {
    
     
@@ -76,7 +77,8 @@ export class RsPropertyDetailsComponent implements OnInit {
       RentPrefer: this.rpv,
       discription: this.propsform.get('Description')?.value,
       ownerType:this.ost,
-      landSize:this.propsform.get('UDSlandsize')?.value
+      landSize:this.propsform.get('UDSlandsize')?.value,
+      routeLink:this.routerlink
     };
     
     console.log(data);

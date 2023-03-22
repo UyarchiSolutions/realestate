@@ -3,6 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { Address } from 'ng-google-places-autocomplete';
 import { PostPropertyService } from '../services/post-property.service';
 import { MapsAPILoader } from '@agm/core';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor ( private service:PostPropertyService,
-    private fb:FormBuilder,private mapsAPILoader: MapsAPILoader){
+    private fb:FormBuilder,private route:Router){
 
     
       
@@ -52,9 +53,7 @@ export class HomeComponent implements OnInit {
   localities:any[]=[];
   zoom=10;
  
-  GetLocality(){
-  
-  }
+
   handleAddressChange(address: Address,) {
 
     this.BuyerAddres = address.formatted_address;
@@ -66,14 +65,28 @@ export class HomeComponent implements OnInit {
    this.longtitude = address.geometry.location.lng();
 
 
-   this.GetLocality();
+  
 
    this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
     console.log(res)
      
      
       let address = res[0].address_components;
-      let area = address.find((component:any) => component.types.includes('locality')).long_name;
+      let area = address.find((component:any) =>{ 
+        if( component.types.includes('locality')){
+
+          console.log(component.types.includes('locality'),'locality');
+
+        return component.types.includes('locality')}
+
+        if( component.types.includes('sublocality_level_1')){
+
+          console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+
+        return component.types.includes('sublocality_level_1')}
+     
+      }
+      ).long_name; 
       console.log(area);
       this.area = area;
 
@@ -101,15 +114,28 @@ export class HomeComponent implements OnInit {
    this.longtitude = address.geometry.location.lng();
 
 
-   this.GetLocality();
+ 
 
    this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
     console.log(res)
      
      
       let address = res[0].address_components;
-      let area = address.find((component:any) => component.types.includes('locality')).long_name;
-      console.log(area);
+      let area = address.find((component:any) =>{ 
+        if( component.types.includes('locality')){
+
+          console.log(component.types.includes('locality'),'locality');
+
+        return component.types.includes('locality')}
+
+        if( component.types.includes('sublocality_level_1')){
+
+          console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+
+        return component.types.includes('sublocality_level_1')}
+     
+      }
+      ).long_name; 
       this.area = area;
 
      let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
@@ -125,22 +151,48 @@ export class HomeComponent implements OnInit {
    Coptions: any = {
     componentRestrictions: { country: 'IN' }
   }
-  pv:any;
-  propertyv(a: any) {
-    this.pv = a;
-    console.log(this.pv);
-  }
+  // pv:any;
+  // propertyv(a: any) {
+  //   this.pv = a;
+  //   console.log(this.pv);
+  // }
   range=10;
   page=0;
-  Ressubmit(){
+  Ressubmit()
+  {
+    if(this.Resform.get('type')?.value == 'Rent'){
     let data ={
       formatAdd:this.Resform.get('BuyerAddres')?.value,
 
     }
     this.service.getSellerDetails(this.page,this.range,data).subscribe((res:any)=>{
       console.log(res);
+      var postdata = {
+        formatAdd:this.Resform.get('BuyerAddres')?.value,
+        
+
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.route.navigateByUrl('/buyer-residential-rent-view?' + queryString );
     })
-    
+  }
+
+    if(this.Resform.get('type')?.value == 'Buy'){
+    let data ={
+      formatAdd:this.Resform.get('BuyerAddres')?.value,
+
+    }
+    this.service.getSellerDetails(this.page,this.range,data).subscribe((res:any)=>{
+      console.log(res);
+      var postdata = {
+        formatAdd:this.Resform.get('BuyerAddres')?.value,
+        
+
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.route.navigateByUrl('/buyer-residential-buy-view?' + queryString );
+    })
+  }
   }
   Comsubmit(){
     console.log(this.Comform.value,'zcxzxc');

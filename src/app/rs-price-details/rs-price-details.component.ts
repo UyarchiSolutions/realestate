@@ -88,6 +88,7 @@ export class RsPriceDetailsComponent implements OnInit {
   
       this.Lmainmon=a;
     }
+    routerlink='residential-sale-price-details';
     rentsub(){
   
       var data={
@@ -99,7 +100,9 @@ export class RsPriceDetailsComponent implements OnInit {
         maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
         squareFT:this.mainmon,
         MaintenanceStatus:this.maintanceVal,
+        routeLink:this.routerlink
       }
+      console.log('sub triggered')
       
       this.service.formput(this.id,data).subscribe((res:any)=>{
         console.log(res);
@@ -130,6 +133,7 @@ export class RsPriceDetailsComponent implements OnInit {
         squareFT:this.mainmon,
         MaintenanceStatus:this.maintanceVal,
       }   
+      console.log('route triggered')
            
       this.service.formput(this.id,data).subscribe((res:any)=>{
         
@@ -139,9 +143,7 @@ export class RsPriceDetailsComponent implements OnInit {
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residential-sale-preview?' + queryString);
   
-      this.service.formget(this.id).subscribe((res: any) => {
-        location.reload();
-      });
+      
       });
           
            

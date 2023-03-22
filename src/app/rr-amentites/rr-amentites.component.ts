@@ -11,6 +11,7 @@ import { PostPropertyService } from '../services/post-property.service';
 export class RrAmentitesComponent implements OnInit {
   id: any;
   data:any;
+  final:any;
 
   constructor(
     private fb: FormBuilder,
@@ -43,13 +44,17 @@ export class RrAmentitesComponent implements OnInit {
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
       this.id = params['id'];
-      console.log(this.id, 'this is id from  rd');
+     
 
-      this.updateform();
+     
+    
     });
-  
+    this.updateform();
+
+   
     
   }
+  routerlink='residentaial-rent-amentites';
   submited=false;
   submit(){
 
@@ -71,6 +76,7 @@ export class RrAmentitesComponent implements OnInit {
       bathRoom:this.barv,
       balCony:this.balv,
       Amenities:this.SelectedAmenities,
+      routeLink:this.routerlink
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -93,7 +99,13 @@ export class RrAmentitesComponent implements OnInit {
     this.service.formget(this.id).subscribe((res:any)=>{
         console.log(res,453453)
         this.data=res;
+        console.log(res.final)
+        this.final=res.final;
         this.SelectedAmenities= res.Amenities;
+        if(res.final){
+          console.log('dsfsdf')
+          this.showami =true;
+        }
       this.myform.patchValue({
      
         Non_veg:res.Non_veg,
@@ -103,6 +115,7 @@ export class RrAmentitesComponent implements OnInit {
     
       
     })
+   
   
 
   }

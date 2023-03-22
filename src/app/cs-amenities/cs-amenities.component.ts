@@ -53,6 +53,7 @@ export class CsAmenitiesComponent {
         }
   
         submited=false;
+        routerlink='commercial-sale-amenities';
         submit(){
           
       
@@ -65,7 +66,8 @@ export class CsAmenitiesComponent {
             escalator:this.myform.get('Escalator')?.value,
             waterStorage:this.myform.get('waterFacility')?.value,
             wifi:this.myform.get('WIFI')?.value,
-            Lift:this.lft
+            Lift:this.lft,
+            routeLink:this.routerlink
       
           }
           this.service.formput(this.id,data).subscribe((res:any)=>{

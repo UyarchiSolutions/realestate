@@ -114,6 +114,12 @@ export class ResidentialRentComponent implements OnInit {
     }
   }
   ownerRoute(){
-    this.router.navigateByUrl('/owner?')
+    let data={
+      finsh:true
+    }
+    this.service.formput(this.id,data).subscribe((res:any)=>{
+      this.router.navigateByUrl('/owner?')
+    })
+   
   }
 }

@@ -9,7 +9,7 @@
 
     <div class="search-type">
         <div class="search-type-select">
-            <p>Residential>Buy</p>
+            <p>Residential>Rent</p>
             <svg width="7" height="15" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.25 1.5L8.75 9L1.25 16.5" stroke="#616161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -465,56 +465,16 @@
                                     </th>
         </tr>
 
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-            <td class="view interested"><svg width="18" height="18" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12.5C2.6862 12.5 0 9.8138 0 6.5C0 3.1862 2.6862 0.5 6 0.5C9.3138 0.5 12 3.1862 12 6.5C12 9.8138 9.3138 12.5 6 12.5ZM6 11.3C7.27304 11.3 8.49394 10.7943 9.39411 9.89411C10.2943 8.99394 10.8 7.77304 10.8 6.5C10.8 5.22696 10.2943 4.00606 9.39411 3.10589C8.49394 2.20571 7.27304 1.7 6 1.7C4.72696 1.7 3.50606 2.20571 2.60589 3.10589C1.70571 4.00606 1.2 5.22696 1.2 6.5C1.2 7.77304 1.70571 8.99394 2.60589 9.89411C3.50606 10.7943 4.72696 11.3 6 11.3V11.3ZM5.4018 8.9L2.856 6.3542L3.7044 5.5058L5.4018 7.2032L8.7954 3.809L9.6444 4.6574L5.4018 8.9Z" fill="#1877F2"/>
-                </svg>Interested
-                </td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
+        <tr *ngFor="let v of data; let i =index">
+            <td>{{v.propertType}}</td>
+            <td>{{v.area}}</td>
+            <td>{{v.BHKType}}</td>
+            <td>{{v.BuildedSize}}sq.ft</td>
+            <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
+                <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+            
+            </td>
+            <td>{{v.created | date : "dd/MM/YYYY"}}</td>
           <td class="view">View</td>
         </tr>
 
@@ -531,48 +491,6 @@
                 </td>
         </tr>
 
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-            <td class="view interested"><svg width="18" height="18" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12.5C2.6862 12.5 0 9.8138 0 6.5C0 3.1862 2.6862 0.5 6 0.5C9.3138 0.5 12 3.1862 12 6.5C12 9.8138 9.3138 12.5 6 12.5ZM6 11.3C7.27304 11.3 8.49394 10.7943 9.39411 9.89411C10.2943 8.99394 10.8 7.77304 10.8 6.5C10.8 5.22696 10.2943 4.00606 9.39411 3.10589C8.49394 2.20571 7.27304 1.7 6 1.7C4.72696 1.7 3.50606 2.20571 2.60589 3.10589C1.70571 4.00606 1.2 5.22696 1.2 6.5C1.2 7.77304 1.70571 8.99394 2.60589 9.89411C3.50606 10.7943 4.72696 11.3 6 11.3V11.3ZM5.4018 8.9L2.856 6.3542L3.7044 5.5058L5.4018 7.2032L8.7954 3.809L9.6444 4.6574L5.4018 8.9Z" fill="#1877F2"/>
-                </svg>Interested
-                </td>
-        </tr>
-
-        <tr>
-            <td>Apartment</td>
-            <td>Choolai</td>
-            <td>2 BHK</td>
-            <td>1500 sq.ft</td>
-            <td>₹ 10 lakhs</td>
-            <td>10-02-2023</td>
-          <td class="view">View</td>
-        </tr>
 </table>
 
 

@@ -116,7 +116,13 @@ export class CrCommercialRentPreviewComponent {
       }
     }
     ownerRoute(){
-      this.router.navigateByUrl('/owner?')
+      let data={
+        finish:true
+      }
+      this.service.formput(this.id,data).subscribe((res:any)=>{
+        this.router.navigateByUrl('/owner?')
+      })
+     
     }
   }
   

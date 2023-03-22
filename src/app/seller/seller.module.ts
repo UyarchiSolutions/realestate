@@ -45,6 +45,7 @@ import { RsPropertyDetailsComponent } from '../rs-property-details/rs-property-d
 import { RsResidentialSalePreviewComponent } from '../rs-residential-sale-preview/rs-residential-sale-preview.component';
 import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
 
 
 
@@ -58,9 +59,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
         SellerforotpComponent,
         UpdatepasswordsellerComponent,
         ChangeSellerComponent,
-      HeaderEmptyComponent,
-       HeaderWithProfileComponent,
-       OwnerComponent,
+        HeaderEmptyComponent,
+        HeaderWithProfileComponent,
+         OwnerComponent,
          PropertyPostComponent,
          StartPostingComponent,
 
@@ -95,6 +96,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     CsCommercialSalePreviewComponent,
     CsAmenitiesComponent,
     CsAdditionalDetailsComponent,
+    //pipes
+    IndianCurrencyPipeS
 
 
     ],

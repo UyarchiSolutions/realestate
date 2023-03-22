@@ -46,6 +46,7 @@ ngOnInit(): void {
 }
 
 data:any;
+routerlink='residentaial-rent-details';
 Onsubmit(){
 
   let data ={
@@ -53,6 +54,7 @@ Onsubmit(){
     contactName:this.adform.get('contactname')?.value,
     primaryContactNumber:this.adform.get('cnumber')?.value,
     secondaryContactNumber:this.adform.get('c2number')?.value,
+    routeLink:this.routerlink
 
   }
   this.service.formput(this.id,data).subscribe((res:any)=>{

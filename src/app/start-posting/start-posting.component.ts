@@ -29,12 +29,10 @@ constructor(private fb:FormBuilder, private service:PostPropertyService,
 
 
 ngOnInit(): void {
-  
+  this.UnsubmittedForm();
 }
 
-options: any = {
-    componentRestrictions: { country: 'IN' }
-  }
+
 
 check:boolean=true;
 check1:boolean=false;
@@ -76,7 +74,7 @@ property="Residential";
 
   this.service.fpost(data).subscribe((res:any)=>{
     console.log('response got',res);
-    if(this.property == 'Residential' && this.firstform.get('type')?.value == 'rent'){ 
+    if(this.property == 'Residential' && this.firstform.get('type')?.value == 'Rent'){ 
 
     
     var postdata ={
@@ -86,7 +84,7 @@ property="Residential";
     var queryString = new URLSearchParams(postdata).toString();
     this.router.navigateByUrl('/residential-rent?' + queryString); }
     
-    if( this.property == 'Residential' && this.firstform.get('type')?.value == 'sale'){
+    if( this.property == 'Residential' && this.firstform.get('type')?.value == 'Sale'){
       var postdata ={
         id:res._id
       }
@@ -94,7 +92,7 @@ property="Residential";
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/residential-sale-property?' + queryString);
     }
-    if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'rent'){
+    if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'Rent'){
       var postdata ={
         id:res._id
       }
@@ -102,7 +100,7 @@ property="Residential";
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl('/commercial-rent-property?' + queryString);
     }
-    if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'sale'){
+    if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'Sale'){
       var postdata ={
         id:res._id
       }
@@ -114,5 +112,25 @@ property="Residential";
     })
 
     }
+  }
+  page=0;
+  range=100;
+  form:any;
+  find=false;
+  UnsubmittedForm(){
+
+    this.service.getOwnerData(this.page,this.range,this.find).subscribe((res:any)=>{
+    
+      this.data=res.values;
+      console.log(this.data);
+      
+     this.form = this.data[0];
+     console.log(this.form);
+
+    })
+  }
+  route(){
+   
+    this.router.navigateByUrl(`/${this.form.routeLink}?id=${this.form._id}` );
   }
 }

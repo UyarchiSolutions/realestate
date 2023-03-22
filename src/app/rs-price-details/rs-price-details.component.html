@@ -138,10 +138,10 @@
 
 
 <div class="save-continue">
-    <button type="submit" (click)="rentsub()"  *ngIf="!data.final">Save & Continue</button>
+    <button type="submit" (click)="rentsub()" *ngIf="!data.final" >Save & Continue</button>
 </div>
 <div class="save-continue">
-    <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
+   <button type="button" (click)="routetopreview()" *ngIf="data.final" >Save</button>
 </div>
 
 

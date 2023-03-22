@@ -34,7 +34,9 @@ export class RrRentalDetailsComponent implements OnInit{
   constructor(private fb:FormBuilder,private arouter: ActivatedRoute,
     private service:PostPropertyService,
     private router:Router){}
+    
     switch='rent';
+    routerlink='residentaial-rent-rental-details';
   ngOnInit(): void {
 
     
@@ -47,7 +49,7 @@ export class RrRentalDetailsComponent implements OnInit{
       
     });
 
-
+  
     this.service.formget(this.id).subscribe((res:any)=>{
 
       this.data=res;
@@ -62,6 +64,7 @@ export class RrRentalDetailsComponent implements OnInit{
         ExpectedDeposit:res.depositeAmount,
         ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
         ExcludeMaintenance:res.maintainenceCost,
+        routeLink:this.routerlink
         
         
       });
@@ -75,7 +78,8 @@ export class RrRentalDetailsComponent implements OnInit{
           
           LExpectedDeposit:res.depositeAmount,
           LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
-          LExcludeMaintenance:res.maintainenceCost
+          LExcludeMaintenance:res.maintainenceCost,
+          routeLink:this.routerlink
         }); 
         
         this.LmaintanceVal= this.data.MaintenanceStatus; 

@@ -95,12 +95,12 @@
 
                        
                             <div class="property-select-type">
-                                <input type="radio" value="rent" formControlName="type">
+                                <input type="radio" value="Rent" formControlName="type">
                                 <p>Rent</p>
                             </div>
 
                             <div class="property-select-type">
-                                <input type="radio" value="sale" formControlName="type">
+                                <input type="radio" value="Sale" formControlName="type">
                                 <p>Sale</p>
                             </div>
 
@@ -113,6 +113,13 @@
                 </form>
             </div>
         </div>
+        <div class="draft" (click)="route()">
+        <p>{{form.HouseOrCommercialType}} > {{form.Type}}</p> <p style="    color: grey;
+        opacity: 0.9;
+        font-size: 0.8rem;
+        font-weight: 100;">Continue Posting </p>
     </div>
+    </div>
+   
     <div class="ad"></div>
 </div>

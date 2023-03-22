@@ -48,6 +48,7 @@ adform:any = this.fb.group({
       })
     })
   }
+  routerlink='residential-sale-add-details';
     Onsubmit(){
 
       let data ={
@@ -58,7 +59,8 @@ adform:any = this.fb.group({
         property_Tax:this.adform.get('paidpropety')?.value,
         sale_Deed_Certificate:this.adform.get('Saledeed')?.value,
         occuPency_certificate:this.adform.get('occuCerf')?.value,
-        Completion_certificate:this.adform.get('comCert')?.value
+        Completion_certificate:this.adform.get('comCert')?.value,
+        routeLink:this.routerlink
       }
       this.service.formput(this.id,data).subscribe((res:any)=>{
         var postdata ={

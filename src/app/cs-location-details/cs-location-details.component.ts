@@ -69,6 +69,7 @@ export class CsLocationDetailsComponent {
     
           this.updateform();
           }
+          routerlink='commercial-sale-location-details';
       
           OnSubmit(){
       
@@ -84,7 +85,8 @@ export class CsLocationDetailsComponent {
               long:this.rrlocform.get('long')?.value,
               Address:this.rrlocform.get('Address')?.value,
               buildingDirection:this.rrlocform.get('direction')?.value,
-              formatedAddress:this.rrlocform.get('addressLoaction')?.value
+              formatedAddress:this.rrlocform.get('addressLoaction')?.value,
+              routeLink:this.routerlink
             }
               this.service.formput(this.id,data).subscribe((res:any)=>{
       
@@ -231,7 +233,21 @@ export class CsLocationDetailsComponent {
                
                
                 let address = res[0].address_components;
-                let area = address.find((component:any) => component.types.includes('locality')).long_name;
+                let area = address.find((component:any) =>{ 
+                  if( component.types.includes('locality')){
+      
+                    console.log(component.types.includes('locality'),'locality');
+      
+                  return component.types.includes('locality')}
+      
+                  if( component.types.includes('sublocality_level_1')){
+      
+                    console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+      
+                  return component.types.includes('sublocality_level_1')}
+               
+                }
+                ).long_name;
                 console.log(area);
                 this.area = area;
       
@@ -258,7 +274,21 @@ export class CsLocationDetailsComponent {
               this.myAddres = res[0].formatted_address
       
               let address = res[0].address_components;
-              let area = address.find((component:any) => component.types.includes('locality')).long_name;
+              let area = address.find((component:any) =>{ 
+                if( component.types.includes('locality')){
+    
+                  console.log(component.types.includes('locality'),'locality');
+    
+                return component.types.includes('locality')}
+    
+                if( component.types.includes('sublocality_level_1')){
+    
+                  console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+    
+                return component.types.includes('sublocality_level_1')}
+             
+              }
+              ).long_name;
               console.log(area);
               this.area = area;
       

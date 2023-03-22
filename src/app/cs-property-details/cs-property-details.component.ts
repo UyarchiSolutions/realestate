@@ -63,6 +63,7 @@ export class CsPropertyDetailsComponent {
       console.log(e);
       this.propform.get('propertytype').setValue(e);
     }
+    routerlink='commercial-sale-property';
     propsub() {
      
       
@@ -77,8 +78,9 @@ export class CsPropertyDetailsComponent {
         ideaFor:this.rpv,
         ownerType:this.ost,
         discription: this.propform.get('Description')?.value,
-        buildingType:this.propform.get('otfea')?.value,
-        landSize:this.propform.get('UDSlandsize')?.value
+        buildingType:this.bt,
+        landSize:this.propform.get('UDSlandsize')?.value,
+        routeLink:this.routerlink
       };
       
       console.log(data);
@@ -132,7 +134,7 @@ export class CsPropertyDetailsComponent {
         ideaFor:this.rpv,
         ownerType:this.ost,
         discription: this.propform.get('Description')?.value,
-        buildingType:this.propform.get('otfea')?.value,
+        buildingType:this.bt,
         landSize:this.propform.get('UDSlandsize')?.value
       };
       console.log(data);
@@ -184,7 +186,7 @@ export class CsPropertyDetailsComponent {
     propertyv(a: any) {
       this.pv = a;
       console.log(this.pv);
-      // this.loopBuilding(a);
+      this.loopBuilding(a);
     }
   
     tfv: any;

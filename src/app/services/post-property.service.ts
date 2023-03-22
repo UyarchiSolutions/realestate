@@ -46,9 +46,10 @@ export class PostPropertyService {
     return this.http.put(this.baseURL + 'Update/Seller/Post/' + id, img);
   }
   //get data for owner
-  getOwnerData(page: any, range: any) {
+  getOwnerData(page: any, range: any,find:any)
+   {
     return this.http.get(
-      this.baseURL + `getApprover/Property?page=${page}&range=${range}`
+      this.baseURL + `getApprover/Property?page=${page}&range=${range}&finish=${find}`
     );
   }
   getSellerDetails(page: any, range: any, data: any) {

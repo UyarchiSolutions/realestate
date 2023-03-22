@@ -7,6 +7,7 @@ import { ChangeBuyerComponent } from './buyer/change-buyer/change-buyer.componen
 import { CheckmailComponent } from './buyer/checkmail/checkmail.component';
 import { CreatepasswordComponent } from './buyer/createpassword/createpassword.component';
 import { RegisterComponent } from './buyer/register/register.component';
+import { ResidentialBuyViewComponent } from './buyer/residential-buy-view/residential-buy-view.component';
 import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { CrAdditionalDetailsComponent } from './cr-additional-details/cr-additional-details.component';
@@ -31,7 +32,6 @@ import { RbHomeComponent } from './rb-home/rb-home.component';
 import { ResiRentPopupComponent } from './resi-rent-popup/resi-rent-popup.component';
 import { ResidentialRentComponent } from './residential-rent/residential-rent.component';
 
-import { ResidentialRent1Component } from './residential-rent1/residential-rent1.component';
 import { RrAdditionalDetailsComponent } from './rr-additional-details/rr-additional-details.component';
 import { RrAmentitesComponent } from './rr-amentites/rr-amentites.component';
 import { RrGalleryComponent } from './rr-gallery/rr-gallery.component';
@@ -113,7 +113,9 @@ const routes: Routes = [
   {path:'commercial-sale-preview',component:CsCommercialSalePreviewComponent},
 
   // forms end
-  {path:'rb',component:RbHomeComponent}
+
+  {path:'buyer-residential-rent-view',component:RbHomeComponent},
+  {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent}
 ];
 
 @NgModule({

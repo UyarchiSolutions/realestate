@@ -29,6 +29,7 @@ export class CsAdditionalDetailsComponent {
     ){
     
     }
+    routerlink='commercial-sale-add-details';
     ngOnInit(): void {
       
       this.arouter.queryParams.subscribe(params => {
@@ -45,7 +46,8 @@ export class CsAdditionalDetailsComponent {
           contactname:res.contactName,
           cnumber:res.primaryContactNumber,
           c2number:res.secondaryContactNumber,
-          preOccupancy:res.preOccupy
+          preOccupancy:res.preOccupy,
+          routeLink:this.routerlink
         });
       })
     

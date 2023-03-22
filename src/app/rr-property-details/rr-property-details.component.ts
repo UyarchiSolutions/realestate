@@ -48,7 +48,8 @@ export class RrPropertyDetailsComponent implements OnInit {
 
       this.data=res;
     })
-    console.log(this.isSaved);
+
+
   }
   arr: any = [];
 
@@ -59,6 +60,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     console.log(e);
     this.propform.get('propertytype').setValue(e);
   }
+  routerlink ='residential-rent';
   propsub() {
    
     
@@ -72,6 +74,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       facingDirection: this.fdv,
       RentPrefer: this.rpv,
       discription: this.propform.get('Description')?.value,
+      routeLink:this.routerlink
     };
     
     console.log(data);

@@ -26,11 +26,12 @@ export class OwnerComponent implements OnInit {
   range =10;
   ngOnInit(): void {
 
-    this.GetData()
+    this.GetData();
    
   }
+  find=true;
   GetData(){
-    this.service.getOwnerData(this.page,this.range).subscribe((res:any)=>{
+    this.service.getOwnerData(this.page,this.range,this.find).subscribe((res:any)=>{
 
       console.log(res);
 
@@ -53,7 +54,7 @@ export class OwnerComponent implements OnInit {
 
   editForm(id:any,rentType:any,placeType:any){
     
-    if(rentType== 'rent' && placeType == 'Residential'){
+    if(rentType== 'Rent' && placeType == 'Residential'){
 
 
       var postdata = {
@@ -64,7 +65,7 @@ export class OwnerComponent implements OnInit {
         '/residential-rent?' + queryString
       );
     }
-    if(rentType== 'sale' && placeType == 'Residential'){
+    if(rentType== 'Sale' && placeType == 'Residential'){
 
 
       var postdata = {
@@ -75,7 +76,7 @@ export class OwnerComponent implements OnInit {
         '/residential-sale-property?' + queryString
       );
     }
-    if(rentType== 'rent' && placeType == 'Commercial'){
+    if(rentType== 'Rent' && placeType == 'Commercial'){
 
 
       var postdata = {
@@ -86,7 +87,7 @@ export class OwnerComponent implements OnInit {
         '/commercial-rent-property?' + queryString
       );
     }
-    if(rentType== 'sale' && placeType == 'Commercial'){
+    if(rentType== 'Sale' && placeType == 'Commercial'){
 
 
       var postdata = {

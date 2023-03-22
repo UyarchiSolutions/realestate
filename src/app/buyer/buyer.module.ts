@@ -11,7 +11,11 @@ import { BuyerForgotComponent } from './buyer-forgot/buyer-forgot.component';
 import { BuyerSendotpComponent } from './buyer-sendotp/buyer-sendotp.component';
 import { UpdatepasswordbuyerComponent } from './updatepasswordbuyer/updatepasswordbuyer.component';
 import { ChangeBuyerComponent } from './change-buyer/change-buyer.component';
-import{RbHomeComponent} from '../rb-home/rb-home.component'
+import{RbHomeComponent} from '../rb-home/rb-home.component';
+import { ResidentialBuyViewComponent } from './residential-buy-view/residential-buy-view.component';
+import { IndianCurrencyPipe } from '../pipes/indian-currency.pipe';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -25,13 +29,17 @@ import{RbHomeComponent} from '../rb-home/rb-home.component'
     BuyerSendotpComponent,
     UpdatepasswordbuyerComponent,
     ChangeBuyerComponent,
-    RbHomeComponent
+    RbHomeComponent,
+    ResidentialBuyViewComponent,
+    IndianCurrencyPipe
   ],
   imports: [
+    RouterModule,
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   ]
 })
 export class BuyerModule { }

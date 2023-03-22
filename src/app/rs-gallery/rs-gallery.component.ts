@@ -132,8 +132,13 @@ export class RsGalleryComponent implements OnInit{
      input.value = '';
       
     }
+    routerlink='residential-sale-gallery';
     async submit(){
       await  this.uploadimg();
+      let data={
+        routeLink:this.routerlink,
+      }
+      this.service.formput(this.id,data);
       const formdata = new FormData();
       formdata.append('video',this.selectedfile);
       this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{
@@ -143,8 +148,7 @@ export class RsGalleryComponent implements OnInit{
         }
         var queryString = new URLSearchParams(postdata).toString();
         this.router.navigateByUrl('/residential-sale-add-details?' + queryString);
-        this.service.formget(this.id).subscribe((res:any)=>{
-        })
+      
        })
      
     }

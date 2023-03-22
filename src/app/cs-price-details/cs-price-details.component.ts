@@ -85,6 +85,7 @@ export class CsPriceDetailsComponent {
     
         this.Lmainmon=a;
       }
+      routerlink='commercial-sale-price-details';
       rentsub(){
     
         var data={
@@ -96,6 +97,7 @@ export class CsPriceDetailsComponent {
           maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
+          routeLink:this.routerlink,
         }
         
         this.service.formput(this.id,data).subscribe((res:any)=>{

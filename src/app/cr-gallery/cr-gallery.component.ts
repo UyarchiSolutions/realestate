@@ -132,9 +132,13 @@ export class CrGalleryComponent {
        input.value = '';
         
       }
+      routerlink='commercial-rent-gallery';
      async submit(){
       await  this.uploadimg();
-        
+      let data={
+        routeLink:this.routerlink,
+      }
+      this.service.formput(this.id,data);  
       const formdata = new FormData();
       formdata.append('video',this.selectedfile);
       this.service.uploadvid(this.id,formdata).subscribe((res:any)=>{

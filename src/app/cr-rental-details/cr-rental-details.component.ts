@@ -100,6 +100,7 @@ export class CrRentalDetailsComponent implements OnInit {
           this.leasearray.push(i +' Years' )
         }
       }
+      routerlink='commercial-rent-rental-details';
       rentsub(){
     
         var data={
@@ -113,6 +114,7 @@ export class CrRentalDetailsComponent implements OnInit {
           lock_in_period:this.lipv,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
+          routeLink:this.routerlink,
         }
         
         this.service.formput(this.id,data).subscribe((res:any)=>{

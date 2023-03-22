@@ -508,7 +508,7 @@
               <button type="submit"  (click)="propsub()" *ngIf="!data.final">Save & Continue</button>
             </div>
             <div class="save-continue" >
-              <button type="submit" *ngIf="data.final" (click)="routetopreview()">Save</button>
+              <button *ngIf="data.final" (click)="routetopreview()">Save</button>
             </div>
           </div>
         </form>
