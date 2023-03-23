@@ -71,7 +71,7 @@
 
 
   <div>
-      <input type="radio" formControlName="type" name="type" value="Buy">
+      <input type="radio" formControlName="type" name="type" value="Sale">
       <label>Buy</label>
   </div>
 
@@ -82,32 +82,36 @@
 
   <div class="select-type">
       <select formControlName="PropertyType">
-          <option [defaultSelected]="true">Property Type</option>
+          <option [defaultSelected]="true" disabled>Property Type</option>
       <option>
-          Apartment
+        Apartment
       </option>
+      <option>Individual House/Villa</option>
       <option>Gated Community</option>
-      <option>Farm House</option>
-      <option>Plot/Land</option>
   </select>
   </div>
 
   <div class="select-type">
       <select formControlName="BHK">
-      <option [defaultSelected]="true">
+      <option [defaultSelected]="true" disabled>
           BHK
       </option>
       <option>1 BHK</option>
       <option>2 BHK</option>
       <option>3 BHK</option>
       <option>4 BHK</option>
-      <option>5+ BHK</option>
+      <option>5 BHK</option>
+      <option>6 BHK</option>
+      <option>7 BHK</option>
+      <option>8 BHK</option>
+      <option>9 BHK</option>
+      <option>10+ BHK</option>
   </select>
   </div>
 
   <div class="select-type">
       <select formControlName="Construction">
-      <option [defaultSelected]="true">
+      <option [defaultSelected]="true" disabled>
         Construction
       </option>
       <option>Under Construction</option>

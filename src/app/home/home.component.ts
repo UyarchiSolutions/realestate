@@ -163,21 +163,19 @@ export class HomeComponent implements OnInit {
     if(this.Resform.get('type')?.value == 'Rent'){
     let data ={
       formatAdd:this.Resform.get('BuyerAddres')?.value,
+      type:this.Resform.get('type')?.value,
+      propertType:this.Resform.get('PropertyType')?.value,
+      BHKType:this.Resform.get('BHK')?.value
+
 
     }
-    this.service.getSellerDetails(this.page,this.range,data).subscribe((res:any)=>{
-      console.log(res);
-      var postdata = {
-        formatAdd:this.Resform.get('BuyerAddres')?.value,
-        
-
-      };
-      var queryString = new URLSearchParams(postdata).toString();
+   
+      var queryString = new URLSearchParams(data).toString();
       this.route.navigateByUrl('/buyer-residential-rent-view?' + queryString );
-    })
+    
   }
 
-    if(this.Resform.get('type')?.value == 'Buy'){
+    if(this.Resform.get('type')?.value == 'Sale'){
     let data ={
       formatAdd:this.Resform.get('BuyerAddres')?.value,
 

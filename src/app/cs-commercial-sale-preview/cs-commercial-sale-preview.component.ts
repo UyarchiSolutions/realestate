@@ -119,7 +119,7 @@ export class CsCommercialSalePreviewComponent {
       }
       ownerRoute(){
         let data={
-          finish:true
+          finsh:true
         }
         this.service.formput(this.id,data).subscribe((res:any)=>{
           this.router.navigateByUrl('/owner?')

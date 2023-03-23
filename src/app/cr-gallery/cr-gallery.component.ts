@@ -183,7 +183,7 @@ export class CrGalleryComponent {
         }
         this.service.uploadimg(this.id,formdata).subscribe((res:any)=>{
           
-          window.location.reload();
+        
         })
       } 
       async  routetopreview(){
