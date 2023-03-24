@@ -49,8 +49,13 @@ export class PostPropertyService {
   getOwnerData(page: any, range: any,find:any)
    {
     return this.http.get(
-      this.baseURL + `getApprover/Property?page=${page}&range=${range}&finish=${find}`
-    );
+      this.baseURL + `getApprover/Property?page=${page}&range=${range}&finish=${find}`);
+  }
+  getDraft(){
+    return this.http.get(this.baseURL +'get/DraftBy_user',{ headers: { auth: Cookie.get('tokens') }});
+  }
+  deleteDraft(){
+    return this.http.get(this.baseURL +'delete/DraftBy/user',{ headers: { auth: Cookie.get('tokens') }});
   }
   getSellerDetails(page: any, range: any, data: any) {
     const queryString = new URLSearchParams(data).toString();

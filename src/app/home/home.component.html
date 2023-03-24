@@ -96,16 +96,8 @@
       <option [defaultSelected]="true" disabled>
           BHK
       </option>
-      <option>1 BHK</option>
-      <option>2 BHK</option>
-      <option>3 BHK</option>
-      <option>4 BHK</option>
-      <option>5 BHK</option>
-      <option>6 BHK</option>
-      <option>7 BHK</option>
-      <option>8 BHK</option>
-      <option>9 BHK</option>
-      <option>10+ BHK</option>
+      <option *ngFor="let bhk of bhkArr ">{{bhk}}</option>
+     
   </select>
   </div>
 

@@ -158,6 +158,9 @@ export class HomeComponent implements OnInit {
   // }
   range=10;
   page=0;
+  bhkArr: any[]=
+  ['1 Rk','1 BHK','2 BHK','3 BHK','4 BHK','5 BHK','6 BHK'
+  ,'7 BHK','8 BHK','9 BHK','10+ BHK'] ;
   Ressubmit()
   {
     if(this.Resform.get('type')?.value == 'Rent'){

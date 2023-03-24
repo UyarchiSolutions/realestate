@@ -88,7 +88,7 @@
             </div>
             
             <div class="property-ad-type">
-              <form [formGroup]="firstform" (ngSubmit)="strpost()">
+              <form [formGroup]="firstform" (ngSubmit)="strpost(popup)">
                 <p>Select Property Ad Type</p>
                     <div class="property-select">
                             
@@ -106,15 +106,15 @@
 
     
                    </div>
-                
-                 <button type="submit">Start Posting</button>
+                   <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="display:none" #popup>ok</button>
+                 <button  type="submit">Start Posting</button>
                  <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
                  <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P>
                 </form>
             </div>
         </div>
-        <div class="draft" (click)="route()">
-        <p>{{form.HouseOrCommercialType}} > {{form.Type}}</p> <p style="    color: grey;
+        <div class="draft" (click)="route()" *ngIf="confirmRoute && data.routeLink" >
+        <p>{{data.HouseOrCommercialType}} > {{data.Type}}</p> <p style="    color: grey;
         opacity: 0.9;
         font-size: 0.8rem;
         font-weight: 100;">Continue Posting </p>
@@ -123,3 +123,28 @@
    
     <div class="ad"></div>
 </div>
+
+  
+  <!-- popup -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="display:none" #popup>ok</button>
+    <div class="modal-dialog modal-dialog-centered modal-l">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to post a new property?</h1>
+       
+        </div>
+        <div class="modal-body">
+          <p>  There seems to be post with incomplete information already stored as a draft.
+            In case,you wish to post a new property,then the stored draft shall be automatically deleted.</p>
+        </div>
+        <p>Do you want to continue with a new property post?</p>
+        <div class="modal-footer">
+           
+          <button type="button" class="btn btn-primary"  (click)="routeForPop(popup)">Draft</button>
+          <button type="button"  class="btn btn-primary"  (click)="draftContinue(popup)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>

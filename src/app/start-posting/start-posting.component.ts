@@ -54,15 +54,21 @@ property="Residential";
 
 
 
- 
- strpost(){
+ checkVal:any;
+ strpost(pop:any){
 
 
   
   this.submitted = true;
 
   console.log(this.submitted);
-  if(this.firstform.valid){
+
+  if( this.checkVal ){
+    pop.click();
+
+  }
+
+  if(this.firstform.valid && !this.checkVal){
 
 
   var data ={
@@ -117,20 +123,36 @@ property="Residential";
   range=100;
   form:any;
   find=false;
+  findpopup=true;
   UnsubmittedForm(){
 
-    this.service.getOwnerData(this.page,this.range,this.find).subscribe((res:any)=>{
-    
-      this.data=res.values;
+  
+    this.service.getDraft().subscribe((res:any)=>{
+   
+      this.data=res;
+      this.checkVal=res.routeLink
       console.log(this.data);
       
-     this.form = this.data[0];
-     console.log(this.form);
 
     })
+    console.log(' not getting value');
   }
   route(){
    
-    this.router.navigateByUrl(`/${this.form.routeLink}?id=${this.form._id}` );
+    this.router.navigateByUrl(`/${this.data.routeLink}?id=${this.data._id}` );
+  }
+  routeForPop(pop:any){
+    pop.click();
+    this.router.navigateByUrl(`/${this.data.routeLink}?id=${this.data._id}` );
+  }
+  confirmRoute=true;
+
+  draftContinue(pop:any){
+    
+    this.service.deleteDraft().subscribe((res:any)=>{console.log('dsfsdf')});
+    this.confirmRoute=false;
+    pop.click();
+    this.checkVal='';
+    this.strpost(pop);
   }
 }

@@ -20,18 +20,18 @@
     <label>Residential :</label>
     <div>
         <div>
-        <input type="checkbox"><p>Buy</p></div>
+        <input type="radio" name="type" ><p>Buy</p></div>
         <div>
-            <input type="checkbox"><p>Rent</p></div>
+            <input type="radio"  name="type" [checked]="type == 'Rent'"><p>Rent</p></div>
     </div>
 </div>
 <div class="commercial">
     <label>Commercial :</label>
     <div>
         <div>
-        <input type="checkbox"><p>Buy</p></div>
+        <input type="radio"><p>Buy</p></div>
         <div>
-            <input type="checkbox"><p>Rent</p></div>
+            <input type="radio"><p>Rent</p></div>
     </div>
 </div>
         </div>
@@ -94,6 +94,25 @@
                 <path d="M4.17 15.9985C4.3766 15.4131 4.75974 14.9062 5.2666 14.5477C5.77346 14.1891 6.37909 13.9966 7 13.9966C7.62091 13.9966 8.22654 14.1891 8.7334 14.5477C9.24026 14.9062 9.6234 15.4131 9.83 15.9985H20V17.998H9.83C9.6234 18.5834 9.24026 19.0903 8.7334 19.4489C8.22654 19.8075 7.62091 20 7 20C6.37909 20 5.77346 19.8075 5.2666 19.4489C4.75974 19.0903 4.3766 18.5834 4.17 17.998H0V15.9985H4.17ZM10.17 9.00025C10.3766 8.41486 10.7597 7.90795 11.2666 7.54939C11.7735 7.19083 12.3791 6.99828 13 6.99828C13.6209 6.99828 14.2265 7.19083 14.7334 7.54939C15.2403 7.90795 15.6234 8.41486 15.83 9.00025H20V10.9998H15.83C15.6234 11.5851 15.2403 12.0921 14.7334 12.4506C14.2265 12.8092 13.6209 13.0017 13 13.0017C12.3791 13.0017 11.7735 12.8092 11.2666 12.4506C10.7597 12.0921 10.3766 11.5851 10.17 10.9998H0V9.00025H10.17ZM4.17 2.00196C4.3766 1.41657 4.75974 0.909661 5.2666 0.551105C5.77346 0.192549 6.37909 0 7 0C7.62091 0 8.22654 0.192549 8.7334 0.551105C9.24026 0.909661 9.6234 1.41657 9.83 2.00196H20V4.00147H9.83C9.6234 4.58686 9.24026 5.09377 8.7334 5.45232C8.22654 5.81088 7.62091 6.00343 7 6.00343C6.37909 6.00343 5.77346 5.81088 5.2666 5.45232C4.75974 5.09377 4.3766 4.58686 4.17 4.00147H0V2.00196H4.17Z" fill="white"/>
                 </svg> All Filter
                 </li>
+
+                <li>
+                    <div class="dropdown">
+                        <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>
+                               
+                         Show only<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
+                                    </svg>
+                                    </span>
+                        </a>
+                      
+                        <ul class="dropdown-menu">
+                            <li><input type="checkbox"  (change)="updateFilter($event)"  value="rent" [checked]="is_chckked('rent',ShowOnlyArr)" >Rent </li>
+                            <li><input type="checkbox"  (change)="updateFilter($event)"  value="lease" [checked]="is_chckked('lease',ShowOnlyArr)">Lease</li>
+                          </ul>
+                      </div>
+                </li>
+
             <li>
                 <div class="dropdown">
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -106,9 +125,9 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Gated Community" [checked]="is_chckked('Gated Community')" >Gated Community </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Individual House/Villa" [checked]="is_chckked('Individual House/Villa')">Individual House/Villa</li>
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Apartment" [checked]="is_chckked('Apartment')">Apartment</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Gated Community" [checked]="is_chckked('Gated Community',proptArr)" >Gated Community </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Individual House/Villa" [checked]="is_chckked('Individual House/Villa',proptArr)">Individual House/Villa</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Apartment" [checked]="is_chckked('Apartment',proptArr)">Apartment</li>
                       </ul>
                   </div>
             </li>
@@ -124,7 +143,7 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li *ngFor="let bhk of bhkArr"><input type="checkbox" (change)="updateFilter($event)"  value="{{bhk}}" [checked]="is_chckked(bhk)">{{bhk}}</li>
+                        <li *ngFor="let bhk of bhkArr"><input type="checkbox" (change)="updateFilter($event)"  value="{{bhk}}" [checked]="is_chckked(bhk,FbhkArr)">{{bhk}}</li>
                        
                       </ul>
                   </div>
@@ -159,8 +178,8 @@
                     </a>
                   
                    <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Under Construction" [checked]="is_chckked('Under Construction')">Under Construction </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Ready" [checked]="is_chckked('Ready')">Ready</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Under Construction" [checked]="is_chckked('Under Construction','')">Under Construction </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Ready" [checked]="is_chckked('Ready','')">Ready</li>
       
                       </ul>
                   </div>
@@ -178,9 +197,9 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Fully Furnished" [checked]="is_chckked('Fully Furnished')">Fully Furnished </li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Semi Furnished" [checked]="is_chckked('Semi Furnished')">Semi Furnished</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Unfurnished" [checked]="is_chckked('Unfurnished')">Unfurnished</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Fully Furnished" [checked]="is_chckked('Fully Furnished',FurArr)">Fully Furnished </li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Semi Furnished" [checked]="is_chckked('Semi Furnished',FurArr)">Semi Furnished</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="UnFurnished" [checked]="is_chckked('UnFurnished',FurArr)">Unfurnished</li>
       
                       </ul>
                   </div>
@@ -200,8 +219,9 @@
                     </a>
                   
                   <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Bike" [checked]="is_chckked('Bike')">Bike </li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Car" [checked]="is_chckked('Car')">Car</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Bike" [checked]="is_chckked('Bike',ParkArr)">Bike </li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Car" [checked]="is_chckked('Car',ParkArr)">Car</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Both" [checked]="is_chckked('Both',ParkArr)">Both</li>
                                  
       
                       </ul>
@@ -220,11 +240,11 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Ground Floor" [checked]="is_chckked('Ground Floor')">Ground Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Floor" [checked]="is_chckked('1 to 3 Floor')">1 to 3 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 to 7 Floor" [checked]="is_chckked('4 to 7 Floor')">4 to 7 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="8 to 12 Floor" [checked]="is_chckked('8 to 12 Floor')">8 to 12 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="12+ Floor" [checked]="is_chckked('12+ Floor')">12+ Floor</li>        
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Ground Floor" [checked]="is_chckked('Ground Floor','')">Ground Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Floor" [checked]="is_chckked('1 to 3 Floor','')">1 to 3 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 to 7 Floor" [checked]="is_chckked('4 to 7 Floor','')">4 to 7 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="8 to 12 Floor" [checked]="is_chckked('8 to 12 Floor','')">8 to 12 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="12+ Floor" [checked]="is_chckked('12+ Floor','')">12+ Floor</li>        
       
                       </ul>
                   </div>
@@ -258,10 +278,10 @@
                   
                     <ul class="dropdown-menu">
                     
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 Bathroom" [checked]="is_chckked('1 Bathroom')">1 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="2 Bathroom" [checked]="is_chckked('2 Bathroom')">2 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 Bathroom" [checked]="is_chckked('3 Bathroom')">3 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 Bathroom" [checked]="is_chckked('4 Bathroom')">4+ Bathroom</li>        
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 Bathroom" [checked]="is_chckked('1 Bathroom','')">1 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="2 Bathroom" [checked]="is_chckked('2 Bathroom','')">2 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 Bathroom" [checked]="is_chckked('3 Bathroom','')">3 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 Bathroom" [checked]="is_chckked('4 Bathroom','')">4+ Bathroom</li>        
       
                       </ul>
                   </div>
@@ -279,11 +299,33 @@
                   
                     <ul class="dropdown-menu">
                       
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Less than year" [checked]="is_chckked('Less than year')">Less than year</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 year" [checked]="is_chckked('1 to 3 year')">1 to 3 year<li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 to 5 year" [checked]="is_chckked('')">3 to 5 year</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="5 to 10 Year" [checked]="is_chckked('5 to 10 Year')">5 to 10 Year</li>     
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="10+ Year" [checked]="is_chckked('')">10+ Year</li>        
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Less than Year" [checked]="is_chckked('Less than Year',PropAgeArr)">Less than year</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Years" [checked]="is_chckked('1 to 3 Years',PropAgeArr)">1 to 3 year<li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 to 5 Years" [checked]="is_chckked('3 to 5 Years',PropAgeArr)">3 to 5 year</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="5 to 10 Years" [checked]="is_chckked('5 to 10 Years',PropAgeArr)">5 to 10 Year</li>     
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="10+ Years" [checked]="is_chckked('10+ Years',PropAgeArr)">10+ Year</li>        
+      
+                      </ul>
+                  </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>
+                           
+                      Tenant Type<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
+                                </svg>
+                                </span>
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                      
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Family" [checked]="is_chckked('Family',TentArr)">Family</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Bachelor" [checked]="is_chckked('Bachelor',TentArr)">Bachelor<li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Company" [checked]="is_chckked('Company',TentArr)">Company</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Any" [checked]="is_chckked('Any',TentArr)">Any</li>
+                        
       
                       </ul>
                   </div>
