@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { FormControl,FormBuilder, Validators } from '@angular/forms';
 import { PostPropertyService } from '../services/post-property.service';
 import { Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-start-posting',
@@ -154,5 +154,17 @@ property="Residential";
     pop.click();
     this.checkVal='';
     this.strpost(pop);
+  }
+  routeToProp(){
+    this.router.navigateByUrl('/owner')
+  }
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
   }
 }

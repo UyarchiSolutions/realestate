@@ -1,3 +1,5 @@
+
+<app-header-with-profile></app-header-with-profile>
 <div class="container">
 
 
@@ -38,19 +40,10 @@
     </div>
 
     <div class="search-field">
-    <div class="location">
-        <svg width="12" height="20" viewBox="0 0 24 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3178 14.2465V17.3422C20.2329 16.2156 20.8645 14.8894 21.1541 13.4703C21.173 13.3777 21.1904 13.2849 21.2063 13.1919C21.1858 13.2196 21.163 13.2456 21.1381 13.2699C21.0748 13.3315 20.9994 13.3801 20.9165 13.4128C20.8335 13.4455 20.7446 13.4615 20.6551 13.46C20.5657 13.4584 20.4774 13.4393 20.3957 13.4039C20.314 13.3684 20.2404 13.3172 20.1794 13.2534L12.4586 5.72856C12.3337 5.60694 12.1643 5.53863 11.9877 5.53863C11.8111 5.53863 11.6418 5.60694 11.5168 5.72856L3.79605 13.2534C3.67043 13.3717 3.50214 13.4373 3.32743 13.4359C3.15271 13.4345 2.98555 13.3662 2.86194 13.2459C2.83484 13.2195 2.81031 13.1911 2.78851 13.161C2.80581 13.2643 2.82495 13.3674 2.84595 13.4703C3.13296 14.8768 3.75597 16.1921 4.65805 17.3123V14.2465C4.68569 14.2224 4.71265 14.1975 4.7389 14.172L11.9879 7.10527V7.107L19.2369 14.172C19.2636 14.198 19.2902 14.2222 19.3178 14.2465ZM14.0207 20.7917C13.9986 20.7265 13.987 20.6576 13.987 20.5876V16.691C13.987 16.5187 13.9168 16.3535 13.7918 16.2317C13.6668 16.1099 13.4973 16.0415 13.3206 16.0415H10.6552C10.4785 16.0415 10.309 16.1099 10.184 16.2317C10.0591 16.3535 9.98886 16.5187 9.98886 16.691V20.5876C9.98886 20.6576 9.97725 20.7265 9.95508 20.7917H14.0207ZM21.2893 12.5788C21.285 12.5678 21.2805 12.557 21.2756 12.5463C21.2391 12.4667 21.1866 12.395 21.1212 12.3355L13.4013 4.81069C13.2156 4.62977 12.9953 4.48626 12.7527 4.38834C12.5102 4.29043 12.2502 4.24003 11.9877 4.24003C11.7252 4.24003 11.4653 4.29043 11.2227 4.38834C10.9802 4.48626 10.7598 4.62977 10.5742 4.81069L2.85339 12.3355C2.78937 12.4002 2.74046 12.4764 2.70877 12.559C2.56454 11.0841 2.7918 9.5921 3.37723 8.21471C4.08368 6.55261 5.27995 5.13199 6.8148 4.1325C8.34964 3.13301 10.1541 2.59954 12 2.59954C13.846 2.59954 15.6504 3.13301 17.1853 4.1325C18.7201 5.13199 19.9164 6.55261 20.6228 8.21471C21.2109 9.59826 21.4375 11.0974 21.2893 12.5788ZM3.51468 19.9653L12 28.2353L20.4854 19.9653C22.1636 18.3297 23.3065 16.2457 23.7695 13.977C24.2325 11.7084 23.9948 9.3568 23.0866 7.21975C22.1783 5.0827 20.6403 3.25613 18.6669 1.97103C16.6935 0.685922 14.3734 0 12 0C9.62666 0 7.30658 0.685922 5.33319 1.97103C3.3598 3.25613 1.82172 5.0827 0.913467 7.21975C0.00520916 9.3568 -0.23244 11.7084 0.230572 13.977C0.693583 16.2457 1.83646 18.3297 3.51468 19.9653Z" fill="#473B32"/>
-            </svg>
-<p>Chennai</p>   
-<svg style="cursor: pointer;" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.5 1.25L9 8.75L1.5 1.25" stroke="#616161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    
-    </div>
-    <input class="input" type="text" placeholder="Search localities & Landmark">
-    <div class="search">
-        <span><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+   
+        <input class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark" [value]="formatAdd" (onAddressChange)="handleAddressChange($event,inputPlace)" [options]="options" #inputPlace>
+    <div class="search" (click)="submitAddress()">
+        <span ><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25 25L18.071 18.071M18.071 18.071C19.9463 16.1956 20.9999 13.6521 20.9999 10.9999C20.9999 8.34779 19.9463 5.80427 18.071 3.92891C16.1956 2.05356 13.6521 1 10.9999 1C8.34779 1 5.80427 2.05356 3.92891 3.92891C2.05356 5.80427 1 8.34779 1 10.9999C1 13.6521 2.05356 16.1956 3.92891 18.071C5.80427 19.9463 8.34779 20.9999 10.9999 20.9999C13.6521 20.9999 16.1956 19.9463 18.071 18.071Z" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             </span><p>search</p>
@@ -333,7 +326,7 @@
            
         </ul>
 
-        <button class="refine-results">Refine Results</button>
+        <button class="refine-results" (click)="refineFilters()" >Refine Results</button>
     </div>
     <div class="main">
  
@@ -439,16 +432,18 @@
                                     </th>
         </tr>
 
-        <tr *ngFor="let v of data; let i =index">
+        <tr *ngFor="let v of data; let i =index" (click)="GetDataBYId(i)">
             <td>{{v.propertType}}</td>
             <td>{{v.area}}</td>
             <td>{{v.BHKType}}</td>
             <td>{{v.BuildedSize}}sq.ft</td>
             <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
                 <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+                <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
+                <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
             
             </td>
-            <td>{{v.created | date : "dd/MM/YYYY"}}</td>
+            <td>{{v.created | date : "dd-MM-YYYY"}}</td>
           <td class="view">View</td>
         </tr>
 
@@ -470,25 +465,45 @@
 
 <div class="bottom-section">
     <div class="pagination">
-        <div class="page-prev">
+        <button>
+        <div class="page-prev"  (click)="pagination(0)">
+            
             <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02991 10.0001L10.4986 16.8902C11.1666 17.6017 11.1666 18.7552 10.4986 19.4667C9.83064 20.1782 8.74767 20.1782 8.07971 19.4667L0.500539 11.3938C0.141522 11.0114 -0.0245288 10.5013 0.00238748 10.0007C-0.0248338 9.49982 0.141197 8.98924 0.50048 8.60655L8.07965 0.533605C8.74761 -0.177868 9.83058 -0.177868 10.4985 0.533605C11.1665 1.24508 11.1665 2.3986 10.4985 3.11008L4.02991 10.0001Z" fill="white" fill-opacity="0.5"/>
-                </svg>
-                
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M4.02991 10.0001L10.4986 16.8902C11.1666 17.6017 11.1666 18.7552 10.4986 19.4667C9.83064 20.1782 8.74767 20.1782 8.07971 19.4667L0.500539 11.3938C0.141522 11.0114 -0.0245288 10.5013 0.00238748 10.0007C-0.0248338 9.49982 0.141197 8.98924 0.50048 8.60655L8.07965 0.533605C8.74761 -0.177868 9.83058 -0.177868 10.4985 0.533605C11.1665 1.24508 11.1665 2.3986 10.4985 3.11008L4.02991 10.0001Z"
+                    fill="white" fill-opacity="0.5" />
+            </svg>
+           
         </div>
+        </button>
         <div class="page-count">
-            <p>1</p>
+            <p>{{page + 1}}</p>
         </div>
-        <div class="page-next"><svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.96966 9.99961L0.500479 16.8902C-0.167477 17.6017 -0.167478 18.7552 0.500479 19.4667C1.16844 20.1782 2.25141 20.1782 2.91937 19.4667L10.4985 11.3938C10.8554 11.0137 11.0216 10.5074 10.9972 10.0098C11.0269 9.50597 10.861 8.99154 10.4996 8.60655L2.9204 0.533605C2.25244 -0.177868 1.16947 -0.177868 0.501516 0.533605C-0.166441 1.24508 -0.166441 2.3986 0.501516 3.11008L6.96966 9.99961Z" fill="white"/>
+        <button  [ngStyle]="{'pointer-events': displaycount == page + 1 ? 'none' : 'auto' }" >
+        <div class="page-next" (click)="pagination(1)" ><svg  width="11" height="20" viewBox="0 0 11 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M6.96966 9.99961L0.500479 16.8902C-0.167477 17.6017 -0.167478 18.7552 0.500479 19.4667C1.16844 20.1782 2.25141 20.1782 2.91937 19.4667L10.4985 11.3938C10.8554 11.0137 11.0216 10.5074 10.9972 10.0098C11.0269 9.50597 10.861 8.99154 10.4996 8.60655L2.9204 0.533605C2.25244 -0.177868 1.16947 -0.177868 0.501516 0.533605C-0.166441 1.24508 -0.166441 2.3986 0.501516 3.11008L6.96966 9.99961Z"
+                    fill="white" />
             </svg>
-            </div>
+        </div>
+    </button>
     </div>
-    <div class="range">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.55556 1.11111H20V3.33333H5.55556V1.11111ZM2.22222 0V3.33333H3.33333V4.44444H0V3.33333H1.11111V1.11111H0V0H2.22222ZM0 12.2222V9.44444H2.22222V8.88889H0V7.77778H3.33333V10.5556H1.11111V11.1111H3.33333V12.2222H0ZM2.22222 18.3333H0V17.2222H2.22222V16.6667H0V15.5556H3.33333V20H0V18.8889H2.22222V18.3333ZM5.55556 8.88889H20V11.1111H5.55556V8.88889ZM5.55556 16.6667H20V18.8889H5.55556V16.6667Z" fill="#473B32"/>
-            </svg>
-<p>Range</p>            
+    <div class="range" (change)="Setrange($event)">
+        <svg  width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M5.55556 1.11111H20V3.33333H5.55556V1.11111ZM2.22222 0V3.33333H3.33333V4.44444H0V3.33333H1.11111V1.11111H0V0H2.22222ZM0 12.2222V9.44444H2.22222V8.88889H0V7.77778H3.33333V10.5556H1.11111V11.1111H3.33333V12.2222H0ZM2.22222 18.3333H0V17.2222H2.22222V16.6667H0V15.5556H3.33333V20H0V18.8889H2.22222V18.3333ZM5.55556 8.88889H20V11.1111H5.55556V8.88889ZM5.55556 16.6667H20V18.8889H5.55556V16.6667Z"
+                fill="#473B32" />
+        </svg>
+        <p>Range</p><select style="    width: 70px;
+        text-align: center;" >
+           
+            <option value=10 >10</option>
+            <option value=15 >15</option>
+            <option value=20 >20</option>
+            <option value=25 >25</option>
+            <option value=30 >30</option>
+        </select>
     </div>
 
 </div>
@@ -505,54 +520,12 @@
                     </svg>
                      Recent Search
                     </li>
-                    <div class="overflow-contents">
-                <li>
-                   <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                   <p>Alwarpet, Choolai> Fully Furnis...</p>
+                    <div class="overflow-contents" >
+                <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
+                   <div class="breadcrumbs">Chennai>Residential>{{arr.type}}</div>
+                   <p>{{arr.formatAdd}}>{{arr.furnishing}}</p>
                 </li>
-                <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-        
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-        
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-        
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-        
-             
-        
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-                
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
-                 <li>
-                    <div class="breadcrumbs">Chennai>Residential>Buy</div>
-                    <p>Alwarpet, Choolai> Fully Furnis...</p>
-                 </li>
+               
                 </div>
             </ul>
      

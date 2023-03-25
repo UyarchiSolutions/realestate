@@ -135,4 +135,7 @@ export class OwnerComponent implements OnInit {
   changeps(){
     this.router.navigateByUrl('/changepassword-seller')
   }
+  routeToProp(){
+    this.router.navigateByUrl('/post-property')
+  }
 }

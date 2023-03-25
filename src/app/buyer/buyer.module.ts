@@ -15,7 +15,9 @@ import{RbHomeComponent} from '../rb-home/rb-home.component';
 import { ResidentialBuyViewComponent } from './residential-buy-view/residential-buy-view.component';
 import { IndianCurrencyPipe } from '../pipes/indian-currency.pipe';
 import { RouterModule } from '@angular/router';
-
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from '@agm/core';
+import { HeaderWithProfileComponent } from '../shared/header-with-profile/header-with-profile.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { RouterModule } from '@angular/router';
     ChangeBuyerComponent,
     RbHomeComponent,
     ResidentialBuyViewComponent,
-    IndianCurrencyPipe
+    IndianCurrencyPipe,
+    HeaderWithProfileComponent
   ],
   imports: [
     RouterModule,
@@ -39,6 +42,11 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    GooglePlaceModule,
+
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
+    }),
    
   ]
 })
