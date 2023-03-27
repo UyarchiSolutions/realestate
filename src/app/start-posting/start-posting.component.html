@@ -89,7 +89,7 @@
             </div>
             
             <div class="property-ad-type">
-              <form [formGroup]="firstform" (ngSubmit)="strpost(popup)">
+              <form [formGroup]="firstform" (ngSubmit)="strpost()">
                 <p>Select Property Ad Type</p>
                     <div class="property-select">
                             
@@ -107,28 +107,45 @@
 
     
                    </div>
-                   <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="display:none" #popup>ok</button>
+                  
                  <button  type="submit">Start Posting</button>
                  <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
                  <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P>
                 </form>
             </div>
         </div>
-        <div class="draft" (click)="route()" *ngIf="confirmRoute && data.routeLink" >
+        <div class="draftdiv" (click)="route()" *ngIf="confirmRoute && data.routeLink" >
         <p>{{data.HouseOrCommercialType}} > {{data.Type}}</p> <p style="    color: grey;
         opacity: 0.9;
         font-size: 0.8rem;
         font-weight: 100;">Continue Posting </p>
     </div>
+
     </div>
+    
    
     <div class="ad"></div>
+</div>
+<div class="popup" *ngIf="popupShow">
+    <div class="popup-container">
+        <h6>Are you sure you want to post a new property? </h6>
+        <p class="content">There seems to be post with incomplete information already stored as a draft In case, 
+            you wish to post a new property, then the stored draft shall be automatically deleted. </p>
+            <p>Do you want to continue with a new property post?</p>
+
+<div class="buttons">
+    <button class="draft"  (click)="routeForPop()">Draft</button>
+<button class="continue" (click)="draftContinue()">Continue</button>
+</div>
+
+
+    </div>
 </div>
 
   
   <!-- popup -->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="display:none" #popup>ok</button>
     <div class="modal-dialog modal-dialog-centered modal-l">
       <div class="modal-content">
@@ -148,4 +165,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+

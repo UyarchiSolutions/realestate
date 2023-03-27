@@ -5,9 +5,11 @@ import { Cookie } from 'ng2-cookies/cookie';
 @Injectable({
   providedIn: 'root',
 })
+
 export class PostPropertyService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
 
+   Alldata =[];
   constructor(private http: HttpClient) {}
 
   // startposting

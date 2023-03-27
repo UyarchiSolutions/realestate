@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BuyerForgotComponent } from './buyer/buyer-forgot/buyer-forgot.component';
+import { ResidentialDetailviewComponent } from './buyer/buyer-search-view/residential-detailview/residential-detailview.component';
 import { BuyerSendotpComponent } from './buyer/buyer-sendotp/buyer-sendotp.component';
 import { BuyerloginComponent } from './buyer/buyerlogin/buyerlogin.component';
 import { ChangeBuyerComponent } from './buyer/change-buyer/change-buyer.component';
@@ -115,7 +116,10 @@ const routes: Routes = [
   // forms end
 
   {path:'buyer-residential-rent-view',component:RbHomeComponent},
-  {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent}
+  {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent},
+
+  //buyer search single view
+  {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent}
 ];
 
 @NgModule({

@@ -347,7 +347,7 @@ export class RbHomeComponent implements OnInit {
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.proptArr,
-      BHKType: this.BHKType,
+      BHKType: this.FbhkArr,
       rentDetails: this.ShowOnlyArr,
       furnishing: this.FurArr,
       parking: this.ParkArr,
@@ -422,7 +422,7 @@ export class RbHomeComponent implements OnInit {
     const formatAdd = this.formatAdd;
     const type = this.type;
     const propertType = this.proptArr;
-    const BHKType = this.BHKType;
+    const BHKType = this.FbhkArr;
     const rentDetails = this.ShowOnlyArr;
     const furnishing = this.FurArr;
     const parking = this.ParkArr;
@@ -442,25 +442,19 @@ export class RbHomeComponent implements OnInit {
     const sendData: any = {
       formatAdd: formatAdd,
       type: type,
-      propertType: propertType,
-      BHKType: BHKType,
-      rentDetails: rentDetails,
-      furnishing: furnishing,
-      parking: parking,
-      rentprefer: rentprefer,
-      propAge: propAge,
+      propertType:[...propertType],
+      BHKType: [...BHKType],
+      rentDetails: [...rentDetails],
+      furnishing:[...furnishing],
+      parking: [...parking],
+      rentprefer: [...rentprefer],
+      propAge: [...propAge],
+      selected:[...this.SelectedFilters]
     };
-    let Rs = [...this.RecentSearchArr];
-    Rs.push({...sendData,...{selected:[...this.SelectedFilters]}})
+    console.log(this.FbhkArr,'bhk')
 
-    const dummyFilter = this.SelectedFilters;
+  this.RecentSearchArr.push(sendData);
 
-    console.log(Rs, 'recent search');
-
-    
-
-  this.RecentSearchArr.push(Rs);
-  
     console.log( 'recent search array', this.RecentSearchArr);
     console.log(this.sendData);
     this.service
@@ -486,26 +480,38 @@ export class RbHomeComponent implements OnInit {
     componentRestrictions: { country: 'IN' },
   };
 
-  GetDataBYId(id: any) {
-    // this.service.formget(id).subscribe((res:any)=>{
-    //   console.log(res);
-    // })
-  }
-  GetRecentSearch(index: any) {
-    this.RecentSearchArr[index];
-    console.log('inside fun');
-    console.log(index);
+  GetDataBYId(id: any,i:any) {
+    let oneid={
+      id:id,
+      index:i,
 
-    console.log(this.RecentSearchArr[index], 'recent get by index');
+    }
+    console.log('tjlajs');
+    this.service.Alldata=this.sendData;
+    const query = new URLSearchParams(oneid).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-search-view?'+ query  )
+  };
+  GetRecentSearch(index: any) {
+   
+   
+
+    console.log(this.RecentSearchArr[index], 'recent get by index',index);
 
     let v = this.RecentSearchArr[index];
 
-    this.SelectedFilters = this.RecentSearchArr[index].SelectedFilters;
+    this.SelectedFilters = this.RecentSearchArr[index].selected;
+    this.proptArr = this.RecentSearchArr[index].propertType;
+    this.FbhkArr =this.RecentSearchArr[index].BHKType;
+    this.ShowOnlyArr=this.RecentSearchArr[index].rentDetails;
+    this.FurArr=this.RecentSearchArr[index].furnishing;
+    this.ParkArr=this.RecentSearchArr[index].parking;
+    this.TentArr=this.RecentSearchArr[index].rentprefer;
+    this.PropAgeArr=this.RecentSearchArr[index].propAge;
+    this.formatAdd=this.RecentSearchArr[index].formatAdd;
+    
     console.log(
       this.RecentSearchArr[index].SelectedFilters,
-      'filter of reacent',
-      this.RecentSearchArr
-    );
+      'filter of reacent', this.SelectedFilters);
 
     this.service
       .getSellerDetails(this.page, this.range, v)

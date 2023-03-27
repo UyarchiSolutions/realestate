@@ -55,7 +55,8 @@ property="Residential";
 
 
  checkVal:any;
- strpost(pop:any){
+ popupShow=false;
+ strpost(){
 
 
   
@@ -64,7 +65,7 @@ property="Residential";
   console.log(this.submitted);
 
   if( this.checkVal ){
-    pop.click();
+    this.popupShow=true;
 
   }
 
@@ -76,6 +77,7 @@ property="Residential";
     Type:this.firstform.get('type')?.value
     
   }
+  console.log(data);
   
 
   this.service.fpost(data).subscribe((res:any)=>{
@@ -141,19 +143,24 @@ property="Residential";
    
     this.router.navigateByUrl(`/${this.data.routeLink}?id=${this.data._id}` );
   }
-  routeForPop(pop:any){
-    pop.click();
+  routeForPop(){
+    this.checkVal='';
+    this.popupShow=false;
+
     this.router.navigateByUrl(`/${this.data.routeLink}?id=${this.data._id}` );
   }
   confirmRoute=true;
 
-  draftContinue(pop:any){
+  draftContinue(){
     
     this.service.deleteDraft().subscribe((res:any)=>{console.log('dsfsdf')});
     this.confirmRoute=false;
-    pop.click();
+   
     this.checkVal='';
-    this.strpost(pop);
+    this.popupShow=false;
+    this.strpost();
+
+    
   }
   routeToProp(){
     this.router.navigateByUrl('/owner')

@@ -432,7 +432,7 @@
                                     </th>
         </tr>
 
-        <tr *ngFor="let v of data; let i =index" (click)="GetDataBYId(i)">
+        <tr *ngFor="let v of data; let i =index" (click)="GetDataBYId(v._id,i)">
             <td>{{v.propertType}}</td>
             <td>{{v.area}}</td>
             <td>{{v.BHKType}}</td>
