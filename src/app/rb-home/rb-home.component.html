@@ -432,7 +432,7 @@
                                     </th>
         </tr>
 
-        <tr *ngFor="let v of data; let i =index" (click)="GetDataBYId(v._id,i)">
+        <tr *ngFor="let v of data; let i =index" >
             <td>{{v.propertType}}</td>
             <td>{{v.area}}</td>
             <td>{{v.BHKType}}</td>
@@ -444,7 +444,7 @@
             
             </td>
             <td>{{v.created | date : "dd-MM-YYYY"}}</td>
-          <td class="view">View</td>
+          <td class="view" (click)="GetDataBYId(v._id,i)" style="cursor:pointer">View</td>
         </tr>
 
         <tr>
