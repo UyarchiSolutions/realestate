@@ -153,12 +153,14 @@ property="Residential";
 
   draftContinue(){
     
-    this.service.deleteDraft().subscribe((res:any)=>{console.log('dsfsdf')});
+    this.service.deleteDraft().subscribe((res:any)=>{
+      console.log(res)
+      this.strpost();
+    });
     this.confirmRoute=false;
    
     this.checkVal='';
     this.popupShow=false;
-    this.strpost();
 
     
   }
@@ -174,4 +176,5 @@ property="Residential";
     Cookie.delete('tokens');
     this.router.navigateByUrl('/');
   }
+  
 }

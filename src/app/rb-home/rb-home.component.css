@@ -350,6 +350,10 @@ margin-left: 45%;
 .view svg{
     padding-right: 5px;
 }
+.view:hover{
+    color:blue;
+    text-decoration: underline;
+}
 .interested{
     color: var(--blue);
 }

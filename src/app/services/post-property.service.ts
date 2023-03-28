@@ -10,6 +10,8 @@ export class PostPropertyService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
 
    Alldata =[];
+   switchTrF:any;
+   GAreaArr:any=[];
   constructor(private http: HttpClient) {}
 
   // startposting
@@ -51,7 +53,8 @@ export class PostPropertyService {
   getOwnerData(page: any, range: any,find:any)
    {
     return this.http.get(
-      this.baseURL + `getApprover/Property?page=${page}&range=${range}&finish=${find}`);
+      
+      this.baseURL + `/getPostedProperty/For/IndividualSeller/`+page+`/${range}?finish=${find}`,{ headers: { auth: Cookie.get('tokens') }});
   }
   getDraft(){
     return this.http.get(this.baseURL +'get/DraftBy_user',{ headers: { auth: Cookie.get('tokens') }});
@@ -75,4 +78,5 @@ export class PostPropertyService {
       this.baseURL + '/Places/AutoComplete?input=' + queryString
     );
   }
+  
 }

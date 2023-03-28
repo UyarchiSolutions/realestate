@@ -135,7 +135,7 @@
           <div class="container">
             <div class="heading">
               <p>Property Details</p>
-              <svg (click)="Redirect(0)"
+              <svg (click)="Redirect(0)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -197,7 +197,7 @@
           <div class="container">
             <div class="heading">
               <p>Location Details</p>
-              <svg (click)="Redirect(1)"
+              <svg (click)="Redirect(1)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -272,7 +272,7 @@
           <div class="container">
             <div class="heading">
               <p>Price Details</p>
-              <svg (click)="Redirect(2)"
+              <svg (click)="Redirect(2)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -333,7 +333,7 @@
           <div class="container">
             <div class="heading">
               <p>Amenities</p>
-              <svg (click)="Redirect(3)"
+              <svg (click)="Redirect(3)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -443,7 +443,7 @@
           <div class="container">
             <div class="heading">
               <p>Gallery</p>
-              <svg (click)="Redirect(4)"
+              <svg (click)="Redirect(4)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -484,7 +484,7 @@
           <div class="container">
             <div class="heading">
               <p>Additional Details</p>
-              <svg (click)="Redirect(5)"
+              <svg (click)="Redirect(5)" *ngIf="!checkForview"
                 width="22"
                 height="22"
                 viewBox="0 0 22 22"
@@ -538,7 +538,8 @@
         </div>
   
         <div class="post-btn">
-          <button (click)="ownerRoute()">Post</button>
+          <button (click)="ownerRoute()" *ngIf="!checkForview">Post</button>
+          <button (click)="RouteToPostProp()"  *ngIf="checkForview">Back</button>
         </div>
       </div>
     </div>

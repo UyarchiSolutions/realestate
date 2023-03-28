@@ -293,3 +293,8 @@ td .repost i{
     padding: 32px 0;
     margin-bottom: 5px;
 }
+.linktoprview:hover{
+    color:blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

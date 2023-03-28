@@ -138,4 +138,56 @@ export class OwnerComponent implements OnInit {
   routeToProp(){
     this.router.navigateByUrl('/post-property')
   }
+  routeToView(id:any,rentType:any,placeType:any){
+    let check = 'true';
+    if(rentType== 'Rent' && placeType == 'Residential'){
+
+     
+      var postdata = {
+        id: id,
+        check:check
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/residentaial-rent-preview?' + queryString
+      );
+    }
+    if(rentType== 'Sale' && placeType == 'Residential'){
+
+
+      var postdata = {
+        id: id,
+        check:check
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/residential-sale-property?' + queryString
+      );
+    }
+    if(rentType== 'Rent' && placeType == 'Commercial'){
+
+
+      var postdata = {
+        id: id,
+        check:check
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/commercial-rent-property?' + queryString
+      );
+    }
+    if(rentType== 'Sale' && placeType == 'Commercial'){
+
+
+      var postdata = {
+        id: id,
+        check:check
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/commercial-sale-property?' + queryString
+      );
+    }
+
+  }
 }

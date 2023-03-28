@@ -203,7 +203,7 @@
                 <tr *ngFor="let v of data; let i = index">
                     
                     <td>{{v.created | date: 'dd/MM/yyyy'}}</td>
-                    <td style="text-align: center;">{{v.HouseOrCommercialType}} > {{v.Type}}</td>
+                    <td style="text-align: center;" class="linktoprview" (click)="routeToView(v._id,v.Type,v.HouseOrCommercialType)">{{v.HouseOrCommercialType}} > {{v.Type}}</td>
                     <td>{{v.propertType}}</td>
                     <td style="text-align: center;"><p *ngIf = "v.HouseOrCommercialType == 'Residential'" >{{v.BHKType}}</p><p *ngIf= "v.HouseOrCommercialType == 'Commercial'">{{v.buildingType}}</p></td>
                     <td>{{v.area}}</td>

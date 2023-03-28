@@ -13,6 +13,7 @@ export class CrCommercialRentPreviewComponent {
   
     
     id:any;
+    checkForview:any;
     date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
     
     constructor(private arouter: ActivatedRoute,
@@ -24,6 +25,7 @@ export class CrCommercialRentPreviewComponent {
       
       this.arouter.queryParams.subscribe(params => {
         this.id=params['id'];
+        this.checkForview= params['check'];
       });
       this.getalldata();
      
@@ -123,6 +125,9 @@ export class CrCommercialRentPreviewComponent {
         this.router.navigateByUrl('/owner?')
       })
      
+    }
+    RouteToPostProp(){
+      this.router.navigateByUrl('/owner');
     }
   }
   

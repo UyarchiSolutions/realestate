@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class ResidentialRentComponent implements OnInit {
   id: any;
   video: any;
+  checkForview:any;
   date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
 
   constructor(
@@ -24,6 +25,7 @@ export class ResidentialRentComponent implements OnInit {
   ngOnInit(): void {
     this.arouter.queryParams.subscribe((params) => {
       this.id = params['id'];
+      this.checkForview= params['check'];
     });
     this.getalldata();
     this.finalfunction();
@@ -121,5 +123,8 @@ export class ResidentialRentComponent implements OnInit {
       this.router.navigateByUrl('/owner?')
     })
    
+  }
+  RouteToPostProp(){
+    this.router.navigateByUrl('/owner');
   }
 }

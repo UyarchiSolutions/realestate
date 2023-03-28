@@ -12,6 +12,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
  
   
     id:any;
+    checkForview:any;
     date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
     
     constructor(private arouter: ActivatedRoute,
@@ -23,6 +24,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
       
       this.arouter.queryParams.subscribe(params => {
         this.id=params['id'];
+        this.checkForview= params['check'];
       });
       this.getalldata();
       this.finalfunction();
@@ -128,6 +130,9 @@ export class RsResidentialSalePreviewComponent implements OnInit {
         console.log(res.finish)
       })
      
+    }
+    RouteToPostProp(){
+      this.router.navigateByUrl('/owner');
     }
   }
   

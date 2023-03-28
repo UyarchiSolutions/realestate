@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
    
    
   }
-  area:any;
+  area:any=[];
   city: any;
   BuyerAddres:any;
   addressArray:any[]=[];
@@ -54,12 +54,12 @@ export class HomeComponent implements OnInit {
   zoom=10;
  
 
-  handleAddressChange(address: Address,) {
-
-    this.BuyerAddres = address.formatted_address;
-    this.Resform.patchValue({
-      BuyerAddres: this.BuyerAddres,
-   })
+  handleAddressChange(address: Address) {
+      console.log(address);
+      this.BuyerAddres = address.formatted_address;
+      this.Resform.patchValue({
+        BuyerAddres: this.BuyerAddres,
+     })
 
    this.latitude = address.geometry.location.lat();
    this.longtitude = address.geometry.location.lng();
@@ -88,15 +88,21 @@ export class HomeComponent implements OnInit {
       }
       ).long_name; 
       console.log(area);
-      this.area = area;
+      this.area.push(area);
+      this.service.GAreaArr = this.area;
+      console.log(this.area,'area arry')
 
      let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
       console.log(city);
       this.city= city; 
-      
-  
+
+      this.Resform.get('BuyerAddres').reset();
+
+      this.Resform.setValue({
+        BuyerAddres: this.BuyerAddres,
+     })
     }) 
-    
+    console.log(this.Resform.get('BuyerAddres')?.value,'buyer address')
     
      
    }
@@ -136,6 +142,7 @@ export class HomeComponent implements OnInit {
      
       }
       ).long_name; 
+
       this.area = area;
 
      let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
@@ -164,13 +171,12 @@ export class HomeComponent implements OnInit {
   Ressubmit()
   {
     if(this.Resform.get('type')?.value == 'Rent'){
+     
     let data ={
-      formatAdd:this.Resform.get('BuyerAddres')?.value,
+      formatAdd:this.BuyerAddres,
       type:this.Resform.get('type')?.value,
       propertType:this.Resform.get('PropertyType')?.value,
       BHKType:this.Resform.get('BHK')?.value
-
-
     }
    
       var queryString = new URLSearchParams(data).toString();
@@ -202,5 +208,11 @@ export class HomeComponent implements OnInit {
   switch(e:any){
     this.resOrCom=e;
   }
-
+  removeArea(i:any){
+    console.log(i);
+    this.area.splice(i,1);
+    console.log('area removed',this.area.indexOf(i),'index');
+    console.log(this.area,'area arry');
+    this.service.GAreaArr = this.area;
+  }
 }

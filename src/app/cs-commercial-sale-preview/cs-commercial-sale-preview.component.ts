@@ -12,7 +12,7 @@ export class CsCommercialSalePreviewComponent {
  
   
     
-    
+  checkForview:any;
       
       id:any;
       date = formatDate(new Date(), 'dd/MM/yyyy', 'en-US');
@@ -26,6 +26,7 @@ export class CsCommercialSalePreviewComponent {
         
         this.arouter.queryParams.subscribe(params => {
           this.id=params['id'];
+          this.checkForview= params['check'];
         });
         this.getalldata();
        this.finalfunction();
@@ -125,6 +126,9 @@ export class CsCommercialSalePreviewComponent {
           this.router.navigateByUrl('/owner?')
         })
        
+      }
+      RouteToPostProp(){
+        this.router.navigateByUrl('/owner');
       }
     }
     

@@ -50,12 +50,17 @@ export class RrAmentitesComponent implements OnInit {
     
     });
     this.updateform();
-
-   
+    console.log(this.SelectedAmenities,this.emptyArr,'arr')
+  
+    if(this.service.switchTrF == true){
+      this.showami=true;
+    }
     
   }
+  emptyArr:any=[];
   routerlink='residentaial-rent-amentites';
   submited=false;
+  
   submit(){
 
     this.submited=true;
@@ -102,7 +107,7 @@ export class RrAmentitesComponent implements OnInit {
         console.log(res.final)
         this.final=res.final;
         this.SelectedAmenities= res.Amenities;
-        if(res.final){
+        if(res.final ){
           console.log('dsfsdf')
           this.showami =true;
         }
@@ -359,6 +364,7 @@ export class RrAmentitesComponent implements OnInit {
   show(index: number) {
     this.showModal = index;
     this.showami =true;
+    this.service.switchTrF =true;
   }
   close() {
     this.showModal = -1;
