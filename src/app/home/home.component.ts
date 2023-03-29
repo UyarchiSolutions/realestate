@@ -176,7 +176,8 @@ export class HomeComponent implements OnInit {
       formatAdd:this.BuyerAddres,
       type:this.Resform.get('type')?.value,
       propertType:this.Resform.get('PropertyType')?.value,
-      BHKType:this.Resform.get('BHK')?.value
+      BHKType:this.Resform.get('BHK')?.value,
+      area:this.area,
     }
    
       var queryString = new URLSearchParams(data).toString();

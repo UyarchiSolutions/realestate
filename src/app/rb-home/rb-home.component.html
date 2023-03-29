@@ -1,5 +1,47 @@
 
-<app-header-with-profile></app-header-with-profile>
+<header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png">
+    </div>
+   
+   <!-- <div>
+    <button class="login-button" routerLink="/buyerLogin">Login</button>
+    <button class="register-button">Register</button>
+    <button class="post-your-property" routerLink="/sellerLogin">Post Your Property<svg width="15" height="15" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.5 4H3.25C2.65326 4 2.08097 4.23705 1.65901 4.65901C1.23705 5.08097 1 5.65326 1 6.25V16.75C1 17.3467 1.23705 17.919 1.65901 18.341C2.08097 18.7629 2.65326 19 3.25 19H13.75C14.3467 19 14.919 18.7629 15.341 18.341C15.7629 17.919 16 17.3467 16 16.75V8.5M5.5 14.5L19 1M19 1H13.75M19 1V6.25" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      </button> -->
+   
+   <!-- <div class="user">
+      <div class="user-img">
+         <img src="../../assets/images/profile-Icon-SVG 1.png">
+      </div>
+      <div class="user-name">Aravind Daya</div>
+   </div>  -->
+   
+   <div class="dropdown">
+      <button class="btn dropdown-toggle" style="height: fit-content;position: static !important;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+       
+    <div class="user">
+      <div class="user-img">
+         <img src="../../assets/images/profile-Icon-SVG 1.png">
+      </div>
+      <div class="user-name">Dummy</div>
+   </div> 
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" (click)="logOut()" >Logout</a></li>
+      </ul>
+    </div>
+    
+   <!-- </div> -->
+   
+   
+   
+   </header>
+
 <div class="container">
 
 
@@ -22,9 +64,9 @@
     <label>Residential :</label>
     <div>
         <div>
-        <input type="radio" name="type" ><p>Buy</p></div>
+        <input type="radio" name="type" (change)="onChange($event)"  value="Lease" ><p>Buy</p></div>
         <div>
-            <input type="radio"  name="type" [checked]="type == 'Rent'"><p>Rent</p></div>
+        <input type="radio"  name="type" [checked]="type == 'Rent'" value="Rent" (change)="onChange($event)"><p>Rent</p></div>
     </div>
 </div>
 <div class="commercial">
@@ -40,8 +82,16 @@
     </div>
 
     <div class="search-field">
+        <div class="searched" *ngIf="areaArr">
+            <span *ngFor="let item of areaArr;let i = index">{{item}}
+               <svg (click)="removeArea(i)" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.49952C11.5539 1.94643 11.5526 1.051 10.9995 0.499521C10.4464 -0.0519549 9.551 -0.0506468 8.99952 0.502445L6.00732 3.50341L3.00196 0.498045C2.44967 -0.0542398 1.55424 -0.0542402 1.00196 0.498045C0.44967 1.05033 0.449668 1.94576 1.00195 2.49805L4.01024 5.50633L1.01122 8.51414C0.459741 9.06723 0.46105 9.96266 1.01414 10.5141C1.56723 11.0656 2.46266 11.0643 3.01414 10.5112L6.01024 7.50634L9.00196 10.498C9.55424 11.0503 10.4497 11.0503 11.002 10.498C11.5542 9.94576 11.5542 9.05033 11.002 8.49805L8.00732 5.50341L11.0024 2.49952Z" fill="white"/>
+              </svg>
+          </span>
+              
+        </div>
    
-        <input class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark" [value]="formatAdd" (onAddressChange)="handleAddressChange($event,inputPlace)" [options]="options" #inputPlace>
+        <input class="input"  type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark" [value]="formatAdd" (onAddressChange)="handleAddressChange($event,inputPlace)" [options]="options" #inputPlace>
     <div class="search" (click)="submitAddress()">
         <span ><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25 25L18.071 18.071M18.071 18.071C19.9463 16.1956 20.9999 13.6521 20.9999 10.9999C20.9999 8.34779 19.9463 5.80427 18.071 3.92891C16.1956 2.05356 13.6521 1 10.9999 1C8.34779 1 5.80427 2.05356 3.92891 3.92891C2.05356 5.80427 1 8.34779 1 10.9999C1 13.6521 2.05356 16.1956 3.92891 18.071C5.80427 19.9463 8.34779 20.9999 10.9999 20.9999C13.6521 20.9999 16.1956 19.9463 18.071 18.071Z" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -171,8 +221,8 @@
                     </a>
                   
                    <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Under Construction" [checked]="is_chckked('Under Construction','')">Under Construction </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Ready" [checked]="is_chckked('Ready','')">Ready</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Under Construction" [checked]="is_chckked('Under Construction',[''])">Under Construction </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event)"  value="Ready" [checked]="is_chckked('Ready',[''])">Ready</li>
       
                       </ul>
                   </div>
@@ -233,11 +283,11 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Ground Floor" [checked]="is_chckked('Ground Floor','')">Ground Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Floor" [checked]="is_chckked('1 to 3 Floor','')">1 to 3 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 to 7 Floor" [checked]="is_chckked('4 to 7 Floor','')">4 to 7 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="8 to 12 Floor" [checked]="is_chckked('8 to 12 Floor','')">8 to 12 Floor</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="12+ Floor" [checked]="is_chckked('12+ Floor','')">12+ Floor</li>        
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Ground Floor" [checked]="is_chckked('Ground Floor',[])">Ground Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Floor" [checked]="is_chckked('1 to 3 Floor',[])">1 to 3 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 to 7 Floor" [checked]="is_chckked('4 to 7 Floor',[])">4 to 7 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="8 to 12 Floor" [checked]="is_chckked('8 to 12 Floor',[])">8 to 12 Floor</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="12+ Floor" [checked]="is_chckked('12+ Floor',[])">12+ Floor</li>        
       
                       </ul>
                   </div>
@@ -271,10 +321,10 @@
                   
                     <ul class="dropdown-menu">
                     
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 Bathroom" [checked]="is_chckked('1 Bathroom','')">1 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="2 Bathroom" [checked]="is_chckked('2 Bathroom','')">2 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 Bathroom" [checked]="is_chckked('3 Bathroom','')">3 Bathroom</li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 Bathroom" [checked]="is_chckked('4 Bathroom','')">4+ Bathroom</li>        
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="1 Bathroom" [checked]="is_chckked('1 Bathroom',[''])">1 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="2 Bathroom" [checked]="is_chckked('2 Bathroom',[''])">2 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 Bathroom" [checked]="is_chckked('3 Bathroom',[''])">3 Bathroom</li>
+                        <li><input type="checkbox" (change)="updateFilter($event)"  value="4 Bathroom" [checked]="is_chckked('4 Bathroom',[''])">4+ Bathroom</li>        
       
                       </ul>
                   </div>
@@ -444,7 +494,9 @@
             
             </td>
             <td>{{v.created | date : "dd-MM-YYYY"}}</td>
-          <td class="view" (click)="GetDataBYId(v._id,i)" style="cursor:pointer">View</td>
+          <td class="view" > <p (click)="GetDataBYId(v._id,i)" *ngIf="v.usersStatus == 'unViewed' " style="cursor:pointer">View</p> 
+                             <p (click)="GetDataBYId(v._id,i)" *ngIf="v.usersStatus == 'Viewed' " style="cursor:pointer">{{v.usersStatus}}</p> 
+        </td>
         </tr>
 
         <tr>

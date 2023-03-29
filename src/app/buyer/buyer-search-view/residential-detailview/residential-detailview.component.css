@@ -163,6 +163,8 @@ left: -30px;
 }
 .interested{
     min-width:20% ;
+    color: white !important;
+    background-color: var(--brown) !important;
 }
 .form-detail{
     width: 100%;

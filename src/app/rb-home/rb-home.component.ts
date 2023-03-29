@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ng-google-places-autocomplete';
+import { Cookie } from 'ng2-cookies';
 import { PostPropertyService } from '../services/post-property.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class RbHomeComponent implements OnInit {
     private arouter: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private service: PostPropertyService
+    private service: PostPropertyService,
+    
   ) {}
   range = 10;
   page = 0;
@@ -22,8 +24,8 @@ export class RbHomeComponent implements OnInit {
 
   pagetotal = 0;
   totalcount = 0;
-
-  formatAdd: any;
+  areaArr:any=[];
+  formatAdd: any='';
   data: any;
   type: any;
   propertType: any;
@@ -35,13 +37,26 @@ export class RbHomeComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.arouter.queryParams.subscribe((params) => {
-      this.formatAdd = params['formatAdd'];
-      this.type = params['type'];
-      this.propertType = params['propertType'];
-      this.BHKType = params['BHKType'];
+    this.arouter.queryParamMap.subscribe((params:any) => {
+      console.log(params.params.formatAdd)
+      if( params.params.formatAdd != null ){
+      console.log(params,656767);
+      this.formatAdd =params.params.formatAdd;
+      this.type =params.params['type'];
+      this.propertType = params.params['propertType'];
+      this.BHKType = params.params['BHKType'];
+      this.areaArr =  params.params['area'];
+      
+      this.ShowOnlyArr=params.params['rentDetails'] !=null && params.params['rentDetails'] !='' ? params.params['rentDetails'].split(',') :[];
+      this.FurArr=params.params['furnishing'];
+      this.ParkArr=params.params['rentprefer'];
+      this.PropAgeArr=params.params['PropAgeArr'];
+      // this.areaArr =this.areaArr.split(',');
+      console.log(this.areaArr)
+      this.GetDataForFilter();
+        console.log(this.ShowOnlyArr,23423423)
+      }
     });
-    this.GetDataForFilter();
     if (this.propertType) {
       this.SelectedFilters.push(this.propertType);
       this.proptArr.push(this.propertType);
@@ -51,10 +66,13 @@ export class RbHomeComponent implements OnInit {
       this.FbhkArr.push(this.BHKType);
       console.log(this.FbhkArr, this.SelectedFilters);
     }
+    // this.areaArr=this.service.GAreaArr
+    console.log('sdfsf,ng oninit')
   }
   sendData: any;
   sendDataBOOL = true;
   GetDataForFilter() {
+    console.log('in get data');
     if (this.sendDataBOOL) {
       this.sendData = {
         formatAdd: this.formatAdd,
@@ -76,7 +94,7 @@ export class RbHomeComponent implements OnInit {
       };
     }
 
-    console.log(this.sendData);
+    console.log(this.sendData,'senddatabool',this.sendDataBOOL);
     this.service
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
@@ -108,7 +126,9 @@ export class RbHomeComponent implements OnInit {
   RecentSearchArr: any = [];
   dommy: any = [];
   LoopItArr: any = [];
-
+  onChange(e:any){
+    this.type = e.target.value;
+  }
   updateFilter(v: any) {
     if (v.target.checked) {
       var val = v.target.value;
@@ -377,7 +397,7 @@ export class RbHomeComponent implements OnInit {
     }
   }
   latitude: any;
-
+  Address:any=[];
   longtitude: any;
   area: any;
   city: any;
@@ -385,38 +405,44 @@ export class RbHomeComponent implements OnInit {
     console.log(input.value);
     this.formatAdd = input.value;
 
-    //  this.latitude = address.geometry.location.lat();
-    //  this.longtitude = address.geometry.location.lng();
+     this.latitude = address.geometry.location.lat();
+     this.longtitude = address.geometry.location.lng();
 
-    //  this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-    //   console.log(res)
+     this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
+      console.log(res)
 
-    // input.value = res[0].formatted_address;
-    // console.log( res[0].formatted_address,'zxczc',input.value)
+   
 
-    //   let area = address.find((component:any) =>{
-    //     if( component.types.includes('locality')){
+    this.Address = res[0].address_components;
+    console.log(this.Address)
 
-    //       console.log(component.types.includes('locality'),'locality');
+    console.log( res
+      ,'zxczc',input.value)
 
-    //     return component.types.includes('locality')}
+      let area = this.Address.find((component:any) =>{
+        if( component.types.includes('locality')){
 
-    //     if( component.types.includes('sublocality_level_1')){
+          console.log(component.types.includes('locality'),'locality');
 
-    //       console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+        return component.types.includes('locality')}
 
-    //     return component.types.includes('sublocality_level_1')}
+        if( component.types.includes('sublocality_level_1')){
 
-    //   }
-    //   ).long_name;
-    //   console.log(area);
-    //   this.area = area;
+          console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
 
-    //  let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
+        return component.types.includes('sublocality_level_1')}
+
+      }
+      ).long_name;
+      console.log(area);
+      this.areaArr.push(area);
+
+    //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
     //   console.log(city);
     //   this.city= city;
 
-    //   })
+      })
+      // input.value = '';
   }
   submitAddress() {
     const formatAdd = this.formatAdd;
@@ -479,18 +505,44 @@ export class RbHomeComponent implements OnInit {
   options: any = {
     componentRestrictions: { country: 'IN' },
   };
+  checkCookie:any;
 
   GetDataBYId(id: any,i:any) {
-    let oneid={
-      id:id,
-      index:i,
 
-    }
-    console.log('tjlajs');
+
+    this.checkCookie= this.service.findCookie();    
+    if(  this.checkCookie){
+    this.service.userStatusCheck(id).subscribe((res:any)=>{
+      console.log(res);
+      
+      let oneid={
+        id:id,
+        index:i,
+        formatAdd: this.formatAdd,
+        type: this.type,
+        propertType: this.proptArr,
+        BHKType: this.FbhkArr,
+        rentDetails: this.ShowOnlyArr,
+        furnishing: this.FurArr,
+        parking: this.ParkArr,
+        rentprefer: this.TentArr,
+        propAge: this.PropAgeArr,
+
+      }
+   
     this.service.Alldata=this.sendData;
+   
     const query = new URLSearchParams(oneid).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-search-view?'+ query  )
-  };
+    this.router.navigateByUrl('/buyer-residential-rent-search-view?'+ query);
+    })
+  }
+  else{
+     console.log('route to login')
+    this.router.navigateByUrl('buyerLogin')
+  }
+
+        
+  }
   GetRecentSearch(index: any) {
    
    
@@ -576,5 +628,19 @@ export class RbHomeComponent implements OnInit {
         this.data = res.values;
         console.log(this.data, 'data');
       });
+  }
+  removeArea(i:any){
+    console.log(i);
+    this.areaArr.splice(i,1);
+    console.log('area removed',this.areaArr.indexOf(i),'index');
+    console.log(this.areaArr,'area arry');
+    this.service.GAreaArr = this.areaArr;
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('buyer');
+   
+    this.router.navigateByUrl('/');
   }
 }

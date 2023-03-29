@@ -51,8 +51,10 @@ none: any;
   
         this.updateform();
       });
-    
-      
+ 
+      if(this.service.switchTrS == true){
+        this.showami=true;
+      }
     }
     submited=false;
     submit(){
@@ -375,6 +377,7 @@ none: any;
     show(index: number) {
       this.showModal = index;
       this.showami =true;
+      this.service.switchTrS=true;
     }
     close() {
       this.showModal = -1;

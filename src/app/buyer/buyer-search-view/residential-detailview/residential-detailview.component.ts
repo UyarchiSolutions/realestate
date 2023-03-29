@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PostPropertyService } from 'src/app/services/post-property.service';
 })
 export class ResidentialDetailviewComponent implements OnInit {
   allFilter: any;
-  constructor(private arouter:ActivatedRoute, private service: PostPropertyService){
+  constructor(private arouter:ActivatedRoute, private service: PostPropertyService, private router: Router){
 
   }
   id:any;
@@ -18,17 +18,35 @@ export class ResidentialDetailviewComponent implements OnInit {
   page=0;
   range=20;
   Alldata:any;
+  formatAdd:any;
+        type: any;
+        propertType: any;
+        BHKType: any;
+        rentDetails: any;
+        furnishing: any;
+        parking: any;
+        rentprefer: any;
+        propAge:any;
+
   ngOnInit(): void {
     
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
       this.id = params['id'];
       this.index=params['index'];
+      this.formatAdd=params['formatAdd'];
+      this.type=params['type'];
+      this.BHKType=params['BHKType'];
+      this.rentDetails=params['rentDetails'];
+      this.furnishing=params['furnishing'];
+      this.parking=params['parking'];
+      this.rentprefer=params['rentprefer'];
+      this.propAge=params['propAge'];
+      this.propertType=params['propertType'];
      
     });
     this.index =Number(this.index) ;
-  // let  number = +this.index;
-  console.log(this.index,'index covert num')
+ 
 
     this.allFilter =this.service.Alldata;
 
@@ -69,5 +87,20 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.data=res;
     })
   }
+  backToSearch(){
+    let sendData = {
+      formatAdd: this.formatAdd,
+      type: this.type,
+      propertType: this.propertType,
+      BHKType: this.BHKType,
+      rentDetails: this.rentDetails,
+      furnishing: this.furnishing,
+      parking: this.parking,
+      rentprefer: this.rentprefer,
+      propAge: this.propAge,
+    };
 
+    const query = new URLSearchParams(sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  }
 }

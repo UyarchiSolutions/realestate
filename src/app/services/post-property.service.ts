@@ -11,7 +11,9 @@ export class PostPropertyService {
 
    Alldata =[];
    switchTrF:any;
+   switchTrS:any;
    GAreaArr:any=[];
+   checkCookie:any;
   constructor(private http: HttpClient) {}
 
   // startposting
@@ -64,8 +66,17 @@ export class PostPropertyService {
   }
   getSellerDetails(page: any, range: any, data: any) {
     const queryString = new URLSearchParams(data).toString();
+
+    this.checkCookie= this.findCookie();
+    if(this.checkCookie) {
+      console.log('from service','auth');
+      return this.http.get(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`, { headers: { auth: Cookie.get('buyer') }});
+    }
     
+    else{
+      console.log('from service','no auth');
     return this.http.get(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`);
+    }
   }
   myAcount() {
     return this.http.get(this.baseURL + `BuyerSeller/Profile`, {
@@ -78,5 +89,19 @@ export class PostPropertyService {
       this.baseURL + '/Places/AutoComplete?input=' + queryString
     );
   }
-  
+  userStatusCheck( id:any){
+    
+    return this.http.get(this.baseURL + `AddViewed_Data/`+id, { headers: { auth: Cookie.get('buyer') },
+    });
+  }
+  findCookie() {
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.startsWith('buyer=')) {
+        return true; // the cookie exists and has a value
+      }
+    }
+    return false; // the cookie does not exist or has no value
+  }
 }
