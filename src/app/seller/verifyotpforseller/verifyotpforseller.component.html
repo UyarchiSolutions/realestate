@@ -13,9 +13,12 @@
         <label>OTP :</label>
         <div>
           <input type="text" placeholder="Enter OTP" formControlName="otp">
-          <div>
+          <div style="display: flex;
+          flex-direction: row-reverse;
+          cursor: pointer;
+          font-size: .9rem">
             <!-- <p *ngIf="isSubmit&&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p> -->
-            <a (click)="resend()">Resent OTP !</a>
+            <a (click)="resend()">Resend OTP !</a>
           </div>
         </div>
       </div>

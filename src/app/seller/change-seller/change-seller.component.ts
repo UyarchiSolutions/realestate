@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BuyerService } from 'src/app/buyer/buyer.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import{SellerService} from '../seller.service'
 
 @Component({
   selector: 'app-change-seller',
@@ -10,14 +10,20 @@ import { BuyerService } from 'src/app/buyer/buyer.service';
 })
 export class ChangeSellerComponent {
   isSubmit=false;
+  id:any;
   changeFrom:any =this.fb.group({
     oldPassword:new FormControl('',Validators.required),
     newPassword:new FormControl('',Validators.required),
-    confirmPassword:new FormControl('',Validators.required)
+    confirmPassword:new FormControl('',Validators.required),
+    password:new FormControl(),
   });
-  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
+  constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router, private arouter:ActivatedRoute) { }
   ngOnInit() {
+    this.arouter.queryParams.subscribe(params=>{
+      console.log(params);
 
+      this.id=params['id']
+    })
   }
   throughError(val:any){
     if(this.changeFrom.get('newPassword').value !=val.target.value){
@@ -31,18 +37,27 @@ export class ChangeSellerComponent {
   onSubmit(){
   this.isSubmit=true;
   console.log(this.changeFrom.get('newPassword').value !="" && this.changeFrom.get('confirmPassword').value !="","not workji")
-  if(this.changeFrom.valid){
-    this.buyerService.changePasswordForbuyer(this.changeFrom.value).subscribe((res:any) => {
+  if(this.changeFrom.valid && this.changeFrom.get('newPassword').value == this.changeFrom.get('confirmPassword').value){
+    this.changeFrom.patchValue({
+      password:this.changeFrom.get('newPassword')?.value,
+    })
+    let data={
+      oldPassword:this.changeFrom.get('oldPassword')?.value,
+      password:this.changeFrom.get('newPassword')?.value,
+    }
+    this.SellerService.changePassword(this.id,data).subscribe((res:any) => {
       this.changeFrom.reset()
       this.isSubmit=false;
+      this.route.navigate(['/sellerLogin']);
     },error => {
       if(error.error.message == "Old PassWord Incorrect Or Invalid User"){
        this.oldPassword=true;
       }else{
         this.oldPassword=false;
       }
+    
     })
-    this.route.navigate(['/'])
+    
   }
   }
 }

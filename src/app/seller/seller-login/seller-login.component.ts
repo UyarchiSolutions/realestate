@@ -51,7 +51,9 @@ export class SellerLoginComponent {
 
             this.route.navigate(['/owner'])
       },error => {
+        console.log(error);
         if(error.error.message == "User Not Available"){
+
           this.notfound=true;
         }
       })

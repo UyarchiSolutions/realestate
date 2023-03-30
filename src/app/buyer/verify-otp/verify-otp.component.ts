@@ -24,6 +24,7 @@ export class VerifyOtpComponent {
       localStorage.setItem('mobile', this.mobile)
 
     })
+    this.getMobile(this.mobile);
   }
   already=false;
   getMobile(number:any){

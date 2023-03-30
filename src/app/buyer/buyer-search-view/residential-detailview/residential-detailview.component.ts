@@ -50,14 +50,14 @@ export class ResidentialDetailviewComponent implements OnInit {
 
     this.allFilter =this.service.Alldata;
 
-    console.log(this.allFilter,'sdfs');
-    console.log(this.index,'index',this.id,'id',this.allFilter,'all data');
+    console.log(this.allFilter,'All filters');
+
 
     this.service.formget(this.id).subscribe((res:any)=>{
       console.log(res);
       this.data=res;
     })
-    console.log(this.allFilter,'sdfsdfsdf4524452');
+   
 
     this.service
     .getSellerDetails(this.page, this.range, this.allFilter)
@@ -99,8 +99,18 @@ export class ResidentialDetailviewComponent implements OnInit {
       rentprefer: this.rentprefer,
       propAge: this.propAge,
     };
-
+    console.log(sendData,'data back to home')
     const query = new URLSearchParams(sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  }
+  checkInterest=false;
+  interestV:any;
+  interest(id:any){
+    this.checkInterest =true;
+    this.service.interest(id).subscribe((res:any)=>{
+      console.log(res);
+      this.interestV=res.formatedAddress;
+    })
+
   }
 }

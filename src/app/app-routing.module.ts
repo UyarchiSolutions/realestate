@@ -77,6 +77,7 @@ const routes: Routes = [
   {path:'sent-otp',component:SellerforotpComponent},
   {path:'updatePassword-seller',component:UpdatepasswordsellerComponent},
   {path:'changepassword-seller',component:ChangeSellerComponent},
+  
   {path:'start-posting',component:StartPostingComponent},
   {path:'property-post',component:PropertyPostComponent},
   {path:'owner',component:OwnerComponent},

@@ -18,7 +18,7 @@ export class BuyerloginComponent {
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
 
   ngOnInit() {
-    console.log("kfnjvgdfjkhngdfjkbghjk")
+    
   }
 
   genterateOtp(val: any) {
@@ -37,8 +37,9 @@ export class BuyerloginComponent {
   }
   display: any = false;
   notfound = false;
+  Emailnotfound=false;
   submitted() {
-    console.log("sdklsjjksfjk")
+    
     this.emailSubmit = true;
     this.loginForm.patchValue({
       Type: "Buyer"
@@ -54,6 +55,9 @@ export class BuyerloginComponent {
         }
         if (error.error.message == "User Not Available") {
           this.notfound = true
+        }
+        if (error.error.message == "Email not Registered") {
+          this.Emailnotfound = true
         }
       })
     }
@@ -73,5 +77,9 @@ export class BuyerloginComponent {
    }
    routeToHome(){
     this.route.navigateByUrl('/')
+   }
+   errormsg(){
+    this.Emailnotfound = false;
+    this.notfound=false;
    }
 }

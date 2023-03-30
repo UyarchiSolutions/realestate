@@ -42,7 +42,7 @@ export class ChangeBuyerComponent {
         this.oldPassword=false;
       }
     })
-    this.route.navigate(['/'])
+    this.route.navigate(['/buyerLogin'])
   }
   }
 }

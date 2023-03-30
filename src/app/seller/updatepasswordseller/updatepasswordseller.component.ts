@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BuyerService } from 'src/app/buyer/buyer.service';
+import {SellerService} from '../seller.service';
 
 @Component({
   selector: 'app-updatepasswordseller',
@@ -15,15 +15,20 @@ export class UpdatepasswordsellerComponent {
   })
   isDisplay=false;
   id:any;
-  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router,private activate_router:ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router,private activate_router:ActivatedRoute) { }
   ngOnInit() {
    this.activate_router.queryParams.subscribe((res:Params) =>{
     this.id=res['id'];
    })
   }
   changePassword() {
-    this.buyerService.changePassword(this.id, this.password.value).subscribe((data: any) => {
-     this.route.navigate(['/buyerLogin'])
+    let data={
+      password:this.password.get('password')?.value,
+      type:'Seller'
+    }
+    this.SellerService.changePassword(this.id, data).subscribe((data: any) => {
+      console.log(data)
+     this.route.navigate(['/sellerLogin'])
     })
   }
 }

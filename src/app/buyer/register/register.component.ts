@@ -34,6 +34,7 @@ export class RegisterComponent {
         this.verfiyemail = true;
         this.isSubmitted=false
         this.route.navigate(['/check-mail'])
+        
       })
     }
 

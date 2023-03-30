@@ -10,6 +10,8 @@ export class PostPropertyService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
 
    Alldata =[];
+   //for recent search in buyer residental view
+   AllRecentSearchArr:any=[];
    switchTrF:any;
    switchTrS:any;
    GAreaArr:any=[];
@@ -103,5 +105,9 @@ export class PostPropertyService {
       }
     }
     return false; // the cookie does not exist or has no value
+  }
+  interest(id:any){
+
+    return this.http.get(this.baseURL + 'giveInterest/'+id,{ headers: { auth: Cookie.get('buyer') }});
   }
 }

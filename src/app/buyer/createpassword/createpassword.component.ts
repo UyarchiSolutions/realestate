@@ -16,9 +16,10 @@ export class CreatepasswordComponent {
   })
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router,private active:ActivatedRoute) { }
   ngOnInit() {
-    this.active.queryParams.subscribe((res: any) => {
-      this.id = res['id'];
+    this.active.queryParams.subscribe((Params) => {
+      this.id = Params['id'];
     })
+    console.log(this.id);
   }
   isSubmit=false;
   submitOTP() {

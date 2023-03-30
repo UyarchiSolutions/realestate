@@ -65,9 +65,10 @@
           <label>Password :</label>
           <input type="password" placeholder="Enter Your Password" formControlName="password">
         </div>
-        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('password')?.invalid">
+        <div class="error-msg">
           <label style="width:500px"></label>
-          <p>Password is required !</p>
+          <p  *ngIf="emailSubmit&&loginForm.get('password')?.invalid" >Password is required !</p>
+          <p *ngIf="notfound">Enter a valid Email and Password!</p>
         </div>
         <p class="forgot-password" (click)="forgot()">Forgot Password !</p>
 

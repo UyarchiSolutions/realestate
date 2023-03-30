@@ -44,7 +44,8 @@ otp_send(data:any){
   return this.http.post(this.baseUrl+`/v1/BuyerSeller/OTPVerify`,data)
 }
 changePassword(id:any,data:any){
-  return this.http.put(this.baseUrl+`/v1/BuyerSeller/updatePassword/${id}`,data)
+   
+  return this.http.put(this.baseUrl+`/v1/BuyerSeller/forgot/passowrd/${id}`,data)
 }
 myAcount(){
   return this.http.get(this.baseUrl+`/v1/BuyerSeller/BuyerSeller/Profile`,{headers:{auth:Cookie.get('tokens')}})

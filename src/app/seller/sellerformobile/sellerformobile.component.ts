@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BuyerService } from 'src/app/buyer/buyer.service';
+import{SellerService} from '../seller.service';
 
 @Component({
   selector: 'app-sellerformobile',
@@ -12,21 +12,22 @@ export class SellerformobileComponent {
   ForgotPassword = this.fb.group({
     number: new FormControl('',Validators.required),
     // otp: new FormControl(''),
-    type: new FormControl('Buyer')
+    type: new FormControl('Seller')
   })
   password = this.fb.group({
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
   })
   isDisplay=false;
-  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
+  constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router) { }
   submitOTP() {
     this.isDisplay=true;
     const a={
-      number:this.ForgotPassword.get('number')?.value
+      number:this.ForgotPassword.get('number')?.value,
+      Type:'Seller'
     }
     if(this.ForgotPassword.valid){
-      this.buyerService.forgot_otp(a).subscribe((res: any) => {
+      this.SellerService.forgot_otp(a).subscribe((res: any) => {
         this.route.navigate(['/sent-otp'])
        this.isDisplay=true;
       })

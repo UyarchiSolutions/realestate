@@ -25,7 +25,8 @@ export class BuyerForgotComponent {
   submitOTP() {
     this.isDisplay=true;
     const a={
-      number:this.ForgotPassword.get('number')?.value
+      number:this.ForgotPassword.get('number')?.value,
+      Type:"Buyer"
     }
     if(this.ForgotPassword.valid){
       this.buyerService.forgot_otp(a).subscribe((res: any) => {

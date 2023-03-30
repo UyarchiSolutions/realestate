@@ -27,7 +27,7 @@ export class OwnerComponent implements OnInit {
   ngOnInit(): void {
 
     this.GetData();
-   
+   this.GetuserName();
   }
   find=true;
   GetData(){
@@ -49,6 +49,13 @@ export class OwnerComponent implements OnInit {
       
       }
       
+    })
+  }
+  user:any;
+  GetuserName(){
+    this.service.myAcount().subscribe((res:any)=>{
+      console.log(res);
+      this.user= res;
     })
   }
 
@@ -133,7 +140,13 @@ export class OwnerComponent implements OnInit {
     this.GetData();
   }
   changeps(){
-    this.router.navigateByUrl('/changepassword-seller')
+    console.log(this.user._id);
+    let data={
+      id:this.user._id
+    }
+    var queryString = new URLSearchParams(data).toString();
+    console.log(queryString);
+    this.router.navigateByUrl('/changepassword-seller?' + queryString );
   }
   routeToProp(){
     this.router.navigateByUrl('/post-property')

@@ -55,7 +55,7 @@
       <form [formGroup]="loginForm">
         <div>
           <label style="width:500px">Email :</label>
-          <input type="email" placeholder="Enter Your Email ID" formControlName="email">
+          <input type="email" placeholder="Enter Your Email ID" formControlName="email" (keyup)="errormsg()">
         </div>
         <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('email')?.invalid">
           <label style="width:500px"></label>
@@ -63,12 +63,16 @@
         </div>
         <div>
           <label>Password :</label>
-          <input type="password" placeholder="Enter Your Password" formControlName="password">
+          <input type="password" placeholder="Enter Your Password" formControlName="password" (keyup)="errormsg()">
         </div>
-        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('password')?.invalid">
+        <div class="error-msg" >
           <label style="width:500px"></label>
-          <p>Password is required !</p>
+          <p *ngIf="emailSubmit&&loginForm.get('password')?.invalid">Password is required !</p>
+          <p *ngIf="notfound">Please Enter a Valid Email and Password </p>
+          <p *ngIf="Emailnotfound">Enter a Registered Email Id </p>
+
         </div>
+        
         <p class="forgot-password" (click)="forgotPass()">Forgot Password !</p>
 
         <div class="login-btn">

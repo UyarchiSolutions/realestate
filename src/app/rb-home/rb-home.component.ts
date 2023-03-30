@@ -28,8 +28,8 @@ export class RbHomeComponent implements OnInit {
   formatAdd: any='';
   data: any;
   type: any;
-  propertType: any;
-  BHKType: any;
+  propertType: any=[];
+  BHKType: any=[];
 
   filter: any = this.fb.group({
     propertType: new FormControl(''),
@@ -43,31 +43,42 @@ export class RbHomeComponent implements OnInit {
       console.log(params,656767);
       this.formatAdd =params.params.formatAdd;
       this.type =params.params['type'];
-      this.propertType = params.params['propertType'];
-      this.BHKType = params.params['BHKType'];
-      this.areaArr =  params.params['area'];
+      this.propertType = params.params['propertType'] !=null && params.params['propertType'] !='' ? params.params['propertType'].split(',') :[];
+      this.BHKType = params.params['BHKType'] !=null && params.params['BHKType'] !='' ? params.params['BHKType'].split(',') :[];
+      this.areaArr =  params.params['area'] !=null && params.params['area'] !='' ? params.params['area'].split(',') :[];
       
       this.ShowOnlyArr=params.params['rentDetails'] !=null && params.params['rentDetails'] !='' ? params.params['rentDetails'].split(',') :[];
-      this.FurArr=params.params['furnishing'];
-      this.ParkArr=params.params['rentprefer'];
-      this.PropAgeArr=params.params['PropAgeArr'];
+      this.FurArr=params.params['furnishing'] !=null && params.params['furnishing'] !='' ? params.params['furnishing'].split(',') :[];
+      this.ParkArr=params.params['rentprefer'] !=null && params.params['rentprefer'] !='' ? params.params['rentprefer'].split(',') :[];
+      this.PropAgeArr=params.params['PropAgeArr'] !=null && params.params['PropAgeArr'] !='' ? params.params['PropAgeArr'].split(',') :[];
       // this.areaArr =this.areaArr.split(',');
-      console.log(this.areaArr)
+      console.log(this.propertType,this.BHKType,'gfgbgfh')
       this.GetDataForFilter();
-        console.log(this.ShowOnlyArr,23423423)
+       
       }
     });
-    if (this.propertType) {
-      this.SelectedFilters.push(this.propertType);
-      this.proptArr.push(this.propertType);
+    if (this.propertType !=null && this.propertType != '' ) {
+
+      this.proptArr=this.propertType;
+      
+      for (let i = 0; i<this.propertType.length;i++){
+
+      this.SelectedFilters.push(this.propertType[i]);
+      }
+    
+      console.log(this.SelectedFilters,'selected filters');
     }
-    if (this.BHKType) {
+    if (this.BHKType !=null && this.BHKType != '') {
       this.SelectedFilters.push(this.BHKType);
       this.FbhkArr.push(this.BHKType);
       console.log(this.FbhkArr, this.SelectedFilters);
     }
     // this.areaArr=this.service.GAreaArr
-    console.log('sdfsf,ng oninit')
+    console.log(this.service.AllRecentSearchArr,'from service');
+    if(this.service.AllRecentSearchArr != ''){
+      console.log(this.RecentSearchArr);
+      this.RecentSearchArr = this.RecentSearchArr;
+    }
   }
   sendData: any;
   sendDataBOOL = true;
@@ -531,6 +542,8 @@ export class RbHomeComponent implements OnInit {
       }
    
     this.service.Alldata=this.sendData;
+    this.service.AllRecentSearchArr=this.RecentSearchArr;
+    console.log(this.service.AllRecentSearchArr,'service')
    
     const query = new URLSearchParams(oneid).toString();
     this.router.navigateByUrl('/buyer-residential-rent-search-view?'+ query);
@@ -547,7 +560,7 @@ export class RbHomeComponent implements OnInit {
    
    
 
-    console.log(this.RecentSearchArr[index], 'recent get by index',index);
+    // console.log(this.RecentSearchArr[index], 'recent get by index',index);
 
     let v = this.RecentSearchArr[index];
 
@@ -561,9 +574,9 @@ export class RbHomeComponent implements OnInit {
     this.PropAgeArr=this.RecentSearchArr[index].propAge;
     this.formatAdd=this.RecentSearchArr[index].formatAdd;
     
-    console.log(
-      this.RecentSearchArr[index].SelectedFilters,
-      'filter of reacent', this.SelectedFilters);
+    // console.log(
+    //   this.RecentSearchArr[index].SelectedFilters,
+    //   'filter of reacent', this.SelectedFilters);
 
     this.service
       .getSellerDetails(this.page, this.range, v)
@@ -642,5 +655,8 @@ export class RbHomeComponent implements OnInit {
     Cookie.delete('buyer');
    
     this.router.navigateByUrl('/');
+  }
+  changepassword(){
+    this.router.navigateByUrl('/changepassword-buyer');
   }
 }
