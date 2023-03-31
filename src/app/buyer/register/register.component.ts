@@ -19,6 +19,9 @@ export class RegisterComponent {
   otp_Form = this.fb.group({
     otp: new FormControl('', Validators.required)
   });
+  verfiyemail=false;
+  mailAlready=false;
+  mobile=false;
   submit = false;
   isSubmitted=false;
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
@@ -26,7 +29,7 @@ export class RegisterComponent {
   ngOnInit() {
 
   }
-  verfiyemail = false;
+
   onSubmitted() {
   this.isSubmitted=true;
     if (this.loginForm.valid) {
@@ -35,7 +38,19 @@ export class RegisterComponent {
         this.isSubmitted=false
         this.route.navigate(['/check-mail'])
         
-      })
+      },error => {
+        if(error.error.message == 'email Already Registered'){
+         this.mailAlready=true
+        }else{
+         this.mailAlready=false
+        }
+        if(error.error.message == 'Mobile Already registered'){
+         this.mobile=true
+        }else{
+         this.mobile=false;
+ 
+        }
+       })
     }
 
   }
@@ -44,5 +59,9 @@ export class RegisterComponent {
   }
   routeToHome(){
     this.route.navigateByUrl('/');
+  }
+  errmsg(){
+    this.mobile=false;
+    this.mailAlready=false
   }
 }

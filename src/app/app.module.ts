@@ -9,6 +9,7 @@ import { BuyerModule } from './buyer/buyer.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SellerModule } from './seller/seller.module';
+import { ToastrModule } from 'ngx-toastr';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
@@ -50,6 +51,9 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule,
     GooglePlaceModule,
+    ToastrModule.forRoot( {
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,}),
     
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',

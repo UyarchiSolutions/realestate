@@ -50,7 +50,7 @@ changePassword(id:any,data:any){
 myAcount(){
   return this.http.get(this.baseUrl+`/v1/BuyerSeller/BuyerSeller/Profile`,{headers:{auth:Cookie.get('tokens')}})
 }
-changePasswordForbuyer(data:any){
+changePasswordForseller(data:any){
   return this.http.post(this.baseUrl+`/v1/BuyerSeller/changePassword`,data,{headers:{auth:Cookie.get('tokens')}})
  }
  deactiveMyaccount(){

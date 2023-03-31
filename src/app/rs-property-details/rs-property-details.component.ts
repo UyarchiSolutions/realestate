@@ -64,8 +64,24 @@ export class RsPropertyDetailsComponent implements OnInit {
   }
   routerlink='residential-sale-property';
   propsub() {
-   
     
+    this.submitted = true;
+    var Checkdata = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
+      BuildedSize: this.propsform.get('BuildupArea')?.value,
+      facingDirection: this.fdv,
+      RentPrefer: this.rpv,
+      
+      ownerType:this.ost,
+      landSize:this.propsform.get('UDSlandsize')?.value,
+      routeLink:this.routerlink
+    };
+
+    if(this.allKeysHaveValue(Checkdata) || this.data.propertType){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -83,6 +99,8 @@ export class RsPropertyDetailsComponent implements OnInit {
     
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
+
+      console.log('will upload ')
       var postdata = {
         id: res._id,
       };
@@ -91,10 +109,24 @@ export class RsPropertyDetailsComponent implements OnInit {
         '/residential-sale-location-details?' + queryString
       );
       console.log(res);
-    });
-    this.switchbutton();
+    });}
+  
   
   }
+  allKeysHaveValue(obj: any) {
+    const keys = Object.keys(obj);
+    let allKeysHaveValue = true;
+
+    keys.forEach((key) => {
+    if (!obj.hasOwnProperty(key) || !obj[key]) {
+      console.log(obj.hasOwnProperty(key),obj[key])
+      allKeysHaveValue = false;
+    }
+  });
+  console.log(allKeysHaveValue);
+  return allKeysHaveValue;
+  
+}
 
   updateform() {
     this.service.formget(this.id).subscribe((res: any) => {

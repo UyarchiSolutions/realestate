@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^3.0.0-beta.0",
-    "@angular/animations": "^15.0.0",
+    "@angular/animations": "^15.2.5",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/core": "^15.0.0",
@@ -26,6 +26,7 @@
     "ng-google-places-autocomplete": "^0.3.3",
     "ng2-cookies": "^1.0.12",
     "ngx-google-places-autocomplete": "^2.0.5",
+    "ngx-toastr": "^16.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

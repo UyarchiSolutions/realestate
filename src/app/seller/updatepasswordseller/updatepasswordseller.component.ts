@@ -14,6 +14,7 @@ export class UpdatepasswordsellerComponent {
     confirmPassword: new FormControl('',Validators.required),
   })
   isDisplay=false;
+  matchPas=false;
   id:any;
   constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router,private activate_router:ActivatedRoute) { }
   ngOnInit() {
@@ -22,6 +23,13 @@ export class UpdatepasswordsellerComponent {
    })
   }
   changePassword() {
+
+    if( !(this.password.get('confirmPassword')?.value == this.password.get('password')?.value) ){
+      this.matchPas=true;
+    }
+
+    if( this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
+      this.matchPas=false;
     let data={
       password:this.password.get('password')?.value,
       type:'Seller'
@@ -30,5 +38,9 @@ export class UpdatepasswordsellerComponent {
       console.log(data)
      this.route.navigate(['/sellerLogin'])
     })
+  }
+  }
+  errorMsg(){
+    this.matchPas=false;
   }
 }

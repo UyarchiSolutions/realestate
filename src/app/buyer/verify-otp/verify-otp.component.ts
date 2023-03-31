@@ -17,6 +17,7 @@ export class VerifyOtpComponent {
     type: new FormControl("Buyer")
   });
   mobile:any;
+  notfound: any;
   constructor(private fb:FormBuilder,private loginService:BuyerService,private activateRoute:ActivatedRoute,private route:Router) { }
   ngOnInit() {
     this.activateRoute.queryParams.subscribe((res:Params) => {
@@ -39,6 +40,10 @@ export class VerifyOtpComponent {
      }else{
       this.already=false;
      }
+     if(error.error.message == "Invalid OTP"){
+
+      this.notfound=true;
+    }
     })
 
   }
@@ -61,5 +66,8 @@ export class VerifyOtpComponent {
     this.loginService.sendOtptoMobile(a).subscribe((res:any) => {
 
     })
+  }
+  errmsg(){
+    this.notfound=false;
   }
 }

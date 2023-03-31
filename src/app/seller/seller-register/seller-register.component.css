@@ -108,7 +108,9 @@ input[type="radio"]:checked {
   accent-color: brown;
 
 }
-
+.error-msg{
+color:red;
+text-align: right;}
 /* header */
 header{
   height: 80px;

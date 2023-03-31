@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SellerService } from '../seller.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller-login',
@@ -16,7 +17,7 @@ export class SellerLoginComponent {
   });
 
   emailSubmit=false;
-  constructor(private fb:FormBuilder,private sellerSerivece:SellerService,private route:Router ) { }
+  constructor(private fb:FormBuilder,private sellerSerivece:SellerService,private route:Router,private toastr: ToastrService ) { }
 
   ngOnInit(): void {
   }
@@ -36,11 +37,11 @@ export class SellerLoginComponent {
       })
   }
   display:any=false;
-
+  Emailnotfound =false;
   notfound=false;
   submitted(){
     console.log('working');
-    this.emailSubmit=true
+    this.emailSubmit=true;
     this.loginForm.patchValue({
       Type:"Seller"
     })
@@ -49,12 +50,17 @@ export class SellerLoginComponent {
         this.emailSubmit=false;
         this.setCookie(res.token.access.token);
 
+        // this.toastr.success('Login to your Post Property', 'Toastr fun!',{timeOut: 3000,});
             this.route.navigate(['/owner'])
       },error => {
         console.log(error);
         if(error.error.message == "User Not Available"){
-
+          this.loginForm.get('password')?.reset();
           this.notfound=true;
+        }
+        if (error.error.message == "Email not Registered") {
+          this.Emailnotfound = true,
+          this.loginForm.get('email')?.reset();
         }
       })
     }
@@ -76,5 +82,10 @@ export class SellerLoginComponent {
   routeToReg(){
     this.route.navigateByUrl('/seller-register')
   }
-  
+  errormsg(){
+    this.Emailnotfound = false;
+    this.notfound=false;
+    this.emailSubmit=false;
+   }
+   
 }

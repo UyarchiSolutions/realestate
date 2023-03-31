@@ -17,6 +17,7 @@ export class VerifyotpforsellerComponent {
     type: new FormControl("Seller")
   });
   mobile: any;
+  notfound: any;
   constructor(private fb:FormBuilder,private sellerSerivece:SellerService,private route:Router,private activateRouter:ActivatedRoute ) { }
   ngOnInit() {
     this.activateRouter.queryParams.subscribe((res: Params) => {
@@ -38,6 +39,10 @@ export class VerifyotpforsellerComponent {
       }else{
        this.already=false;
       }
+      if(error.error.message == "Invalid OTP"){
+
+        this.notfound=true;
+      }
      })
 
   }
@@ -48,7 +53,7 @@ export class VerifyotpforsellerComponent {
     if (this.otp_Form.valid) {
       this.sellerSerivece.getOtp(this.otp_Form.value).subscribe((res: any) => {
         this.isSubmitted = false;
-        this.route.navigate(['/createPassword'], { queryParams: { id: res._id } })
+        this.route.navigate(['/createPassword-seller'], { queryParams: { id: res._id } })
       })
     }
 
@@ -61,5 +66,8 @@ export class VerifyotpforsellerComponent {
     this.sellerSerivece.sendOtptoMobile(a).subscribe((res:any) => {
 
     })
+  }
+  errmsg(){
+    this.notfound=false;
   }
 }

@@ -24,7 +24,7 @@ export class CreatepasswordComponent {
   isSubmit=false;
   submitOTP() {
     this.isSubmit=true;
-    if (this.password.valid) {
+    if (this.password.valid && this.password.get('password')?.value == this.password.get('confirmPassword')?.value) {
       this.buyerService.createPassword(this.id, this.password.value).subscribe((res: any) => {
         this.isSubmit=false;
         this.route.navigate(['/buyerLogin'])

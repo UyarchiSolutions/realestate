@@ -19,8 +19,11 @@ export class SellerformobileComponent {
     confirmPassword: new FormControl(''),
   })
   isDisplay=false;
+  notfound=false;
+  number:any;
   constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router) { }
   submitOTP() {
+    
     this.isDisplay=true;
     const a={
       number:this.ForgotPassword.get('number')?.value,
@@ -28,10 +31,24 @@ export class SellerformobileComponent {
     }
     if(this.ForgotPassword.valid){
       this.SellerService.forgot_otp(a).subscribe((res: any) => {
-        this.route.navigate(['/sent-otp'])
+        this.number=this.ForgotPassword.get('number')?.value;
+        var data={
+          number:this.number
+        };
+        const querystring = new URLSearchParams(data).toString();
+        this.route.navigateByUrl('/sent-otp?' + querystring)
        this.isDisplay=true;
-      })
+      },error => {
+        console.log(error);
+        if(error.error.message == "Mobile Number Not Registered"){
+
+          this.notfound=true;
+        }}
+      )
     }
 
+  }
+  errMsg(){
+    this.notfound=false;
   }
 }

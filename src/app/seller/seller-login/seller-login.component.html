@@ -55,25 +55,27 @@
       <form [formGroup]="loginForm">
         <div>
           <label style="width:500px">Email :</label>
-          <input type="email" placeholder="Enter Your Email ID" formControlName="email">
+          <input type="email" formControlName="email" (keyup)="errormsg()"
+           [placeholder]="Emailnotfound? 'Enter a Registered Email Id': 'Enter Your Email ID' " [ngClass]=" Emailnotfound ? 'red-bttm' :''">
         </div>
-        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('email')?.invalid">
+        <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('email')?.invalid && !Emailnotfound">
           <label style="width:500px"></label>
           <p>Email is required !</p>
         </div>
         <div>
           <label>Password :</label>
-          <input type="password" placeholder="Enter Your Password" formControlName="password">
+          <input type="password"  formControlName="password" (keyup)="errormsg()"
+          [placeholder]="notfound? 'Enter a Valid Password': 'Enter Your Password' " [ngClass]=" notfound ? 'red-bttm' :''" >
         </div>
         <div class="error-msg">
           <label style="width:500px"></label>
-          <p  *ngIf="emailSubmit&&loginForm.get('password')?.invalid" >Password is required !</p>
-          <p *ngIf="notfound">Enter a valid Email and Password!</p>
+          <p  *ngIf="emailSubmit&&loginForm.get('password')?.invalid && !notfound" >Password is required !</p>
         </div>
         <p class="forgot-password" (click)="forgot()">Forgot Password !</p>
 
         <div class="login-btn">
           <button type="button" (click)="submitted()">Log In</button>
+          
         </div>
       </form>
     </div>

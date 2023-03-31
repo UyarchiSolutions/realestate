@@ -69,27 +69,27 @@
             <label>Building Name :</label>
          <input type="text" placeholder="Enter Building Name" formControlName="BuildingName">
     </div>
-        <!-- <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p> -->
+        <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p>
     
         <div>
             <label>Address:</label>
          <input type="text" placeholder="Enter Address " formControlName="Address">
     </div>
-    <!-- <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p> -->
+    <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p>
    
     <div>
         <label>Pincode :</label>
   <input type="text" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
     </div>
-    <!-- <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
-    <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p> -->
+     <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p> 
+    <!-- <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p>  -->
 
    
     <div>
         <label>Landmark :</label>
   <input type="text" placeholder="Enter landmark" formControlName="Landmark">
     </div>
-    <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+    <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Landmark </p>
 
     <div class="address">
         <label>Select location Via Map :</label>
@@ -109,7 +109,7 @@
         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7774.085275645583!2d80.24697922125611!3d13.032956813262508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b4687f6ae9%3A0x671019410bd08a22!2sAlwarpet%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1676542904958!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
     </div>
     </div>
-
+    <p *ngIf="rrlocform.get('addressLoaction')?.invalid && submitted" class="redtext">Please Pick the location </p> 
 
 
     <div>

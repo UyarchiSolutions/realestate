@@ -22,10 +22,10 @@ export class RsLocationDetailsComponent implements OnInit{
     submitted:boolean=false;
     rrlocform:any = this.fb.group({
      
-      Landmark: new FormControl (''),
+      Landmark: new FormControl ('',Validators.required),
       Pincode: new FormControl ('',[Validators.required]),
-      BuildingName: new FormControl (''),
-      Address: new FormControl (''),
+      BuildingName: new FormControl ('',Validators.required),
+      Address: new FormControl ('',Validators.required),
       lat:new FormControl (''),
       long:new FormControl (''),
       addressLoaction: new FormControl('',[Validators.required]),

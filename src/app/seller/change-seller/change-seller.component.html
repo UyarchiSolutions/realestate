@@ -12,25 +12,29 @@
       <div class="otp-field">
         <label>Old Password :</label>
         <div>
-          <input type="text" placeholder="Enter Old Password" formControlName="oldPassword">
+          <input type="text" placeholder="Enter Old Password" formControlName="oldPassword" (keyup)="errMsg()">
         </div>
       </div>
       <div class="otp-field" style="margin-top: 20px;">
         <label>New Password :</label>
         <div>
-          <input type="text" placeholder="Enter New Password" formControlName="newPassword">
+          <input type="text" placeholder="Enter New Password" formControlName="newPassword" (keyup)="errMsg()">
         </div>
       </div>
       <div class="otp-field" style="margin-top: 20px;">
         <label>Confirm Password :</label>
         <div>
-          <input type="text" placeholder="Re-enter Password" formControlName="confirmPassword">
+          <input type="text" placeholder="Re-enter Password" formControlName="confirmPassword" (keyup)="errMsg()">
         </div>
       </div>
       <div class="verify-btn">
         <button (click)="onSubmit()">Change Password</button>
       </div>
     </form>
+    <div style="color: red;text-align: right;">
+      <p *ngIf="oldPassword">Old password is Incorrect</p>
+      <p *ngIf="notMatch">Password and Confirm password are not same</p>
+    </div>
   </div>
   <div class="ad">
     <img src="../../assets/images/ad-post.png" width="100%">

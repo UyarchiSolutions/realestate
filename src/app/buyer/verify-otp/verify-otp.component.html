@@ -20,17 +20,20 @@
       <div class="otp-field">
         <label>OTP :</label>
         <div>
-          <input type="text" placeholder="Enter OTP" formControlName="otp">
+          <input type="text" placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
           <div style="display: flex;
           flex-direction: row-reverse;
           cursor: pointer;
           font-size: .9rem">
-            <!-- <p *ngIf="isSubmit&&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p> -->
+            
             <a (click)="resend()" >Resend OTP !</a>
           </div>
         </div>
       </div>
-
+      <div style="color:red;text-align: right;">
+      <p *ngIf=" isSubmit &&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p>
+            <p *ngIf="notfound">Invalid OTP</p>
+      </div>
     </form>
     <div class="verify-btn">
       <button (click)="submitOTP()">Verify</button>

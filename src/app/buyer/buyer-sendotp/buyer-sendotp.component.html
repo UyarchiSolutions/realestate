@@ -27,9 +27,12 @@
       <div class="otp-field">
         <label>OTP :</label>
         <div>
-          <input type="text" placeholder="Enter OTP" formControlName="otp">
-          <p>Resent OTP !</p>
+          <input type="text" placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
+          <p (click)="ResendOtp()">Resent OTP !</p>
         </div>
+      </div>
+      <div style="color: red;text-align: center;" >
+        <p *ngIf="notfound">Invalid OTP</p>
       </div>
       <div class="verify-btn">
         <button (click)="submitOTP()">Verify</button>

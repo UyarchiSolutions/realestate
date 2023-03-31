@@ -13,16 +13,15 @@
         <div class="otp-field">
           <label>Registered Mobile Number :</label>
           <div>
-            <input type="text" placeholder="Enter Mobile" formControlName="number">
+            <input type="text" placeholder="Enter Mobile" formControlName="number" (keyup)="errMsg()">
           </div>
         </div>
-
-        <!-- <div class="error-msg" *ngIf="isDisplay&&ForgotPassword.get('number')?.invalid">
-          <label></label>
-          <div>
-            <span>Hey chii password ah 1st uh potu thola</span>
-          </div>
-        </div> -->
+        <div class="error-msg">
+      
+        
+          <p *ngIf="notfound"> Mobile Number Not Registered!</p>
+         
+        </div>
         <div class="verify-btn">
           <button (click)="submitOTP()">Send OTP</button>
         </div>

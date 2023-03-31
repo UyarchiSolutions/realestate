@@ -14,6 +14,7 @@ export class UpdatepasswordbuyerComponent implements OnInit{
     confirmPassword: new FormControl('',Validators.required),
   })
   isDisplay=false;
+  matchPas=false;
   id:any;
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router,private activate_router:ActivatedRoute) { }
   ngOnInit() {
@@ -22,8 +23,17 @@ export class UpdatepasswordbuyerComponent implements OnInit{
    })
   }
   changePassword() {
+    if( !(this.password.get('confirmPassword')?.value == this.password.get('password')?.value) ){
+      this.matchPas=true;
+    }
+    if( this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
+      this.matchPas=false;
     this.buyerService.changePassword(this.id, this.password.value).subscribe((data: any) => {
      this.route.navigate(['/buyerLogin'])
     })
+  }
+  }
+  errorMsg(){
+    this.matchPas=false;
   }
 }

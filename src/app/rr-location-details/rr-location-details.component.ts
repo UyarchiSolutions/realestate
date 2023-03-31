@@ -24,13 +24,13 @@ export class RrLocationDetailsComponent  implements OnInit{
   submitted:boolean=false;
   rrlocform:any = this.fb.group({
    
-    Landmark: new FormControl (''),
-    Pincode: new FormControl ('',),
-    BuildingName: new FormControl (''),
-    Address: new FormControl (''),
+    Landmark: new FormControl ('',Validators.required),
+    Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/)]),
+    BuildingName: new FormControl ('',Validators.required),
+    Address: new FormControl ('',Validators.required),
     lat:new FormControl (''),
     long:new FormControl (''),
-    addressLoaction: new FormControl(''),
+    addressLoaction: new FormControl('',Validators.required),
     direction:new FormControl ('')
   })
   myAddres: any;
@@ -67,6 +67,7 @@ export class RrLocationDetailsComponent  implements OnInit{
     OnSubmit(){
 
       this.submitted = true;
+      console.log(this.rrlocform.valid ,'is valid')
       if( this.rrlocform.valid ){
       var data={
         area:this.area,

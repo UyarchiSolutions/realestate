@@ -61,7 +61,7 @@
         </div>
         <div class="form-data">
           <label>Mobile Number :</label>
-          <input type="number" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile">
+          <input type="number" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile" (keyup)="errmsg()">
         </div>
         <div class="error-msg" *ngIf="isSubmit&&loginForm.get('mobile')?.invalid">
           <label></label>
@@ -69,12 +69,13 @@
         </div>
         <div class="form-data">
           <label>Email :</label>
-          <input type="email" placeholder="Enter Your Email ID"  formControlName="email">
+          <input type="email" placeholder="Enter Your Email ID"  formControlName="email" (keyup)="errmsg()">
         </div>
         <div class="error-msg" *ngIf="isSubmit&&loginForm.get('email')?.invalid">
           <label></label>
          <p>Email is required!</p>
         </div>
+       
         <div class="buyer-tenant form-data">
           <div>
             <input type="radio" formControlName="ownerType" value="Seller">Seller
@@ -87,9 +88,14 @@
           <label></label>
          <p>Role is require!</p>
         </div>
+        <div style="color:red;text-align: left;">
+          <p *ngIf="mailAlready">Email is Already Registered Please Login</p>
+          <p *ngIf="mobile">Mobile is Already Registered Please Login</p>
+        </div>
         <div class="login-btn">
           <button type="button" (click)="onSubmitted()">Register</button>
         </div>
+       
       </form>
     </div>
   </div>

@@ -192,3 +192,9 @@ header>div>button{
   border-bottom: 0;
   border-left: 0.3em solid transparent;
 }
+.red-bttm{
+  border-bottom: solid red 1px !important;
+}
+.red-bttm::placeholder{
+  color: red!important;
+}

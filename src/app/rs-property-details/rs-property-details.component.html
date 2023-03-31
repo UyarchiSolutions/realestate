@@ -170,7 +170,11 @@
                 </ul>
               </div>
             </div>
+
+            <div class="err-msg" *ngIf=" pv == null && submitted">Select Property Type</div>
+            
             <div>
+            
                 <label>BHK Type :</label>
     
                 <div
@@ -222,6 +226,9 @@
                   </ul>
                 </div>
               </div>
+
+              <div class="err-msg" *ngIf=" bhkv == null && submitted">Select BHK Type</div>
+
   
             <div class="floors">
               <label>Floors :</label>
@@ -270,6 +277,13 @@
                 </div>
               </div>
             </div>
+
+            <div class="err-msg" [ngStyle]="{'display': submitted ? 'block' : 'none'}">
+              <p  *ngIf=" tfv == null && submitted" style ="width: 25%;">Select Total floors</p>
+              <p  *ngIf=" ofv == null && submitted"  style ="width: 21%;" >Select On floor</p>
+  
+            </div>
+
             <div>
                 <label>Owner Ship Type :</label>
     
@@ -302,7 +316,7 @@
                 </div>
               </div>
             
-  
+              <div class="err-msg" *ngIf=" ost == null && submitted">Select Age pf property Type</div>
            
   
             <div>
@@ -328,6 +342,7 @@
                 </p>
               </div>
             </div>
+            <div class="err-msg" *ngIf=" propsform.get('BuildupArea').invalid &&submitted">Build Up Area is Required</div> 
             <div>
               <label>UDS/Land Size:</label>
               <div
@@ -351,6 +366,9 @@
                 </p>
               </div>
             </div>
+
+            <div class="err-msg" *ngIf=" propsform.get('UDSlandsize').invalid &&submitted">Landsize Area is Required</div>
+
             <div>
                 <label>Age of Property :</label>
     
@@ -396,7 +414,8 @@
                   </ul>
                 </div>
               </div>
-  
+              
+              <div class="err-msg" *ngIf=" aop == null && submitted">Select Age of property Type</div>
           
             <div>
               <label>Facing Direction :</label>
@@ -454,7 +473,9 @@
                 </ul>
               </div>
             </div>
-  
+
+            <div class="err-msg" *ngIf=" fdv == null && submitted">Select Facing Direction Type</div>
+            
             <div style="display: flex; align-items: flex-start">
               <label>Description :</label>
               <!-- <input type="text"> -->

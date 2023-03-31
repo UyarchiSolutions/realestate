@@ -36,7 +36,7 @@ export class SellerRegisterComponent {
       this.sellerSerivece.registation(this.loginForm.value).subscribe((res:any) => {
         this.verfiyemail=true;
         this.isSubmit=true;
-
+        this.route.navigate(['/check-mail'])
       },error => {
        if(error.error.message == 'email Already Registered'){
         this.mailAlready=true
@@ -50,7 +50,7 @@ export class SellerRegisterComponent {
 
        }
       })
-      this.route.navigate(['/check-mail'])
+     
     }
 
   }
@@ -59,5 +59,9 @@ export class SellerRegisterComponent {
   }
   routeToLog(){
     this.route.navigateByUrl('/sellerLogin')
+  }
+  errmsg(){
+    this.mobile=false;
+    this.mailAlready=false
   }
 }

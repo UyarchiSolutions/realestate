@@ -62,8 +62,24 @@ export class RrPropertyDetailsComponent implements OnInit {
   }
   routerlink ='residential-rent';
   propsub() {
-   
     
+    this.submitted = true;
+    var Checkdata = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
+      BuildedSize: this.propform.get('BuildupArea')?.value,
+      facingDirection: this.fdv,
+      RentPrefer: this.rpv,
+      routeLink:this.routerlink
+    };
+    
+   if(this.allKeysHaveValue(Checkdata) || this.data.propertType){ 
+   
+    console.log(Checkdata,'uploaded');
+
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -76,8 +92,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       discription: this.propform.get('Description')?.value,
       routeLink:this.routerlink
     };
-    
-    console.log(data);
+
     this.service.formput(this.id, data).subscribe((res: any) => {
       var postdata = {
         id: res._id,
@@ -88,9 +103,25 @@ export class RrPropertyDetailsComponent implements OnInit {
       );
       console.log(res);
     });
-    this.switchbutton();
+    
+  }
   
   }
+
+  allKeysHaveValue(obj: any) {
+    const keys = Object.keys(obj);
+    let allKeysHaveValue = true;
+
+    keys.forEach((key) => {
+    if (!obj.hasOwnProperty(key) || !obj[key]) {
+      console.log(obj.hasOwnProperty(key),obj[key])
+      allKeysHaveValue = false;
+    }
+  });
+  console.log(allKeysHaveValue);
+  return allKeysHaveValue;
+  
+}
 
   updateform() {
     this.service.formget(this.id).subscribe((res: any) => {
@@ -107,9 +138,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       }); console.log(res.facingDirection);
     });
   }
-  switchbutton(){
-    this.isSaved= true;
-  }
+
   routetopreview(){
     var data = {
       propertType: this.pv,
@@ -200,7 +229,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.nave = !this.nave;
   }
 
-  pv:any;
+  pv='';
   propertyv(a: any) {
     this.pv = a;
     console.log(this.pv);

@@ -8,6 +8,10 @@
   margin: 10px;
 
 }
+.error-msg{
+  color: red;
+  text-align: center;
+}
 
 .main {
   width: 70%;

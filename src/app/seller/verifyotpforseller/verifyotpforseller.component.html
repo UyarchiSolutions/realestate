@@ -17,12 +17,16 @@
           flex-direction: row-reverse;
           cursor: pointer;
           font-size: .9rem">
-            <!-- <p *ngIf="isSubmit&&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p> -->
+            
             <a (click)="resend()">Resend OTP !</a>
           </div>
         </div>
       </div>
     </form>
+    <div style="color:red;text-align: right;">
+    <p *ngIf=" isSubmitted &&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p>
+    <p *ngIf="notfound">Invalid OTP</p>
+  </div>
     <div class="verify-btn">
       <button (click)="submitOTP()">Verify</button>
     </div>

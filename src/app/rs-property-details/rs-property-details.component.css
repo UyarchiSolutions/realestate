@@ -143,3 +143,10 @@ label{
 .floors select{
     width: 48% !important;
 }
+.err-msg{
+    display: flex !important;
+    justify-content: end !important;
+    color: red;
+    opacity: 0.8;
+    font-size: 14px;
+}

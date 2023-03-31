@@ -16,6 +16,7 @@ export class ChangeBuyerComponent {
     confirmPassword:new FormControl('',Validators.required)
   });
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
+  notMatch=false;
   ngOnInit() {
 
   }
@@ -30,11 +31,17 @@ export class ChangeBuyerComponent {
   confirm=false;
   onSubmit(){
   this.isSubmit=true;
+  if(!( this.changeFrom.get('newPassword').value == this.changeFrom.get('confirmPassword').value)){
+    this.notMatch=true;
+  }
   console.log(this.changeFrom.get('newPassword').value !="" && this.changeFrom.get('confirmPassword').value !="","not workji")
-  if(this.changeFrom.valid){
+  if(this.changeFrom.valid && this.changeFrom.get('newPassword').value == this.changeFrom.get('confirmPassword').value){
     this.buyerService.changePasswordForbuyer(this.changeFrom.value).subscribe((res:any) => {
       this.changeFrom.reset()
       this.isSubmit=false;
+      this.notMatch=false;
+      console.log('proper login')
+      this.route.navigate(['/buyerLogin'])
     },error => {
       if(error.error.message == "Old PassWord Incorrect Or Invalid User"){
        this.oldPassword=true;
@@ -42,7 +49,10 @@ export class ChangeBuyerComponent {
         this.oldPassword=false;
       }
     })
-    this.route.navigate(['/buyerLogin'])
-  }
+    
+  } }
+  errMsg() {
+    this.notMatch=false;
+    this.oldPassword=false;
   }
 }

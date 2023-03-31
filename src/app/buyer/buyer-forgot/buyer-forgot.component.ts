@@ -20,8 +20,8 @@ export class BuyerForgotComponent {
   })
   isDisplay=false;
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
-
-
+  notfound=false;
+  number:any;
   submitOTP() {
     this.isDisplay=true;
     const a={
@@ -30,13 +30,26 @@ export class BuyerForgotComponent {
     }
     if(this.ForgotPassword.valid){
       this.buyerService.forgot_otp(a).subscribe((res: any) => {
-        this.route.navigate(['/buyer-sendotp'])
+        this.number=this.ForgotPassword.get('number')?.value;
+        var data={
+          number:this.number
+        };
+        const querystring = new URLSearchParams(data).toString();
+      
+        this.route.navigateByUrl('/buyer-sendotp?' + querystring)
        this.isDisplay=true;
-      })
+      },error => {
+        console.log(error);
+        if(error.error.message == "Mobile Number Not Registered"){
+
+          this.notfound=true;
+        }})
     }
 
   }
-
+  errMsg(){
+    this.notfound=false;
+  }
   show = false
   id: any;
   // submitOTP(){

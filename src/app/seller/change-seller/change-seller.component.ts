@@ -34,21 +34,26 @@ export class ChangeSellerComponent {
   }
   oldPassword=false;
   confirm=false;
+  notMatch=false;
   onSubmit(){
   this.isSubmit=true;
-  console.log(this.changeFrom.get('newPassword').value !="" && this.changeFrom.get('confirmPassword').value !="","not workji")
+  
+  if(!( this.changeFrom.get('newPassword').value == this.changeFrom.get('confirmPassword').value)){
+    this.notMatch=true;
+  }
   if(this.changeFrom.valid && this.changeFrom.get('newPassword').value == this.changeFrom.get('confirmPassword').value){
     this.changeFrom.patchValue({
       password:this.changeFrom.get('newPassword')?.value,
     })
     let data={
       oldPassword:this.changeFrom.get('oldPassword')?.value,
-      password:this.changeFrom.get('newPassword')?.value,
+      newPassword:this.changeFrom.get('newPassword')?.value,
     }
-    this.SellerService.changePassword(this.id,data).subscribe((res:any) => {
+    this.SellerService.changePasswordForseller(data).subscribe((res:any) => {
       this.changeFrom.reset()
       this.isSubmit=false;
       this.route.navigate(['/sellerLogin']);
+      console.log(res);
     },error => {
       if(error.error.message == "Old PassWord Incorrect Or Invalid User"){
        this.oldPassword=true;
@@ -57,7 +62,9 @@ export class ChangeSellerComponent {
       }
     
     })
-    
-  }
-  }
+    }}
+    errMsg() {
+      this.notMatch=false;
+      this.oldPassword=false;
+    }
 }
