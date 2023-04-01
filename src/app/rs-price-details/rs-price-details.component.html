@@ -73,7 +73,7 @@
     <div class="expected-rent">
         <label>Expected Price :</label>
    <div >
-    <input type="text" placeholder="Expected Price" formControlName="ExpectedPrice">
+    <input type="number" placeholder="Expected Price" formControlName="ExpectedPrice">
     
    </div>
     </div>
@@ -83,7 +83,7 @@
     
         <input type="checkbox" formControlName="CurrentlyInLoan" [value]="true" ><label>Currently In Loan</label>
     </div>
-
+    <p class="redtext" *ngIf="priceform.get('ExpectedPrice').invalid && submitted">Expected Price is required!</p>
  
   
 

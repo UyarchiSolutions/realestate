@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ng-google-places-autocomplete';
 import { PostPropertyService } from '../services/post-property.service';
 import { AgmMap } from '@agm/core';
+import { Cookie } from 'ng2-cookies';
 
 
 @Component({
@@ -302,7 +303,19 @@ export class RrLocationDetailsComponent  implements OnInit{
   parseFloat(value: any) {
     return parseFloat(value);
   }
-
+  
+routeToProp(){
+  this.router.navigateByUrl('/owner')
+}
+changeps(){
+  this.router.navigateByUrl('/changepassword-seller')
+}
+logOut(){
+  sessionStorage.clear();
+  localStorage.clear();
+  Cookie.delete('tokens');
+  this.router.navigateByUrl('/');
+}
 }
 
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-rr-amenities',
@@ -23,21 +24,11 @@ export class RrAmentitesComponent implements OnInit {
   }
   myform:any = this.fb.group({
 
-    furnishingStatus:new FormControl(),
-    waterSupply:new FormControl(),
-    bathRoomCount:new FormControl(),
-    bathRoomType:new FormControl(),
-    toiletType:new FormControl(),
-    balconyCount:new FormControl(),
-    Non_veg:new FormControl(),
-    gate_Security:new FormControl(),
-    parkingFacilities:new FormControl(),
-    kitchen:new FormControl(),
-    hall_FLoor:new FormControl(),
-    bedRoom:new FormControl(),
-    bathRoom:new FormControl(),
-    balCony:new FormControl(),
-    Amenities :new FormControl()
+    
+    Non_veg:new FormControl('',Validators.required),
+    gate_Security:new FormControl('',Validators.required),
+   
+ 
   })
   
   ngOnInit(): void {
@@ -64,7 +55,20 @@ export class RrAmentitesComponent implements OnInit {
   submit(){
 
     this.submited=true;
+    var Checkdata ={
+      furnishingStatus:this.fsv,
+      waterSupply:this.wsv,
+      bathRoomCount:this.brv,
+      bathRoomType:this.btv,
+      toiletType:this.ttv,
+      balconyCount:this.bv,
+      Non_veg:this.myform.get('Non_veg')?.value,
+      gate_Security: this.myform.get('gate_Security')?.value,
+      parkingFacilities:this.pv,
+ 
 
+    }
+    if( (this.allKeysHaveValue(Checkdata) && this.myform.valid) || this.data.furnishingStatus){ 
     var data ={
       furnishingStatus:this.fsv,
       waterSupply:this.wsv,
@@ -91,12 +95,12 @@ export class RrAmentitesComponent implements OnInit {
         id:res._id
       }
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      // this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
       console.log(res);
      
      })
     
-
+    }
 
   }
   updateform(){
@@ -267,6 +271,9 @@ export class RrAmentitesComponent implements OnInit {
 'Visitor Parking','Shopping center','Sewage Treatment Plant'];
    
   routetopreview(){
+
+    
+
     var data ={
       furnishingStatus:this.fsv,
       waterSupply:this.wsv,
@@ -295,7 +302,7 @@ export class RrAmentitesComponent implements OnInit {
     this.service.formget(this.id).subscribe((res: any) => {
       location.reload();
     });
-    
+  
   }
 
   back(count: any) {
@@ -370,28 +377,32 @@ export class RrAmentitesComponent implements OnInit {
     this.showModal = -1;
     this.amshow=true;
   }
-  // amtie: any = [
-  //   {name:'Club House',issubmit:false},
-  //   {name:'Batmition Cort',issubmit:false},
-  //   {name:'Security', issubmit:false}
-  // ]
-  // amit:any=[];
-  // addamit(e:any,a:any ){
-    
-  //   console.log(a);
-  //   if (a == 'true') {
-  //     var val = e;
-  //     this.amit.push(val);
-  //   } else {
-  //     let index = this.amit.findIndex((res: any) => res == e.name);
-  //     if (index != -1) {
-  //       this.amit.splice(index, 1);
-        
-  //     }
-  //   }
+  routeToProp(){
+    this.router.navigateByUrl('/owner')
+  }
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
+  }
+  allKeysHaveValue(obj: any) {
+    const keys = Object.keys(obj);
+    let allKeysHaveValue = true;
 
-
-  // }
+    keys.forEach((key) => {
+    if (!obj.hasOwnProperty(key) || !obj[key]) {
+      console.log(obj.hasOwnProperty(key),obj[key])
+      allKeysHaveValue = false;
+    }
+  });
+  console.log(allKeysHaveValue);
+  return allKeysHaveValue;
+  
+}
 }
 
 

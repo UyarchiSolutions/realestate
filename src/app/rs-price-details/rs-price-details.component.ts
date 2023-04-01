@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -17,7 +17,7 @@ export class RsPriceDetailsComponent implements OnInit {
     data:any;
   
     priceform:any= this.fb.group({
-      ExpectedPrice: new FormControl(),
+      ExpectedPrice: new FormControl('',Validators.required),
       ExpectedpricetNegotiable:new FormControl(),
       CurrentlyInLoan:new FormControl(),
       ExcludeMaintenance:new FormControl(),
@@ -89,8 +89,11 @@ export class RsPriceDetailsComponent implements OnInit {
       this.Lmainmon=a;
     }
     routerlink='residential-sale-price-details';
+    submitted=false;
     rentsub(){
-  
+      
+      this.submitted=true;
+      if ( this.priceform.valid){
       var data={
 
         expectedPrice:this.priceform.get('ExpectedPrice').value,
@@ -115,7 +118,7 @@ export class RsPriceDetailsComponent implements OnInit {
         console.log(res);
         
       })
-  
+     }
     }
   
   

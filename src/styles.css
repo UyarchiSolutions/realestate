@@ -462,3 +462,8 @@ display:none;
     width: 100%;
     padding: 8px 8px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

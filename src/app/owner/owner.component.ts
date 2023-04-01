@@ -30,12 +30,14 @@ export class OwnerComponent implements OnInit {
    this.GetuserName();
   }
   find=true;
+  checkRangeAndPag:any;
   GetData(){
     this.service.getOwnerData(this.page,this.range,this.find).subscribe((res:any)=>{
 
       console.log(res);
 
       this.data = res.values;
+      this.checkRangeAndPag =res.total;
 
       if(this.page == 0){
 

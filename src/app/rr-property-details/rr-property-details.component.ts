@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-rr-property-details',
@@ -292,5 +293,17 @@ export class RrPropertyDetailsComponent implements OnInit {
   faceDirectv(a: any) {
     this.fdv = a;
     console.log(this.fdv);
+  }
+  routeToProp(){
+    this.router.navigateByUrl('/owner')
+  }
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
   }
 }

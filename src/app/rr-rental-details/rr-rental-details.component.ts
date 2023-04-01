@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl,FormGroup } from '@angular/forms';
+import { FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-rr-rental-details',
@@ -15,9 +16,9 @@ export class RrRentalDetailsComponent implements OnInit{
   data:any;
 
   rentform:any= this.fb.group({
-    ExpectedRent: new FormControl(),
+    ExpectedRent: new FormControl('',Validators.required),
     ExpectedRentNegotiable:new FormControl(),
-    ExpectedDeposit:new FormControl(),
+    ExpectedDeposit:new FormControl('',Validators.required),
     ExpectedDepositNegotiable:new FormControl(),
     ExcludeMaintenance:new FormControl(),
     MrSq: new FormControl()
@@ -25,7 +26,7 @@ export class RrRentalDetailsComponent implements OnInit{
   })
 
   leaseform:any =this.fb.group({
-    LExpectedDeposit:new FormControl(),
+    LExpectedDeposit:new FormControl('',Validators.required),
     LExpectedDepositNegotiable:new FormControl(),
     LExcludeMaintenance:new FormControl(),
     LMrSq: new FormControl()
@@ -36,6 +37,7 @@ export class RrRentalDetailsComponent implements OnInit{
     private router:Router){}
     
     switch='rent';
+    submitted=false;
     routerlink='residentaial-rent-rental-details';
   ngOnInit(): void {
 
@@ -116,6 +118,8 @@ export class RrRentalDetailsComponent implements OnInit{
   }
   rentsub(){
 
+    this.submitted=true;
+    if(this.rentform.valid){
     var data={
       rentDetails:this.switch,
       MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
@@ -126,7 +130,7 @@ export class RrRentalDetailsComponent implements OnInit{
       squareFT:this.mainmon,
       MaintenanceStatus:this.maintanceVal,
     }
-    console.log(data,3453,'rentsub');
+    console.log(data,'rentsub');
     
     this.service.formput(this.id,data).subscribe((res:any)=>{
       console.log(res);
@@ -139,11 +143,13 @@ export class RrRentalDetailsComponent implements OnInit{
       console.log(res);
      
     })
-
   }
-
+  }
+  submittedL=false
   leasesub(){
     
+    this.submittedL=true;
+    if(this.leaseform.valid){
     var data={
 
       rentDetails:this.switch,
@@ -165,7 +171,7 @@ export class RrRentalDetailsComponent implements OnInit{
       this.formSubmitted=true;
     })
 
-
+  }
   }
  
   check:boolean=true;
@@ -284,4 +290,17 @@ export class RrRentalDetailsComponent implements OnInit{
       })
     }
   }
+  routeToProp(){
+    this.router.navigateByUrl('/owner')
+  }
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
+  }
+  
 }

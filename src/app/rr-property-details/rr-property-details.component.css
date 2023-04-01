@@ -154,6 +154,12 @@ label{
     justify-content: end !important;
     color: red;
     opacity: 0.8;
-    font-size: 14px;
+  
+    font-size: 0.8rem;
 }
-
+.redtext{
+    color: red;
+    font-size: 0.8rem;
+    padding: 0;
+    margin-left: 450px;
+}

@@ -45,7 +45,7 @@
         >
       </li>
 
-      <li class="sidebar-content-list">
+      <li class="sidebar-content-list" (click)="routeToProp()">
         <span
           ><svg
             width="17"
@@ -64,7 +64,7 @@
         >
       </li>
 
-      <li class="sidebar-content-list">
+      <li class="sidebar-content-list"  (click)="changeps()" >
         <span
           ><svg
             width="17"
@@ -83,7 +83,7 @@
         >
       </li>
 
-      <li class="sidebar-content-list">
+      <li class="sidebar-content-list"  (click)="logOut()">
         <span
           ><svg
             width="17"
@@ -170,7 +170,7 @@
               </ul>
             </div>
           </div>
-          <div class="err-msg" *ngIf=" pv =='' && submitted">Select Property Type</div>
+          <p class="redtext" *ngIf=" pv =='' && submitted">Select Property Type</p>
 
           <div class="floors">
             <label>Floors :</label>
@@ -270,7 +270,7 @@
               </ul>
             </div>
           </div>
-          <div class="err-msg" *ngIf=" aop == null && submitted">Select Age pf property Type</div>
+          <p class="redtext"  *ngIf=" aop == null && submitted">Select Age pf property Type</p>
           <div>
             <label>BHK Type :</label>
 
@@ -324,7 +324,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf=" bhkv == null && submitted">Select BHK Type</div>
+          <p class="redtext" *ngIf=" bhkv == null && submitted">Select BHK Type</p>
 
           <div>
             <label>Build up Area :</label>
@@ -350,7 +350,7 @@
             </div>
           </div>
           
-          <div class="err-msg" *ngIf=" propform.get('BuildupArea').invalid &&submitted">Build Up Area is Required</div>
+          <p class="redtext" *ngIf=" propform.get('BuildupArea').invalid &&submitted">Build Up Area is Required</p>
 
           <div>
             <label>Rent Preference :</label>
@@ -388,7 +388,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf=" rpv == null && submitted">Select Rent Preference Type</div>
+          <p class="redtext" *ngIf=" rpv == null && submitted">Select Rent Preference Type</p>
 
           <div>
             <label>Facing Direction :</label>
@@ -446,7 +446,7 @@
               </ul>
             </div>
           </div>
-          <div class="err-msg" *ngIf=" fdv == null && submitted">Select Facing Direction</div>
+          <p class="redtext" *ngIf=" fdv == null && submitted">Select Facing Direction</p>
 
           <div style="display: flex; align-items: flex-start">
             <label>Description :</label>

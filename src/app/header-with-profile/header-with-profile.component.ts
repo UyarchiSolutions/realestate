@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller/seller.service';
+import { Cookie } from 'ng2-cookies';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header-with-profile',
@@ -8,7 +10,8 @@ import { SellerService } from '../seller/seller.service';
 })
 export class HeaderWithProfileComponent implements OnInit {
 
- constructor(private service:SellerService){}
+
+ constructor(private service:SellerService,private router:Router){}
 
   data:any;
   ngOnInit(): void {
@@ -22,5 +25,14 @@ export class HeaderWithProfileComponent implements OnInit {
       this.data= res;
     })
   }
-
+  
+  changeps(){
+    this.router.navigateByUrl('/changepassword-seller')
+  }
+  logOut(){
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('tokens');
+    this.router.navigateByUrl('/');
+  }
 }

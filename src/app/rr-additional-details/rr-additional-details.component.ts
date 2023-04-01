@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-rr-additional-details',
@@ -136,6 +137,18 @@ back(count:any){
     this.service.formget(this.id).subscribe((res:any)=>{
     })
   }
+}
+routeToProp(){
+  this.router.navigateByUrl('/owner')
+}
+changeps(){
+  this.router.navigateByUrl('/changepassword-seller')
+}
+logOut(){
+  sessionStorage.clear();
+  localStorage.clear();
+  Cookie.delete('tokens');
+  this.router.navigateByUrl('/');
 }
 
 }
