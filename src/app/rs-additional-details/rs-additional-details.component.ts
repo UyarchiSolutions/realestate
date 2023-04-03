@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -11,14 +11,14 @@ import { PostPropertyService } from '../services/post-property.service';
 export class RsAdditionalDetailsComponent implements OnInit {
   id: any;
 adform:any = this.fb.group({
-  datetostart : new FormControl (),
-  contactname: new FormControl(),
-  cnumber: new FormControl(),
-  c2number: new FormControl(),
-  paidpropety: new FormControl(),
-  Saledeed: new FormControl(),
-  occuCerf:new FormControl(),
-  comCert:new FormControl ()
+  datetostart : new FormControl ('',Validators.required),
+  contactname: new FormControl('',Validators.required),
+  cnumber: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+  c2number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+  paidpropety: new FormControl('',Validators.required),
+  Saledeed: new FormControl('',Validators.required),
+  occuCerf:new FormControl('',Validators.required),
+  
 })
   constructor(
     private fb: FormBuilder,
@@ -49,8 +49,15 @@ adform:any = this.fb.group({
     })
   }
   routerlink='residential-sale-add-details';
+  submited=false;
+  sameNum=false;
     Onsubmit(){
-
+      this.submited=true;
+      if(this.adform.get('cnumber')?.value == this.adform.get('c2number')?.value ){
+        this.sameNum=true;
+      }
+      console.log(this.adform.value);
+      if(this.adform.valid && !this.sameNum){
       let data ={
         availabilityDate:this.adform.get('datetostart')?.value,
         contactName:this.adform.get('contactname')?.value,
@@ -62,6 +69,7 @@ adform:any = this.fb.group({
         Completion_certificate:this.adform.get('comCert')?.value,
         routeLink:this.routerlink
       }
+      console.log('update')
       this.service.formput(this.id,data).subscribe((res:any)=>{
         var postdata ={
           id:res._id
@@ -71,8 +79,24 @@ adform:any = this.fb.group({
         console.log(res);
         console.log(res,'saved')
        })
-         
+      }  
     }
+
+    occupancyF(){
+      if(this.adform.get('occuCerf')?.value == 'No' || this.adform.get('occuCerf')?.value == 'Dont Know'){
+        this.adform.addControl('comCert', new FormControl('', [Validators.required,]));
+        console.log('form control added');
+      }
+      else{
+        this.adform.removeControl('comCert');
+        console.log('form control delete');
+      } 
+    }
+    default(){
+      
+      this.sameNum=false;
+    }
+
     back(count:any){
       if(count == 0){
         var data ={

@@ -90,6 +90,7 @@
 
 
 </div>
+<p class="redtext" *ngIf="imagePreview.length == 0 && submited" >Mininum 1 photo required!</p>
 <p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
 
 <div class="image-gallery">
@@ -109,9 +110,9 @@
 <div class="upload-video">
     <label>Video :</label>
     <input type="file" (change)="onvidselect($event)" id="videoinput">
-    <p *ngIf="errmsg" style="color:red">{{viderrmsg}}</p>
+    
 </div>
-
+<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</p>
 
 <div class="image-gallery"  *ngIf="videoSrc">
     
@@ -123,7 +124,7 @@
 </div>
 </div>
 
-
+<p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
 </div>
 
 <div class="save-continue">

@@ -91,6 +91,7 @@
 
 </div>
 <p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
+<p class="redtext" *ngIf="imagePreview.length == 0 && submited" >Mininum 1 photo required!</p>
 
 <div class="image-gallery">
  
@@ -137,7 +138,7 @@
 
 
 </div>
-
+<p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
 
 </div>
 
@@ -154,24 +155,6 @@
     
 
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="ad"></div>
     
     

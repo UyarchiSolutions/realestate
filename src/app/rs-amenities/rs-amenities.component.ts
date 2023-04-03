@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -25,22 +25,9 @@ none: any;
     }
     myform:any = this.fb.group({
   
-      furnishingStatus:new FormControl(),
-      waterSupply:new FormControl(),
-      bathRoomCount:new FormControl(),
-      bathRoomType:new FormControl(),
-      toiletType:new FormControl(),
-      balconyCount:new FormControl(),
-      Non_veg:new FormControl(),
-      gate_Security:new FormControl(),
-      parkingFacilities:new FormControl(),
-      kitchen:new FormControl(),
-      hall_FLoor:new FormControl(),
-      bedRoom:new FormControl(),
-      bathRoom:new FormControl(),
-      balCony:new FormControl(),
-      Amenities :new FormControl(),
-      powerBackup :new FormControl()
+     
+      gate_Security:new FormControl('',Validators.required),
+     
     })
     routerlink='residential-sale-amentites';
     ngOnInit(): void {
@@ -58,8 +45,24 @@ none: any;
     }
     submited=false;
     submit(){
-      console.log(this.pv);
+      this.submited=true;
+
+      var checkdata ={
+        furnishingStatus:this.fsv,
+        waterSupply:this.wsv,
+        bathRoomCount:this.brv,
+        bathRoomType:this.btv,
+        toiletType:this.ttv,
+        balconyCount:this.bv,
+        powerBackup:this.pb,
+        gate_Security: this.myform.get('gate_Security')?.value,
+        parkingFacilities:this.pv,
+        kitchenType:this.kitty,
+     
   
+      }
+      if( (this.allKeysHaveValue(checkdata) && this.myform.valid) || this.data.furnishingStatus){ 
+        
       var data ={
         furnishingStatus:this.fsv,
         waterSupply:this.wsv,
@@ -81,6 +84,8 @@ none: any;
         routeLink:this.routerlink
   
       }
+      console.log(data,'updated');
+      
       this.service.formput(this.id,data).subscribe((res:any)=>{
   
         console.log(res);
@@ -93,7 +98,7 @@ none: any;
        
        })
       
-  
+      }
   
     }
     updateform(){
@@ -123,39 +128,39 @@ none: any;
     furstav(a: any) {
       this.fsv = a;
       console.log(this.fsv);
-      this.myform.get('furnishingStatus').setValue(a);
+      // this.myform.get('furnishingStatus').setValue(a);
     }
     wsv: any;
   
     wassupv(a: any) {
       this.wsv = a;
       console.log(this.wsv);
-      this.myform.get('waterSupply').setValue(a);
+      // this.myform.get('waterSupply').setValue(a);
     }
     brv: any;
   
     bathrv(a: any) {
       this.brv = a;
       console.log(this.brv);
-      this.myform.get('bathRoomCount').setValue(a);
+      // this.myform.get('bathRoomCount').setValue(a);
     }
     btv: any;
     bathTv(a: any) {
       this.btv = a;
       console.log(this.btv);
-      this.myform.get('bathRoomType').setValue(a);
+      // this.myform.get('bathRoomType').setValue(a);
     }
     ttv: any;
     toilTv(a: any) {
       this.ttv = a;
       console.log(this.ttv);
-      this.myform.get('toiletType').setValue(a);
+      // this.myform.get('toiletType').setValue(a);
     }
     bv: any;
     balTv(a: any) {
       this.bv = a;
       console.log(this.bv);
-      this.myform.get('balconyCount').setValue(a);
+      // this.myform.get('balconyCount').setValue(a);
     }
     pv: any;
     parkTv(a: any) {
@@ -174,31 +179,26 @@ none: any;
     floor1(a: any) {
       this.hfv = a;
       console.log(this.hfv);
-      this.myform.get('hall_FLoor').setValue(a);
+      // this.myform.get('hall_FLoor').setValue(a);
     }
     floor2(a: any) {
       this.bev = a;
     
       console.log(this.bev);
-      this.myform.get('bedRoom').setValue(a);
+      // this.myform.get('bedRoom').setValue(a);
     }
     floor3(a: any) {
       this.barv = a;
       console.log(this.barv);
-      this.myform.get('bathRoom').setValue(a);
+      // this.myform.get('bathRoom').setValue(a);
     }
     floor4(a: any) {
       this.balv = a;
       console.log(this.balv);
-      this.myform.get('balCony').setValue(a);
+      // this.myform.get('balCony').setValue(a);
     }
     nv:any;
-    nvallowed(a:any){
-  
-      this.nv=a;
-      this.myform.get('Non_veg').setValue(a);
-  
-    }
+   
     gs:any;
     gsallowed(a:any){
   
@@ -210,21 +210,16 @@ none: any;
     powerbv(a:any){
   
       this.pb=a;
-      this.myform.get('powerBackup').setValue(a);
-  
+    
     }
     kitty:any;
     kitchenType(a:any){
   
-      this.kitty=a;
-     
-  
+      this.kitty=a; 
     }
     amenities: any = [];
   
-    amtsub(){
-      this.myform.get('Amenities').setValue(this.amenities);
-    }
+
     updateAmit(v: any) {
       
       
@@ -383,6 +378,21 @@ none: any;
       this.showModal = -1;
       this.amshow=true;
     }
+
+      allKeysHaveValue(obj: any) {
+    const keys = Object.keys(obj);
+    let allKeysHaveValue = true;
+
+    keys.forEach((key) => {
+    if (!obj.hasOwnProperty(key) || !obj[key]) {
+      console.log(obj.hasOwnProperty(key),obj)
+      allKeysHaveValue = false;
+    }
+  });
+  console.log(allKeysHaveValue);
+  return allKeysHaveValue;
+  
+}
 
   }
   

@@ -16,7 +16,7 @@ export class CsPropertyDetailsComponent {
     toggleState = false;
     myarray: any = [];
     data:any;
-    submitted= false;
+   
     isSaved=false;
   
     propform: any = this.fb.group({
@@ -64,9 +64,28 @@ export class CsPropertyDetailsComponent {
       this.propform.get('propertytype').setValue(e);
     }
     routerlink='commercial-sale-property';
+    submitted=false;
     propsub() {
      
-      
+      this.submitted=true
+      var Checkdata = {
+        propertType: this.pv,
+        noOfFloor: this.tfv,
+        floorNo: this.ofv,
+        ageOfBuilding: this.aop,
+        otherFeature:this.propform.get('otfea')?.value,
+        BuildedSize: this.propform.get('BuildupArea')?.value,
+        facingDirection: this.fdv,
+        ideaFor:this.rpv,
+        ownerType:this.ost,
+        
+        buildingType:this.bt,
+        landSize:this.propform.get('UDSlandsize')?.value,
+        routeLink:this.routerlink
+      };
+
+      if(this.allKeysHaveValue(Checkdata) ){ 
+
       var data = {
         propertType: this.pv,
         noOfFloor: this.tfv,
@@ -84,6 +103,7 @@ export class CsPropertyDetailsComponent {
       };
       
       console.log(data);
+      console.log('updated')
       this.service.formput(this.id, data).subscribe((res: any) => {
         var postdata = {
           id: res._id,
@@ -94,7 +114,7 @@ export class CsPropertyDetailsComponent {
         );
         console.log(res);
       });
-      
+    } 
     
     }
   
@@ -115,10 +135,11 @@ export class CsPropertyDetailsComponent {
         }); console.log(res.facingDirection);
       });
     }
-    
+    otherFeature:any;
     check(a:any){
       console.log(a.target.value);
       let b =a.target.value;
+      this.otherFeature=b;
       this.propform.get('otfea').setValue(b);
     }
     routetopreview(){
@@ -349,6 +370,20 @@ export class CsPropertyDetailsComponent {
         this.service.formget(this.id).subscribe((res: any) => {});
       }
     }
+    allKeysHaveValue(obj: any) {
+      const keys = Object.keys(obj);
+      let allKeysHaveValue = true;
+  
+      keys.forEach((key) => {
+      if (!obj.hasOwnProperty(key) || !obj[key]) {
+        console.log(obj.hasOwnProperty(key),obj[key])
+        allKeysHaveValue = false;
+      }
+    });
+    console.log(allKeysHaveValue);
+    return allKeysHaveValue;
+    
+  }
   }
   
   

@@ -157,6 +157,8 @@
                 </ul>
               </div>
             </div>
+            <p class="redtext" *ngIf=" pv == null && submitted">Select Property Type</p>
+            
             <div>
               <label>Building Type :</label>
   
@@ -177,7 +179,7 @@
                 </ul>
               </div>
             </div>
-  
+            <p class="redtext" *ngIf=" bt == null && submitted">Select Building Type</p>
             <div class="floors">
               <label>Floors :</label>
               <div style="position: static !important">
@@ -251,6 +253,11 @@
                 </div>
               </div>
             </div>
+            <div class="err-msg" >
+              <p  *ngIf=" tfv == null && submitted" style ="width: 25%;">Select Total floors</p>
+              <p  *ngIf=" ofv == null && submitted"  style ="width: 21%;" >Select On floor</p>
+  
+            </div>
             <div>
                 <label>Owner Ship Type :</label>
     
@@ -282,6 +289,7 @@
                   </ul>
                 </div>
               </div>
+              <p class="redtext" *ngIf=" ost == null && submitted">Select Owner Ship Type</p>
               <div>
                 <label>UDS/Land Size:</label>
                 <div
@@ -305,6 +313,7 @@
                   </p>
                 </div>
               </div>
+              <p class="redtext" *ngIf=" propform.get('UDSlandsize').invalid && submitted">Land Size is Required!</p>
             <div>
                 <label>Build up Area :</label>
                 <div
@@ -328,7 +337,7 @@
                   </p>
                 </div>
               </div>
-              
+              <p class="redtext" *ngIf=" propform.get('BuildupArea').invalid && submitted">Build up Area is Required!</p>
             <div>
               <label>Age of Property :</label>
   
@@ -374,6 +383,7 @@
                 </ul>
               </div>
             </div>
+            <p class="redtext" *ngIf=" aop == null && submitted">Select Age of Property Type</p>
             <div>
                 <label>Facing Direction :</label>
                 <div
@@ -430,7 +440,7 @@
                   </ul>
                 </div>
               </div>
-
+              <p class="redtext" *ngIf=" fdv == null && submitted">Select Facing Direction Type</p>
               <div>
                 <label >Other Feature:</label>
                     <div class="other-features select-field">
@@ -442,7 +452,7 @@
                       </span>
                       </div>
               </div>
-
+              <p class="redtext" *ngIf=" otherFeature == null && submitted">Select Facing Direction Type</p>
             <div>
               <label>Ideal for :</label>
   
@@ -477,7 +487,7 @@
                 </ul>
               </div>
             </div>
-  
+            <p class="redtext" *ngIf=" rpv == null && submitted">Select Ideal for Type</p>
            
   
             <div style="display: flex; align-items: flex-start">

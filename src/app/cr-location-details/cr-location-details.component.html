@@ -62,7 +62,7 @@
 
 
 
-<div class="Location-details" [formGroup]="rrlocform" (ngSubmit)="OnSubmit()">
+<div class="Location-details" [formGroup]="rrlocform" >
     <h2>Location Details</h2>
     <div class="form">
   
@@ -70,27 +70,27 @@
             <label>Building Name :</label>
          <input type="text" placeholder="Enter Building Name" formControlName="BuildingName">
     </div>
-        <!-- <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p> -->
+        <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p>
     
         <div>
             <label>Address:</label>
          <input type="text" placeholder="Enter Address " formControlName="Address">
     </div>
-    <!-- <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p> -->
+    <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p>
    
     <div>
         <label>Pincode :</label>
-  <input type="text" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
+  <input type="number" placeholder="Enter Pincode" formControlName="Pincode"  pattern="\d*" maxlength="6">
     </div>
-    <!-- <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
-    <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p> -->
+     <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+    <p *ngIf="rrlocform.get('Pincode').errors?.pattern && submitted" class="redtext">Invalid Pincode!</p> 
 
    
     <div>
         <label>Landmark :</label>
   <input type="text" placeholder="Enter landmark" formControlName="Landmark">
     </div>
-    <!-- <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Pincode </p> -->
+    <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Landmark! </p>
 
     <div class="address">
         <label>Select location Via Map :</label>
@@ -111,7 +111,7 @@
     </div>
     </div>
 
-
+    <p *ngIf="rrlocform.get('addressLoaction')?.invalid && submitted" class="redtext">Please Pick the location </p> 
 
     <div>
         <label> Direction :</label>

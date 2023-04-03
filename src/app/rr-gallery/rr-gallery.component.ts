@@ -130,8 +130,12 @@ export class RrGalleryComponent implements OnInit {
     input.value = '';
   }
   routerlink='residentaial-rent-gallery';
+  submited=false;
+
   async submit() {
    
+    this.submited=true;
+    if( this.videoSrc && this.imagePreview.length > 0){
     await this.uploadimg();
     let data={
       routeLink:this.routerlink,
@@ -139,6 +143,8 @@ export class RrGalleryComponent implements OnInit {
     this.service.formput(this.id,data);
     const formdata = new FormData();
     formdata.append('video', this.selectedfile);
+
+    console.log('uploaded');
     this.service.uploadvid(this.id, formdata).subscribe((res: any) => {
      
       var postdata = {
@@ -148,7 +154,7 @@ export class RrGalleryComponent implements OnInit {
       this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
     });
 
-   
+  }
   }
   async uploadvid() {
     const formdata = new FormData();

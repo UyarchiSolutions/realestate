@@ -87,6 +87,8 @@
             </ul>
           </div>
         </div>
+
+        <p class="redtext"  *ngIf=" pb == null && submited">Select Power Backup Type</p>
         <div>
             <label>Furnishing Status :</label>
        
@@ -105,7 +107,7 @@
           </div>
         </div>
 
-       
+        <p class="redtext"  *ngIf=" fsv == null && submited">Select Furnishing Status Type</p>
         <div>
             <label>Water Supply :</label>
        
@@ -123,6 +125,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext"  *ngIf=" wsv == null && submited">Select Water Supply Type</p>
         
         <div>
             <label>Bathroom :</label>
@@ -145,7 +148,7 @@
           </div>
         </div>
 
-        
+        <p class="redtext"  *ngIf=" brv == null && submited">Select Bathroom Count</p> 
         <div>
             <label>Bathroom Type :</label>
        
@@ -164,7 +167,7 @@
           </div>
         </div>
 
-
+        <p class="redtext"  *ngIf=" btv == null && submited">Select Bathroom Type</p> 
         <div>
             <label>Toilet Type :</label>
        
@@ -183,7 +186,7 @@
           </div>
         </div>
 
-        
+        <p class="redtext"  *ngIf=" ttv == null && submited">Select Toilet Type</p> 
         <div>
             <label>Balconies :</label>
        
@@ -205,7 +208,7 @@
           </div>
         </div>
 
-        
+        <p class="redtext"  *ngIf=" bv == null && submited">Select Balcony Count</p> 
        
         <div class="non-veg-allowed gated-security">
             <label>Gated Security</label>
@@ -218,7 +221,7 @@
                 </div>
             </div>
         </div>
-
+        <p class="redtext"  *ngIf=" gs == null && submited">Select Allowed or Not</p> 
        
         <div>
             <label>Kitchen Type :</label>
@@ -239,6 +242,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext"  *ngIf=" kitty == null && submited">Select Kitchen Type</p> 
         <div>
             <label>Parking :</label>
        
@@ -258,7 +262,7 @@
             </ul>
           </div>
         </div>
-  
+        <p class="redtext"  *ngIf=" pv == null && submited">Select Parking Type</p> 
 
   <div class="flooring-type-section">
     <label>

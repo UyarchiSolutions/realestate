@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 import { Cookie } from 'ng2-cookies';
@@ -11,11 +11,11 @@ import { Cookie } from 'ng2-cookies';
 })
 export class RrAdditionalDetailsComponent implements OnInit {
 id: any;
-adform:any = this.fb.group({
-  datetostart : new FormControl (),
-  contactname: new FormControl(),
-  cnumber: new FormControl(),
-  c2number: new FormControl()
+adform:any = new FormGroup({
+  datetostart : new FormControl ('',Validators.required),
+  contactname: new FormControl('',Validators.required),
+  cnumber: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+  c2number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')])
 })
 
 
@@ -48,8 +48,18 @@ ngOnInit(): void {
 
 data:any;
 routerlink='residentaial-rent-details';
+submited=false;
+sameNum=false;
 Onsubmit(){
 
+
+  this.submited=true;
+  if(this.adform.get('cnumber')?.value == this.adform.get('c2number')?.value ){
+    this.sameNum=true;
+  }
+  if(this.adform.valid && !this.sameNum){
+
+  
   let data ={
     availabilityDate:this.adform.get('datetostart')?.value,
     contactName:this.adform.get('contactname')?.value,
@@ -58,10 +68,8 @@ Onsubmit(){
     routeLink:this.routerlink
 
   }
+  console.log('updated');
   this.service.formput(this.id,data).subscribe((res:any)=>{
-
-
-    
 
     var postdata ={
       id:res._id
@@ -70,7 +78,11 @@ Onsubmit(){
     this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
     console.log(res);
    })
+  }
      
+}
+default(){
+  this.sameNum=false;
 }
 routetopreview(){
 

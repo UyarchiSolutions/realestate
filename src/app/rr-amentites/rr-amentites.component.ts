@@ -89,13 +89,13 @@ export class RrAmentitesComponent implements OnInit {
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
-
+      this.submited=false;
       console.log(res);
       var postdata ={
         id:res._id
       }
       var queryString = new URLSearchParams(postdata).toString();
-      // this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
       console.log(res);
      
      })
@@ -133,51 +133,51 @@ export class RrAmentitesComponent implements OnInit {
   furstav(a: any) {
     this.fsv = a;
     console.log(this.fsv);
-    this.myform.get('furnishingStatus').setValue(a);
+    // this.myform.get('furnishingStatus').setValue(a);
   }
   wsv: any;
 
   wassupv(a: any) {
     this.wsv = a;
     console.log(this.wsv);
-    this.myform.get('waterSupply').setValue(a);
+    // this.myform.get('waterSupply').setValue(a);
   }
   brv: any;
 
   bathrv(a: any) {
     this.brv = a;
     console.log(this.brv);
-    this.myform.get('bathRoomCount').setValue(a);
+    // this.myform.get('bathRoomCount').setValue(a);
   }
   btv: any;
   bathTv(a: any) {
     this.btv = a;
     console.log(this.btv);
-    this.myform.get('bathRoomType').setValue(a);
+    // this.myform.get('bathRoomType').setValue(a);
   }
   ttv: any;
   toilTv(a: any) {
     this.ttv = a;
     console.log(this.ttv);
-    this.myform.get('toiletType').setValue(a);
+    // this.myform.get('toiletType').setValue(a);
   }
   bv: any;
   balTv(a: any) {
     this.bv = a;
     console.log(this.bv);
-    this.myform.get('balconyCount').setValue(a);
+    // this.myform.get('balconyCount').setValue(a);
   }
   pv: any;
   parkTv(a: any) {
     this.pv = a;
     console.log(this.pv);
-    this.myform.get('parkingFacilities').setValue(a);
+    // this.myform.get('parkingFacilities').setValue(a);
   }
   kv: any;
   floor(a: any) {
     this.kv = a;
     console.log(this.kv);
-    this.myform.get('kitchen').setValue(a);
+    // this.myform.get('kitchen').setValue(a);
   }
   hfv: any;
   bev: any;
@@ -186,29 +186,29 @@ export class RrAmentitesComponent implements OnInit {
   floor1(a: any) {
     this.hfv = a;
     console.log(this.hfv);
-    this.myform.get('hall_FLoor').setValue(a);
+    // this.myform.get('hall_FLoor').setValue(a);
   }
   floor2(a: any) {
     this.bev = a;
   
     console.log(this.bev);
-    this.myform.get('bedRoom').setValue(a);
+    // this.myform.get('bedRoom').setValue(a);
   }
   floor3(a: any) {
     this.barv = a;
     console.log(this.barv);
-    this.myform.get('bathRoom').setValue(a);
+    // this.myform.get('bathRoom').setValue(a);
   }
   floor4(a: any) {
     this.balv = a;
     console.log(this.balv);
-    this.myform.get('balCony').setValue(a);
+    // this.myform.get('balCony').setValue(a);
   }
   nv:any;
   nvallowed(a:any){
 
     this.nv=a;
-    this.myform.get('Non_veg').setValue(a);
+     this.myform.get('Non_veg').setValue(a);
 
   }
   gs:any;
@@ -389,13 +389,14 @@ export class RrAmentitesComponent implements OnInit {
     Cookie.delete('tokens');
     this.router.navigateByUrl('/');
   }
+
   allKeysHaveValue(obj: any) {
     const keys = Object.keys(obj);
     let allKeysHaveValue = true;
 
     keys.forEach((key) => {
     if (!obj.hasOwnProperty(key) || !obj[key]) {
-      console.log(obj.hasOwnProperty(key),obj[key])
+      console.log(obj.hasOwnProperty(key),obj)
       allKeysHaveValue = false;
     }
   });
@@ -403,6 +404,7 @@ export class RrAmentitesComponent implements OnInit {
   return allKeysHaveValue;
   
 }
+
 }
 
 

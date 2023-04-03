@@ -65,7 +65,22 @@ export class CrPropertyDetailsComponent {
   routerlink='commercial-rent-property';
   propsub() {
    
-    
+    this.submitted=true;    
+    var Checkdata = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      otherFeature:this.propform.get('otfea')?.value,
+      BuildedSize: this.propform.get('BuildupArea')?.value,
+      facingDirection: this.fdv,
+      ideaFor:this.rpv,
+     
+      buildingType:this.bt,
+      routeLink:this.routerlink
+    };
+
+    if(this.allKeysHaveValue(Checkdata) ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -91,7 +106,7 @@ export class CrPropertyDetailsComponent {
       );
       console.log(res);
     });
-    
+  }
   
   }
 
@@ -111,10 +126,25 @@ export class CrPropertyDetailsComponent {
       }); console.log(res.facingDirection);
     });
   }
+  allKeysHaveValue(obj: any) {
+    const keys = Object.keys(obj);
+    let allKeysHaveValue = true;
+
+    keys.forEach((key) => {
+    if (!obj.hasOwnProperty(key) || !obj[key]) {
+      console.log(obj.hasOwnProperty(key),obj[key])
+      allKeysHaveValue = false;
+    }
+  });
+  console.log(allKeysHaveValue);
+  return allKeysHaveValue;
   
+}
+  otherFeature:any;
   check(a:any){
     console.log(a.target.value);
     let b =a.target.value;
+    this.otherFeature=b;
     this.propform.get('otfea').setValue(b);
   }
   routetopreview(){

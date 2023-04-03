@@ -77,7 +77,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       routeLink:this.routerlink
     };
     
-   if(this.allKeysHaveValue(Checkdata) || this.data.propertType){ 
+   if(this.allKeysHaveValue(Checkdata) ){ 
    
     console.log(Checkdata,'uploaded');
 

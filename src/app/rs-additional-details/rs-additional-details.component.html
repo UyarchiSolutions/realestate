@@ -74,25 +74,34 @@
        <input type="Date" formControlName="datetostart">
         </div>
 
+        <p *ngIf="adform.get('datetostart').invalid && submited" class="redtext">Date is Required!</p>
+
         <div>
             <label>Contact Name :</label>
     <input type="text" placeholder="Contact Name" formControlName="contactname">
         </div>
 
+        <p *ngIf="adform.get('contactname').invalid && submited" class="redtext">Contact Name Required!</p>
+
         <div>
             <label>Contact Number 1 :</label>
-    <input type="text" placeholder="Contact Number" formControlName="cnumber">
+    <input type="number" placeholder="Contact Number" formControlName="cnumber" (keyup)="default()">
         </div>
 
+        <p *ngIf="adform.get('cnumber').errors?.required && submited" class="redtext">Contact Number 1 Required!</p>
+        <p *ngIf="adform.get('cnumber').errors?.pattern && submited" class="redtext">Enter a valid Number!</p>
         <div>
             <label>Contact Number 2 :</label>
-    <input type="text" placeholder="Contact Number 2" formControlName="c2number">
+    <input type="number" placeholder="Contact Number 2" formControlName="c2number" (keyup)="default()">
         </div>
 
+        <p *ngIf="adform.get('c2number').errors?.required && submited" class="redtext">Contact Number 2 Required!</p>
+        <p *ngIf="adform.get('c2number').errors?.pattern && submited" class="redtext">Enter a valid Number!</p>
+        <p *ngIf="sameNum && submited" class="redtext">Number 1 and Number 2 should not be same</p>
 
        <div class="questions">
     <div>
-        <label>Have  you paid Property tax?</label>
+        <label>Have  You Paid Property Tax?</label>
         <div class="answer-select">
 <div class="yes" >
     <input type="radio"  name="paidpropety"  formControlName="paidpropety" value="Yes">Yes
@@ -106,12 +115,12 @@
 
         </div>
     </div>
-
+ <p *ngIf="adform.get('paidpropety').invalid && submited" class="redtext">Paid Property Tax Required!</p>
 
 
 
     <div>
-        <label>Do You have Sale deed Certificate?</label>
+        <label>Do You have Sale Deed Certificate?</label>
         <div class="answer-select">
 <div class="yes">
     <input type="radio"  name="Saledeed"  formControlName="Saledeed" value="Yes">Yes
@@ -125,22 +134,25 @@
 
         </div>
     </div>
+    <p *ngIf="adform.get('Saledeed').invalid && submited" class="redtext"> Sale deed Certificate Required!</p>
 
     <div>
         <label>Do you have Occupancy certificate?</label>
         <div class="answer-select">
 <div class="yes">
-    <input type="radio"  name="occuCerf"  formControlName="occuCerf" value="Yes">Yes
+    <input type="radio"  name="occuCerf"  formControlName="occuCerf" value="Yes" (change)="occupancyF()">Yes
 </div>
 <div class="no">
-    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="No">No
+    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="No" (change)="occupancyF()">No
 </div>
 <div class="dont-know">
-    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="Dont Know">Dont Know
+    <input type="radio" name="occuCerf"  formControlName="occuCerf" value="Dont Know" (change)="occupancyF()">Dont Know
 </div>
 
         </div>
     </div>
+    <p *ngIf="adform.get('occuCerf').invalid && submited" class="redtext"> Occupancy certificate Required!</p>
+
     <div *ngIf=" this.adform.get('occuCerf')?.value == 'No' || this.adform.get('occuCerf')?.value == 'Dont Know' ">
         <label>Do you have Completion certificate?</label>
         <div class="answer-select">
@@ -156,6 +168,7 @@
 
         </div>
     </div>
+  
 
 
 

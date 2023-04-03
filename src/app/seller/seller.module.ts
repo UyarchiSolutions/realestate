@@ -47,31 +47,29 @@ import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
 
-
-
 @NgModule({
-    declarations: [
-        SellerLoginComponent,
-        SellerRegisterComponent,
-        VerifyotpforsellerComponent,
-        CreatepasswordsellerComponent,
-        SellerformobileComponent,
-        SellerforotpComponent,
-        UpdatepasswordsellerComponent,
-        ChangeSellerComponent,
-        HeaderEmptyComponent,
-        HeaderWithProfileComponent,
-         OwnerComponent,
-         PropertyPostComponent,
-         StartPostingComponent,
+  declarations: [
+    SellerLoginComponent,
+    SellerRegisterComponent,
+    VerifyotpforsellerComponent,
+    CreatepasswordsellerComponent,
+    SellerformobileComponent,
+    SellerforotpComponent,
+    UpdatepasswordsellerComponent,
+    ChangeSellerComponent,
+    HeaderEmptyComponent,
+    HeaderWithProfileComponent,
+    OwnerComponent,
+    PropertyPostComponent,
+    StartPostingComponent,
 
-      RrPropertyDetailsComponent,
-      RrLocationDetailsComponent,
-      RrRentalDetailsComponent,
-      RrAmentitesComponent,
-      RrGalleryComponent,
-     RrAdditionalDetailsComponent,
-    
+    RrPropertyDetailsComponent,
+    RrLocationDetailsComponent,
+    RrRentalDetailsComponent,
+    RrAmentitesComponent,
+    RrGalleryComponent,
+    RrAdditionalDetailsComponent,
+
     ResidentialRentComponent,
     RsPropertyDetailsComponent,
     RsLocationDetailsComponent,
@@ -97,22 +95,18 @@ import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
     CsAmenitiesComponent,
     CsAdditionalDetailsComponent,
     //pipes
-    IndianCurrencyPipeS
-
-
-    ],
-    imports: [
-        CommonModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        CommonModule,
-        GooglePlaceModule,
-    
-        AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
-        }),
-        
-    ]
+    IndianCurrencyPipeS,
+  ],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    GooglePlaceModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
+    }),
+  ],
 })
-export class SellerModule { }
+export class SellerModule {}

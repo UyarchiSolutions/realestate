@@ -25,13 +25,13 @@ export class CsLocationDetailsComponent {
         rrlocform:any = this.fb.group({
          
           Landmark: new FormControl ('',Validators.required),
-          Pincode: new FormControl ('',[Validators.required]),
+          Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/)]),
           BuildingName: new FormControl ('',Validators.required),
           Address: new FormControl ('',Validators.required),
-          lat:new FormControl ('',Validators.required),
-          long:new FormControl ('',Validators.required),
+          lat:new FormControl (''),
+          long:new FormControl (''),
           addressLoaction: new FormControl('',[Validators.required]),
-          direction:new FormControl ('',Validators.required)
+          direction:new FormControl ('')
         })
         myAddres: any;
         
@@ -88,6 +88,7 @@ export class CsLocationDetailsComponent {
               formatedAddress:this.rrlocform.get('addressLoaction')?.value,
               routeLink:this.routerlink
             }
+            console.log('updated')
               this.service.formput(this.id,data).subscribe((res:any)=>{
       
                 console.log(res);

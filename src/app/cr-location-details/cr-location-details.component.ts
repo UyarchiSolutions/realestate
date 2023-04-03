@@ -23,13 +23,13 @@ export class CrLocationDetailsComponent {
       submitted:boolean=false;
       rrlocform:any = this.fb.group({
        
-        Landmark: new FormControl (''),
-        Pincode: new FormControl (''),
-        BuildingName: new FormControl (''),
-        Address: new FormControl (''),
+        Landmark: new FormControl ('',Validators.required),
+        Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/)]),
+        BuildingName: new FormControl ('',Validators.required),
+        Address: new FormControl ('',Validators.required),
         lat:new FormControl (''),
         long:new FormControl (''),
-        addressLoaction: new FormControl(''),
+        addressLoaction: new FormControl('',Validators.required),
         direction:new FormControl ('')
       })
       myAddres: any;
@@ -71,7 +71,9 @@ export class CrLocationDetailsComponent {
         routerlink='commercial-rent-location-details';
         OnSubmit(){
     
-          this.submitted = true;
+          this.submitted = true;    
+          console.log(this.rrlocform.valid);
+          console.log(this.rrlocform.valid ,'is valid');
           if( this.rrlocform.valid ){
           var data={
             area:this.area,
@@ -86,6 +88,7 @@ export class CrLocationDetailsComponent {
             formatedAddress:this.rrlocform.get('addressLoaction')?.value,
             routeLink:this.routerlink,
           }
+          console.log('updated')
             this.service.formput(this.id,data).subscribe((res:any)=>{
     
               console.log(res);
@@ -97,8 +100,9 @@ export class CrLocationDetailsComponent {
               console.log(res);
              
              })
-            }
+            
         }
+      }
         updateform(){
           this.service.formget(this.id).subscribe((res:any)=>{
     
