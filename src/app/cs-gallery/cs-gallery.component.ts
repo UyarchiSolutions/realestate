@@ -134,7 +134,10 @@ export class CsGalleryComponent {
           
         }
           routerlink='commercial-sale-gallery';
+          submited=false;
        async submit(){
+        this.submited=true;
+        if( this.videoSrc && this.imagePreview.length > 0){    
         await  this.uploadimg();
          let data={
       routeLink:this.routerlink,
@@ -148,10 +151,11 @@ export class CsGalleryComponent {
       
           id:this.id
         }
+        console.log('update');
         var queryString = new URLSearchParams(postdata).toString();
         this.router.navigateByUrl('/commercial-sale-add-details?' + queryString);
         })
-
+      }
         }
        async uploadvid(){
           const formdata = new FormData();

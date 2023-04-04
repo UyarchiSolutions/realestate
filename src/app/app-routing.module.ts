@@ -55,6 +55,8 @@ import { SellerforotpComponent } from './seller/sellerforotp/sellerforotp.compon
 import { UpdatepasswordsellerComponent } from './seller/updatepasswordseller/updatepasswordseller.component';
 import { VerifyotpforsellerComponent } from './seller/verifyotpforseller/verifyotpforseller.component';
 import { StartPostingComponent } from './start-posting/start-posting.component';
+import { MyAccountComponent } from './seller/my-account/my-account.component';
+import { EditAccountComponent } from './seller/edit-account/edit-account.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -120,7 +122,11 @@ const routes: Routes = [
   {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent},
 
   //buyer search single view
-  {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent}
+  {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent},
+
+
+  {path:'my-account',component:MyAccountComponent},
+  {path:'edit-account',component:EditAccountComponent}
 ];
 
 @NgModule({

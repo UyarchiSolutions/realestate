@@ -56,4 +56,7 @@ changePasswordForseller(data:any){
  deactiveMyaccount(){
   return this.http.get(this.baseUrl+`/v1/BuyerSeller/DeActive_UserAccount`,{headers:{auth:Cookie.get('tokens')}})
 }
+editAccountSeller(data:any){
+  return this.http.put(this.baseUrl+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('tokens')}})
+}
 }

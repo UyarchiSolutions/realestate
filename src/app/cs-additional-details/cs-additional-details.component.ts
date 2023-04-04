@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -13,11 +13,11 @@ export class CsAdditionalDetailsComponent {
    
     id: any;
     adform:any = this.fb.group({
-      datetostart : new FormControl (),
-      contactname: new FormControl(),
-      cnumber: new FormControl(),
-      c2number: new FormControl(),
-      preOccupancy:new FormControl()
+      datetostart : new FormControl ('',Validators.required),
+      contactname: new FormControl('',Validators.required),
+      cnumber: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+      c2number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+      preOccupancy:new FormControl('')
     })
     
     
@@ -54,8 +54,16 @@ export class CsAdditionalDetailsComponent {
     }
     
     data:any;
+    submited=false;
+    sameNum=false;
     Onsubmit(){
     
+      this.submited=true;
+      if(this.adform.get('cnumber')?.value == this.adform.get('c2number')?.value && !(this.adform.get('cnumber')?.value == undefined) ){
+        this.sameNum=true;
+        
+      }
+      if(this.adform.valid && !this.sameNum && this.pov){
       let data ={
         availabilityDate:this.adform.get('datetostart')?.value,
         contactName:this.adform.get('contactname')?.value,
@@ -76,7 +84,7 @@ export class CsAdditionalDetailsComponent {
         this.router.navigateByUrl('/commercial-sale-preview?' + queryString);
         console.log(res);
        })
-         
+      }  
     }
     pov:any;
     PrevOccup(a:any){

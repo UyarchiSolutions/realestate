@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -16,11 +16,11 @@ export class CrRentalDetailsComponent implements OnInit {
       data:any;
     
       priceform:any= this.fb.group({
-        ExpectedRent: new FormControl(),
+        ExpectedRent: new FormControl('',Validators.required),
         ExpectedrenttNegotiable:new FormControl(),
         AdvanceAmountNegotiable:new FormControl(),
-        AdvanceAmount:new FormControl(),
-        ExcludeMaintenance:new FormControl(),
+        AdvanceAmount:new FormControl('',Validators.required),
+        
         MrSq: new FormControl()
     
       })
@@ -58,7 +58,7 @@ export class CrRentalDetailsComponent implements OnInit {
           });this.maintanceVal= res.MaintenanceStatus ;
           this.mainmon=res.squareFT;
          
-          console.log('valuepatche',res.RentNegociable,res.depositeNegociable);
+         
           
            })
            this.leaseloop();
@@ -68,7 +68,12 @@ export class CrRentalDetailsComponent implements OnInit {
       maintance(a:any){
         console.log(this.maintanceVal);
         this.maintanceVal=a;
-        
+
+        if(this.maintanceVal=='Exclude Maintenance'){
+          this.priceform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+        }else{
+          this.priceform.removeControl('ExcludeMaintenance');
+        }
       }
       check(){
         console.log(this.priceform.get('ExpectedrenttNegotiable').value)
@@ -101,8 +106,36 @@ export class CrRentalDetailsComponent implements OnInit {
         }
       }
       routerlink='commercial-rent-rental-details';
+      submitted=false;
+      Checkdata:any;
       rentsub(){
-    
+        this.submitted = true;
+        if(this.maintanceVal=='Exclude Maintenance'){
+        this.Checkdata={
+  
+          expectedPrice:this.priceform.get('ExpectedRent').value,
+          AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          leaseDuration:this.ldv,
+          lock_in_period:this.lipv,
+          squareFT:this.mainmon,
+          MaintenanceStatus:this.maintanceVal,
+        
+        }
+      }else{
+        this.Checkdata={
+  
+          expectedPrice:this.priceform.get('ExpectedRent').value,
+          AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+          leaseDuration:this.ldv,
+          lock_in_period:this.lipv,
+          MaintenanceStatus:this.maintanceVal,
+        
+        }
+      }
+        if(this.allKeysHaveValue(this.Checkdata) ){ 
+   
+          console.log(this.Checkdata,'uploaded');
         var data={
   
           expectedPrice:this.priceform.get('ExpectedRent').value,
@@ -118,20 +151,34 @@ export class CrRentalDetailsComponent implements OnInit {
         }
         
         this.service.formput(this.id,data).subscribe((res:any)=>{
-          console.log(res);
+          console.log(res,'updated');
           
           var postdata ={
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+           this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
           console.log(res);
           
         })
-    
       }
+      }
+      allKeysHaveValue(obj: any) {
+        const keys = Object.keys(obj);
+        let allKeysHaveValue = true;
     
-    
+        keys.forEach((key) => {
+        if (!obj.hasOwnProperty(key) || !obj[key]) {
+          console.log(obj.hasOwnProperty(key),obj[key])
+          allKeysHaveValue = false;
+        }
+      });
+      console.log(allKeysHaveValue);
+      return allKeysHaveValue;
+      
+    }
+    checkthis=false;
+   
      
     
       routetopreview(){

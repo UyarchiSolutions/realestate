@@ -13,7 +13,7 @@ export class HeaderWithProfileComponent implements OnInit {
 
  constructor(private service:SellerService,private router:Router){}
 
-  data:any;
+  data:any=[];
   ngOnInit(): void {
    
     this.GetuserName();

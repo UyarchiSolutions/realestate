@@ -73,23 +73,25 @@
     <div class="expected-rent">
         <label>Expected Rent :</label>
    <div >
-    <input type="text" placeholder="Expected Rent" formControlName="ExpectedRent">
+    <input type="number" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
         <input type="checkbox" formControlName="ExpectedrenttNegotiable" [value]="true" (click)="check()"><label>Negotiable</label>
     </div>
 
    </div>
     </div>
+    <p class="redtext" *ngIf="priceform.get('ExpectedRent').invalid && submitted">Expected Rent is required!</p>
     <div class="expected-rent">
         <label>Advance Amount :</label>
    <div >
-    <input type="text" placeholder="Advance Amount" formControlName="AdvanceAmount">
+    <input type="number" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
         <input type="checkbox" formControlName="AdvanceAmountNegotiable"   [value]="true" ><label>Negotiable</label>
     </div>
 
    </div>
     </div>
+    <p class="redtext" *ngIf="priceform.get('AdvanceAmount').invalid && submitted">Expected Rent is required!</p>
     <div>
         <label>Lease Duration :</label>
         <div
@@ -111,6 +113,7 @@
           </ul>
         </div>
       </div>
+      <p class="redtext" *ngIf="ldv==null && submitted">Lease Duration is required!</p>
     <div>
         <label>Lock in Period :</label>
         <div
@@ -132,7 +135,7 @@
           </ul>
         </div>
       </div>
-
+      <p class="redtext" *ngIf=" lipv==null && submitted">Lock in Period is required!</p>
  
 
     <div>
@@ -149,12 +152,13 @@
         </ul>
       </div>
     </div>
-
+    <p class="redtext" *ngIf=" maintanceVal==null && submitted">Maintenance is required!</p>
+    
     <div *ngIf="maintanceVal=='Exclude Maintenance'">
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
-        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance"   >
         <!-- <select   formControlName="MrSq">
  
             <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
@@ -162,7 +166,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="mainmon == null &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -172,7 +176,10 @@
               </div>
     </div>
     </div>
-
+    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+    <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+    <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+  </div>
     <div></div>
 
   

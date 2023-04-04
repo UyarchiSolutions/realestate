@@ -73,23 +73,30 @@
             <label>Available Form :</label>
        <input type="Date" formControlName="datetostart">
         </div>
-
+        <p *ngIf="adform.get('datetostart').invalid && submited" class="redtext">Date is Required!</p>
         <div>
             <label>Contact Name :</label>
     <input type="text" placeholder="Contact Name" formControlName="contactname">
         </div>
-
+        <p *ngIf="adform.get('contactname').invalid && submited" class="redtext">Contact Name is Required!</p>
         <div>
             <label>Contact Number 1 :</label>
-    <input type="text" placeholder="Contact Number" formControlName="cnumber">
+    <input type="text" placeholder="Contact Number" formControlName="cnumber" (keyup)="default()" >
         </div>
+      
+        <p *ngIf="adform.get('cnumber').errors?.required && submited" class="redtext">Contact Number is Required!
+        </p>
+        <p *ngIf="adform.get('cnumber').errors?.pattern && submited" class="redtext">Enter a valid Number!</p>
 
         <div>
             <label>Contact Number 2 :</label>
-    <input type="text" placeholder="Contact Number 2" formControlName="c2number">
+    <input type="text" placeholder="Contact Number 2" formControlName="c2number" (keyup)="default()" >
         </div>
 
-
+        <p *ngIf="adform.get('c2number').errors?.required && submited" class="redtext">Contact Number 2 is Required!</p>
+        <p *ngIf="adform.get('c2number').errors?.pattern  && submited " class="redtext">Enter a valid Number!</p>
+               
+        <p *ngIf="sameNum  && submited " class="redtext">Number 1 and Number 2 should not be same!</p>
       
 
         <div>
@@ -124,22 +131,7 @@
               </ul>
             </div>
           </div>
-
-
-
-       
-
-        
-       
-     
-  
-
-  
-
-  
-
-
-
+          <p *ngIf=" pov==null && submited" class="redtext">Select Previous Occupancy Type!</p>
 
 <div class="save-continue">
     <button type="submit" (click)="Onsubmit()">Preview & Post</button>
@@ -155,21 +147,7 @@
     </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     <div class="ad"></div>
     

@@ -78,6 +78,7 @@
     </div>
    
     </div>
+    <p class="redtext" *ngIf="priceform.get('ExpectedPrice').invalid && submitted">Expected Price is required!</p>
     <div class="negotiable">
         <input type="checkbox" formControlName="ExpectedpricetNegotiable"  [value]="true"><label>Negotiable</label>
         
@@ -103,7 +104,7 @@
         </ul>
       </div>
     </div>
-
+    <p class="redtext" *ngIf=" maintanceVal==null && submitted">Maintenance is required!</p>
     <div *ngIf="maintanceVal=='Exclude Maintenance'">
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
@@ -116,7 +117,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="mainmon == null &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -126,6 +127,10 @@
               </div>
     </div>
     </div>
+    <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: block">
+        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+        <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+      </div>
 
     <div></div>
 

@@ -166,4 +166,10 @@
     visibility: visible;
 
    }
-  
+   .redtext{
+    color: red;
+    font-size: 0.8rem;
+    padding: 0;
+    margin-left: 400px;
+}  
+

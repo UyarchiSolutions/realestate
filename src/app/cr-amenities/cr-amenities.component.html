@@ -87,6 +87,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext" *ngIf="fsv==null && submited">Select furnishings Status Type</p>
         <div>
             <label>Parking :</label>
        
@@ -106,7 +107,7 @@
             </ul>
           </div>
         </div>
-  
+        <p  class="redtext" *ngIf="pv ==null && submited">Select Parking Type</p>
         <div>
             <label>Power Backup :</label>
        
@@ -124,6 +125,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext" *ngIf="pb ==null && submited">Select Power Backup Type</p>
         <div>
             <label>Washroom :</label>
        
@@ -141,6 +143,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext" *ngIf="btv ==null && submited">Select Power Backup Type</p>
         <div>
             <label>Lift :</label>
        
@@ -158,6 +161,7 @@
             </ul>
           </div>
         </div>
+        <p class="redtext" *ngIf="lft ==null && submited">Select Lift Type</p>
         <div class="non-veg-allowed gated-security">
             <label style="width: 30% !important">Water Storage facility:</label>
             <div>
@@ -169,6 +173,7 @@
                 </div>
             </div>
         </div>
+        <p class="redtext" *ngIf=" myform.get('waterFacility')?.invalid && submited">Water Storage facility Required!</p>
         <div class="non-veg-allowed gated-security">
             <label>Security:</label>
             <div>
@@ -180,6 +185,7 @@
                 </div>
             </div>
         </div>
+        <p class="redtext" *ngIf=" myform.get('Security')?.invalid && submited">Security Required!</p>
         <div class="non-veg-allowed gated-security">
             <label>Escalator:</label>
             <div>
@@ -191,6 +197,7 @@
                 </div>
             </div>
         </div>
+        <p class="redtext" *ngIf=" myform.get('Escalator')?.invalid && submited">Escalator Required!</p>
         <div class="non-veg-allowed gated-security">
             <label>WIFI:</label>
             <div>
@@ -202,7 +209,7 @@
                 </div>
             </div>
         </div>
-
+        <p class="redtext" *ngIf=" myform.get('WIFI')?.invalid && submited">WIFI Required!</p>
        
       
 

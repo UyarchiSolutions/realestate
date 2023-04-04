@@ -46,6 +46,8 @@ import { RsResidentialSalePreviewComponent } from '../rs-residential-sale-previe
 import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,9 @@ import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
     CsAdditionalDetailsComponent,
     //pipes
     IndianCurrencyPipeS,
+
+    MyAccountComponent,
+    EditAccountComponent
   ],
   imports: [
     CommonModule,

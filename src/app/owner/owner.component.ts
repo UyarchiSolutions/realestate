@@ -112,6 +112,9 @@ export class OwnerComponent implements OnInit {
   startpostRoute(){
     this.router.navigateByUrl('/start-posting');
   }
+  AccountRoute(){
+    this.router.navigateByUrl('/my-account');
+  }
   logOut(){
     sessionStorage.clear();
     localStorage.clear();

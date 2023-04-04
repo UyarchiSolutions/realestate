@@ -310,3 +310,9 @@ z-index: 5;
     border: none;
     padding: 8px 20px;
 }
+.redtext{
+    color: red;
+    font-size: 0.8rem;
+    padding: 0;
+    margin-left: 450px;
+}

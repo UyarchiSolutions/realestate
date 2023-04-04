@@ -68,7 +68,7 @@ Onsubmit(){
     routeLink:this.routerlink
 
   }
-  console.log('updated');
+
   this.service.formput(this.id,data).subscribe((res:any)=>{
 
     var postdata ={

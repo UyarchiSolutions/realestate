@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -15,10 +15,9 @@ export class CsPriceDetailsComponent {
       data:any;
     
       priceform:any= this.fb.group({
-        ExpectedPrice: new FormControl(),
+        ExpectedPrice: new FormControl('',Validators.required),
         ExpectedpricetNegotiable:new FormControl(),
         CurrentlyInLoan:new FormControl(),
-        ExcludeMaintenance:new FormControl(),
         MrSq: new FormControl()
     
       })
@@ -68,8 +67,15 @@ export class CsPriceDetailsComponent {
       maintanceVal='Include Maintenance';
     
       maintance(a:any){
-        console.log(this.maintanceVal);
+      
         this.maintanceVal=a;
+        if(this.maintanceVal=='Exclude Maintenance'){
+          console.log('added form');
+          this.priceform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+        }else{
+          console.log('remove form');
+          this.priceform.removeControl('ExcludeMaintenance');
+        }
         
       }
   
@@ -86,8 +92,29 @@ export class CsPriceDetailsComponent {
         this.Lmainmon=a;
       }
       routerlink='commercial-sale-price-details';
+      submitted=false;
+      Checkdata:any;
       rentsub(){
-    
+        this.submitted = true;
+        if(this.maintanceVal=='Exclude Maintenance'){
+        this.Checkdata={
+  
+          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          squareFT:this.mainmon,
+          MaintenanceStatus:this.maintanceVal,
+          
+        }
+      }else{
+        this.Checkdata={
+  
+          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          MaintenanceStatus:this.maintanceVal,
+        
+        }
+      }
+      if(this.allKeysHaveValue(this.Checkdata) ){ 
+        console.log('updated',this.Checkdata);
         var data={
   
           expectedPrice:this.priceform.get('ExpectedPrice').value,
@@ -99,7 +126,7 @@ export class CsPriceDetailsComponent {
           MaintenanceStatus:this.maintanceVal,
           routeLink:this.routerlink,
         }
-        
+       
         this.service.formput(this.id,data).subscribe((res:any)=>{
           console.log(res);
           
@@ -111,8 +138,23 @@ export class CsPriceDetailsComponent {
           console.log(res);
           
         })
+      }
     
       }
+      allKeysHaveValue(obj: any) {
+        const keys = Object.keys(obj);
+        let allKeysHaveValue = true;
+    
+        keys.forEach((key) => {
+        if (!obj.hasOwnProperty(key) || !obj[key]) {
+          console.log(obj.hasOwnProperty(key),obj[key])
+          allKeysHaveValue = false;
+        }
+      });
+      console.log(allKeysHaveValue);
+      return allKeysHaveValue;
+      
+    }
     
     
      

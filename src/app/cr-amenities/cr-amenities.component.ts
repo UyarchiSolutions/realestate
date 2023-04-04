@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 
@@ -27,10 +27,10 @@ export class CrAmenitiesComponent {
       myform:any = new FormGroup({
     
        
-        waterFacility:new FormControl(),
-        Security:new FormControl(),
-        Escalator:new FormControl(),
-        WIFI:new FormControl(),
+        waterFacility:new FormControl('',Validators.required),
+        Security:new FormControl('',Validators.required),
+        Escalator:new FormControl('',Validators.required),
+        WIFI:new FormControl('',Validators.required),
       })
       
       ngOnInit(): void {
@@ -56,8 +56,21 @@ export class CrAmenitiesComponent {
       submited=false;
       routerlink='commercial-rent-amenities';
       submit(){
+        this.submited=true;
+        var Checkdata ={
+          furnishingStatus:this.fsv,
+          bathRoomType:this.btv,
+          security: this.myform.get('Security')?.value,
+          parkingFacilities:this.pv,
+          powerBackup:this.pb,
+          escalator:this.myform.get('Escalator')?.value,
+          waterStorage:this.myform.get('waterFacility')?.value,
+          wifi:this.myform.get('WIFI')?.value,
+          Lift:this.lft,
         
     
+        }
+        if(this.allKeysHaveValue(Checkdata) ){ 
         var data ={
           furnishingStatus:this.fsv,
           bathRoomType:this.btv,
@@ -71,6 +84,7 @@ export class CrAmenitiesComponent {
           routeLink:this.routerlink
     
         }
+        console.log('updated',Checkdata)
         this.service.formput(this.id,data).subscribe((res:any)=>{
     
           console.log(res);
@@ -82,7 +96,7 @@ export class CrAmenitiesComponent {
           console.log(res);
          
          })
-        
+        }
     
     
       }
@@ -102,39 +116,39 @@ export class CrAmenitiesComponent {
       furstav(a: any) {
         this.fsv = a;
         console.log(this.fsv);
-        this.myform.get('furnishingStatus').setValue(a);
+       
       }
       wsv: any;
     
       wassupv(a: any) {
         this.wsv = a;
         console.log(this.wsv);
-        this.myform.get('waterSupply').setValue(a);
+      
       }
       brv: any;
     
       bathrv(a: any) {
         this.brv = a;
         console.log(this.brv);
-        this.myform.get('bathRoomCount').setValue(a);
+      
       }
       btv: any;
       bathTv(a: any) {
         this.btv = a;
         console.log(this.btv);
-        this.myform.get('bathRoomType').setValue(a);
+       
       }
       ttv: any;
       toilTv(a: any) {
         this.ttv = a;
         console.log(this.ttv);
-        this.myform.get('toiletType').setValue(a);
+       
       }
       bv: any;
       balTv(a: any) {
         this.bv = a;
         console.log(this.bv);
-        this.myform.get('balconyCount').setValue(a);
+     
       }
       pv: any;
       parkTv(a: any) {
@@ -184,6 +198,20 @@ export class CrAmenitiesComponent {
         this.lft = a;
         console.log(this.lft)
       }
+      allKeysHaveValue(obj: any) {
+        const keys = Object.keys(obj);
+        let allKeysHaveValue = true;
+    
+        keys.forEach((key) => {
+        if (!obj.hasOwnProperty(key) || !obj[key]) {
+          console.log(obj.hasOwnProperty(key),obj[key])
+          allKeysHaveValue = false;
+        }
+      });
+      console.log(allKeysHaveValue);
+      return allKeysHaveValue;
+      
+    }
     
       back(count: any) {
         if (count == 0) {
