@@ -15,7 +15,7 @@ export class SellerRegisterComponent {
     mobile:new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
     email:new FormControl('',[Validators.required,Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     Type:new FormControl('Seller'),
-    ownerType:new FormControl('', Validators.required)
+    Role:new FormControl('', Validators.required)
     // otp:new FormControl('', Validators.required)
   });
   // otp_Form=this.fb.group({

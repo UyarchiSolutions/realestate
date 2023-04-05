@@ -34,7 +34,10 @@ export class PostPropertyService {
   }
   // property patch and put
   formget(id: any) {
-    return this.http.get(this.baseURL + 'sellerPost/' + id);
+    return this.http.get(this.baseURL + 'getSellerPostById/' + id);
+  }
+  formget1(id: any) {
+    return this.http.get(this.baseURL + 'sellerPost/' + id,{ headers: { auth: Cookie.get('buyer') }});
   }
   getAddress(lat: any, long: any) {
     const data = {
@@ -109,5 +112,8 @@ export class PostPropertyService {
   interest(id:any){
 
     return this.http.get(this.baseURL + 'giveInterest/'+id,{ headers: { auth: Cookie.get('buyer') }});
+  }
+  save(id:any){
+    return this.http.get(this.baseURL + 'WhishList/'+id,{ headers: { auth: Cookie.get('buyer') }});
   }
 }

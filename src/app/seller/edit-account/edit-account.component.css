@@ -134,3 +134,8 @@ visibility: hidden;
   border: none;
   background-color: var(--brown);
 }
+.redtext{
+  color: red;
+  display: flex;
+  justify-content: center;
+}

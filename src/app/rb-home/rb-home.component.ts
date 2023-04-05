@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'ng-google-places-autocomplete';
 import { Cookie } from 'ng2-cookies';
 import { PostPropertyService } from '../services/post-property.service';
+import { BuyerService } from '../buyer/buyer.service';
 
 @Component({
   selector: 'app-rb-home',
@@ -16,6 +17,7 @@ export class RbHomeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: PostPropertyService,
+    private buyerService:BuyerService
     
   ) {}
   range = 10;
@@ -36,11 +38,12 @@ export class RbHomeComponent implements OnInit {
   });
 
   ngOnInit(): void {
-   
+    this.Get_all_interest(); 
+    this.Get_all_saved()
     this.arouter.queryParamMap.subscribe((params:any) => {
       console.log(params.params.formatAdd)
       if( params.params.formatAdd != null ){
-      console.log(params,656767);
+      console.log(params);
       this.formatAdd =params.params.formatAdd;
       this.type =params.params['type'];
       this.propertType = params.params['propertType'] !=null && params.params['propertType'] !='' ? params.params['propertType'].split(',') :[];
@@ -52,9 +55,11 @@ export class RbHomeComponent implements OnInit {
       this.ParkArr=params.params['rentprefer'] !=null && params.params['rentprefer'] !='' ? params.params['rentprefer'].split(',') :[];
       this.PropAgeArr=params.params['PropAgeArr'] !=null && params.params['PropAgeArr'] !='' ? params.params['PropAgeArr'].split(',') :[];
       // this.areaArr =this.areaArr.split(',');
-      console.log(this.propertType,this.BHKType,'gfgbgfh')
+      console.log(this.propertType,this.BHKType,'gfgbgfh');
+
+    
       this.GetDataForFilter();
-       
+    
       }
     });
     if (this.propertType !=null && this.propertType != '' ) {
@@ -299,6 +304,8 @@ export class RbHomeComponent implements OnInit {
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
         this.data = res.values;
+        let query = new URLSearchParams(this.sendData).toString();
+        this.router.navigateByUrl('/buyer-residential-rent-view?' + query );
         console.log(this.data, 'data');
       });
   }
@@ -390,6 +397,8 @@ export class RbHomeComponent implements OnInit {
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
         this.data = res.values;
+        let query = new URLSearchParams(this.sendData).toString();
+        this.router.navigateByUrl('/buyer-residential-rent-view?' + query );
         console.log(this.data, 'data');
       });
   }
@@ -658,5 +667,100 @@ export class RbHomeComponent implements OnInit {
   }
   changepassword(){
     this.router.navigateByUrl('/changepassword-buyer');
+  }
+  postshow=true;
+  interestShow=false;
+  saveShow=false;
+  alertShow=false;
+  showTab(tab:any){
+    if(tab == 'post'){
+      this.postshow=true;
+      this.interestShow=false;
+      this.saveShow=false;
+      this.alertShow=false;
+    }
+    if(tab == 'interest'){
+      this.postshow=false;
+      this.interestShow=true;
+      this.saveShow=false;
+      this.alertShow=false;
+    }
+    if(tab == 'save'){
+      this.postshow=false;
+      this.interestShow=false;
+      this.saveShow=true;
+      this.alertShow=false;
+    }
+  }
+  RBtab=true;
+  RRtab=false;
+  CBtab=false;
+  CRtab=false;
+  interestTab(tab:any){
+    if(tab=='RB'){
+      this.RBtab=true;
+      this.RRtab=false;
+      this.CBtab=false;
+      this.CRtab=false;
+    }
+    if(tab=='RR'){
+      this.RBtab=false;
+      this.RRtab=true;
+      this.CBtab=false;
+      this.CRtab=false;
+    }
+    if(tab=='CB'){
+      this.RBtab=false;
+      this.RRtab=false;
+      this.CBtab=true;
+      this.CRtab=false;
+    }
+    if(tab=='CR'){
+      this.RBtab=false;
+      this.RRtab=false;
+      this.CBtab=false;
+      this.CRtab=true;
+    }
+  }
+  save(tab:any){
+    if(tab=='RB'){
+      this.RBtab=true;
+      this.RRtab=false;
+      this.CBtab=false;
+      this.CRtab=false;
+    }
+    if(tab=='RR'){
+      this.RBtab=false;
+      this.RRtab=true;
+      this.CBtab=false;
+      this.CRtab=false;
+    }
+    if(tab=='CB'){
+      this.RBtab=false;
+      this.RRtab=false;
+      this.CBtab=true;
+      this.CRtab=false;
+    }
+    if(tab=='CR'){
+      this.RBtab=false;
+      this.RRtab=false;
+      this.CBtab=false;
+      this.CRtab=true;
+    }
+  }
+  AllInterested:any;
+  Get_all_interest(){
+    this.buyerService.getAll_Interested().subscribe((res:any)=>{
+      console.log(res,'all interest')
+      this.AllInterested=res;
+    })
+  }
+  AllSaved:any;
+
+  Get_all_saved(){
+    this.buyerService.getAll_saved().subscribe((res:any)=>{
+      console.log(res,'all saved')
+      this.AllSaved=res;
+    })
   }
 }

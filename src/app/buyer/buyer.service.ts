@@ -59,4 +59,11 @@ export class BuyerService {
   post_for_active(data:any){
     return this.http.post(this.base_url+`/v1/BuyerSeller/activate/deActivatedusers`,data)
   }
+  getAll_Interested(){
+    return this.http.get(this.base_url+`/v1/BuyerSeller/getIntrestedPropertyByUser`,{headers:{auth:Cookie.get('buyer')}})
+  }
+  getAll_saved(){
+    return this.http.get(this.base_url + '/v1/BuyerSeller/getWhishListed_Property_By_Buyer',{headers:{auth:Cookie.get('buyer')}})
+  }
 }
+

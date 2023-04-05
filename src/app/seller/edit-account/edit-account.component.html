@@ -59,13 +59,15 @@
 <div>
   <label>Name :</label> <input type="text" value="{{data.userName}}"  formControlName="userName">
 </div>
+
 <div>
   <label>Mobile Number :</label> <input type="text" value="{{data.mobile}}"  formControlName="mobile">
 </div>
+<p class="redtext" *ngIf="form.get('mobile').errors?.pattern && submitted">Enter a Valid Number </p>
 <div>
   <label>Email ID :</label> <input type="email" value="{{data.email}}" formControlName="email">
 </div>
-
+<p class="redtext" *ngIf="form.get('email').errors?.pattern && submitted">Enter a Email Number </p>
 <div class="seller-owner">
   <span><input id="seller" name="Type" formControlName="Type" type="radio" [checked]="data.Type == 'Seller'" value="Seller"><label for="seller">Seller</label></span> 
   <span><input id="owner" name="Type" formControlName="Type"   type="radio"  [checked]="data.Type == 'Owner'" value="Owner"><label for="owner">Owner</label></span>

@@ -20,7 +20,7 @@ export class CsAdditionalDetailsComponent {
       preOccupancy:new FormControl('')
     })
     
-    
+    today: Date = new Date();
     constructor(
       private fb: FormBuilder,
       private arouter: ActivatedRoute,

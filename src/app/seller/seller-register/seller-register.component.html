@@ -78,10 +78,10 @@
        
         <div class="buyer-tenant form-data">
           <div>
-            <input type="radio" formControlName="ownerType" value="Seller">Seller
+            <input type="radio" formControlName="Role" value="Seller">Seller
           </div>
           <div>
-            <input type="radio" formControlName="ownerType" value="Owner">Owner
+            <input type="radio" formControlName="Role" value="Owner">Owner
           </div>
         </div>
         <div class="error-msg" *ngIf="isSubmit&&loginForm.get('ownerType')?.invalid">

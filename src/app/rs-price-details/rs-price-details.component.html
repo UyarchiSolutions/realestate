@@ -93,7 +93,7 @@
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-    <p [innerHTML]="maintanceVal" *ngIf="maintanceVal"></p><p *ngIf="!maintanceVal">Maintenance</p>
+    <p >{{mv}}</p>
       
         <ul class="dropdown-menu select-filed-options" >
 
@@ -102,7 +102,7 @@
         </ul>
       </div>
     </div>
-
+   
     <div *ngIf="maintanceVal=='Exclude Maintenance'">
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
@@ -115,7 +115,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == '' &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="mainmon == null &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -127,15 +127,6 @@
     </div>
 
     <div></div>
-
-  
-
-   
-
-   
-
-
-
 
 <div class="save-continue">
     <button type="submit" (click)="rentsub()" *ngIf="!data.final" >Save & Continue</button>

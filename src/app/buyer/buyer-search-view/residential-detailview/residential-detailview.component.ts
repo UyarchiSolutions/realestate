@@ -53,9 +53,11 @@ export class ResidentialDetailviewComponent implements OnInit {
     console.log(this.allFilter,'All filters');
 
 
-    this.service.formget(this.id).subscribe((res:any)=>{
-      console.log(res);
-      this.data=res;
+    this.service.formget1(this.id).subscribe((res:any)=>{
+      console.log(res,res.intrest);
+      this.data=res.values;
+      this.interestV=res.intrest;
+      this.saveV=res.savedStatus;
     })
    
 
@@ -71,9 +73,9 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.index= this.index+1;
     console.log(this.index);
     this.id = this.Alldata[this.index]._id;
-    this.service.formget(this.id).subscribe((res:any)=>{
+    this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res);
-      this.data=res;
+      this.data=res.values;
     })
   }
   previous(){
@@ -82,9 +84,9 @@ export class ResidentialDetailviewComponent implements OnInit {
     console.log(this.index);
 
     this.id = this.Alldata[this.index]._id;
-    this.service.formget(this.id).subscribe((res:any)=>{
+    this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res);
-      this.data=res;
+      this.data=res.values;
     })
   }
   backToSearch(){
@@ -103,14 +105,32 @@ export class ResidentialDetailviewComponent implements OnInit {
     const query = new URLSearchParams(sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
   }
-  checkInterest=false;
+  
   interestV:any;
   interest(id:any){
-    this.checkInterest =true;
+   
     this.service.interest(id).subscribe((res:any)=>{
       console.log(res);
-      this.interestV=res.formatedAddress;
+     
+    });
+    this.service.formget1(this.id).subscribe((res:any)=>{
+      console.log(res,res.intrest);
+      this.data=res.values;
+      this.interestV=res.intrest;
     })
 
+  }
+  saveV:any;
+  save(id:any){
+
+    this.service.save(id).subscribe((res:any)=>{
+      console.log(res,'save');
+    })
+    this.service.formget1(this.id).subscribe((res:any)=>{
+      console.log(res,res.intrest);
+      this.data=res.values;
+      this.saveV=res.savedStatus;
+    })
+    
   }
 }

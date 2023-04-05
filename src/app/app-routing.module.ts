@@ -57,6 +57,7 @@ import { VerifyotpforsellerComponent } from './seller/verifyotpforseller/verifyo
 import { StartPostingComponent } from './start-posting/start-posting.component';
 import { MyAccountComponent } from './seller/my-account/my-account.component';
 import { EditAccountComponent } from './seller/edit-account/edit-account.component';
+import { BuyerInterestedPropertyComponent } from './buyer-interested-property/buyer-interested-property.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -124,7 +125,9 @@ const routes: Routes = [
   //buyer search single view
   {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent},
 
-
+  //buyerInterested
+  {path:'interested-property',component:BuyerInterestedPropertyComponent},
+  
   {path:'my-account',component:MyAccountComponent},
   {path:'edit-account',component:EditAccountComponent}
 ];

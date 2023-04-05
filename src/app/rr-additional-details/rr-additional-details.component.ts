@@ -27,6 +27,8 @@ constructor(
 ){
 
 }
+today: Date = new Date();
+
 ngOnInit(): void {
   
   this.arouter.queryParams.subscribe(params => {

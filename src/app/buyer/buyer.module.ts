@@ -19,6 +19,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from '@agm/core';
 import { HeaderWithProfileComponent } from '../shared/header-with-profile/header-with-profile.component';
 import { ResidentialDetailviewComponent } from './buyer-search-view/residential-detailview/residential-detailview.component';
+import { BuyerInterestedPropertyComponent } from '../buyer-interested-property/buyer-interested-property.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ResidentialDetailviewComponent } from './buyer-search-view/residential-
     ResidentialBuyViewComponent,
     IndianCurrencyPipe,
     HeaderWithProfileComponent,
-    ResidentialDetailviewComponent
+    ResidentialDetailviewComponent,
+    BuyerInterestedPropertyComponent
   ],
   imports: [
     RouterModule,

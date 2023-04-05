@@ -14,10 +14,10 @@ export class EditAccountComponent implements OnInit {
   }
   data:any=[];
   form:any = this.fb.group({
-    userName: new FormControl(this.data.userName,Validators.required),
-    email:  new FormControl(this.data.email,Validators.required),
-    mobile: new FormControl(this.data.mobile,Validators.required),
-    Type:new FormControl('',Validators.required)
+    userName: new FormControl(''),
+    email:  new FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    mobile: new FormControl('',[Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
+    Type:new FormControl('')
 
     
   })
@@ -30,12 +30,22 @@ export class EditAccountComponent implements OnInit {
   editAccount(){
     this.router.navigateByUrl('/edit-account')
   }
+  submitted=false;
   submit(){
+    this.form.setValue({
+      userName:this.form.get('userName')?.value ?this.form.get('userName')?.value :  this.data.userName,
+      email:this.form.get('email')?.value ?this.form.get('email')?.value :  this.data.email,
+      mobile:this.form.get('mobile')?.value ?this.form.get('mobile')?.value :  this.data.mobile,
+      Type:this.form.get('Type')?.value ?this.form.get('Type')?.value :  this.data.Type
+    })
     console.log(this.form.value)
+    this.submitted=true;
+    if(this.form.valid){
     this.service.editAccountSeller(this.form.value).subscribe((res:any)=>{
       console.log(res);
       this.router.navigateByUrl('/my-account')
     })
+  }
   }
 
 }

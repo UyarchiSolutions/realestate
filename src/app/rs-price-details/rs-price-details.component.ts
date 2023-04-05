@@ -69,11 +69,12 @@ export class RsPriceDetailsComponent implements OnInit {
       )
     }
     maintanceVal='Include Maintenance';
-  
+    mv='Include Maintenance';
     maintance(a:any){
       console.log(this.maintanceVal);
-      this.maintanceVal=a;
       
+      this.mv=a;
+      this.maintanceVal=this.mv;
     }
 
     mainmon='';

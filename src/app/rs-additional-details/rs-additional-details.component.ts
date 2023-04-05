@@ -20,6 +20,7 @@ adform:any = this.fb.group({
   occuCerf:new FormControl('',Validators.required),
   
 })
+today: Date = new Date();
   constructor(
     private fb: FormBuilder,
     private arouter: ActivatedRoute,

@@ -77,10 +77,12 @@ nav ul li{
 .top-section .back{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .top-section .back p{
     margin-left: 20px;
     font-weight: 500;
+    cursor: pointer;
 }
 .top-section .page-navigator{
     display: flex;

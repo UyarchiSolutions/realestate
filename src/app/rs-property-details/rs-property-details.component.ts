@@ -74,14 +74,12 @@ export class RsPropertyDetailsComponent implements OnInit {
       BHKType: this.bhkv,
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
-      RentPrefer: this.rpv,
-      
       ownerType:this.ost,
       landSize:this.propsform.get('UDSlandsize')?.value,
-      routeLink:this.routerlink
+     
     };
-
-    if(this.allKeysHaveValue(Checkdata) || this.data.propertType){ 
+    console.log(Checkdata)
+    if(this.allKeysHaveValue(Checkdata) ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -90,7 +88,6 @@ export class RsPropertyDetailsComponent implements OnInit {
       BHKType: this.bhkv,
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
-      RentPrefer: this.rpv,
       discription: this.propsform.get('Description')?.value,
       ownerType:this.ost,
       landSize:this.propsform.get('UDSlandsize')?.value,
@@ -98,9 +95,10 @@ export class RsPropertyDetailsComponent implements OnInit {
     };
     
     console.log(data);
+    console.log('will upload ')
     this.service.formput(this.id, data).subscribe((res: any) => {
 
-      console.log('will upload ')
+    
       var postdata = {
         id: res._id,
       };
@@ -109,7 +107,9 @@ export class RsPropertyDetailsComponent implements OnInit {
         '/residential-sale-location-details?' + queryString
       );
       console.log(res);
-    });}
+    });
+  
+  }
   
   
   }
