@@ -12,6 +12,7 @@ export class PostPropertyService {
    Alldata =[];
    //for recent search in buyer residental view
    AllRecentSearchArr:any=[];
+   AllAddress:any=[];
    switchTrF:any;
    switchTrS:any;
    GAreaArr:any=[];
@@ -75,7 +76,7 @@ export class PostPropertyService {
     this.checkCookie= this.findCookie();
     if(this.checkCookie) {
       console.log('from service','auth');
-      return this.http.get(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`, { headers: { auth: Cookie.get('buyer') }});
+      return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`, { headers: { auth: Cookie.get('buyer') }});
     }
     
     else{

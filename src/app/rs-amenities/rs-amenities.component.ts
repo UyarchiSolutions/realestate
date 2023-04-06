@@ -81,7 +81,8 @@ none: any;
         Amenities:this.amenities,
         powerBackup:this.pb,
         kitchenType:this.kitty,
-        routeLink:this.routerlink
+        routeLink:this.routerlink,
+        BathCount:this.bathroomCount
   
       }
       console.log(data,'updated');
@@ -138,10 +139,11 @@ none: any;
       // this.myform.get('waterSupply').setValue(a);
     }
     brv: any;
-  
-    bathrv(a: any) {
+    bathroomCount:any;
+    bathrv(a: any,count:any) {
       this.brv = a;
       console.log(this.brv);
+      this.bathroomCount=count;
       // this.myform.get('bathRoomCount').setValue(a);
     }
     btv: any;
@@ -277,8 +279,7 @@ none: any;
         bathRoomType:this.btv,
         toiletType:this.ttv,
         balconyCount:this.bv,
-      
-        gate_Security: this.myform.get('gate_Security')?.value,
+       gate_Security: this.myform.get('gate_Security')?.value,
         parkingFacilities:this.pv,
         kitchen:this.kv,
         hall_FLoor:this.hfv,
@@ -287,7 +288,8 @@ none: any;
         balCony:this.balv,
         Amenities:this.amenities,
         powerBackup:this.pb,
-        kitchenType:this.kitty
+        kitchenType:this.kitty,
+        BathCount:this.bathroomCount
   
       }
       this.service.formput(this.id,data).subscribe((res:any)=>{})

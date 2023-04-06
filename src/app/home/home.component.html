@@ -8,14 +8,14 @@
 
 <div class="search-field">
   <div class="searched" *ngIf="area">
-    <span *ngFor="let item of area;let i = index">{{item}}
+    <span *ngFor="let item of area;let i = index"><p class="location-name">{{item}}</p>
        <svg (click)="removeArea(i)" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.49952C11.5539 1.94643 11.5526 1.051 10.9995 0.499521C10.4464 -0.0519549 9.551 -0.0506468 8.99952 0.502445L6.00732 3.50341L3.00196 0.498045C2.44967 -0.0542398 1.55424 -0.0542402 1.00196 0.498045C0.44967 1.05033 0.449668 1.94576 1.00195 2.49805L4.01024 5.50633L1.01122 8.51414C0.459741 9.06723 0.46105 9.96266 1.01414 10.5141C1.56723 11.0656 2.46266 11.0643 3.01414 10.5112L6.01024 7.50634L9.00196 10.498C9.55424 11.0503 10.4497 11.0503 11.002 10.498C11.5542 9.94576 11.5542 9.05033 11.002 8.49805L8.00732 5.50341L11.0024 2.49952Z" fill="white"/>
       </svg>
   </span>
       
 </div>
-  <input *ngIf="!(area.length >= 3)" class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark"  (onAddressChange)="handleAddressChange($event)"  [options]="options" formControlName="BuyerAddres">
+  <input *ngIf="!(area.length >= 3)" class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark"  (onAddressChange)="handleAddressChange($event,input)" #input [options]="options" formControlName="BuyerAddres">
   <button type="submit" style="background-color:  #473B32;border: none;" (click)="Ressubmit()">
   <div class="search">
     

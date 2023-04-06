@@ -91,7 +91,9 @@ export class RsPropertyDetailsComponent implements OnInit {
       discription: this.propsform.get('Description')?.value,
       ownerType:this.ost,
       landSize:this.propsform.get('UDSlandsize')?.value,
-      routeLink:this.routerlink
+      routeLink:this.routerlink,
+      BhkCount:this.BhkCount,
+      floorCount:this.FloorCount
     };
     
     console.log(data);
@@ -158,6 +160,8 @@ export class RsPropertyDetailsComponent implements OnInit {
       facingDirection: this.fdv,
       RentPrefer: this.rpv,
       discription: this.propsform.get('Description')?.value,
+      BhkCount:this.BhkCount,
+      floorCount:this.FloorCount
     };
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
@@ -212,15 +216,18 @@ export class RsPropertyDetailsComponent implements OnInit {
     }
     console.log( this.numarray )
   }
+
   ofv: any;
-  
-  onFloorv(a: any) {
+  FloorCount:any;
+
+  onFloorv(a: any,count:any) {
     if ('Groud Floor') {
       this.ofv = 'Ground Floor';
-    
+      this.FloorCount=count;
     }
  if (a != 'Groud Floor'){
     this.ofv = a + ' Floors';
+    this.FloorCount=count;
     console.log(this.ofv);
  }
   }
@@ -231,10 +238,11 @@ export class RsPropertyDetailsComponent implements OnInit {
   }
 
   bhkv: any;
-
-  bhktyev(a: any) {
+  BhkCount:any;
+  bhktyev(a: any,count:any) {
     this.bhkv = a;
     console.log(this.bhkv);
+    this.BhkCount = count;
   }
   rpv: any;
 

@@ -45,6 +45,7 @@ export class RrAmentitesComponent implements OnInit {
   
     if(this.service.switchTrF == true){
       this.showami=true;
+      console.log(this.showami,this.service.switchTrF,'show ami')
     }
     
   }
@@ -85,7 +86,8 @@ export class RrAmentitesComponent implements OnInit {
       bathRoom:this.barv,
       balCony:this.balv,
       Amenities:this.SelectedAmenities,
-      routeLink:this.routerlink
+      routeLink:this.routerlink,
+      BathCount:this.bathroomCount
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{
@@ -112,7 +114,7 @@ export class RrAmentitesComponent implements OnInit {
         this.final=res.final;
         this.SelectedAmenities= res.Amenities;
         if(res.final ){
-          console.log('dsfsdf')
+          console.log('dsfsdf',res.final,'show ami')
           this.showami =true;
         }
       this.myform.patchValue({
@@ -144,9 +146,11 @@ export class RrAmentitesComponent implements OnInit {
   }
   brv: any;
 
-  bathrv(a: any) {
+  bathroomCount:any;
+  bathrv(a: any,count:any) {
     this.brv = a;
     console.log(this.brv);
+    this.bathroomCount=count;
     // this.myform.get('bathRoomCount').setValue(a);
   }
   btv: any;
@@ -290,6 +294,7 @@ export class RrAmentitesComponent implements OnInit {
       bathRoom:this.barv,
       balCony:this.balv,
       Amenities:this.SelectedAmenities,
+      BathCount:this.bathroomCount
 
     }
     this.service.formput(this.id,data).subscribe((res:any)=>{})

@@ -153,7 +153,7 @@ export class RrRentalDetailsComponent implements OnInit{
     var data={
 
       rentDetails:this.switch,
-      depositeAmount:this.leaseform.get('LExpectedDeposit').value,
+      MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
       depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
       squareFT:this.Lmainmon,
@@ -209,7 +209,7 @@ export class RrRentalDetailsComponent implements OnInit{
           var ldata={
 
             rentDetails:this.switch,
-            depositeAmount:this.leaseform.get('LExpectedDeposit').value,
+            MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
             depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
             maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
             squareFT:this.Lmainmon,

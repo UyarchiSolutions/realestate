@@ -52,10 +52,18 @@ export class HomeComponent implements OnInit {
   addressArray:any[]=[];
   localities:any[]=[];
   zoom=10;
- 
+  areaSend:any=[];
 
-  handleAddressChange(address: Address) {
-      console.log(address);
+  handleAddressChange(address: Address,input:any) {
+
+    let Showvalue = input.value;
+   let  Sendvalue = Showvalue.split(',').join('-');
+    this.area.push(Showvalue);
+    console.log(this.area,'show address');
+    this.areaSend.push(Sendvalue)
+    console.log(this.areaSend,'show address');
+
+  
       this.BuyerAddres = address.formatted_address;
       this.Resform.patchValue({
         BuyerAddres: this.BuyerAddres,
@@ -67,41 +75,42 @@ export class HomeComponent implements OnInit {
 
   
 
-   this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-    console.log(res)
+  //  this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
+  //   console.log(res)
      
      
-      let address = res[0].address_components;
-      let area = address.find((component:any) =>{ 
-        if( component.types.includes('locality')){
+  //     let address = res[0].address_components;
+  //     let area = address.find((component:any) =>{ 
+  //       if( component.types.includes('locality')){
 
-          console.log(component.types.includes('locality'),'locality');
+  //         console.log(component.types.includes('locality'),'locality');
 
-        return component.types.includes('locality')}
+  //       return component.types.includes('locality')}
 
-        if( component.types.includes('sublocality_level_1')){
+  //       if( component.types.includes('sublocality_level_1')){
 
-          console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+  //         console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
 
-        return component.types.includes('sublocality_level_1')}
+  //       return component.types.includes('sublocality_level_1')}
      
-      }
-      ).long_name; 
-      console.log(area);
-      this.area.push(area);
-      this.service.GAreaArr = this.area;
-      console.log(this.area,'area arry')
+  //     }
+  //     ).long_name; 
+  //     console.log(area);
+     
+  //     this.service.GAreaArr = this.area;
+  //     console.log(this.area,'area arry')
 
-     let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-      console.log(city);
-      this.city= city; 
+  //    let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
+  //     console.log(city);
+  //     this.city= city; 
 
-      this.Resform.get('BuyerAddres').reset();
+  //    
+  //     this.Resform.setValue({
+  //       BuyerAddres: this.BuyerAddres,
+  //    })
+  //   }) 
+  this.Resform.get('BuyerAddres').reset();
 
-      this.Resform.setValue({
-        BuyerAddres: this.BuyerAddres,
-     })
-    }) 
     console.log(this.Resform.get('BuyerAddres')?.value,'buyer address')
     
      
@@ -112,6 +121,7 @@ export class HomeComponent implements OnInit {
   ChandleAddressChange(address: Address,) {
 
     this.BuyerAddres = address.formatted_address;
+
     this.Comform.patchValue({
       BuyerAddres: this.BuyerAddres,
    })
@@ -177,7 +187,7 @@ export class HomeComponent implements OnInit {
       type:this.Resform.get('type')?.value,
       propertType:this.Resform.get('PropertyType')?.value,
       BHKType:this.Resform.get('BHK')?.value,
-      area:this.area,
+      area:this.areaSend,
     }
    
       var queryString = new URLSearchParams(data).toString();

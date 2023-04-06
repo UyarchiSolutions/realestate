@@ -189,37 +189,37 @@
     
                   <ul class="dropdown-menu select-filed-options">
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('1RK')">1RK</a>
+                      <a class="dropdown-item" (click)="bhktyev('1 RK',0)">1 RK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('1 BHK')">1 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('1 BHK',1)">1 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('2 BHK')">2 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('2 BHK',2)">2 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('3 BHK')">3 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('3 BHK',3)">3 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('4 BHK')">4 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('4 BHK',4)">4 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('5 BHK')">5 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('5 BHK',5)">5 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('6 BHK')">6 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('6 BHK',6)">6 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('7 BHK')">7 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('7 BHK',7)">7 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('8 BHK')">8 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('8 BHK',8)">8 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('9 BHK')">9 BHK</a>
+                      <a class="dropdown-item" (click)="bhktyev('9 BHK',9)">9 BHK</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="bhktyev('10+ BHK')"
+                      <a class="dropdown-item" (click)="bhktyev('10+ BHK',10)"
                         >10 BHK</a
                       >
                     </li>
@@ -269,9 +269,9 @@
                   
   
                   <ul class="dropdown-menu select-filed-options">
-                    <li><a class="dropdown-item" (click)="onFloorv('Groud Floor')" data-bs-toggle="dropdown"
+                    <li><a class="dropdown-item" (click)="onFloorv('Groud Floor',0)" data-bs-toggle="dropdown"
                       aria-expanded="false" >Groud Floor</a></li>
-                    <li *ngFor="let floor of numarray" (click)="onFloorv(floor)" data-bs-toggle="dropdown"
+                    <li *ngFor="let floor of numarray" (click)="onFloorv(floor,floor)" data-bs-toggle="dropdown"
                     aria-expanded="false">{{ floor }} Floors</li>
                   </ul>
                 </div>
