@@ -75,13 +75,13 @@ export class PostPropertyService {
 
     this.checkCookie= this.findCookie();
     if(this.checkCookie) {
-      console.log('from service','auth');
-      return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`, { headers: { auth: Cookie.get('buyer') }});
+      console.log('from service','auth', Cookie.get('buyer'));
+      return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`,{sta:""},{ headers: { auth: Cookie.get('buyer') }});
     }
     
     else{
       console.log('from service','no auth');
-    return this.http.get(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`);
+    return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`,{sta:"tghnhgj"});
     }
   }
   myAcount() {
@@ -97,8 +97,7 @@ export class PostPropertyService {
   }
   userStatusCheck( id:any){
     
-    return this.http.get(this.baseURL + `AddViewed_Data/`+id, { headers: { auth: Cookie.get('buyer') },
-    });
+    return this.http.get(this.baseURL + `AddViewed_Data/`+id, { headers: { auth: Cookie.get('buyer') }});
   }
   findCookie() {
     let cookies = document.cookie.split(';');
@@ -116,5 +115,11 @@ export class PostPropertyService {
   }
   save(id:any){
     return this.http.get(this.baseURL + 'WhishList/'+id,{ headers: { auth: Cookie.get('buyer') }});
+  }
+  RecentSearch(data:any){
+    return this.http.post('https://uyarchicrm.click/v1/RecentSearch',data,{ headers: { auth: Cookie.get('buyer') }} );
+  }
+  RecentSearchGet(){
+    return this.http.get('https://uyarchicrm.click/v1/RecentSearch/Recentlysearched',{ headers: { auth: Cookie.get('buyer') }} );
   }
 }

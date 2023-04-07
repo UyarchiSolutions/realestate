@@ -17,8 +17,7 @@ export class RbHomeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: PostPropertyService,
-    private buyerService:BuyerService
-    
+    private buyerService: BuyerService
   ) {}
   range = 10;
   page = 0;
@@ -26,114 +25,172 @@ export class RbHomeComponent implements OnInit {
 
   pagetotal = 0;
   totalcount = 0;
-  areaArr:any=[];
-  formatAdd: any='';
+  areaArr: any = [];
+  formatAdd: any = '';
   data: any;
   type: any;
-  propertType: any=[];
-  BHKType: any=[];
+  propertType: any = [];
+  BHKType: any = [];
+  showOnlyType:any=[];
+  furType:any=[];
+  tentType:any=[];
+  propageType:any=[];
+  bathType:any=[];
+  parkType:any=[];
+
+  SelectedFilters: any = [];
+  FbhkArr: any = [];
+  proptArr: any = [];
+  bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
+  bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
+  FbathArr: any = [];
+  bathtypeShow:any=[];
+  bathCountArr: any = [];
+  ShowOnlyArr: any = [];
+  FurArr: any = [];
+  ParkArr: any = [];
+  TentArr: any = [];
+  PropAgeArr: any = [];
+  RecentSearchArr: any = [];
+  dommy: any = [];
+  LoopItArr: any = [];
+  BhkCountArr: any = [];
+  BhkTypeShow:any=[];
 
   filter: any = this.fb.group({
     propertType: new FormControl(''),
-    buildupFrom:new FormControl(0),
-    buildupTo:new FormControl(10000),
-    priceFrom:new FormControl(5000),
-    priceTo:new FormControl(100000),
-    search:new FormControl(),
- 
- 
+    buildupFrom: new FormControl(0),
+    buildupTo: new FormControl(10000),
+    priceFrom: new FormControl(5000),
+    priceTo: new FormControl(100000),
+    search: new FormControl(),
   });
- 
+
   ngOnInit(): void {
-    this.Get_all_interest(); 
-    this.Get_all_saved()
-    this.arouter.queryParamMap.subscribe((params:any) => {
+    this.Get_all_interest();
+    this.Get_all_saved();
+    this.FetchRecentSearch();
+
+    this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
-      if( params.params.formatAdd != null ){
-      //console.log(params);
-      this.formatAdd =params.params.formatAdd;
-      this.type =params.params['type'];
-      this.propertType = params.params['propertType'] !=null && params.params['propertType'] !='' ? params.params['propertType'].split(',') :[];
-      this.BHKType = params.params['BHKType'] !=null && params.params['BHKType'] !='' ? params.params['BHKType'].split(',') :[];
-      this.areaArr =  params.params['area'] !=null && params.params['area'] !='' ? params.params['area'].replace(/-/g, ' ').split(',') :[];
-      //console.log(this.areaArr,this.areaArr.length);
-      // for(let i=0;)
+      if (params.params.formatAdd != null) {
+        console.log(params);
+        this.formatAdd = params.params.formatAdd;
+        this.type = params.params['type'];
+        this.propertType =
+          params.params['propertType'] != null &&
+          params.params['propertType'] != ''
+            ? params.params['propertType'].split(',')  : [];
+        this.BHKType =
+          params.params['BHKType'] != null && params.params['BHKType'] != ''
+            ? params.params['BHKType'].split(',') : [];
+        this.areaArr =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area'].replace(/-/g, ' ').split(','): [];
+        //console.log(this.areaArr,this.areaArr.length);
+        // for(let i=0;)
 
+        this.showOnlyType =
+          params.params['rentDetails'] != null &&
+          params.params['rentDetails'] != ''
+            ? params.params['rentDetails'].split(','): [];
+        this.furType =
+          params.params['furnishing'] != null &&
+          params.params['furnishing'] != ''
+            ? params.params['furnishing'].split(',') : [];
+        this.tentType =
+          params.params['rentprefer'] != null &&
+          params.params['rentprefer'] != ''
+            ? params.params['rentprefer'].split(',')  : [];
+        this.propageType =
+          params.params['propAge'] != null && params.params['propAge'] != ''
+            ? params.params['propAge'].split(',')  : [];
+        this.bathType =
+          params.params['bathroom'] != null && params.params['bathroom'] != ''
+            ? params.params['bathroom'].split(',')  : [];
+        this.parkType =
+          params.params['parking'] != null && params.params['parking'] != ''
+            ? params.params['parking'].split(',')  : [];
+          
+     
+        // this.areaArr =this.areaArr.split(',');
+        //console.log(this.propertType,this.BHKType,'gfgbgfh');
+        if(!(this.BHKType == '' && this.BHKType == null)){
+          this.BHKType.forEach((a:any)=>{
+            this.BhkTypeShow.push(this.bhkArr[a]);
+            // console.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
+          })}
+        if(!(this.bathType == '' && this.bathType == null)){
+          this.bathType.forEach((a:any)=>{
+            this.bathtypeShow.push(this.bathArr[a]);
+            // console.log(this.bathType,'final bath',this.bathArr[a])
+          })}
+        this.SelectedFilters = [
+          ...this.propertType,
+          ...this.BhkTypeShow,
+          ...this.showOnlyType,
+          ...this.furType,
+          ...this.tentType,
+          ...this.propageType,
+          ...this.bathtypeShow,
+          ...this.parkType
       
-      this.ShowOnlyArr=params.params['rentDetails'] !=null && params.params['rentDetails'] !='' ? params.params['rentDetails'].split(',') :[];
-      this.FurArr=params.params['furnishing'] !=null && params.params['furnishing'] !='' ? params.params['furnishing'].split(',') :[];
-      this.TentArr=params.params['rentprefer'] !=null && params.params['rentprefer'] !='' ? params.params['rentprefer'].split(',') :[];
-      this.PropAgeArr=params.params['propAge'] !=null && params.params['propAge'] !='' ? params.params['propAge'].split(',') :[];
-      this.FbathArr=params.params['bathroom'] !=null && params.params['bathroom'] !='' ? params.params['bathroom'].split(',') :[];
-      // this.areaArr =this.areaArr.split(',');
-      //console.log(this.propertType,this.BHKType,'gfgbgfh');
+        ];
 
-    
-      this.GetDataForFilter();
-    
+        this.proptArr = this.propertType;
+        this.BhkCountArr=this.BHKType;
+        this.bathCountArr=this.bathType;
+        this.ShowOnlyArr=this.showOnlyType;
+        this.FurArr=this.furType;
+        this.ParkArr=this.parkType;
+        this.PropAgeArr=this.propageType;
+        this.TentArr=this.tentType;
+        this.FbhkArr=this.BhkTypeShow
+        this.FbathArr=this.bathtypeShow
+
+        // console.log(this.proptArr,'proppt arry',this.propertType)
+
+        this.SelectedFilters = this.SelectedFilters.filter((e: any) => e != '');
+        console.log(this.SelectedFilters, 234234);
+
+        this.GetDataForFilter();
       }
     });
-    if (this.propertType !=null && this.propertType != '' ) {
-
-      this.proptArr=this.propertType;
-      
-      for (let i = 0; i<this.propertType.length;i++){
-
-      this.SelectedFilters.push(this.propertType[i]);
-      }
-    
-      //console.log(this.SelectedFilters,'selected filters');
-    }
-    if (this.BHKType !=null && this.BHKType != '') {
-      this.SelectedFilters.push(this.BHKType);
-      this.FbhkArr.push(this.BHKType);
-      //console.log(this.FbhkArr, this.SelectedFilters);
-    }
-    // this.areaArr=this.service.GAreaArr
-    //console.log(this.service.AllRecentSearchArr,'from service');
-    if(this.service.AllRecentSearchArr != ''){
-      //console.log(this.RecentSearchArr);
-      this.RecentSearchArr = this.RecentSearchArr;
-    }
+ 
+  
+ 
   }
   sendData: any;
-  totalval:any;
+  totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
-    //console.log('in get data');
-    if (this.sendDataBOOL) {
-      this.sendData = {
-        formatAdd: this.formatAdd,
-        type: this.type,
-        propertType: this.propertType,
-        BHKType: this.BHKType,
-      };
-    } else {
-      this.sendData = {
-        formatAdd: this.formatAdd,
-        type: this.type,
-        propertType: this.proptArr,
-        BHKType: this.BHKType,
-        rentDetails: this.ShowOnlyArr,
-        furnishing: this.FurArr,
-        parking: this.ParkArr,
-        rentprefer: this.TentArr,
-        propAge: this.PropAgeArr,
-        bathroom:this.FbathArr,
-        buildupfrom:this.filter.get('buildupFrom')?.value,
-        buildupto:this.filter.get('buildupTo')?.value,
-        priceFrom:this.filter.get('priceFrom')?.value,
-        priceTo:this.filter.get('priceTo')?.value,
-      };
-    }
 
-    //console.log(this.sendData,'senddatabool',this.sendDataBOOL);
+   
+    this.sendData = {
+      formatAdd: this.formatAdd,
+      type: this.type,
+      propertType: this.propertType,
+      BHKType: this.BHKType,
+      rentDetails: this.showOnlyType,
+      furnishing: this.furType,
+      parking: this.parkType,
+      rentprefer: this.tentType,
+      propAge: this.propageType,
+      bathroom: this.bathType,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
+    };
+    
+
+   
     this.service
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
-        console.log(res,'data from backend');
+        console.log(res, 'data from backend');
         this.data = res.values;
-         this.totalval=res.total;
+        this.totalval = res.total;
         //console.log(this.data, 'data');
 
         if (this.page == 0) {
@@ -147,57 +204,15 @@ export class RbHomeComponent implements OnInit {
         }
         this.sendDataBOOL = false;
       });
+      console.log(this.sendData,'updated');
+      this.bathtypeShow=[];
+      this.BhkTypeShow=[];
   }
-  SelectedFilters: any = [];
-  FbhkArr: any = [];
-  proptArr: any = [];
-  bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
-  bathArr:any=['1 Bathroom','2 Bathroom','3 Bathroom','4+ Bathroom'];
-  FbathArr:any=[];
-  bathCountArr:any=[];
-  ShowOnlyArr: any = [];
-  FurArr: any = [];
-  ParkArr: any = [];
-  TentArr: any = [];
-  PropAgeArr: any = [];
-  RecentSearchArr: any = [];
-  dommy: any = [];
-  LoopItArr: any = [];
-  BhkCountArr:any=[];
-  onChange(e:any){
+ 
+  onChange(e: any) {
     this.type = e.target.value;
   }
-//   updateBhk(v:any){
-//     if (v.target.checked) {
-//       var val = v.target.value;
-//       this.SelectedFilters.push(val);
-//     } else {
-//       let index = this.SelectedFilters.findIndex(
-//         (res: any) => res == v.target.value
-//       );
-//   }
-//   this.FbhkArr.push(v.target.value);
-//   this.sendData = {
-//     formatAdd: this.formatAdd,
-//     type: this.type,
-//     propertType: this.proptArr,
-//     BHKType: this.FbhkArr,
-//     rentDetails: this.ShowOnlyArr,
-//     furnishing: this.FurArr,
-//     parking: this.ParkArr,
-//     rentprefer: this.TentArr,
-//     propAge: this.PropAgeArr,
-//   };
-//   //console.log(this.ShowOnlyArr);
-//   this.service
-//     .getSellerDetails(this.page, this.range, this.sendData)
-//     .subscribe((res: any) => {
-//       this.data = res.values;
-//       let query = new URLSearchParams(this.sendData).toString();
-//       this.router.navigateByUrl('/buyer-residential-rent-view?' + query );
-//       //console.log(this.data, 'data');
-//     });
-// }
+ 
   updateFilter(v: any) {
     if (v.target.checked) {
       var val = v.target.value;
@@ -233,12 +248,18 @@ export class RbHomeComponent implements OnInit {
     }
 
     //bhk arr
-    if ( this.bhkArr.findIndex((res: any) => {return res == v.target.value;}) != -1) {
+    if (
+      this.bhkArr.findIndex((res: any) => {
+        return res == v.target.value;
+      }) != -1
+    ) {
+      let index = this.bhkArr.indexOf(v.target.value);
 
-      let index=this.bhkArr. indexOf(v.target.value);
-      
-      if (this.FbhkArr.findIndex((res: any) => {return res == v.target.value;}) == -1 ) {
-
+      if (
+        this.FbhkArr.findIndex((res: any) => {
+          return res == v.target.value;
+        }) == -1
+      ) {
         this.FbhkArr.push(v.target.value);
         this.BhkCountArr.push(index);
         //console.log(this.BhkCountArr,'bhk count')
@@ -247,27 +268,35 @@ export class RbHomeComponent implements OnInit {
         let index = this.FbhkArr.findIndex((res: any) => res == v.target.value);
 
         this.FbhkArr.splice(index, 1);
-        this.BhkCountArr.splice(index,1);
+        this.BhkCountArr.splice(index, 1);
         //console.log(this.BhkCountArr,'bhk count')
         //console.log('f bhk removed', this.FbhkArr);
       }
     }
     //bathroom arr
-    if ( this.bathArr.findIndex((res: any) => {return res == v.target.value;}) != -1) {
+    if (
+      this.bathArr.findIndex((res: any) => {
+        return res == v.target.value;
+      }) != -1
+    ) {
+      let index = this.bathArr.indexOf(v.target.value);
 
-      let index=this.bathArr. indexOf(v.target.value);
-      
-      if (this.FbathArr.findIndex((res: any) => {return res == v.target.value;}) == -1 ) {
-
+      if (
+        this.FbathArr.findIndex((res: any) => {
+          return res == v.target.value;
+        }) == -1
+      ) {
         this.FbathArr.push(v.target.value);
         this.bathCountArr.push(index);
         //console.log(this.bathCountArr,'bhk count')
         //console.log(this.FbathArr, 'final bhk arr');
       } else {
-        let index = this.FbathArr.findIndex((res: any) => res == v.target.value);
+        let index = this.FbathArr.findIndex(
+          (res: any) => res == v.target.value
+        );
 
         this.FbathArr.splice(index, 1);
-        this.bathCountArr.splice(index,1);
+        this.bathCountArr.splice(index, 1);
         //console.log(this.bathCountArr,'bhk count')
         //console.log('f bhk removed', this.FbathArr);
       }
@@ -368,12 +397,15 @@ export class RbHomeComponent implements OnInit {
       parking: this.ParkArr,
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
-      bathroom:this.bathCountArr,
+      bathroom: this.bathCountArr,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
     };
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
-        this.router.navigateByUrl('/buyer-residential-rent-view?' + query );
-   
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
 
   deleteFilter(v: any) {
@@ -385,30 +417,22 @@ export class RbHomeComponent implements OnInit {
     //console.log('deleted', this.SelectedFilters);
 
     //bhk arr
-    if (
-      this.FbhkArr.findIndex((res: any) => {
-        return res == v;
-      }) > -1
-    ) {
+    if (this.FbhkArr.findIndex((res: any) => { return res == v; }) > -1 ) {
       //console.log(this.FbhkArr, 'sfsdf');
       let index = this.FbhkArr.findIndex((res: any) => {
         res == v;
       });
       this.FbhkArr.splice(index, 1);
-      this.BhkCountArr.splice(index,1);
+      this.BhkCountArr.splice(index, 1);
     }
     //bath arr
-    if (
-      this.FbathArr.findIndex((res: any) => {
-        return res == v;
-      }) > -1
-    ) {
+    if (this.FbathArr.findIndex((res: any) => {return res == v; }) > -1 ){
       //console.log(this.FbathArr, 'sfsdf');
       let index = this.FbathArr.findIndex((res: any) => {
         res == v;
       });
       this.FbathArr.splice(index, 1);
-      this.bathCountArr.splice(index,1);
+      this.bathCountArr.splice(index, 1);
     }
 
     //prop arr
@@ -471,11 +495,14 @@ export class RbHomeComponent implements OnInit {
       parking: this.ParkArr,
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
-      bathroom:this.bathCountArr,
+      bathroom: this.bathCountArr,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
     };
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query );
-    
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
 
   is_chckked(val: any, filter: any) {
@@ -492,7 +519,7 @@ export class RbHomeComponent implements OnInit {
     }
   }
   latitude: any;
-  Address:any=[];
+  Address: any = [];
   longtitude: any;
   area: any;
   city: any;
@@ -500,96 +527,91 @@ export class RbHomeComponent implements OnInit {
     //console.log(input.value);
     this.formatAdd = input.value;
     this.areaArr.push(input.value);
-    input.value='';
-    this.filter.get('search').reset();
-
-     this.latitude = address.geometry.location.lat();
-     this.longtitude = address.geometry.location.lng();
-
-     this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-      //console.log(res)
-
+    
    
 
-    this.Address = res[0].address_components;
-    //console.log(this.Address)
+    this.latitude = address.geometry.location.lat();
+    this.longtitude = address.geometry.location.lng();
 
-    //console.log( res,'zxczc',input.value)
+    this.service
+      .getAddress(this.latitude, this.longtitude)
+      .subscribe((res: any) => {
+        //console.log(res)
 
-      let area = this.Address.find((component:any) =>{
-        if( component.types.includes('locality')){
+        this.Address = res[0].address_components;
+        //console.log(this.Address)
 
-          //console.log(component.types.includes('locality'),'locality');
+        //console.log( res,'zxczc',input.value)
 
-        return component.types.includes('locality')}
+        let area = this.Address.find((component: any) => {
+          if (component.types.includes('locality')) {
+            //console.log(component.types.includes('locality'),'locality');
 
-        if( component.types.includes('sublocality_level_1')){
+            return component.types.includes('locality');
+          }
 
-          //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+          if (component.types.includes('sublocality_level_1')) {
+            //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
 
-        return component.types.includes('sublocality_level_1')}
+            return component.types.includes('sublocality_level_1');
+          }
+        }).long_name;
+        //console.log(area);
 
-      }
-      ).long_name;
-      //console.log(area);
-     
-
-    //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-    //   //console.log(city);
-    //   this.city= city;
-
-      })
-      // input.value = '';
+        //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
+        //   //console.log(city);
+        //   this.city= city;
+      });
+    // input.value = '';
   }
-  submitAddress() {
-    const formatAdd = this.formatAdd;
-    const type = this.type;
-    const propertType = this.proptArr;
-    const BHKType = this.BhkCountArr;
-    const rentDetails = this.ShowOnlyArr;
-    const furnishing = this.FurArr;
-    const parking = this.ParkArr;
-    const rentprefer = this.TentArr;
-    const propAge = this.PropAgeArr;
-    this.sendData = {
+  sendRecentSearch(){
+
+    let data={
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.proptArr,
-      BHKType: this.BHKType,
+      BHKType: this.BhkCountArr,
       rentDetails: this.ShowOnlyArr,
       furnishing: this.FurArr,
       parking: this.ParkArr,
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
-      bathroom:this.FbathArr,
-      buildupfrom:this.filter.get('buildupFrom')?.value,
-      buildupto:this.filter.get('buildupTo')?.value,
-      priceFrom:this.filter.get('priceFrom')?.value,
-      priceTo:this.filter.get('priceTo')?.value,
-    };
-    const sendData: any = {
-      formatAdd: formatAdd,
-      type: type,
-      propertType:[...propertType],
-      BHKType: [...BHKType],
-      rentDetails: [...rentDetails],
-      furnishing:[...furnishing],
-      parking: [...parking],
-      rentprefer: [...rentprefer],
-      propAge: [...propAge],
-      selected:[...this.SelectedFilters]
-    };
-    
-  this.RecentSearchArr.push(sendData);
+      bathroom: this.bathCountArr,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
+      selected:this.SelectedFilters
 
-    //console.log( 'recent search array', this.RecentSearchArr);
-    //console.log(this.sendData);
+    }
+    this.service.RecentSearch(data).subscribe((res:any)=>{
+      console.log(res,'recent search')
+    })
+  }
+  submitAddress() {
+    this.sendRecentSearch()
+    this.sendData = {
+      formatAdd: this.formatAdd,
+      type: this.type,
+      propertType: this.proptArr,
+      BHKType: this.BhkCountArr,
+      rentDetails: this.ShowOnlyArr,
+      furnishing: this.FurArr,
+      parking: this.ParkArr,
+      rentprefer: this.TentArr,
+      propAge: this.PropAgeArr,
+      bathroom: this.bathCountArr,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
+    };
     this.service
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
-        //console.log(res);
+      
         this.data = res.values;
-        //console.log(this.data, 'data');
+        this.FetchRecentSearch();
 
         if (this.page == 0) {
           let page = res.total / (this.page + 1);
@@ -606,74 +628,68 @@ export class RbHomeComponent implements OnInit {
   options: any = {
     componentRestrictions: { country: 'IN' },
   };
-  checkCookie:any;
+  checkCookie: any;
 
-  GetDataBYId(id: any,i:any) {
+  GetDataBYId(id: any, i: any) {
+    this.checkCookie = this.service.findCookie();
+    if (this.checkCookie) {
+      this.service.userStatusCheck(id).subscribe((res: any) => {
+        console.log(res, 'view res');
 
+        let oneid = {
+          id: id,
+          index: i,
+          formatAdd: this.formatAdd,
+          type: this.type,
+          propertType: this.proptArr,
+          BHKType: this.BhkCountArr,
+          rentDetails: this.ShowOnlyArr,
+          furnishing: this.FurArr,
+          parking: this.ParkArr,
+          rentprefer: this.TentArr,
+          propAge: this.PropAgeArr,
+        };
 
-    this.checkCookie= this.service.findCookie();    
-    if(  this.checkCookie){
-    this.service.userStatusCheck(id).subscribe((res:any)=>{
-      //console.log(res);
-      
-      let oneid={
-        id:id,
-        index:i,
-        formatAdd: this.formatAdd,
-        type: this.type,
-        propertType: this.proptArr,
-        BHKType: this.BhkCountArr,
-        rentDetails: this.ShowOnlyArr,
-        furnishing: this.FurArr,
-        parking: this.ParkArr,
-        rentprefer: this.TentArr,
-        propAge: this.PropAgeArr,
-
-      }
-   
-    this.service.Alldata=this.sendData;
-    this.service.AllRecentSearchArr=this.RecentSearchArr;
-    //console.log(this.service.AllRecentSearchArr,'service')
-   
-    const query = new URLSearchParams(oneid).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-search-view?'+ query);
-    })
-  }
-  else{
-     //console.log('route to login')
-    this.router.navigateByUrl('buyerLogin')
-  }
-
-        
+        this.service.Alldata = this.sendData;
+       
+        const query = new URLSearchParams(oneid).toString();
+        this.router.navigateByUrl(
+          '/buyer-residential-rent-search-view?' + query
+        );
+      });
+    } else {
+      //console.log('route to login')
+      this.router.navigateByUrl('buyerLogin');
+    }
   }
   GetRecentSearch(index: any) {
    
-   
-
-    // //console.log(this.RecentSearchArr[index], 'recent get by index',index);
 
     let v = this.RecentSearchArr[index];
+    console.log(v,'get recent search', this.RecentSearchArr[index].buildupto)
 
     this.SelectedFilters = this.RecentSearchArr[index].selected;
     this.proptArr = this.RecentSearchArr[index].propertType;
-    this.FbhkArr =this.RecentSearchArr[index].BHKType;
-    this.ShowOnlyArr=this.RecentSearchArr[index].rentDetails;
-    this.FurArr=this.RecentSearchArr[index].furnishing;
-    this.ParkArr=this.RecentSearchArr[index].parking;
-    this.TentArr=this.RecentSearchArr[index].rentprefer;
-    this.PropAgeArr=this.RecentSearchArr[index].propAge;
-    this.formatAdd=this.RecentSearchArr[index].formatAdd;
+    this.BhkCountArr = this.RecentSearchArr[index].BHKType;
+    this.ShowOnlyArr = this.RecentSearchArr[index].rentDetails;
+    this.FurArr = this.RecentSearchArr[index].furnishing;
+    this.ParkArr = this.RecentSearchArr[index].parking;
+    this.TentArr = this.RecentSearchArr[index].rentprefer;
+    this.PropAgeArr = this.RecentSearchArr[index].propAge;
+    this.formatAdd = this.RecentSearchArr[index].formatAdd;
+    this.bathCountArr = this.RecentSearchArr[index].bathroom;
+    this.filter.get('buildupFrom').patchValue( this.RecentSearchArr[index].buildupfrom);
+    this.filter.get('buildupTo').patchValue( this.RecentSearchArr[index].buildupto);
+    this.filter.get('priceFrom').patchValue( this.RecentSearchArr[index].priceFrom);
+    this.filter.get('priceTo').patchValue( this.RecentSearchArr[index].priceTo);
     
-    // //console.log(
-    //   this.RecentSearchArr[index].SelectedFilters,
-    //   'filter of reacent', this.SelectedFilters);
 
     this.service
       .getSellerDetails(this.page, this.range, v)
       .subscribe((res: any) => {
-        //console.log(res);
+      
         this.data = res.values;
-        //console.log(this.data, 'data');
+
       });
   }
 
@@ -712,19 +728,27 @@ export class RbHomeComponent implements OnInit {
     this.ParkArr = [''];
     this.TentArr = [''];
     this.PropAgeArr = [''];
+    this.bathCountArr=[''];
+    this.FbathArr=[''];
+    this.BhkCountArr=[''];
 
     this.sendData = {
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.proptArr,
-      BHKType: this.FbhkArr,
+      BHKType: this.BhkCountArr,
       rentDetails: this.ShowOnlyArr,
       furnishing: this.FurArr,
       parking: this.ParkArr,
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
+      bathroom: this.bathCountArr,
+      buildupfrom: this.filter.get('buildupFrom')?.value,
+      buildupto: this.filter.get('buildupTo')?.value,
+      priceFrom: this.filter.get('priceFrom')?.value,
+      priceTo: this.filter.get('priceTo')?.value,
     };
-   
+
     this.service
       .getSellerDetails(this.page, this.range, this.sendData)
       .subscribe((res: any) => {
@@ -732,116 +756,125 @@ export class RbHomeComponent implements OnInit {
         //console.log(this.data, 'data');
       });
   }
-  removeArea(i:any){
+  removeArea(i: any) {
     //console.log(i);
-    this.areaArr.splice(i,1);
- 
+    this.areaArr.splice(i, 1);
+
     //console.log(this.areaArr,'area arry');
-   
   }
-  logOut(){
+  logOut() {
     sessionStorage.clear();
     localStorage.clear();
     Cookie.delete('buyer');
-   
+
     this.router.navigateByUrl('/');
   }
-  changepassword(){
+  changepassword() {
     this.router.navigateByUrl('/changepassword-buyer');
   }
-  postshow=true;
-  interestShow=false;
-  saveShow=false;
-  alertShow=false;
-  showTab(tab:any){
-    if(tab == 'post'){
-      this.postshow=true;
-      this.interestShow=false;
-      this.saveShow=false;
-      this.alertShow=false;
+  postshow = true;
+  interestShow = false;
+  saveShow = false;
+  alertShow = false;
+  showTab(tab: any) {
+    if (tab == 'post') {
+      this.postshow = true;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
     }
-    if(tab == 'interest'){
-      this.postshow=false;
-      this.interestShow=true;
-      this.saveShow=false;
-      this.alertShow=false;
+    if (tab == 'interest') {
+      this.postshow = false;
+      this.interestShow = true;
+      this.saveShow = false;
+      this.alertShow = false;
     }
-    if(tab == 'save'){
-      this.postshow=false;
-      this.interestShow=false;
-      this.saveShow=true;
-      this.alertShow=false;
-    }
-  }
-  RBtab=true;
-  RRtab=false;
-  CBtab=false;
-  CRtab=false;
-  interestTab(tab:any){
-    if(tab=='RB'){
-      this.RBtab=true;
-      this.RRtab=false;
-      this.CBtab=false;
-      this.CRtab=false;
-    }
-    if(tab=='RR'){
-      this.RBtab=false;
-      this.RRtab=true;
-      this.CBtab=false;
-      this.CRtab=false;
-    }
-    if(tab=='CB'){
-      this.RBtab=false;
-      this.RRtab=false;
-      this.CBtab=true;
-      this.CRtab=false;
-    }
-    if(tab=='CR'){
-      this.RBtab=false;
-      this.RRtab=false;
-      this.CBtab=false;
-      this.CRtab=true;
+    if (tab == 'save') {
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = true;
+      this.alertShow = false;
     }
   }
-  save(tab:any){
-    if(tab=='RB'){
-      this.RBtab=true;
-      this.RRtab=false;
-      this.CBtab=false;
-      this.CRtab=false;
+  RBtab = true;
+  RRtab = false;
+  CBtab = false;
+  CRtab = false;
+  interestTab(tab: any) {
+    if (tab == 'RB') {
+      this.RBtab = true;
+      this.RRtab = false;
+      this.CBtab = false;
+      this.CRtab = false;
     }
-    if(tab=='RR'){
-      this.RBtab=false;
-      this.RRtab=true;
-      this.CBtab=false;
-      this.CRtab=false;
+    if (tab == 'RR') {
+      this.RBtab = false;
+      this.RRtab = true;
+      this.CBtab = false;
+      this.CRtab = false;
     }
-    if(tab=='CB'){
-      this.RBtab=false;
-      this.RRtab=false;
-      this.CBtab=true;
-      this.CRtab=false;
+    if (tab == 'CB') {
+      this.RBtab = false;
+      this.RRtab = false;
+      this.CBtab = true;
+      this.CRtab = false;
     }
-    if(tab=='CR'){
-      this.RBtab=false;
-      this.RRtab=false;
-      this.CBtab=false;
-      this.CRtab=true;
+    if (tab == 'CR') {
+      this.RBtab = false;
+      this.RRtab = false;
+      this.CBtab = false;
+      this.CRtab = true;
     }
   }
-  AllInterested:any;
-  Get_all_interest(){
-    this.buyerService.getAll_Interested().subscribe((res:any)=>{
+  save(tab: any) {
+    if (tab == 'RB') {
+      this.RBtab = true;
+      this.RRtab = false;
+      this.CBtab = false;
+      this.CRtab = false;
+    }
+    if (tab == 'RR') {
+      this.RBtab = false;
+      this.RRtab = true;
+      this.CBtab = false;
+      this.CRtab = false;
+    }
+    if (tab == 'CB') {
+      this.RBtab = false;
+      this.RRtab = false;
+      this.CBtab = true;
+      this.CRtab = false;
+    }
+    if (tab == 'CR') {
+      this.RBtab = false;
+      this.RRtab = false;
+      this.CBtab = false;
+      this.CRtab = true;
+    }
+  }
+  AllInterested: any;
+  Get_all_interest() {
+    this.buyerService.getAll_Interested().subscribe((res: any) => {
       //console.log(res,'all interest')
-      this.AllInterested=res;
-    })
+      this.AllInterested = res;
+    });
   }
-  AllSaved:any;
+  AllSaved: any;
 
-  Get_all_saved(){
-    this.buyerService.getAll_saved().subscribe((res:any)=>{
+  Get_all_saved() {
+    this.buyerService.getAll_saved().subscribe((res: any) => {
       //console.log(res,'all saved')
-      this.AllSaved=res;
+      this.AllSaved = res;
+    });
+  }
+  show_top=false;
+  viewtop(){
+    this.show_top= !this.show_top
+  }
+  FetchRecentSearch(){
+    this.service.RecentSearchGet().subscribe((res:any)=>{
+      console.log(res,'recent search');
+      this.RecentSearchArr = res;
     })
   }
 }

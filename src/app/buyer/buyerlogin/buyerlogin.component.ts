@@ -48,7 +48,7 @@ export class BuyerloginComponent {
       this.buyerService.Submit(this.loginForm.value).subscribe((res: any) => {
         this.emailSubmit = false;
         this.setCookie(res.token.access.token);
-        this.route.navigate(['/buyer-residential-rent-view'])
+        this.route.navigate(['/'])
       }, error => {
         if (error.error.status != 401) {
 

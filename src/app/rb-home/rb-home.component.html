@@ -52,7 +52,7 @@
 <div class="main" style="background-color: white;">
 
     <div class="search-type">
-        <div class="search-type-select">
+        <div class="search-type-select" (click)="viewtop()">
             <p>Residential>Rent</p>
             <svg width="7" height="15" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.25 1.5L8.75 9L1.25 16.5" stroke="#616161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,7 +60,7 @@
                 
         </div>
         <div class="rc-select">
-<div class="residential">
+<div class="residential" *ngIf="show_top">
     <label>Residential :</label>
     <div>
         <div>
@@ -69,7 +69,7 @@
         <input type="radio"  name="type" [checked]="type == 'Rent'" value="Rent" (change)="onChange($event)"><p>Rent</p></div>
     </div>
 </div>
-<div class="commercial">
+<div class="commercial" *ngIf="show_top">
     <label>Commercial :</label>
     <div>
         <div>
@@ -101,7 +101,7 @@
     </div>
 </div>
 
-<div class="nearby-locations">
+<div class="nearby-locations" *ngIf="areaArr">
     <label>Nearby Localities :</label>
     <div class="locality">
     
@@ -307,6 +307,11 @@
                     </a>
                   
                     <ul class="dropdown-menu">
+                        <li>  <section class="containe">
+                            <section class="slider-track"></section>
+                            <input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
+                            <input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
+                        </section></li>
                         <li class="price-range">
                             <input class="from" type="number" placeholder="From" formControlName="buildupFrom" ><p>-
 
@@ -348,7 +353,7 @@
                       
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="Less than Year" [checked]="is_chckked('Less than Year',PropAgeArr)">Less than year</li>
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="1 to 3 Years" [checked]="is_chckked('1 to 3 Years',PropAgeArr)">1 to 3 year<li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="3 to 5 Years" [checked]="is_chckked('3 to 5 Years',PropAgeArr)">3 to 5 year</li>
+                       <input type="checkbox" (change)="updateFilter($event)"  value="3 to 5 Years" [checked]="is_chckked('3 to 5 Years',PropAgeArr)">3 to 5 year</li>
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="5 to 10 Years" [checked]="is_chckked('5 to 10 Years',PropAgeArr)">5 to 10 Year</li>     
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="10+ Years" [checked]="is_chckked('10+ Years',PropAgeArr)">10+ Year</li>        
       
@@ -370,7 +375,7 @@
                       
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="Family" [checked]="is_chckked('Family',TentArr)">Family</li>
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="Bachelor" [checked]="is_chckked('Bachelor',TentArr)">Bachelor<li>
-                        <li><input type="checkbox" (change)="updateFilter($event)"  value="Company" [checked]="is_chckked('Company',TentArr)">Company</li>
+                       <input type="checkbox" (change)="updateFilter($event)"  value="Company" [checked]="is_chckked('Company',TentArr)">Company</li>
                         <li><input type="checkbox" (change)="updateFilter($event)"  value="Any" [checked]="is_chckked('Any',TentArr)">Any</li>
                         
       
