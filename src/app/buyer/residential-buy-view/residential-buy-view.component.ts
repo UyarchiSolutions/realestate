@@ -24,7 +24,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       console.log(this.formatAdd);
       
     });
-    this.service.getSellerDetails(this.page,this.range,this.formatAdd).subscribe((res:any)=>{
+    this.service.getSellerDetails(this.page,this.range,this.formatAdd,[]).subscribe((res:any)=>{
       console.log(res)
     })
   }

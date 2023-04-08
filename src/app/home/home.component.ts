@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Address } from 'ng-google-places-autocomplete';
 import { PostPropertyService } from '../services/post-property.service';
 import { MapsAPILoader } from '@agm/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Cookie } from 'ng2-cookies';
 
 
 
@@ -21,13 +23,12 @@ export class HomeComponent implements OnInit {
 
 
   constructor ( private service:PostPropertyService,
-    private fb:FormBuilder,private route:Router){
+    private fb:FormBuilder,private route:Router,private toastr: ToastrService){
 
-    
-      
+
   }
   Resform:any = this.fb.group({
-    BuyerAddres: new FormControl(''),
+    BuyerAddres: new FormControl('',Validators.required),
     type:new FormControl(''),
     PropertyType:new FormControl(''),
     BHK:new FormControl(''),
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
   })
   ngOnInit(): void {
    
-   
+    this.Getbuyer();
   }
   area:any=[];
   city: any;
@@ -180,13 +181,19 @@ export class HomeComponent implements OnInit {
   ,'7 BHK','8 BHK','9 BHK','10+ BHK'] ;
   Ressubmit()
   {
-    if(this.Resform.get('type')?.value == 'Rent'){
-     
+    if(this.areaSend.length==0){
+      this.toastr.error('Fill the field', 'Please fil the address!', {
+        positionClass: 'toast-bottom-center'
+     });
+    }
+    if(this.Resform.get('type')?.value == 'Rent' && this.areaSend.length>0){
+    
+      
     let data ={
       formatAdd:this.BuyerAddres,
       type:this.Resform.get('type')?.value,
       propertType:this.Resform.get('PropertyType')?.value,
-      BHKType:this.Resform.get('BHK')?.value,
+      BHKType:this.Resform.get('BHK')?.value? this.bhkArr.indexOf( this.Resform.get('BHK')?.value).toString():'',
       area:this.areaSend,
     }
    
@@ -200,7 +207,7 @@ export class HomeComponent implements OnInit {
       formatAdd:this.Resform.get('BuyerAddres')?.value,
 
     }
-    this.service.getSellerDetails(this.page,this.range,data).subscribe((res:any)=>{
+    this.service.getSellerDetails(this.page,this.range,data,[]).subscribe((res:any)=>{
       console.log(res);
       var postdata = {
         formatAdd:this.Resform.get('BuyerAddres')?.value,
@@ -211,7 +218,7 @@ export class HomeComponent implements OnInit {
       this.route.navigateByUrl('/buyer-residential-buy-view?' + queryString );
     })
   }
-  }
+  };
   Comsubmit(){
     console.log(this.Comform.value,'zcxzxc');
   }
@@ -225,5 +232,28 @@ export class HomeComponent implements OnInit {
     console.log('area removed',this.area.indexOf(i),'index');
     console.log(this.area,'area arry');
     this.service.GAreaArr = this.area;
+  }
+  buyer:any;
+  buyershow=false;
+  Getbuyer(){
+    this.service.Get_buyer_account().subscribe((res:any)=>{
+      console.log(res);
+      this.buyer=res;
+      this.buyershow=true;
+    })
+  }
+  logOut() {
+    sessionStorage.clear();
+    localStorage.clear();
+    Cookie.delete('buyer');
+    this.route.navigateByUrl('/');
+    this.buyershow=false;
+  }
+  changepassword() {
+    this.route.navigateByUrl('/changepassword-buyer');
+  }
+  bhksend(i:any){
+  this.Resform.get('BHK').patchValue(i);
+  console.log(this.Resform.get('BHk')?.value);
   }
 }

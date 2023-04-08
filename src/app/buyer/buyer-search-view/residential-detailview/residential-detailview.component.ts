@@ -27,6 +27,7 @@ export class ResidentialDetailviewComponent implements OnInit {
         parking: any;
         rentprefer: any;
         propAge:any;
+        areaArr:any;
 
   ngOnInit(): void {
     
@@ -43,7 +44,7 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.rentprefer=params['rentprefer'];
       this.propAge=params['propAge'];
       this.propertType=params['propertType'];
-     
+      this.areaArr=params['area']
     });
     this.index =Number(this.index) ;
  
@@ -62,7 +63,7 @@ export class ResidentialDetailviewComponent implements OnInit {
    
 
     this.service
-    .getSellerDetails(this.page, this.range, this.allFilter)
+    .getSellerDetails(this.page, this.range, this.allFilter,[])
     .subscribe((res: any) => {
       this.Alldata = res.values;
       console.log(this.Alldata, 'all data in view by id');
@@ -100,6 +101,7 @@ export class ResidentialDetailviewComponent implements OnInit {
       parking: this.parking,
       rentprefer: this.rentprefer,
       propAge: this.propAge,
+      area:this.areaArr
     };
     console.log(sendData,'data back to home')
     const query = new URLSearchParams(sendData).toString();

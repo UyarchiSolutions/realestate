@@ -12,7 +12,7 @@ import { SellerModule } from './seller/seller.module';
 import { ToastrModule } from 'ngx-toastr';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -46,14 +46,15 @@ import { CommonModule } from '@angular/common';
     BuyerModule,
     SellerModule,
     ReactiveFormsModule,
-    
+    BrowserAnimationsModule,
 
     FormsModule,
     CommonModule,
     GooglePlaceModule,
     ToastrModule.forRoot( {
       positionClass: 'toast-bottom-right',
-      preventDuplicates: true,}),
+      preventDuplicates: true,
+    }),
     
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',

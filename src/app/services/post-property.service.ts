@@ -54,7 +54,7 @@ export class PostPropertyService {
     return this.http.put(this.baseURL + 'VideoUploads/' + id, vid);
   }
   uploadimg(id: any, img: any) {
-    console.log(img);
+    // console.log(img);
     return this.http.put(this.baseURL + 'Update/Seller/Post/' + id, img);
   }
   //get data for owner
@@ -70,17 +70,17 @@ export class PostPropertyService {
   deleteDraft(){
     return this.http.get(this.baseURL +'delete/DraftBy/user',{ headers: { auth: Cookie.get('tokens') }});
   }
-  getSellerDetails(page: any, range: any, data: any) {
+  getSellerDetails(page: any, range: any, data: any,body:any) {
     const queryString = new URLSearchParams(data).toString();
 
     this.checkCookie= this.findCookie();
     if(this.checkCookie) {
-      console.log('from service','auth', Cookie.get('buyer'));
-      return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`,{sta:""},{ headers: { auth: Cookie.get('buyer') }});
+      // console.log('from service','auth', Cookie.get('buyer'));
+      return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`,body,{ headers: { auth: Cookie.get('buyer') }});
     }
     
     else{
-      console.log('from service','no auth');
+      // console.log('from service','no auth');
     return this.http.post(this.baseURL +`getApprover/Property?page=${page}&range=${range}&${queryString}`,{sta:"tghnhgj"});
     }
   }
@@ -121,5 +121,8 @@ export class PostPropertyService {
   }
   RecentSearchGet(){
     return this.http.get('https://uyarchicrm.click/v1/RecentSearch/Recentlysearched',{ headers: { auth: Cookie.get('buyer') }} );
+  }
+  Get_buyer_account(){
+    return this.http.get(this.baseURL+'user',{ headers: { auth: Cookie.get('buyer') }} )
   }
 }

@@ -12,6 +12,7 @@ import { BuyerService } from '../buyer/buyer.service';
   styleUrls: ['./rb-home.component.css'],
 })
 export class RbHomeComponent implements OnInit {
+  buyer: any = [];
   constructor(
     private arouter: ActivatedRoute,
     private fb: FormBuilder,
@@ -31,12 +32,12 @@ export class RbHomeComponent implements OnInit {
   type: any;
   propertType: any = [];
   BHKType: any = [];
-  showOnlyType:any=[];
-  furType:any=[];
-  tentType:any=[];
-  propageType:any=[];
-  bathType:any=[];
-  parkType:any=[];
+  showOnlyType: any = [];
+  furType: any = [];
+  tentType: any = [];
+  propageType: any = [];
+  bathType: any = [];
+  parkType: any = [];
 
   SelectedFilters: any = [];
   FbhkArr: any = [];
@@ -44,7 +45,7 @@ export class RbHomeComponent implements OnInit {
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   FbathArr: any = [];
-  bathtypeShow:any=[];
+  bathtypeShow: any = [];
   bathCountArr: any = [];
   ShowOnlyArr: any = [];
   FurArr: any = [];
@@ -55,7 +56,7 @@ export class RbHomeComponent implements OnInit {
   dommy: any = [];
   LoopItArr: any = [];
   BhkCountArr: any = [];
-  BhkTypeShow:any=[];
+  BhkTypeShow: any = [];
 
   filter: any = this.fb.group({
     propertType: new FormControl(''),
@@ -67,6 +68,7 @@ export class RbHomeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.Getbuyer();
     this.Get_all_interest();
     this.Get_all_saved();
     this.FetchRecentSearch();
@@ -80,51 +82,61 @@ export class RbHomeComponent implements OnInit {
         this.propertType =
           params.params['propertType'] != null &&
           params.params['propertType'] != ''
-            ? params.params['propertType'].split(',')  : [];
+            ? params.params['propertType'].split(',')
+            : [];
         this.BHKType =
           params.params['BHKType'] != null && params.params['BHKType'] != ''
-            ? params.params['BHKType'].split(',') : [];
+            ? params.params['BHKType'].split(',')
+            : [];
         this.areaArr =
           params.params['area'] != null && params.params['area'] != ''
-            ? params.params['area'].replace(/-/g, ' ').split(','): [];
+            ? params.params['area'].replace(/-/g, ' ').split(',')
+            : [];
         //console.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
 
         this.showOnlyType =
           params.params['rentDetails'] != null &&
           params.params['rentDetails'] != ''
-            ? params.params['rentDetails'].split(','): [];
+            ? params.params['rentDetails'].split(',')
+            : [];
         this.furType =
           params.params['furnishing'] != null &&
           params.params['furnishing'] != ''
-            ? params.params['furnishing'].split(',') : [];
+            ? params.params['furnishing'].split(',')
+            : [];
         this.tentType =
           params.params['rentprefer'] != null &&
           params.params['rentprefer'] != ''
-            ? params.params['rentprefer'].split(',')  : [];
+            ? params.params['rentprefer'].split(',')
+            : [];
         this.propageType =
           params.params['propAge'] != null && params.params['propAge'] != ''
-            ? params.params['propAge'].split(',')  : [];
+            ? params.params['propAge'].split(',')
+            : [];
         this.bathType =
           params.params['bathroom'] != null && params.params['bathroom'] != ''
-            ? params.params['bathroom'].split(',')  : [];
+            ? params.params['bathroom'].split(',')
+            : [];
         this.parkType =
           params.params['parking'] != null && params.params['parking'] != ''
-            ? params.params['parking'].split(',')  : [];
-          
-     
+            ? params.params['parking'].split(',')
+            : [];
+
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
-        if(!(this.BHKType == '' && this.BHKType == null)){
-          this.BHKType.forEach((a:any)=>{
+        if (!(this.BHKType == '' && this.BHKType == null)) {
+          this.BHKType.forEach((a: any) => {
             this.BhkTypeShow.push(this.bhkArr[a]);
             // console.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
-          })}
-        if(!(this.bathType == '' && this.bathType == null)){
-          this.bathType.forEach((a:any)=>{
+          });
+        }
+        if (!(this.bathType == '' && this.bathType == null)) {
+          this.bathType.forEach((a: any) => {
             this.bathtypeShow.push(this.bathArr[a]);
             // console.log(this.bathType,'final bath',this.bathArr[a])
-          })}
+          });
+        }
         this.SelectedFilters = [
           ...this.propertType,
           ...this.BhkTypeShow,
@@ -133,40 +145,39 @@ export class RbHomeComponent implements OnInit {
           ...this.tentType,
           ...this.propageType,
           ...this.bathtypeShow,
-          ...this.parkType
-      
+          ...this.parkType,
         ];
 
         this.proptArr = this.propertType;
-        this.BhkCountArr=this.BHKType;
-        this.bathCountArr=this.bathType;
-        this.ShowOnlyArr=this.showOnlyType;
-        this.FurArr=this.furType;
-        this.ParkArr=this.parkType;
-        this.PropAgeArr=this.propageType;
-        this.TentArr=this.tentType;
-        this.FbhkArr=this.BhkTypeShow
-        this.FbathArr=this.bathtypeShow
+        this.BhkCountArr = this.BHKType;
+        this.bathCountArr = this.bathType;
+        this.ShowOnlyArr = this.showOnlyType;
+        this.FurArr = this.furType;
+        this.ParkArr = this.parkType;
+        this.PropAgeArr = this.propageType;
+        this.TentArr = this.tentType;
+        this.FbhkArr = this.BhkTypeShow;
+        this.FbathArr = this.bathtypeShow;
 
         // console.log(this.proptArr,'proppt arry',this.propertType)
 
         this.SelectedFilters = this.SelectedFilters.filter((e: any) => e != '');
-        console.log(this.SelectedFilters, 234234);
-
+        // console.log(this.SelectedFilters, 234234);
+        console.log(this.areaArr, this.areaArr.length);
+        if (this.areaArr.length >= 3) {
+          this.showInput = false;
+          // console.log(this.showInput, 'inpout show');
+        }
         this.GetDataForFilter();
       }
     });
- 
-  
- 
   }
+  showInput = true;
   sendData: any;
   totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
-
-   
-    this.sendData = {
+  let  Data = {
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.propertType,
@@ -182,15 +193,16 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.filter.get('priceFrom')?.value,
       priceTo: this.filter.get('priceTo')?.value,
     };
-    
 
-   
     this.service
-      .getSellerDetails(this.page, this.range, this.sendData)
+      .getSellerDetails(this.page, this.range, Data,this.floordata)
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
+        if (this.totalval > 10) {
+          this.showPag_rag = true;
+        }
         //console.log(this.data, 'data');
 
         if (this.page == 0) {
@@ -204,19 +216,73 @@ export class RbHomeComponent implements OnInit {
         }
         this.sendDataBOOL = false;
       });
-      console.log(this.sendData,'updated');
-      this.bathtypeShow=[];
-      this.BhkTypeShow=[];
+    // console.log(this.sendData, 'updated');
+    this.bathtypeShow = [];
+    this.BhkTypeShow = [];
   }
- 
+  showPag_rag = false;
+
   onChange(e: any) {
     this.type = e.target.value;
   }
- 
-  updateFilter(v: any) {
+  floordata:any={arr:[]};
+  FloorArr:any=[];
+
+  updateFloor(v:any,count:any){
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
+      this.FloorArr.push(val);
+     
+    } else {
+      let index = this.SelectedFilters.findIndex(
+        (res: any) => res == v.target.value
+      );
+      if (index != -1) {
+        this.SelectedFilters.splice(index, 1);
+      }
+      let i = this.FloorArr.findIndex((res:any)=>{
+        res==val
+      })
+     
+      this.FloorArr.splice(i,1);
+      this.floordata.arr.splice(i,1);
+      console.log(this.floordata.arr.splice(i,1),'else',this.floordata)
+    }
+    console.log(count);
+    if(Array.isArray(count)&& v.target.checked){
+    this.floordata.arr.push(
+    {
+       from:count[0],
+       to:count[1]}
+     );
+  }
+    if(count== 0 || count==13 &&  v.target.checked){
+      this.floordata.arr.push({
+      from:count
+      })
+    }
+    console.log(this.floordata,'before api')
+ this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
+    console.log(res, 'data from backend');
+    this.data = res.values;
+    this.totalval = res.total;
+    if (this.totalval > 10) {
+      this.showPag_rag = true;
+    } if (this.page == 0) {
+      let page = res.total / (this.page + 1);
+      this.displaycount = Math.ceil(page / this.range);
+      }})
+    
+  }
+
+  updateFilter(v: any, position: any) {
+    position=position.toString();
+    console.log(v.target.value)
+    if (v.target.checked) {
+      var val = v.target.value;
+      this.SelectedFilters.push(val);
+     
     } else {
       let index = this.SelectedFilters.findIndex(
         (res: any) => res == v.target.value
@@ -274,32 +340,21 @@ export class RbHomeComponent implements OnInit {
       }
     }
     //bathroom arr
-    if (
-      this.bathArr.findIndex((res: any) => {
-        return res == v.target.value;
-      }) != -1
-    ) {
-      let index = this.bathArr.indexOf(v.target.value);
 
-      if (
-        this.FbathArr.findIndex((res: any) => {
-          return res == v.target.value;
-        }) == -1
-      ) {
+    
+    if (this.bathArr.indexOf(v.target.value) != -1) {
+      if (this.bathCountArr.indexOf(position) == -1) {
         this.FbathArr.push(v.target.value);
-        this.bathCountArr.push(index);
-        //console.log(this.bathCountArr,'bhk count')
-        //console.log(this.FbathArr, 'final bhk arr');
+        this.bathCountArr.push(position);
       } else {
-        let index = this.FbathArr.findIndex(
-          (res: any) => res == v.target.value
-        );
-
-        this.FbathArr.splice(index, 1);
+        let index = this.bathCountArr.indexOf(position);
+        let index2 = this.FbathArr.indexOf(v.target.value);
+        this.FbathArr.splice(index2, 1);
         this.bathCountArr.splice(index, 1);
-        //console.log(this.bathCountArr,'bhk count')
-        //console.log('f bhk removed', this.FbathArr);
       }
+
+      console.log(this.FbathArr, 345, position,this.bathCountArr);
+      console.log(this.SelectedFilters);
     }
     //show only
     if (v.target.value == 'rent' || v.target.value == 'lease') {
@@ -389,6 +444,7 @@ export class RbHomeComponent implements OnInit {
     //data to api
     this.sendData = {
       formatAdd: this.formatAdd,
+      area: this.areaArr,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -417,7 +473,11 @@ export class RbHomeComponent implements OnInit {
     //console.log('deleted', this.SelectedFilters);
 
     //bhk arr
-    if (this.FbhkArr.findIndex((res: any) => { return res == v; }) > -1 ) {
+    if (
+      this.FbhkArr.findIndex((res: any) => {
+        return res == v;
+      }) > -1
+    ) {
       //console.log(this.FbhkArr, 'sfsdf');
       let index = this.FbhkArr.findIndex((res: any) => {
         res == v;
@@ -426,7 +486,11 @@ export class RbHomeComponent implements OnInit {
       this.BhkCountArr.splice(index, 1);
     }
     //bath arr
-    if (this.FbathArr.findIndex((res: any) => {return res == v; }) > -1 ){
+    if (
+      this.FbathArr.findIndex((res: any) => {
+        return res == v;
+      }) > -1
+    ) {
       //console.log(this.FbathArr, 'sfsdf');
       let index = this.FbathArr.findIndex((res: any) => {
         res == v;
@@ -484,10 +548,19 @@ export class RbHomeComponent implements OnInit {
         this.PropAgeArr.splice(index, 1);
       }
     }
-
+    //floor
+    if( this.FloorArr.findIndex((res:any)=>{res==v}) ){
+    let i = this.FloorArr.findIndex((res:any)=>{res==v })
+    console.log(i,'floor is checked')
+   
+    this.FloorArr.splice(i,1);
+    this.floordata.arr.splice(i,1);
+    console.log(this.FloorArr,this.floordata);
+  }
     this.sendData = {
       formatAdd: this.formatAdd,
       type: this.type,
+      area: this.areaArr,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
       rentDetails: this.ShowOnlyArr,
@@ -527,8 +600,10 @@ export class RbHomeComponent implements OnInit {
     //console.log(input.value);
     this.formatAdd = input.value;
     this.areaArr.push(input.value);
-    
-   
+    if (this.areaArr.length >= 3) {
+      this.showInput = false;
+      console.log(this.showInput, 'inpout show');
+    }
 
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
@@ -564,9 +639,8 @@ export class RbHomeComponent implements OnInit {
       });
     // input.value = '';
   }
-  sendRecentSearch(){
-
-    let data={
+  sendRecentSearch() {
+    let data = {
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.proptArr,
@@ -581,18 +655,18 @@ export class RbHomeComponent implements OnInit {
       buildupto: this.filter.get('buildupTo')?.value,
       priceFrom: this.filter.get('priceFrom')?.value,
       priceTo: this.filter.get('priceTo')?.value,
-      selected:this.SelectedFilters
-
-    }
-    this.service.RecentSearch(data).subscribe((res:any)=>{
-      console.log(res,'recent search')
-    })
+      selected: this.SelectedFilters,
+    };
+    this.service.RecentSearch(data).subscribe((res: any) => {
+      console.log(res, 'recent search');
+    });
   }
   submitAddress() {
-    this.sendRecentSearch()
+    this.sendRecentSearch();
     this.sendData = {
       formatAdd: this.formatAdd,
       type: this.type,
+      area: this.areaArr,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
       rentDetails: this.ShowOnlyArr,
@@ -606,24 +680,8 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.filter.get('priceFrom')?.value,
       priceTo: this.filter.get('priceTo')?.value,
     };
-    this.service
-      .getSellerDetails(this.page, this.range, this.sendData)
-      .subscribe((res: any) => {
-      
-        this.data = res.values;
-        this.FetchRecentSearch();
-
-        if (this.page == 0) {
-          let page = res.total / (this.page + 1);
-
-          //console.log(res.total, 'range', this.range);
-
-          this.displaycount = Math.ceil(page / this.range);
-
-          //console.log(page, 'dc', this.page + 1);
-        }
-        this.sendDataBOOL = false;
-      });
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   options: any = {
     componentRestrictions: { country: 'IN' },
@@ -648,10 +706,11 @@ export class RbHomeComponent implements OnInit {
           parking: this.ParkArr,
           rentprefer: this.TentArr,
           propAge: this.PropAgeArr,
+          area: this.areaArr,
         };
 
         this.service.Alldata = this.sendData;
-       
+
         const query = new URLSearchParams(oneid).toString();
         this.router.navigateByUrl(
           '/buyer-residential-rent-search-view?' + query
@@ -663,10 +722,8 @@ export class RbHomeComponent implements OnInit {
     }
   }
   GetRecentSearch(index: any) {
-   
-
     let v = this.RecentSearchArr[index];
-    console.log(v,'get recent search', this.RecentSearchArr[index].buildupto)
+    console.log(v, 'get recent search', this.RecentSearchArr[index].buildupto);
 
     this.SelectedFilters = this.RecentSearchArr[index].selected;
     this.proptArr = this.RecentSearchArr[index].propertType;
@@ -678,18 +735,21 @@ export class RbHomeComponent implements OnInit {
     this.PropAgeArr = this.RecentSearchArr[index].propAge;
     this.formatAdd = this.RecentSearchArr[index].formatAdd;
     this.bathCountArr = this.RecentSearchArr[index].bathroom;
-    this.filter.get('buildupFrom').patchValue( this.RecentSearchArr[index].buildupfrom);
-    this.filter.get('buildupTo').patchValue( this.RecentSearchArr[index].buildupto);
-    this.filter.get('priceFrom').patchValue( this.RecentSearchArr[index].priceFrom);
-    this.filter.get('priceTo').patchValue( this.RecentSearchArr[index].priceTo);
-    
+    this.filter
+      .get('buildupFrom')
+      .patchValue(this.RecentSearchArr[index].buildupfrom);
+    this.filter
+      .get('buildupTo')
+      .patchValue(this.RecentSearchArr[index].buildupto);
+    this.filter
+      .get('priceFrom')
+      .patchValue(this.RecentSearchArr[index].priceFrom);
+    this.filter.get('priceTo').patchValue(this.RecentSearchArr[index].priceTo);
 
     this.service
-      .getSellerDetails(this.page, this.range, v)
+      .getSellerDetails(this.page, this.range, v,this.floordata)
       .subscribe((res: any) => {
-      
         this.data = res.values;
-
       });
   }
 
@@ -728,12 +788,14 @@ export class RbHomeComponent implements OnInit {
     this.ParkArr = [''];
     this.TentArr = [''];
     this.PropAgeArr = [''];
-    this.bathCountArr=[''];
-    this.FbathArr=[''];
-    this.BhkCountArr=[''];
+    this.bathCountArr = [''];
+    this.FbathArr = [''];
+    this.BhkCountArr = [''];
+    this.areaArr = [''];
 
     this.sendData = {
       formatAdd: this.formatAdd,
+      area: this.areaArr,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -750,7 +812,7 @@ export class RbHomeComponent implements OnInit {
     };
 
     this.service
-      .getSellerDetails(this.page, this.range, this.sendData)
+      .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
       .subscribe((res: any) => {
         this.data = res.values;
         //console.log(this.data, 'data');
@@ -759,6 +821,10 @@ export class RbHomeComponent implements OnInit {
   removeArea(i: any) {
     //console.log(i);
     this.areaArr.splice(i, 1);
+    if (!(this.areaArr.length >= 3)) {
+      this.showInput = true;
+      console.log(this.showInput, 'inpout show');
+    }
 
     //console.log(this.areaArr,'area arry');
   }
@@ -867,14 +933,19 @@ export class RbHomeComponent implements OnInit {
       this.AllSaved = res;
     });
   }
-  show_top=false;
-  viewtop(){
-    this.show_top= !this.show_top
+  show_top = false;
+  viewtop() {
+    this.show_top = !this.show_top;
   }
-  FetchRecentSearch(){
-    this.service.RecentSearchGet().subscribe((res:any)=>{
-      console.log(res,'recent search');
+  FetchRecentSearch() {
+    this.service.RecentSearchGet().subscribe((res: any) => {
       this.RecentSearchArr = res;
-    })
+    });
+  }
+  Getbuyer() {
+    this.service.Get_buyer_account().subscribe((res: any) => {
+      // console.log(res);
+      this.buyer = res;
+    });
   }
 }
