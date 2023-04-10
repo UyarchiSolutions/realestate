@@ -186,6 +186,11 @@ export class HomeComponent implements OnInit {
         positionClass: 'toast-bottom-center'
      });
     }
+    if(this.Resform.get('type')?.value == ''){
+      this.toastr.error('Select the Type', '', {
+        positionClass: 'toast-bottom-center'
+     });
+    }
     if(this.Resform.get('type')?.value == 'Rent' && this.areaSend.length>0){
     
       

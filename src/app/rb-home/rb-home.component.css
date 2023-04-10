@@ -465,3 +465,16 @@ margin-left: 45%;
         text-overflow: ellipsis;
         max-width: 76px;
       }
+      .minn-max{
+        width: 100%;
+        /* background-color: blue; */
+   padding-bottom: 10px;
+    margin-left: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    }
+    #min,#max{
+        max-width: 40px;
+        max-height: 20px;
+        border: solid var(--brown) 1px !important;
+    }

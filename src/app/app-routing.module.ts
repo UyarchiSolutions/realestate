@@ -58,6 +58,7 @@ import { StartPostingComponent } from './start-posting/start-posting.component';
 import { MyAccountComponent } from './seller/my-account/my-account.component';
 import { EditAccountComponent } from './seller/edit-account/edit-account.component';
 import { BuyerInterestedPropertyComponent } from './buyer-interested-property/buyer-interested-property.component';
+import { PropertyAlertComponent } from './property-alert/property-alert.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -129,7 +130,9 @@ const routes: Routes = [
   {path:'interested-property',component:BuyerInterestedPropertyComponent},
   
   {path:'my-account',component:MyAccountComponent},
-  {path:'edit-account',component:EditAccountComponent}
+  {path:'edit-account',component:EditAccountComponent},
+  //alert pop
+  {path:'alert',component:PropertyAlertComponent}
 ];
 
 @NgModule({

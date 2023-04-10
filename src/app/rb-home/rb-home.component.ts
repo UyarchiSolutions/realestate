@@ -229,39 +229,51 @@ export class RbHomeComponent implements OnInit {
   FloorArr:any=[];
 
   updateFloor(v:any,count:any){
+    console.log(count);
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
       this.FloorArr.push(val);
-     
-    } else {
+      console.log(this.floordata,'check1')
+      if(Array.isArray(count)){
+        this.floordata.arr.push(
+        {
+           from:count[0],
+           to:count[1]}
+         );
+      }
+        if(count== 0 || count==13){
+          this.floordata.arr.push({
+          from:count
+          })
+        }
+        console.log(this.floordata,'check3')
+     console.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
+    } else  {
       let index = this.SelectedFilters.findIndex(
         (res: any) => res == v.target.value
       );
+      console.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
       if (index != -1) {
+        console.log(this.floordata,'check2')
         this.SelectedFilters.splice(index, 1);
-      }
-      let i = this.FloorArr.findIndex((res:any)=>{
-        res==val
-      })
      
+      
+      let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
+
+        console.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
+        console.log('3',this.floordata,this.floordata.arr[i],'floor data')
+        console.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
+        console.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
+
       this.FloorArr.splice(i,1);
       this.floordata.arr.splice(i,1);
-      console.log(this.floordata.arr.splice(i,1),'else',this.floordata)
+
+   }
+      console.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
     }
-    console.log(count);
-    if(Array.isArray(count)&& v.target.checked){
-    this.floordata.arr.push(
-    {
-       from:count[0],
-       to:count[1]}
-     );
-  }
-    if(count== 0 || count==13 &&  v.target.checked){
-      this.floordata.arr.push({
-      from:count
-      })
-    }
+   
+   
     console.log(this.floordata,'before api')
  this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
     console.log(res, 'data from backend');
@@ -274,6 +286,20 @@ export class RbHomeComponent implements OnInit {
       this.displaycount = Math.ceil(page / this.range);
       }})
     
+  }
+  isfloorcheck(val:any,find:any){
+    if(find !=''){
+    let index = find.findIndex(
+      (res: any) => res == val
+    );
+    if(index == -1){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+  return false;
   }
 
   updateFilter(v: any, position: any) {

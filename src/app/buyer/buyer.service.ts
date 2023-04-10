@@ -65,5 +65,9 @@ export class BuyerService {
   getAll_saved(){
     return this.http.get(this.base_url + '/v1/BuyerSeller/getWhishListed_Property_By_Buyer',{headers:{auth:Cookie.get('buyer')}})
   }
+  get_landmarks(lat:any,long:any,radius:any,type:any){
+   
+    return this.http.get(this.base_url+`/v1/BuyerSeller/neighbour_api?lat=${lat}&long=${long}&radius=${radius}&type=${type}`)
+  }
 }
 

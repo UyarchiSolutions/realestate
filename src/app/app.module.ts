@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 
 import { CommonModule } from '@angular/common';
+import { PropertyAlertComponent } from './property-alert/property-alert.component';
 
 
 
@@ -34,7 +35,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     HeaderComponent,
     
-    
+    PropertyAlertComponent
   
 
     
