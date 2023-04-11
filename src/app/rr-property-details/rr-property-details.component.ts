@@ -14,7 +14,7 @@ export class RrPropertyDetailsComponent implements OnInit {
   id!: any;
   toggleState = false;
   myarray: any = [];
-  data:any;
+  data:any=[];
   submitted= false;
   isSaved=false;
 
@@ -64,18 +64,20 @@ export class RrPropertyDetailsComponent implements OnInit {
   routerlink ='residential-rent';
   propsub() {
     
+    this.pv= this.pv==null ? this.data.propertType : this.pv;
     this.submitted = true;
     var Checkdata = {
-      propertType: this.pv,
-      noOfFloor: this.tfv,
-      floorNo: this.ofv,
-      ageOfBuilding: this.aop,
-      BHKType: this.bhkv,
-      BuildedSize: this.propform.get('BuildupArea')?.value,
-      facingDirection: this.fdv,
-      RentPrefer: this.rpv,
+      propertType: this.pv ,
+      noOfFloor: this.tfv==null ? this.data.noOfFloor : this.tfv,
+      floorNo: this.ofv==null? this.data.floorNo : this.ofv,
+      ageOfBuilding: this.aop==null? this.data.ageOfBuilding : this.aop,
+      BHKType: this.bhkv==null? this.data.BHKType : this.bhkv,
+      BuildedSize: this.propform.get('BuildupArea')?.value ,
+      facingDirection: this.fdv==null ? this.data.facingDirection : this.fdv ,
+      RentPrefer: this.rpv==null ? this.data.RentPrefer : this.rpv,
       routeLink:this.routerlink
     };
+    console.log(Checkdata,'patch waiting')
     
    if(this.allKeysHaveValue(Checkdata) ){ 
    
@@ -234,7 +236,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.nave = !this.nave;
   }
 
-  pv='';
+  pv:any;
   propertyv(a: any) {
     this.pv = a;
     console.log(this.pv);

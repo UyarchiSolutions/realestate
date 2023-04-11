@@ -69,5 +69,8 @@ export class BuyerService {
    
     return this.http.get(this.base_url+`/v1/BuyerSeller/neighbour_api?lat=${lat}&long=${long}&radius=${radius}&type=${type}`)
   }
+  send_alert(data:any){
+    return this.http.post(this.base_url+`/v1/propertyAlert`,data,{headers:{auth:Cookie.get('buyer')}})
+  }
 }
 

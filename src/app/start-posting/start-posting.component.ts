@@ -126,13 +126,17 @@ property="Residential";
   form:any;
   find=false;
   findpopup=true;
+  checkroute=false;
   UnsubmittedForm(){
 
   
     this.service.getDraft().subscribe((res:any)=>{
    
       this.data=res;
-      this.checkVal=res.routeLink
+      this.checkVal=res.routeLink;
+   if(res.routeLink){
+    this.checkroute=true
+   }
       console.log(this.data);
       
 
@@ -146,6 +150,7 @@ property="Residential";
   routeForPop(){
     this.checkVal='';
     this.popupShow=false;
+    this.checkroute=false;
 
     this.router.navigateByUrl(`/${this.data.routeLink}?id=${this.data._id}` );
   }
@@ -161,6 +166,7 @@ property="Residential";
    
     this.checkVal='';
     this.popupShow=false;
+    this.checkroute=false;
 
     
   }

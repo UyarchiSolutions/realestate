@@ -475,7 +475,7 @@
             
             
     </div>
-    <div class="property-tab-select">
+    <div class="property-tab-select" (click)="showTab('alert')">
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.0003 8.04708V11.9503M2.31718 15.4642C1.4158 17.0255 2.54305 18.9761 4.34477 18.9761H19.6558C21.4565 18.9761 22.5837 17.0255 21.6834 15.4642L14.0289 2.19538C13.1275 0.634092 10.873 0.634092 9.97165 2.19538L2.31718 15.4642ZM12.0003 15.0729H12.0076V15.0812H12.0003V15.0729Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>Propert Alert<sup>44</sup>
@@ -609,7 +609,7 @@
                 
                 
         </div>
-        <div class="property-tab-select">
+        <div class="property-tab-select" (click)="showTab('alert')">
             <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.0003 8.04708V11.9503M2.31718 15.4642C1.4158 17.0255 2.54305 18.9761 4.34477 18.9761H19.6558C21.4565 18.9761 22.5837 17.0255 21.6834 15.4642L14.0289 2.19538C13.1275 0.634092 10.873 0.634092 9.97165 2.19538L2.31718 15.4642ZM12.0003 15.0729H12.0076V15.0812H12.0003V15.0729Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>Propert Alert<sup>44</sup>
@@ -934,7 +934,7 @@
                 
                 
         </div>
-        <div class="property-tab-select">
+        <div class="property-tab-select" (click)="showTab('alert')">
             <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.0003 8.04708V11.9503M2.31718 15.4642C1.4158 17.0255 2.54305 18.9761 4.34477 18.9761H19.6558C21.4565 18.9761 22.5837 17.0255 21.6834 15.4642L14.0289 2.19538C13.1275 0.634092 10.873 0.634092 9.97165 2.19538L2.31718 15.4642ZM12.0003 15.0729H12.0076V15.0812H12.0003V15.0729Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>Propert Alert<sup>44</sup>
@@ -1222,6 +1222,109 @@
     </table>
 </ng-container>
 
+<!-- Prop-alert -->
+<ng-container  *ngIf="alertShow">
+    <div class="property-tab">
+    
+        <div class="property-tab-select sort">
+            <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z" fill="white"/>
+                </svg>
+    
+                <!-- sort dropdown -->
+                <div class="sort-dropdown">
+                    <p>Relevance</p>
+                    <p>Date</p>
+                </div>
+                
+        </div>
+        <div class="property-tab-select " (click)="showTab('post')">
+            <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.15385 19.4615V14.4615C7.15385 13.8246 7.67077 13.3077 8.30769 13.3077H10.6154C11.2523 13.3077 11.7692 13.8246 11.7692 14.4615V19.4615M11.7692 19.4615H16.3846V1.55897M11.7692 19.4615H19.4615V8.94872M16.3846 1.55897L17.9231 1M16.3846 1.55897L5.61538 5.4759M19.4615 8.94872L16.3846 7.92308M19.4615 8.94872L21 9.46154M1 19.4615H2.53846M2.53846 19.4615H21M2.53846 19.4615V1H5.61538V5.4759M1 7.15385L5.61538 5.4759" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+           Property
+                
+                
+        </div>
+        <div class="property-tab-select "  (click)="showTab('interest')">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.66667 11.8333L10.1667 14.3333L14.3333 8.5M21 11C21 12.3132 20.7413 13.6136 20.2388 14.8268C19.7362 16.0401 18.9997 17.1425 18.0711 18.0711C17.1425 18.9997 16.0401 19.7362 14.8268 20.2388C13.6136 20.7413 12.3132 21 11 21C9.68678 21 8.38642 20.7413 7.17317 20.2388C5.95991 19.7362 4.85752 18.9997 3.92893 18.0711C3.00035 17.1425 2.26375 16.0401 1.7612 14.8268C1.25866 13.6136 1 12.3132 1 11C1 8.34784 2.05357 5.8043 3.92893 3.92893C5.8043 2.05357 8.34783 1 11 1C13.6522 1 16.1957 2.05357 18.0711 3.92893C19.9464 5.8043 21 8.34784 21 11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>Interested Property
+                
+                
+        </div>
+        <div class="property-tab-select"  (click)="showTab('save')">
+            <svg width="21" height="20" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.4312 1.839C10.4774 1.72632 10.5561 1.62992 10.6572 1.56208C10.7584 1.49423 10.8774 1.45801 10.9992 1.45801C11.121 1.45801 11.24 1.49423 11.3411 1.56208C11.4423 1.62992 11.5209 1.72632 11.5671 1.839L13.8881 7.42133C13.9316 7.52578 14.003 7.61623 14.0945 7.68271C14.186 7.74919 14.2941 7.78914 14.4069 7.79814L20.4338 8.2809C20.9788 8.32459 21.1994 9.00504 20.7844 9.36002L16.1927 13.2942C16.1069 13.3676 16.043 13.4632 16.0079 13.5705C15.9728 13.6778 15.968 13.7927 15.9939 13.9026L17.3974 19.7841C17.4256 19.9021 17.4182 20.0259 17.3762 20.1397C17.3341 20.2535 17.2593 20.3523 17.1611 20.4235C17.0629 20.4948 16.9458 20.5354 16.8246 20.5402C16.7034 20.545 16.5834 20.5137 16.4799 20.4504L11.3192 17.2994C11.2228 17.2406 11.1121 17.2095 10.9992 17.2095C10.8863 17.2095 10.7756 17.2406 10.6792 17.2994L5.51844 20.4515C5.41496 20.5148 5.29503 20.5461 5.1738 20.5413C5.05256 20.5365 4.93547 20.4959 4.83729 20.4246C4.73912 20.3533 4.66428 20.2546 4.62222 20.1408C4.58016 20.027 4.57277 19.9032 4.60097 19.7852L6.00447 13.9026C6.0305 13.7927 6.02572 13.6777 5.99065 13.5704C5.95558 13.4631 5.89158 13.3675 5.80569 13.2942L1.214 9.36002C1.12205 9.28095 1.05553 9.17646 1.02281 9.05969C0.990088 8.94292 0.992621 8.81909 1.03009 8.70375C1.06756 8.58842 1.1383 8.48674 1.23341 8.4115C1.32852 8.33626 1.44375 8.29083 1.56461 8.2809L7.59147 7.79814C7.70424 7.78914 7.81234 7.74919 7.90387 7.68271C7.99541 7.61623 8.06682 7.52578 8.11027 7.42133L10.4312 1.839Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>Saved Property
+                
+                
+        </div>
+        <div class="property-tab-select property-tab-active">
+            <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.0003 8.0466V11.9498M2.31718 15.4638C1.4158 17.025 2.54305 18.9756 4.34477 18.9756H19.6558C21.4565 18.9756 22.5837 17.025 21.6834 15.4638L14.0289 2.19489C13.1275 0.633604 10.873 0.633604 9.97165 2.19489L2.31718 15.4638ZM12.0003 15.0724H12.0076V15.0807H12.0003V15.0724Z" stroke="#473B32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>Propert Alert<sup>44</sup>
+                
+                
+        </div>
+        <div class="property-tab-select notification">
+            <svg width="19" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.6 17.8571H24V20.2381H0V17.8571H2.4V9.52381C2.4 6.99794 3.41143 4.57552 5.21178 2.78946C7.01212 1.0034 9.45392 0 12 0C14.5461 0 16.9879 1.0034 18.7882 2.78946C20.5886 4.57552 21.6 6.99794 21.6 9.52381V17.8571ZM19.2 17.8571V9.52381C19.2 7.62941 18.4414 5.81259 17.0912 4.47305C15.7409 3.1335 13.9096 2.38095 12 2.38095C10.0904 2.38095 8.25909 3.1335 6.90883 4.47305C5.55857 5.81259 4.8 7.62941 4.8 9.52381V17.8571H19.2ZM8.4 22.619H15.6V25H8.4V22.619Z" fill="white"/>
+                </svg><sup>4</sup>
+                
+                
+        </div>
+    
+    </div>
+    <div class="sart-post">
+      
+
+
+        <div class="form">
+         
+            <p style="margin: 20px 0;cursor: pointer;">Property type</p>
+            <div class="residential-commercial" >
+                <div class="residential" [ngClass]="{'selected': check}" (click)="Residential()">
+                    Residential
+                </div>
+                <div class="commercial" (click)="Commercial()" [ngClass]="{'selected': check1}" >
+                    Commercial
+                </div>
+            </div>
+            
+            <div class="property-ad-type">
+              <form >
+               
+                    <div class="property-select">
+                            
+
+                       
+                            <div class="property-select-type">
+                                <input type="radio" value="Rent" >
+                                <p>Rent</p>
+                            </div>
+
+                            <div class="property-select-type">
+                                <input type="radio" value="Sale" >
+                                <p>Sale</p>
+                            </div>
+
+    
+                   </div>
+                  
+                 <button  type="submit" (click)="popup()">Set Alert</button>
+                 <!-- <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
+                 <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P> -->
+                </form>
+            </div>
+        </div>
+       
+
+    </div>
+</ng-container>
+
+
+
 
 <div class="bottom-section">
     <div class="pagination" *ngIf="showPag_rag">
@@ -1310,5 +1413,228 @@
     
     
     
+ </div>
+
+
+
+
+ <ng-container *ngIf="showAlertpop"> 
+    <div class="popup-parent" [formGroup]="popform">
+        <div class="popup">
+ <div class="breadcrumbs">
+    <ul>
+        <li>Chennai ></li>
+        <li>Residential ></li>
+        <li>Rent :</li>
+    </ul>
+ </div>
+<div class="search-field">
+    <div class="searched" *ngIf="areaPArr">
+        <span *ngFor="let item of areaPArr ;let i = index" ><p class="location-name">{{item}}</p>
+           <svg (click)="removeArea2(i)" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.49952C11.5539 1.94643 11.5526 1.051 10.9995 0.499521C10.4464 -0.0519549 9.551 -0.0506468 8.99952 0.502445L6.00732 3.50341L3.00196 0.498045C2.44967 -0.0542398 1.55424 -0.0542402 1.00196 0.498045C0.44967 1.05033 0.449668 1.94576 1.00195 2.49805L4.01024 5.50633L1.01122 8.51414C0.459741 9.06723 0.46105 9.96266 1.01414 10.5141C1.56723 11.0656 2.46266 11.0643 3.01414 10.5112L6.01024 7.50634L9.00196 10.498C9.55424 11.0503 10.4497 11.0503 11.002 10.498C11.5542 9.94576 11.5542 9.05033 11.002 8.49805L8.00732 5.50341L11.0024 2.49952Z" fill="white"/>
+          </svg>
+        
+      </span>
+          
     </div>
+    
+    <input *ngIf="showinput2" class="input" type="text" placeholder="Search localities & Landmark" ngx-google-places-autocomplete [options]="options" #input2  (onAddressChange)="alertaddress($event,input2)">
+    <div class="search">
+        <span><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25 25L18.071 18.071M18.071 18.071C19.9463 16.1956 20.9999 13.6521 20.9999 10.9999C20.9999 8.34779 19.9463 5.80427 18.071 3.92891C16.1956 2.05356 13.6521 1 10.9999 1C8.34779 1 5.80427 2.05356 3.92891 3.92891C2.05356 5.80427 1 8.34779 1 10.9999C1 13.6521 2.05356 16.1956 3.92891 18.071C5.80427 19.9463 8.34779 20.9999 10.9999 20.9999C13.6521 20.9999 16.1956 19.9463 18.071 18.071Z" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </span><p>search</p>
+    </div>
+</div>
+
+<div class="nearby-locations">
+    <label>Nearby Localities :</label>
+    <div class="locality">
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+    </div>
+</div>
+
+<div class="container">
+
+<div>
+    <label>Property Type :</label>
+    <div class="option-selects">
+        <div style="width: 33%;">
+            <input type="checkbox"  (change)="update_pop_filter($event,propertyTypePArr)"  value="Gated Community">Gated Community
+        </div>
+        <div  style="width: 22%;">
+            <input type="checkbox"  (change)="update_pop_filter($event,propertyTypePArr)" value="Apartment"  >Apartment
+        </div>
+        <div style="width:45%">
+            <input type="checkbox"  (change)="update_pop_filter($event,propertyTypePArr)" value="Independent house/Villa"   >Independent house/Villa
+        </div>
+    </div>
+</div>
+
+<div>
+    <label>BHK Type :</label>
+    <div class="option-selects">
+        <div>
+            <input type="checkbox" (change)="update_pop_filter($event,BhkTypePPArr)" value="1 RK"  >1 RK
+        </div>
+        <div>
+            <input type="checkbox"  (change)="update_pop_filter($event,BhkTypePPArr)" value="1 BHK" >1 BHK
+        </div>
+        <div>
+            <input type="checkbox"   (change)="update_pop_filter($event,BhkTypePPArr)" value="2 BHK" >2 BHK
+        </div>
+        <div>
+            <input type="checkbox"   (change)="update_pop_filter($event,BhkTypePPArr)" value="3 BHk" >3 BHk
+        </div>
+        <div>
+            <input type="checkbox"    (change)="update_pop_filter($event,BhkTypePPArr)" value="4 BHk">4 BHk
+        </div>
+        <div>
+            <input type="checkbox"   (change)="update_pop_filter($event,BhkTypePPArr)" value="5 BHk" >5 BHk
+        </div>
+    </div>
+</div>
+
+
+<section class="range-section">
+    <label>Rent Range :</label>
+<div class="option-selects">
+    <section class="wrapper">
+       
+        <section class="containe">
+            <section class="slider-track"></section>
+            <input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
+            <input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
+        </section>
+       
+    </section>
+   
+</div>
+
+</section>
+
+<div class="min-max">
+    <input type="text" placeholder="Min" >
+    <input type="text" placeholder="Max" >
+</div>
+
+
+
+    <div>
+    <label>Furnishing :</label>
+    <div class="option-selects">
+        <div>
+            <input type="checkbox" (change)="update_pop_filter($event,propertyStatusPArr)" value="Full Furnished">Full Furnished
+        </div>
+        <div>
+            <input type="checkbox" (change)="update_pop_filter($event,propertyStatusPArr)" value="Semi Furnished">Semi Furnished
+        </div>
+        <div>
+            <input type="checkbox" (change)="update_pop_filter($event,propertyStatusPArr)" value="Unfurnished" >Unfurnished
+        </div>
+      
+    </div>
+    </div>
+
+    <div>
+        <label>Parking :</label>
+        <div class="option-selects">
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Car" >Car
+            </div>
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Bike" >Bike
+            </div>
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Both" >Both
+            </div>
+        
+        </div>
+    </div>
+
+    <div>
+        <label>Property Status :</label>
+        <div class="option-selects">
+            <div>
+                <input type="radio" formControlName="PropertyStatus"  name="PropertyStatus" value="Under Construction">Under Construction
+            </div>
+            <div>
+                <input type="radio" formControlName="PropertyStatus"  name="PropertyStatus" value="Ready To occupy" >Ready To occupy
+            </div>
+        
+        </div>
+    </div>
+
+        <div>
+        <label>Shifting Date :</label>
+        <div class="option-selects">
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,shftingDatePPArr)" value="Immediate">Immediate
+            </div>
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,shftingDatePPArr)" value="Within 15 days">Within 15 days
+            </div>
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,shftingDatePPArr)" value="Within 30 days">Within 30 days
+            </div>
+            <div>
+                <input type="checkbox"(change)="update_pop_filter($event,shftingDatePPArr)" value="Within 45 days">Within 45 days
+            </div>
+        
+        </div>
+    </div>
+
+    <div>
+    <label>I am A :</label>
+    <div class="option-selects">
+        <div>
+            <input type="radio" formControlName="foodType"  name="foodType" value="Veg" >Veg
+        </div>
+        <div>
+            <input type="radio" formControlName="foodType" name="foodType" value="Non veg" >Non Veg
+        </div>
+      
+      
+    </div>
+    </div>
+</div>
+
+
+<div class="set-alert-btn">
+    <button (click)="popcheck()" >Set Alert</button>
+</div>
+
+        </div>
+    </div>
+</ng-container>
   

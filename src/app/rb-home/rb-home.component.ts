@@ -193,7 +193,7 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.filter.get('priceFrom')?.value,
       priceTo: this.filter.get('priceTo')?.value,
     };
-
+    console.log(Data);
     this.service
       .getSellerDetails(this.page, this.range, Data,this.floordata)
       .subscribe((res: any) => {
@@ -806,7 +806,7 @@ export class RbHomeComponent implements OnInit {
   emptyArr: any[] = [];
 
   refineFilters() {
-    this.SelectedFilters = this.emptyArr;
+    this.SelectedFilters = [''];
     this.FbhkArr = [''];
     this.proptArr = [''];
     this.ShowOnlyArr = [''];
@@ -818,6 +818,7 @@ export class RbHomeComponent implements OnInit {
     this.FbathArr = [''];
     this.BhkCountArr = [''];
     this.areaArr = [''];
+    this.floordata=[''];
 
     this.sendData = {
       formatAdd: this.formatAdd,
@@ -854,6 +855,7 @@ export class RbHomeComponent implements OnInit {
 
     //console.log(this.areaArr,'area arry');
   }
+
   logOut() {
     sessionStorage.clear();
     localStorage.clear();
@@ -886,6 +888,12 @@ export class RbHomeComponent implements OnInit {
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
+    }
+    if (tab == 'alert') {
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = true;
     }
   }
   RBtab = true;
@@ -973,5 +981,145 @@ export class RbHomeComponent implements OnInit {
       // console.log(res);
       this.buyer = res;
     });
+  }
+  //alert pop
+  check:boolean=true;
+check1:boolean=false;
+popform:any=this.fb.group({
+  foodType:new FormControl(''),
+  PropertyStatus: new FormControl('')
+})
+property="Residential";
+ Residential(){
+  
+  this.check=true;
+  this.check1=false;
+  this.property="Residential";
+
+ }
+
+ Commercial(){
+
+  this.check1=true;
+  this.check=false;
+  this.property="Commercial";
+ }
+ showAlertpop=false;
+ popup(){
+  this.showAlertpop=!this.showAlertpop;
+ }
+
+ pop_cheked(val: any, filter: any) {
+  if (filter != '') {
+    let index = filter.indexOf(val);
+
+    if (index == -1) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
+areaP:any;
+addressP:any;
+propertyTypeP:any;
+BhkTypeP:any;
+amountFromP:any;
+amountToP:any;
+parkingP:any;
+propertyStatusP:any;
+shftingDateP:any;
+
+
+areaPArr:any=[];
+propertyTypePArr:any=[];
+BhkTypePPArr:any=[];
+parkingPArr:any=[];
+propertyStatusPArr:any=[];
+shftingDatePPArr:any=[];
+
+update_pop_filter(v:any,arr:any){
+
+  if(v.target.checked){
+
+    arr.push(v.target.value)
+    console.log(arr)
+  }
+  else{
+    let index = arr.indexOf(v.target.value);
+    arr.splice(index,1)
+    console.log(arr)
+  }
+}
+
+popcheck(){
+  let data= {
+    area:this.areaSend,
+    address:this.areaPArr,
+    propertyType:this.propertyTypePArr,
+    BhkType:this.BhkTypePPArr,
+    parking:this.parkingPArr,
+    shftingDate:this.shftingDatePPArr,
+    furnish:this.propertyStatusPArr,
+    foodType:this.popform.get('foodType')?.value,
+    PropertyStatus:this.popform.get('PropertyStatus')?.value
+  }
+  console.log(data,'data');
+  this.buyerService.send_alert(data).subscribe((res:any)=>{
+    console.log(res)
+    // this.showAlertpop=!this.showAlertpop;
+  })
+}
+areaSend:any=[];
+showinput2=true;
+alertaddress(address: Address, input: any) {
+  //console.log(input.value);
+
+  this.areaPArr.push(input.value);
+  if (this.areaPArr.length >= 3) {
+    this.showinput2 = false;
+    console.log(this.showinput2, 'showinput2 show');
+  }
+  
+  this.latitude = address.geometry.location.lat();
+  this.longtitude = address.geometry.location.lng();
+
+  this.service
+  .getAddress(this.latitude, this.longtitude)
+  .subscribe((res: any) => {
+   
+
+    this.Address = res[0].address_components;
+   
+
+    let area = this.Address.find((component: any) => {
+      if (component.types.includes('locality')) {
+        //console.log(component.types.includes('locality'),'locality');
+
+        return component.types.includes('locality');
+      }
+
+      if (component.types.includes('sublocality_level_1')) {
+        //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+
+        return component.types.includes('sublocality_level_1');
+      }
+    }).long_name;
+    console.log(area);
+    this.areaSend.push(area)
+})
+}
+
+  removeArea2(i: any) {
+    //console.log(i);
+    this.areaPArr.splice(i, 1);
+    if (!(this.areaPArr.length >= 3)) {
+      this.showinput2 = true;
+      console.log(this.showinput2, 'showinput2 show');
+    
+    
+  }
   }
 }

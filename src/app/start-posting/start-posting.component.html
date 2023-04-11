@@ -114,12 +114,14 @@
                 </form>
             </div>
         </div>
-        <div class="draftdiv" (click)="route()" *ngIf="confirmRoute && data.routeLink" >
+        <ng-container  *ngIf="confirmRoute && checkroute">
+        <div class="draftdiv" (click)="route()" >
         <p>{{data.HouseOrCommercialType}} > {{data.Type}}</p> <p style="    color: grey;
         opacity: 0.9;
         font-size: 0.8rem;
         font-weight: 100;">Continue Posting </p>
     </div>
+</ng-container>
 
     </div>
     
