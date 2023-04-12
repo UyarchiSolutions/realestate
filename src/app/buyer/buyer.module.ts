@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BuyerloginComponent } from './buyerlogin/buyerlogin.component';
 import { HttpClientModule } from "@angular/common/http";
@@ -18,12 +18,14 @@ import { RouterModule } from '@angular/router';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { HeaderWithProfileComponent } from '../shared/header-with-profile/header-with-profile.component';
 import { ResidentialDetailviewComponent } from './buyer-search-view/residential-detailview/residential-detailview.component';
 import { BuyerInterestedPropertyComponent } from '../buyer-interested-property/buyer-interested-property.component';
 
 
 @NgModule({
+  schemas: [NO_ERRORS_SCHEMA],
   declarations: [
     BuyerloginComponent,
     RegisterComponent,
@@ -49,6 +51,7 @@ import { BuyerInterestedPropertyComponent } from '../buyer-interested-property/b
     ReactiveFormsModule,
     GooglePlaceModule,
     NgxSpinnerModule,
+    NgxSliderModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',

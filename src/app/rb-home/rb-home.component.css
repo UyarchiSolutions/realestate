@@ -650,3 +650,28 @@ position: relative;
 .popup .search-field{
     margin-top: 5px;
 }
+::ng-deep .ngx-slider-fill {
+    background-color: brown;
+  }
+
+  ::ng-deep .ngx-slider-handle {
+  background-color: brown;
+  border-color: brown;
+}
+.alert_span
+{
+    background-color: var(--brown) !important;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+.ngx-slider .ngx-slider-selection {
+    z-index: 2;
+    background: brown !important;
+    border-radius: 2px;
+}
+.slider{
+    background-color:var(--brown) !important;
+}

@@ -18,6 +18,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { CommonModule } from '@angular/common';
 import { PropertyAlertComponent } from './property-alert/property-alert.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 
@@ -48,6 +49,7 @@ import { PropertyAlertComponent } from './property-alert/property-alert.componen
     SellerModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgxSliderModule,
 
     FormsModule,
     CommonModule,

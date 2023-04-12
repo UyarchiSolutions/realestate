@@ -72,5 +72,11 @@ export class BuyerService {
   send_alert(data:any){
     return this.http.post(this.base_url+`/v1/propertyAlert`,data,{headers:{auth:Cookie.get('buyer')}})
   }
+  get_alert(){
+    return this.http.get(this.base_url+'/v1/propertyAlert/getAlerts',{headers:{auth:Cookie.get('buyer')}})
+  }
+  resend_alert(id:any,data:any){
+    return this.http.put(this.base_url+`/v1/propertyAlert/Update/${id}`,data,{headers:{auth:Cookie.get('buyer')}})
+  }
 }
 
