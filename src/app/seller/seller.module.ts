@@ -48,6 +48,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { IndianCurrencyPipeS } from '../pipes/indian-currency.pipe copy';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
+import { PropertyAlertComponent } from '../property-alert/property-alert.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -100,7 +102,9 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     IndianCurrencyPipeS,
 
     MyAccountComponent,
-    EditAccountComponent
+    EditAccountComponent,
+
+    
   ],
   imports: [
     CommonModule,
@@ -109,6 +113,7 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     ReactiveFormsModule,
     CommonModule,
     GooglePlaceModule,
+    AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
     }),

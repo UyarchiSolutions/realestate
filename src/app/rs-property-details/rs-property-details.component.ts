@@ -65,7 +65,9 @@ export class RsPropertyDetailsComponent implements OnInit {
   routerlink='residential-sale-property';
   propsub() {
     
-    this.submitted = true;
+    this.submitted = this.data.propertType !=  null ? false : true;
+
+    // this.submitted = true;
     var Checkdata = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -79,7 +81,7 @@ export class RsPropertyDetailsComponent implements OnInit {
      
     };
     console.log(Checkdata)
-    if(this.allKeysHaveValue(Checkdata) ){ 
+    if(this.allKeysHaveValue(Checkdata) || this.data.propertType !=  null ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,

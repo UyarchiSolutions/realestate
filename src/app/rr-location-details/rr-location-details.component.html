@@ -83,8 +83,9 @@
   <input type="number" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
     </div>
      <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p> 
-    <!-- <p *ngIf="rrlocform.get('Pincode')?.errors.pattern && submitted" class="redtext">No letters in Pincode</p> -->
-
+    <!-- <p *ngIf="rrlocform.get('Pincode').errors?.pattern && submitted" class="redtext">Enter valid Pincode</p>
+    <p *ngIf="rrlocform.get('Pincode').hasError('minlength') && submitted" class="redtext">Enter valid Pincode</p> -->
+    <!-- <p>{{this.rrlocform.get('Pincode')?.errors | json}}</p> -->
    
     <div>
         <label>Landmark :</label>

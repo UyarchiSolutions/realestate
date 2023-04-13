@@ -10,6 +10,7 @@ export class PostPropertyService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
 
    Alldata =[];
+   AllResForView:any=[];
    //for recent search in buyer residental view
    AllRecentSearchArr:any=[];
    AllAddress:any=[];
@@ -125,4 +126,11 @@ export class PostPropertyService {
   Get_buyer_account(){
     return this.http.get(this.baseURL+'user',{ headers: { auth: Cookie.get('buyer') }} )
   }
+  send_ALLres(data:any){
+    this.AllResForView = data
+  }
+  get_ALLres(){
+    return this.AllResForView
+  }
+
 }

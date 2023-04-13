@@ -109,7 +109,8 @@ export class CrRentalDetailsComponent implements OnInit {
       submitted=false;
       Checkdata:any;
       rentsub(){
-        this.submitted = true;
+        
+        this.submitted = this.data.expectedPrice !=  null ? false : true;
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
   
@@ -133,7 +134,7 @@ export class CrRentalDetailsComponent implements OnInit {
         
         }
       }
-        if(this.allKeysHaveValue(this.Checkdata) ){ 
+        if(this.allKeysHaveValue(this.Checkdata) || this.data.expectedPrice ){ 
    
           console.log(this.Checkdata,'uploaded');
         var data={
@@ -142,7 +143,7 @@ export class CrRentalDetailsComponent implements OnInit {
           RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
           AdvanceAmt:this.priceform.get('AdvanceAmount').value,
           depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,
-          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
           leaseDuration:this.ldv,
           lock_in_period:this.lipv,
           squareFT:this.mainmon,

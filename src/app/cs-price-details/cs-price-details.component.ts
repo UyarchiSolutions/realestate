@@ -95,12 +95,14 @@ export class CsPriceDetailsComponent {
       submitted=false;
       Checkdata:any;
       rentsub(){
-        this.submitted = true;
+
+        this.submitted = this.data.expectedPrice !=  null ? false : true;
+       
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
   
           expectedPrice:this.priceform.get('ExpectedPrice').value,
-          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
           
@@ -113,7 +115,7 @@ export class CsPriceDetailsComponent {
         
         }
       }
-      if(this.allKeysHaveValue(this.Checkdata) ){ 
+      if(this.allKeysHaveValue(this.Checkdata) || this.data.expectedPrice ){ 
         console.log('updated',this.Checkdata);
         var data={
   
@@ -121,7 +123,7 @@ export class CsPriceDetailsComponent {
           RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
          
           current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
           routeLink:this.routerlink,

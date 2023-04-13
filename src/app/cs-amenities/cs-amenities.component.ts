@@ -54,7 +54,8 @@ export class CsAmenitiesComponent {
   submited = false;
   routerlink = 'commercial-sale-amenities';
   submit() {
-    this.submited = true;
+    
+    this.submited = this.data.furnishingStatus !=  null ? false : true;
     var Checkdata = {
       furnishingStatus: this.fsv,
       bathRoomType: this.btv,
@@ -66,7 +67,7 @@ export class CsAmenitiesComponent {
       wifi: this.myform.get('WIFI')?.value,
       Lift: this.lft,
     };
-    if (this.allKeysHaveValue(Checkdata)) {
+    if (this.allKeysHaveValue(Checkdata)  || this.data.furnishingStatus) {
       var data = {
         furnishingStatus: this.fsv,
         bathRoomType: this.btv,

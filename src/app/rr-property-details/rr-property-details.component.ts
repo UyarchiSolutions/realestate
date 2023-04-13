@@ -65,16 +65,25 @@ export class RrPropertyDetailsComponent implements OnInit {
   propsub() {
     
     this.pv= this.pv==null ? this.data.propertType : this.pv;
+    this.tfv= this.tfv==null ? this.data.noOfFloor : this.tfv;
+    this.ofv =this.ofv==null? this.data.floorNo : this.ofv;
+    this.aop=  this.aop==null? this.data.ageOfBuilding : this.aop;
+    this.bhkv = this.bhkv==null? this.data.BHKType : this.bhkv;
+    this.fdv=  this.fdv==null ? this.data.facingDirection : this.fdv;
+    this.rpv= this.rpv==null ? this.data.RentPrefer : this.rpv;
+
+
+
     this.submitted = true;
     var Checkdata = {
-      propertType: this.pv ,
-      noOfFloor: this.tfv==null ? this.data.noOfFloor : this.tfv,
-      floorNo: this.ofv==null? this.data.floorNo : this.ofv,
-      ageOfBuilding: this.aop==null? this.data.ageOfBuilding : this.aop,
-      BHKType: this.bhkv==null? this.data.BHKType : this.bhkv,
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
       BuildedSize: this.propform.get('BuildupArea')?.value ,
-      facingDirection: this.fdv==null ? this.data.facingDirection : this.fdv ,
-      RentPrefer: this.rpv==null ? this.data.RentPrefer : this.rpv,
+      facingDirection: this.fdv ,
+      RentPrefer: this.rpv,
       routeLink:this.routerlink
     };
     console.log(Checkdata,'patch waiting')

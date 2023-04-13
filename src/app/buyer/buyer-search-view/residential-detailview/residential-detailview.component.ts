@@ -48,6 +48,7 @@ export class ResidentialDetailviewComponent implements OnInit {
       console.log(params);
       this.id = params['id'];
       this.index=params['index'];
+      //to return
       this.formatAdd=params['formatAdd'];
       this.type=params['type'];
       this.BHKType=params['BHKType'];
@@ -66,7 +67,9 @@ export class ResidentialDetailviewComponent implements OnInit {
 
     console.log(this.allFilter,'All filters');
 
+    this.Alldata=this.service.get_ALLres();
 
+    console.log(this.Alldata,'All data');
     this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res,res.intrest,'formget');
       this.data=res.values;
@@ -75,15 +78,11 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.lat=this.data.lat;
       this.long=this.data.long;
       console.log(this.lat,'lat,',this.long,'long')
+      this.get_landmarks_forbuyer('School');
     })
    
 
-    this.service
-    .getSellerDetails(this.page, this.range, this.allFilter,[])
-    .subscribe((res: any) => {
-      this.Alldata = res.values;
-      console.log(this.Alldata, 'all data in view by id');
-    });
+  
   
   }
   lat:any;
@@ -91,7 +90,7 @@ export class ResidentialDetailviewComponent implements OnInit {
   landmarks:any=[];
   LMlat_long:any=[];
   icon:any='';
-
+  radius=2000;
   get_landmarks_forbuyer(landmak:any){
     this.place=landmak
     this.landmarks=[];
@@ -130,7 +129,14 @@ export class ResidentialDetailviewComponent implements OnInit {
   next(){
     this.index= this.index+1;
     console.log(this.index);
+    console.log(this.Alldata,this.Alldata.length)
+    if(this.index+1 > this.Alldata.length ){
+     
+      this.index = 0;
+    }
+    console.log(this.index,'after if');
     this.id = this.Alldata[this.index]._id;
+    
     this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res);
       this.data=res.values;
@@ -140,7 +146,11 @@ export class ResidentialDetailviewComponent implements OnInit {
     
     this.index= this.index - 1;
     console.log(this.index);
-
+    if(this.index == -1){
+      let length = this.Alldata.length - 1
+      this.index = length
+    }
+    console.log(this.index,'after if');
     this.id = this.Alldata[this.index]._id;
     this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res);
@@ -193,7 +203,7 @@ export class ResidentialDetailviewComponent implements OnInit {
     
   }
  
-  radius=2000;
+  
   place='hospital';
 
 }

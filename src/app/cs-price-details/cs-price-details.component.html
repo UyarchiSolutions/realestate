@@ -128,7 +128,7 @@
     </div>
     </div>
     <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: block">
-        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance')?.errors.required && submitted ">Exclude Maintance is required!</p>
         <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
       </div>
 

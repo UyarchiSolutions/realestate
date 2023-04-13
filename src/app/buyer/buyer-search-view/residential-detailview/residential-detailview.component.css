@@ -268,3 +268,7 @@ cursor: pointer !important;
 bottom: 0px;
 margin-bottom: 0 !important;
 }
+.show:hover{
+  
+    visibility:visible !important;
+}

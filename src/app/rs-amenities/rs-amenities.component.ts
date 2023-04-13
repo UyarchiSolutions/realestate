@@ -45,7 +45,7 @@ none: any;
     }
     submited=false;
     submit(){
-      this.submited=true;
+      this.submited = this.data.furnishingStatus !=  null ? false : true;
 
       var checkdata ={
         furnishingStatus:this.fsv,

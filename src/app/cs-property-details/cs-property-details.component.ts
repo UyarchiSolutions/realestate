@@ -67,7 +67,7 @@ export class CsPropertyDetailsComponent {
     submitted=false;
     propsub() {
      
-      this.submitted=true
+      this.submitted = this.data.propertType !=  null ? false : true;
       var Checkdata = {
         propertType: this.pv,
         noOfFloor: this.tfv,
@@ -84,7 +84,7 @@ export class CsPropertyDetailsComponent {
         routeLink:this.routerlink
       };
 
-      if(this.allKeysHaveValue(Checkdata) ){ 
+      if(this.allKeysHaveValue(Checkdata) || this.data.propertType ){ 
 
       var data = {
         propertType: this.pv,

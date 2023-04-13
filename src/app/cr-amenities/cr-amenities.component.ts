@@ -56,7 +56,8 @@ export class CrAmenitiesComponent {
       submited=false;
       routerlink='commercial-rent-amenities';
       submit(){
-        this.submited=true;
+        this.submited = this.data.furnishingStatus !=  null ? false : true;
+       
         var Checkdata ={
           furnishingStatus:this.fsv,
           bathRoomType:this.btv,
@@ -70,7 +71,7 @@ export class CrAmenitiesComponent {
         
     
         }
-        if(this.allKeysHaveValue(Checkdata) ){ 
+        if(this.allKeysHaveValue(Checkdata)  || this.data.furnishingStatus ){ 
         var data ={
           furnishingStatus:this.fsv,
           bathRoomType:this.btv,

@@ -55,7 +55,8 @@ export class RrAmentitesComponent implements OnInit {
   
   submit(){
 
-    this.submited=true;
+    this.submited = this.data.furnishingStatus !=  null ? false : true;
+   
     var Checkdata ={
       furnishingStatus:this.fsv,
       waterSupply:this.wsv,

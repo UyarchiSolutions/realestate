@@ -87,7 +87,7 @@ export class RbHomeComponent implements OnInit {
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
       if (params.params.formatAdd != null) {
-        // console.log(params);
+        console.log(params);
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
         this.propertType =
@@ -656,12 +656,16 @@ export class RbHomeComponent implements OnInit {
   handleAddressChange(address: Address, input: any) {
     //console.log(input.value);
     this.formatAdd = input.value;
-    this.areaArr.push(input.value);
+    
+    let Showvalue = input.value;
+   let  Sendvalue = Showvalue.split(',').join('-');
+   
+    this.areaArr.push(Sendvalue);
     if (this.areaArr.length >= 3) {
       this.showInput = false;
       console.log(this.showInput, 'inpout show');
     }
-
+    input.value = '';
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
 
@@ -691,7 +695,7 @@ export class RbHomeComponent implements OnInit {
         //   //console.log(city);
         //   this.city= city;
       });
-    // input.value = '';
+   
   }
   sendRecentSearch() {
     let data = {
@@ -743,6 +747,7 @@ export class RbHomeComponent implements OnInit {
   checkCookie: any;
 
   GetDataBYId(id: any, i: any) {
+    console.log(i)
     this.checkCookie = this.service.findCookie();
     if (this.checkCookie) {
       this.service.userStatusCheck(id).subscribe((res: any) => {
@@ -764,7 +769,8 @@ export class RbHomeComponent implements OnInit {
         };
 
         this.service.Alldata = this.sendData;
-
+        this.service.send_ALLres(this.data);
+        console.log(oneid)
         const query = new URLSearchParams(oneid).toString();
         this.router.navigateByUrl(
           '/buyer-residential-rent-search-view?' + query
@@ -834,23 +840,23 @@ export class RbHomeComponent implements OnInit {
   emptyArr: any[] = [];
 
   refineFilters() {
-    this.SelectedFilters = [''];
-    this.FbhkArr = [''];
-    this.proptArr = [''];
-    this.ShowOnlyArr = [''];
-    this.FurArr = [''];
-    this.ParkArr = [''];
-    this.TentArr = [''];
-    this.PropAgeArr = [''];
-    this.bathCountArr = [''];
-    this.FbathArr = [''];
-    this.BhkCountArr = [''];
-    this.areaArr = [''];
-    this.floordata=[''];
+    this.SelectedFilters = [];
+    this.FbhkArr = [];
+    this.proptArr = [];
+    this.ShowOnlyArr = [];
+    this.FurArr = [];
+    this.ParkArr = [];
+    this.TentArr = [];
+    this.PropAgeArr = [];
+    this.bathCountArr = [];
+    this.FbathArr = [];
+    this.BhkCountArr = [];
+    this.areaArr = [];
+    this.floordata=[];
 
     this.sendData = {
       formatAdd: this.formatAdd,
-      area: this.areaArr,
+      // area: this.areaArr,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -1008,6 +1014,8 @@ export class RbHomeComponent implements OnInit {
     this.service.Get_buyer_account().subscribe((res: any) => {
       // console.log(res);
       this.buyer = res;
+      this.showProfileHeader=true
+
     });
   }
   //alert pop
@@ -1015,7 +1023,7 @@ export class RbHomeComponent implements OnInit {
   maxValue:any=100000;
   sendAlert=true;
   recAlert=false;
-
+  showProfileHeader=false;
   check:boolean=true;
   check1:boolean=false;
   popform:any=this.fb.group({
