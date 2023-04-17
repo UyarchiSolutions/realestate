@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
   zoom=10;
   areaSend:any=[];
 
+
   handleAddressChange(address: Address,input:any) {
 
     let Showvalue = input.value;
@@ -119,53 +120,36 @@ export class HomeComponent implements OnInit {
    options: any = {
     componentRestrictions: { country: 'IN' }
   }
-  ChandleAddressChange(address: Address,) {
-
-    this.BuyerAddres = address.formatted_address;
-
-    this.Comform.patchValue({
-      BuyerAddres: this.BuyerAddres,
-   })
-
-   this.latitude = address.geometry.location.lat();
-   this.longtitude = address.geometry.location.lng();
-
-
- 
-
-   this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-    console.log(res)
-     
-     
-      let address = res[0].address_components;
-      let area = address.find((component:any) =>{ 
-        if( component.types.includes('locality')){
-
-          console.log(component.types.includes('locality'),'locality');
-
-        return component.types.includes('locality')}
-
-        if( component.types.includes('sublocality_level_1')){
-
-          console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-        return component.types.includes('sublocality_level_1')}
-     
-      }
-      ).long_name; 
-
-      this.area = area;
-
-     let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-      console.log(city);
-      this.city= city; 
-      
   
-    }) 
+  Carea:any=[];
+  Ccity: any;
+  CBuyerAddres:any;
+  CaddressArray:any[]=[];
+  Clocalities:any[]=[];
+  Czoom=10;
+  CareaSend:any=[];
+  ChandleAddressChange(address: Address,input:any){
     
+
+      let Showvalue = input.value;
+     let  Sendvalue = Showvalue.split(',').join('-');
+      this.Carea.push(Showvalue);
+      console.log(this.Carea,'show address');
+      this.CareaSend.push(Sendvalue)
+      console.log(this.CareaSend,'show address');
+  
     
-     
-   }
+        this.CBuyerAddres = address.formatted_address;
+        this.Comform.patchValue({
+          CBuyerAddres: this.CBuyerAddres,
+       })
+       
+       console.log(this.CBuyerAddres,this.Comform.get('CBuyerAddres')?.value);
+     this.latitude = address.geometry.location.lat();
+     this.longtitude = address.geometry.location.lng();
+  
+  
+  }
    Coptions: any = {
     componentRestrictions: { country: 'IN' }
   }
@@ -207,26 +191,72 @@ export class HomeComponent implements OnInit {
     
   }
 
-    if(this.Resform.get('type')?.value == 'Sale'){
-    let data ={
-      formatAdd:this.Resform.get('BuyerAddres')?.value,
+    if(this.Resform.get('type')?.value == 'Sale' && this.areaSend.length>0 ){
+      let data ={
+        formatAdd:this.BuyerAddres,
+        type:'Sale',
+        propertType:this.Resform.get('PropertyType')?.value,
+        BHKType:this.Resform.get('BHK')?.value? this.bhkArr.indexOf( this.Resform.get('BHK')?.value).toString():'',
+        area:this.areaSend,
+      }
 
-    }
-    this.service.getSellerDetails(this.page,this.range,data,[]).subscribe((res:any)=>{
-      console.log(res);
-      var postdata = {
-        formatAdd:this.Resform.get('BuyerAddres')?.value,
-        
-
-      };
-      var queryString = new URLSearchParams(postdata).toString();
+      var queryString = new URLSearchParams(data).toString();
       this.route.navigateByUrl('/buyer-residential-buy-view?' + queryString );
-    })
+    
   }
   };
-  Comsubmit(){
-    console.log(this.Comform.value,'zcxzxc');
+
+  Comsubmit()
+  {
+    if(this.CareaSend.length==0){
+      this.toastr.error('Fill the field', 'Please fil the address!', {
+        positionClass: 'toast-bottom-center'
+     });
+    }
+    if(this.Comform.get('Ctype')?.value == ''){
+      this.toastr.error('Select the Type', '', {
+        positionClass: 'toast-bottom-center'
+     });
+    }
+    if(this.Comform.get('Ctype')?.value == 'Rent' && this.CareaSend.length>0){
+    console.log('iside if')
+      
+    let data ={
+      formatAdd:this.CBuyerAddres,
+      type:'Rent',
+      // propertType:this.Comform.get('CPropertyType')?.value,
+      // BHKType:this.Comform.get('CBHK')?.value? this.bhkArr.indexOf( this.Comform.get('BHK')?.value).toString():'',
+      area:this.CareaSend,
+    }
+   
+      var queryString = new URLSearchParams(data).toString();
+      this.route.navigateByUrl('/buyer-commercial-rent-view?' + queryString );
+    
   }
+
+    if(this.Comform.get('Ctype')?.value == 'Buy' && this.CareaSend.length>0 ){
+      console.log('iside if')
+      let data ={
+        formatAdd:this.CBuyerAddres,
+        type:'Sale',
+        // propertType:this.Comform.get('CPropertyType')?.value,
+        // BHKType:this.Comform.get('CBHK')?.value? this.bhkArr.indexOf( this.Comform.get('BHK')?.value).toString():'',
+        area:this.CareaSend,
+      }
+
+      var queryString = new URLSearchParams(data).toString();
+      this.route.navigateByUrl('/buyer-commercial-buy-view?' + queryString );
+    
+  }
+  };
+  CremoveArea(i:any){
+    console.log(i);
+    this.Carea.splice(i,1);
+  
+    console.log(this.area,'area arry');
+    this.service.GAreaArr = this.area;
+  }
+
   resOrCom='Residential';
   switch(e:any){
     this.resOrCom=e;

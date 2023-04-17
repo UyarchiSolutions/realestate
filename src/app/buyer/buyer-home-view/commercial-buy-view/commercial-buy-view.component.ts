@@ -1,20 +1,19 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PostPropertyService } from 'src/app/services/post-property.service';
+import { BuyerService } from '../../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
-import { Cookie } from 'ng2-cookies';
-import { PostPropertyService } from '../services/post-property.service';
-import { BuyerService } from '../buyer/buyer.service';
 import { Options } from '@angular-slider/ngx-slider';
+import { Cookie } from 'ng2-cookies';
 
 
 @Component({
-  selector: 'app-rb-home',
-  templateUrl: './rb-home.component.html',
-  styleUrls: ['./rb-home.component.css'],
- 
+  selector: 'app-commercial-buy-view',
+  templateUrl: './commercial-buy-view.component.html',
+  styleUrls: ['./commercial-buy-view.component.css']
 })
-export class RbHomeComponent implements OnInit {
+export class CommercialBuyViewComponent implements OnInit {
   buyer: any = [];
   constructor(
     private arouter: ActivatedRoute,
@@ -77,7 +76,6 @@ export class RbHomeComponent implements OnInit {
     search: new FormControl(),
     price: new FormControl([5000, 100000])
   });
-
   ngOnInit(): void {
     this.Getbuyer();
     this.Get_all_interest();
@@ -192,7 +190,8 @@ export class RbHomeComponent implements OnInit {
   GetDataForFilter() {
   let  Data = {
       formatAdd: this.formatAdd,
-      type: this.type,
+      HouseOrCommercialType:'Commercial',
+      type: 'Sale',
       propertType: this.propertType,
       BHKType: this.BHKType,
       rentDetails: this.showOnlyType,
@@ -201,10 +200,10 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      // buildupfrom: this.filter.get('buildupFrom')?.value,
+      // buildupto: this.filter.get('buildupTo')?.value,
+      // priceFrom: this.filter.get('priceFrom')?.value,
+      // priceTo: this.filter.get('priceTo')?.value,
     };
     console.log(Data);
     this.service
@@ -496,14 +495,14 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      // buildupfrom: this.filter.get('buildupFrom')?.value,
+      // buildupto: this.filter.get('buildupTo')?.value,
+      // priceFrom: this.filter.get('priceFrom')?.value,
+      // priceTo: this.filter.get('priceTo')?.value,
     };
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
   }
 
   deleteFilter(v: any) {
@@ -631,7 +630,7 @@ export class RbHomeComponent implements OnInit {
       priceTo: this.filter.get('priceTo')?.value,
     };
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
   }
 
   is_chckked(val: any, filter: any) {
@@ -740,7 +739,7 @@ export class RbHomeComponent implements OnInit {
       priceTo: this.filter.get('priceTo')?.value,
     };
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
   }
   options: any = {
     componentRestrictions: { country: 'IN' },
@@ -987,6 +986,7 @@ export class RbHomeComponent implements OnInit {
       this.CRtab = true;
     }
   }
+  
   AllInterested: any;
   ResiRent:any=[];
   ResiBuy:any=[];
@@ -1073,7 +1073,7 @@ export class RbHomeComponent implements OnInit {
 })
 
 popOptions: Options = {
-  floor: 5000,
+  floor: 50000,
   ceil: 100000,
   step:500,
 };
@@ -1249,3 +1249,7 @@ alertaddress(address: Address, input: any) {
   }
  
 }
+
+ 
+
+

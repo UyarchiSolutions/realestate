@@ -110,7 +110,7 @@
 
     <div class="search-type">
         <div class="search-type-select" (click)="viewtop()">
-            <p>Residential>Rent</p>
+            <p>Residential>Buy</p>
             <svg width="7" height="15" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.25 1.5L8.75 9L1.25 16.5" stroke="#616161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -560,8 +560,8 @@
             <td>{{v.area}}</td>
             <td>{{v.BHKType}}</td>
             <td>{{v.BuildedSize}}sq.ft</td>
-            <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
-                <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+            <td><p *ngIf="v.expectedPrice >= 100000">{{v.expectedPrice/100000  | indianCurrency}} lakhs</p>
+                <p *ngIf="v.expectedPrice <= 100000">{{v.expectedPrice | indianCurrency }} </p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
             
@@ -581,6 +581,7 @@
        
 
 </table>
+
 <!-- interest-tab -->
 <ng-container *ngIf="interestShow">
     <div class="property-tab">
@@ -1422,8 +1423,8 @@
                 <td>{{v.area}}</td>
                 <td>{{v.BHKType}}</td>
                 <td>{{v.BuildedSize}}sq.ft</td>
-                <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
-                    <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+                <td><p *ngIf="v.expectedPrice >= 100000">{{v.expectedPrice/100000  | indianCurrency}} lakhs</p>
+                    <p *ngIf="v.expectedPrice <= 100000">{{v.expectedPrice | indianCurrency }} </p>
                     <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
                     <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
                 

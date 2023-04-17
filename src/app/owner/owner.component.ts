@@ -208,4 +208,11 @@ export class OwnerComponent implements OnInit {
     }
 
   }
+  getInterest(_id:any){
+    var send ={
+      id:_id
+    }
+    var query = new URLSearchParams(send).toString();
+    this.router.navigateByUrl('/interest-post?'+ query);
+  }
 }

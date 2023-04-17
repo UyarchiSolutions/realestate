@@ -8,7 +8,7 @@ import { ChangeBuyerComponent } from './buyer/change-buyer/change-buyer.componen
 import { CheckmailComponent } from './buyer/checkmail/checkmail.component';
 import { CreatepasswordComponent } from './buyer/createpassword/createpassword.component';
 import { RegisterComponent } from './buyer/register/register.component';
-import { ResidentialBuyViewComponent } from './buyer/residential-buy-view/residential-buy-view.component';
+import { ResidentialBuyViewComponent } from './buyer/buyer-home-view/residential-buy-view/residential-buy-view.component';
 import { UpdatepasswordbuyerComponent } from './buyer/updatepasswordbuyer/updatepasswordbuyer.component';
 import { VerifyOtpComponent } from './buyer/verify-otp/verify-otp.component';
 import { CrAdditionalDetailsComponent } from './cr-additional-details/cr-additional-details.component';
@@ -59,6 +59,8 @@ import { MyAccountComponent } from './seller/my-account/my-account.component';
 import { EditAccountComponent } from './seller/edit-account/edit-account.component';
 import { BuyerInterestedPropertyComponent } from './buyer-interested-property/buyer-interested-property.component';
 import { PropertyAlertComponent } from './property-alert/property-alert.component';
+import { CommercialBuyViewComponent } from './buyer/buyer-home-view/commercial-buy-view/commercial-buy-view.component';
+import { CommercialRentViewComponent } from './buyer/buyer-home-view/commercial-rent-view/commercial-rent-view.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -83,7 +85,7 @@ const routes: Routes = [
   {path:'changepassword-seller',component:ChangeSellerComponent},
   
   {path:'start-posting',component:StartPostingComponent},
-  {path:'property-post',component:PropertyPostComponent},
+  {path:'interest-post',component:PropertyPostComponent},
   {path:'owner',component:OwnerComponent},
 
   {path:'residential-rent',component:RrPropertyDetailsComponent},
@@ -122,6 +124,8 @@ const routes: Routes = [
 
   {path:'buyer-residential-rent-view',component:RbHomeComponent},
   {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent},
+  {path:'buyer-commercial-buy-view',component:CommercialBuyViewComponent},
+  {path:'buyer-commercial-rent-view',component:CommercialRentViewComponent},
 
   //buyer search single view
   {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent},

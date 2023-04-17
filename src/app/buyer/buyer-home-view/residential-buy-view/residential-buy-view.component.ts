@@ -1,30 +1,28 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Options } from '@angular-slider/ngx-slider/options';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PostPropertyService } from 'src/app/services/post-property.service';
+import { BuyerService } from '../../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
 import { Cookie } from 'ng2-cookies';
-import { PostPropertyService } from '../services/post-property.service';
-import { BuyerService } from '../buyer/buyer.service';
-import { Options } from '@angular-slider/ngx-slider';
-
 
 @Component({
-  selector: 'app-rb-home',
-  templateUrl: './rb-home.component.html',
-  styleUrls: ['./rb-home.component.css'],
- 
+  selector: 'app-residential-buy-view',
+  templateUrl: './residential-buy-view.component.html',
+  styleUrls: ['./residential-buy-view.component.css']
 })
-export class RbHomeComponent implements OnInit {
-  buyer: any = [];
-  constructor(
-    private arouter: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router,
-    private service: PostPropertyService,
+export class ResidentialBuyViewComponent implements OnInit {
+  buyer: any;
+  constructor(private arouter:ActivatedRoute,
+    private fb:FormBuilder ,private router:Router, private service:PostPropertyService,
     private buyerService: BuyerService
-  ) {}
-  range = 10;
-  page = 0;
+    ){
+
+  }
+  range=10;
+  page=0;
+
   displaycount = 0;
 
   pagetotal = 0;
@@ -72,10 +70,10 @@ export class RbHomeComponent implements OnInit {
     propertType: new FormControl(''),
     buildupFrom: new FormControl(0),
     buildupTo: new FormControl(10000),
-    priceFrom: new FormControl(5000),
-    priceTo: new FormControl(100000),
+    priceFrom: new FormControl(0),
+    priceTo: new FormControl(10000000),
     search: new FormControl(),
-    price: new FormControl([5000, 100000])
+    price: new FormControl([0, 10000000])
   });
 
   ngOnInit(): void {
@@ -184,7 +182,6 @@ export class RbHomeComponent implements OnInit {
     });
     this.getAlert();
   }
-  
   showInput = true;
   sendData: any;
   totalval: any;
@@ -201,10 +198,10 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      // buildupfrom: this.filter.get('buildupFrom')?.value,
+      // buildupto: this.filter.get('buildupTo')?.value,
+      // priceFrom: this.filter.get('priceFrom')?.value,
+      // priceTo: this.filter.get('priceTo')?.value,
     };
     console.log(Data);
     this.service
@@ -496,14 +493,14 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      // buildupfrom: this.filter.get('buildupFrom')?.value,
+      // buildupto: this.filter.get('buildupTo')?.value,
+      // priceFrom: this.filter.get('priceFrom')?.value,
+      // priceTo: this.filter.get('priceTo')?.value,
     };
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
 
   deleteFilter(v: any) {
@@ -631,7 +628,7 @@ export class RbHomeComponent implements OnInit {
       priceTo: this.filter.get('priceTo')?.value,
     };
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
 
   is_chckked(val: any, filter: any) {
@@ -740,7 +737,7 @@ export class RbHomeComponent implements OnInit {
       priceTo: this.filter.get('priceTo')?.value,
     };
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
   options: any = {
     componentRestrictions: { country: 'IN' },
@@ -1249,3 +1246,6 @@ alertaddress(address: Address, input: any) {
   }
  
 }
+
+
+

@@ -132,5 +132,12 @@ export class PostPropertyService {
   get_ALLres(){
     return this.AllResForView
   }
-
+  get_Interest_buyer(id:any){
+   
+    return this.http.get(this.baseURL +'PropertyDeatails/after/intrested/'+id)
+  }
+  update_Interest_buyer(id:any,data:any){
+   
+    return this.http.put(this.baseURL +'updateBuyerRelation/'+id,data,{ headers: { auth: Cookie.get('tokens') }})
+  }
 }
