@@ -50,7 +50,7 @@ export class RsPriceDetailsComponent implements OnInit {
         console.log(res);
         
         this.priceform.patchValue({
-          ExpectedPrice:res.expectedPrice,
+          ExpectedPrice:res.MonthlyRentFrom,
           ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
        
           ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
@@ -97,7 +97,7 @@ export class RsPriceDetailsComponent implements OnInit {
       if ( this.priceform.valid){
       var data={
 
-        expectedPrice:this.priceform.get('ExpectedPrice').value,
+        MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
         RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
        
         current_in_loan:this.priceform.get('CurrentlyInLoan').value,
@@ -129,7 +129,7 @@ export class RsPriceDetailsComponent implements OnInit {
   
       var data={
 
-        expectedPrice:this.priceform.get('ExpectedPrice').value,
+        MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
         RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
        
         current_in_loan:this.priceform.get('CurrentlyInLoan').value,

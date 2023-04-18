@@ -219,7 +219,7 @@ export class RrLocationDetailsComponent  implements OnInit{
        this.latitude = address.geometry.location.lat();
        this.longtitude = address.geometry.location.lng();
       
-      
+      console.log(this.rrlocform.get('addressLoaction')?.value)
        this.rrlocform.patchValue({
          lat: this.latitude,
          long: this.longtitude,

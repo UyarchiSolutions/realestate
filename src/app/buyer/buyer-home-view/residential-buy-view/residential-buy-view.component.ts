@@ -1064,14 +1064,26 @@ export class ResidentialBuyViewComponent implements OnInit {
   showProfileHeader=false;
   check:boolean=true;
   check1:boolean=false;
+
+
+myform:any=this.fb.group({
+  type:new FormControl(''),
+})
+
   popform:any=this.fb.group({
   foodType:new FormControl(''),
-  PropertyStatus: new FormControl('')
+  PropertyStatus: new FormControl(''),
+
 })
 
 popOptions: Options = {
   floor: 5000,
   ceil: 100000,
+  step:500,
+};
+BuildupOptions: Options = {
+  floor: 500,
+  ceil: 10000,
   step:500,
 };
 property="Residential";
@@ -1090,8 +1102,28 @@ property="Residential";
   this.property="Commercial";
  }
  showAlertpop=false;
+
+ ResiRentpop=false;
+ ResiSalepop=false;
+ CommRentpop=false;
+ CommSalepop=false;
+
  popup(){
-  this.showAlertpop=!this.showAlertpop;
+  console.log(this.property,this.myform.get('type')?.value)
+
+  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
+    this.ResiRentpop=true;
+  }
+  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
+    this.ResiSalepop=true;
+  }
+  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
+    this.CommRentpop=true;
+  }
+  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
+    this.CommSalepop=true;
+  }
+  // this.showAlertpop=!this.showAlertpop;
  }
 
  pop_cheked(val: any, filter: any) {
@@ -1118,12 +1150,22 @@ propertyStatusP:any;
 shftingDateP:any;
 
 
+
+
+
 areaPArr:any=[];
 propertyTypePArr:any=[];
 BhkTypePPArr:any=[];
 parkingPArr:any=[];
 propertyStatusPArr:any=[];
 shftingDatePPArr:any=[];
+
+planToBuy:any=[];
+CommProperty:any=[];
+CommBuildType:any=[];
+amenities:any=[];
+BuildminValue:any=500;
+BuildmaxValue:any=10000;
 
 update_pop_filter(v:any,arr:any){
 
@@ -1138,10 +1180,13 @@ update_pop_filter(v:any,arr:any){
     console.log(arr)
   }
 }
-
+letType:any;
 popcheck(){
+  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
   let data= {
     area:this.areaSend,
+    ResOrCom:this.property,
+    type:'Rent',
     // address:this.areaPArr,
     amountFrom:this.minValue,
     amountTo:this.maxValue,
@@ -1157,20 +1202,153 @@ popcheck(){
   if(this.firstAlert){
     this.buyerService.send_alert(data).subscribe((res:any)=>{
       console.log(res)
-      this.showAlertpop=!this.showAlertpop;
+      this.ResiRentpop=false;
       this.getAlert();
+      this.empty();
+      this.letType='Rent'
+    })
+  }else{
+    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
+      console.log(res)
+      this.ResiRentpop=false;
+      this.getAlert();
+      this.empty();
+      this.letType='Rent'
+    })
+  }
+}
+if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
+  let data= {
+    area:this.areaSend,
+    // address:this.areaPArr,
+    ResOrCom:this.property,
+    type:'Sale',
+    amountFrom:this.minValue,
+    amountTo:this.maxValue,
+    propertyType:this.propertyTypePArr,
+    BhkType:this.BhkTypePPArr,
+    parking:this.parkingPArr,
+    planToBuy:this.planToBuy,
+    furnish:this.propertyStatusPArr,
+    PropertyStatus:this.popform.get('PropertyStatus')?.value
+  }
+  console.log(data,'data');
+  if(this.firstAlert){
+    this.buyerService.send_alert(data).subscribe((res:any)=>{
+      console.log(res)
+    
+      this.getAlert();
+      this.empty();
+      this.letType='Buy'
+      this.ResiSalepop=false;
   
     })
   }else{
     this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
       console.log(res)
-      this.showAlertpop=!this.showAlertpop;
       this.getAlert();
-  
+      this.empty();
+      this.letType='Buy'
+      this.ResiSalepop=false;
     })
   }
- 
 }
+if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
+  let data= {
+    area:this.areaSend,
+    ResOrCom:this.property,
+    type:'Rent',
+    // address:this.areaPArr,
+    amountFrom:this.minValue,
+    amountTo:this.maxValue,
+    propertyType:this.CommProperty,
+    buildtype:this.CommBuildType,
+    parking:this.parkingPArr,
+    shftingDate:this.shftingDatePPArr,
+    furnish:this.propertyStatusPArr,
+    amenities:this.amenities,
+    buildFrom:this.BuildminValue,
+    buildTo:this.BuildmaxValue
+   
+  }
+  console.log(data,'data');
+  if(this.firstAlert){
+    this.buyerService.send_alert(data).subscribe((res:any)=>{
+      console.log(res)
+      
+      this.getAlert();
+      this.empty();
+      this.letType='Rent'
+      this.CommRentpop=false;
+    })
+  }else{
+    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
+      console.log(res)
+     
+      this.getAlert();
+      this.empty();
+      this.letType='Rent'
+      this.CommRentpop=false;
+    })
+  }
+}
+if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
+  let data= {
+    area:this.areaSend,
+    ResOrCom:this.property,
+    type:'Sale',
+    // address:this.areaPArr,
+    amountFrom:this.minValue,
+    amountTo:this.maxValue,
+    propertyType:this.CommProperty,
+    buildtype:this.CommBuildType,
+    parking:this.parkingPArr,
+    planToBuy:this.planToBuy,
+    furnish:this.propertyStatusPArr,
+    amenities:this.amenities,
+    buildFrom:this.BuildminValue,
+    buildTo:this.BuildmaxValue
+   
+  }
+  console.log(data,'data');
+  if(this.firstAlert){
+    this.buyerService.send_alert(data).subscribe((res:any)=>{
+      console.log(res)
+     
+      this.getAlert();
+      this.empty();
+      this.letType='Buy'
+      this.CommSalepop=false;
+
+    })
+  }else{
+    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
+      console.log(res)
+    
+      this.getAlert();
+      this.empty();
+      this.letType='Buy'
+      this.CommSalepop=false;
+    })
+  }
+}
+
+
+}
+empty(){
+  this.propertyTypePArr=[];
+  this.BhkTypePPArr=[];
+  this.CommProperty=[]
+  this.CommBuildType=[]
+  this.parkingPArr=[]
+  this.propertyStatusPArr=[]
+  this.amenities=[]
+  this.shftingDatePPArr=[]
+  this.areaSend=[]
+  this.CommProperty=[]
+  this.CommBuildType=[]
+}
+
 areaSend:any=[];
 showinput2=true;
 popValue:any=[];
@@ -1205,16 +1383,21 @@ alertaddress(address: Address, input: any) {
     if (!(this.areaPArr.length >= 3)) {
       this.showinput2 = true;
       console.log(this.showinput2, 'showinput2 show');
-    
-    
-  }
-  }
+    }
+   }
   getRentRange1(v:any){
     this.maxValue=v.value;
   }
   getRentRange(v:any){
     this.minValue=v.value;
   }
+  getBuiltRange(v:any){
+    this.BuildminValue=v.value;
+  }
+  getBuiltRange1(v:any){
+    this.BuildmaxValue=v.value;
+  }
+
   firstAlert=true;
   popid:any;
   getAlert(){
@@ -1224,6 +1407,8 @@ alertaddress(address: Address, input: any) {
       
       this.popValue=res.values
       this.popid=res.data._id;
+      this.property=res.data.ResOrCom;
+      this.letType=res.data.type;
 
       if(res.data._id !=null){
         this.firstAlert=false;

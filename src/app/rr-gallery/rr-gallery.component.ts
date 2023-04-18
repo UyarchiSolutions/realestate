@@ -135,7 +135,7 @@ export class RrGalleryComponent implements OnInit {
   async submit() {
    
     this.submited=true;
-    if( this.videoSrc && this.imagePreview.length > 0){
+    if( this.videoSrc && this.imagePreview.length > 0 || this.data.image){
     await this.uploadimg();
     let data={
       routeLink:this.routerlink,

@@ -47,7 +47,7 @@ export class CsPriceDetailsComponent {
           console.log(res);
           
           this.priceform.patchValue({
-            ExpectedPrice:res.expectedPrice,
+            ExpectedPrice:res.MonthlyRentFrom,
             ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
             CurrentlyInLoan:res.current_in_loan=='true'?true:null,
             
@@ -96,12 +96,12 @@ export class CsPriceDetailsComponent {
       Checkdata:any;
       rentsub(){
 
-        this.submitted = this.data.expectedPrice !=  null ? false : true;
+        this.submitted = this.data.MonthlyRentFrom !=  null ? false : true;
        
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
   
-          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
@@ -110,16 +110,16 @@ export class CsPriceDetailsComponent {
       }else{
         this.Checkdata={
   
-          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
           MaintenanceStatus:this.maintanceVal,
         
         }
       }
-      if(this.allKeysHaveValue(this.Checkdata) || this.data.expectedPrice ){ 
+      if(this.allKeysHaveValue(this.Checkdata) || this.data.MonthlyRentFrom ){ 
         console.log('updated',this.Checkdata);
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
           RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
          
           current_in_loan:this.priceform.get('CurrentlyInLoan').value,
@@ -165,7 +165,7 @@ export class CsPriceDetailsComponent {
     
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedPrice').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
           RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
          
           current_in_loan:this.priceform.get('CurrentlyInLoan').value,

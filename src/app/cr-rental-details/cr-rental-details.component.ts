@@ -47,7 +47,7 @@ export class CrRentalDetailsComponent implements OnInit {
           console.log(res);
           
           this.priceform.patchValue({
-            ExpectedRent:res.expectedPrice,
+            ExpectedRent:res.MonthlyRentFrom,
             ExpectedrenttNegotiable:res.RentNegociable=='true'?true:null,
             AdvanceAmount :res.AdvanceAmt,
             AdvanceAmountNegotiable:res.depositeNegociable=='true'?true:null,
@@ -110,11 +110,11 @@ export class CrRentalDetailsComponent implements OnInit {
       Checkdata:any;
       rentsub(){
         
-        this.submitted = this.data.expectedPrice !=  null ? false : true;
+        this.submitted = this.data.MonthlyRentFrom !=  null ? false : true;
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
           AdvanceAmt:this.priceform.get('AdvanceAmount').value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
           leaseDuration:this.ldv,
@@ -126,7 +126,7 @@ export class CrRentalDetailsComponent implements OnInit {
       }else{
         this.Checkdata={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
           AdvanceAmt:this.priceform.get('AdvanceAmount').value,
           leaseDuration:this.ldv,
           lock_in_period:this.lipv,
@@ -134,12 +134,12 @@ export class CrRentalDetailsComponent implements OnInit {
         
         }
       }
-        if(this.allKeysHaveValue(this.Checkdata) || this.data.expectedPrice ){ 
+        if(this.allKeysHaveValue(this.Checkdata) || this.data.MonthlyRentFrom ){ 
    
           console.log(this.Checkdata,'uploaded');
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
           RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
           AdvanceAmt:this.priceform.get('AdvanceAmount').value,
           depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,
@@ -185,7 +185,7 @@ export class CrRentalDetailsComponent implements OnInit {
       routetopreview(){
         var data={
   
-          expectedPrice:this.priceform.get('ExpectedRent').value,
+          MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
           RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
           AdvanceAmt:this.priceform.get('AdvanceAmount').value,
           depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,

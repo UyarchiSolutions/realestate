@@ -1,0 +1,36 @@
+.sidebar{
+    width: 100%;
+height: 100%;
+}
+.dashboard-text{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: var(--brown);
+ padding-left: 13px;
+    color: white;
+}
+.dashboard-text p{
+    margin-left: 5px;
+}
+ul{
+    background-color: var(--sandal);
+    margin-top: 5px;
+    padding-left: 0;
+    min-height: 91%;
+    list-style: none;
+}
+ul li{
+    display: flex;
+    align-items: center;
+    padding:13px;
+    cursor: pointer;
+}
+
+ul li p{
+    margin-left: 5px;
+}
+.active{
+    background-color: var(--brown);
+    color: white;
+}

@@ -148,7 +148,7 @@ export class HomeComponent implements OnInit {
      this.latitude = address.geometry.location.lat();
      this.longtitude = address.geometry.location.lng();
   
-  
+     this.Comform.get('CBuyerAddres').reset();
   }
    Coptions: any = {
     componentRestrictions: { country: 'IN' }
