@@ -105,6 +105,19 @@
  
 </div>
 
+<div class="image-gallery" *ngIf="data.image" >
+       Uploaded Images             
+    <div class="images" *ngFor="let img of data.image ; let i = index">
+        
+        <img  [src]="'https://uyarchicrm.click/' + img" width="200px" height="150ox" >
+        <div  class="when-hover" >
+            <img src="../../assets/images/image-remove-btn.png" (click)="removeImgBackend(img)">
+            </div>
+    </div>
+ 
+</div>
+
+
 
 <div class="upload-video">
     <label>Video :</label>
@@ -122,13 +135,19 @@
     </div>
     </div>
   
-      
-          
-
-
 </div>
 <p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
-
+            
+<div class="image-gallery" *ngIf="data.videos">
+    Uploaded Video 
+    <div class="images video" *ngFor="let vid of data.videos">
+        <video [src]="vid" controls style="width:200px"></video>
+        <div class="when-hover">
+            <img src="../../assets/images/image-remove-btn.png" (click)="removeVidBackend()">
+        </div>
+  
+    </div>
+</div>
 </div>
 
 <div class="save-continue">

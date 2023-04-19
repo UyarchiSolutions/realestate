@@ -188,6 +188,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   sendDataBOOL = true;
   GetDataForFilter() {
   let  Data = {
+    HouseOrCommercialType:'Residential',
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.propertType,

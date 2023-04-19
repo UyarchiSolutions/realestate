@@ -42,6 +42,9 @@ export class RrGalleryComponent implements OnInit {
       this.id = params['id'];
       console.log(this.id, 'this is id from sp');
     });
+  this.getall()
+  }
+  getall(){
     this.service.formget(this.id).subscribe((res: any) => {
       this.data = res;
       console.log(res.image, 'res image');
@@ -257,4 +260,18 @@ export class RrGalleryComponent implements OnInit {
     Cookie.delete('tokens');
     this.router.navigateByUrl('/');
   }
+  removeImgBackend(name:any){
+    let data ={
+     url:name
+    }
+    this.service.remove_img(this.id,data).subscribe((res:any)=>{
+     console.log(res);
+     this.getall()
+    })
+   }
+   removeVidBackend(){
+     this.service.remove_vid(this.id).subscribe((res:any)=>{
+       this.getall()
+     })
+   }
 }

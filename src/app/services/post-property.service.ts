@@ -140,4 +140,10 @@ export class PostPropertyService {
    
     return this.http.put(this.baseURL +'updateBuyerRelation/'+id,data,{ headers: { auth: Cookie.get('tokens') }})
   }
+  remove_img(id:any,data:any){
+    return this.http.put(this.baseURL + 'Delete/Property/image/'+id,data)
+  }
+  remove_vid(id:any){
+    return this.http.delete(this.baseURL + `Delete/property/video/`+id)
+  }
 }

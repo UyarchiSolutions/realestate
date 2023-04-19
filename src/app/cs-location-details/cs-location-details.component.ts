@@ -25,7 +25,7 @@ export class CsLocationDetailsComponent {
         rrlocform:any = this.fb.group({
          
           Landmark: new FormControl ('',Validators.required),
-          Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/)]),
+          Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/),Validators.minLength(6)]),
           BuildingName: new FormControl ('',Validators.required),
           Address: new FormControl ('',Validators.required),
           lat:new FormControl (''),

@@ -145,7 +145,7 @@ label{
 }
 .err-msg{
     display: flex !important;
-    justify-content: end !important;
+    justify-content: flex-end !important;
     color: red;
     opacity: 0.8;
     font-size: 14px;

@@ -489,10 +489,10 @@
             <td>{{v.area}}</td>
             <td>{{v.buildingType}}</td>
             <td>{{v.BuildedSize}}sq.ft</td>
-            <td><p *ngIf="v.expectedPrice >= 100000">{{v.expectedPrice/100000  | indianCurrency}} lakhs</p>
-                <p *ngIf="v.expectedPrice <= 100000">{{v.expectedPrice | indianCurrency }} </p>
-                <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
-                <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
+            <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
+                <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+                <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000 | indianCurrency }} lakhs</p>
+                <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }}</p>
             
             </td>
             <td>{{v.created | date : "dd-MM-YYYY"}}</td>

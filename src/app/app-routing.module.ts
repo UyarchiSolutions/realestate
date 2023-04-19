@@ -62,6 +62,8 @@ import { PropertyAlertComponent } from './property-alert/property-alert.componen
 import { CommercialBuyViewComponent } from './buyer/buyer-home-view/commercial-buy-view/commercial-buy-view.component';
 import { CommercialRentViewComponent } from './buyer/buyer-home-view/commercial-rent-view/commercial-rent-view.component';
 import { ManageSellerOwnerComponent } from './admin/manage-seller-owner/manage-seller-owner.component';
+import { ManageBuyerTenantComponent } from './admin/manage-buyer-tenant/manage-buyer-tenant.component';
+import { ManagePostComponent } from './admin/manage-post/manage-post.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -141,6 +143,8 @@ const routes: Routes = [
 
   //admin
   {path:'admin/manage-seller-owner',component:ManageSellerOwnerComponent},
+  {path:'admin/manage-buyer-tenant',component:ManageBuyerTenantComponent},
+  {path:'admin/manage-post',component:ManagePostComponent}
 ];
 
 @NgModule({

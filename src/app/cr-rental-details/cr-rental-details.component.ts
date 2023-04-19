@@ -31,7 +31,7 @@ export class CrRentalDetailsComponent implements OnInit {
         private router:Router){}
        
       ngOnInit(): void {
-  
+          
         this.arouter.queryParams.subscribe(params => {
           console.log(params);
           this.id=params['id'];
@@ -55,13 +55,14 @@ export class CrRentalDetailsComponent implements OnInit {
             CurrentlyInLoan:res.current_in_loan
             
             
-          });this.maintanceVal= res.MaintenanceStatus ;
+          }); 
           this.mainmon=res.squareFT;
          
          
           
            })
            this.leaseloop();
+          
       }
       maintanceVal='Include Maintenance';
     

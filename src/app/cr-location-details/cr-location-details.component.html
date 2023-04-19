@@ -80,13 +80,15 @@
    
     <div>
         <label>Pincode :</label>
-  <input type="number" placeholder="Enter Pincode" formControlName="Pincode"  pattern="\d*" maxlength="6">
+  <input type="text" placeholder="Enter Pincode" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" formControlName="Pincode"   maxlength="6">
     </div>
-     <p *ngIf="rrlocform.get('Pincode')?.invalid && submitted" class="redtext">Please fill the Pincode </p>
+     <p *ngIf="rrlocform.get('Pincode')?.errors?.required && submitted" class="redtext">Please fill the Pincode </p>
     <p *ngIf="rrlocform.get('Pincode').errors?.pattern && submitted" class="redtext">Invalid Pincode!</p> 
+    <p *ngIf="rrlocform.get('Pincode').errors?.['minlength'] && submitted" class="redtext">Not a valid pincode!</p> 
 
    
     <div>
+      
         <label>Landmark :</label>
   <input type="text" placeholder="Enter landmark" formControlName="Landmark">
     </div>

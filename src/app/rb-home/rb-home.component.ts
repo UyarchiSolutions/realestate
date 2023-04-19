@@ -83,6 +83,7 @@ export class RbHomeComponent implements OnInit {
     this.Get_all_interest();
     this.Get_all_saved();
     this.FetchRecentSearch();
+    this.showRecentSer = this.service.findCookie()
 
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
@@ -184,13 +185,14 @@ export class RbHomeComponent implements OnInit {
     });
     this.getAlert();
   }
-  
+  showRecentSer=false;
   showInput = true;
   sendData: any;
   totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
   let  Data = {
+    HouseOrCommercialType:'Residential',
       formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.propertType,

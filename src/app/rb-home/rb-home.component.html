@@ -451,7 +451,7 @@
     </div>
     <div class="main">
  
-<div class="property-tab" *ngIf="postshow" >
+<div class="property-tab" *ngIf="postshow && showRecentSer" >
 
     <div class="property-tab-select sort">
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -500,6 +500,34 @@
             
             
     </div>
+
+</div>
+<div class="property-tab" *ngIf="postshow  && !showRecentSer" >
+
+    <div class="property-tab-select sort">
+        <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z" fill="white"/>
+            </svg>
+
+            <!-- sort dropdown -->
+            <div class="sort-dropdown">
+                <p>Relevance</p>
+                <p>Date</p>
+            </div>
+            
+    </div>
+    <div class="property-tab-select property-tab-active">
+        <svg width="23" height="20" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.15385 19.4615V14.4615C7.15385 13.8246 7.67077 13.3077 8.30769 13.3077H10.6154C11.2523 13.3077 11.7692 13.8246 11.7692 14.4615V19.4615M11.7692 19.4615H16.3846V1.55897M11.7692 19.4615H19.4615V8.94872M16.3846 1.55897L17.9231 1M16.3846 1.55897L5.61538 5.4759M19.4615 8.94872L16.3846 7.92308M19.4615 8.94872L21 9.46154M1 19.4615H2.53846M2.53846 19.4615H21M2.53846 19.4615V1H5.61538V5.4759M1 7.15385L5.61538 5.4759" stroke="#473B32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>Property
+            
+            
+    </div>
+    <div class="property-tab-select" ></div>
+    <div class="property-tab-select" ></div>
+    <div class="property-tab-select" ></div>
+    <div class="property-tab-select notification"></div>
+    
 
 </div>
 
@@ -1496,7 +1524,8 @@
 
     </div>
 
-        <div class="ad recent-search">
+   
+    <div class="ad recent-search" *ngIf="showRecentSer">
             <ul class="sidebar-content">
                 <li class="all-filter"><svg width="20" height="20" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 0.864258C15.523 0.864258 20 5.30763 20 10.7891C20 16.2707 15.523 20.714 10 20.714C4.477 20.714 0 16.2707 0 10.7891H2C2 15.174 5.582 18.7291 10 18.7291C14.418 18.7291 18 15.174 18 10.7891C18 6.40433 14.418 2.84923 10 2.84923C7.25 2.84923 4.824 4.22582 3.385 6.32295H6V8.30792H0V2.35299H2V4.83421C3.824 2.42246 6.729 0.864258 10 0.864258ZM11 5.8267V10.3773L14.243 13.5959L12.828 15.0003L9 11.199V5.8267H11Z" fill="white"/>
@@ -1512,7 +1541,7 @@
                 </div>
             </ul>
      
-    </div>
+        </div>
 </div>
     
  

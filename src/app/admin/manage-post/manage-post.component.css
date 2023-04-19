@@ -29,7 +29,7 @@ table tr td{
 .dropdown-toggle::after {
 border-top: 0 !important;
 
-    content:url(../../assets/images/Vector.png);
+    /* content:url(../../assets/images/Vector.png); */
     position: absolute;
     right: 0;
   

@@ -48,6 +48,9 @@ export class RsGalleryComponent implements OnInit{
         console.log(this.id,"this is id from sp");
         
       });
+     this.getall()
+    }
+    getall(){
       this.service.formget(this.id).subscribe((res:any)=>{
   
         this.data = res;
@@ -262,6 +265,20 @@ export class RsGalleryComponent implements OnInit{
         })
       }
     }
+    removeImgBackend(name:any){
+      let data ={
+       url:name
+      }
+      this.service.remove_img(this.id,data).subscribe((res:any)=>{
+       console.log(res);
+       this.getall()
+      })
+     }
+     removeVidBackend(){
+       this.service.remove_vid(this.id).subscribe((res:any)=>{
+         this.getall()
+       })
+     }
   }
   
 

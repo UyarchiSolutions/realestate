@@ -182,7 +182,7 @@ textarea{
 
 .err-msg{
     display: flex !important;
-    justify-content: end !important;
+    justify-content: flex-end !important;
     color: red;
     opacity: 0.8;
   

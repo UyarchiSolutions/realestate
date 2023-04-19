@@ -14,19 +14,40 @@ export class ManageSellerOwnerComponent implements OnInit {
   ngOnInit(): void {
     this.getAll()
   }
-  type:any=null;
+  type:any='Seller';
   range=10;
   page=0;
+  role:any='';
   totalpage:any;
   data:any=[];
   getAll(){
-    this.adminService.get_Owner_seller(this.type,this.range,this.page).subscribe((res:any)=>{
+    this.adminService.get_All_user(this.type,this.range,this.page,this.role).subscribe((res:any)=>{
       console.log(res)
       this.data=res.endUsers;
-      this.data = this.data.filter((res:any)=> {return res.Type == 'Seller' && res.verified == true})
+    
       console.log(this.data)
       this.totalpage=res.total
     })
+  }
+  setRole(a:any){
+    this.role=a;
+    this.getAll();
+  }
+  changeActive(id:any,active:any){
+
+    if(active){
+      this.adminService.de_active_user(id).subscribe((res:any)=>{
+        console.log(res)
+        this.getAll()
+      })
+    }
+    else{
+      this.adminService.re_active_user(id).subscribe((res:any)=>{
+        console.log(res)
+        this.getAll()
+      })
+    }
+ 
   }
   
 }
