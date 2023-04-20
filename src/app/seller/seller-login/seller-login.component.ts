@@ -55,12 +55,12 @@ export class SellerLoginComponent {
       },error => {
         console.log(error);
         if(error.error.message == "User Not Available"){
-          this.loginForm.get('password')?.reset();
+          // this.loginForm.get('password')?.reset();
           this.notfound=true;
         }
         if (error.error.message == "Email not Registered") {
-          this.Emailnotfound = true,
-          this.loginForm.get('email')?.reset();
+          this.Emailnotfound = true;
+          // this.loginForm.get('email')?.reset();
         }
       })
     }

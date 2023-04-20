@@ -25,6 +25,9 @@ import { BuyerInterestedPropertyComponent } from '../buyer-interested-property/b
 import { PropertyPostComponent } from '../property-post/property-post.component';
 import { CommercialRentViewComponent } from './buyer-home-view/commercial-rent-view/commercial-rent-view.component';
 import { CommercialBuyViewComponent } from './buyer-home-view/commercial-buy-view/commercial-buy-view.component';
+import { ResidentialBuyDetailviewComponent } from './buyer-search-view/residential-buy-detailview/residential-buy-detailview.component';
+import { CommercialRentDetailviewComponent } from './buyer-search-view/commercial-rent-detailview/commercial-rent-detailview.component';
+import { CommercialBuyDetailviewComponent } from './buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
 
 
 @NgModule({
@@ -50,6 +53,14 @@ import { CommercialBuyViewComponent } from './buyer-home-view/commercial-buy-vie
     CommercialRentViewComponent,
     CommercialBuyViewComponent,
     CommercialRentViewComponent,
+   
+
+    //single prop show
+    ResidentialBuyDetailviewComponent,
+    CommercialRentDetailviewComponent,
+    ResidentialBuyDetailviewComponent,
+    CommercialBuyDetailviewComponent,
+ 
 
   ],
   imports: [

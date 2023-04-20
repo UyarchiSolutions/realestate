@@ -56,7 +56,7 @@
         <div>
           <label style="width:500px">Email :</label>
           <input type="email" formControlName="email" (keyup)="errormsg()"
-           [placeholder]="Emailnotfound? 'Enter a Registered Email Id': 'Enter Your Email ID' " [ngClass]=" Emailnotfound ? 'red-bttm' :''">
+           placeholder="Enter Your Email ID " >
         </div>
         <div class="error-msg" *ngIf="emailSubmit&&loginForm.get('email')?.invalid && !Emailnotfound">
           <label style="width:500px"></label>
@@ -65,11 +65,14 @@
         <div>
           <label>Password :</label>
           <input type="password"  formControlName="password" (keyup)="errormsg()"
-          [placeholder]="notfound? 'Enter a Valid Password': 'Enter Your Password' " [ngClass]=" notfound ? 'red-bttm' :''" >
+          placeholder ="Enter Your Password "  >
         </div>
         <div class="error-msg">
           <label style="width:500px"></label>
           <p  *ngIf="emailSubmit&&loginForm.get('password')?.invalid && !notfound" >Password is required !</p>
+          <p *ngIf="Emailnotfound">Enter a Registered Email Id </p>
+          <p *ngIf="notfound">Please Enter a Valid Password </p>
+
         </div>
         <p class="forgot-password" (click)="forgot()">Forgot Password !</p>
 

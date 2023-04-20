@@ -64,6 +64,9 @@ import { CommercialRentViewComponent } from './buyer/buyer-home-view/commercial-
 import { ManageSellerOwnerComponent } from './admin/manage-seller-owner/manage-seller-owner.component';
 import { ManageBuyerTenantComponent } from './admin/manage-buyer-tenant/manage-buyer-tenant.component';
 import { ManagePostComponent } from './admin/manage-post/manage-post.component';
+import { ResidentialBuyDetailviewComponent } from './buyer/buyer-search-view/residential-buy-detailview/residential-buy-detailview.component';
+import { CommercialRentDetailviewComponent } from './buyer/buyer-search-view/commercial-rent-detailview/commercial-rent-detailview.component';
+import { CommercialBuyDetailviewComponent } from './buyer/buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -125,6 +128,7 @@ const routes: Routes = [
 
   // forms end
 
+  //buyer home
   {path:'buyer-residential-rent-view',component:RbHomeComponent},
   {path:'buyer-residential-buy-view',component:ResidentialBuyViewComponent},
   {path:'buyer-commercial-buy-view',component:CommercialBuyViewComponent},
@@ -132,6 +136,9 @@ const routes: Routes = [
 
   //buyer search single view
   {path:'buyer-residential-rent-search-view',component:ResidentialDetailviewComponent},
+  {path:'buyer-residential-buy-search-view',component:ResidentialBuyDetailviewComponent},
+  {path:'buyer-commercial-rent-search-view',component:CommercialRentDetailviewComponent},
+  {path:'buyer-commercial-buy-search-view',component:CommercialBuyDetailviewComponent},
 
   //buyerInterested
   {path:'interested-property',component:BuyerInterestedPropertyComponent},

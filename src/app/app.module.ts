@@ -34,7 +34,7 @@ import { AdminModule } from './admin/admin.module';
     AppComponent,
     HomeComponent,
     HeaderComponent,
- 
+   
 
   ],
   imports: [

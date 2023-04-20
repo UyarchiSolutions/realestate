@@ -1,0 +1,274 @@
+.container{
+    display: flex;
+}
+.sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+
+}
+.main{
+    width: 70%;
+    background-color:var(--sandal);
+
+    margin: 10px 0px;
+
+}
+.main h2{
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+  
+    color: #473B32;
+    font-family: var(--raleway);
+    font-weight: 700;
+}
+.ad{
+    width: 15%;
+   /* background-image: url(../../assets/images/ad-post.png); */
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 717px;
+    margin: 10px;
+}
+.sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+}
+.sidebar-content-list span{
+    display: flex;
+    align-items: center;
+}
+.sidebar-content-list svg{
+    margin-right: 10px;
+}
+
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+.top-ad{
+    height: fit-content;
+}
+
+nav{
+    width: 100%;
+
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+    padding: 10px 5px;
+    background-color: var(--brown);
+    color: white;
+}
+nav ul li{
+    margin-right: 5px;
+}
+.top-section{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: space-between;
+    margin: auto;
+
+}
+.top-section .back{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.top-section .back p{
+    margin-left: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.top-section .page-navigator{
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+}
+.page-navigator svg:nth-child(1){
+position: relative;
+left: -30px;
+}
+.detail-container{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+.image{
+    width: 100% ;
+    max-height: 250px;
+    display: flex;
+}
+.carousel,.slide{
+    max-width: 50% !important;
+    height: 100%;
+}
+.carousel-inner{
+    width: 100% !important;
+}
+.carousel-item{
+    width: 100% !important;
+    height: 250px !important;
+}
+.carouselExampleCaptions img{
+    width: 100%;
+
+}
+.table{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.table div{
+    width: 50%;
+    border: solid gray 1px;
+    min-height:83.333px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.table-content>p{
+    color :var(--brown);
+    font-weight: 500;
+}
+.table .negotiable{
+    font-size: 10px;
+    position: absolute;
+    bottom: 3px;
+}
+.detail-nav{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.detail-nav button{
+    background: none;
+    padding: 3px 0;
+    border: solid var(--brown) 2px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 500;
+    color: var(--brown);
+
+}
+.detail-nav .view-contact{
+    min-width: 50%;
+}
+.save,.share{
+    min-width: 10%;
+}
+.interested{
+    min-width:20% ;
+   
+}
+.active{
+    background-color: var(--brown)!important;
+    color: white !important;
+}
+.form-detail{
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+}
+.form-detail div{
+    display: flex;
+    font-weight: 500;
+    margin: 10px 0;
+    color: var(--brown);
+}
+.form-detail div label{
+    min-width: 40%;
+    margin-left: 10%;
+}
+.form-detail h5{
+    margin-left: 10%;
+}
+.form-detail div ul{
+    padding-left: 0;
+}
+.form-detail div ul li{
+    margin: 5px 0;
+}
+.form-detail div div{
+    display: flex;
+    flex-wrap: wrap;
+row-gap: 10px;
+}
+.form-detail div div span{
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+}
+.form-detail h5{
+    margin: 20px 0 20px 10%;
+}
+.form-detail div div span p{
+    margin-left: 5px;
+}
+.neighbourhood-nav{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.250);
+}
+.neighbourhood-nav div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    font-size: 11px;
+}
+.neighbourhood-nav div p{
+    margin-top: 5px;
+}
+.neighbourhood-nav div .end{
+    position: absolute;
+    right: 0;
+    height: 50%;
+    width: 1px;
+    background-color: black;
+}
+.neighbourhood h5{
+    margin: 20px 0 20px 10%;
+}
+
+.report{
+margin: 10px 0 10px 0;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+text-decoration: underline;
+cursor: pointer !important;
+}
+.report svg{
+    margin-right: 5px;
+}
+.carousel-indicators button{
+    background-color:gray;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+}
+.carousel-indicators .active{
+    height: 7px;
+    width: 7px;
+}
+.carousel-indicators{
+bottom: 0px;
+margin-bottom: 0 !important;
+}
+.show:hover{
+  
+    visibility:visible !important;
+}

@@ -560,8 +560,8 @@
             <td>{{v.area}}</td>
             <td>{{v.BHKType}}</td>
             <td>{{v.BuildedSize}}sq.ft</td>
-            <td><p *ngIf="v.expectedPrice >= 100000">{{v.expectedPrice/100000  | indianCurrency}} lakhs</p>
-                <p *ngIf="v.expectedPrice <= 100000">{{v.expectedPrice | indianCurrency }} </p>
+            <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
+                <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
             
@@ -1497,7 +1497,7 @@
 
     </div>
 
-        <div class="ad recent-search">
+        <div class="ad recent-search" *ngIf="showRecentSer">
             <ul class="sidebar-content">
                 <li class="all-filter"><svg width="20" height="20" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 0.864258C15.523 0.864258 20 5.30763 20 10.7891C20 16.2707 15.523 20.714 10 20.714C4.477 20.714 0 16.2707 0 10.7891H2C2 15.174 5.582 18.7291 10 18.7291C14.418 18.7291 18 15.174 18 10.7891C18 6.40433 14.418 2.84923 10 2.84923C7.25 2.84923 4.824 4.22582 3.385 6.32295H6V8.30792H0V2.35299H2V4.83421C3.824 2.42246 6.729 0.864258 10 0.864258ZM11 5.8267V10.3773L14.243 13.5959L12.828 15.0003L9 11.199V5.8267H11Z" fill="white"/>

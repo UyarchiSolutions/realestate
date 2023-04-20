@@ -14,6 +14,7 @@ import { Cookie } from 'ng2-cookies';
 })
 export class ResidentialBuyViewComponent implements OnInit {
   buyer: any;
+  showRecentSer: any;
   constructor(private arouter:ActivatedRoute,
     private fb:FormBuilder ,private router:Router, private service:PostPropertyService,
     private buyerService: BuyerService
@@ -81,11 +82,12 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.Get_all_interest();
     this.Get_all_saved();
     this.FetchRecentSearch();
+    this.showRecentSer = this.service.findCookie()
 
     this.arouter.queryParamMap.subscribe((params: any) => {
-      //console.log(params.params.formatAdd)
+      ////consolele.log(params.params.formatAdd)
       if (params.params.formatAdd != null) {
-        console.log(params);
+        //consolele.log(params);
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
         this.propertType =
@@ -101,7 +103,7 @@ export class ResidentialBuyViewComponent implements OnInit {
           params.params['area'] != null && params.params['area'] != ''
             ? params.params['area'].replace(/-/g, ' ').split(',')
             : [];
-        //console.log(this.areaArr,this.areaArr.length);
+        ////consolele.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
 
         this.showOnlyType =
@@ -133,17 +135,17 @@ export class ResidentialBuyViewComponent implements OnInit {
             : [];
 
         // this.areaArr =this.areaArr.split(',');
-        //console.log(this.propertType,this.BHKType,'gfgbgfh');
+        ////consolele.log(this.propertType,this.BHKType,'gfgbgfh');
         if (!(this.BHKType == '' && this.BHKType == null)) {
           this.BHKType.forEach((a: any) => {
             this.BhkTypeShow.push(this.bhkArr[a]);
-            // console.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
+            // //consolele.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
           });
         }
         if (!(this.bathType == '' && this.bathType == null)) {
           this.bathType.forEach((a: any) => {
             this.bathtypeShow.push(this.bathArr[a]);
-            // console.log(this.bathType,'final bath',this.bathArr[a])
+            // //consolele.log(this.bathType,'final bath',this.bathArr[a])
           });
         }
         this.SelectedFilters = [
@@ -168,14 +170,14 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.FbhkArr = this.BhkTypeShow;
         this.FbathArr = this.bathtypeShow;
 
-        // console.log(this.proptArr,'proppt arry',this.propertType)
+        // //consolele.log(this.proptArr,'proppt arry',this.propertType)
 
         this.SelectedFilters = this.SelectedFilters.filter((e: any) => e != '');
-        // console.log(this.SelectedFilters, 234234);
-        console.log(this.areaArr, this.areaArr.length);
+        // //consolele.log(this.SelectedFilters, 234234);
+        //consolele.log(this.areaArr, this.areaArr.length);
         if (this.areaArr.length >= 3) {
           this.showInput = false;
-          // console.log(this.showInput, 'inpout show');
+          // //consolele.log(this.showInput, 'inpout show');
         }
         this.GetDataForFilter();
       }
@@ -204,30 +206,30 @@ export class ResidentialBuyViewComponent implements OnInit {
       // priceFrom: this.filter.get('priceFrom')?.value,
       // priceTo: this.filter.get('priceTo')?.value,
     };
-    console.log(Data);
+    //consolele.log(Data);
     this.service
       .getSellerDetails(this.page, this.range, Data,this.floordata)
       .subscribe((res: any) => {
-        console.log(res, 'data from backend');
+        //consolele.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
-        //console.log(this.data, 'data');
+        ////consolele.log(this.data, 'data');
 
         if (this.page == 0) {
           let page = res.total / (this.page + 1);
 
-          //console.log(res.total, 'range', this.range);
+          ////consolele.log(res.total, 'range', this.range);
 
           this.displaycount = Math.ceil(page / this.range);
 
-          //console.log(page, 'dc', this.page + 1);
+          ////consolele.log(page, 'dc', this.page + 1);
         }
         this.sendDataBOOL = false;
       });
-    // console.log(this.sendData, 'updated');
+    // //consolele.log(this.sendData, 'updated');
     this.bathtypeShow = [];
     this.BhkTypeShow = [];
   }
@@ -240,12 +242,12 @@ export class ResidentialBuyViewComponent implements OnInit {
   FloorArr:any=[];
 
   updateFloor(v:any,count:any){
-    console.log(count);
+    //consolele.log(count);
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
       this.FloorArr.push(val);
-      console.log(this.floordata,'check1')
+      //consolele.log(this.floordata,'check1')
       if(Array.isArray(count)){
         this.floordata.arr.push(
         {
@@ -258,36 +260,36 @@ export class ResidentialBuyViewComponent implements OnInit {
           from:count
           })
         }
-        console.log(this.floordata,'check3')
-     console.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
+        //consolele.log(this.floordata,'check3')
+     //consolele.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
     } else  {
       let index = this.SelectedFilters.findIndex(
         (res: any) => res == v.target.value
       );
-      console.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
+      //consolele.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
       if (index != -1) {
-        console.log(this.floordata,'check2')
+        //consolele.log(this.floordata,'check2')
         this.SelectedFilters.splice(index, 1);
      
       
       let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
 
-        console.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
-        console.log('3',this.floordata,this.floordata.arr[i],'floor data')
-        console.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
-        console.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
+        //consolele.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
+        //consolele.log('3',this.floordata,this.floordata.arr[i],'floor data')
+        //consolele.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
+        //consolele.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
 
       this.FloorArr.splice(i,1);
       this.floordata.arr.splice(i,1);
 
    }
-      console.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
+      //consolele.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
     }
    
    
-    console.log(this.floordata,'before api')
+    //consolele.log(this.floordata,'before api')
  this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
-    console.log(res, 'data from backend');
+    //consolele.log(res, 'data from backend');
     this.data = res.values;
     this.totalval = res.total;
     if (this.totalval > 10) {
@@ -315,7 +317,7 @@ export class ResidentialBuyViewComponent implements OnInit {
 
   updateFilter(v: any, position: any) {
     position=position.toString();
-    console.log(v.target.value)
+    //consolele.log(v.target.value)
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
@@ -329,7 +331,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       }
     }
 
-    //console.log('updted', this.SelectedFilters);
+    ////consolele.log('updted', this.SelectedFilters);
     //prop arr
 
     if (
@@ -339,14 +341,14 @@ export class ResidentialBuyViewComponent implements OnInit {
     ) {
       if (this.proptArr.findIndex((res: any) => res == v.target.value) == -1) {
         this.proptArr.push(v.target.value);
-        //console.log(this.proptArr, 'proparr, update filter');
+        ////consolele.log(this.proptArr, 'proparr, update filter');
       } else {
         let index = this.proptArr.findIndex(
           (res: any) => res == v.target.value
         );
 
         this.proptArr.splice(index, 1);
-        //console.log('prop removed', this.proptArr);
+        ////consolele.log('prop removed', this.proptArr);
       }
     }
 
@@ -365,15 +367,15 @@ export class ResidentialBuyViewComponent implements OnInit {
       ) {
         this.FbhkArr.push(v.target.value);
         this.BhkCountArr.push(index);
-        //console.log(this.BhkCountArr,'bhk count')
-        //console.log(this.FbhkArr, 'final bhk arr');
+        ////consolele.log(this.BhkCountArr,'bhk count')
+        ////consolele.log(this.FbhkArr, 'final bhk arr');
       } else {
         let index = this.FbhkArr.findIndex((res: any) => res == v.target.value);
 
         this.FbhkArr.splice(index, 1);
         this.BhkCountArr.splice(index, 1);
-        //console.log(this.BhkCountArr,'bhk count')
-        //console.log('f bhk removed', this.FbhkArr);
+        ////consolele.log(this.BhkCountArr,'bhk count')
+        ////consolele.log('f bhk removed', this.FbhkArr);
       }
     }
     //bathroom arr
@@ -390,21 +392,21 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.bathCountArr.splice(index, 1);
       }
 
-      console.log(this.FbathArr, 345, position,this.bathCountArr);
-      console.log(this.SelectedFilters);
+      //consolele.log(this.FbathArr, 345, position,this.bathCountArr);
+      //consolele.log(this.SelectedFilters);
     }
     //show only
     if (v.target.value == 'rent' || v.target.value == 'lease') {
-      //console.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
+      ////consolele.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
       let i = this.ShowOnlyArr.findIndex(
         (res: any) => res == v.target.value
       );
       if (i == -1) {
         this.ShowOnlyArr.push(v.target.value);
-        //console.log(this.ShowOnlyArr, 'if');
+        ////consolele.log(this.ShowOnlyArr, 'if');
       } else {
         this.ShowOnlyArr.splice(i, 1);
-        //console.log(this.ShowOnlyArr, 'else');
+        ////consolele.log(this.ShowOnlyArr, 'else');
       }
     }
     //furnished
@@ -416,15 +418,15 @@ export class ResidentialBuyViewComponent implements OnInit {
       let i = this.FurArr.findIndex(
         (res: any) => res == v.target.value
       );
-      console.log(i,this.FurArr.findIndex((res: any) => res == v.target.value),v.target.value,this.FurArr)
+      //consolele.log(i,this.FurArr.findIndex((res: any) => res == v.target.value),v.target.value,this.FurArr)
       if (i == -1) {
         this.FurArr.push(v.target.value);
-        console.log(this.FurArr, 'if');
-        console.log(this.SelectedFilters,'selected filter')
+        //consolele.log(this.FurArr, 'if');
+        //consolele.log(this.SelectedFilters,'selected filter')
       } else {
         this.FurArr.splice(i, 1);
-        console.log(this.FurArr, 'else');
-        console.log(this.SelectedFilters,'selected filter',i)
+        //consolele.log(this.FurArr, 'else');
+        //consolele.log(this.SelectedFilters,'selected filter',i)
       }
     }
     //park arr
@@ -438,10 +440,10 @@ export class ResidentialBuyViewComponent implements OnInit {
       );
       if (i == -1) {
         this.ParkArr.push(v.target.value);
-        //console.log(this.ParkArr, 'if');
+        ////consolele.log(this.ParkArr, 'if');
       } else {
         this.ParkArr.splice(i, 1);
-        //console.log(this.ParkArr, 'else');
+        ////consolele.log(this.ParkArr, 'else');
       }
     }
     //tent arr
@@ -456,10 +458,10 @@ export class ResidentialBuyViewComponent implements OnInit {
       );
       if (i != -1) {
         this.TentArr.push(v.target.value);
-        //console.log(this.TentArr);
+        ////consolele.log(this.TentArr);
       } else {
         this.TentArr.splice(i, 1);
-        //console.log(this.TentArr);
+        ////consolele.log(this.TentArr);
       }
     }
     //prop age arr
@@ -475,10 +477,10 @@ export class ResidentialBuyViewComponent implements OnInit {
       );
       if (i != -1) {
         this.PropAgeArr.push(v.target.value);
-        //console.log(this.PropAgeArr);
+        ////consolele.log(this.PropAgeArr);
       } else {
         this.PropAgeArr.splice(i, 1);
-        //console.log(this.PropAgeArr);
+        ////consolele.log(this.PropAgeArr);
       }
     }
     //data to api
@@ -499,7 +501,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       // priceFrom: this.filter.get('priceFrom')?.value,
       // priceTo: this.filter.get('priceTo')?.value,
     };
-    //console.log(this.ShowOnlyArr);
+    ////consolele.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
@@ -510,8 +512,8 @@ export class ResidentialBuyViewComponent implements OnInit {
     if (index > -1) {
       this.SelectedFilters.splice(index, 1);
     }
-    console.log(v)
-    console.log('deleted', this.SelectedFilters);
+    //consolele.log(v)
+    //consolele.log('deleted', this.SelectedFilters);
 
     //bhk arr
     if (
@@ -519,7 +521,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         return res == v;
       }) > -1
     ) {
-      //console.log(this.FbhkArr, 'sfsdf');
+      ////consolele.log(this.FbhkArr, 'sfsdf');
       let index = this.FbhkArr.findIndex((res: any) => {
         res == v;
       });
@@ -532,7 +534,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         return res == v;
       }) > -1
     ) {
-      //console.log(this.FbathArr, 'sfsdf');
+      ////consolele.log(this.FbathArr, 'sfsdf');
       let index = this.FbathArr.findIndex((res: any) => {
         res == v;
       });
@@ -546,7 +548,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         res == v;
       });
       let i = this.proptArr.indexOf(v)
-      console.log(this.proptArr,v,index,i)
+      //consolele.log(this.proptArr,v,index,i)
       if (i > -1) {
         this.proptArr.splice(i, 1);
       }
@@ -554,7 +556,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     //show only arr
     if (v == 'rent' || 'lease') {
       let index = this.ShowOnlyArr.findIndex((res:any)=>res == v);
-      //console.log(index, 234234);
+      ////consolele.log(index, 234234);
       if (index > -1) {
         this.ShowOnlyArr.splice(index, 1);
       }
@@ -565,7 +567,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       if (index > -1) {
         this.FurArr.splice(index, 1);
       }
-      // console.log(this.FurArr)
+      // //consolele.log(this.FurArr)
     }
     // park arr
     if (v == 'Bike' || v == 'Car' || v == 'Both') {
@@ -605,11 +607,11 @@ export class ResidentialBuyViewComponent implements OnInit {
     //floor
     if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
     let i = this.FloorArr.findIndex((res:any)=>{res==v })
-    console.log(i,'floor is checked')
+    //consolele.log(i,'floor is checked')
    
     this.FloorArr.splice(i,1);
     this.floordata.arr.splice(i,1);
-    console.log(this.FloorArr,this.floordata);
+    //consolele.log(this.FloorArr,this.floordata);
   }
     this.sendData = {
       formatAdd: this.formatAdd,
@@ -633,11 +635,11 @@ export class ResidentialBuyViewComponent implements OnInit {
   }
 
   is_chckked(val: any, filter: any) {
-    // console.log(val,filter)
+    // //consolele.log(val,filter)
     if (filter != '') {
       let index = filter.findIndex((res:any)=>{ res==val});
       let i = filter.indexOf(val)
-      // console.log(index,'find index','is cheked',i,'indexof')
+      // //consolele.log(index,'find index','is cheked',i,'indexof')
       if (i == -1) {
         return false;
       } else {
@@ -653,7 +655,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   area: any;
   city: any;
   handleAddressChange(address: Address, input: any) {
-    //console.log(input.value);
+    ////consolele.log(input.value);
     this.formatAdd = input.value;
     
     let Showvalue = input.value;
@@ -662,36 +664,36 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.areaArr.push(Sendvalue);
     if (this.areaArr.length >= 3) {
       this.showInput = false;
-      console.log(this.showInput, 'inpout show');
+      //consolele.log(this.showInput, 'inpout show');
     }
     input.value = ''; 
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
 
     this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-        //console.log(res)
+        ////consolele.log(res)
           this.Address = res[0].address_components;
-        //console.log(this.Address)
+        ////consolele.log(this.Address)
 
-        //console.log( res,'zxczc',input.value)
+        ////consolele.log( res,'zxczc',input.value)
 
         let area = this.Address.find((component: any) => {
           if (component.types.includes('locality')) {
-            //console.log(component.types.includes('locality'),'locality');
+            ////consolele.log(component.types.includes('locality'),'locality');
 
             return component.types.includes('locality');
           }
 
           if (component.types.includes('sublocality_level_1')) {
-            //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
+            ////consolele.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
 
             return component.types.includes('sublocality_level_1');
           }
         }).long_name;
-        //console.log(area);
+        ////consolele.log(area);
 
         //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-        //   //console.log(city);
+        //   ////consolele.log(city);
         //   this.city= city;
       });
    
@@ -715,7 +717,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       selected: this.SelectedFilters,
     };
     this.service.RecentSearch(data).subscribe((res: any) => {
-      console.log(res, 'recent search');
+      //consolele.log(res, 'recent search');
     });
   }
   submitAddress() {
@@ -746,11 +748,11 @@ export class ResidentialBuyViewComponent implements OnInit {
   checkCookie: any;
 
   GetDataBYId(id: any, i: any) {
-    console.log(i)
+    //consolele.log(i)
     this.checkCookie = this.service.findCookie();
     if (this.checkCookie) {
       this.service.userStatusCheck(id).subscribe((res: any) => {
-        console.log(res, 'view res');
+        //consolele.log(res, 'view res');
 
         let oneid = {
           id: id,
@@ -769,20 +771,20 @@ export class ResidentialBuyViewComponent implements OnInit {
 
         this.service.Alldata = this.sendData;
         this.service.send_ALLres(this.data);
-        console.log(oneid)
+        //consolele.log(oneid)
         const query = new URLSearchParams(oneid).toString();
         this.router.navigateByUrl(
-          '/buyer-residential-rent-search-view?' + query
+          '/buyer-residential-buy-search-view?' + query
         );
       });
     } else {
-      //console.log('route to login')
+      ////consolele.log('route to login')
       this.router.navigateByUrl('buyerLogin');
     }
   }
   GetRecentSearch(index: any) {
     let v = this.RecentSearchArr[index];
-    console.log(v, 'get recent search', this.RecentSearchArr[index].buildupto);
+    //consolele.log(v, 'get recent search', this.RecentSearchArr[index].buildupto);
 
     this.SelectedFilters = this.RecentSearchArr[index].selected;
     this.proptArr = this.RecentSearchArr[index].propertType;
@@ -832,7 +834,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.displaySelect = true;
     this.range = val.target.value;
 
-    //console.log(this.range, 'inside set range');
+    ////consolele.log(this.range, 'inside set range');
 
     this.GetDataForFilter();
   }
@@ -875,18 +877,18 @@ export class ResidentialBuyViewComponent implements OnInit {
       .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
       .subscribe((res: any) => {
         this.data = res.values;
-        //console.log(this.data, 'data');
+        ////consolele.log(this.data, 'data');
       });
   }
   removeArea(i: any) {
-    //console.log(i);
+    ////consolele.log(i);
     this.areaArr.splice(i, 1);
     if (!(this.areaArr.length >= 3)) {
       this.showInput = true;
-      console.log(this.showInput, 'inpout show');
+      //consolele.log(this.showInput, 'inpout show');
     }
 
-    //console.log(this.areaArr,'area arry');
+    ////consolele.log(this.areaArr,'area arry');
   }
 
   logOut() {
@@ -994,7 +996,7 @@ export class ResidentialBuyViewComponent implements OnInit {
 
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
-      console.log(res,'all interest')
+      //consolele.log(res,'all interest')
       this.AllInterested = res;
       this.ResiRent= this.AllInterested.filter((v:any)=>{
        return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
@@ -1023,7 +1025,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   Get_all_saved() {
     
     this.buyerService.getAll_saved().subscribe((res: any) => {
-      console.log(res,'all saved')
+      //consolele.log(res,'all saved')
       this.AllSaved = res;
       this.ResiRentS= this.AllSaved.filter((v:any)=>{
         return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
@@ -1051,7 +1053,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   }
   Getbuyer() {
     this.service.Get_buyer_account().subscribe((res: any) => {
-      // console.log(res);
+      // //consolele.log(res);
       this.buyer = res;
       this.showProfileHeader=true
 
@@ -1110,7 +1112,7 @@ property="Residential";
  CommSalepop=false;
 
  popup(){
-  console.log(this.property,this.myform.get('type')?.value)
+  //consolele.log(this.property,this.myform.get('type')?.value)
 
   if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
     this.ResiRentpop=true;
@@ -1173,12 +1175,12 @@ update_pop_filter(v:any,arr:any){
   if(v.target.checked){
 
     arr.push(v.target.value)
-    console.log(arr)
+    //consolele.log(arr)
   }
   else{
     let index = arr.indexOf(v.target.value);
     arr.splice(index,1)
-    console.log(arr)
+    //consolele.log(arr)
   }
 }
 letType:any;
@@ -1199,10 +1201,10 @@ popcheck(){
     foodType:this.popform.get('foodType')?.value,
     PropertyStatus:this.popform.get('PropertyStatus')?.value
   }
-  console.log(data,'data');
+  //consolele.log(data,'data');
   if(this.firstAlert){
     this.buyerService.send_alert(data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
       this.ResiRentpop=false;
       this.getAlert();
       this.empty();
@@ -1210,7 +1212,7 @@ popcheck(){
     })
   }else{
     this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
       this.ResiRentpop=false;
       this.getAlert();
       this.empty();
@@ -1233,10 +1235,10 @@ if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
     furnish:this.propertyStatusPArr,
     PropertyStatus:this.popform.get('PropertyStatus')?.value
   }
-  console.log(data,'data');
+  //consolele.log(data,'data');
   if(this.firstAlert){
     this.buyerService.send_alert(data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
     
       this.getAlert();
       this.empty();
@@ -1246,7 +1248,7 @@ if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
     })
   }else{
     this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
       this.getAlert();
       this.empty();
       this.letType='Buy'
@@ -1272,10 +1274,10 @@ if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
     buildTo:this.BuildmaxValue
    
   }
-  console.log(data,'data');
+  //consolele.log(data,'data');
   if(this.firstAlert){
     this.buyerService.send_alert(data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
       
       this.getAlert();
       this.empty();
@@ -1284,7 +1286,7 @@ if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
     })
   }else{
     this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
      
       this.getAlert();
       this.empty();
@@ -1311,10 +1313,10 @@ if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
     buildTo:this.BuildmaxValue
    
   }
-  console.log(data,'data');
+  //consolele.log(data,'data');
   if(this.firstAlert){
     this.buyerService.send_alert(data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
      
       this.getAlert();
       this.empty();
@@ -1324,7 +1326,7 @@ if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
     })
   }else{
     this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      console.log(res)
+      //consolele.log(res)
     
       this.getAlert();
       this.empty();
@@ -1354,12 +1356,12 @@ areaSend:any=[];
 showinput2=true;
 popValue:any=[];
 alertaddress(address: Address, input: any) {
-  //console.log(input.value);
+  ////consolele.log(input.value);
 
   this.areaPArr.push(input.value);
   if (this.areaPArr.length >= 3) {
     this.showinput2 = false;
-    console.log(this.showinput2, 'showinput2 show');
+    //consolele.log(this.showinput2, 'showinput2 show');
   }
   this.latitude = address.geometry.location.lat();
   this.longtitude = address.geometry.location.lng();
@@ -1373,17 +1375,17 @@ alertaddress(address: Address, input: any) {
         return component.types.includes('sublocality_level_1');
       }
     }).long_name;
-    console.log(area);
+    //consolele.log(area);
     this.areaSend.push(area)
 })
 }
 
   removeArea2(i: any) {
-    //console.log(i);
+    ////consolele.log(i);
     this.areaPArr.splice(i, 1);
     if (!(this.areaPArr.length >= 3)) {
       this.showinput2 = true;
-      console.log(this.showinput2, 'showinput2 show');
+      //consolele.log(this.showinput2, 'showinput2 show');
     }
    }
   getRentRange1(v:any){
@@ -1403,7 +1405,7 @@ alertaddress(address: Address, input: any) {
   popid:any;
   getAlert(){
     this.buyerService.get_alert().subscribe((res:any)=>{
-      console.log(res,'get alert',)
+      //consolele.log(res,'get alert',)
       
       
       this.popValue=res.values
@@ -1413,7 +1415,7 @@ alertaddress(address: Address, input: any) {
 
       if(res.data._id !=null){
         this.firstAlert=false;
-        console.log(this.firstAlert,'first alert','inside if')
+        //consolele.log(this.firstAlert,'first alert','inside if')
       }
       if(res.data == null){
         this.recAlert=false;
@@ -1423,7 +1425,7 @@ alertaddress(address: Address, input: any) {
         this.recAlert=true;
         this.sendAlert=false;
       }
-      console.log(this.firstAlert,'first alert','in function')
+      //consolele.log(this.firstAlert,'first alert','in function')
     })
   }
   changeAlert(){

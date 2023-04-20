@@ -28,6 +28,7 @@ table tr td{
 }
 .dropdown-toggle::after {
 border-top: 0 !important;
+width: 100%;
 
     /* content:url(../../assets/images/Vector.png); */
     position: absolute;

@@ -17,7 +17,7 @@ export class RsPriceDetailsComponent implements OnInit {
     data:any;
   
     priceform:any= this.fb.group({
-      ExpectedPrice: new FormControl('',Validators.required),
+      MonthlyRentFrom: new FormControl('',Validators.required),
       ExpectedpricetNegotiable:new FormControl(),
       CurrentlyInLoan:new FormControl(),
       ExcludeMaintenance:new FormControl(),
@@ -50,7 +50,7 @@ export class RsPriceDetailsComponent implements OnInit {
         console.log(res);
         
         this.priceform.patchValue({
-          ExpectedPrice:res.MonthlyRentFrom,
+          MonthlyRentFrom:res.MonthlyRentFrom,
           ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
        
           ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
@@ -97,7 +97,7 @@ export class RsPriceDetailsComponent implements OnInit {
       if ( this.priceform.valid){
       var data={
 
-        MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+        MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
         RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
        
         current_in_loan:this.priceform.get('CurrentlyInLoan').value,
@@ -129,7 +129,7 @@ export class RsPriceDetailsComponent implements OnInit {
   
       var data={
 
-        MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+        MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
         RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
        
         current_in_loan:this.priceform.get('CurrentlyInLoan').value,

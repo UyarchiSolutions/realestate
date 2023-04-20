@@ -75,11 +75,13 @@ export class CommercialRentViewComponent implements OnInit {
     search: new FormControl(),
     price: new FormControl([5000, 100000])
   });
+  showRecentSer:any;
   ngOnInit(): void {
     this.Getbuyer();
     this.Get_all_interest();
     this.Get_all_saved();
     this.FetchRecentSearch();
+    this.showRecentSer = this.service.findCookie()
 
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
@@ -771,7 +773,7 @@ export class CommercialRentViewComponent implements OnInit {
         console.log(oneid)
         const query = new URLSearchParams(oneid).toString();
         this.router.navigateByUrl(
-          '/buyer-residential-rent-search-view?' + query
+          '/buyer-commercial-rent-search-view?' + query
         );
       });
     } else {
