@@ -210,9 +210,35 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Gated Community" [checked]="is_chckked('Gated Community',proptArr)" >Gated Community </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Individual House/Villa" [checked]="is_chckked('Individual House/Villa',proptArr)">Individual House/Villa</li>
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Apartment" [checked]="is_chckked('Apartment',proptArr)">Apartment</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Office Space" [checked]="is_chckked('Office Space',proptArr)" >Office Space </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Co working" [checked]="is_chckked('Co working',proptArr)">Co working</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Shop" [checked]="is_chckked('Shop',proptArr)">Shop</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Show room" [checked]="is_chckked('Show room',proptArr)">Show room</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Other business" [checked]="is_chckked('Other business',proptArr)">Other business</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Industrial shed" [checked]="is_chckked('Industrial shed',proptArr)">Industrial shed</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Godown/Warehouse" [checked]="is_chckked('Godown/Warehouse',proptArr)">Godown/Warehouse</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Industrial/Building" [checked]="is_chckked('Industrial/Building',proptArr)">Industrial/Building</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Restaurant/Cafe" [checked]="is_chckked('Restaurant/Cafe',proptArr)">Restaurant/Cafe</li>
+                      </ul>
+                  </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a class="btn"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>
+                           
+                      Building Type<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
+                                </svg>
+                                </span>
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Apartment Type" [checked]="is_chckked('Apartment Type',buildArr)" >Apartment Type </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Business park" [checked]="is_chckked('Business park',buildArr)">Business park</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Mall" [checked]="is_chckked('Mall',buildArr)">Mall</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Standalone Building" [checked]="is_chckked('Standalone Building',buildArr)">Show room</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Independent shop" [checked]="is_chckked('Independent shop',buildArr)">Independent shop</li>
                       </ul>
                   </div>
             </li>

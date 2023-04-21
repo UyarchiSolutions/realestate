@@ -210,9 +210,36 @@
                     </a>
                   
                     <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Gated Community" [checked]="is_chckked('Gated Community',proptArr)" >Gated Community </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Individual House/Villa" [checked]="is_chckked('Individual House/Villa',proptArr)">Individual House/Villa</li>
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Apartment" [checked]="is_chckked('Apartment',proptArr)">Apartment</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Office Space" [checked]="is_chckked('Office Space',proptArr)" >Office Space </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Co working" [checked]="is_chckked('Co working',proptArr)">Co working</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Shop" [checked]="is_chckked('Shop',proptArr)">Shop</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Show room" [checked]="is_chckked('Show room',proptArr)">Show room</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Other business" [checked]="is_chckked('Other business',proptArr)">Other business</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Industrial shed" [checked]="is_chckked('Industrial shed',proptArr)">Industrial shed</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Godown/Warehouse" [checked]="is_chckked('Godown/Warehouse',proptArr)">Godown/Warehouse</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Industrial/Building" [checked]="is_chckked('Industrial/Building',proptArr)">Industrial/Building</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Restaurant/Cafe" [checked]="is_chckked('Restaurant/Cafe',proptArr)">Restaurant/Cafe</li>
+                      </ul>
+                  </div>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <a class="btn"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>
+                           
+                      Building Type<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
+                                </svg>
+                                </span>
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Apartment Type" [checked]="is_chckked('Apartment Type',buildArr)" >Apartment Type </li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Business park" [checked]="is_chckked('Business park',buildArr)">Business park</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Mall" [checked]="is_chckked('Mall',buildArr)">Mall</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Standalone Building" [checked]="is_chckked('Standalone Building',buildArr)">Show room</li>
+                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Independent shop" [checked]="is_chckked('Independent shop',buildArr)">Independent shop</li>
                       </ul>
                   </div>
             </li>
@@ -365,9 +392,29 @@
                       
                         <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Less than Year" [checked]="is_chckked('Less than Year',PropAgeArr)">Less than year</li>
                         <li><input type="checkbox" (change)="updateFilter($event,1)"  value="1 to 3 Years" [checked]="is_chckked('1 to 3 Years',PropAgeArr)">1 to 3 year<li>
-                       <input type="checkbox" (change)="updateFilter($event,1)"  value="3 to 5 Years" [checked]="is_chckked('3 to 5 Years',PropAgeArr)">3 to 5 year</li>
+                      <li> <input type="checkbox" (change)="updateFilter($event,1)"  value="3 to 5 Years" [checked]="is_chckked('3 to 5 Years',PropAgeArr)">3 to 5 year</li>
                         <li><input type="checkbox" (change)="updateFilter($event,1)"  value="5 to 10 Years" [checked]="is_chckked('5 to 10 Years',PropAgeArr)">5 to 10 Year</li>     
                         <li><input type="checkbox" (change)="updateFilter($event,1)"  value="10+ Years" [checked]="is_chckked('10+ Years',PropAgeArr)">10+ Year</li>        
+      
+                      </ul>
+                  </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>
+                           
+                      Amenities<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
+                                </svg>
+                                </span>
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                      
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="power backup" [checked]="is_chckked('power backup',ametArr)">Power Back Up</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="lift" [checked]="is_chckked('lift',ametArr)">Lift</li>
+                      
       
                       </ul>
                   </div>
@@ -469,7 +516,7 @@
                         <th><span><svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 12.6923C5.37793 12.6887 9.73683 13.2685 13.9616 14.4162C14.5582 14.5787 15.1538 14.1356 15.1538 13.5169V12.6923M2.23077 1V1.61538C2.23077 1.77859 2.16593 1.93512 2.05053 2.05053C1.93512 2.16593 1.77859 2.23077 1.61538 2.23077H1M1 2.23077V1.92308C1 1.41354 1.41354 1 1.92308 1H15.7692M1 2.23077V9.61538M15.7692 1V1.61538C15.7692 1.95508 16.0449 2.23077 16.3846 2.23077H17M15.7692 1H16.0769C16.5865 1 17 1.41354 17 1.92308V9.92308C17 10.4326 16.5865 10.8462 16.0769 10.8462H15.7692M1 9.61538V9.92308C1 10.1679 1.09725 10.4027 1.27036 10.5758C1.44347 10.7489 1.67826 10.8462 1.92308 10.8462H2.23077M1 9.61538H1.61538C1.77859 9.61538 1.93512 9.68022 2.05053 9.79563C2.16593 9.91103 2.23077 10.0676 2.23077 10.2308V10.8462M15.7692 10.8462V10.2308C15.7692 10.0676 15.8341 9.91103 15.9495 9.79563C16.0649 9.68022 16.2214 9.61538 16.3846 9.61538H17M15.7692 10.8462H2.23077M11.4615 5.92308C11.4615 6.57592 11.2022 7.20202 10.7406 7.66365C10.2789 8.12528 9.65284 8.38462 9 8.38462C8.34716 8.38462 7.72106 8.12528 7.25943 7.66365C6.7978 7.20202 6.53846 6.57592 6.53846 5.92308C6.53846 5.27024 6.7978 4.64413 7.25943 4.18251C7.72106 3.72088 8.34716 3.46154 9 3.46154C9.65284 3.46154 10.2789 3.72088 10.7406 4.18251C11.2022 4.64413 11.4615 5.27024 11.4615 5.92308ZM13.9231 5.92308H13.9296V5.92964H13.9231V5.92308ZM4.07692 5.92308H4.08349V5.92964H4.07692V5.92308Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                          <p>   Rent</p></span>
+                          <p>   Price</p></span>
                             </th>
                             <th><span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

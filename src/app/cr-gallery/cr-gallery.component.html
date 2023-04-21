@@ -105,7 +105,7 @@
  
 </div>
 
-<div class="image-gallery" *ngIf="data.image" >
+<div class="image-gallery" *ngIf="data.image!= ''" >
        Uploaded Images             
     <div class="images" *ngFor="let img of data.image ; let i = index">
         
@@ -121,7 +121,7 @@
 
 <div class="upload-video">
     <label>Video :</label>
-    <input type="file" (change)="onvidselect($event)" id="videoinput">
+    <input type="file" (change)="onvidselect($event)" id="videoinput" accept="video/mp4,video/x-m4v,video/*">
     <div *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</div>
 </div>
 
@@ -138,7 +138,7 @@
 </div>
 <p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
             
-<div class="image-gallery" *ngIf="data.videos">
+<div class="image-gallery" *ngIf="data.videos!= ''">
     Uploaded Video 
     <div class="images video" *ngFor="let vid of data.videos">
         <video [src]="vid" controls style="width:200px"></video>
@@ -157,30 +157,10 @@
     <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
 </div>
 
-
-   
 </div>
-    
 
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <div class="ad"></div>
     
     

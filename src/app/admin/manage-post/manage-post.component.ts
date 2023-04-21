@@ -22,10 +22,18 @@ export class ManagePostComponent implements OnInit {
   comOrRes='';
   showProp:any;
   area='';
+  totalpage:any;
+  totalPageCount:any;
   GetAll(){
     this.adminService.get_All_post(this.status,this.page,this.range,this.comOrRes,this.type,this.area).subscribe((res:any)=>{
       console.log(res)
       this.data=res.values;
+      this.totalpage=res.total;
+      if(this.page == 0){
+        this.totalPageCount = Math.ceil(this.totalpage/this.range)
+        console.log(this.totalPageCount)
+      }
+
     })
   }
   sendType(a:any,show:any){
@@ -87,5 +95,14 @@ export class ManagePostComponent implements OnInit {
     }
     this.GetAll();
 
+  }
+  pagination(v:any){
+    if(v=='-1'){
+      this.page= this.page -1;
+    }
+    if(v=='+1'){
+      this.page= this.page +1;
+    }
+    this.GetAll();
   }
 }

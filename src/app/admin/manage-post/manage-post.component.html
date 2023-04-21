@@ -144,12 +144,12 @@
 
 <div class="pagenation-section">
     <div class="pagenation">
-        <div class="prev"><svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="prev" (click)="pagination('-1')" [ngStyle]="{'pointer-events': page+1 == 1? 'none' : 'auto' }" ><svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M4.02968 10.0004L10.4986 16.8907C11.1666 17.6022 11.1666 18.7557 10.4986 19.4672C9.83064 20.1787 8.74767 20.1787 8.07971 19.4672L0.500539 11.3943C0.141463 11.0118 -0.0245831 10.5016 0.0024007 10.001C-0.0248874 9.49999 0.141139 8.9893 0.50048 8.60655L8.07965 0.533605C8.74761 -0.177868 9.83058 -0.177868 10.4985 0.533605C11.1665 1.24508 11.1665 2.3986 10.4985 3.11008L4.02968 10.0004Z" fill="white" fill-opacity="0.5"/>
             </svg>
             </div>
-            <div class="page-count">1</div>
-            <div class="next">
+            <div class="page-count">{{page+1}}</div>
+            <div class="next"  (click)="pagination('+1')" [ngStyle]="{'pointer-events': page+1 == totalPageCount? 'none' : 'auto' }" >
                 <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.96989 9.99986L0.500479 16.8907C-0.167477 17.6022 -0.167478 18.7557 0.500479 19.4672C1.16844 20.1787 2.25141 20.1787 2.91937 19.4672L10.4985 11.3943C10.8555 11.0141 11.0217 10.5077 10.9971 10.01C11.0269 9.50612 10.8611 8.9916 10.4996 8.60655L2.9204 0.533605C2.25244 -0.177868 1.16947 -0.177868 0.501516 0.533605C-0.166441 1.24508 -0.166441 2.3986 0.501516 3.11008L6.96989 9.99986Z" fill="white"/>
                     </svg>
@@ -160,6 +160,5 @@
 </div>
 
 </div>
-
 
 </div>

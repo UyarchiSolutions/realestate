@@ -13,7 +13,7 @@ export class CrRentalDetailsComponent implements OnInit {
 
 
       id:any;
-      data:any;
+      data:any=[];
     
       priceform:any= this.fb.group({
         ExpectedRent: new FormControl('',Validators.required),
@@ -45,6 +45,9 @@ export class CrRentalDetailsComponent implements OnInit {
           this.data=res;
     
           console.log(res);
+          if(res.MaintenanceStatus =='Exclude Maintenance'){
+            this.maintance(this.data.MaintenanceStatus);
+           }
           
           this.priceform.patchValue({
             ExpectedRent:res.MonthlyRentFrom,
@@ -53,18 +56,15 @@ export class CrRentalDetailsComponent implements OnInit {
             AdvanceAmountNegotiable:res.depositeNegociable=='true'?true:null,
             ExcludeMaintenance:res.maintainenceCost,
             CurrentlyInLoan:res.current_in_loan
-            
+          
             
           }); 
           this.mainmon=res.squareFT;
-         
-         
-          
            })
-           this.leaseloop();
-          
+              this.leaseloop();
+ 
       }
-      maintanceVal='Include Maintenance';
+      maintanceVal= 'Include Maintenance';
     
       maintance(a:any){
         console.log(this.maintanceVal);

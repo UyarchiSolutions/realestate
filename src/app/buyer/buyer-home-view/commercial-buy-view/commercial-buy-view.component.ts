@@ -40,13 +40,17 @@ export class CommercialBuyViewComponent implements OnInit {
   propageType: any = [];
   bathType: any = [];
   parkType: any = [];
+  buildType:any=[];
+  amtType:any=[];
 
   SelectedFilters: any = [];
   FbhkArr: any = [];
   proptArr: any = [];
+  buildArr:any =[];
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   FbathArr: any = [];
+  ametArr:any=[];
   bathtypeShow: any = [];
   bathCountArr: any = [];
   ShowOnlyArr: any = [];
@@ -59,6 +63,7 @@ export class CommercialBuyViewComponent implements OnInit {
   LoopItArr: any = [];
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
+  
 
 
   options1: Options = {
@@ -134,6 +139,14 @@ export class CommercialBuyViewComponent implements OnInit {
           params.params['parking'] != null && params.params['parking'] != ''
             ? params.params['parking'].split(',')
             : [];
+        this.buildType =
+          params.params['buildingType'] != null && params.params['buildingType'] != ''
+            ? params.params['buildingType'].split(',')
+            : [];
+        this.amtType =
+          params.params['amenities'] != null && params.params['amenities'] != ''
+            ? params.params['amenities'].split(',')
+            : [];
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -158,6 +171,9 @@ export class CommercialBuyViewComponent implements OnInit {
           ...this.propageType,
           ...this.bathtypeShow,
           ...this.parkType,
+          ...this.buildType,
+          ...this.amtType,
+
         ];
 
         this.proptArr = this.propertType;
@@ -170,6 +186,9 @@ export class CommercialBuyViewComponent implements OnInit {
         this.TentArr = this.tentType;
         this.FbhkArr = this.BhkTypeShow;
         this.FbathArr = this.bathtypeShow;
+        this.ametArr = this.amtType;
+        this.buildArr = this.buildType;
+
 
         // console.log(this.proptArr,'proppt arry',this.propertType)
 
@@ -203,6 +222,8 @@ export class CommercialBuyViewComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
+      buildingType:this.buildType,
+      amenities:this.amtType
       // buildupfrom: this.filter.get('buildupFrom')?.value,
       // buildupto: this.filter.get('buildupTo')?.value,
       // priceFrom: this.filter.get('priceFrom')?.value,
@@ -243,65 +264,65 @@ export class CommercialBuyViewComponent implements OnInit {
   floordata:any={arr:[]};
   FloorArr:any=[];
 
-  updateFloor(v:any,count:any){
-    console.log(count);
-    if (v.target.checked) {
-      var val = v.target.value;
-      this.SelectedFilters.push(val);
-      this.FloorArr.push(val);
-      console.log(this.floordata,'check1')
-      if(Array.isArray(count)){
-        this.floordata.arr.push(
-        {
-           from:count[0],
-           to:count[1]}
-         );
-      }
-        if(count== 0 || count==13){
-          this.floordata.arr.push({
-          from:count
-          })
-        }
-        console.log(this.floordata,'check3')
-     console.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
-    } else  {
-      let index = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      console.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
-      if (index != -1) {
-        console.log(this.floordata,'check2')
-        this.SelectedFilters.splice(index, 1);
+//   updateFloor(v:any,count:any){
+//     console.log(count);
+//     if (v.target.checked) {
+//       var val = v.target.value;
+//       this.SelectedFilters.push(val);
+//       this.FloorArr.push(val);
+//       console.log(this.floordata,'check1')
+//       if(Array.isArray(count)){
+//         this.floordata.arr.push(
+//         {
+//            from:count[0],
+//            to:count[1]}
+//          );
+//       }
+//         if(count== 0 || count==13){
+//           this.floordata.arr.push({
+//           from:count
+//           })
+//         }
+//         console.log(this.floordata,'check3')
+//      console.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
+//     } else  {
+//       let index = this.SelectedFilters.findIndex(
+//         (res: any) => res == v.target.value
+//       );
+//       console.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
+//       if (index != -1) {
+//         console.log(this.floordata,'check2')
+//         this.SelectedFilters.splice(index, 1);
      
       
-      let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
+//       let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
 
-        console.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
-        console.log('3',this.floordata,this.floordata.arr[i],'floor data')
-        console.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
-        console.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
+//         console.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
+//         console.log('3',this.floordata,this.floordata.arr[i],'floor data')
+//         console.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
+//         console.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
 
-      this.FloorArr.splice(i,1);
-      this.floordata.arr.splice(i,1);
+//       this.FloorArr.splice(i,1);
+//       this.floordata.arr.splice(i,1);
 
-   }
-      console.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
-    }
+//    }
+//       console.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
+//     }
    
    
-    console.log(this.floordata,'before api')
- this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
-    console.log(res, 'data from backend');
-    this.data = res.values;
-    this.totalval = res.total;
-    if (this.totalval > 10) {
-      this.showPag_rag = true;
-    } if (this.page == 0) {
-      let page = res.total / (this.page + 1);
-      this.displaycount = Math.ceil(page / this.range);
-      }})
+//     console.log(this.floordata,'before api')
+//  this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
+//     console.log(res, 'data from backend');
+//     this.data = res.values;
+//     this.totalval = res.total;
+//     if (this.totalval > 10) {
+//       this.showPag_rag = true;
+//     } if (this.page == 0) {
+//       let page = res.total / (this.page + 1);
+//       this.displaycount = Math.ceil(page / this.range);
+//       }})
     
-  }
+//   }
   // isfloorcheck(val:any,find:any){
   //   if(find !=''){
   //   let index = find.findIndex(
@@ -337,13 +358,13 @@ export class CommercialBuyViewComponent implements OnInit {
     //prop arr
 
     if (
-      v.target.value == 'Gated Community' ||
-      v.target.value == 'Individual House/Villa' ||
-      v.target.value == 'Apartment'
+      v.target.value == 'Office Space' ||  v.target.value == 'Show room' ||  v.target.value == 'Other business' || 
+      v.target.value == 'Co working' || v.target.value == 'Industrial shed' ||  v.target.value == 'Godown/Warehouse' || 
+      v.target.value == 'Shop' ||  v.target.value == 'Industrial/Building' ||  v.target.value == 'Restaurant/Cafe'
     ) {
       if (this.proptArr.findIndex((res: any) => res == v.target.value) == -1) {
         this.proptArr.push(v.target.value);
-        //console.log(this.proptArr, 'proparr, update filter');
+        console.log(this.proptArr, 'proparr, update filter');
       } else {
         let index = this.proptArr.findIndex(
           (res: any) => res == v.target.value
@@ -397,20 +418,7 @@ export class CommercialBuyViewComponent implements OnInit {
       console.log(this.FbathArr, 345, position,this.bathCountArr);
       console.log(this.SelectedFilters);
     }
-    //show only
-    if (v.target.value == 'rent' || v.target.value == 'lease') {
-      //console.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
-      let i = this.ShowOnlyArr.findIndex(
-        (res: any) => res == v.target.value
-      );
-      if (i == -1) {
-        this.ShowOnlyArr.push(v.target.value);
-        //console.log(this.ShowOnlyArr, 'if');
-      } else {
-        this.ShowOnlyArr.splice(i, 1);
-        //console.log(this.ShowOnlyArr, 'else');
-      }
-    }
+
     //furnished
     if (
       v.target.value == 'Fully Furnished' ||
@@ -428,6 +436,45 @@ export class CommercialBuyViewComponent implements OnInit {
       } else {
         this.FurArr.splice(i, 1);
         console.log(this.FurArr, 'else');
+        console.log(this.SelectedFilters,'selected filter',i)
+      }
+    }
+    //amt
+    if (
+      v.target.value == 'power backup' ||
+      v.target.value == 'lift' 
+    ) {
+      let i = this.ametArr.findIndex(
+        (res: any) => res == v.target.value
+      );
+      console.log(i,this.ametArr.findIndex((res: any) => res == v.target.value),v.target.value,this.ametArr)
+      if (i == -1) {
+        this.ametArr.push(v.target.value);
+        console.log(this.ametArr, 'if');
+        console.log(this.SelectedFilters,'selected filter')
+      } else {
+        this.ametArr.splice(i, 1);
+        console.log(this.ametArr, 'else');
+        console.log(this.SelectedFilters,'selected filter',i)
+      }
+    }
+    //build
+    if (
+      v.target.value == 'Apartment Type' || v.target.value == 'Standalone Building' || 
+      v.target.value == 'Business park' ||  v.target.value == 'Independent shop' || 
+      v.target.value == 'Mall'
+    ) {
+      let i = this.buildArr.findIndex(
+        (res: any) => res == v.target.value
+      );
+      console.log(i,this.buildArr.findIndex((res: any) => res == v.target.value),v.target.value,this.buildArr)
+      if (i == -1) {
+        this.buildArr.push(v.target.value);
+        console.log(this.buildArr, 'if');
+        console.log(this.SelectedFilters,'selected filter')
+      } else {
+        this.buildArr.splice(i, 1);
+        console.log(this.buildArr, 'else');
         console.log(this.SelectedFilters,'selected filter',i)
       }
     }
@@ -498,6 +545,8 @@ export class CommercialBuyViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
+      buildingType:this.buildArr,
+      amenities:this.ametArr
       // buildupfrom: this.filter.get('buildupFrom')?.value,
       // buildupto: this.filter.get('buildupTo')?.value,
       // priceFrom: this.filter.get('priceFrom')?.value,
@@ -583,6 +632,37 @@ export class CommercialBuyViewComponent implements OnInit {
       }
      
     }
+    // amt arr
+    if (
+      v.target.value == 'power backup' ||
+      v.target.value == 'lift' 
+    )  {
+      let index = this.ametArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.ametArr.indexOf(v)
+    
+      if (i > -1) {
+        this.ametArr.splice(i, 1);
+      }
+     
+    }
+    // build arr
+    if (
+      v.target.value == 'Apartment Type' || v.target.value == 'Standalone Building' || 
+      v.target.value == 'Business park' ||  v.target.value == 'Independent shop' || 
+      v.target.value == 'Mall'
+    ) {
+      let index = this.buildArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.buildArr.indexOf(v)
+    
+      if (i > -1) {
+        this.buildArr.splice(i, 1);
+      }
+     
+    }
     //tent arr
     if (v == 'Family' || v == 'Bachelor' || v == 'Company' || v == 'Any') {
       let index = this.TentArr.indexOf(v)
@@ -607,14 +687,17 @@ export class CommercialBuyViewComponent implements OnInit {
       }
     }
     //floor
-    if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
-    let i = this.FloorArr.findIndex((res:any)=>{res==v })
-    console.log(i,'floor is checked')
+  //   if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
+  //   let i = this.FloorArr.findIndex((res:any)=>{res==v })
+  //   console.log(i,'floor is checked')
    
-    this.FloorArr.splice(i,1);
-    this.floordata.arr.splice(i,1);
-    console.log(this.FloorArr,this.floordata);
-  }
+  //   this.FloorArr.splice(i,1);
+  //   this.floordata.arr.splice(i,1);
+  //   console.log(this.FloorArr,this.floordata);
+  // }
+
+
+
     this.sendData = {
       formatAdd: this.formatAdd,
       type: this.type,
@@ -627,6 +710,9 @@ export class CommercialBuyViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
+      buildingType:this.buildArr,
+    
+      amenities:this.ametArr,
       buildupfrom: this.filter.get('buildupFrom')?.value,
       buildupto: this.filter.get('buildupTo')?.value,
       priceFrom: this.filter.get('priceFrom')?.value,
@@ -762,8 +848,8 @@ export class CommercialBuyViewComponent implements OnInit {
           formatAdd: this.formatAdd,
           type: this.type,
           propertType: this.proptArr,
-          BHKType: this.BhkCountArr,
-          rentDetails: this.ShowOnlyArr,
+          amenities:this.amenities,
+          buildingType:this.buildArr,
           furnishing: this.FurArr,
           parking: this.ParkArr,
           rentprefer: this.TentArr,

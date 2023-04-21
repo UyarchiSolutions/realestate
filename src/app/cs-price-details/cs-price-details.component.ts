@@ -22,16 +22,13 @@ export class CsPriceDetailsComponent {
     
       })
     
+    
       
       constructor(private fb:FormBuilder,private arouter: ActivatedRoute,
         private service:PostPropertyService,
         private router:Router){}
        
       ngOnInit(): void {
-    
-        
-        
-       
         this.arouter.queryParams.subscribe(params => {
           console.log(params);
           this.id=params['id'];
@@ -43,9 +40,11 @@ export class CsPriceDetailsComponent {
         this.service.formget(this.id).subscribe((res:any)=>{
     
           this.data=res;
-    
+       
           console.log(res);
-          
+          if(res.MaintenanceStatus =='Exclude Maintenance'){
+           this.maintance(this.data.MaintenanceStatus);
+          }
           this.priceform.patchValue({
             ExpectedPrice:res.MonthlyRentFrom,
             ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
@@ -54,18 +53,14 @@ export class CsPriceDetailsComponent {
             ExcludeMaintenance:res.maintainenceCost,
           
             
-          });this.maintanceVal=res.MaintenanceStatus;
+          });
           this.mainmon=res.squareFT;
-          console.log('value patched') ;
+          console.log('value patched',this.maintanceVal) ;
           
            }
-    
-        
-          
         )
       }
-      maintanceVal='Include Maintenance';
-    
+     maintanceVal='Include Maintenance';
       maintance(a:any){
       
         this.maintanceVal=a;

@@ -140,7 +140,7 @@ export class CsGalleryComponent {
           submited=false;
        async submit(){
         this.submited=true;
-        if( this.videoSrc && this.imagePreview.length > 0 || this.data.image){    
+        if( this.videoSrc && this.imagePreview.length > 0 || this.data.image!= ''){    
         await  this.uploadimg();
          let data={
       routeLink:this.routerlink,
@@ -188,10 +188,12 @@ export class CsGalleryComponent {
           })
         } 
         async  routetopreview(){
-      
+          this.submited=true;
+          if(this.data.image!= ''){
           await  this.uploadimg();
           await  this.uploadvid();
-    
+
+          }
         }
         back(count: any) {
           if (count == 0) {

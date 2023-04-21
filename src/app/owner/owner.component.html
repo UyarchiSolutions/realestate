@@ -288,12 +288,14 @@
                     <td ><p *ngIf = "v.HouseOrCommercialType == 'Residential'" >{{v.BHKType}}</p><p *ngIf= "v.HouseOrCommercialType == 'Commercial'">{{v.buildingType}}</p></td>
                     <td>{{v.area}}</td>
                     <td  (click)="getInterest(v._id)">{{v.intrestedCount}}</td>
-                    <td><p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Rent' && v.rentDetails == 'rent' && v.MonthlyRentFrom >= 100000 " >1{{v.MonthlyRentFrom/100000  | indianCurrencyS}}lakhs</p>
-                        <p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Rent' && v.rentDetails == 'rent' && v.MonthlyRentFrom <= 100000 " >2{{v.MonthlyRentFrom | indianCurrencyS}}</p>
-                        <p *ngIf =" v.HouseOrCommercialType == 'Commercial'  && v.MonthlyRentFrom >= 100000  " >3{{v.MonthlyRentFrom/100000 | indianCurrencyS}}lakhs</p> 
-                        <p *ngIf =" v.HouseOrCommercialType == 'Commercial'   && v.MonthlyRentFrom <= 100000 " >4{{v.MonthlyRentFrom | indianCurrencyS}}</p> 
-                        <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom >= 100000">5{{v.MonthlyRentFrom/100000 | indianCurrencyS }} lakhs</p>
-                        <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom <= 100000">6{{v.MonthlyRentFrom | indianCurrencyS }}</p>
+                    <td><p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Rent'    && v.rentDetails == 'rent' && v.MonthlyRentFrom >= 100000 " >{{v.MonthlyRentFrom/100000  | indianCurrencyS}}lakhs</p>
+                        <p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Rent'  && v.rentDetails == 'rent' && v.MonthlyRentFrom <= 100000 " >{{v.MonthlyRentFrom | indianCurrencyS}}</p>
+                        <p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Sale'   && v.MonthlyRentFrom >= 100000 " >{{v.MonthlyRentFrom/100000  | indianCurrencyS}}lakhs</p>
+                        <p *ngIf =" v.HouseOrCommercialType == 'Residential'&& v.Type == 'Sale'   && v.MonthlyRentFrom <= 100000 " >{{v.MonthlyRentFrom | indianCurrencyS}}</p>
+                        <p *ngIf =" v.HouseOrCommercialType == 'Commercial'  && v.MonthlyRentFrom >= 100000  " >{{v.MonthlyRentFrom/100000 | indianCurrencyS}}lakhs</p> 
+                        <p *ngIf =" v.HouseOrCommercialType == 'Commercial'   && v.MonthlyRentFrom <= 100000 " >{{v.MonthlyRentFrom | indianCurrencyS}}</p> 
+                        <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000 | indianCurrencyS }} lakhs</p>
+                        <p *ngIf="v.rentDetails == 'lease' && v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrencyS }}</p>
                 </td>
                     <td class="view interested">
 

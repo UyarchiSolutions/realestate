@@ -34,6 +34,8 @@ export class CommercialBuyDetailviewComponent implements OnInit {
           rentprefer: any;
           propAge:any;
           areaArr:any;
+          buildArr:any;
+          amtArr:any;
          
           hospitalIcon='./assets/images/hospital.png';
           cinemaIcon='./assets/images/cinema.png';
@@ -60,6 +62,8 @@ export class CommercialBuyDetailviewComponent implements OnInit {
         this.rentprefer=params['rentprefer'];
         this.propAge=params['propAge'];
         this.propertType=params['propertType'];
+        this.buildArr=params['buildingType']
+        this.amtArr=params['amenities']
         this.areaArr=params['area']
       });
       this.index =Number(this.index) ;
@@ -170,7 +174,9 @@ export class CommercialBuyDetailviewComponent implements OnInit {
         parking: this.parking,
         rentprefer: this.rentprefer,
         propAge: this.propAge,
-        area:this.areaArr
+        area:this.areaArr,
+        buildingType:this.buildArr,
+        amenities:this.amtArr
       };
       console.log(sendData,'data back to home')
       const query = new URLSearchParams(sendData).toString();

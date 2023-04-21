@@ -185,10 +185,12 @@ export class RrGalleryComponent implements OnInit {
     }
     this.service.uploadimg(this.id, formdata).subscribe((res: any) => {});
   }
-  async routetopreview() {
-    await this.uploadimg();
-    await this.uploadvid();
-   
+  async  routetopreview(){
+    this.submited=true;
+    if(this.data.image!= ''){
+    await  this.uploadimg();
+    await  this.uploadvid();
+    }
   }
   back(count: any) {
     if (count == 0) {

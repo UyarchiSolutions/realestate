@@ -39,6 +39,8 @@ export class CommercialRentViewComponent implements OnInit {
   propageType: any = [];
   bathType: any = [];
   parkType: any = [];
+  buildType:any=[];
+  amtType:any=[];
 
   SelectedFilters: any = [];
   FbhkArr: any = [];
@@ -58,6 +60,8 @@ export class CommercialRentViewComponent implements OnInit {
   LoopItArr: any = [];
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
+  buildArr:any =[];
+  ametArr:any=[];
 
 
   options1: Options = {
@@ -132,6 +136,14 @@ export class CommercialRentViewComponent implements OnInit {
           params.params['parking'] != null && params.params['parking'] != ''
             ? params.params['parking'].split(',')
             : [];
+            this.buildType =
+            params.params['buildingType'] != null && params.params['buildingType'] != ''
+              ? params.params['buildingType'].split(',')
+              : [];
+          this.amtType =
+            params.params['amenities'] != null && params.params['amenities'] != ''
+              ? params.params['amenities'].split(',')
+              : [];
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -156,6 +168,8 @@ export class CommercialRentViewComponent implements OnInit {
           ...this.propageType,
           ...this.bathtypeShow,
           ...this.parkType,
+          ...this.buildType,
+          ...this.amtType,
         ];
 
         this.proptArr = this.propertType;
@@ -168,6 +182,8 @@ export class CommercialRentViewComponent implements OnInit {
         this.TentArr = this.tentType;
         this.FbhkArr = this.BhkTypeShow;
         this.FbathArr = this.bathtypeShow;
+        this.ametArr = this.amtType;
+        this.buildArr = this.buildType;
 
         // console.log(this.proptArr,'proppt arry',this.propertType)
 
@@ -200,6 +216,8 @@ export class CommercialRentViewComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
+      buildingType:this.buildType,
+      amenities:this.amtType
       // buildupfrom: this.filter.get('buildupFrom')?.value,
       // buildupto: this.filter.get('buildupTo')?.value,
       // priceFrom: this.filter.get('priceFrom')?.value,
@@ -350,6 +368,45 @@ export class CommercialRentViewComponent implements OnInit {
         //console.log('prop removed', this.proptArr);
       }
     }
+        //amt
+        if (
+          v.target.value == 'power backup' ||
+          v.target.value == 'lift' 
+        ) {
+          let i = this.ametArr.findIndex(
+            (res: any) => res == v.target.value
+          );
+          console.log(i,this.ametArr.findIndex((res: any) => res == v.target.value),v.target.value,this.ametArr)
+          if (i == -1) {
+            this.ametArr.push(v.target.value);
+            console.log(this.ametArr, 'if');
+            console.log(this.SelectedFilters,'selected filter')
+          } else {
+            this.ametArr.splice(i, 1);
+            console.log(this.ametArr, 'else');
+            console.log(this.SelectedFilters,'selected filter',i)
+          }
+        }
+        //build
+        if (
+          v.target.value == 'Apartment Type' || v.target.value == 'Standalone Building' || 
+          v.target.value == 'Business park' ||  v.target.value == 'Independent shop' || 
+          v.target.value == 'Mall'
+        ) {
+          let i = this.buildArr.findIndex(
+            (res: any) => res == v.target.value
+          );
+          console.log(i,this.buildArr.findIndex((res: any) => res == v.target.value),v.target.value,this.buildArr)
+          if (i == -1) {
+            this.buildArr.push(v.target.value);
+            console.log(this.buildArr, 'if');
+            console.log(this.SelectedFilters,'selected filter')
+          } else {
+            this.buildArr.splice(i, 1);
+            console.log(this.buildArr, 'else');
+            console.log(this.SelectedFilters,'selected filter',i)
+          }
+        }
 
     //bhk arr
     if (
@@ -495,6 +552,8 @@ export class CommercialRentViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
+      buildingType:this.buildArr,
+      amenities:this.ametArr
       // buildupfrom: this.filter.get('buildupFrom')?.value,
       // buildupto: this.filter.get('buildupTo')?.value,
       // priceFrom: this.filter.get('priceFrom')?.value,
@@ -551,6 +610,37 @@ export class CommercialRentViewComponent implements OnInit {
       if (i > -1) {
         this.proptArr.splice(i, 1);
       }
+    }
+     // amt arr
+     if (
+      v.target.value == 'power backup' ||
+      v.target.value == 'lift' 
+    )  {
+      let index = this.ametArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.ametArr.indexOf(v)
+    
+      if (i > -1) {
+        this.ametArr.splice(i, 1);
+      }
+     
+    }
+    // build arr
+    if (
+      v.target.value == 'Apartment Type' || v.target.value == 'Standalone Building' || 
+      v.target.value == 'Business park' ||  v.target.value == 'Independent shop' || 
+      v.target.value == 'Mall'
+    ) {
+      let index = this.buildArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.buildArr.indexOf(v)
+    
+      if (i > -1) {
+        this.buildArr.splice(i, 1);
+      }
+     
     }
     //show only arr
     if (v == 'rent' || 'lease') {
@@ -624,6 +714,9 @@ export class CommercialRentViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
+      buildingType:this.buildArr,
+    
+      amenities:this.ametArr,
       buildupfrom: this.filter.get('buildupFrom')?.value,
       buildupto: this.filter.get('buildupTo')?.value,
       priceFrom: this.filter.get('priceFrom')?.value,
@@ -766,6 +859,8 @@ export class CommercialRentViewComponent implements OnInit {
           rentprefer: this.TentArr,
           propAge: this.PropAgeArr,
           area: this.areaArr,
+          amenities:this.amenities,
+          buildingType:this.buildArr,
         };
 
         this.service.Alldata = this.sendData;
