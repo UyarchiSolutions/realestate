@@ -90,7 +90,7 @@ property="Residential";
     }
 
     var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residential-rent?' + queryString); }
+    this.router.navigateByUrl('/start-posting/residential-rent?' + queryString); }
     
     if( this.property == 'Residential' && this.firstform.get('type')?.value == 'Sale'){
       var postdata ={
@@ -98,7 +98,7 @@ property="Residential";
       }
   
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residential-sale-property?' + queryString);
+      this.router.navigateByUrl('/start-posting/residential-sale-property?' + queryString);
     }
     if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'Rent'){
       var postdata ={
@@ -106,7 +106,7 @@ property="Residential";
       }
   
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
     }
     if( this.property == 'Commercial' && this.firstform.get('type')?.value == 'Sale'){
       var postdata ={
@@ -114,7 +114,7 @@ property="Residential";
       }
   
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-sale-property?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-sale-property?' + queryString);
     }
 
     })

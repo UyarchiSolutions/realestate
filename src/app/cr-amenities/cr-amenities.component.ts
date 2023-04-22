@@ -54,7 +54,7 @@ export class CrAmenitiesComponent {
       }
 
       submited=false;
-      routerlink='commercial-rent-amenities';
+      routerlink='/start-posting/commercial-rent-amenities';
       submit(){
         this.submited = this.data.furnishingStatus !=  null ? false : true;
        
@@ -93,7 +93,7 @@ export class CrAmenitiesComponent {
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
           console.log(res);
          
          })
@@ -185,7 +185,7 @@ export class CrAmenitiesComponent {
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
     
         this.service.formget(this.id).subscribe((res: any) => {
           location.reload();
@@ -214,64 +214,64 @@ export class CrAmenitiesComponent {
       
     }
     
-      back(count: any) {
-        if (count == 0) {
-          var data = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-property?' + queryString);
-    
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
-        if (count == 1) {
-          var data = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl(
-            '/commercial-rent-location-details?' + queryString
-          );
-    
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
-        if (count == 2) {
-          var data = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl(
-            '/commercial-rent-rental-details?' + queryString
-          );
-    
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
-        if (count == 3) {
-          var data = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
-    
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
-        if (count == 4) {
-          var postdata = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
-        if (count == 5) {
-          var postdata = {
-            id: this.id,
-          };
-          var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
-          this.service.formget(this.id).subscribe((res: any) => {});
-        }
+    back(count: any) {
+      if (count == 0) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
+      if (count == 1) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/start-posting/commercial-rent-location-details?' + queryString
+        );
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 2) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/start-posting/commercial-rent-rental-details?' + queryString
+        );
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 3) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
+  
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 4) {
+        var postdata = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+      if (count == 5) {
+        var postdata = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
+      }
+    }
       showModal = -1;
       
       amshow= false;

@@ -65,7 +65,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
          id:this.id
        }
        var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residential-sale-property?' + queryString);
+       this.router.navigateByUrl('/start-posting/residential-sale-property?' + queryString);
   
        this.service.formget(this.id).subscribe((res:any)=>{
        
@@ -77,7 +77,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
          id:this.id
        }
        var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residential-sale-location-details?' + queryString);
+       this.router.navigateByUrl('/start-posting/residential-sale-location-details?' + queryString);
   
        this.service.formget(this.id).subscribe((res:any)=>{
        })
@@ -87,7 +87,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
          id:this.id
        }
        var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residential-sale-price-details?' + queryString);
+       this.router.navigateByUrl('/start-posting/residential-sale-price-details?' + queryString);
   
        this.service.formget(this.id).subscribe((res:any)=>{
        })
@@ -97,7 +97,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
          id:this.id
        }
        var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residential-sale-amentites?' + queryString);
+       this.router.navigateByUrl('/start-posting/residential-sale-amentites?' + queryString);
   
        this.service.formget(this.id).subscribe((res:any)=>{
        })
@@ -107,7 +107,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
           id:this.id
         }
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residential-sale-gallery?' + queryString);
+        this.router.navigateByUrl('/start-posting/residential-sale-gallery?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
       }
@@ -116,11 +116,12 @@ export class RsResidentialSalePreviewComponent implements OnInit {
           id:this.id
         }
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residential-sale-add-details?' + queryString);
+        this.router.navigateByUrl('/start-posting/residential-sale-add-details?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
       }
     }
+  
     ownerRoute(){
       let data={
         finsh:true

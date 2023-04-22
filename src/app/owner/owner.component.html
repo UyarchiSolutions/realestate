@@ -1,75 +1,18 @@
-<header>
-    <div class="logo">
-      <img src="../../assets/images/logo.png">
-    </div>
-   
-   <!-- <div>
-    <button class="login-button" routerLink="/buyerLogin">Login</button>
-    <button class="register-button">Register</button>
-    <button class="post-your-property" routerLink="/sellerLogin">Post Your Property<svg width="15" height="15" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.5 4H3.25C2.65326 4 2.08097 4.23705 1.65901 4.65901C1.23705 5.08097 1 5.65326 1 6.25V16.75C1 17.3467 1.23705 17.919 1.65901 18.341C2.08097 18.7629 2.65326 19 3.25 19H13.75C14.3467 19 14.919 18.7629 15.341 18.341C15.7629 17.919 16 17.3467 16 16.75V8.5M5.5 14.5L19 1M19 1H13.75M19 1V6.25" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      </button> -->
-   
-   <!-- <div class="user">
-      <div class="user-img">
-         <img src="../../assets/images/profile-Icon-SVG 1.png">
-      </div>
-      <div class="user-name">Aravind Daya</div>
-   </div>  -->
-   
-   <div class="dropdown">
-      <button class="btn dropdown-toggle" style="height: fit-content;position: static !important;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-       
-    <div class="user">
-      <div class="user-img">
-         <img src="../../assets/images/profile-Icon-SVG 1.png">
-      </div>
-      <div class="user-name">{{user.userName}}</div>
-   </div> 
-      </button>
-      <ul class="dropdown-menu" style="cursor: pointer;" (click)="AccountRoute()">
-        <li><a class="dropdown-item" ><svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5545 5.42629C14.5545 7.84881 12.5372 9.85259 9.99891 9.85259C7.46063 9.85259 5.44336 7.84881 5.44336 5.42629C5.44336 3.00378 7.46063 1 9.99891 1C12.5372 1 14.5545 3.00378 14.5545 5.42629Z" stroke="#473B32" stroke-width="2"/>
-            <path d="M19 18.8551C19 20.223 18.7372 20.9791 18.4131 21.4127C18.1076 21.8216 17.6431 22.0824 16.8913 22.2199C16.1137 22.362 15.1425 22.3514 13.9428 22.2909C13.6614 22.2767 13.3681 22.2598 13.0651 22.2424C12.1162 22.1878 11.0719 22.1277 10 22.1277C8.92807 22.1277 7.88377 22.1878 6.93494 22.2424C6.63188 22.2598 6.33856 22.2767 6.05719 22.2909C4.8575 22.3514 3.88631 22.362 3.10872 22.2199C2.35688 22.0824 1.89241 21.8216 1.58686 21.4127C1.26277 20.9791 1 20.223 1 18.8551C1 16.189 1.99588 14.3556 3.54052 13.1616C5.12154 11.9394 7.38118 11.3101 10 11.3101C12.6188 11.3101 14.8785 11.9394 16.4595 13.1616C18.0041 14.3556 19 16.189 19 18.8551Z" stroke="#473B32" stroke-width="2"/>
-            </svg>
-            My Account</a></li>
-        <li><a class="dropdown-item" ><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="18" height="18" stroke="#473B32" stroke-width="2"/>
-            <rect x="3.5" y="3.5" width="2" height="2" stroke="#473B32"/>
-            <rect x="3.5" y="8.5" width="2" height="2" stroke="#473B32"/>
-            <rect x="3.5" y="13.5" width="2" height="2" stroke="#473B32"/>
-            <rect x="8.25" y="4.25" width="8.5" height="0.5" stroke="#473B32" stroke-width="0.5"/>
-            <rect x="8.25" y="9.25" width="8.5" height="0.5" stroke="#473B32" stroke-width="0.5"/>
-            <rect x="8.25" y="14.25" width="8.5" height="0.5" stroke="#473B32" stroke-width="0.5"/>
-            </svg>
-            My Plans</a></li>
-        <li><a class="dropdown-item" (click)="changeps()"><svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.09067 9.76829L16.8723 0.625977L19.2181 3.06815L17.6542 4.69626L20 7.13843L16.0903 11.2099L13.7445 8.7677L10.4376 12.2105C11.0465 13.4302 11.2163 14.8364 10.9163 16.175C10.6164 17.5137 9.86641 18.6965 8.80194 19.5098C7.73747 20.323 6.4287 20.7132 5.11209 20.6096C3.79548 20.5061 2.55786 19.9157 1.62283 18.9451C0.687332 17.9728 0.117366 16.6837 0.016219 15.3115C-0.0849281 13.9393 0.289435 12.5747 1.07147 11.4652C1.8535 10.3556 2.99147 9.57436 4.27914 9.26306C5.56682 8.95177 6.91901 9.131 8.09067 9.76829ZM7.09639 16.5018C7.30765 16.2894 7.47617 16.0353 7.5921 15.7543C7.70802 15.4734 7.76904 15.1712 7.7716 14.8654C7.77415 14.5596 7.71818 14.2564 7.60696 13.9734C7.49574 13.6904 7.33149 13.4333 7.1238 13.217C6.91612 13.0008 6.66914 12.8298 6.3973 12.714C6.12545 12.5982 5.83418 12.54 5.54047 12.5426C5.24677 12.5453 4.95651 12.6088 4.68664 12.7295C4.41677 12.8502 4.17269 13.0256 3.96864 13.2456C3.56571 13.6799 3.34275 14.2616 3.34779 14.8654C3.35283 15.4692 3.58547 16.0468 3.99559 16.4738C4.4057 16.9007 4.9605 17.1429 5.54047 17.1482C6.12045 17.1534 6.6792 16.9213 7.09639 16.5018Z" fill="#473B32"/>
-            </svg>
-            Change Password</a></li>
-        <li><a class="dropdown-item" (click)="logOut()"><svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.09091 18C4.07 18 0 13.9707 0 9C0 4.0293 4.07 2.53646e-06 9.09091 2.53646e-06C10.5024 -0.00104728 11.8947 0.323798 13.1572 0.94873C14.4197 1.57366 15.5176 2.48146 16.3636 3.6H13.9C12.8502 2.68359 11.5556 2.08652 10.1716 1.88046C8.7875 1.6744 7.37279 1.86809 6.09717 2.43829C4.82155 3.0085 3.73923 3.93099 2.98006 5.09507C2.2209 6.25915 1.81715 7.61538 1.81727 9.001C1.81739 10.3866 2.22136 11.7428 2.98072 12.9067C3.74008 14.0707 4.82256 14.993 6.09827 15.563C7.37399 16.133 8.78874 16.3264 10.1728 16.1202C11.5568 15.9139 12.8513 15.3166 13.9009 14.4H16.3645C15.5184 15.5187 14.4204 16.4265 13.1577 17.0515C11.8951 17.6764 10.5026 18.0012 9.09091 18ZM15.4545 12.6V9.9H8.18182V8.1H15.4545V5.4L20 9L15.4545 12.6Z" fill="#473B32"/>
-            </svg>
-            Logout</a></li>
-      </ul>
-    </div>
-    
-   <!-- </div> -->
-   
-   
-   
-   </header>
-
-
+<header-with-profile></header-with-profile>
+  
 <div class="container">
 
 
     <div class="main-section">
+        <div class="empty">
+        
+        </div>
         <div class="sidebar">
-            <div class="empty">
+        <seller-admin-sidebar></seller-admin-sidebar>
+        </div>
 
-            </div>
+        <!-- <div class="sidebar">
+           
             <ul class="sidebar-content">
                 <li  style="cursor: pointer;" class="sidebar-content-list active"><span><svg width="16" height="20" viewBox="0 0 20 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,7 +105,7 @@
 
 
             </ul>
-        </div>
+        </div> -->
         <div class="main">
 
             <div class="property-tab">

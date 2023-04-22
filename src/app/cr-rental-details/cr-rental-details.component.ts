@@ -106,7 +106,7 @@ export class CrRentalDetailsComponent implements OnInit {
           this.leasearray.push(i +' Years' )
         }
       }
-      routerlink='commercial-rent-rental-details';
+      routerlink='/start-posting/commercial-rent-rental-details';
       submitted=false;
       Checkdata:any;
       rentsub(){
@@ -159,7 +159,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-           this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+           this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
           console.log(res);
           
         })
@@ -202,7 +202,7 @@ export class CrRentalDetailsComponent implements OnInit {
                   id: this.id,
                 };
                 var queryString = new URLSearchParams(postdata).toString();
-                this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+                this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
               });
       
       }
@@ -213,7 +213,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -223,7 +223,7 @@ export class CrRentalDetailsComponent implements OnInit {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-location-details?' + queryString
+            '/start-posting/commercial-rent-location-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -234,7 +234,7 @@ export class CrRentalDetailsComponent implements OnInit {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-rental-details?' + queryString
+            '/start-posting/commercial-rent-rental-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -244,7 +244,7 @@ export class CrRentalDetailsComponent implements OnInit {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }

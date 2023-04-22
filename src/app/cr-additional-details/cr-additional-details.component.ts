@@ -77,7 +77,7 @@ sameNum=false;
         id:res._id
       }
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
       console.log(res);
      })
     }   
@@ -92,7 +92,7 @@ sameNum=false;
       id: this.id,
     };
     var queryString = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+    this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
   
     this.service.formget(this.id).subscribe((res: any) => {
       location.reload();
@@ -108,7 +108,7 @@ sameNum=false;
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -118,7 +118,7 @@ sameNum=false;
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-location-details?' + queryString
+        '/start-posting/commercial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -129,7 +129,7 @@ sameNum=false;
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-rental-details?' + queryString
+        '/start-posting/commercial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -139,7 +139,7 @@ sameNum=false;
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -148,7 +148,7 @@ sameNum=false;
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
     if (count == 5) {
@@ -156,7 +156,7 @@ sameNum=false;
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
   }

@@ -132,7 +132,7 @@ export class RrGalleryComponent implements OnInit {
     const input = document.getElementById('videoinput') as HTMLInputElement;
     input.value = '';
   }
-  routerlink='residentaial-rent-gallery';
+  routerlink='/start-posting/residentaial-rent-gallery';
   submited=false;
 
   async submit() {
@@ -154,7 +154,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
     });
 
   }
@@ -167,7 +167,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
      
     });
   }
@@ -198,7 +198,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residential-rent?' + queryString);
+      this.router.navigateByUrl('/start-posting/residential-rent?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -208,7 +208,7 @@ export class RrGalleryComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-location-details?' + queryString
+        '/start-posting/residentaial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -219,7 +219,7 @@ export class RrGalleryComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-rental-details?' + queryString
+        '/start-posting/residentaial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -229,7 +229,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -238,7 +238,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
     if (count == 5) {
@@ -246,7 +246,7 @@ export class RrGalleryComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
   }

@@ -1,0 +1,14 @@
+.empty{
+    height: 65px;
+    background-color: var(--brown);
+}
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+ul{
+    margin-top: 5px;
+}
+ul li{
+    cursor: pointer;
+}

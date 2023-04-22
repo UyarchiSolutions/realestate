@@ -30,6 +30,7 @@ import { CommercialRentDetailviewComponent } from './buyer-search-view/commercia
 import { CommercialBuyDetailviewComponent } from './buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
 
 
+
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
   declarations: [

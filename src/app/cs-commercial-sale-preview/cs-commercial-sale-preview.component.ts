@@ -66,7 +66,7 @@ export class CsCommercialSalePreviewComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-sale-property?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-sale-property?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -76,7 +76,7 @@ export class CsCommercialSalePreviewComponent {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-sale-location-details?' + queryString
+            '/start-posting/commercial-sale-location-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -87,7 +87,7 @@ export class CsCommercialSalePreviewComponent {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-sale-price-details?' + queryString
+            '/start-posting/commercial-sale-price-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -97,7 +97,7 @@ export class CsCommercialSalePreviewComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-sale-amenities?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-sale-amenities?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -106,7 +106,7 @@ export class CsCommercialSalePreviewComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-sale-gallery?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-sale-gallery?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
         if (count == 5) {
@@ -114,10 +114,11 @@ export class CsCommercialSalePreviewComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-sale-add-details?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-sale-add-details?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
       }
+     
       ownerRoute(){
         let data={
           finsh:true

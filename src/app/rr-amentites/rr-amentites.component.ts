@@ -50,7 +50,7 @@ export class RrAmentitesComponent implements OnInit {
     
   }
   emptyArr:any=[];
-  routerlink='residentaial-rent-amentites';
+  routerlink='/start-posting/residentaial-rent-amentites';
   submited=false;
   
   submit(){
@@ -98,7 +98,7 @@ export class RrAmentitesComponent implements OnInit {
         id:res._id
       }
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
       console.log(res);
      
      })
@@ -303,7 +303,7 @@ export class RrAmentitesComponent implements OnInit {
       id: this.id,
     };
     var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+    this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => {
       location.reload();
@@ -317,7 +317,7 @@ export class RrAmentitesComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residential-rent?' + queryString);
+      this.router.navigateByUrl('/start-posting/residential-rent?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -327,7 +327,7 @@ export class RrAmentitesComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-location-details?' + queryString
+        '/start-posting/residentaial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -338,7 +338,7 @@ export class RrAmentitesComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-rental-details?' + queryString
+        '/start-posting/residentaial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -348,27 +348,25 @@ export class RrAmentitesComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
-    if(count == 4){
-      var postdata ={
-        id:this.id
-      }
+    if (count == 4) {
+      var postdata = {
+        id: this.id,
+      };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
-      this.service.formget(this.id).subscribe((res:any)=>{
-      })
+      this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
+      this.service.formget(this.id).subscribe((res: any) => {});
     }
-    if(count == 5){
-      var postdata ={
-        id:this.id
-      }
+    if (count == 5) {
+      var postdata = {
+        id: this.id,
+      };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
-      this.service.formget(this.id).subscribe((res:any)=>{
-      })
+      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
+      this.service.formget(this.id).subscribe((res: any) => {});
     }
   }
   showModal = -1;

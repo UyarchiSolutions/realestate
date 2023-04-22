@@ -135,7 +135,7 @@ export class CrGalleryComponent {
        input.value = '';
         
       }
-      routerlink='commercial-rent-gallery';
+      routerlink='/start-posting/commercial-rent-gallery';
       submited=false;
      async submit(){
 
@@ -155,7 +155,7 @@ export class CrGalleryComponent {
           id:this.id
         }
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
         this.service.formget(this.id).subscribe((res:any)=>{
         })
        })
@@ -169,7 +169,7 @@ export class CrGalleryComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
       
           this.service.formget(this.id).subscribe((res: any) => {
             
@@ -208,7 +208,7 @@ export class CrGalleryComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -218,7 +218,7 @@ export class CrGalleryComponent {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-location-details?' + queryString
+            '/start-posting/commercial-rent-location-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -229,7 +229,7 @@ export class CrGalleryComponent {
           };
           var queryString = new URLSearchParams(data).toString();
           this.router.navigateByUrl(
-            '/commercial-rent-rental-details?' + queryString
+            '/start-posting/commercial-rent-rental-details?' + queryString
           );
     
           this.service.formget(this.id).subscribe((res: any) => {});
@@ -239,7 +239,7 @@ export class CrGalleryComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(data).toString();
-          this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
     
           this.service.formget(this.id).subscribe((res: any) => {});
         }
@@ -248,7 +248,7 @@ export class CrGalleryComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
         if (count == 5) {
@@ -256,7 +256,7 @@ export class CrGalleryComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
           this.service.formget(this.id).subscribe((res: any) => {});
         }
       }

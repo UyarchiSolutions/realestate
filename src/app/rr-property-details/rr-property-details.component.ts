@@ -61,7 +61,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     console.log(e);
     this.propform.get('propertytype').setValue(e);
   }
-  routerlink ='residential-rent';
+  routerlink ='/start-posting/residential-rent';
   propsub() {
     
     this.pv= this.pv==null ? this.data.propertType : this.pv;
@@ -113,7 +113,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-location-details?' + queryString
+        '/start-posting/residentaial-rent-location-details?' + queryString
       );
       console.log(res);
     });
@@ -176,7 +176,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       id: this.id,
     };
     var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+    this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => 
     {location.reload();});
@@ -188,7 +188,7 @@ export class RrPropertyDetailsComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residential-rent?' + queryString);
+      this.router.navigateByUrl('/start-posting/residential-rent?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -198,7 +198,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-location-details?' + queryString
+        '/start-posting/residentaial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -209,7 +209,7 @@ export class RrPropertyDetailsComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-rental-details?' + queryString
+        '/start-posting/residentaial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -219,7 +219,7 @@ export class RrPropertyDetailsComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -228,7 +228,7 @@ export class RrPropertyDetailsComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
     if (count == 5) {
@@ -236,7 +236,7 @@ export class RrPropertyDetailsComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
   }

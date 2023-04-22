@@ -35,4 +35,7 @@ export class HeaderWithProfileComponent implements OnInit {
     Cookie.delete('tokens');
     this.router.navigateByUrl('/');
   }
+  routeAccount(){
+    this.router.navigateByUrl('/my-account')
+  }
 }

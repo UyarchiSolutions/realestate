@@ -60,12 +60,13 @@ export class CrCommercialRentPreviewComponent {
       this.imgSliderCheker = a;
     }
     Redirect(count: any) {
+      
       if (count == 0) {
         var data = {
           id: this.id,
         };
         var queryString = new URLSearchParams(data).toString();
-        this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
   
         this.service.formget(this.id).subscribe((res: any) => {});
       }
@@ -75,7 +76,7 @@ export class CrCommercialRentPreviewComponent {
         };
         var queryString = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
-          '/commercial-rent-location-details?' + queryString
+          '/start-posting/commercial-rent-location-details?' + queryString
         );
   
         this.service.formget(this.id).subscribe((res: any) => {});
@@ -86,7 +87,7 @@ export class CrCommercialRentPreviewComponent {
         };
         var queryString = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
-          '/commercial-rent-rental-details?' + queryString
+          '/start-posting/commercial-rent-rental-details?' + queryString
         );
   
         this.service.formget(this.id).subscribe((res: any) => {});
@@ -96,7 +97,7 @@ export class CrCommercialRentPreviewComponent {
           id: this.id,
         };
         var queryString = new URLSearchParams(data).toString();
-        this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
   
         this.service.formget(this.id).subscribe((res: any) => {});
       }
@@ -105,7 +106,7 @@ export class CrCommercialRentPreviewComponent {
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
         this.service.formget(this.id).subscribe((res: any) => {});
       }
       if (count == 5) {
@@ -113,10 +114,11 @@ export class CrCommercialRentPreviewComponent {
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+        this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
         this.service.formget(this.id).subscribe((res: any) => {});
       }
     }
+
     ownerRoute(){
       let data={
         finsh:true

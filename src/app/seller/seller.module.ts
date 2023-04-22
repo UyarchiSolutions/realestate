@@ -50,6 +50,9 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { PropertyAlertComponent } from '../property-alert/property-alert.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { SellerSidebarComponent } from './seller-sidebar/seller-sidebar.component';
+import { SellerAdminSidebarComponent } from './seller-admin-sidebar/seller-admin-sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,9 @@ import { AppRoutingModule } from '../app-routing.module';
     CsAdditionalDetailsComponent,
     //pipes
     IndianCurrencyPipeS,
+    //sidebar
+    SellerSidebarComponent,
+    SellerAdminSidebarComponent,
 
     MyAccountComponent,
     EditAccountComponent,
@@ -109,6 +115,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     HttpClientModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,

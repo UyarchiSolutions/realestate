@@ -62,7 +62,7 @@ export class CrPropertyDetailsComponent {
     console.log(e);
     this.propform.get('propertytype').setValue(e);
   }
-  routerlink='commercial-rent-property';
+  routerlink='/start-posting/commercial-rent-property';
   propsub() {
     
     this.submitted = this.data.propertType !=  null ? false : true;
@@ -103,7 +103,7 @@ export class CrPropertyDetailsComponent {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-location-details?' + queryString
+        '/start-posting/commercial-rent-location-details?' + queryString
       );
       console.log(res);
     });
@@ -171,7 +171,7 @@ export class CrPropertyDetailsComponent {
       id: this.id,
     };
     var queryString = new URLSearchParams(postdata).toString();
-    this.router.navigateByUrl('/commercial-rent-preview?' + queryString);
+    this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
 
     this.service.formget(this.id).subscribe((res: any) => 
     {location.reload();});
@@ -318,7 +318,7 @@ export class CrPropertyDetailsComponent {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/commercial-rent-property?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-property?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -328,7 +328,7 @@ export class CrPropertyDetailsComponent {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-location-details?' + queryString
+        '/start-posting/commercial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -339,7 +339,7 @@ export class CrPropertyDetailsComponent {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-rental-details?' + queryString
+        '/start-posting/commercial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -349,7 +349,7 @@ export class CrPropertyDetailsComponent {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/commercial-rent-amenities?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -358,7 +358,7 @@ export class CrPropertyDetailsComponent {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-gallery?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
     if (count == 5) {
@@ -366,7 +366,7 @@ export class CrPropertyDetailsComponent {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/commercial-rent-add-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/commercial-rent-add-details?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
   }

@@ -69,7 +69,7 @@ export class CsLocationDetailsComponent {
     
           this.updateform();
           }
-          routerlink='commercial-sale-location-details';
+          routerlink='/start-posting/commercial-sale-location-details';
       
           OnSubmit(){
       
@@ -96,7 +96,7 @@ export class CsLocationDetailsComponent {
                   id:res._id
                 }
                 var queryString = new URLSearchParams(postdata).toString();
-                this.router.navigateByUrl('/commercial-sale-price-details?' + queryString);
+                this.router.navigateByUrl('/start-posting/commercial-sale-price-details?' + queryString);
                 console.log(res);
                
                })
@@ -144,7 +144,7 @@ export class CsLocationDetailsComponent {
                   id: this.id,
                 };
                 var queryString = new URLSearchParams(postdata).toString();
-                this.router.navigateByUrl('/commercial-sale-preview?' + queryString);
+                this.router.navigateByUrl('/start-posting/commercial-sale-preview?' + queryString);
             
               });
       
@@ -157,7 +157,7 @@ export class CsLocationDetailsComponent {
                 id: this.id,
               };
               var queryString = new URLSearchParams(data).toString();
-              this.router.navigateByUrl('/commercial-sale-property?' + queryString);
+              this.router.navigateByUrl('/start-posting/commercial-sale-property?' + queryString);
         
               this.service.formget(this.id).subscribe((res: any) => {});
             }
@@ -167,7 +167,7 @@ export class CsLocationDetailsComponent {
               };
               var queryString = new URLSearchParams(data).toString();
               this.router.navigateByUrl(
-                '/commercial-sale-location-details?' + queryString
+                '/start-posting/commercial-sale-location-details?' + queryString
               );
         
               this.service.formget(this.id).subscribe((res: any) => {});
@@ -178,7 +178,7 @@ export class CsLocationDetailsComponent {
               };
               var queryString = new URLSearchParams(data).toString();
               this.router.navigateByUrl(
-                '/commercial-sale-price-details?' + queryString
+                '/start-posting/commercial-sale-price-details?' + queryString
               );
         
               this.service.formget(this.id).subscribe((res: any) => {});
@@ -188,7 +188,7 @@ export class CsLocationDetailsComponent {
                 id: this.id,
               };
               var queryString = new URLSearchParams(data).toString();
-              this.router.navigateByUrl('/commercial-sale-amenities?' + queryString);
+              this.router.navigateByUrl('/start-posting/commercial-sale-amenities?' + queryString);
         
               this.service.formget(this.id).subscribe((res: any) => {});
             }
@@ -197,7 +197,7 @@ export class CsLocationDetailsComponent {
                 id: this.id,
               };
               var queryString = new URLSearchParams(postdata).toString();
-              this.router.navigateByUrl('/commercial-sale-gallery?' + queryString);
+              this.router.navigateByUrl('/start-posting/commercial-sale-gallery?' + queryString);
               this.service.formget(this.id).subscribe((res: any) => {});
             }
             if (count == 5) {
@@ -205,7 +205,7 @@ export class CsLocationDetailsComponent {
                 id: this.id,
               };
               var queryString = new URLSearchParams(postdata).toString();
-              this.router.navigateByUrl('/commercial-sale-add-details?' + queryString);
+              this.router.navigateByUrl('/start-posting/commercial-sale-add-details?' + queryString);
               this.service.formget(this.id).subscribe((res: any) => {});
             }
           }

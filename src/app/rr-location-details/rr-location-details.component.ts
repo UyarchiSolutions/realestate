@@ -45,7 +45,7 @@ export class RrLocationDetailsComponent  implements OnInit{
 
   }
  
-  routerlink='residentaial-rent-location-details';
+  routerlink='/start-posting/residentaial-rent-location-details';
   ngOnInit(): void {
 
 
@@ -90,7 +90,7 @@ export class RrLocationDetailsComponent  implements OnInit{
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/residentaial-rent-rental-details?' + queryString);
+          this.router.navigateByUrl('/start-posting/residentaial-rent-rental-details?' + queryString);
           console.log(res);
          
          })
@@ -135,72 +135,68 @@ export class RrLocationDetailsComponent  implements OnInit{
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/residentaial-rent-preview?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
   
       this.service.formget(this.id).subscribe((res: any) => {
         location.reload();
       });
     }
-    back(count:any){
-      if(count == 0){
-        var data ={
-         id:this.id
-       }
-       var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residential-rent?' + queryString);
+    back(count: any) {
+      if (count == 0) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/start-posting/residential-rent?' + queryString);
   
-       this.service.formget(this.id).subscribe((res:any)=>{
-       
-  
-       })
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
-      if(count == 1){
-        var data ={
-         id:this.id
-       }
-       var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residentaial-rent-location-details?' + queryString);
+      if (count == 1) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/start-posting/residentaial-rent-location-details?' + queryString
+        );
   
-       this.service.formget(this.id).subscribe((res:any)=>{
-       })
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
-      if(count == 2){
-        var data ={
-         id:this.id
-       }
-       var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residentaial-rent-rental-details?' + queryString);
+      if (count == 2) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl(
+          '/start-posting/residentaial-rent-rental-details?' + queryString
+        );
   
-       this.service.formget(this.id).subscribe((res:any)=>{
-       })
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
-      if(count == 3){
-        var data ={
-         id:this.id
-       }
-       var queryString = new URLSearchParams(data).toString();
-       this.router.navigateByUrl('/residentaial-rent-amentites?' + queryString);
+      if (count == 3) {
+        var data = {
+          id: this.id,
+        };
+        var queryString = new URLSearchParams(data).toString();
+        this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
   
-       this.service.formget(this.id).subscribe((res:any)=>{
-       })
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
-      if(count == 4){
-        var postdata ={
-          id:this.id
-        }
+      if (count == 4) {
+        var postdata = {
+          id: this.id,
+        };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residentaial-rent-gallery?' + queryString);
-        this.service.formget(this.id).subscribe((res:any)=>{
-        })
+        this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
-      if(count == 5){
-        var postdata ={
-          id:this.id
-        }
+      if (count == 5) {
+        var postdata = {
+          id: this.id,
+        };
         var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/residentaial-rent-details?' + queryString);
-        this.service.formget(this.id).subscribe((res:any)=>{
-        })
+        this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
+        this.service.formget(this.id).subscribe((res: any) => {});
       }
     }
       

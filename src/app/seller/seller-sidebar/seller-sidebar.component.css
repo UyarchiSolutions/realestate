@@ -1,0 +1,7 @@
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+ul li{
+    cursor: pointer;
+}
