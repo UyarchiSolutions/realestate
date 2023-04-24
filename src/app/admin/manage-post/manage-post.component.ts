@@ -60,6 +60,7 @@ export class ManagePostComponent implements OnInit {
   }
   changeStatus(id:any,active:any){
     let data;
+    console.log(id);
     if(active){
       data={
         status:'inactive'

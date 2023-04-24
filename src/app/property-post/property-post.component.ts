@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 import { Cookie } from 'ng2-cookies';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-property-post',
@@ -10,7 +11,7 @@ import { Cookie } from 'ng2-cookies';
 })
 export class PropertyPostComponent implements OnInit {
 
-  constructor(private arouter:ActivatedRoute,private service: PostPropertyService,private router:Router){
+  constructor(private arouter:ActivatedRoute,private service: PostPropertyService,private router:Router,private fb:FormBuilder){
 
     this.arouter.queryParams.subscribe((params:any)=>{
       console.log(params);
@@ -63,6 +64,7 @@ export class PropertyPostComponent implements OnInit {
   update_status(){
     var data={
       type:'Shcedule'
+     
     }
     this.service.update_Interest_buyer(this.id,data).subscribe((res:any)=>{
 
@@ -76,6 +78,47 @@ export class PropertyPostComponent implements OnInit {
       console.log(res,'rejected')
       this.get_all_interst();
     })
+  }
+  sschedule=false;
+  stime=false;
+  sAllpop=false;
+  checkid:any
+  showAll(id:any){
+    this.checkid=id
+    this.sAllpop= !this.sAllpop;
+    this.sschedule= true
+  }
+
+  showTime(){
+    this.stime= true
+    this.sschedule= false
+  }
+  myform:any = this.fb.group({
+    Date1:new FormControl(),
+    time1:new FormControl()
+   } )
+  closeAll(date:any,time:any,id:any){
+    console.log(this.myform.value)
+    var data={
+      type:'Shcedule',
+      schedule:date.value,
+      scheduletime:time.value,
+    }
+    this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
+      console.log(res)
+      this.get_all_interst();
+      
+    })
+    console.log(data)
+    this.stime=false
+    this.sschedule=false
+    this.sAllpop=false;
+  }
+  today: Date = new Date();
+  showD=false;
+  showdate(v:HTMLInputElement){
+    this. showD= !this.showD;
+ 
   }
 
 }

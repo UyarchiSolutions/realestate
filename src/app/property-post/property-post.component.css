@@ -347,4 +347,78 @@ header{
     border-bottom: 0;
     border-left: 0.3em solid transparent;
   }
+
   
+  table tr td:last-child{
+    position: relative;
+}
+.schedule-popup{
+    position: absolute;
+    bottom:-200px;
+    width: 250px;
+    left: -100px;
+    background-color: #FFFFFF;
+    height: 200px;
+    z-index: 9999;
+    border-radius: 5px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.062);
+    padding: 15px;
+
+}
+
+.select-date .select-date-input{
+    display: flex;
+    margin-top: 10px;
+}.select-date h6{
+    text-align: center;
+}
+.select-date .select-date-input p{
+    width: 33.333%;
+    text-align: center;
+    padding-left: 10px;
+    border: solid gray 1px;
+
+}
+.selections{
+    display: flex;
+}
+.selections span{
+    width: 33.333%;
+    height: fit-content;
+    max-height: 100px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: solid gray 1px;
+
+}
+.selections span::-webkit-scrollbar{
+    display: none;
+}
+.selections span:nth-child(2){
+    left: 33.33%;
+}
+.selections span:nth-child(3){
+    left: 66.66%;
+}
+.schedule-popup section{
+    position: relative;
+
+}
+.button{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+.select-time-btn{
+    background-color: var(--brown);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 12px;
+    border-radius: 3px;
+}
+

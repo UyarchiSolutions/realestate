@@ -675,3 +675,6 @@ position: relative;
 .slider{
     background-color:var(--brown) !important;
 }
+.sch{
+    color: green !important;
+}

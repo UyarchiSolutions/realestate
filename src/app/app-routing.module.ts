@@ -173,9 +173,12 @@ const routes: Routes = [
   { path: 'alert', component: PropertyAlertComponent },
 
   //admin
-  { path: 'admin/manage-seller-owner', component: ManageSellerOwnerComponent },
-  { path: 'admin/manage-buyer-tenant', component: ManageBuyerTenantComponent },
-  { path: 'admin/manage-post', component: ManagePostComponent },
+  { path: 'admin', children:[
+    { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
+    { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
+    { path: 'manage-post', component: ManagePostComponent },
+  ] },
+ 
 ];
 
 @NgModule({

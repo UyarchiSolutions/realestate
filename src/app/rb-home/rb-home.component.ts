@@ -999,6 +999,7 @@ export class RbHomeComponent implements OnInit {
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
       console.log(res,'all interest')
+      console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
       this.AllInterested = res;
       this.ResiRent= this.AllInterested.filter((v:any)=>{
        return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
@@ -1013,7 +1014,7 @@ export class RbHomeComponent implements OnInit {
        return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
       })
 
-
+     console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
     
     });
   
