@@ -6,9 +6,11 @@ import { ManageBuyerTenantComponent } from './manage-buyer-tenant/manage-buyer-t
 import { ManagePostComponent } from './manage-post/manage-post.component';
 import { ManageSellerOwnerComponent } from './manage-seller-owner/manage-seller-owner.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AddPlanComponent } from './add-plan/add-plan.component';
+import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 
 
 
@@ -19,7 +21,9 @@ import { RouterModule } from '@angular/router';
     ManageBuyerTenantComponent,
     ManagePostComponent,
     ManageSellerOwnerComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddPlanComponent,
+    ManagePlanComponent
 
   ],
   imports: [
@@ -27,6 +31,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
+
     
   ]
 })

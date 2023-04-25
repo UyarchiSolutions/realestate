@@ -1,0 +1,310 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+    justify-content: unset !important;
+
+}
+.main{
+    width: 85%;
+    background-color:var(--sandal);
+
+    margin: 10px 10px 0 0;
+
+}
+.main h2{
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+ 
+    color: #473B32;
+    font-family: var(--raleway);
+    font-weight: 700;
+}
+.ad{
+    width: 15%;
+   height: 717px;
+    margin: 10px;
+}
+.sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+}
+.sidebar-content-list span{
+    display: flex;
+    align-items: center;
+}
+.sidebar-content-list svg{
+    margin-right: 10px;
+}
+
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+.top-ad{
+    height: fit-content;
+}
+.main h1{
+    text-align: center;
+    color: var(--brown);
+    font-family: var(--ralewaybold);
+    margin: 20px 0;
+}
+.form{
+    width: 70%;
+    margin:50px auto;
+   
+    
+}
+.form div{
+width: 100%;
+
+display: flex;
+margin: 20px 0;
+align-items: center;
+justify-content: space-between;
+}
+label{
+    width: 25% !important;
+
+}
+.form div select,input{
+    padding: 10px;
+    width: 50%;
+    background: none;
+    border: none;
+    border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
+    position:relative ;
+}
+.forgot-password{
+    font-size: 10px;
+    margin-top: -15px;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-btn button{
+    border: none;
+    padding: 15px 70px;
+    background-color: var(--brown);
+    color: white;
+    margin-left: 30%;
+    cursor: pointer;
+}
+ 
+.top-section,.main-section{
+    width: 100%;
+    display: flex;
+}
+.top-section{
+    max-height: 180px !important;
+    overflow: hidden !important;
+
+}
+.top-section .main{
+    align-self:flex-end;
+}
+.top-section .ad{
+    background-color: yellow;
+}
+.top-section .ad img{
+    height: 100%;
+}
+.property-tab{
+display: flex;
+justify-content: space-between;
+width: 100%;
+padding: 10px 0;
+align-items: center;
+background-color: var(--brown);
+
+}
+.property-tab h5,.property-tab h6{
+    width:fit-content;
+    padding: 10px;
+    margin: 0 !important;
+    color:white;
+    display: flex;
+    align-items: center;
+    background-color: var(--brown);
+    cursor: pointer;
+    font-family: var(--ralewaybold);
+    font-weight: 700;
+}
+.property-tab h5 svg{
+    margin-right: 10px;
+}
+.property-tab h6 svg{
+    margin-left: 10px;
+}
+.notification{
+background-color: var(--brown);
+height: 100%;
+margin-right: 30px;
+}
+.property-tab-active{
+    color: var(--brown);
+    background-color:white;
+  
+}
+.active{
+    color: var(--sandal);
+    background-color: var(--brown);
+}
+.property-tab-select svg{
+    margin-right: 5px;
+}
+sup{
+    margin-top: -15px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+table tr th{
+    font-weight: 400;
+    vertical-align: middle;
+  align-items: center;
+
+}
+.table-head{
+background-color: var( --lightbrown);
+color: white;
+height: 50px;
+}
+.main-section .main{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+th span{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+ margin-left: 10px;
+}
+th span svg{
+    margin-right: 5px;
+}
+table td{
+    padding-left: 10px;
+    /* border-bottom: solid gray 1px; */
+    height: 50px;
+}
+table tr{
+    border-bottom: solid gray 1px;
+}
+.bottom-section{
+    width: 50%;
+margin-left: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+.range{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.range svg{
+    margin-right: 10px;
+   
+}
+.range p{
+    font-weight: 500;
+    color: var(--brown);
+    font-size: 18px;
+}
+.pagination{
+    width: fit-content;
+    display: flex;
+
+}
+.page-next,.page-prev{
+    cursor: pointer;
+}
+.page-prev,.page-next,.page-count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brown);
+    height: 40px;
+    width: 40px;
+}
+.page-count{
+    background-color: white;
+}
+.view{
+
+    align-items: center;
+    display: flex;
+    height: 60px !important;
+}
+.view svg{
+    padding-right: 5px;
+}
+.interested{
+    color: var(--blue);
+}
+.active-repost{
+    display: flex;
+    border: solid green 1px;
+    padding:0 0 0 5px;
+    margin: 0 3px;
+    font-size: 0.9rem;
+}
+td .active{
+    background: none !important;
+}
+td .active p{
+    color: green;
+}
+.repost{
+    padding-left: 0 !important;
+    border: solid var(--brown) 1px;
+
+}
+td .active i{
+    background-color: green;
+    padding:  0 3px 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3px;
+}
+td .repost p{
+color: var(--brown);
+}
+td .repost i{
+    background-color:var(--brown);
+    padding:  0 3px 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+
+}
+.empty{
+    background-color: var(--brown);
+    padding: 32px 0;
+    margin-bottom: 5px;
+}
+table tr td span{
+    display: flex;
+    align-items: center;
+}
+.plan ul li svg{
+    margin-right: 5px;
+}

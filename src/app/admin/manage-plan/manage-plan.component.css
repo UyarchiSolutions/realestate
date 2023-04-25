@@ -1,0 +1,114 @@
+.buttons span{
+    display: flex;
+    max-width: fit-content;
+    align-items: center;
+}
+.buttons span button:nth-child(2){
+ margin-left: 10px;
+}
+table tr td{
+ max-width: fit-content !important;
+}
+.remove-btn{
+    color: #B73E3E ;
+}
+.property-type{
+    min-width: 20%;
+}
+.propery-btn{
+    width: 100%;
+    border-radius:0;
+    text-align: left;
+    background-color: white;
+    color: black;
+}
+.main-content-header{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between !important;
+}
+.main-content-header button{
+    background: none;
+    border: none;
+    display: flex;
+    color: white;
+align-items: center;
+}
+.main-content-header button svg{
+    margin-left: 10px;
+}
+.main-content-header h5{
+    display: flex;
+    align-items: center;
+}
+.main-content-header h5 svg{
+    margin-right: 5px;
+}
+
+table tr td span{
+    display: flex;
+    align-items: center;
+}
+table tr td span button{
+    min-width: 100px;
+    margin:0 10px;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+table tr td span button svg{
+    margin-right: 5px;
+}
+
+/* popup */
+.popup{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-container{
+    max-height: 80vh;
+    padding: 15px 45px;
+    max-width: 600px !important;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+}
+.popup-container::-webkit-scrollbar{
+    display: none;
+}
+.popup-container h3{
+    font-weight: bold;
+}
+.plan-details{
+    margin-top: 20px;
+}
+.plan-details div{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.plan-details div label{
+    font-weight: 600;
+}
+.plan-details div label,.plan-details div p{
+    width: 50%;
+}
+.description {
+    width: 100% !important;
+    flex-direction: column !important;
+}
+.description label{
+    width: 100% !important;
+}
+.description p{
+    width: 95% !important;
+    margin: 10px 0 0 10px;
+}

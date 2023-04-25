@@ -1,0 +1,125 @@
+ <app-header></app-header>
+ 
+<div class="main-page">
+ <h3 class="title">
+    Add Plan
+ </h3>
+
+ <div class="form"  [formGroup]="myform">
+
+<div>
+    <label>User Type</label>  
+    <div class="input-options"> 
+        <span><input id="seller" name="userType" type="radio" formControlName="userType" value="Seller"><label for="seller">seller</label></span>   
+        <span><input name="userType" id="buyer" type="radio"  formControlName="userType" value="Buyer"><label for="buyer">Buyer</label></span> </div>
+</div>
+
+<div>
+    <label>Plan Type</label>  
+    <div class="input-options"> 
+        <span><input id="normal" name="planType" type="radio" formControlName="planType" value="Normal Plan" ><label for="normal">Normal Plan</label></span>   
+        <span><input name="planType" id="add" type="radio"  formControlName="planType" value="Add On Plan"><label for="add">Add On Plan</label></span> </div>
+</div>
+<div>
+    <label>Plan Name</label>  
+    <input type="text" placeholder="Enter a Plan Name" formControlName="planeName"> 
+</div>
+
+<div>
+    <label>Plan Mode :</label> 
+    <select  formControlName="planMode"> 
+        <option name="planMode" ngDefaultControl  value="Public">Public</option>
+    </select> 
+</div>
+
+<div>
+    <label>No Of Host per Stream :</label> 
+    <select  formControlName="no_of_host_per_Stream"> 
+        <option value='1' defaultSelected  >1</option>
+        <option  value='2' >2</option>
+        <option  value='3' >3</option>
+    </select> 
+</div>
+
+<div>
+    <label>No of Stream :</label> 
+    <input type="text" placeholder="Enter No of Streams" formControlName="no_of_Stream"> 
+
+</div>
+
+<div>
+    <label>Duration Per Stream :</label> 
+    <input type="text" placeholder="Enter Duration Per Stream in Min" formControlName="Duration_per_stream" > 
+</div>
+
+<div>
+    <label>Entry Permit to Participants     :</label> 
+    <div class="input-options"> 
+        <span><input id="seller" name="Entry_Permit_to_participants" type="radio" value="Any Time" formControlName="Entry_Permit_to_participants"><label for="seller">Any Time</label></span>   
+        <span><input name="Entry_Permit_to_participants" id="buyer" type="radio"  value="Pre Register"  formControlName="Entry_Permit_to_participants"><label for="buyer">Pre Register</label></span> 
+    </div>
+</div>
+
+<div>
+    <label>No Of Buyer Contact Reveals :</label> 
+    <input type="text" placeholder="Enter No Of Buyer Contact Reveals"  formControlName="No_buyer_contact_Reveals"> 
+</div>
+
+<div>
+    <label>Number of Participants Limit :</label> 
+    <input type="text" placeholder="Enter Participants Limit" formControlName="No_of_participants_Limit"> 
+</div>
+
+<div>
+    <label>Validity of plan (use paln by) :</label> 
+    <input type="text" placeholder="Enter Validity in Days" formControlName="validity_of_plan"> 
+</div>
+
+<div>
+    <label>Stream Validity :</label> 
+    <input type="text" value="30" placeholder="Enter Validity in Days" formControlName="Stream_validity" > 
+</div>
+
+<div>
+    <label>Regular price :</label> 
+    <input type="text" value="30" placeholder="Enter Regular price" formControlName="Regular_Price"> 
+</div>
+
+<div>
+    <label>Offer Price :</label> 
+    <input type="text"  placeholder="Enter Offer Price" formControlName="Offer_Price"> 
+</div>
+
+<div>
+    <label>Chat Needed :</label> 
+    <div class="input-options"> 
+        <span><input id="yes" name="Chat_Needed" type="radio" formControlName="Chat_Needed" value="Yes"><label for="yes" >Yes</label></span>   
+        <span><input name="Chat_Needed" id="No" type="radio" formControlName="Chat_Needed" value="No"><label for="No">No</label></span> </div>
+</div>
+
+<div>
+    <label>No Of Post per Stream :</label> 
+    <select  formControlName="post_Stream"> 
+        <option value="Single post">Single Post</option>
+    </select> 
+</div>
+
+<div>
+    <label>Service charges :</label> 
+    <select formControlName="service_Charges"> 
+        <option  value="50">50 rupes</option>
+    </select> 
+</div>
+
+<div>
+    <label>Description :</label> 
+    <textarea  placeholder="Enter Offer Price" formControlName="Description"> </textarea>
+</div>
+
+<div class="button">
+    <button (click)="submit()">Submit</button>
+</div>
+
+
+ </div>
+</div> 

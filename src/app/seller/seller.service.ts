@@ -8,6 +8,7 @@ import { Env } from '../environment.dev';
 })
 export class SellerService {
   baseUrl=Env.baseAPi;
+  planBase:any='https://uyarchicrm.click/v1/StreamPlan/';
   constructor(private http:HttpClient) { }
 
   emailVerification(data:any){
@@ -59,4 +60,15 @@ changePasswordForseller(data:any){
 editAccountSeller(data:any){
   return this.http.put(this.baseUrl+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('tokens')}})
 }
+
+get_All_Plan(){
+  return this.http.get(this.planBase)
+}
+purchase_plan(id:any){
+  return this.http.post(this.planBase+`purchase/plan`,id,{headers:{auth:Cookie.get('tokens')}})
+}
+get_purchase_plan(){
+  return this.http.get(this.planBase+`getPurchased/Planes`,{headers:{auth:Cookie.get('tokens')}})
+}
+
 }

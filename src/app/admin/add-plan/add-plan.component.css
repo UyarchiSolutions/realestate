@@ -1,0 +1,57 @@
+.main-page{
+    background-color: #FEFFEF
+    ;
+}
+.title{
+    text-align: center;
+    padding: 25px 0;
+    font-weight: 700;
+}
+.form{
+    width: 700px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+.form>div{
+    display: flex;
+    margin: 25px 0;
+    justify-content: space-between;
+}
+.form div>label{
+    width: 40%;
+    font-weight: 600;
+}
+.form .input-options{
+    display: flex;
+    width: 60%;
+    justify-content: unset !important;
+    align-items: center;
+}
+.form div div span{
+    display: flex;
+    width: 200px;
+    align-items: center;
+}
+.input-options label{
+    white-space: nowrap;
+}
+.form div>select,.form div>input,textarea{
+    width: 60%;
+    background: none;
+    border: none;
+    height: 20px;
+    max-height: fit-content;
+    border-bottom: solid rgba(128, 128, 128, 0.345) 1px;
+}
+.button{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+}
+.button button{
+background-color: var(--brown);
+color: white;
+padding: 5px 45px;
+border: none;
+}

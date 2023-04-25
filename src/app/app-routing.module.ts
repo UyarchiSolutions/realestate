@@ -67,6 +67,12 @@ import { ManagePostComponent } from './admin/manage-post/manage-post.component';
 import { ResidentialBuyDetailviewComponent } from './buyer/buyer-search-view/residential-buy-detailview/residential-buy-detailview.component';
 import { CommercialRentDetailviewComponent } from './buyer/buyer-search-view/commercial-rent-detailview/commercial-rent-detailview.component';
 import { CommercialBuyDetailviewComponent } from './buyer/buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
+import { AddPlanComponent } from './admin/add-plan/add-plan.component';
+import { MyStreamsComponent } from './seller/my-streams/my-streams.component';
+import { RequestStreamComponent } from './seller/request-stream/request-stream.component';
+import { ManagePlanComponent } from './admin/manage-plan/manage-plan.component';
+import { MyPlansComponent } from './seller/my-plans/my-plans.component';
+import { BuyPlanComponent } from './seller/buy-plan/buy-plan.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -91,48 +97,114 @@ const routes: Routes = [
   { path: 'changepassword-seller', component: ChangeSellerComponent },
 
   {
+    path:'my-streams',children:[
+  {path:'',component:MyStreamsComponent},
+  {path:'my-add-stream',component:RequestStreamComponent},],
+},
+
+  {
     path: 'start-posting',
     children: [
-      { path: '',component: StartPostingComponent, },
+      { path: '', component: StartPostingComponent },
       { path: 'residential-rent', component: RrPropertyDetailsComponent },
-      { path: 'residentaial-rent-location-details', component: RrLocationDetailsComponent,},
-      {path: 'residentaial-rent-rental-details',component: RrRentalDetailsComponent,},
+      {
+        path: 'residentaial-rent-location-details',
+        component: RrLocationDetailsComponent,
+      },
+      {
+        path: 'residentaial-rent-rental-details',
+        component: RrRentalDetailsComponent,
+      },
       { path: 'residentaial-rent-amentites', component: RrAmentitesComponent },
       { path: 'residentaial-rent-gallery', component: RrGalleryComponent },
-      {path: 'residentaial-rent-details',component: RrAdditionalDetailsComponent,},
-      {path: 'residentaial-rent-preview',component: ResidentialRentComponent,},
+      {
+        path: 'residentaial-rent-details',
+        component: RrAdditionalDetailsComponent,
+      },
+      {
+        path: 'residentaial-rent-preview',
+        component: ResidentialRentComponent,
+      },
 
-  { path: 'residential-sale-property', component: RsPropertyDetailsComponent },
-  { path: 'residential-sale-location-details', component: RsLocationDetailsComponent,},
-  { path: 'residential-sale-price-details',component: RsPriceDetailsComponent,},
-  { path: 'residential-sale-amentites', component: RsAmenitiesComponent },
-  { path: 'residential-sale-gallery', component: RsGalleryComponent },
-  {path: 'residential-sale-add-details', component: RsAdditionalDetailsComponent, },
-  { path: 'residential-sale-preview',component: RsResidentialSalePreviewComponent, },
+      {
+        path: 'residential-sale-property',
+        component: RsPropertyDetailsComponent,
+      },
+      {
+        path: 'residential-sale-location-details',
+        component: RsLocationDetailsComponent,
+      },
+      {
+        path: 'residential-sale-price-details',
+        component: RsPriceDetailsComponent,
+      },
+      { path: 'residential-sale-amentites', component: RsAmenitiesComponent },
+      { path: 'residential-sale-gallery', component: RsGalleryComponent },
+      {
+        path: 'residential-sale-add-details',
+        component: RsAdditionalDetailsComponent,
+      },
+      {
+        path: 'residential-sale-preview',
+        component: RsResidentialSalePreviewComponent,
+      },
 
-  { path: 'commercial-rent-property', component: CrPropertyDetailsComponent },
-  {path: 'commercial-rent-rental-details', component: CrRentalDetailsComponent,},
-  {path: 'commercial-rent-location-details',component: CrLocationDetailsComponent, },
-  { path: 'commercial-rent-gallery', component: CrGalleryComponent },
-  { path: 'commercial-rent-amenities', component: CrAmenitiesComponent },
-  {path: 'commercial-rent-add-details',component: CrAdditionalDetailsComponent,},
-  {path: 'commercial-rent-preview',component: CrCommercialRentPreviewComponent,},
+      {
+        path: 'commercial-rent-property',
+        component: CrPropertyDetailsComponent,
+      },
+      {
+        path: 'commercial-rent-rental-details',
+        component: CrRentalDetailsComponent,
+      },
+      {
+        path: 'commercial-rent-location-details',
+        component: CrLocationDetailsComponent,
+      },
+      { path: 'commercial-rent-gallery', component: CrGalleryComponent },
+      { path: 'commercial-rent-amenities', component: CrAmenitiesComponent },
+      {
+        path: 'commercial-rent-add-details',
+        component: CrAdditionalDetailsComponent,
+      },
+      {
+        path: 'commercial-rent-preview',
+        component: CrCommercialRentPreviewComponent,
+      },
 
-  { path: 'commercial-sale-property', component: CsPropertyDetailsComponent },
-  {path: 'commercial-sale-location-details',component: CsLocationDetailsComponent,},
-  { path: 'commercial-sale-price-details', component: CsPriceDetailsComponent },
-  { path: 'commercial-sale-amenities', component: CsAmenitiesComponent },
-  { path: 'commercial-sale-gallery', component: CsGalleryComponent },
-  {path: 'commercial-sale-add-details', component: CsAdditionalDetailsComponent,},
-  {path: 'commercial-sale-preview', component: CsCommercialSalePreviewComponent,},
-
+      {
+        path: 'commercial-sale-property',
+        component: CsPropertyDetailsComponent,
+      },
+      {
+        path: 'commercial-sale-location-details',
+        component: CsLocationDetailsComponent,
+      },
+      {
+        path: 'commercial-sale-price-details',
+        component: CsPriceDetailsComponent,
+      },
+      { path: 'commercial-sale-amenities', component: CsAmenitiesComponent },
+      { path: 'commercial-sale-gallery', component: CsGalleryComponent },
+      {
+        path: 'commercial-sale-add-details',
+        component: CsAdditionalDetailsComponent,
+      },
+      {
+        path: 'commercial-sale-preview',
+        component: CsCommercialSalePreviewComponent,
+      },
     ],
   },
+  // seller
   { path: 'interest-post', component: PropertyPostComponent },
   { path: 'owner', component: OwnerComponent },
+  {path:'my-plans',children:[
+    {path:'',component: MyPlansComponent},
+    {path:'buy-plans',component: BuyPlanComponent}
+    ]},
 
-
-  // forms end
+  
 
   //buyer home
   { path: 'buyer-residential-rent-view', component: RbHomeComponent },
@@ -173,12 +245,18 @@ const routes: Routes = [
   { path: 'alert', component: PropertyAlertComponent },
 
   //admin
-  { path: 'admin', children:[
-    { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
-    { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
-    { path: 'manage-post', component: ManagePostComponent },
-  ] },
- 
+  {
+    path: 'admin',
+    children: [
+      { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
+      { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
+      { path: 'manage-post', component: ManagePostComponent },
+      { path: 'manage-plan', children:[
+        {path:'', component: ManagePlanComponent},
+        {path:'add-plan', component: AddPlanComponent},
+      ]  },
+    ],
+  },
 ];
 
 @NgModule({

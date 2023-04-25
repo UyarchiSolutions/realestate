@@ -6,6 +6,7 @@ import { HttpClient,  } from '@angular/common/http';
 })
 export class AdminService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
+  planBase:any='https://uyarchicrm.click/v1/StreamPlan/';
   constructor(private http:HttpClient) { }
 
   get_All_user(type:any,range:any,page:any,role:any){
@@ -26,5 +27,14 @@ export class AdminService {
   remove_post(id:any){
    
     return this.http.get(this.baseURL+'Remove/Post/'+id)
+  }
+  add_Plan(data:any){
+    return this.http.post(this.planBase,data)
+  }
+  get_All_Plan(page:any,range:any){
+    return this.http.get(this.planBase+`fetch/StreamPlanes/${page}/${range}`)
+  }
+  change_status_plan(id:any,data:any){
+    return this.http.put(this.planBase+`active/inactive/${id}`,data)
   }
 }

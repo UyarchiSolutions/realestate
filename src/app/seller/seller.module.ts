@@ -53,6 +53,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { SellerSidebarComponent } from './seller-sidebar/seller-sidebar.component';
 import { SellerAdminSidebarComponent } from './seller-admin-sidebar/seller-admin-sidebar.component';
 import { RouterModule } from '@angular/router';
+import { MyStreamsComponent } from './my-streams/my-streams.component';
+import { RequestStreamComponent } from './request-stream/request-stream.component';
+import { MyPlansComponent } from './my-plans/my-plans.component';
+import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +110,10 @@ import { RouterModule } from '@angular/router';
     //sidebar
     SellerSidebarComponent,
     SellerAdminSidebarComponent,
+    MyStreamsComponent,
+    RequestStreamComponent,
+    MyPlansComponent,
+    BuyPlanComponent,
 
     MyAccountComponent,
     EditAccountComponent,
