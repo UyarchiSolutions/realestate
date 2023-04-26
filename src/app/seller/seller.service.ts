@@ -60,7 +60,7 @@ changePasswordForseller(data:any){
 editAccountSeller(data:any){
   return this.http.put(this.baseUrl+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('tokens')}})
 }
-
+// plans
 get_All_Plan(){
   return this.http.get(this.planBase)
 }
@@ -69,6 +69,12 @@ purchase_plan(id:any){
 }
 get_purchase_plan(){
   return this.http.get(this.planBase+`getPurchased/Planes`,{headers:{auth:Cookie.get('tokens')}})
+}
+send_stream(data:any){
+  return this.http.post(this.baseUrl+`/v1/requestStream`,data,{headers:{auth:Cookie.get('tokens')}})
+}
+get_allpost_seller(){
+  return this.http.get(this.baseUrl+`/v1/BuyerSeller/getSellerPostBySeller`,{headers:{auth:Cookie.get('tokens')}})
 }
 
 }

@@ -122,11 +122,12 @@
     
           <tr *ngFor="let v of data,index as i">
             <td>{{v.planName}}</td>
-            <td><span><p>2023/03/23</p>- <p>17.00</p></span></td>
-            <td><span><p>20</p>/<p>18</p></span></td>
-            <td>100</td>
-            <td>Yes</td>
-            <td>Active</td>
+            <td><span><p>{{v.createdAt | date:'dd/MM/YYYY'}}</p>- <p>{{v.createdAt | date: 'shortTime'}}</p></span></td>
+            <td><span><p>{{v.no_of_Stream}}</p>/<p>18</p></span></td>
+            <td>{{v.No_of_participants_Limit}}</td>
+            <td>{{v.Chat_Needed}}</td>
+            <td><p *ngIf="v.status==false"> Active</p>
+                <p *ngIf="v.status !==false"> Expired</p></td>
           </tr>
 
          
