@@ -7,6 +7,7 @@ import { HttpClient,  } from '@angular/common/http';
 export class AdminService {
   baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
   planBase:any='https://uyarchicrm.click/v1/StreamPlan/';
+  streamBase:any='https://uyarchicrm.click/v1/requestStream/';
   constructor(private http:HttpClient) { }
 
   get_All_user(type:any,range:any,page:any,role:any){
@@ -36,5 +37,11 @@ export class AdminService {
   }
   change_status_plan(id:any,data:any){
     return this.http.put(this.planBase+`active/inactive/${id}`,data)
+  }
+  get_All_stream(){
+    return this.http.get(this.streamBase+`getStreams/Admin/Side`)
+  }
+  change_status_stream(id:any,data:any){
+    return this.http.put(this.streamBase+`AdminStream/Approved/Cancel/`+id,data)
   }
 }

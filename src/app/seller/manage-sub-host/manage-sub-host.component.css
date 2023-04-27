@@ -1,0 +1,411 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+    justify-content: unset !important;
+
+}
+.main{
+    width: 85%;
+    background-color:var(--sandal);
+
+    margin: 10px 10px 0 0;
+
+}
+.main h2{
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+ 
+    color: #473B32;
+    font-family: var(--raleway);
+    font-weight: 700;
+}
+.ad{
+    width: 15%;
+   height: 717px;
+    margin: 10px;
+}
+.sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+}
+.sidebar-content-list span{
+    display: flex;
+    align-items: center;
+}
+.sidebar-content-list svg{
+    margin-right: 10px;
+}
+
+.active {
+    background-color: var(--brown);
+    color: white;
+}
+.top-ad{
+    height: fit-content;
+}
+.main h1{
+    text-align: center;
+    color: var(--brown);
+    font-family: var(--ralewaybold);
+    margin: 20px 0;
+}
+.form{
+    width: 70%;
+    margin:50px auto;
+   
+    
+}
+.form div{
+width: 100%;
+
+display: flex;
+margin: 20px 0;
+align-items: center;
+justify-content: space-between;
+}
+label{
+    width: 25% !important;
+
+}
+.form div select,input{
+    padding: 10px;
+    width: 50%;
+    background: none;
+    border: none;
+    border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
+    position:relative ;
+}
+.forgot-password{
+    font-size: 10px;
+    margin-top: -15px;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-btn button{
+    border: none;
+    padding: 15px 70px;
+    background-color: var(--brown);
+    color: white;
+    margin-left: 30%;
+    cursor: pointer;
+}
+ 
+.top-section,.main-section{
+    width: 100%;
+    display: flex;
+}
+.top-section{
+    max-height: 180px !important;
+    overflow: hidden !important;
+
+}
+.top-section .main{
+    align-self:flex-end;
+}
+.top-section .ad{
+    background-color: yellow;
+}
+.top-section .ad img{
+    height: 100%;
+}
+.property-tab{
+display: flex;
+justify-content: space-between;
+width: 100%;
+padding: 10px 0;
+align-items: center;
+background-color: var(--brown);
+
+}
+.property-tab h5{
+    width:fit-content;
+    padding: 10px;
+    margin: 0 !important;
+    color:white;
+        background-color: var(--brown);
+display: flex;
+align-items: center;
+    font-family: var(--ralewaybold);
+    font-weight: 700;
+}
+.property-tab h5 svg{
+    margin-right: 10px;
+}
+.notification{
+background-color: var(--brown);
+height: 100%;
+margin-right: 30px;
+}
+.notification svg{
+    margin-left: 10px;
+}
+.property-tab-active{
+    color: var(--brown);
+    background-color:white;
+  
+}
+.active{
+    color: var(--sandal);
+    background-color: var(--brown);
+}
+.property-tab-select svg{
+    margin-right: 5px;
+}
+sup{
+    margin-top: -15px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+table tr th{
+    font-weight: 400;
+    vertical-align: middle;
+  align-items: center;
+
+}
+.table-head{
+background-color: var( --lightbrown);
+color: white;
+height: 50px;
+}
+.main-section .main{
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+th span{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+ margin-left: 10px;
+}
+th span svg{
+    margin-right: 5px;
+}
+table td{
+    padding-left: 10px;
+    /* border-bottom: solid gray 1px; */
+    height: 55px;
+}
+table tr{
+    border-bottom: solid gray 1px;
+}
+table tr td span{
+    display: flex;
+    align-items: center;
+}
+table tr td span button{
+    min-width: 100px;
+justify-content: center;
+padding: 3px 5px;
+    display: flex;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+}
+table tr td span button svg{
+    margin-right: 5px;
+}
+.assign-host-btn{
+    color: var(--blue);
+    background-color: #1876f21e;
+}
+.cancel-btn{
+    color: #B73E3E ;
+    margin-left: 10px;
+    background-color: #b73e3e2d;
+}
+.golive-btn{
+    color: #34A853 ;
+    background-color: #34a85324;
+}
+.remove-btn{
+    color: #B73E3E ;       
+    background-color: #b73e3e2d;
+
+}
+.bottom-section{
+    width: 50%;
+margin-left: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.report-btn,.edit-btn{
+    color: #473B32    ;
+    background-color: rgba(128, 128, 128, 0.288);
+}
+.add-participant{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.range{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.range svg{
+    margin-right: 10px;
+   
+}
+.range p{
+    font-weight: 500;
+    color: var(--brown);
+    font-size: 18px;
+}
+.pagination{
+    width: fit-content;
+    display: flex;
+
+}
+.page-next,.page-prev{
+    cursor: pointer;
+}
+.page-prev,.page-next,.page-count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brown);
+    height: 40px;
+    width: 40px;
+}
+.page-count{
+    background-color: white;
+}
+td svg:nth-child(2){
+margin-left: 20px;
+}
+td input{
+    width: fit-content;
+    margin-right: 10px;
+}
+td p{
+    display: flex;
+    align-items: center;
+}
+td p svg{
+    margin-right: 5px;
+}
+.scheduled{
+    color: green;
+}
+.rejected{
+    color: red;
+}
+.fixed{
+    color: #1877F2;
+}
+.visited{
+    color: #FD841F;
+}
+.empty{
+    background-color: var(--brown);
+    padding: 32px 0;
+    margin-bottom: 5px;
+}
+table tr td:last-child{
+    position: relative;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    min-width: 110px;
+    margin-left: 10px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    border: solid green 2px;
+  }
+  .slider::after{
+    position: absolute;
+    content: "Active";
+    left: 4px;
+    color: green;
+    font-weight: 700;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: none;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }  
+  .slider:before {
+    position: absolute;
+    content:url(../../assets/images/active-icon.png);
+    background-size: cover  ;
+    height: 100%;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: green;
+    width: 35px;
+    right: 0px;
+    z-index: 800;
+ 
+    /* background-color: white; */
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  /* input:checked + .slider {
+    background-color: #2196F3;
+  } */
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(-73px);
+    -ms-transform: translateX(-73px);
+    transform: translateX(-73px);
+    content: url(../../assets/images/inactive-icon.png);
+    background-color: var(--brown);
+
+  }
+  input:checked+.switch{
+    display: none;
+  }
+  input:checked + .slider:after{
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+    content:"Inactive";
+    color: var(--brown);
+  }
+.delete-icon{
+    margin-left: 10px;
+}
+td span svg{
+    cursor: pointer;
+}
+.switch:has(input:checked){
+    border-color: var(--brown);
+  }
+

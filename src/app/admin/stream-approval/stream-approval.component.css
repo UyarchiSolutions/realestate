@@ -1,0 +1,59 @@
+.add-plan-btn{
+    padding: 6px 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+.add-plan-btn svg{
+    margin-right: 5px;
+
+}
+.main-content-header{
+    display: flex;
+    justify-content: center;
+}
+.main-content-header h4{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.action-btn{
+    display: flex;
+    align-items: center;
+}
+.action-btn button{
+    background: none;
+}
+.remove-btn{
+    margin-left: 10px;
+}
+table tr td p{
+    max-width:350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+table tr td span{
+    display: flex;
+    align-items: center;
+}
+table tr td span button{
+    font-weight: bold;
+    font-size: 14px !important;
+}
+table tr td span button svg{
+    margin-right: 5px;
+}
+.approve-btn{
+    color: #34A853 ;
+
+    margin-right: 10px;
+}
+
+.reject-btn{
+    color: #B73E3E    ;
+}
+.undo-btn{
+    color: #473B32 ;
+}

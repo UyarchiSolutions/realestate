@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AddPlanComponent } from './add-plan/add-plan.component';
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
+import { StreamApprovalComponent } from './stream-approval/stream-approval.component';
 
 
 
@@ -23,7 +24,8 @@ import { ManagePlanComponent } from './manage-plan/manage-plan.component';
     ManageSellerOwnerComponent,
     SidebarComponent,
     AddPlanComponent,
-    ManagePlanComponent
+    ManagePlanComponent,
+    StreamApprovalComponent
 
   ],
   imports: [

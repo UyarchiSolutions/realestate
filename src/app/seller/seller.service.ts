@@ -76,5 +76,23 @@ send_stream(data:any){
 get_allpost_seller(){
   return this.http.get(this.baseUrl+`/v1/BuyerSeller/getSellerPostBySeller`,{headers:{auth:Cookie.get('tokens')}})
 }
-
+get_all_stream(){
+  return this.http.get(this.baseUrl+'/v1/requestStream/get/Streams',{headers:{auth:Cookie.get('tokens')}})
+}
+//host
+  add_Sub_host(data:any){
+    return this.http.post(this.baseUrl+`/v1/subHost`,data,{headers:{auth:Cookie.get('tokens')}})
+  }
+  update_Sub_host(id:any,data:any){
+    return this.http.put(this.baseUrl+`/v1/subHost/updateSubHos/`+id,data,{headers:{auth:Cookie.get('tokens')}})
+  }
+  get_Sub_host(){
+    return this.http.get(this.baseUrl+`/v1/subHost/created/subHost`,{headers:{auth:Cookie.get('tokens')}})
+  }
+  change_status_host(data:any,id:any){
+    return this.http.put(this.baseUrl+`/v1/subHost/Active/Inactive/SubHost/`+id,data)
+  }
+  get_single_host(id:any){
+    return this.http.get(this.baseUrl+`/v1/subHost/getSubHostById/`+id)
+  }
 }

@@ -57,6 +57,8 @@ import { MyStreamsComponent } from './my-streams/my-streams.component';
 import { RequestStreamComponent } from './request-stream/request-stream.component';
 import { MyPlansComponent } from './my-plans/my-plans.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
+import { AddSubHostComponent } from './add-sub-host/add-sub-host.component';
+import { ManageSubHostComponent } from './manage-sub-host/manage-sub-host.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +116,8 @@ import { BuyPlanComponent } from './buy-plan/buy-plan.component';
     RequestStreamComponent,
     MyPlansComponent,
     BuyPlanComponent,
+    AddSubHostComponent,
+    ManageSubHostComponent,
 
     MyAccountComponent,
     EditAccountComponent,

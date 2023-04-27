@@ -251,7 +251,7 @@
             </li>
     
             <li>
-                <div class="dropdown">
+                <div class="dropdown" >
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span>
                            
@@ -261,10 +261,9 @@
                                 </span>
                     </a>
                   
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" onclick="event.stopPropagation()">
                      <li>
-                        sdfsf
-                        <ngx-slider [options]="options1" formControlName="price" style="width:fit-content">jhjhbjh</ngx-slider>
+                        <ngx-slider [options]="options1" formControlName="price" >jhjhbjh</ngx-slider>
                      </li>
                    <li  class="price-range"> <input class="from" type="text" placeholder="From" formControlName="priceFrom" >
                     <p>-</p><input class="to" type="text" placeholder="To" formControlName="priceTo"></li>

@@ -73,6 +73,9 @@ import { RequestStreamComponent } from './seller/request-stream/request-stream.c
 import { ManagePlanComponent } from './admin/manage-plan/manage-plan.component';
 import { MyPlansComponent } from './seller/my-plans/my-plans.component';
 import { BuyPlanComponent } from './seller/buy-plan/buy-plan.component';
+import { ManageSubHostComponent } from './seller/manage-sub-host/manage-sub-host.component';
+import { AddSubHostComponent } from './seller/add-sub-host/add-sub-host.component';
+import { StreamApprovalComponent } from './admin/stream-approval/stream-approval.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -203,6 +206,10 @@ const routes: Routes = [
     {path:'',component: MyPlansComponent},
     {path:'buy-plans',component: BuyPlanComponent}
     ]},
+    {path:'manage-sub-host',children:[
+      {path:'',component: ManageSubHostComponent},
+      {path:'add-sub-host',component: AddSubHostComponent}
+    ]},
 
   
 
@@ -251,6 +258,7 @@ const routes: Routes = [
       { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
       { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
       { path: 'manage-post', component: ManagePostComponent },
+      { path: 'stream-approval', component: StreamApprovalComponent },
       { path: 'manage-plan', children:[
         {path:'', component: ManagePlanComponent},
         {path:'add-plan', component: AddPlanComponent},

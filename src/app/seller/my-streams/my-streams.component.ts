@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SellerService } from '../seller.service';
 
 @Component({
   selector: 'app-my-streams',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-streams.component.css']
 })
 export class MyStreamsComponent implements OnInit {
-  constructor() {}
+  constructor(private service:SellerService) {}
   ngOnInit(): void {
-   
+   this.getAll()
+  }
+  data:any=[];
+  getAll(){
+    this.service.get_all_stream().subscribe((res:any)=>{
+      console.log(res);
+      this.data=res;
+    })
   }
 
 }
