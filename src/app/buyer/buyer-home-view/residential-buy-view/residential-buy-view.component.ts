@@ -63,7 +63,12 @@ export class ResidentialBuyViewComponent implements OnInit {
 
   options1: Options = {
     floor: 5000,
-    ceil: 100000,
+    ceil: 1000000,
+    step:500,
+  };
+  options2: Options = {
+    floor: 0,
+    ceil: 50000,
     step:500,
   };
 
@@ -76,6 +81,10 @@ export class ResidentialBuyViewComponent implements OnInit {
     search: new FormControl(),
     price: new FormControl([0, 10000000])
   });
+  rentMin:any=5000;
+  rentMax:any=1000000;
+  builtMin:any=0;
+  builtMax:any=50000;
 
   ngOnInit(): void {
     this.Getbuyer();
@@ -201,10 +210,10 @@ export class ResidentialBuyViewComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
-      // buildupfrom: this.filter.get('buildupFrom')?.value,
-      // buildupto: this.filter.get('buildupTo')?.value,
-      // priceFrom: this.filter.get('priceFrom')?.value,
-      // priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
     //consolele.log(Data);
     this.service
@@ -484,6 +493,12 @@ export class ResidentialBuyViewComponent implements OnInit {
       }
     }
     //data to api
+    this.assignToSaveData()
+    ////consolele.log(this.ShowOnlyArr);
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  assignToSaveData(){
     this.sendData = {
       formatAdd: this.formatAdd,
       area: this.areaArr,
@@ -496,16 +511,12 @@ export class ResidentialBuyViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      // buildupfrom: this.filter.get('buildupFrom')?.value,
-      // buildupto: this.filter.get('buildupTo')?.value,
-      // priceFrom: this.filter.get('priceFrom')?.value,
-      // priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
-    ////consolele.log(this.ShowOnlyArr);
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
-
   deleteFilter(v: any) {
     let index = this.SelectedFilters.findIndex((res:any)=>res==v);
 
@@ -613,23 +624,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.floordata.arr.splice(i,1);
     //consolele.log(this.FloorArr,this.floordata);
   }
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+  this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
@@ -654,6 +649,44 @@ export class ResidentialBuyViewComponent implements OnInit {
   longtitude: any;
   area: any;
   city: any;
+
+  changeRent(input:any){
+    this.rentMin=input.value
+ 
+    this.assignToSaveData()
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
+   changeRent1(input:any){
+    this.rentMax=input.value;
+    this.assignToSaveData()
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
+   Rentchange(){
+     console.log('change')
+     this.assignToSaveData()
+     let query = new URLSearchParams(this.sendData).toString();
+     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
+   changeBuilt(input:any){
+    this.builtMin=input.value
+ 
+    this.assignToSaveData()
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
+   changeBuilt1(input:any){
+    this.assignToSaveData()
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
+   Builtchange(){
+     console.log('change')
+     this.assignToSaveData()
+     let query = new URLSearchParams(this.sendData).toString();
+     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   }
   handleAddressChange(address: Address, input: any) {
     ////consolele.log(input.value);
     this.formatAdd = input.value;
@@ -722,23 +755,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   }
   submitAddress() {
     this.sendRecentSearch();
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+    this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
@@ -855,23 +872,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.areaArr = [];
     this.floordata=[];
 
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      // area: this.areaArr,
-      type: this.type,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+    this.assignToSaveData()
 
     this.service
       .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
@@ -1434,6 +1435,3 @@ alertaddress(address: Address, input: any) {
   }
  
 }
-
-
-

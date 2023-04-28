@@ -76,6 +76,7 @@ import { BuyPlanComponent } from './seller/buy-plan/buy-plan.component';
 import { ManageSubHostComponent } from './seller/manage-sub-host/manage-sub-host.component';
 import { AddSubHostComponent } from './seller/add-sub-host/add-sub-host.component';
 import { StreamApprovalComponent } from './admin/stream-approval/stream-approval.component';
+import { ResidentialRentStreamComponent } from './admin/stream-view/residential-rent-stream/residential-rent-stream.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -258,13 +259,20 @@ const routes: Routes = [
       { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
       { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
       { path: 'manage-post', component: ManagePostComponent },
-      { path: 'stream-approval', component: StreamApprovalComponent },
+      { path: 'stream-approval',children:[
+        {path:'',component: StreamApprovalComponent },
+        {path:'stream-view',component:ResidentialRentStreamComponent},
+      ] },
       { path: 'manage-plan', children:[
         {path:'', component: ManagePlanComponent},
         {path:'add-plan', component: AddPlanComponent},
       ]  },
+     
     ],
   },
+
+
+
 ];
 
 @NgModule({

@@ -66,6 +66,11 @@ export class CommercialRentViewComponent implements OnInit {
 
   options1: Options = {
     floor: 5000,
+    ceil: 1000000,
+    step:500,
+  };
+  options2: Options = {
+    floor: 0,
     ceil: 100000,
     step:500,
   };
@@ -79,6 +84,10 @@ export class CommercialRentViewComponent implements OnInit {
     search: new FormControl(),
     price: new FormControl([5000, 100000])
   });
+  rentMin:any=5000;
+  rentMax:any=1000000;
+  builtMin:any=0;
+  builtMax:any=100000;
   showRecentSer:any;
   ngOnInit(): void {
     this.Getbuyer();
@@ -217,11 +226,11 @@ export class CommercialRentViewComponent implements OnInit {
       propAge: this.propageType,
       bathroom: this.bathType,
       buildingType:this.buildType,
-      amenities:this.amtType
-      // buildupfrom: this.filter.get('buildupFrom')?.value,
-      // buildupto: this.filter.get('buildupTo')?.value,
-      // priceFrom: this.filter.get('priceFrom')?.value,
-      // priceTo: this.filter.get('priceTo')?.value,
+      amenities:this.amtType,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
     console.log(Data);
     this.service
@@ -540,6 +549,12 @@ export class CommercialRentViewComponent implements OnInit {
       }
     }
     //data to api
+    this.assignToSaveData();
+    //console.log(this.ShowOnlyArr);
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+  }
+  assignToSaveData(){
     this.sendData = {
       formatAdd: this.formatAdd,
       area: this.areaArr,
@@ -553,17 +568,13 @@ export class CommercialRentViewComponent implements OnInit {
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
       buildingType:this.buildArr,
-      amenities:this.ametArr
-      // buildupfrom: this.filter.get('buildupFrom')?.value,
-      // buildupto: this.filter.get('buildupTo')?.value,
-      // priceFrom: this.filter.get('priceFrom')?.value,
-      // priceTo: this.filter.get('priceTo')?.value,
+      amenities:this.ametArr,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
-    //console.log(this.ShowOnlyArr);
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
   }
-
   deleteFilter(v: any) {
     let index = this.SelectedFilters.findIndex((res:any)=>res==v);
 
@@ -702,26 +713,7 @@ export class CommercialRentViewComponent implements OnInit {
     this.floordata.arr.splice(i,1);
     console.log(this.FloorArr,this.floordata);
   }
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildingType:this.buildArr,
-    
-      amenities:this.ametArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+  this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
   }
@@ -746,6 +738,44 @@ export class CommercialRentViewComponent implements OnInit {
   longtitude: any;
   area: any;
   city: any;
+  changeRent(input:any){
+    this.rentMin=input.value
+ 
+    this.assignToSaveData();
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
+   changeRent1(input:any){
+    this.rentMax=input.value;
+    this.assignToSaveData();
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
+   Rentchange(){
+     console.log('change')
+     this.assignToSaveData();
+     let query = new URLSearchParams(this.sendData).toString();
+     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
+   changeBuilt(input:any){
+    this.builtMin=input.value
+ 
+    this.assignToSaveData();
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
+   changeBuilt1(input:any){
+    this.builtMax=input.value;
+    this.assignToSaveData();
+   let query = new URLSearchParams(this.sendData).toString();
+   this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
+   Builtchange(){
+     console.log('change')
+     this.assignToSaveData();
+     let query = new URLSearchParams(this.sendData).toString();
+     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+   }
   handleAddressChange(address: Address, input: any) {
     //console.log(input.value);
     this.formatAdd = input.value;
@@ -802,10 +832,10 @@ export class CommercialRentViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
       selected: this.SelectedFilters,
     };
     this.service.RecentSearch(data).subscribe((res: any) => {
@@ -814,23 +844,7 @@ export class CommercialRentViewComponent implements OnInit {
   }
   submitAddress() {
     this.sendRecentSearch();
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+    this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
   }

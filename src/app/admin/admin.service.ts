@@ -44,4 +44,7 @@ export class AdminService {
   change_status_stream(id:any,data:any){
     return this.http.put(this.streamBase+`AdminStream/Approved/Cancel/`+id,data)
   }
+  get_post_stream(id: any) {
+    return this.http.get(this.streamBase + 'getStreamById/' + id);
+  }
 }

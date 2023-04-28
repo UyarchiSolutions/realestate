@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from 'src/app/seller/seller.service';
 import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stream-approval',
@@ -9,7 +10,8 @@ import { AdminService } from '../admin.service';
 })
 export class StreamApprovalComponent implements OnInit{
 
-  constructor(private service:AdminService){
+  constructor(private service:AdminService,
+    private router:Router){
 
   }
   ngOnInit(): void {
@@ -39,5 +41,13 @@ export class StreamApprovalComponent implements OnInit{
       console.log(res)
       this.getAll()
     })
+  }
+  viewStream(id:any){
+    console.log(id);
+    let data={
+      id:id
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/admin/stream-approval/stream-view?'+query)
   }
 }

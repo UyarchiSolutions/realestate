@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { AddPlanComponent } from './add-plan/add-plan.component';
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 import { StreamApprovalComponent } from './stream-approval/stream-approval.component';
+import { ResidentialRentStreamComponent } from './stream-view/residential-rent-stream/residential-rent-stream.component';
 
 
 
@@ -25,7 +26,8 @@ import { StreamApprovalComponent } from './stream-approval/stream-approval.compo
     SidebarComponent,
     AddPlanComponent,
     ManagePlanComponent,
-    StreamApprovalComponent
+    StreamApprovalComponent,
+    ResidentialRentStreamComponent
 
   ],
   imports: [

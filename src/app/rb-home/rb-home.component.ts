@@ -68,6 +68,12 @@ export class RbHomeComponent implements OnInit {
     step:500,
   };
 
+  options2: Options = {
+    floor: 0,
+    ceil: 10000,
+    step:500,
+  };
+
   filter: any = this.fb.group({
     propertType: new FormControl(''),
     buildupFrom: new FormControl(0),
@@ -77,6 +83,11 @@ export class RbHomeComponent implements OnInit {
     search: new FormControl(),
     price: new FormControl([5000, 100000])
   });
+
+  rentMin:any=5000;
+  rentMax:any=100000;
+  builtMin:any=0;
+  builtMax:any=10000;
 
   ngOnInit(): void {
     this.Getbuyer();
@@ -203,10 +214,10 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.tentType,
       propAge: this.propageType,
       bathroom: this.bathType,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
     console.log(Data);
     this.service
@@ -215,8 +226,10 @@ export class RbHomeComponent implements OnInit {
         console.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
+        this.showPag_rag = false;
         if (this.totalval > 10) {
           this.showPag_rag = true;
+          console.log(this.totalval,'ghghg')
         }
         //console.log(this.data, 'data');
 
@@ -486,6 +499,12 @@ export class RbHomeComponent implements OnInit {
       }
     }
     //data to api
+  this.assignToSaveData()
+    //console.log(this.ShowOnlyArr);
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  assignToSaveData(){
     this.sendData = {
       formatAdd: this.formatAdd,
       area: this.areaArr,
@@ -498,14 +517,11 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
     };
-    //console.log(this.ShowOnlyArr);
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
 
   deleteFilter(v: any) {
@@ -615,23 +631,7 @@ export class RbHomeComponent implements OnInit {
     this.floordata.arr.splice(i,1);
     console.log(this.FloorArr,this.floordata);
   }
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+  this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
@@ -650,6 +650,44 @@ export class RbHomeComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  changeRent(input:any){
+   this.rentMin=input.value
+
+   this.assignToSaveData()
+  let query = new URLSearchParams(this.sendData).toString();
+  this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  changeRent1(input:any){
+   this.rentMax=input.value;
+   this.assignToSaveData()
+  let query = new URLSearchParams(this.sendData).toString();
+  this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  Rentchange(){
+    console.log('change')
+    this.assignToSaveData()
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  changeBuilt(input:any){
+   this.builtMin=input.value
+
+   this.assignToSaveData()
+  let query = new URLSearchParams(this.sendData).toString();
+  this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  changeBuilt1(input:any){
+   this.builtMax=input.value;
+   this.assignToSaveData()
+  let query = new URLSearchParams(this.sendData).toString();
+  this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+  }
+  Builtchange(){
+    console.log('change')
+    this.assignToSaveData()
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   latitude: any;
   Address: any = [];
@@ -712,10 +750,10 @@ export class RbHomeComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
+      buildupfrom: this.builtMin,
+      buildupto: this.builtMax,
+      priceFrom: this.rentMin,
+      priceTo: this.rentMax,
       selected: this.SelectedFilters,
     };
     this.service.RecentSearch(data).subscribe((res: any) => {
@@ -724,23 +762,7 @@ export class RbHomeComponent implements OnInit {
   }
   submitAddress() {
     this.sendRecentSearch();
-    this.sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      area: this.areaArr,
-      propertType: this.proptArr,
-      BHKType: this.BhkCountArr,
-      rentDetails: this.ShowOnlyArr,
-      furnishing: this.FurArr,
-      parking: this.ParkArr,
-      rentprefer: this.TentArr,
-      propAge: this.PropAgeArr,
-      bathroom: this.bathCountArr,
-      buildupfrom: this.filter.get('buildupFrom')?.value,
-      buildupto: this.filter.get('buildupTo')?.value,
-      priceFrom: this.filter.get('priceFrom')?.value,
-      priceTo: this.filter.get('priceTo')?.value,
-    };
+    this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }

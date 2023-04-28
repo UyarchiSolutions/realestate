@@ -256,14 +256,14 @@
                                 </span>
                     </a>
                   
-                    <ul class="dropdown-menu">
-                     <li>
-                        sdfsf
-                        <ngx-slider [options]="options1" formControlName="price" style="width:fit-content">jhjhbjh</ngx-slider>
-                     </li>
-                   <li  class="price-range"> <input class="from" type="text" placeholder="From" formControlName="priceFrom" >
-                    <p>-</p><input class="to" type="text" placeholder="To" formControlName="priceTo"></li>
-                    </ul>
+                    <ul class="dropdown-menu" onclick="event.stopPropagation()">
+                        <li>
+                           <ngx-slider [options]="options1" [(value)]="rentMin"
+                               [(highValue)]="rentMax"  (userChangeEnd)="Rentchange()"></ngx-slider>
+                        </li>
+                      <li  class="price-range"> <input class="from" type="text" placeholder="From" [(value)]="rentMin"  #rentLow  (change)="changeRent(rentLow)">
+                       <p>-</p><input class="to" type="text" placeholder="To" [(value)]="rentMax" #rentHigh (change)="changeRent1(rentHigh)" ></li>
+                       </ul>
                   </div>
             </li>
 
@@ -363,16 +363,14 @@
                                 </span>
                     </a>
                   
-                    <ul class="dropdown-menu">
-                        <li>  <section class="containe">
-                            <section class="slider-track"></section>
-                            <input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
-                            <input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
-                        </section></li>
+                    <ul class="dropdown-menu" onclick="event.stopPropagation()">
+                        <li>
+                            <ngx-slider [options]="options2" [(value)]="builtMin"
+                            [(highValue)]="builtMax"  (userChangeEnd)="Builtchange()"></ngx-slider>  </li>
                         <li class="price-range">
-                            <input class="from" type="number" placeholder="From" formControlName="buildupFrom" ><p>-
+                            <input class="from" type="number" placeholder="From"  [(value)]="builtMin"  #builtLow  (change)="changeBuilt(builtLow)" ><p>-
 
-                            </p><input class="to" type="number" placeholder="To" formControlName="buildupTo" ></li>
+                            </p><input class="to" type="number" placeholder="To"  [(value)]="builtMax" #builtHigh (change)="changeBuilt1(builtHigh)" ></li>
                        </ul>
                   </div>
             </li>

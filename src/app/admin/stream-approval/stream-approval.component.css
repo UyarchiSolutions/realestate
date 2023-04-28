@@ -57,3 +57,7 @@ table tr td span button svg{
 .undo-btn{
     color: #473B32 ;
 }
+.dis-button{
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+}
