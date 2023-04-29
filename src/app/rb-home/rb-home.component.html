@@ -274,24 +274,7 @@
 
             
     
-            <li>
-                <div class="dropdown">
-                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>
-                           
-                      Property Status<svg width="15" height="8" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.82164 7.58881L2.57895 0.754159C1.98897 0.197423 1.03243 0.197424 0.442461 0.754159C-0.147512 1.31089 -0.147512 2.21354 0.442461 2.77028L8.70869 10.5708C8.95227 10.8007 9.25834 10.9356 9.5753 10.9757C10.0486 11.0591 10.556 10.928 10.9222 10.5824L19.5575 2.43367C20.1475 1.87693 20.1475 0.974288 19.5575 0.417552C18.9675 -0.139183 18.011 -0.139183 17.421 0.417553L9.82164 7.58881Z" fill="#473B32"/>
-                                </svg>
-                                </span>
-                    </a>
-                  
-                   <ul class="dropdown-menu">
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Under Construction" [checked]="is_chckked('Under Construction',[''])">Under Construction </li>
-                        <li><input type="checkbox"  (change)="updateFilter($event,1)"  value="Ready" [checked]="is_chckked('Ready',[''])">Ready</li>
-      
-                      </ul>
-                  </div>
-            </li>
+          
     
             <li>
                 <div class="dropdown">
@@ -352,8 +335,8 @@
                         <li><input type="checkbox" (change)="updateFloor($event,[1,3])"  value="1 to 3 Floor" [checked]="is_chckked([1,3],floordata.arr)">1 to 3 Floor</li>
                         <li><input type="checkbox" (change)="updateFloor($event,[4,7])"  value="4 to 7 Floor" [checked]="is_chckked([4,7],floordata.arr)">4 to 7 Floor</li>
                         <li><input type="checkbox" (change)="updateFloor($event,[8,12])"  value="8 to 12 Floor" [checked]="is_chckked([8,12],floordata.arr)">8 to 12 Floor</li>
-                        <li><input type="checkbox" (change)="updateFloor($event,13)"  value="13+ Floor" [checked]="is_chckked(13,floordata.arr)">13+ Floor</li>        
-       -->
+                        <li><input type="checkbox" (change)="updateFloor($event,13)"  value="13+ Floor" [checked]="is_chckked(13,floordata.arr)">13+ Floor</li>         -->
+      
                       </ul>
                   </div>
             </li>
@@ -392,7 +375,10 @@
                   
                     <ul class="dropdown-menu">
                     
-                        <li *ngFor="let bath of bathArr ;index as i"><input type="checkbox" (change)="updateFilter($event ,i+1)"  value="{{bath}}" [checked]="is_chckked(i+1,bathCountArr)">{{bath}}</li>
+                        <li><input type="checkbox" (change)="updateFilter($event ,1)"  value="1 Bathroom" [checked]="is_chckked('1 Bathroom',newBath)">1 Bathroom</li>
+                      <li><input type="checkbox" (change)="updateFilter($event ,2)"  value="2 Bathroom" [checked]="is_chckked('2 Bathroom',newBath)">2 Bathroom</li>
+                      <li><input type="checkbox" (change)="updateFilter($event ,3)"  value="3 Bathroom" [checked]="is_chckked('3 Bathroom',newBath)">3 Bathroom</li>
+                      <li><input type="checkbox" (change)="updateFilter($event ,4)"  value="4+ Bathroom" [checked]="is_chckked('4+ Bathroom',newBath)">4+ Bathroom</li>
                               
       
                       </ul>

@@ -40,13 +40,16 @@ export class ResidentialBuyViewComponent implements OnInit {
   propageType: any = [];
   bathType: any = [];
   parkType: any = [];
+  ageType:any=[]
 
+  ageArr:any=[]
   SelectedFilters: any = [];
   FbhkArr: any = [];
   proptArr: any = [];
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   FbathArr: any = [];
+  newBath:any=[];
   bathtypeShow: any = [];
   bathCountArr: any = [];
   ShowOnlyArr: any = [];
@@ -142,6 +145,10 @@ export class ResidentialBuyViewComponent implements OnInit {
           params.params['parking'] != null && params.params['parking'] != ''
             ? params.params['parking'].split(',')
             : [];
+        this.ageType =
+          params.params['ageOfBuilding'] != null && params.params['ageOfBuilding'] != ''
+            ? params.params['ageOfBuilding'].split(',')
+            : [];
 
         // this.areaArr =this.areaArr.split(',');
         ////consolele.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -153,7 +160,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         }
         if (!(this.bathType == '' && this.bathType == null)) {
           this.bathType.forEach((a: any) => {
-            this.bathtypeShow.push(this.bathArr[a]);
+            this.bathtypeShow.push(this.bathArr[a-1]);
             // //consolele.log(this.bathType,'final bath',this.bathArr[a])
           });
         }
@@ -166,6 +173,7 @@ export class ResidentialBuyViewComponent implements OnInit {
           ...this.propageType,
           ...this.bathtypeShow,
           ...this.parkType,
+          ...this.ageType,
         ];
 
         this.proptArr = this.propertType;
@@ -177,7 +185,8 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.PropAgeArr = this.propageType;
         this.TentArr = this.tentType;
         this.FbhkArr = this.BhkTypeShow;
-        this.FbathArr = this.bathtypeShow;
+        this.newBath = this.bathtypeShow;
+        this.ageArr=this.ageType
 
         // //consolele.log(this.proptArr,'proppt arry',this.propertType)
 
@@ -209,11 +218,12 @@ export class ResidentialBuyViewComponent implements OnInit {
       parking: this.parkType,
       rentprefer: this.tentType,
       propAge: this.propageType,
-      bathroom: this.bathType,
+      bathroom:this.bathType ,
       buildupfrom: this.builtMin,
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
+      ageOfBuilding:this.ageArr,
     };
     //consolele.log(Data);
     this.service
@@ -309,24 +319,12 @@ export class ResidentialBuyViewComponent implements OnInit {
       }})
     
   }
-  // isfloorcheck(val:any,find:any){
-  //   if(find !=''){
-  //   let index = find.findIndex(
-  //     (res: any) => res == val
-  //   );
-  //   if(index == -1){
-  //     return false;
-  //   }
-  //   else{
-  //     return true;
-  //   }
-  // }
-  // return false;
-  // }
+
 
   updateFilter(v: any, position: any) {
     position=position.toString();
-    //consolele.log(v.target.value)
+   let value= v.target.value
+    console.log(v.target.value,position,'selected',value)
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
@@ -390,19 +388,25 @@ export class ResidentialBuyViewComponent implements OnInit {
     //bathroom arr
 
     
-    if (this.bathArr.indexOf(v.target.value) != -1) {
-      if (this.bathCountArr.indexOf(position) == -1) {
-        this.FbathArr.push(v.target.value);
-        this.bathCountArr.push(position);
+    if (
+      v.target.value == '1 Bathroom' ||
+      v.target.value == '2 Bathroom' ||
+      v.target.value == '3 Bathroom' ||  v.target.value == '4+ Bathroom'
+    ) {
+      if (this.newBath.findIndex((res: any) => res == v.target.value) == -1) {
+        this.newBath.push(v.target.value);
+      
+        this.bathCountArr.push(position)
+        console.log(this.newBath,this.bathCountArr,'bath update',)
       } else {
-        let index = this.bathCountArr.indexOf(position);
-        let index2 = this.FbathArr.indexOf(v.target.value);
-        this.FbathArr.splice(index2, 1);
-        this.bathCountArr.splice(index, 1);
+        let index = this.newBath.findIndex(
+          (res: any) => res == v.target.value
+        );
+        this.bathCountArr.splice(index,1);
+        this.newBath.splice(index, 1);
+        console.log(this.newBath,position,this.bathCountArr,'remove')
+       
       }
-
-      //consolele.log(this.FbathArr, 345, position,this.bathCountArr);
-      //consolele.log(this.SelectedFilters);
     }
     //show only
     if (v.target.value == 'rent' || v.target.value == 'lease') {
@@ -452,6 +456,23 @@ export class ResidentialBuyViewComponent implements OnInit {
         ////consolele.log(this.ParkArr, 'if');
       } else {
         this.ParkArr.splice(i, 1);
+        ////consolele.log(this.ParkArr, 'else');
+      }
+    }
+    //propstat arr
+    if (
+      v.target.value == 'Under Construction' ||
+      v.target.value == 'Ready'
+     
+    ) {
+      let i = this.ageArr.findIndex(
+        (res: any) => res == v.target.value
+      );
+      if (i == -1) {
+        this.ageArr.push(v.target.value);
+        ////consolele.log(this.ageArr, 'if');
+      } else {
+        this.ageArr.splice(i, 1);
         ////consolele.log(this.ParkArr, 'else');
       }
     }
@@ -511,6 +532,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
+      ageOfBuilding:this.ageArr,
       buildupfrom: this.builtMin,
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
@@ -541,16 +563,17 @@ export class ResidentialBuyViewComponent implements OnInit {
     }
     //bath arr
     if (
-      this.FbathArr.findIndex((res: any) => {
-        return res == v;
-      }) > -1
+      v == '1 Bathroom' ||
+      v == '2 Bathroom' ||
+      v == '3 Bathroom' ||  v == '4+ Bathroom'
     ) {
       ////consolele.log(this.FbathArr, 'sfsdf');
-      let index = this.FbathArr.findIndex((res: any) => {
-        res == v;
-      });
-      this.FbathArr.splice(index, 1);
-      this.bathCountArr.splice(index, 1);
+      let index = this.newBath.findIndex(
+        (res: any) => res == v
+      );
+      this.bathCountArr.splice(index,1);
+      this.newBath.splice(index, 1);
+      console.log(this.newBath,this.bathCountArr,'remove')
     }
 
     //prop arr
@@ -589,6 +612,22 @@ export class ResidentialBuyViewComponent implements OnInit {
     
       if (i > -1) {
         this.ParkArr.splice(i, 1);
+      }
+     
+    }
+    // park arr
+    if (
+      v == 'Under Construction' ||
+      v == 'Ready'
+     
+    ) {
+      let index = this.ageArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.ageArr.indexOf(v)
+    
+      if (i > -1) {
+        this.ageArr.splice(i, 1);
       }
      
     }

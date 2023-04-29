@@ -32,6 +32,7 @@ export class BuyPlanComponent implements OnInit {
     }
     this.service.purchase_plan(data).subscribe((res:any)=>{
       console.log(res)
+      this.router.navigateByUrl('my-plans')
 
     })
   }

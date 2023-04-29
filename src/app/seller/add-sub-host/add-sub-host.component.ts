@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-sub-host',
@@ -18,7 +18,7 @@ export class AddSubHostComponent implements OnInit {
     role: new FormControl('', Validators.required),
   })
   constructor(private service:SellerService,private fb:FormBuilder
-    ,private arouter:ActivatedRoute){
+    ,private arouter:ActivatedRoute,private router:Router){
 
   }
   id:any;
@@ -44,6 +44,7 @@ export class AddSubHostComponent implements OnInit {
     if(this.myform.valid){
       this.service.add_Sub_host(this.myform.value).subscribe((res:any)=>{
         console.log(res)
+        this.router.navigateByUrl('manage-sub-host')
       })
     }
   }
@@ -52,6 +53,7 @@ export class AddSubHostComponent implements OnInit {
     if(this.myform.valid){
     this.service.update_Sub_host(this.id,this.myform.value).subscribe((res:any)=>{
       console.log(res,'update')
+      this.router.navigateByUrl('manage-sub-host')
     })
   }
   }

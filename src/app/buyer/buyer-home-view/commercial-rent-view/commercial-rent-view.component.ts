@@ -268,7 +268,7 @@ export class CommercialRentViewComponent implements OnInit {
   FloorArr:any=[];
 
   updateFloor(v:any,count:any){
-    console.log(count);
+    // console.log(count);
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
@@ -343,7 +343,7 @@ export class CommercialRentViewComponent implements OnInit {
 
   updateFilter(v: any, position: any) {
     position=position.toString();
-    console.log(v.target.value)
+    console.log(v.target.value,'function')
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
@@ -416,7 +416,7 @@ export class CommercialRentViewComponent implements OnInit {
             console.log(this.SelectedFilters,'selected filter',i)
           }
         }
-
+        
     //bhk arr
     if (
       this.bhkArr.findIndex((res: any) => {
@@ -553,6 +553,7 @@ export class CommercialRentViewComponent implements OnInit {
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+    console.log('function end')
   }
   assignToSaveData(){
     this.sendData = {
@@ -574,6 +575,7 @@ export class CommercialRentViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
     };
+    console.log(this.ametArr,'jhvjhv')
   }
   deleteFilter(v: any) {
     let index = this.SelectedFilters.findIndex((res:any)=>res==v);
