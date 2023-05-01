@@ -198,3 +198,16 @@ header>div>button{
 .red-bttm::placeholder{
   color: red!important;
 }
+.subhost{
+  cursor: pointer;
+  display: flex;
+  margin-left: 33%;
+  margin-top: 15%;
+  border: bold;
+  border-style: outset;
+  padding: 0;
+  margin-right: 41%;
+  align-items: center;
+  justify-content: space-around;
+
+}

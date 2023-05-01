@@ -10,7 +10,7 @@ import{SellerService} from '../seller.service';
 })
 export class SellerformobileComponent {
   ForgotPassword = this.fb.group({
-    number: new FormControl('',Validators.required),
+    number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
     // otp: new FormControl(''),
     type: new FormControl('Seller')
   })

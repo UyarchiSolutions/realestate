@@ -87,5 +87,8 @@ export class SellerLoginComponent {
     this.notfound=false;
     this.emailSubmit=false;
    }
+   routeTohost(){
+    this.route.navigateByUrl('/sub-host-login');
+   }
    
 }

@@ -59,6 +59,11 @@ import { MyPlansComponent } from './my-plans/my-plans.component';
 import { BuyPlanComponent } from './buy-plan/buy-plan.component';
 import { AddSubHostComponent } from './add-sub-host/add-sub-host.component';
 import { ManageSubHostComponent } from './manage-sub-host/manage-sub-host.component';
+import { SubHostLoginComponent } from './sub-host/sub-host-login/sub-host-login.component';
+import { SubHostNumberVerfiyComponent } from './sub-host/sub-host-number-verfiy/sub-host-number-verfiy.component';
+import { SubHostOtpComponent } from './sub-host/sub-host-otp/sub-host-otp.component';
+import { SubHostSetpasswordComponent } from './sub-host/sub-host-setpassword/sub-host-setpassword.component';
+import { SubHostStreamComponent } from './sub-host/sub-host-stream/sub-host-stream.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +126,12 @@ import { ManageSubHostComponent } from './manage-sub-host/manage-sub-host.compon
 
     MyAccountComponent,
     EditAccountComponent,
+    //subHost
+    SubHostLoginComponent,
+    SubHostNumberVerfiyComponent,
+    SubHostOtpComponent,
+    SubHostSetpasswordComponent,
+    SubHostStreamComponent
 
     
   ],

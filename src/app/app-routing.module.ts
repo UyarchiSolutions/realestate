@@ -77,6 +77,11 @@ import { ManageSubHostComponent } from './seller/manage-sub-host/manage-sub-host
 import { AddSubHostComponent } from './seller/add-sub-host/add-sub-host.component';
 import { StreamApprovalComponent } from './admin/stream-approval/stream-approval.component';
 import { ResidentialRentStreamComponent } from './admin/stream-view/residential-rent-stream/residential-rent-stream.component';
+import { SubHostLoginComponent } from './seller/sub-host/sub-host-login/sub-host-login.component';
+import { SubHostNumberVerfiyComponent } from './seller/sub-host/sub-host-number-verfiy/sub-host-number-verfiy.component';
+import { SubHostOtpComponent } from './seller/sub-host/sub-host-otp/sub-host-otp.component';
+import { SubHostSetpasswordComponent } from './seller/sub-host/sub-host-setpassword/sub-host-setpassword.component';
+import { SubHostStreamComponent } from './seller/sub-host/sub-host-stream/sub-host-stream.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -211,7 +216,12 @@ const routes: Routes = [
       {path:'',component: ManageSubHostComponent},
       {path:'add-sub-host',component: AddSubHostComponent}
     ]},
-
+//sub-host 
+{ path: 'sub-host-login', component: SubHostLoginComponent },
+{ path: 'sub-host-verfiy', component: SubHostNumberVerfiyComponent },
+{ path: 'sub-host-otp-verfiy', component: SubHostOtpComponent },
+{ path: 'sub-host-set-password', component: SubHostSetpasswordComponent },
+{ path: 'sub-host-streams', component: SubHostStreamComponent },
   
 
   //buyer home

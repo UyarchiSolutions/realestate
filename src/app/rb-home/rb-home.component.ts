@@ -47,6 +47,8 @@ export class RbHomeComponent implements OnInit {
   proptArr: any = [];
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
+  floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
+  
   FbathArr: any = [];
   newBath:any=[];
   bathtypeShow: any = [];
