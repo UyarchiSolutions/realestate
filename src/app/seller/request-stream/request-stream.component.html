@@ -8,20 +8,26 @@
   
    <div class="main" [formGroup]="myform">
     <div class="heading">
-      <h2>Request Stream</h2>
+      <h2 *ngIf="!id">Request Stream</h2>
+      <h2  *ngIf="id">Edit Stream</h2>
     </div>
   
   <div class="profile">
   
-  <div>
+  <div  *ngIf="!id">
     <label>Choose Plan :</label>
-     <select type="text"  (change)="getPlanId($event)" >
+     <select type="text"  (change)="getPlanId($event)"   >
         <option disabled selected  >Choose plan</option>
         <option *ngFor=" let name of planNames"[value]="name" >{{name}}</option>
      
 
         </select>
   </div>
+  <div  *ngIf="id">
+    <label>Chosen Plan :</label>
+    <p style="margin-right: 175px;">{{planName}}</p>
+  </div>
+
   <div>
     <label>Stream Name :</label> <input  formControlName="streamName" type="text" placeholder="Enter Stream Name">
   </div>

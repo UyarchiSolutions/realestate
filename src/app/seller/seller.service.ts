@@ -79,6 +79,15 @@ get_allpost_seller(){
 get_all_stream(){
   return this.http.get(this.baseUrl+'/v1/requestStream/get/Streams',{headers:{auth:Cookie.get('tokens')}})
 }
+get_single_stream(id:any){
+  return this.http.get(this.baseUrl+`/v1/requestStream/`+id)
+}
+update_stream(id:any,data:any){
+  return this.http.put(this.baseUrl+`/v1/requestStream/`+id,data)
+}
+get_single_plan(id:any){
+  return this.http.get(this.planBase+id,{headers:{auth:Cookie.get('tokens')}})
+}
 //host
   add_Sub_host(data:any){
     return this.http.post(this.baseUrl+`/v1/subHost`,data,{headers:{auth:Cookie.get('tokens')}})
@@ -95,4 +104,11 @@ get_all_stream(){
   get_single_host(id:any){
     return this.http.get(this.baseUrl+`/v1/subHost/getSubHostById/`+id)
   }
+  get_chat_host(){
+    return this.http.get(this.baseUrl+`/v1/subHost/getSubHost/ForChat`,{headers:{auth:Cookie.get('tokens')}})
+  }
+  get_stream_host(){
+    return this.http.get(this.baseUrl+`/v1/subHost/getSubHost/ForStream`,{headers:{auth:Cookie.get('tokens')}})
+  }
+
 }

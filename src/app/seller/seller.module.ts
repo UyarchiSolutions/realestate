@@ -64,6 +64,7 @@ import { SubHostNumberVerfiyComponent } from './sub-host/sub-host-number-verfiy/
 import { SubHostOtpComponent } from './sub-host/sub-host-otp/sub-host-otp.component';
 import { SubHostSetpasswordComponent } from './sub-host/sub-host-setpassword/sub-host-setpassword.component';
 import { SubHostStreamComponent } from './sub-host/sub-host-stream/sub-host-stream.component';
+import { AssignHostComponent } from './assign-host/assign-host.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { SubHostStreamComponent } from './sub-host/sub-host-stream/sub-host-stre
 
     MyAccountComponent,
     EditAccountComponent,
+    AssignHostComponent,
     //subHost
     SubHostLoginComponent,
     SubHostNumberVerfiyComponent,

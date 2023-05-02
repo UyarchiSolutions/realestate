@@ -21,7 +21,7 @@ export class HeaderWithProfileComponent implements OnInit {
 
   GetuserName(){
     this.service.myAcount().subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       this.data= res;
     })
   }

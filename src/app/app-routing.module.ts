@@ -82,6 +82,7 @@ import { SubHostNumberVerfiyComponent } from './seller/sub-host/sub-host-number-
 import { SubHostOtpComponent } from './seller/sub-host/sub-host-otp/sub-host-otp.component';
 import { SubHostSetpasswordComponent } from './seller/sub-host/sub-host-setpassword/sub-host-setpassword.component';
 import { SubHostStreamComponent } from './seller/sub-host/sub-host-stream/sub-host-stream.component';
+import { AssignHostComponent } from './seller/assign-host/assign-host.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -108,7 +109,9 @@ const routes: Routes = [
   {
     path:'my-streams',children:[
   {path:'',component:MyStreamsComponent},
-  {path:'my-add-stream',component:RequestStreamComponent},],
+  {path:'my-add-stream',component:RequestStreamComponent},
+  {path:'assign-host',component:AssignHostComponent},
+],
 },
 
   {

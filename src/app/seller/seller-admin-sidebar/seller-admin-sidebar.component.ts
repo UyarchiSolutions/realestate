@@ -19,7 +19,7 @@ export class SellerAdminSidebarComponent implements OnInit {
   }
   GetuserName(){
     this.service.myAcount().subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       this.user= res;
     })
   }
@@ -36,12 +36,12 @@ export class SellerAdminSidebarComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
   changeps(){
-    console.log(this.user._id);
+    // console.log(this.user._id);
     let data={
       id:this.user._id
     }
     var queryString = new URLSearchParams(data).toString();
-    console.log(queryString);
+    // console.log(queryString);
     this.router.navigateByUrl('/changepassword-seller?' + queryString );
   }
 
