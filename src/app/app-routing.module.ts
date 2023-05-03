@@ -83,6 +83,11 @@ import { SubHostOtpComponent } from './seller/sub-host/sub-host-otp/sub-host-otp
 import { SubHostSetpasswordComponent } from './seller/sub-host/sub-host-setpassword/sub-host-setpassword.component';
 import { SubHostStreamComponent } from './seller/sub-host/sub-host-stream/sub-host-stream.component';
 import { AssignHostComponent } from './seller/assign-host/assign-host.component';
+import { SubHostAccountComponent } from './seller/sub-host/sub-host-account/sub-host-account.component';
+import { SubHostChangePasswordComponent } from './seller/sub-host/sub-host-change-password/sub-host-change-password.component';
+import { SubHostForgotMobileComponent } from './seller/sub-host/sub-host-forgot-mobile/sub-host-forgot-mobile.component';
+import { SubHostForgotOtpComponent } from './seller/sub-host/sub-host-forgot-otp/sub-host-forgot-otp.component';
+import { SubHostNewPasswordComponent } from './seller/sub-host/sub-host-new-password/sub-host-new-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -225,6 +230,11 @@ const routes: Routes = [
 { path: 'sub-host-otp-verfiy', component: SubHostOtpComponent },
 { path: 'sub-host-set-password', component: SubHostSetpasswordComponent },
 { path: 'sub-host-streams', component: SubHostStreamComponent },
+{ path: 'sub-host-account', component: SubHostAccountComponent },
+{ path: 'sub-host-change-password', component: SubHostChangePasswordComponent },
+{ path: 'sub-host-forgot-password', component: SubHostForgotMobileComponent },
+{ path: 'sub-host-forgot-otp', component: SubHostForgotOtpComponent },
+{ path: 'sub-host-new-password', component: SubHostNewPasswordComponent },
   
 
   //buyer home

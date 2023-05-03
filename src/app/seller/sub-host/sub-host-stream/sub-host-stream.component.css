@@ -1,18 +1,21 @@
 .container{
     display: flex;
     flex-direction: column;
+    width:100%;
 }
 
-
+.extra{
+    width:15%;
+}
 .sidebar{
-    width: 15%;
+    width: 10%;
     background-color:var(--sandal);
     margin: 10px;
     justify-content: unset !important;
 
 }
 .main{
-    width: 100%;
+    width: 80%;
     background-color:var(--sandal);
 
     margin: 5px ;

@@ -260,12 +260,7 @@ export class RequestStreamComponent implements OnInit {
   }
   getPlanId(id:any){
    let plan = id.target.value;
-    this.planId=this.AllData.find((res:any)=>{
-      if(res.planName == plan){
-        return res._id
-      }
-    })
-    this.planId=this.planId._id
+    this.planId= plan;
     console.log(this.planId)
   }
   planName:any;

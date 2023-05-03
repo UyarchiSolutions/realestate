@@ -18,7 +18,7 @@
     <label>Choose Plan :</label>
      <select type="text"  (change)="getPlanId($event)"   >
         <option disabled selected  >Choose plan</option>
-        <option *ngFor=" let name of planNames"[value]="name" >{{name}}</option>
+        <option *ngFor=" let name of AllData"[value]="name.planId" >{{name.planName}}</option>
      
 
         </select>

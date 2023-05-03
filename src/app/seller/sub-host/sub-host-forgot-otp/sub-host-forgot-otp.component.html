@@ -1,0 +1,69 @@
+<header-empty></header-empty>
+<div class="container">
+
+
+
+  <div class="ad">
+      <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+
+      <div class="top-ad">
+
+          <img src="../../assets/images/top-container-ad.png" width="100%">
+      </div>
+
+      <h1 style="font-weight: 700;">Check Your Mobile For OTP
+
+          <!-- For Post your Property Login--
+
+  Log In to post your property -->
+      </h1>
+
+
+      <div class="form" [formGroup]="form" >
+          <div>
+              <label style="width:500px">OTP :</label>
+              <input type="email" placeholder="Enter OTP" formControlName="otp" >
+          </div>
+          <div  style="color:red" *ngIf="submit && form.get('otp')?.invalid">
+              <label></label>
+             <p>Enter a Valid Otp!</p>
+            </div>
+          <div style="color:red" *ngIf="submit && noOtp">
+              <label></label>
+             <p>Otp is Invalid !</p>
+            </div>
+          <p class="resend-otp">Resend OTP</p>
+
+          <div class="login-btn">
+              <button (click)="sendOtp()">Verify</button>
+          </div>
+      </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="ad">
+      <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+
+
+</div>

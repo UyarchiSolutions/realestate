@@ -65,6 +65,12 @@ import { SubHostOtpComponent } from './sub-host/sub-host-otp/sub-host-otp.compon
 import { SubHostSetpasswordComponent } from './sub-host/sub-host-setpassword/sub-host-setpassword.component';
 import { SubHostStreamComponent } from './sub-host/sub-host-stream/sub-host-stream.component';
 import { AssignHostComponent } from './assign-host/assign-host.component';
+import { SubHostHeaderComponent } from './sub-host/sub-host-header/sub-host-header.component';
+import { SubHostAccountComponent } from './sub-host/sub-host-account/sub-host-account.component';
+import { SubHostChangePasswordComponent } from './sub-host/sub-host-change-password/sub-host-change-password.component';
+import { SubHostForgotMobileComponent } from './sub-host/sub-host-forgot-mobile/sub-host-forgot-mobile.component';
+import { SubHostForgotOtpComponent } from './sub-host/sub-host-forgot-otp/sub-host-forgot-otp.component';
+import { SubHostNewPasswordComponent } from './sub-host/sub-host-new-password/sub-host-new-password.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +139,13 @@ import { AssignHostComponent } from './assign-host/assign-host.component';
     SubHostNumberVerfiyComponent,
     SubHostOtpComponent,
     SubHostSetpasswordComponent,
-    SubHostStreamComponent
+    SubHostStreamComponent,
+    SubHostHeaderComponent,
+    SubHostAccountComponent,
+    SubHostChangePasswordComponent,
+    SubHostForgotMobileComponent,
+    SubHostForgotOtpComponent,
+    SubHostNewPasswordComponent
 
     
   ],

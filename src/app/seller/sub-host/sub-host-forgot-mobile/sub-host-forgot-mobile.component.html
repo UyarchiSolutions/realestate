@@ -1,0 +1,40 @@
+<header-empty></header-empty>
+<div class="container">
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+  <div class="main">
+    <div class="top-ad">
+      <img src="../../assets/images/top-container-ad.png" width="100%">
+    </div>
+    <h1>Enrolled Mobile Number</h1>
+    <div class="form" >
+      <form  [formGroup]="form" >
+        <div class="otp-field">
+          <label>Registered Mobile Number :</label>
+          <div>
+            <input type="text" placeholder="Enter Mobile" formControlName="mobileNumber" >
+          </div>
+        </div>
+        <div class="error-msg" *ngIf="notfound">
+      
+        
+          <p> Mobile Number Not Registered!</p>
+         
+        </div>
+        <div class="error-msg" *ngIf="submit && form.get('mobileNumber').invalid">
+          <p>Enter a valid Number</p>
+        </div>
+        <div class="verify-btn">
+          <button (click)="Register()" >Send OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ad">
+    <img src="../../assets/images/ad-post.png" width="100%">
+  </div>
+
+
+</div>
+

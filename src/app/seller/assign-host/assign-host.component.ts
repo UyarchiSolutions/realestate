@@ -27,6 +27,9 @@ sellerId:any;
 host1:any;
 host2:any;
 host3:any;
+host2role:any;
+host3role:any;
+chat_need:any;
 form:any=this.fb.group({
   chat:new FormControl(''),
 
@@ -62,6 +65,7 @@ form:any=this.fb.group({
     this.service.get_single_plan(this.planId).subscribe((res:any)=>{
     
       this.noOfHost=res.no_of_host_per_Stream;
+      this.chat_need=res.Chat_Needed
       console.log(res,this.noOfHost)
     })
   }
@@ -82,17 +86,29 @@ form:any=this.fb.group({
   secHost(e:any){
     this.host2=e.target.value
     console.log(e.target.value)
+    this.service.get_single_host(this.host2).subscribe((res:any)=>{
+      console.log(res)
+      this.host2role=res.role
+    })
+    
   }
   threeHost(e:any){
     this.host3=e.target.value
     console.log(e.target.value)
+    this.service.get_single_host(this.host3).subscribe((res:any)=>{
+      console.log(res)
+      this.host3role=res.role
+    })
   }
   submit(){
     let data={
-      chat_need:this.chatName,
+      chat:this.chatName,
+      chat_need:this.chat_need,
       allot_host_1:this.host1,
       allot_host_2:this.host2,
       allot_host_3:this.host3,
+      hostRole2:this.host2role,
+      hostRole3:this.host3role,
     }
     this.service.update_stream(this.id,data).subscribe((res:any)=>{
       console.log(res)

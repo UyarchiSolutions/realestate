@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Cookie } from 'ng2-cookies';
 import { Env } from 'src/app/environment.dev';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Env } from 'src/app/environment.dev';
 })
 export class SubHostService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
   baseUrl:any=Env.baseAPi;
 
   register(data:any){
@@ -21,5 +22,14 @@ export class SubHostService {
   }
   login(data:any){
     return this.http.post(this.baseUrl+'/v1/subHost/Login',data)
+  }
+  sub_host_details(){
+    return this.http.get(this.baseUrl+'/v1/subHost/getSubHostBy/Login/users',{headers:{auth:Cookie.get('sub-host')}})
+  }
+  get_all_streams(){
+    return this.http.get(this.baseUrl+'/v1/subHost/getStream/By/SubHost',{headers:{auth:Cookie.get('sub-host')}})
+  }
+  new_password(data:any){
+    return this.http.post(this.baseUrl+'/v1/subHost/changePassword' ,data)
   }
 }

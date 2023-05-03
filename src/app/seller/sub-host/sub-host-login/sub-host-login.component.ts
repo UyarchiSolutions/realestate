@@ -30,6 +30,7 @@ export class SubHostLoginComponent implements OnInit {
     if(this.form.valid){
     this.service.login(this.form.value).subscribe((res:any)=>{
       console.log(res)
+      this.setCookie(res.token.access.token);
       this.router.navigateByUrl('/sub-host-streams')
     },error =>{
       if(error.error.message=='Incorrect email or password'){
@@ -38,6 +39,12 @@ export class SubHostLoginComponent implements OnInit {
     
     })
   }
+ }
+setCookie(token: any) {
+  let d: Date = new Date();
+  d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+  let expires: string = `expires=${d.toUTCString()}`;
+  document.cookie = `sub-host=${token}; ${expires}`;
 }
   
 

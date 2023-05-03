@@ -29,7 +29,7 @@
 
 
 
-  <div>
+  <div *ngIf="chat_need =='Yes'">
     <label>Chat :</label>
     <select (change)="chatHostF($event)" >
       <option selected disabled>Select Chat</option>
