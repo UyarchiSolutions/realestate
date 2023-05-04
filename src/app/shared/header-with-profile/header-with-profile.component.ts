@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-header-with-profile',
+  selector: 'buyer-header-profile',
   templateUrl: './header-with-profile.component.html',
   styleUrls: ['./header-with-profile.component.css']
 })

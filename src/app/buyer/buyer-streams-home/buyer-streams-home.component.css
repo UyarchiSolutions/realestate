@@ -1,24 +1,21 @@
 .container{
     display: flex;
     flex-direction: column;
-    width:100%;
 }
 
-.extra{
-    width:15%;
-}
+
 .sidebar{
-    width: 10%;
+    width: 15%;
     background-color:var(--sandal);
     margin: 10px;
     justify-content: unset !important;
 
 }
 .main{
-    width: 80%;
+    width: 85%;
     background-color:var(--sandal);
 
-    margin: 5px ;
+    margin: 10px 10px 0 0;
 
 }
 .main h2{
@@ -128,16 +125,21 @@ justify-content: space-between;
 width: 100%;
 padding: 10px 0;
 align-items: center;
-background-color: var(--brown);
+height: 13%;
+}
+.property-tab-title{
+    width: 80%;
+    display: flex;
+    justify-content: center;
 
 }
 .property-tab h5{
     width:fit-content;
     padding: 10px;
     margin: 0 !important;
-    color:white;
-        background-color: var(--brown);
-display: flex;
+    color:black;
+    font-size: 270%;
+  display: flex;
 align-items: center;
     font-family: var(--ralewaybold);
     font-weight: 700;
@@ -146,13 +148,12 @@ align-items: center;
     margin-right: 10px;
 }
 .notification{
-background-color: var(--brown);
+    align-items: center;
 height: 100%;
+display: flex;
 margin-right: 30px;
 }
-.notification svg{
-    margin-left: 10px;
-}
+
 .property-tab-active{
     color: var(--brown);
     background-color:white;
@@ -324,54 +325,3 @@ table tr td:last-child{
     position: relative;
 }
 
-/* popup */
-.popup{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.500);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.buy-plan-container{
-    background-color: #FEFFEF ;
-    display: flex;
-    min-width: 800px;
-    padding: 25px 0;
-    flex-direction: column;
-    align-items: center;
-}
-.buy-plan-container h3{
-    color: var(--brown);
-}
-.buy-plan-container p{
-    margin: 20px 0;
-}
-.buy-plan-container .buttons{
-    display: flex;
-}
-.buy-plan-container .buttons button{
-    min-width: 150px;
-    border: none;
-    margin: 0 10px;
-    padding: 7px ;
-    font-weight: 500;
-}
-.back{
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
-    background: #FEFFEF ;
-    color: var(--brown);
-}
-.buy{
-    background: var(--brown);
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
-    color: white;
-}
-.streamName:hover{
-    color:blue;
-    text-decoration: underline;
-    cursor: pointer;
-}

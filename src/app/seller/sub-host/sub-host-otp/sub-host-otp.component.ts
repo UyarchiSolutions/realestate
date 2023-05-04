@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubHostService } from '../sub-host.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sub-host-otp',
@@ -9,12 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./sub-host-otp.component.css']
 })
 export class SubHostOtpComponent implements OnInit {
-  constructor(private serivce:SubHostService,private router:Router) {}
+  constructor(private serivce:SubHostService,private router:Router,private arouter:ActivatedRoute) {}
   form:any=new FormGroup({
     otp: new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(6)]),
   })
+  number:any;
   ngOnInit(): void {
-   
+    this.arouter.queryParams.subscribe((res:any)=>{
+      this.number=res['num']
+    })
   }
   data:any;
   submit=false;
@@ -39,5 +42,13 @@ export class SubHostOtpComponent implements OnInit {
     }
     )
   }
+ }
+ reSendOtp(){
+  let data={
+    mobileNumber:this.number
+  }
+  this.serivce.register(data).subscribe((res:any)=>{
+    console.log(res)
+  })
  }
 }

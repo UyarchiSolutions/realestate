@@ -38,6 +38,7 @@ export class PostPropertyService {
   formget(id: any) {
     return this.http.get(this.baseURL + 'getSellerPostById/' + id);
   }
+
   formget1(id: any) {
     return this.http.get(this.baseURL + 'sellerPost/' + id,{ headers: { auth: Cookie.get('buyer') }});
   }

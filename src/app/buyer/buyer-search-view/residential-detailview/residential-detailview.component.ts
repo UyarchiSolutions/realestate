@@ -32,7 +32,7 @@ export class ResidentialDetailviewComponent implements OnInit {
         rentprefer: any;
         propAge:any;
         areaArr:any;
-       
+       imageLength:any;
         hospitalIcon='./assets/images/hospital.png';
         cinemaIcon='./assets/images/cinema.png';
         hotelIcon='./assets/images/hotel.png';
@@ -73,11 +73,12 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res,res.intrest,'formget');
       this.data=res.values;
+      this.imageLength=this.data.image.length
       this.interestV=res.intrest;
       this.saveV=res.savedStatus;
       this.lat=this.data.lat;
       this.long=this.data.long;
-      console.log(this.lat,'lat,',this.long,'long')
+      console.log(this.lat,'lat,',this.long,'long',this.imageLength,'')
       this.get_landmarks_forbuyer('School');
     })
    

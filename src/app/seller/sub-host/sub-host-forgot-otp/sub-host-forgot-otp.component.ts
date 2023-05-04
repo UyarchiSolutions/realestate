@@ -45,4 +45,12 @@ number:any;
     )
   }
  }
+ reSendOtp(){
+  let data={
+    mobileNumber:this.number
+  }
+  this.serivce.register(data).subscribe((res:any)=>{
+    console.log(res)
+  })
+ }
 }

@@ -23,8 +23,11 @@ notfound=false;
     this.submit=true;
     if(this.form.valid){
     this.service.register(this.form.value).subscribe((res:any)=>{
-     
-      this.router.navigateByUrl('/sub-host-otp-verfiy')
+      let data={
+        num:this.form.get('mobileNumber')?.value
+      }
+      let query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/sub-host-otp-verfiy?'+query);
       console.log('res')
     }
     ,error =>{

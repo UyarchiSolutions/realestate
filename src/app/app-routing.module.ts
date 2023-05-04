@@ -88,6 +88,8 @@ import { SubHostChangePasswordComponent } from './seller/sub-host/sub-host-chang
 import { SubHostForgotMobileComponent } from './seller/sub-host/sub-host-forgot-mobile/sub-host-forgot-mobile.component';
 import { SubHostForgotOtpComponent } from './seller/sub-host/sub-host-forgot-otp/sub-host-forgot-otp.component';
 import { SubHostNewPasswordComponent } from './seller/sub-host/sub-host-new-password/sub-host-new-password.component';
+import { SubHostPropertyViewComponent } from './seller/sub-host/sub-host-property-view/sub-host-property-view.component';
+import { BuyerStreamsHomeComponent } from './buyer/buyer-streams-home/buyer-streams-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,6 +103,8 @@ const routes: Routes = [
   { path: 'buyer-update', component: UpdatepasswordbuyerComponent },
   { path: 'changepassword-buyer', component: ChangeBuyerComponent },
 
+  {path:'buyer-streams',component:BuyerStreamsHomeComponent},
+
   // seller
   { path: 'sellerLogin', component: SellerLoginComponent },
   { path: 'seller-register', component: SellerRegisterComponent },
@@ -111,13 +115,7 @@ const routes: Routes = [
   { path: 'updatePassword-seller', component: UpdatepasswordsellerComponent },
   { path: 'changepassword-seller', component: ChangeSellerComponent },
 
-  {
-    path:'my-streams',children:[
-  {path:'',component:MyStreamsComponent},
-  {path:'my-add-stream',component:RequestStreamComponent},
-  {path:'assign-host',component:AssignHostComponent},
-],
-},
+
 
   {
     path: 'start-posting',
@@ -224,6 +222,13 @@ const routes: Routes = [
       {path:'',component: ManageSubHostComponent},
       {path:'add-sub-host',component: AddSubHostComponent}
     ]},
+  {
+    path:'my-streams',children:[
+  {path:'',component:MyStreamsComponent},
+  {path:'my-add-stream',component:RequestStreamComponent},
+  {path:'assign-host',component:AssignHostComponent},
+],
+},
 //sub-host 
 { path: 'sub-host-login', component: SubHostLoginComponent },
 { path: 'sub-host-verfiy', component: SubHostNumberVerfiyComponent },
@@ -235,6 +240,7 @@ const routes: Routes = [
 { path: 'sub-host-forgot-password', component: SubHostForgotMobileComponent },
 { path: 'sub-host-forgot-otp', component: SubHostForgotOtpComponent },
 { path: 'sub-host-new-password', component: SubHostNewPasswordComponent },
+{ path: 'sub-host-view', component: SubHostPropertyViewComponent },
   
 
   //buyer home

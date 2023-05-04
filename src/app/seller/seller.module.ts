@@ -71,6 +71,7 @@ import { SubHostChangePasswordComponent } from './sub-host/sub-host-change-passw
 import { SubHostForgotMobileComponent } from './sub-host/sub-host-forgot-mobile/sub-host-forgot-mobile.component';
 import { SubHostForgotOtpComponent } from './sub-host/sub-host-forgot-otp/sub-host-forgot-otp.component';
 import { SubHostNewPasswordComponent } from './sub-host/sub-host-new-password/sub-host-new-password.component';
+import { SubHostPropertyViewComponent } from './sub-host/sub-host-property-view/sub-host-property-view.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +146,8 @@ import { SubHostNewPasswordComponent } from './sub-host/sub-host-new-password/su
     SubHostChangePasswordComponent,
     SubHostForgotMobileComponent,
     SubHostForgotOtpComponent,
-    SubHostNewPasswordComponent
+    SubHostNewPasswordComponent,
+    SubHostPropertyViewComponent
 
     
   ],

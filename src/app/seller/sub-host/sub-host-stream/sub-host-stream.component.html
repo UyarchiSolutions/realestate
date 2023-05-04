@@ -105,7 +105,7 @@
 
           
             <tr *ngFor="let v of data,index as i">
-                <td>{{v.streamName}}</td>
+                <td class="streamName" (click)="routeToview(v._id)">{{v.streamName}}</td>
                 <td><span><p>{{v.streamingDate_time| date:'dd/MM/YYYY'}}</p>,<p>{{v.streamingDate_time| date:'shortTime'}}</p></span></td>
                 <td><span><p>{{v.sellerpost.HouseOrCommercialType}}</p>><p>{{v.sellerpost.Type}}</p></span></td>
                 <td>{{v.sellerpost.propertType}}</td>

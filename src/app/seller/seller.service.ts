@@ -110,5 +110,8 @@ get_single_plan(id:any){
   get_stream_host(){
     return this.http.get(this.baseUrl+`/v1/subHost/getSubHost/ForStream`,{headers:{auth:Cookie.get('tokens')}})
   }
+  view_propery(id:any){
+  return this.http.get('https://uyarchicrm.click/v1/BuyerSeller/' + 'getSellerPostById/' + id);
+  }
 
 }

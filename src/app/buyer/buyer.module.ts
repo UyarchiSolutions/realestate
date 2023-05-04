@@ -28,6 +28,7 @@ import { CommercialBuyViewComponent } from './buyer-home-view/commercial-buy-vie
 import { ResidentialBuyDetailviewComponent } from './buyer-search-view/residential-buy-detailview/residential-buy-detailview.component';
 import { CommercialRentDetailviewComponent } from './buyer-search-view/commercial-rent-detailview/commercial-rent-detailview.component';
 import { CommercialBuyDetailviewComponent } from './buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
+import { BuyerStreamsHomeComponent } from './buyer-streams-home/buyer-streams-home.component';
 
 
 
@@ -61,6 +62,7 @@ import { CommercialBuyDetailviewComponent } from './buyer-search-view/commercial
     CommercialRentDetailviewComponent,
     ResidentialBuyDetailviewComponent,
     CommercialBuyDetailviewComponent,
+    BuyerStreamsHomeComponent,
  
 
   ],

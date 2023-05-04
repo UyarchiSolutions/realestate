@@ -32,4 +32,10 @@ export class SubHostService {
   new_password(data:any){
     return this.http.post(this.baseUrl+'/v1/subHost/changePassword' ,data)
   }
+  change_password(data:any){
+    return this.http.post(this.baseUrl+'/v1/subHost/changePassword/SubHost',data,{headers:{auth:Cookie.get('sub-host')}})
+  }
+  view_propery(id:any){
+    return this.http.get('https://uyarchicrm.click/v1/requestStream/' + 'getStreamById/' + id);
+    }
 }

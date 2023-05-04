@@ -210,6 +210,7 @@ export class RequestStreamComponent implements OnInit {
        console.log('form update',data)
       this.service.update_stream(this.id,data).subscribe((res:any)=>{
         console.log(res)
+        this.route.navigateByUrl('/my-streams')
       })
     }
     else{
@@ -232,6 +233,7 @@ export class RequestStreamComponent implements OnInit {
      console.log(data)
     this.service.send_stream(data).subscribe((res:any)=>{
       console.log(res)
+      this.route.navigateByUrl('/my-streams')
     })
   }
   }

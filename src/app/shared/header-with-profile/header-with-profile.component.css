@@ -5,6 +5,7 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0 50px 0 10px;
+    width: 100%;
   
   }
   header>.logo{
@@ -75,4 +76,14 @@ header{
     border-bottom: 0;
     border-left: 0.3em solid transparent;
   }
-  
+  .bottom{
+    width: 33%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bottom-content{
+    color:white;
+  }
+  .active-content :hover{
+    text-decoration: underline;
+  }

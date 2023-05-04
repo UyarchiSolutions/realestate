@@ -112,6 +112,7 @@ form:any=this.fb.group({
     }
     this.service.update_stream(this.id,data).subscribe((res:any)=>{
       console.log(res)
+      this.router.navigateByUrl('/my-streams')
     })
   }
 }

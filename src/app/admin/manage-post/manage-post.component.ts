@@ -24,11 +24,13 @@ export class ManagePostComponent implements OnInit {
   area='';
   totalpage:any;
   totalPageCount:any;
+  imageLength:any;
   GetAll(){
     this.adminService.get_All_post(this.status,this.page,this.range,this.comOrRes,this.type,this.area).subscribe((res:any)=>{
       console.log(res)
       this.data=res.values;
       this.totalpage=res.total;
+     
       if(this.page == 0){
         this.totalPageCount = Math.ceil(this.totalpage/this.range)
         console.log(this.totalPageCount)
@@ -85,6 +87,7 @@ export class ManagePostComponent implements OnInit {
   remove(id:any){
     this.adminService.remove_post(id).subscribe((res:any)=>{
       console.log(res)
+      this.GetAll();
     })
   }
   sortStatus(a:any){
