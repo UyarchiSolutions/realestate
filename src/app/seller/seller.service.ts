@@ -113,5 +113,7 @@ get_single_plan(id:any){
   view_propery(id:any){
   return this.http.get('https://uyarchicrm.click/v1/BuyerSeller/' + 'getSellerPostById/' + id);
   }
-
+  get_all_interest(){
+    return this.http.get(this.baseUrl+'/v1/BuyerSeller/getNotification/Details/intrested',{headers:{auth:Cookie.get('tokens')}})
+  }
 }

@@ -324,4 +324,18 @@ td p svg{
 table tr td:last-child{
     position: relative;
 }
+.bttn
+{
+    color: white !important;
+    padding: 6px 17px !important;
+}
+.pink{
+    background-color:#FF8080 !important;
+}
+.green{
+    background-color: #34A853 !important;;
+}
+.blue{
+    background-color: #1877F2 !important;
+}
 

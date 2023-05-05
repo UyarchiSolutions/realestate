@@ -45,7 +45,9 @@ table tr{
     background-color: var(--sandal);
 }
 table tr td{
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 10px 0 10px 10px;
     display: table-cell;
 }

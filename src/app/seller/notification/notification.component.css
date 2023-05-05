@@ -218,9 +218,9 @@ padding: 3px 5px;
     border-radius: 3px;
     align-items: center;
 }
-table tr td span button svg{
+/* table tr td span button svg{
     margin-right: 5px;
-}
+} */
 .assign-host-btn{
     color: var(--blue);
     background-color: #1876f21e;
@@ -297,7 +297,7 @@ table th:nth-child(2),table tr td:nth-child(2){
 }
 table tr td p{
     width: 95%;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -311,6 +311,6 @@ table tr{
     visibility: hidden;
     cursor: pointer;
 }
-table tr:hover .delete-icon{
+.show-delete:hover + .delete-icon {
     visibility: visible !important;
 }

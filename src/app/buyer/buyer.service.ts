@@ -78,5 +78,11 @@ export class BuyerService {
   resend_alert(id:any,data:any){
     return this.http.put(this.base_url+`/v1/propertyAlert/Update/${id}`,data,{headers:{auth:Cookie.get('buyer')}})
   }
+  Get_buyer_account(){
+    return this.http.get('https://uyarchicrm.click/v1/BuyerSeller/'+'user',{ headers: { auth: Cookie.get('buyer') }} )
+  }
+  get_all_streams(){
+    return this.http.get(this.base_url+'/v1/requestStream/getApprovedStream/For/Buyers')
+  }
 }
 

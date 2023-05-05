@@ -90,6 +90,7 @@ import { SubHostForgotOtpComponent } from './seller/sub-host/sub-host-forgot-otp
 import { SubHostNewPasswordComponent } from './seller/sub-host/sub-host-new-password/sub-host-new-password.component';
 import { SubHostPropertyViewComponent } from './seller/sub-host/sub-host-property-view/sub-host-property-view.component';
 import { BuyerStreamsHomeComponent } from './buyer/buyer-streams-home/buyer-streams-home.component';
+import { NotificationComponent } from './seller/notification/notification.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -114,6 +115,7 @@ const routes: Routes = [
   { path: 'sent-otp', component: SellerforotpComponent },
   { path: 'updatePassword-seller', component: UpdatepasswordsellerComponent },
   { path: 'changepassword-seller', component: ChangeSellerComponent },
+  { path: 'seller-notification', component: NotificationComponent },
 
 
 

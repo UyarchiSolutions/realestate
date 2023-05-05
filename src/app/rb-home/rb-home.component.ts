@@ -646,12 +646,12 @@ export class RbHomeComponent implements OnInit {
       v == '5 to 10 Years' ||
       v == '10+ Years'
     ) {
-      let index = this.PropAgeArr.findIndex((res: any) => {
-        res == v;
-      });
-      if (index > -1) {
+      console.log('inside',this.PropAgeArr)
+      let index = this.PropAgeArr.indexOf(v);
+    
         this.PropAgeArr.splice(index, 1);
-      }
+     
+      console.log('outside',this.PropAgeArr)
     }
     //floor
     if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
@@ -1052,7 +1052,7 @@ export class RbHomeComponent implements OnInit {
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
       console.log(res,'all interest')
-      console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
+      // console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
       this.AllInterested = res;
       this.ResiRent= this.AllInterested.filter((v:any)=>{
        return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
@@ -1067,7 +1067,7 @@ export class RbHomeComponent implements OnInit {
        return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
       })
 
-     console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
+    //  console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
     
     });
   
@@ -1095,7 +1095,7 @@ export class RbHomeComponent implements OnInit {
        this.CommBuyS= this.AllSaved.filter((v:any)=>{
         return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
        })
-
+      
     });
   }
   show_top = false;

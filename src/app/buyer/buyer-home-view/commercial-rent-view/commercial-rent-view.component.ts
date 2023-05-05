@@ -89,6 +89,10 @@ export class CommercialRentViewComponent implements OnInit {
   builtMin:any=0;
   builtMax:any=100000;
   showRecentSer:any;
+  getRoute(){
+    console.log(this.router.url,'sdfsdf')
+    
+  }
   ngOnInit(): void {
     this.Getbuyer();
     this.Get_all_interest();
