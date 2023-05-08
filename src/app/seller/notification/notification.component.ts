@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notification',
@@ -8,7 +9,7 @@ import { SellerService } from '../seller.service';
 })
 export class NotificationComponent implements OnInit {
   data:any;
- constructor(private service:SellerService){
+ constructor(private service:SellerService,private router:Router){
 
  }
   ngOnInit(): void {
@@ -16,6 +17,13 @@ export class NotificationComponent implements OnInit {
       console.log(res)
       this.data=res
     })
+  }
+  routetoInterest(id:any){
+    let data={
+      id:id
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/interest-post?'+query)
   }
 
  

@@ -314,3 +314,6 @@ table tr{
 .show-delete:hover + .delete-icon {
     visibility: visible !important;
 }
+.delete-icon:hover{
+    visibility: visible !important;
+}

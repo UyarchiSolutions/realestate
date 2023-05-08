@@ -41,6 +41,7 @@ export class RbHomeComponent implements OnInit {
   propageType: any = [];
   bathType: any = [];
   parkType: any = [];
+  floorType:any =[];
 
   SelectedFilters: any = [];
   FbhkArr: any = [];
@@ -48,7 +49,8 @@ export class RbHomeComponent implements OnInit {
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
-  
+  floorDataArr:any=['0','1-3','4-7','8-12','13']
+  ffloor:any=[]
   FbathArr: any = [];
   newBath:any=[];
   bathtypeShow: any = [];
@@ -63,6 +65,7 @@ export class RbHomeComponent implements OnInit {
   LoopItArr: any = [];
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
+  floorShow:any=[]
 
 
   options1: Options = {
@@ -148,6 +151,10 @@ export class RbHomeComponent implements OnInit {
           params.params['parking'] != null && params.params['parking'] != ''
             ? params.params['parking'].split(',')
             : [];
+        this.floorType =
+          params.params['floor'] != null && params.params['floor'] != ''
+            ? params.params['floor'].split(',')
+            : [];
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -163,6 +170,14 @@ export class RbHomeComponent implements OnInit {
             // console.log(this.bathType,'final bath',this.bathArr[a])
           });
         }
+        if (!(this.floorType == '' && this.floorType == null)) {
+          this.floorShow=[]
+          this.floorType.forEach((a: any) => {
+           let index = this.floorDataArr.indexOf(a)
+           this.floorShow.push(this.floorArr[index])
+          });
+          console.log(this.floorShow,'floorshow')
+        }
         this.SelectedFilters = [
           ...this.propertType,
           ...this.BhkTypeShow,
@@ -172,6 +187,7 @@ export class RbHomeComponent implements OnInit {
           ...this.propageType,
           ...this.bathtypeShow,
           ...this.parkType,
+          ...this.floorShow
         ];
 
         this.proptArr = this.propertType;
@@ -184,6 +200,7 @@ export class RbHomeComponent implements OnInit {
         this.TentArr = this.tentType;
         this.FbhkArr = this.BhkTypeShow;
         this.newBath = this.bathtypeShow;
+        this.floordata =this.floorType
 
         // console.log(this.proptArr,'proppt arry',this.propertType)
 
@@ -221,6 +238,7 @@ export class RbHomeComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
+      floor:this.floordata
     };
     console.log(Data);
     this.service
@@ -256,101 +274,8 @@ export class RbHomeComponent implements OnInit {
   onChange(e: any) {
     this.type = e.target.value;
   }
-  floordata:any={arr:[]};
+  floordata:any=[]
   FloorArr:any=[];
-
-  updateFloor(v:any,count:any){
-    console.log(count);
-    if (v.target.checked) {
-      var val = v.target.value;
-      this.SelectedFilters.push(val);
-      this.FloorArr.push(val);
-      console.log(this.floordata,'check1')
-      if(Array.isArray(count)){
-        this.floordata.arr.push(
-        {
-           from:count[0],
-           to:count[1]}
-         );
-      }
-        if(count== 0 || count==13){
-          this.floordata.arr.push({
-          from:count
-          })
-        }
-        console.log(this.floordata,'check3')
-     console.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
-    } else  {
-      let index = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      console.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
-      if (index != -1) {
-        console.log(this.floordata,'check2')
-        this.SelectedFilters.splice(index, 1);
-     
-      
-      let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
-
-        console.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
-        console.log('3',this.floordata,this.floordata.arr[i],'floor data')
-        console.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
-        console.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
-
-      this.FloorArr.splice(i,1);
-      this.floordata.arr.splice(i,1);
-
-   }
-      console.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
-    }
-   
-   
-    console.log(this.floordata,'before api')
-    // this.assignToSaveData();
-    // let query = new URLSearchParams(this.sendData).toString();
-    // this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
-    this.service
-    .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
-    .subscribe((res: any) => {
-      console.log(res, 'data from backend');
-      this.data = res.values;
-      this.totalval = res.total;
-      this.showPag_rag = false;
-      if (this.totalval > 10) {
-        this.showPag_rag = true;
-        console.log(this.totalval,'ghghg')
-      }
-      //console.log(this.data, 'data');
-
-      if (this.page == 0) {
-        let page = res.total / (this.page + 1);
-
-        //console.log(res.total, 'range', this.range);
-
-        this.displaycount = Math.ceil(page / this.range);
-
-        //console.log(page, 'dc', this.page + 1);
-      }
-      this.sendDataBOOL = false;
-    });
-  // console.log(this.sendData, 'updated');
-
-    
-  }
-  isfloorcheck(val:any,find:any){
-    if(find !=''){
-    let index = find.findIndex(
-      (res: any) => res == val
-    );
-    if(index == -1){
-      return false;
-    }
-    else{
-      return true;
-    }
-  }
-  return false;
-  }
 
   updateFilter(v: any, position: any) {
     position=position.toString();
@@ -498,10 +423,10 @@ export class RbHomeComponent implements OnInit {
       v.target.value == 'Company' ||
       v.target.value == 'Any'
     ) {
-      let i = this.SelectedFilters.findIndex(
+      let i = this.TentArr.findIndex(
         (res: any) => res == v.target.value
       );
-      if (i != -1) {
+      if (i == -1) {
         this.TentArr.push(v.target.value);
         //console.log(this.TentArr);
       } else {
@@ -517,15 +442,38 @@ export class RbHomeComponent implements OnInit {
       v.target.value == '5 to 10 Years' ||
       v.target.value == '10+ Years'
     ) {
-      let i = this.SelectedFilters.findIndex(
+      let i = this.PropAgeArr.findIndex(
         (res: any) => res == v.target.value
       );
-      if (i != -1) {
+      if (i  == -1) {
         this.PropAgeArr.push(v.target.value);
         //console.log(this.PropAgeArr);
       } else {
         this.PropAgeArr.splice(i, 1);
         //console.log(this.PropAgeArr);
+      }
+    }
+    //floor arr
+    if(      v.target.value == 'Ground Floor' ||
+    v.target.value == '1 to 3 Floor' ||
+    v.target.value == '4 to 7 Floor' ||
+    v.target.value == '8 to 12 Floor' ||
+    v.target.value == '13+ Floor'){
+      let i = this.ffloor.indexOf(v.target.value)
+      console.log(i,)
+      if(i == -1){
+        this.ffloor.push(v.target.value);
+        let index = this.floorArr.indexOf(v.target.value)
+        this.floordata.push(this.floorDataArr[index])
+
+        console.log('floor',this.ffloor,'floor data',this.floordata)
+      } 
+      else{
+        let index = this.ffloor.indexOf(v.target.value)
+        this.ffloor.splice(index,1)
+        this.floordata.splice(index,1)
+
+        console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
       }
     }
     //data to api
@@ -551,6 +499,7 @@ export class RbHomeComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
+      floor:this.floordata
     };
   }
 
@@ -654,14 +603,18 @@ export class RbHomeComponent implements OnInit {
       console.log('outside',this.PropAgeArr)
     }
     //floor
-    if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
-    let i = this.FloorArr.findIndex((res:any)=>{res==v })
-    console.log(i,'floor is checked')
-   
-    this.FloorArr.splice(i,1);
-    this.floordata.arr.splice(i,1);
-    console.log(this.FloorArr,this.floordata);
-  }
+    if(      v == 'Ground Floor' ||
+    v == '1 to 3 Floor' ||
+    v == '4 to 7 Floor' ||
+    v == '8 to 12 Floor' ||
+    v == '13+ Floor'){
+      let index = this.ffloor.indexOf(v)
+      this.ffloor.splice(index,1)
+      this.floordata.splice(index,1)
+
+      console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
+    }
+
   this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
@@ -929,7 +882,7 @@ export class RbHomeComponent implements OnInit {
     };
 
     this.service
-      .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
+      .getSellerDetails(this.page, this.range, this.sendData,0)
       .subscribe((res: any) => {
         this.data = res.values;
         //console.log(this.data, 'data');

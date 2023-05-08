@@ -61,18 +61,18 @@
 
                 <tr *ngFor="let v of data">
                     <td>{{v.createdAt| date:'shortDate' }}</td>
-                    <td class="show-delete" *ngIf="false">
+                    <td  class="show-delete" *ngIf="false">
                         <p>Has accepted to Visit your property on Tomorrow 6pm @3 BHK House For Rent in, No
                             10, Alwarpet Street, Alwarpet, Chennai - 600026 </p>
                     </td>
-                    <td *ngIf="v.type=='Intrest'" class="show-delete" >
+                    <td (click)="routetoInterest(v.postId)" *ngIf="v.type=='Intrest'" class="show-delete" >
                         <p>{{v.users.userName}} interested in your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
                     </td>
                     <td class="delete-icon">
                         <svg style="display: block !important;" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.2 3.6H10.8V11.4C10.8 11.5591 10.7368 11.7117 10.6243 11.8243C10.5117 11.9368 10.3591 12 10.2 12H1.8C1.64087 12 1.48826 11.9368 1.37574 11.8243C1.26321 11.7117 1.2 11.5591 1.2 11.4V3.6ZM2.4 4.8V10.8H9.6V4.8H2.4ZM4.2 6H5.4V9.6H4.2V6ZM6.6 6H7.8V9.6H6.6V6ZM3 1.8V0.6C3 0.44087 3.06321 0.288258 3.17574 0.175736C3.28826 0.0632141 3.44087 0 3.6 0H8.4C8.55913 0 8.71174 0.0632141 8.82426 0.175736C8.93679 0.288258 9 0.44087 9 0.6V1.8H12V3H0V1.8H3ZM4.2 1.2V1.8H7.8V1.2H4.2Z" fill="#262626"/>
                             </svg>
-                             xvcvvxcv
+                            Delete
                     </td>
                 </tr>
 
