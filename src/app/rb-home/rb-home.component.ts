@@ -50,7 +50,7 @@ export class RbHomeComponent implements OnInit {
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
   floorDataArr:any=['0','1-3','4-7','8-12','13']
-  ffloor:any=[]
+ 
   FbathArr: any = [];
   newBath:any=[];
   bathtypeShow: any = [];
@@ -66,6 +66,7 @@ export class RbHomeComponent implements OnInit {
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
   floorShow:any=[]
+  ffloor:any=[]
 
 
   options1: Options = {
@@ -862,6 +863,7 @@ export class RbHomeComponent implements OnInit {
     this.BhkCountArr = [];
     this.areaArr = [];
     this.floordata=[];
+    this.ffloor=[]
 
     this.sendData = {
       formatAdd: this.formatAdd,
@@ -913,31 +915,44 @@ export class RbHomeComponent implements OnInit {
   interestShow = false;
   saveShow = false;
   alertShow = false;
+  nofiShow=false;
   showTab(tab: any) {
     if (tab == 'post') {
       this.postshow = true;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'interest') {
       this.postshow = false;
       this.interestShow = true;
       this.saveShow = false;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'save') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'alert') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = true;
+      this.nofiShow=false;
     }
+    if (tab == 'nofi') {
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow=true;
+    }
+    
   }
   RBtab = true;
   RRtab = false;
@@ -1425,7 +1440,7 @@ alertaddress(address: Address, input: any) {
 
       if(res.data._id !=null){
         this.firstAlert=false;
-        console.log(this.firstAlert,'first alert','inside if')
+        // console.log(this.firstAlert,'first alert','inside if')
       }
       if(res.data == null){
         this.recAlert=false;
@@ -1435,7 +1450,7 @@ alertaddress(address: Address, input: any) {
         this.recAlert=true;
         this.sendAlert=false;
       }
-      console.log(this.firstAlert,'first alert','in function')
+      // console.log(this.firstAlert,'first alert','in function')
     })
   }
   changeAlert(){

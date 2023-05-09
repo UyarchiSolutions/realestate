@@ -63,6 +63,12 @@ export class ResidentialBuyViewComponent implements OnInit {
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
 
+  floorType:any =[];
+  floorShow:any=[]
+  ffloor:any=[]
+  floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
+  floorDataArr:any=['0','1-3','4-7','8-12','13']
+
 
   options1: Options = {
     floor: 5000,
@@ -149,6 +155,10 @@ export class ResidentialBuyViewComponent implements OnInit {
           params.params['ageOfBuilding'] != null && params.params['ageOfBuilding'] != ''
             ? params.params['ageOfBuilding'].split(',')
             : [];
+            this.floorType =
+            params.params['floor'] != null && params.params['floor'] != ''
+              ? params.params['floor'].split(',')
+              : [];
 
         // this.areaArr =this.areaArr.split(',');
         ////consolele.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -164,6 +174,14 @@ export class ResidentialBuyViewComponent implements OnInit {
             // //consolele.log(this.bathType,'final bath',this.bathArr[a])
           });
         }
+        if (!(this.floorType == '' && this.floorType == null)) {
+          this.floorShow=[]
+          this.floorType.forEach((a: any) => {
+           let index = this.floorDataArr.indexOf(a)
+           this.floorShow.push(this.floorArr[index])
+          });
+          console.log(this.floorShow,'floorshow')
+        }
         this.SelectedFilters = [
           ...this.propertType,
           ...this.BhkTypeShow,
@@ -174,6 +192,7 @@ export class ResidentialBuyViewComponent implements OnInit {
           ...this.bathtypeShow,
           ...this.parkType,
           ...this.ageType,
+          ...this.floorShow
         ];
 
         this.proptArr = this.propertType;
@@ -187,6 +206,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.FbhkArr = this.BhkTypeShow;
         this.newBath = this.bathtypeShow;
         this.ageArr=this.ageType
+        this.floordata =this.floorType
 
         // //consolele.log(this.proptArr,'proppt arry',this.propertType)
 
@@ -224,6 +244,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       ageOfBuilding:this.ageArr,
+      floor:this.floordata
     };
     //consolele.log(Data);
     this.service
@@ -260,65 +281,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   floordata:any={arr:[]};
   FloorArr:any=[];
 
-  updateFloor(v:any,count:any){
-    //consolele.log(count);
-    if (v.target.checked) {
-      var val = v.target.value;
-      this.SelectedFilters.push(val);
-      this.FloorArr.push(val);
-      //consolele.log(this.floordata,'check1')
-      if(Array.isArray(count)){
-        this.floordata.arr.push(
-        {
-           from:count[0],
-           to:count[1]}
-         );
-      }
-        if(count== 0 || count==13){
-          this.floordata.arr.push({
-          from:count
-          })
-        }
-        //consolele.log(this.floordata,'check3')
-     //consolele.log(this.SelectedFilters,'psuh',this.FloorArr,'floor array',this.floordata,'floordata')
-    } else  {
-      let index = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      //consolele.log('1','selected fiter',this.SelectedFilters[index],this.SelectedFilters,)
-      if (index != -1) {
-        //consolele.log(this.floordata,'check2')
-        this.SelectedFilters.splice(index, 1);
-     
-      
-      let i = this.FloorArr.findIndex((res:any)=>res==v.target.value)
 
-        //consolele.log('2',this.FloorArr,v.target.value,this.FloorArr.includes(v.target.value),'floor array')
-        //consolele.log('3',this.floordata,this.floordata.arr[i],'floor data')
-        //consolele.log('4','value romove in data',this.floordata.arr[i],this.FloorArr[i],i,)
-        //consolele.log('5',this.floordata.arr.splice(i,1),'else',this.floordata) 
-
-      this.FloorArr.splice(i,1);
-      this.floordata.arr.splice(i,1);
-
-   }
-      //consolele.log('6',this.SelectedFilters,'splice',this.FloorArr,'floor array',this.floordata,'floordata',)
-    }
-   
-   
-    //consolele.log(this.floordata,'before api')
- this.service.getSellerDetails(this.page, this.range, this.sendData,this.floordata).subscribe((res: any) => {
-    //consolele.log(res, 'data from backend');
-    this.data = res.values;
-    this.totalval = res.total;
-    if (this.totalval > 10) {
-      this.showPag_rag = true;
-    } if (this.page == 0) {
-      let page = res.total / (this.page + 1);
-      this.displaycount = Math.ceil(page / this.range);
-      }})
-    
-  }
 
 
   updateFilter(v: any, position: any) {
@@ -513,6 +476,29 @@ export class ResidentialBuyViewComponent implements OnInit {
         ////consolele.log(this.PropAgeArr);
       }
     }
+       //floor arr
+       if(      v.target.value == 'Ground Floor' ||
+       v.target.value == '1 to 3 Floor' ||
+       v.target.value == '4 to 7 Floor' ||
+       v.target.value == '8 to 12 Floor' ||
+       v.target.value == '13+ Floor'){
+         let i = this.ffloor.indexOf(v.target.value)
+         console.log(i,)
+         if(i == -1){
+           this.ffloor.push(v.target.value);
+           let index = this.floorArr.indexOf(v.target.value)
+           this.floordata.push(this.floorDataArr[index])
+   
+           console.log('floor',this.ffloor,'floor data',this.floordata)
+         } 
+         else{
+           let index = this.ffloor.indexOf(v.target.value)
+           this.ffloor.splice(index,1)
+           this.floordata.splice(index,1)
+   
+           console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
+         }
+       }
     //data to api
     this.assignToSaveData()
     ////consolele.log(this.ShowOnlyArr);
@@ -537,6 +523,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
+      floor:this.floordata
     };
   }
   deleteFilter(v: any) {
@@ -654,15 +641,18 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.PropAgeArr.splice(index, 1);
       }
     }
-    //floor
-    if( this.FloorArr.findIndex((res:any)=>{res==v}) != -1 ){
-    let i = this.FloorArr.findIndex((res:any)=>{res==v })
-    //consolele.log(i,'floor is checked')
-   
-    this.FloorArr.splice(i,1);
-    this.floordata.arr.splice(i,1);
-    //consolele.log(this.FloorArr,this.floordata);
-  }
+      //floor
+      if(      v == 'Ground Floor' ||
+      v == '1 to 3 Floor' ||
+      v == '4 to 7 Floor' ||
+      v == '8 to 12 Floor' ||
+      v == '13+ Floor'){
+        let index = this.ffloor.indexOf(v)
+        this.ffloor.splice(index,1)
+        this.floordata.splice(index,1)
+  
+        console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
+      }
   this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
@@ -910,6 +900,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.BhkCountArr = [];
     this.areaArr = [];
     this.floordata=[];
+    this.ffloor=[]
 
     this.assignToSaveData()
 

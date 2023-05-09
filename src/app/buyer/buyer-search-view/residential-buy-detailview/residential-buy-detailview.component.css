@@ -272,3 +272,31 @@ margin-bottom: 0 !important;
   
     visibility:visible !important;
 }
+.pop-div{
+  
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 115px;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-left: 50px;
+}
+.pop-div-content p{
+ font-weight: 600;
+}
+.pop-div-content button{
+    height: 35px;
+    width: 135px;
+    margin-right: 10px;
+    background-color: white;
+    border: none;
+    font-weight: 800;
+}
+.green{
+    color: #2ecc71;
+}
+.blue{
+    color: #3498db;
+}
