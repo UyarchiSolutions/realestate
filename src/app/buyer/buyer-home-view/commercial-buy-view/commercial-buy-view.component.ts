@@ -438,9 +438,11 @@ export class CommercialBuyViewComponent implements OnInit {
     }
     //park arr
     if (
-      v.target.value == 'Bike' ||
-      v.target.value == 'Car' ||
-      v.target.value == 'Both'
+      v.target.value == 'Public And Reserved' ||
+      v.target.value == 'Public' ||
+      v.target.value == 'None' || 
+      v.target.value == 'Reserved' 
+
     ) {
       let i = this.ParkArr.findIndex(
         (res: any) => res == v.target.value
@@ -578,7 +580,11 @@ export class CommercialBuyViewComponent implements OnInit {
     }
 
     //prop arr
-    if (v == 'Gated Community' || 'Individual House/Villa' || 'Apartment') {
+    if (
+      v == 'Office Space' ||  v == 'Show room' ||  v == 'Other business' || 
+      v == 'Co working' || v == 'Industrial shed' ||  v == 'Godown/Warehouse' || 
+      v == 'Shop' ||  v == 'Industrial/Building' ||  v == 'Restaurant/Cafe'
+    )  {
       let index = this.proptArr.findIndex((res: any) => {
         res == v;
       });
@@ -605,7 +611,13 @@ export class CommercialBuyViewComponent implements OnInit {
       // console.log(this.FurArr)
     }
     // park arr
-    if (v == 'Bike' || v == 'Car' || v == 'Both') {
+    if (
+      v == 'Public And Reserved' ||
+      v == 'Public' ||
+      v == 'None' || 
+      v == 'Reserved' 
+
+    )  {
       let index = this.ParkArr.findIndex((res: any) => {
         res == v;
       });
@@ -618,8 +630,8 @@ export class CommercialBuyViewComponent implements OnInit {
     }
     // amt arr
     if (
-      v.target.value == 'power backup' ||
-      v.target.value == 'lift' 
+      v == 'power backup' ||
+      v == 'lift' 
     )  {
       let index = this.ametArr.findIndex((res: any) => {
         res == v;
@@ -633,9 +645,9 @@ export class CommercialBuyViewComponent implements OnInit {
     }
     // build arr
     if (
-      v.target.value == 'Apartment Type' || v.target.value == 'Standalone Building' || 
-      v.target.value == 'Business park' ||  v.target.value == 'Independent shop' || 
-      v.target.value == 'Mall'
+      v == 'Apartment Type' || v == 'Standalone Building' || 
+      v == 'Business park' ||  v == 'Independent shop' || 
+      v == 'Mall'
     ) {
       let index = this.buildArr.findIndex((res: any) => {
         res == v;

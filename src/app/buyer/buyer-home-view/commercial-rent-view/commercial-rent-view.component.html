@@ -238,10 +238,11 @@
                                 </span>
                     </a>
                   
-                  <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Bike" [checked]="is_chckked('Bike',ParkArr)">Bike </li>
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Car" [checked]="is_chckked('Car',ParkArr)">Car</li>
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Both" [checked]="is_chckked('Both',ParkArr)">Both</li>
+                    <ul class="dropdown-menu">
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Public And Reserved" [checked]="is_chckked('Public And Reserved',ParkArr)">Public And Reserved </li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Public" [checked]="is_chckked('Public',ParkArr)">Public</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Reserved" [checked]="is_chckked('Reserved',ParkArr)">Reserved</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="None" [checked]="is_chckked('None',ParkArr)">None</li>
                                  
       
                       </ul>

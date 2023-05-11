@@ -1516,20 +1516,11 @@
                     Delete
             </td>
         </tr> -->
-        <tr>
-        <td>sadfs</td>
-        <td>sdfsdhjjjjjjjjjjjjjjjjjjjjjjjfb fb gfvgjhfvghfghvjvfgjhfvfgjhfjvbjghvjhv fgjhvfygtgggjhg</td>
+        <tr *ngFor="let v of nofi">
+        <td>{{v.createdAt| date : 'dd-MM-YYYY'}}</td>
+        <td><p *ngIf="v.type=='Schedule'">{{v.posts.BHKType}} house for {{v.posts.rentDetails}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p></td>
         <td>sdfsdfsdfsdf</td>
         </tr>
-        <tr>
-        <td>sadfs</td>
-        <td>sdfsdhjjjjjjjjjjjjjjjjjjjjjhvfygtgggjhg</td>
-        <td>sdfsdfsdfsdf</td>
-        </tr>
-
-
-
-
 
     </table>
    

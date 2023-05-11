@@ -97,11 +97,16 @@ export class RbHomeComponent implements OnInit {
   builtMax:any=10000;
 
   ngOnInit(): void {
-    this.Getbuyer();
-    this.Get_all_interest();
-    this.Get_all_saved();
-    this.FetchRecentSearch();
+  
+ 
     this.showRecentSer = this.service.findCookie()
+    if(this.showRecentSer){
+      this.Getbuyer();
+      this.Get_all_interest();
+      this.Get_all_saved();
+      this.FetchRecentSearch();
+      this.get_all_notification();
+    }
 
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
@@ -504,7 +509,7 @@ export class RbHomeComponent implements OnInit {
       floor:this.floordata
     };
   }
-
+  
   deleteFilter(v: any) {
     let index = this.SelectedFilters.findIndex((res:any)=>res==v);
 
@@ -1017,7 +1022,13 @@ export class RbHomeComponent implements OnInit {
   CommRent:any=[];
   CommBuy:any=[];
 
-
+  nofi:any=[];
+get_all_notification(){
+  this.buyerService.get_all_notification().subscribe((res:any)=>{
+    console.log(res,'notification');
+    this.nofi=res;
+  })
+}
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
       console.log(res,'all interest')

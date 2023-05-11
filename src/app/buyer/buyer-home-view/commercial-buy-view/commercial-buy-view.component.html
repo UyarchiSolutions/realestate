@@ -262,9 +262,10 @@
                     </a>
                   
                   <ul class="dropdown-menu">
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Bike" [checked]="is_chckked('Bike',ParkArr)">Bike </li>
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Car" [checked]="is_chckked('Car',ParkArr)">Car</li>
-                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Both" [checked]="is_chckked('Both',ParkArr)">Both</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Public And Reserved" [checked]="is_chckked('Public And Reserved',ParkArr)">Public And Reserved </li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Public" [checked]="is_chckked('Public',ParkArr)">Public</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="Reserved" [checked]="is_chckked('Reserved',ParkArr)">Reserved</li>
+                        <li><input type="checkbox" (change)="updateFilter($event,1)"  value="None" [checked]="is_chckked('None',ParkArr)">None</li>
                                  
       
                       </ul>
@@ -1603,13 +1604,16 @@
         <label>Parking :</label>
         <div class="option-selects">
             <div>
-                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Car" >Car
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Public And Reserved" >Public And Reserved
             </div>
             <div>
-                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Bike" >Bike
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Public" >Public
             </div>
             <div>
-                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Both" >Both
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="Reserved" >Reserved
+            </div>
+            <div>
+                <input type="checkbox" (change)="update_pop_filter($event,parkingPArr)" value="None" >None
             </div>
         
         </div>

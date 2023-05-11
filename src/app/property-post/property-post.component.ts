@@ -97,12 +97,14 @@ export class PropertyPostComponent implements OnInit {
     Date1:new FormControl(),
     time1:new FormControl()
    } )
-  closeAll(date:any,time:any,id:any){
+  closeAll(date:any,time:any,id:any,postId:any,buyerId:any){
     console.log(this.myform.value)
     var data={
       type:'Shcedule',
       schedule:date.value,
       scheduletime:time.value,
+      postId:postId,
+      buyerId:buyerId
     }
     this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
       console.log(res)

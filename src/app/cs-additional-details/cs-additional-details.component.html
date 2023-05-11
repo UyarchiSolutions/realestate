@@ -38,7 +38,7 @@
         <p *ngIf="adform.get('contactname').invalid && submited" class="redtext">Contact Name is Required!</p>
         <div>
             <label>Contact Number 1 :</label>
-    <input type="text" placeholder="Contact Number" formControlName="cnumber">
+    <input type="number" placeholder="Contact Number" formControlName="cnumber">
         </div>
         <p *ngIf="adform.get('cnumber').errors?.required && submited" class="redtext">Contact Number is Required!
         </p>
@@ -46,7 +46,7 @@
 
         <div>
             <label>Contact Number 2 :</label>
-    <input type="text" placeholder="Contact Number 2" formControlName="c2number">
+    <input type="number" placeholder="Contact Number 2" formControlName="c2number">
         </div>
         <p *ngIf="adform.get('c2number').errors?.required && submited" class="redtext">Contact Number 2 is Required!</p>
         <p *ngIf="adform.get('c2number').errors?.pattern  && submited " class="redtext">Enter a valid Number!</p>

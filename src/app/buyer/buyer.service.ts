@@ -84,5 +84,8 @@ export class BuyerService {
   get_all_streams(){
     return this.http.get(this.base_url+'/v1/requestStream/getApprovedStream/For/Buyers')
   }
+  get_all_notification(){
+    return this.http.get(this.base_url+'/v1/BuyerSeller/getNotificationFor/Buyers',{ headers: { auth: Cookie.get('buyer') }})
+  }
 }
 
