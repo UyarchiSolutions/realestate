@@ -244,7 +244,8 @@ export class ResidentialBuyViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       ageOfBuilding:this.ageArr,
-      floor:this.floordata
+      floor:this.floordata,
+      finish:true,
     };
     //consolele.log(Data);
     this.service

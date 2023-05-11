@@ -214,9 +214,12 @@ const routes: Routes = [
     ],
   },
   // seller
-  { path: 'interest-post', component: PropertyPostComponent },
-  { path: 'owner', component: OwnerComponent },
-  {path:'my-plans',children:[
+
+  { path: 'owner', children:[
+    {path:'',component: OwnerComponent},
+    {path: 'interest-post', component: PropertyPostComponent  }
+  ]  },
+   {path:'my-plans',children:[
     {path:'',component: MyPlansComponent},
     {path:'buy-plans',component: BuyPlanComponent}
     ]},

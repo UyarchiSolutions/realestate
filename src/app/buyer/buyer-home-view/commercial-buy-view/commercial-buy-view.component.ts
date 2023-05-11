@@ -257,7 +257,8 @@ export class CommercialBuyViewComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
-      floor:this.floordata
+      floor:this.floordata,
+      finish:true,
     };
     console.log(Data);
     this.service

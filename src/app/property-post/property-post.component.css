@@ -119,14 +119,26 @@ label{
 .top-section .ad img{
     height: 100%;
 }
-.property-tab{
+.property-tab {
 display: flex;
 justify-content: space-between;
 width: 100%;
 padding: 10px 0;
-align-items: center;
 background-color: var(--brown);
+align-items: baseline;
+flex-direction: column;
+}
 
+.p-tab-text{
+    color: white;
+ 
+    padding-left: 30px;
+    font-size: 13px;
+}
+.content-1{
+    display: flex;
+    display: flex;
+    align-items: center;
 }
 .property-tab h5{
     width:100%;
@@ -135,8 +147,9 @@ background-color: var(--brown);
     color:var(--sandal);
     background-color: var(--brown);
     cursor: pointer;
-    font-family: var(--ralewaybold);
+    /* font-family: var(--ralewaybold); */
     font-weight: 700;
+    margin-left: 5px;
 }
 .notification{
 background-color: var(--brown);
@@ -421,4 +434,66 @@ header{
     padding: 2px 12px;
     border-radius: 3px;
 }
+.property-tab-stream{
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--brown);
+    height: 18%;
 
+}
+.stream-content-1{
+    width:70%;
+}
+.stream-content-2{
+    width:30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.stream-content-2 label{
+    color: white;
+}
+.stream-content-2 input{
+    background-color: none;
+    border-color: white;
+    width: fit-content !important;
+}
+.stream-content-2 svg{
+    margin-right: 20px;
+    height: 55px;
+}
+.top-content{
+    height: 50%;
+}
+.top-content svg{
+    margin-left: 5px;
+    margin-right: 10px;
+    height: 20px;
+}
+.top-content h5{
+    color: white;
+}
+.bottom-content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.stream-name{
+    width: 35%;
+    margin-left: 33px;
+}
+.stream-name svg{
+    margin-right: 10px;
+}
+.stream-details{
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    justify-content: space-around;
+}
+.white p{
+    color: white;
+    font-size: 14px;
+}
