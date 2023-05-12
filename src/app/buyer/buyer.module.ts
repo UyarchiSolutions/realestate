@@ -30,6 +30,11 @@ import { CommercialRentDetailviewComponent } from './buyer-search-view/commercia
 import { CommercialBuyDetailviewComponent } from './buyer-search-view/commercial-buy-detailview/commercial-buy-detailview.component';
 import { BuyerStreamsHomeComponent } from './buyer-streams-home/buyer-streams-home.component';
 
+import { BuyerInterestedComponent } from './buyer-interested/buyer-interested.component';
+import { BuyerTopSectionComponent } from './buyer-top-section/buyer-top-section.component';
+import { BuyerSavedComponent } from './buyer-saved/buyer-saved.component';
+import { BuyerAlertPopComponent } from './buyer-alert-pop/buyer-alert-pop.component';
+
 
 
 @NgModule({
@@ -63,6 +68,10 @@ import { BuyerStreamsHomeComponent } from './buyer-streams-home/buyer-streams-ho
     ResidentialBuyDetailviewComponent,
     CommercialBuyDetailviewComponent,
     BuyerStreamsHomeComponent,
+    BuyerInterestedComponent,
+    BuyerTopSectionComponent,
+    BuyerSavedComponent,
+    BuyerAlertPopComponent,
  
 
   ],

@@ -1,0 +1,139 @@
+.top-section,.main-section{
+    width: 100%;
+    display: flex;
+}
+.top-section{
+    max-height: 180px !important;
+    overflow: hidden !important;
+
+}
+.top-section .main{
+    
+    align-items: center;
+}
+.top-section .ad{
+    background-color: yellow;
+}
+.top-section .ad img{
+    height: 100%;
+}
+.search-field{
+    box-shadow: 0px -1px 4px #cfb9978b;
+display: flex;
+justify-content:space-between;
+border: solid rgba(128, 128, 128, 0.523) 1px;
+}
+.search-field .location,.search-field input{
+    background-color: white !important;
+}
+.nearby-locations{
+    display: flex;
+    align-items: center;
+    box-shadow: 0px -1px 4px #cfb9978b;
+    padding: 5px 0;
+    /* visibility: hidden; */
+}
+.nearby-locations label{
+    width: 20%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px !important;
+}
+.nearby-locations span{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+background-color: #473B32;
+color: var(--sandal);
+font-size: 12px;
+padding: 5px 10px;
+border-radius: 5px;
+margin:0 10px;
+}
+.nearby-locations span p{
+    margin-left: 5px;
+}
+.main{
+    width: 70%;
+    background-color:var(--sandal);
+
+    margin: 10px 0px;
+
+}
+.input{
+    width: 80%;
+    padding: 10px 20px;
+    background: #FEFFEF;
+    outline: none;
+    border: none;
+
+}
+.search{
+    width: 20%;
+    padding: 10px 20px;
+    display: flex;
+    background-color: #473B32;
+    align-items: center;
+    color: #FEFFEF;
+    cursor: pointer;
+
+}
+.location-name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 76px;
+  }
+.searched{
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    }
+    .searched span{
+      display: flex;
+      padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+      background-color: #B99B6B;
+    color: white;
+      min-width: fit-content;
+      align-items: center;
+      margin-left: 5px;
+      height: fit-content;
+    
+    }
+    .searched svg{
+      margin-left: 5px;
+      cursor: pointer;
+    }
+.search span{
+    display: flex;
+    align-items: center;
+}
+.search svg{
+    margin-right: 10px;
+}
+.top-section,.main-section{
+    width: 100%;
+    display: flex;
+}
+.top-section{
+    max-height: 180px !important;
+    overflow: hidden !important;
+
+}
+.top-section .main{
+    
+    align-items: center;
+}
+.top-section .ad{
+    background-color: yellow;
+}
+.top-section .ad img{
+    height: 100%;
+}
+.ad{
+    width: 15%;
+   height: 717px;
+    margin: 10px;
+}

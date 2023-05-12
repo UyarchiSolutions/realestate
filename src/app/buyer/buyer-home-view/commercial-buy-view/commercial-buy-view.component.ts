@@ -97,6 +97,7 @@ export class CommercialBuyViewComponent implements OnInit {
   builtMin:any=0;
   builtMax:any=100000;
   showRecentSer:any;
+  sendTop:any;
   ngOnInit(): void {
     this.Getbuyer();
     this.Get_all_interest();
@@ -109,6 +110,7 @@ export class CommercialBuyViewComponent implements OnInit {
       //console.log(params.params.formatAdd)
       if (params.params.formatAdd != null) {
         console.log(params);
+     
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
         this.propertType =
@@ -232,6 +234,13 @@ export class CommercialBuyViewComponent implements OnInit {
       }
     });
     this.getAlert();
+    this.sendTop={
+      baseRType:'Commercial',
+      type:'Buy',
+      add:this.formatAdd,
+      area:this.areaArr
+    }
+  
   }
   
   showInput = true;
@@ -292,7 +301,6 @@ export class CommercialBuyViewComponent implements OnInit {
   onChange(e: any) {
     this.type = e.target.value;
   }
-
 
 
 

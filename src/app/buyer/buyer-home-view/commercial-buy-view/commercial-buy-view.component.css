@@ -42,24 +42,6 @@ border: solid rgba(128, 128, 128, 0.523) 1px;
 
 }
 
-
-.search{
-    width: 20%;
-    padding: 10px 20px;
-    display: flex;
-    background-color: #473B32;
-    align-items: center;
-    color: #FEFFEF;
-    cursor: pointer;
-
-}
-.search span{
-    display: flex;
-    align-items: center;
-}
-.search svg{
-    margin-right: 10px;
-}
 .nearby-locations{
     display: flex;
     align-items: center;

@@ -1,0 +1,73 @@
+<div class="top-section">
+    <div class="ad">
+        <img src="../../assets/images/636573831922c22db48146cf52a4596d--poster-mockup-templates-free 1.png" width="100%">
+    </div>
+<div class="main" style="background-color: white;" [formGroup]="form">
+
+    <div class="search-type">
+        <div class="search-type-select" (click)="viewtop()">
+            <p>{{Data.baseRType}}>{{Data.type}}</p>
+            <svg width="7" height="15" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.25 1.5L8.75 9L1.25 16.5" stroke="#616161" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+        </div>
+        <div class="rc-select">
+<div class="residential" *ngIf="show_top">
+    <label>Residential :</label>
+    <div>
+        <div>
+        <input type="radio" name="type" (change)="onChange($event)"  [checked]="Data.baseRType =='Residential' && Data.type=='Buy'" value="Lease" ><p>Buy</p></div>
+        <div>
+        <input type="radio"  name="type" [checked]="Data.baseRType =='Residential' && Data.type=='Rent'" value="Rent" (change)="onChange($event)"><p>Rent</p></div>
+    </div>
+</div>
+<div class="commercial" *ngIf="show_top">
+    <label>Commercial :</label>
+    <div>
+        <div>
+        <input type="radio" name="type" [checked]="Data.baseRType =='Commercial' && Data.type=='Buy'"><p>Buy</p></div>
+        <div>
+            <input type="radio" name="type" [checked]="Data.baseRType =='Commercial' && Data.type=='Rent'"><p>Rent</p></div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <div class="search-field">
+        <div class="searched" *ngIf="areaArr">
+            <span *ngFor="let item of areaArr;let i = index" ><p class="location-name">{{item}}</p>
+               <svg (click)="removeArea(i)" width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.49952C11.5539 1.94643 11.5526 1.051 10.9995 0.499521C10.4464 -0.0519549 9.551 -0.0506468 8.99952 0.502445L6.00732 3.50341L3.00196 0.498045C2.44967 -0.0542398 1.55424 -0.0542402 1.00196 0.498045C0.44967 1.05033 0.449668 1.94576 1.00195 2.49805L4.01024 5.50633L1.01122 8.51414C0.459741 9.06723 0.46105 9.96266 1.01414 10.5141C1.56723 11.0656 2.46266 11.0643 3.01414 10.5112L6.01024 7.50634L9.00196 10.498C9.55424 11.0503 10.4497 11.0503 11.002 10.498C11.5542 9.94576 11.5542 9.05033 11.002 8.49805L8.00732 5.50341L11.0024 2.49952Z" fill="white"/>
+              </svg>
+            
+          </span>
+              
+        </div>
+   
+        <input class="input"  formControlName="address" *ngIf="showInput" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark" [value]="formatAdd"  (onAddressChange)="handleAddressChange($event,inputPlace)" [options]="options" #inputPlace >
+    <div class="search" (click)="submitAddress()">
+        <span ><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25 25L18.071 18.071M18.071 18.071C19.9463 16.1956 20.9999 13.6521 20.9999 10.9999C20.9999 8.34779 19.9463 5.80427 18.071 3.92891C16.1956 2.05356 13.6521 1 10.9999 1C8.34779 1 5.80427 2.05356 3.92891 3.92891C2.05356 5.80427 1 8.34779 1 10.9999C1 13.6521 2.05356 16.1956 3.92891 18.071C5.80427 19.9463 8.34779 20.9999 10.9999 20.9999C13.6521 20.9999 16.1956 19.9463 18.071 18.071Z" stroke="#FEFFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </span><p>search</p>
+    </div>
+</div>
+
+<div class="nearby-locations" *ngIf="areaArr">
+    <label>Nearby Localities :</label>
+    <div class="locality">
+    
+        <span>
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41562 2.3411C9.41448 1.56006 8.78039 0.927816 7.99934 0.928957C7.2183 0.9301 6.58606 1.56419 6.5872 2.34524L6.59339 6.58304H2.34317C1.56212 6.58304 0.928955 7.21621 0.928955 7.99726C0.928955 8.77831 1.56212 9.41147 2.34317 9.41147H6.59753L6.60374 13.6589C6.60488 14.44 7.23897 15.0722 8.02002 15.0711C8.80107 15.0699 9.43331 14.4359 9.43216 13.6548L9.42596 9.41147H13.6569C14.4379 9.41147 15.0711 8.77831 15.0711 7.99726C15.0711 7.21621 14.4379 6.58304 13.6569 6.58304H9.42183L9.41562 2.3411Z" fill="white"/>
+                </svg>
+<p>Periyamet</p>                
+        </span>
+    </div>
+</div>
+</div>
+<div class="ad">
+    <img src="../../assets/images/download 1.png" width="100%">
+</div>
+</div>

@@ -91,6 +91,8 @@ import { SubHostNewPasswordComponent } from './seller/sub-host/sub-host-new-pass
 import { SubHostPropertyViewComponent } from './seller/sub-host/sub-host-property-view/sub-host-property-view.component';
 import { BuyerStreamsHomeComponent } from './buyer/buyer-streams-home/buyer-streams-home.component';
 import { NotificationComponent } from './seller/notification/notification.component';
+import { BuyerInterestedComponent } from './buyer/buyer-interested/buyer-interested.component';
+import { BuyerAlertPopComponent } from './buyer/buyer-alert-pop/buyer-alert-pop.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -105,6 +107,8 @@ const routes: Routes = [
   { path: 'changepassword-buyer', component: ChangeBuyerComponent },
 
   {path:'buyer-streams',component:BuyerStreamsHomeComponent},
+
+  {path:'buyer-interested',component:BuyerAlertPopComponent},
 
   // seller
   { path: 'sellerLogin', component: SellerLoginComponent },

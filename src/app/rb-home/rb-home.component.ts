@@ -1035,18 +1035,19 @@ get_all_notification(){
       // console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
       this.AllInterested = res;
       this.ResiRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
+       return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential' &&( v.userStatus.status == 'Intrested' ||v.userStatus.status == 'Shcedule' );
       })
       this.ResiBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential';
+       return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential'  &&( v.userStatus.status == 'Intrested' ||v.userStatus.status == 'Shcedule' );
       })
       this.CommRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial';
+       return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial'  &&( v.userStatus.status == 'Intrested' ||v.userStatus.status == 'Shcedule' );
       })
       this.CommBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
+       return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial'  &&( v.userStatus.status == 'Intrested' ||v.userStatus.status == 'Shcedule' );
       })
-
+      console.log('resdiental rent',this.ResiRent,'resi sale',this.ResiBuy)
+      console.log('com rent',this.CommRent,'com buy',this.CommBuy)
     //  console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
     
     });
