@@ -162,7 +162,7 @@ import { NotificationComponent } from './notification/notification.component';
     GooglePlaceModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDoYhbYhtl9HpilAZSy8F_JHmzvwVDoeHI',
+      apiKey: 'AIzaSyC4f71KgUy-ocpdfmadcNPy-wrVks4YSdY',
     }),
   ],
 })

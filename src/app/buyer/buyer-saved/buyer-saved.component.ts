@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyerService } from '../buyer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'buyer-saved',
@@ -7,7 +8,7 @@ import { BuyerService } from '../buyer.service';
   styleUrls: ['./buyer-saved.component.css']
 })
 export class BuyerSavedComponent implements OnInit {
-  constructor(private buyerService:BuyerService) { } 
+  constructor(private buyerService:BuyerService,private router:Router) { } 
   ngOnInit(): void {
   this.Get_all_saved()
   }
@@ -70,4 +71,38 @@ export class BuyerSavedComponent implements OnInit {
     });
   }
   GetDataBYId(id: any, i: any) {}
+  viewResiBuy(id:any){
+    let data={
+      id:id,
+      interested:'true',
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/buyer-residential-buy-search-view?'+query);
+  }
+  viewResiRent(id:any){
+    let data={
+      id:id,
+      interested:'true',
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/buyer-residential-rent-search-view?'+query);
+  }
+  
+  viewCommBuy(id:any){
+    let data={
+      id:id,
+      interested:'true',
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/buyer-commercial-buy-search-view?'+query);
+  }
+  
+  viewCommRent(id:any){
+    let data={
+      id:id,
+      interested:'true',
+    }
+    let query = new URLSearchParams(data).toString()
+    this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);
+  }
 }

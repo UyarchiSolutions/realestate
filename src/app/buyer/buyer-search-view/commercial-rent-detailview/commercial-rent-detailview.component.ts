@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { BuyerService } from '../../buyer.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-commercial-rent-detailview',
@@ -14,7 +15,7 @@ export class CommercialRentDetailviewComponent implements OnInit {
 
     allFilter: any;
     constructor(private arouter:ActivatedRoute, private service: PostPropertyService, private router: Router
-      ,private buyerService:BuyerService,private spinner: NgxSpinnerService){
+      ,private buyerService:BuyerService,private spinner: NgxSpinnerService,private location_:Location){
   
     }
     id:any;
@@ -43,7 +44,7 @@ export class CommercialRentDetailviewComponent implements OnInit {
           transportIcon='./assets/images/transport.png';
           atmIcon='./assets/images/atm.png';
           shopIcon='./assets/images/shop.png';
-        
+          checkInterest:any;
   
     ngOnInit(): void {
       
@@ -51,6 +52,7 @@ export class CommercialRentDetailviewComponent implements OnInit {
         console.log(params);
         this.id = params['id'];
         this.index=params['index'];
+        this.checkInterest=params['interested'];
         //to return
         this.formatAdd=params['formatAdd'];
         this.type=params['type'];
@@ -163,23 +165,24 @@ export class CommercialRentDetailviewComponent implements OnInit {
       })
     }
     backToSearch(){
-      let sendData = {
-        formatAdd: this.formatAdd,
-        type: this.type,
-        propertType: this.propertType,
-        BHKType: this.BHKType,
-        rentDetails: this.rentDetails,
-        furnishing: this.furnishing,
-        parking: this.parking,
-        rentprefer: this.rentprefer,
-        propAge: this.propAge,
-        area:this.areaArr,
-        buildingType:this.buildArr,
-        amenities:this.amtArr
-      };
-      console.log(sendData,'data back to home')
-      const query = new URLSearchParams(sendData).toString();
-      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+      this.location_.back();
+      // let sendData = {
+      //   formatAdd: this.formatAdd,
+      //   type: this.type,
+      //   propertType: this.propertType,
+      //   BHKType: this.BHKType,
+      //   rentDetails: this.rentDetails,
+      //   furnishing: this.furnishing,
+      //   parking: this.parking,
+      //   rentprefer: this.rentprefer,
+      //   propAge: this.propAge,
+      //   area:this.areaArr,
+      //   buildingType:this.buildArr,
+      //   amenities:this.amtArr
+      // };
+      // console.log(sendData,'data back to home')
+      // const query = new URLSearchParams(sendData).toString();
+      // this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
     }
     
     interestV:any;

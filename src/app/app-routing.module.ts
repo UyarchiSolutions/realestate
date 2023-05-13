@@ -93,6 +93,7 @@ import { BuyerStreamsHomeComponent } from './buyer/buyer-streams-home/buyer-stre
 import { NotificationComponent } from './seller/notification/notification.component';
 import { BuyerInterestedComponent } from './buyer/buyer-interested/buyer-interested.component';
 import { BuyerAlertPopComponent } from './buyer/buyer-alert-pop/buyer-alert-pop.component';
+import { BuyerNotificationComponent } from './buyer/buyer-notification/buyer-notification.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -108,7 +109,7 @@ const routes: Routes = [
 
   {path:'buyer-streams',component:BuyerStreamsHomeComponent},
 
-  {path:'buyer-interested',component:BuyerAlertPopComponent},
+  {path:'buyer-interested',component:BuyerNotificationComponent},
 
   // seller
   { path: 'sellerLogin', component: SellerLoginComponent },

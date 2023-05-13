@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { BuyerService } from '../../buyer.service';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-residential-buy-detailview',
@@ -13,7 +14,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
 
     allFilter: any;
     constructor(private arouter:ActivatedRoute, private service: PostPropertyService, private router: Router
-      ,private buyerService:BuyerService,private spinner: NgxSpinnerService){
+      ,private buyerService:BuyerService,private spinner: NgxSpinnerService,private location_:Location){
   
     }
     id:any;
@@ -23,7 +24,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
     range=20;
     Alldata:any;
     formatAdd:any;
-          type: any;
+   type: any;
           propertType: any;
           BHKType: any;
           rentDetails: any;
@@ -40,13 +41,14 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           transportIcon='./assets/images/transport.png';
           atmIcon='./assets/images/atm.png';
           shopIcon='./assets/images/shop.png';
-        
+        checkInterest:any;
   
     ngOnInit(): void {
       
       this.arouter.queryParams.subscribe((params) => {
         console.log(params);
         this.id = params['id'];
+        this.checkInterest=params['interested'];
         this.index=params['index'];
         //to return
         this.formatAdd=params['formatAdd'];
@@ -158,21 +160,30 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       })
     }
     backToSearch(){
-      let sendData = {
-        formatAdd: this.formatAdd,
-        type: this.type,
-        propertType: this.propertType,
-        BHKType: this.BHKType,
-        rentDetails: this.rentDetails,
-        furnishing: this.furnishing,
-        parking: this.parking,
-        rentprefer: this.rentprefer,
-        propAge: this.propAge,
-        area:this.areaArr
-      };
-      console.log(sendData,'data back to home')
-      const query = new URLSearchParams(sendData).toString();
-      this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+      this.location_.back();
+    //   if(this.checkInterest== 'true'){
+    //     let senddata={
+    //       show:'interest'
+    //     }
+    //     const query = new URLSearchParams(senddata).toString();
+    //     this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+    // }else{
+    //   let sendData = {
+    //     formatAdd: this.formatAdd,
+    //     type: this.type,
+    //     propertType: this.propertType,
+    //     BHKType: this.BHKType,
+    //     rentDetails: this.rentDetails,
+    //     furnishing: this.furnishing,
+    //     parking: this.parking,
+    //     rentprefer: this.rentprefer,
+    //     propAge: this.propAge,
+    //     area:this.areaArr
+    //   };
+    //   console.log(sendData,'data back to home')
+    //   const query = new URLSearchParams(sendData).toString();
+    //   this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+    // }
     }
     
     interestV:any;

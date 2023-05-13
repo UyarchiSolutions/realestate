@@ -992,30 +992,43 @@ export class CommercialRentViewComponent implements OnInit {
   interestShow = false;
   saveShow = false;
   alertShow = false;
+  nofiShow=false;
   showTab(tab: any) {
+    console.log('tab choose')
     if (tab == 'post') {
       this.postshow = true;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'interest') {
       this.postshow = false;
       this.interestShow = true;
       this.saveShow = false;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'save') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
+      this.nofiShow=false;
     }
     if (tab == 'alert') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = true;
+      this.nofiShow=false;
+    }
+    if (tab == 'nofi') {
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow=true;
     }
   }
   RBtab = true;

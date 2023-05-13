@@ -40,11 +40,12 @@ justify-content: space-between;
 }
 .popup{
     height: 85vh;
-    width: 68%;
+    width: 80%;
 background-color:var(--sandal);
 padding:20px 40px;
 overflow-y: scroll;
 position: relative;
+margin-right: 17%;
 }
 .popup .breadcrumbs{
     
@@ -70,9 +71,10 @@ position: relative;
     display: none;
   }
 .popup .container{
-    width: 90%;
+    width: 95%;
     margin: auto;
     margin-top: 20px;
+    max-width: 90% !important;
 }
 .popup .container div{
     display: flex;
@@ -255,3 +257,33 @@ margin:0 10px;
 .property-select-type input{
     margin: 0 10px;
 }
+.searched{
+
+
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    }
+    .searched span{
+      display: flex;
+      padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+      background-color: #B99B6B;
+    color: white;
+      min-width: fit-content;
+      align-items: center;
+      margin-left: 5px;
+      height: fit-content;
+    
+    }
+    .searched svg{
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    .location-name{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 76px;
+      }

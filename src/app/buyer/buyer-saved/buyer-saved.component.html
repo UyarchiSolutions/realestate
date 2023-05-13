@@ -51,7 +51,7 @@
                                         </th>
             </tr>
     
-            <tr *ngFor="let v of ResiBuyS;let i =index" (click)="GetDataBYId(v._id,i)" >
+            <tr *ngFor="let v of ResiBuyS;let i =index" (click)="viewResiBuy(v._id)" >
                 <td>{{v.propertType}}</td>
                 <td>{{v.area}}</td>
                 <td>{{v.BHKType}}</td>
@@ -123,7 +123,7 @@
                                         </th>
             </tr>
     
-            <tr *ngFor="let v of ResiRentS;let i =index" (click)="GetDataBYId(v._id,i)" >
+            <tr *ngFor="let v of ResiRentS;let i =index" (click)="viewResiRent(v._id)" >
                 <td>{{v.propertType}}</td>
                 <td>{{v.area}}</td>
                 <td>{{v.BHKType}}</td>
@@ -195,7 +195,7 @@
                                         </th>
             </tr>
     
-            <tr *ngFor="let v of CommBuyS;let i =index" (click)="GetDataBYId(v._id,i)" >
+            <tr *ngFor="let v of CommBuyS;let i =index" (click)="viewCommBuy(v._id)" >
                 <td>{{v.propertType}}</td>
                 <td>{{v.area}}</td>
                 <td>{{v.buildingType}}</td>
@@ -266,7 +266,7 @@
                                         </th>
             </tr>
     
-            <tr *ngFor="let v of CommRentS;let i =index" (click)="GetDataBYId(v._id,i)" >
+            <tr *ngFor="let v of CommRentS;let i =index" (click)="viewCommRent(v._id)" >
                 <td>{{v.propertType}}</td>
                 <td>{{v.area}}</td>
                 <td>{{v.buildingType}}</td>

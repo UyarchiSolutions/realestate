@@ -45,36 +45,8 @@ export class BuyerInterestedComponent implements OnInit {
       this.CRtab = true;
     }
   }
-  postshow = true;
 
-  saveShow = false;
-  alertShow = false;
-  showTab(tab: any) {
-    if (tab == 'post') {
-      this.postshow = true;
-      this.interestShow = false;
-      this.saveShow = false;
-      this.alertShow = false;
-    }
-    if (tab == 'interest') {
-      this.postshow = false;
-      this.interestShow = true;
-      this.saveShow = false;
-      this.alertShow = false;
-    }
-    if (tab == 'save') {
-      this.postshow = false;
-      this.interestShow = false;
-      this.saveShow = true;
-      this.alertShow = false;
-    }
-    if (tab == 'alert') {
-      this.postshow = false;
-      this.interestShow = false;
-      this.saveShow = false;
-      this.alertShow = true;
-    }
-  }
+
   AllInterested: any;
   ResiRent:any=[];
   ResiBuy:any=[];
@@ -101,12 +73,41 @@ export class BuyerInterestedComponent implements OnInit {
     });
   
   }
-  GetDataBYId(id: any, i: any) {
-   
-    
-        const query = new URLSearchParams().toString();
-        this.router.navigateByUrl('/buyer-commercial-buy-search-view?' + query );
-    
-    } 
 
-}
+    viewResiBuy(id:any){
+      let data={
+        id:id,
+        interested:'true',
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-residential-buy-search-view?'+query);
+    }
+    viewResiRent(id:any){
+      let data={
+        id:id,
+        interested:'true',
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-residential-rent-search-view?'+query);
+    }
+    
+    viewCommBuy(id:any){
+      let data={
+        id:id,
+        interested:'true',
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-commercial-buy-search-view?'+query);
+    }
+    
+    viewCommRent(id:any){
+      let data={
+        id:id,
+        interested:'true',
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);
+    }
+    
+
+  }
