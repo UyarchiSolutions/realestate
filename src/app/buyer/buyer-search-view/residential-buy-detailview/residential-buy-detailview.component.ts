@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { BuyerService } from '../../buyer.service';
-import {Location} from '@angular/common'
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-residential-buy-detailview',

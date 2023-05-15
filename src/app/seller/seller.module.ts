@@ -73,6 +73,7 @@ import { SubHostForgotOtpComponent } from './sub-host/sub-host-forgot-otp/sub-ho
 import { SubHostNewPasswordComponent } from './sub-host/sub-host-new-password/sub-host-new-password.component';
 import { SubHostPropertyViewComponent } from './sub-host/sub-host-property-view/sub-host-property-view.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SellerFooterComponent } from './seller-footer/seller-footer.component';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import { NotificationComponent } from './notification/notification.component';
     SubHostForgotMobileComponent,
     SubHostForgotOtpComponent,
     SubHostNewPasswordComponent,
-    SubHostPropertyViewComponent
+    SubHostPropertyViewComponent,
+    SellerFooterComponent
 
     
   ],

@@ -94,6 +94,8 @@ import { NotificationComponent } from './seller/notification/notification.compon
 import { BuyerInterestedComponent } from './buyer/buyer-interested/buyer-interested.component';
 import { BuyerAlertPopComponent } from './buyer/buyer-alert-pop/buyer-alert-pop.component';
 import { BuyerNotificationComponent } from './buyer/buyer-notification/buyer-notification.component';
+import { SellerFooterComponent } from './seller/seller-footer/seller-footer.component';
+import { BuyerFooterComponent } from './buyer/buyer-footer/buyer-footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -121,6 +123,7 @@ const routes: Routes = [
   { path: 'updatePassword-seller', component: UpdatepasswordsellerComponent },
   { path: 'changepassword-seller', component: ChangeSellerComponent },
   { path: 'seller-notification', component: NotificationComponent },
+  { path: 'seller-footer', component: SellerFooterComponent },
 
 
 

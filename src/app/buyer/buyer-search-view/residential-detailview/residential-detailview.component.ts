@@ -1,9 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { BuyerService } from '../../buyer.service';
 import { AgmMarker } from '@agm/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-residential-detailview',
@@ -13,7 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ResidentialDetailviewComponent implements OnInit {
   allFilter: any;
   constructor(private arouter:ActivatedRoute, private service: PostPropertyService, private router: Router
-    ,private buyerService:BuyerService,private spinner: NgxSpinnerService){
+    ,private buyerService:BuyerService,private spinner: NgxSpinnerService,private location_:Location){
 
   }
   id:any;
@@ -40,13 +42,16 @@ export class ResidentialDetailviewComponent implements OnInit {
         transportIcon='./assets/images/transport.png';
         atmIcon='./assets/images/atm.png';
         shopIcon='./assets/images/shop.png';
-      
+        checkInterest:any;
+        checkSchedule:any;
 
   ngOnInit(): void {
     
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
       this.id = params['id'];
+      this.checkInterest=params['interested'];
+   
       this.index=params['index'];
       //to return
       this.formatAdd=params['formatAdd'];
@@ -76,6 +81,7 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.imageLength=this.data.image.length
       this.interestV=res.intrest;
       this.saveV=res.savedStatus;
+      this.showRes=!res.show;
       this.lat=this.data.lat;
       this.long=this.data.long;
       console.log(this.lat,'lat,',this.long,'long',this.imageLength,'')
@@ -159,21 +165,22 @@ export class ResidentialDetailviewComponent implements OnInit {
     })
   }
   backToSearch(){
-    let sendData = {
-      formatAdd: this.formatAdd,
-      type: this.type,
-      propertType: this.propertType,
-      BHKType: this.BHKType,
-      rentDetails: this.rentDetails,
-      furnishing: this.furnishing,
-      parking: this.parking,
-      rentprefer: this.rentprefer,
-      propAge: this.propAge,
-      area:this.areaArr
-    };
-    console.log(sendData,'data back to home')
-    const query = new URLSearchParams(sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+    this.location_.back();
+    // let sendData = {
+    //   formatAdd: this.formatAdd,
+    //   type: this.type,
+    //   propertType: this.propertType,
+    //   BHKType: this.BHKType,
+    //   rentDetails: this.rentDetails,
+    //   furnishing: this.furnishing,
+    //   parking: this.parking,
+    //   rentprefer: this.rentprefer,
+    //   propAge: this.propAge,
+    //   area:this.areaArr
+    // };
+    // console.log(sendData,'data back to home')
+    // const query = new URLSearchParams(sendData).toString();
+    // this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
   }
   
   interestV:any;
@@ -192,6 +199,7 @@ export class ResidentialDetailviewComponent implements OnInit {
 
   }
   saveV:any;
+  place='hospital';
   save(id:any){
 
     this.service.save(id).subscribe((res:any)=>{
@@ -202,11 +210,15 @@ export class ResidentialDetailviewComponent implements OnInit {
         this.saveV=res.savedStatus;
       })
     })
-   
-    
-  }
- 
+   }
+   showRes=true;
+   sendResponse(res:any){
+    this.buyerService.send_schedule_res(this.id,res).subscribe((res:any)=>{
+      console.log(res)
+      this.showRes=false
+    })
+   }
   
-  place='hospital';
+
 
 }

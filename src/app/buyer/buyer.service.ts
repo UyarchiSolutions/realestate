@@ -79,13 +79,17 @@ export class BuyerService {
     return this.http.put(this.base_url+`/v1/propertyAlert/Update/${id}`,data,{headers:{auth:Cookie.get('buyer')}})
   }
   Get_buyer_account(){
-    return this.http.get('https://uyarchicrm.click/v1/BuyerSeller/'+'user',{ headers: { auth: Cookie.get('buyer') }} )
+    return this.http.get(this.base_url+'/v1/BuyerSeller/'+'user',{ headers: { auth: Cookie.get('buyer') }} )
   }
   get_all_streams(){
     return this.http.get(this.base_url+'/v1/requestStream/getApprovedStream/For/Buyers')
   }
   get_all_notification(){
     return this.http.get(this.base_url+'/v1/BuyerSeller/getNotificationFor/Buyers',{ headers: { auth: Cookie.get('buyer') }})
+  }
+  send_schedule_res(id:any,status:any){
+    const data = {postId:id,status:status}
+    return this.http.post(this.base_url+'/v1/BuyerSeller/Reshedule/BuyerReshedule',data,{ headers: { auth: Cookie.get('buyer') }})
   }
 }
 

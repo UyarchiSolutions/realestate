@@ -45,8 +45,9 @@
         </tr> -->
         <tr *ngFor="let v of nofi">
         <td>{{v.createdAt| date : 'dd-MM-YYYY'}}</td>
-        <td><p *ngIf="v.type=='Schedule'">{{v.posts.BHKType}} house for {{v.posts.rentDetails}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p></td>
-        <td>sdfsdfsdfsdf</td>
+        <td><p *ngIf="v.type=='Schedule'" (click)="routeView(v.posts.HouseOrCommercialType,v.posts.Type,v.postId)">
+            {{v.posts.BHKType}} house for {{v.posts.rentDetails}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p></td>
+        <td>Delete</td>
         </tr>
 
     </table>

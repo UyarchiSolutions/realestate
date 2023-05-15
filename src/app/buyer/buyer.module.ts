@@ -35,6 +35,7 @@ import { BuyerTopSectionComponent } from './buyer-top-section/buyer-top-section.
 import { BuyerSavedComponent } from './buyer-saved/buyer-saved.component';
 import { BuyerAlertPopComponent } from './buyer-alert-pop/buyer-alert-pop.component';
 import { BuyerNotificationComponent } from './buyer-notification/buyer-notification.component';
+import { BuyerFooterComponent } from './buyer-footer/buyer-footer.component';
 
 
 
@@ -74,6 +75,7 @@ import { BuyerNotificationComponent } from './buyer-notification/buyer-notificat
     BuyerSavedComponent,
     BuyerAlertPopComponent,
     BuyerNotificationComponent,
+    BuyerFooterComponent,
  
 
   ],

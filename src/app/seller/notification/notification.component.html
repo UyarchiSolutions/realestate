@@ -65,8 +65,12 @@
                         <p>Has accepted to Visit your property on Tomorrow 6pm @3 BHK House For Rent in, No
                             10, Alwarpet Street, Alwarpet, Chennai - 600026 </p>
                     </td>
-                    <td (click)="routetoInterest(v.postId)" *ngIf="v.type=='Intrest'" class="show-delete" >
-                        <p>{{v.users.userName}} interested in your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                    <td (click)="routetoInterest(v.postId)"  class="show-delete" >
+                        <p *ngIf="v.type=='Intrest'">{{v.users.userName}} interested in your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Accept'">{{v.users.userName}} has accepted to visit your property  @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Reschedule'">{{v.users.userName}} has requested you  to change the schedule date for property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Reject'">{{v.users.userName}} has rejected to visit your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                      
                     </td>
                     <td class="delete-icon">
                         <svg style="display: block !important;" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

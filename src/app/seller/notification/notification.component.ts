@@ -23,7 +23,7 @@ export class NotificationComponent implements OnInit {
       id:id
     }
     let query = new URLSearchParams(data).toString()
-    this.router.navigateByUrl('/interest-post?'+query)
+    this.router.navigateByUrl('/owner/interest-post?'+query)
   }
 
  
