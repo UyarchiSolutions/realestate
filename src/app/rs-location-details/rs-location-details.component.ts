@@ -266,7 +266,7 @@ export class RsLocationDetailsComponent implements OnInit{
         lat: $event.latLng.lat(),
         long: $event.latLng.lng()
       })
-      
+      console.log($event.latLng.lat(), $event.latLng.lng())
       this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
         console.log(res)
          

@@ -164,7 +164,7 @@ import { SellerFooterComponent } from './seller-footer/seller-footer.component';
     GooglePlaceModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC4f71KgUy-ocpdfmadcNPy-wrVks4YSdY',
+      apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
     }),
   ],
 })

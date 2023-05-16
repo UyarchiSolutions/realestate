@@ -60,7 +60,7 @@
 
         <agm-map class="z-depth-1-half map-container" style="height: 312px;width: 330px;" [latitude]="latitude" [longitude]="longtitude"
                 [zoom]="10" [usePanning]="true">
-                <agm-marker (dragEnd)="draggEnded($event)" [markerDraggable]="true"
+                <agm-marker (dragEnd)="draggEnded($event)"[markerDraggable]="true"
                   [latitude]="parseFloat(rrlocform.get('lat')?.value)"
                   [longitude]="parseFloat(rrlocform.get('long')?.value)"></agm-marker>
               </agm-map>

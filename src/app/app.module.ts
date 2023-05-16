@@ -55,7 +55,7 @@ import { AdminModule } from './admin/admin.module';
     }),
     
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC4f71KgUy-ocpdfmadcNPy-wrVks4YSdY',
+      apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
     }),
     
   ],

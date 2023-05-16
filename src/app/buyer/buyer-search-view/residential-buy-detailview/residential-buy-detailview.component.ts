@@ -18,7 +18,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
   
     }
     id:any;
-    data:any;
+    data:any=[]
     index:any;
     page=0;
     range=20;
@@ -33,6 +33,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           rentprefer: any;
           propAge:any;
           areaArr:any;
+          history:any=[];
          
           hospitalIcon='./assets/images/hospital.png';
           cinemaIcon='./assets/images/cinema.png';
@@ -42,6 +43,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           atmIcon='./assets/images/atm.png';
           shopIcon='./assets/images/shop.png';
         checkInterest:any;
+        showshedule:any;
   
     ngOnInit(): void {
       
@@ -77,9 +79,11 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
         this.data=res.values;
         this.interestV=res.intrest;
         this.saveV=res.savedStatus;
+        this.showRes=res.show;
+        this.history=res.relation;
         this.lat=this.data.lat;
         this.long=this.data.long;
-        console.log(this.lat,'lat,',this.long,'long')
+        console.log(this.lat,'lat,',this.long,'long',this.history)
         this.get_landmarks_forbuyer('School');
       })
      
@@ -97,7 +101,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       this.place=landmak
       this.landmarks=[];
       this.LMlat_long=[];
-      console.log('empty',this.landmarks,this.LMlat_long)
+      // console.log('empty',this.landmarks,this.LMlat_long)
       
       if(this.LMlat_long==''){
   
@@ -109,12 +113,12 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       this.icon= landmak=='atm'?this.atmIcon:this.icon;
       this.icon= landmak=='Grocery'?this.shopIcon:this.icon;
   
-      console.log('inside if',this.landmarks,this.LMlat_long);
+      // console.log('inside if',this.landmarks,this.LMlat_long);
       this.buyerService.get_landmarks(this.lat,this.long,this.radius,this.place).subscribe((res:any)=>{
         this.LMlat_long=[];
         this.landmarks=[];
         this.landmarks=res.results;
-        console.log(res,this.landmarks,'from landmaks');
+        // console.log(res,this.landmarks,'from landmaks');
         for(let i=0;i< this.landmarks.length;i++){
          
         
@@ -123,7 +127,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           
         
         }
-        console.log(this.LMlat_long,'lat,long');
+        // console.log(this.LMlat_long,'lat,long');
        
       })}
     }
@@ -216,6 +220,14 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
    
     
     place='hospital';
+    showRes=true;
+    sendResponse(res:any){
+     this.buyerService.send_schedule_res(this.id,res).subscribe((res:any)=>{
+       console.log(res)
+       this.showRes=false
+     })
+    }
+   
   
   }
 

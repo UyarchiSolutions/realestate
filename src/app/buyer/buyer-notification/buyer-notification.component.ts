@@ -32,5 +32,14 @@ export class BuyerNotificationComponent implements OnInit {
       let query = new URLSearchParams(data).toString()
       this.router.navigateByUrl('/buyer-residential-rent-search-view?'+query);
     }
+    if(Rtype =='Residential' && type =='Sale'){
+      let data={
+        id:id,
+        interested:'true',
+        schedule:'true',
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-residential-buy-search-view?'+query);
+    }
   }
 }
