@@ -58,6 +58,7 @@ export class BuyerInterestedComponent implements OnInit {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
       console.log(res,'all interest','child')
       this.AllInterested = res;
+    
       this.ResiRent= this.AllInterested.filter((v:any)=>{
        return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
       })
@@ -71,6 +72,7 @@ export class BuyerInterestedComponent implements OnInit {
        return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
       })
     });
+    console.log(this.ResiBuy)
   
   }
 

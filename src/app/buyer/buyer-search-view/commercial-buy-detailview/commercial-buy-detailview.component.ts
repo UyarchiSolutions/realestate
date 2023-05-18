@@ -47,7 +47,7 @@ export class CommercialBuyDetailviewComponent implements OnInit {
           atmIcon='./assets/images/atm.png';
           shopIcon='./assets/images/shop.png';
           checkInterest:any;    
-  
+          history:any=[];
     ngOnInit(): void {
       
       this.arouter.queryParams.subscribe((params) => {
@@ -84,6 +84,8 @@ export class CommercialBuyDetailviewComponent implements OnInit {
         this.data=res.values;
         this.interestV=res.intrest;
         this.saveV=res.savedStatus;
+        this.showRes=res.show;
+        this.history=res.relation;
         this.lat=this.data.lat;
         this.long=this.data.long;
         console.log(this.lat,'lat,',this.long,'long')
@@ -217,6 +219,13 @@ export class CommercialBuyDetailviewComponent implements OnInit {
    
     
     place='hospital';
+    showRes=true;
+    sendResponse(res:any){
+     this.buyerService.send_schedule_res(this.id,res).subscribe((res:any)=>{
+       console.log(res)
+       this.showRes=false
+     })
+    }
   
   }
 

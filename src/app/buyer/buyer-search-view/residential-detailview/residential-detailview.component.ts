@@ -44,6 +44,7 @@ export class ResidentialDetailviewComponent implements OnInit {
         shopIcon='./assets/images/shop.png';
         checkInterest:any;
         checkSchedule:any;
+        history:any=[];
 
   ngOnInit(): void {
     
@@ -81,7 +82,8 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.imageLength=this.data.image.length
       this.interestV=res.intrest;
       this.saveV=res.savedStatus;
-      this.showRes=!res.show;
+      this.showRes=res.show;
+        this.history=res.relation;
       this.lat=this.data.lat;
       this.long=this.data.long;
       console.log(this.lat,'lat,',this.long,'long',this.imageLength,'')

@@ -675,3 +675,15 @@ position: relative;
 .slider{
     background-color:var(--brown) !important;
 }
+.scheduled{
+    color: green;
+}
+.rejected{
+    color: red;
+}
+.fixed{
+    color: #1877F2;
+}
+.visited{
+    color: #FD841F;
+}

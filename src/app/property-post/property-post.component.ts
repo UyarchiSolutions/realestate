@@ -33,34 +33,15 @@ export class PropertyPostComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  data:any;
+  data:any=[]
   get_all_interst(){
     this.service.get_Interest_buyer(this.id).subscribe((res:any)=>{
       console.log(res)
       this.data=res;
     })
   }
-  changeps(){
-    console.log(this.user._id);
-    let data={
-      id:this.user._id
-    }
-    var queryString = new URLSearchParams(data).toString();
-    console.log(queryString);
-    this.router.navigateByUrl('/changepassword-seller?' + queryString );
-  }
-  routeToProp(){
-    this.router.navigateByUrl('/post-property')
-  }
-  AccountRoute(){
-    this.router.navigateByUrl('/my-account');
-  }
-  logOut(){
-    sessionStorage.clear();
-    localStorage.clear();
-    Cookie.delete('tokens');
-    this.router.navigateByUrl('/');
-  }
+
+
   update_status(){
     var data={
       type:'Shcedule'
@@ -121,6 +102,10 @@ export class PropertyPostComponent implements OnInit {
   showdate(v:HTMLInputElement){
     this. showD= !this.showD;
  
+  }
+  backToRoute(){
+    console.log('clicked')
+    this.router.navigate(['/owner'])
   }
 
 }

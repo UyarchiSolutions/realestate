@@ -66,11 +66,18 @@
                             10, Alwarpet Street, Alwarpet, Chennai - 600026 </p>
                     </td>
                     <td (click)="routetoInterest(v.postId)"  class="show-delete" >
+                        <ng-container *ngIf="v.posts.HouseOrCommercialType == 'Residential'">
                         <p *ngIf="v.type=='Intrest'">{{v.users.userName}} interested in your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
                         <p *ngIf="v.type=='Accept'">{{v.users.userName}} has accepted to visit your property  @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
                         <p *ngIf="v.type=='Reschedule'">{{v.users.userName}} has requested you  to change the schedule date for property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
                         <p *ngIf="v.type=='Reject'">{{v.users.userName}} has rejected to visit your property @{{v.posts.BHKType}} House For {{v.posts.Type}} in,{{v.posts.Address}} </p>
-                      
+                        </ng-container>
+                        <ng-container  *ngIf="v.posts.HouseOrCommercialType == 'Commercial'">
+                        <p *ngIf="v.type=='Intrest'">{{v.users.userName}} interested in your commercial property @{{v.posts.propertType}} property For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Accept'">{{v.users.userName}} has accepted to visit your commercial property  @{{v.posts.propertType}} property For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Reschedule'">{{v.users.userName}} has requested you  to change the schedule date for commercial property @{{v.posts.propertType}} property For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        <p *ngIf="v.type=='Reject'">{{v.users.userName}} has rejected to visit your commercial property @{{v.posts.propertType}} property For {{v.posts.Type}} in,{{v.posts.Address}} </p>
+                        </ng-container>
                     </td>
                     <td class="delete-icon">
                         <svg style="display: block !important;" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -23,12 +23,12 @@
 <p>{{data.BHKType}} House For {{data.Type}} in, {{data.formatedAddress}}</p>       
 </div>
 <div class="page-navigator">
-    <svg  *ngIf="!showRes"  (click)="previous()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg  *ngIf="!checkInterest"  (click)="previous()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M10 16.1561L20 5.94263V26.3696L10 16.1561Z" fill="#473B32" fill-opacity="0.6"/>
         <rect x="1" y="1.83569" width="28" height="28.6405" rx="14" stroke="#473B32" stroke-opacity="0.6" stroke-width="2"/>
         </svg>
       
-        <svg *ngIf="!showRes" (click)="next()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg *ngIf="!checkInterest" (click)="next()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 16.1561L10 26.3696L10 5.94265L20 16.1561Z" fill="#473B32" fill-opacity="0.6"/>
             <rect x="29" y="30.4763" width="28" height="28.6405" rx="14" transform="rotate(-180 29 30.4763)" stroke="#473B32" stroke-opacity="0.6" stroke-width="2"/>
             </svg>
@@ -38,19 +38,19 @@
 
   
 </div>
-<div *ngIf="!showRes" style="    display: flex;
+<div *ngIf="!checkInterest" style="    display: flex;
 justify-content: end;">
 <p style="margin-right: 19px;" class="show">Previous</p>
 <p style="margin-right: 46px;" class="show">Next</p>   
 </div>
-<div class="pop-div" *ngIf=" showRes" >
-    <div class="pop-div-content"><p>user shecdule the propery on 22/44/2025</p></div>
+<div class="pop-div" *ngIf="showRes" >
+    <div class="pop-div-content"><p>This Property has be Shceduled on {{history.scheduleDate | date:'dd-MM-YYYY'}} {{history.scheduletime }}</p></div>
     <div class="pop-div-content">
         <button  (click)="sendResponse('Accept')" class="green"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 16.2009C3.5816 16.2009 0 12.6005 0 8.1589C0 3.71733 3.5816 0.116943 8 0.116943C12.4184 0.116943 16 3.71733 16 8.1589C16 12.6005 12.4184 16.2009 8 16.2009ZM8 14.5925C9.69739 14.5925 11.3253 13.9146 12.5255 12.7081C13.7257 11.5016 14.4 9.86518 14.4 8.1589C14.4 6.45261 13.7257 4.81621 12.5255 3.60968C11.3253 2.40315 9.69739 1.72533 8 1.72533C6.30261 1.72533 4.67475 2.40315 3.47452 3.60968C2.27428 4.81621 1.6 6.45261 1.6 8.1589C1.6 9.86518 2.27428 11.5016 3.47452 12.7081C4.67475 13.9146 6.30261 14.5925 8 14.5925ZM7.2024 11.3757L3.808 7.96348L4.9392 6.82635L7.2024 9.10141L11.7272 4.55208L12.8592 5.68921L7.2024 11.3757Z" fill="#34A853"/>
             </svg>
             Accept</button>
-        <button (click)="sendResponse('Reschedule')" class="blue"><svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button (click)="sendResponse('request_Reschedule')" class="blue"><svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 3.79759V9.1589H13M17 9.1589C17 10.215 16.7931 11.2607 16.391 12.2364C15.989 13.2121 15.3997 14.0987 14.6569 14.8454C13.914 15.5922 13.0321 16.1845 12.0615 16.5887C11.0909 16.9928 10.0506 17.2009 9 17.2009C7.94943 17.2009 6.90914 16.9928 5.93853 16.5887C4.96793 16.1845 4.08601 15.5922 3.34315 14.8454C2.60028 14.0987 2.011 13.2121 1.60896 12.2364C1.20693 11.2607 1 10.215 1 9.1589C1 7.02604 1.84285 4.98054 3.34315 3.47238C4.84344 1.96422 6.87827 1.11694 9 1.11694C11.1217 1.11694 13.1566 1.96422 14.6569 3.47238C16.1571 4.98054 17 7.02604 17 9.1589Z" stroke="#1877F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Reschedule</button>

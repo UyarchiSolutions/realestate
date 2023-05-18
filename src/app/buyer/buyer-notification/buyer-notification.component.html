@@ -45,8 +45,18 @@
         </tr> -->
         <tr *ngFor="let v of nofi">
         <td>{{v.createdAt| date : 'dd-MM-YYYY'}}</td>
-        <td><p *ngIf="v.type=='Schedule'" (click)="routeView(v.posts.HouseOrCommercialType,v.posts.Type,v.postId)">
-            {{v.posts.BHKType}} house for {{v.posts.rentDetails}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p></td>
+        <td  (click)="routeView(v.posts.HouseOrCommercialType,v.posts.Type,v.postId)">
+            <p *ngIf="v.type=='Schedule' && v.posts.HouseOrCommercialType=='Residential'">
+            {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p>
+            <p *ngIf="v.type=='Reschedule' && v.posts.HouseOrCommercialType=='Residential'">
+            {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}} Rescheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p>
+            <p *ngIf="v.type=='Schedule' && v.posts.HouseOrCommercialType=='Commercial'" >
+                {{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} has been Scheduled on {{v.scheduleDate}},{{v.scheduleTime}}
+            </p>
+            <p *ngIf="v.type=='Reschedule' && v.posts.HouseOrCommercialType=='Commercial'" >
+                {{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} has been Rescheduled on {{v.scheduleDate}},{{v.scheduleTime}}
+            </p>
+        </td>
         <td>Delete</td>
         </tr>
 

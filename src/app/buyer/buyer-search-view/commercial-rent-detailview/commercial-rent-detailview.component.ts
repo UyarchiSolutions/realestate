@@ -82,8 +82,10 @@ export class CommercialRentDetailviewComponent implements OnInit {
         this.data=res.values;
         this.interestV=res.intrest;
         this.saveV=res.savedStatus;
+        this.showRes=res.show;
         this.lat=this.data.lat;
         this.long=this.data.long;
+        this.history=res.relation;
         console.log(this.lat,'lat,',this.long,'long')
         this.get_landmarks_forbuyer('School');
       })
@@ -93,6 +95,7 @@ export class CommercialRentDetailviewComponent implements OnInit {
     
     }
     lat:any;
+    history:any=[];
     long:any;
     landmarks:any=[];
     LMlat_long:any=[];
@@ -212,7 +215,13 @@ export class CommercialRentDetailviewComponent implements OnInit {
       })
       
     }
-   
+    showRes=true;
+    sendResponse(res:any){
+     this.buyerService.send_schedule_res(this.id,res).subscribe((res:any)=>{
+       console.log(res)
+       this.showRes=false
+     })
+    }
     
     place='hospital';
   
