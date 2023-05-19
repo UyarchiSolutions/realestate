@@ -60,16 +60,16 @@ export class BuyerInterestedComponent implements OnInit {
       this.AllInterested = res;
     
       this.ResiRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
+       return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential' && v.userStatus;
       })
       this.ResiBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential';
+       return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential' && v.userStatus;
       })
       this.CommRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial';
+       return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial'&& v.userStatus;
       })
       this.CommBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
+       return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial' && v.userStatus;
       })
     });
     console.log(this.ResiBuy)

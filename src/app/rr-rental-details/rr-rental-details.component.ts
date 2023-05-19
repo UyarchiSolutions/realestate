@@ -72,7 +72,10 @@ export class RrRentalDetailsComponent implements OnInit{
       });
       console.log('value patched',this.rentform.value) ;
       this.switch= this.data.rentDetails;
-      this.maintanceVal= this.data.MaintenanceStatus;
+      if(this.data.MaintenanceStatus){
+        this.maintanceVal= this.data.MaintenanceStatus;
+      }
+    
       this.mainmon=res.squareFT; }
 
       if(this.data.rentDetails=='lease'){
@@ -83,8 +86,10 @@ export class RrRentalDetailsComponent implements OnInit{
           LExcludeMaintenance:res.maintainenceCost,
           routeLink:this.routerlink
         }); 
-        
-        this.LmaintanceVal= this.data.MaintenanceStatus; 
+        if(this.data.MaintenanceStatus){
+          this.LmaintanceVal= this.data.MaintenanceStatus; 
+        }
+      
       this.switch= this.data.rentDetails;
       this.Lmainmon=res.squareFT;}
       

@@ -12,3 +12,9 @@ ul{
 ul li{
     cursor: pointer;
 }
+.custom-svg{
+    fill:white;
+}
+.none-svg{
+    fill: none;
+}

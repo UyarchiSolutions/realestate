@@ -97,3 +97,13 @@
         padding: 5px;
         border-bottom:solid gray 1px; 
     }
+    .view p{
+        font-weight: 600;
+        cursor: pointer;
+    }.scheduled{
+        color: #34A853;
+    }
+    .interested{
+        color:  #1877F2;
+        ;
+    }

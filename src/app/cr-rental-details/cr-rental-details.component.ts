@@ -59,7 +59,11 @@ export class CrRentalDetailsComponent implements OnInit {
           
             
           }); 
+          if(res.MaintenanceStatus){
+            this.maintanceVal=res.MaintenanceStatus;
+          }
           this.mainmon=res.squareFT;
+
            })
               this.leaseloop();
  
@@ -151,7 +155,7 @@ export class CrRentalDetailsComponent implements OnInit {
           MaintenanceStatus:this.maintanceVal,
           routeLink:this.routerlink,
         }
-        
+        console.log(data,'')
         this.service.formput(this.id,data).subscribe((res:any)=>{
           console.log(res,'updated');
           
@@ -159,8 +163,8 @@ export class CrRentalDetailsComponent implements OnInit {
             id:res._id
           }
           var queryString = new URLSearchParams(postdata).toString();
-           this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
-          console.log(res);
+         this.router.navigateByUrl('/start-posting/commercial-rent-amenities?' + queryString);
+        
           
         })
       }

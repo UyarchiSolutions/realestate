@@ -56,6 +56,9 @@ export class CsPriceDetailsComponent {
           });
           this.mainmon=res.squareFT;
           console.log('value patched',this.maintanceVal) ;
+          if(this.data.MaintenanceStatus){
+            this.maintanceVal= this.data.MaintenanceStatus; 
+          }
           
            }
         )
@@ -169,7 +172,7 @@ export class CsPriceDetailsComponent {
           MaintenanceStatus:this.maintanceVal,
         }   
              
-              this.service.formput(this.id,data).subscribe((res:any)=>{});
+       this.service.formput(this.id,data).subscribe((res:any)=>{});
             
              
     

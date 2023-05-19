@@ -76,23 +76,21 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.Alldata=this.service.get_ALLres();
 
     console.log(this.Alldata,'All data');
+   this.get_post();
+  }
+  get_post(){
     this.service.formget1(this.id).subscribe((res:any)=>{
       console.log(res,res.intrest,'formget');
       this.data=res.values;
-      this.imageLength=this.data.image.length
       this.interestV=res.intrest;
       this.saveV=res.savedStatus;
       this.showRes=res.show;
-        this.history=res.relation;
       this.lat=this.data.lat;
       this.long=this.data.long;
-      console.log(this.lat,'lat,',this.long,'long',this.imageLength,'')
+      this.history=res.relation;
+      console.log(this.lat,'lat,',this.long,'long')
       this.get_landmarks_forbuyer('School');
     })
-   
-
-  
-  
   }
   lat:any;
   long:any;
@@ -190,11 +188,7 @@ export class ResidentialDetailviewComponent implements OnInit {
    
     this.service.interest(id).subscribe((res:any)=>{
       // console.log(res);
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.interestV=res.intrest;
-      })
+      this.get_post();
      
     });
     
@@ -205,12 +199,7 @@ export class ResidentialDetailviewComponent implements OnInit {
   save(id:any){
 
     this.service.save(id).subscribe((res:any)=>{
-      console.log(res,'save');
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.saveV=res.savedStatus;
-      })
+      this.get_post();
     })
    }
    showRes=true;

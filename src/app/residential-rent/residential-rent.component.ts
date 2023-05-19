@@ -63,7 +63,7 @@ export class ResidentialRentComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/start-posting//residential-rent?' + queryString);
+      this.router.navigateByUrl('/start-posting/residential-rent?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -73,7 +73,7 @@ export class ResidentialRentComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/start-posting//residentaial-rent-location-details?' + queryString
+        '/start-posting/residentaial-rent-location-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -84,7 +84,7 @@ export class ResidentialRentComponent implements OnInit {
       };
       var queryString = new URLSearchParams(data).toString();
       this.router.navigateByUrl(
-        '/start-posting//residentaial-rent-rental-details?' + queryString
+        '/start-posting/residentaial-rent-rental-details?' + queryString
       );
 
       this.service.formget(this.id).subscribe((res: any) => {});
@@ -94,7 +94,7 @@ export class ResidentialRentComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(data).toString();
-      this.router.navigateByUrl('/start-posting//residentaial-rent-amentites?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
 
       this.service.formget(this.id).subscribe((res: any) => {});
     }
@@ -103,7 +103,7 @@ export class ResidentialRentComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/start-posting//residentaial-rent-gallery?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-gallery?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
     if (count == 5) {
@@ -111,7 +111,7 @@ export class ResidentialRentComponent implements OnInit {
         id: this.id,
       };
       var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/start-posting//residentaial-rent-details?' + queryString);
+      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
       this.service.formget(this.id).subscribe((res: any) => {});
     }
   }

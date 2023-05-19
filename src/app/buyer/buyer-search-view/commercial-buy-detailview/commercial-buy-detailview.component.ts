@@ -79,22 +79,21 @@ export class CommercialBuyDetailviewComponent implements OnInit {
       this.Alldata=this.service.get_ALLres();
   
       console.log(this.Alldata,'All data');
+     this.get_post();
+    }
+    get_post(){
       this.service.formget1(this.id).subscribe((res:any)=>{
         console.log(res,res.intrest,'formget');
         this.data=res.values;
         this.interestV=res.intrest;
         this.saveV=res.savedStatus;
         this.showRes=res.show;
-        this.history=res.relation;
         this.lat=this.data.lat;
         this.long=this.data.long;
+        this.history=res.relation;
         console.log(this.lat,'lat,',this.long,'long')
         this.get_landmarks_forbuyer('School');
       })
-     
-  
-    
-    
     }
     lat:any;
     long:any;
@@ -194,13 +193,9 @@ export class CommercialBuyDetailviewComponent implements OnInit {
      
       this.service.interest(id).subscribe((res:any)=>{
         console.log(res);
-       
+        this.get_post();
       });
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.interestV=res.intrest;
-      })
+    
   
     }
     saveV:any;
@@ -208,12 +203,9 @@ export class CommercialBuyDetailviewComponent implements OnInit {
   
       this.service.save(id).subscribe((res:any)=>{
         console.log(res,'save');
+        this.get_post();
       })
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.saveV=res.savedStatus;
-      })
+    
       
     }
    

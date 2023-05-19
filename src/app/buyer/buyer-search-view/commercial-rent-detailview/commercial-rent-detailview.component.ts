@@ -19,7 +19,7 @@ export class CommercialRentDetailviewComponent implements OnInit {
   
     }
     id:any;
-    data:any;
+    data:any=[]
     index:any;
     page=0;
     range=20;
@@ -77,6 +77,10 @@ export class CommercialRentDetailviewComponent implements OnInit {
       this.Alldata=this.service.get_ALLres();
   
       console.log(this.Alldata,'All data');
+     this.get_post();
+    
+    }
+    get_post(){
       this.service.formget1(this.id).subscribe((res:any)=>{
         console.log(res,res.intrest,'formget');
         this.data=res.values;
@@ -89,10 +93,6 @@ export class CommercialRentDetailviewComponent implements OnInit {
         console.log(this.lat,'lat,',this.long,'long')
         this.get_landmarks_forbuyer('School');
       })
-     
-  
-    
-    
     }
     lat:any;
     history:any=[];
@@ -192,14 +192,10 @@ export class CommercialRentDetailviewComponent implements OnInit {
     interest(id:any){
      
       this.service.interest(id).subscribe((res:any)=>{
-        console.log(res);
-       
+        console.log(res,'give interest');
+        this.get_post();
       });
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.interestV=res.intrest;
-      })
+    
   
     }
     saveV:any;
@@ -207,12 +203,9 @@ export class CommercialRentDetailviewComponent implements OnInit {
   
       this.service.save(id).subscribe((res:any)=>{
         console.log(res,'save');
+        this.get_post();
       })
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res,res.intrest);
-        this.data=res.values;
-        this.saveV=res.savedStatus;
-      })
+    
       
     }
     showRes=true;

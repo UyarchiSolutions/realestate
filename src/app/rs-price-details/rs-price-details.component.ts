@@ -60,7 +60,10 @@ export class RsPriceDetailsComponent implements OnInit {
           
         });console.log('value patched') ;
           this.mainmon=res.squareFT;
-          this.maintanceVal=res.MaintenanceStatus;
+          if(res.MaintenanceStatus){
+            this.maintanceVal=res.MaintenanceStatus;
+          }
+        
         
          }
   
@@ -106,7 +109,7 @@ export class RsPriceDetailsComponent implements OnInit {
         MaintenanceStatus:this.maintanceVal,
         routeLink:this.routerlink
       }
-      console.log('sub triggered')
+      console.log('sub triggered',data)
       
       this.service.formput(this.id,data).subscribe((res:any)=>{
         console.log(res);
