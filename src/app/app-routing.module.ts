@@ -96,6 +96,8 @@ import { BuyerAlertPopComponent } from './buyer/buyer-alert-pop/buyer-alert-pop.
 import { BuyerNotificationComponent } from './buyer/buyer-notification/buyer-notification.component';
 import { SellerFooterComponent } from './seller/seller-footer/seller-footer.component';
 import { BuyerFooterComponent } from './buyer/buyer-footer/buyer-footer.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -320,5 +322,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
+ 
 })
 export class AppRoutingModule {}

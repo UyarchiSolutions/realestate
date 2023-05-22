@@ -36,6 +36,7 @@ import { BuyerSavedComponent } from './buyer-saved/buyer-saved.component';
 import { BuyerAlertPopComponent } from './buyer-alert-pop/buyer-alert-pop.component';
 import { BuyerNotificationComponent } from './buyer-notification/buyer-notification.component';
 import { BuyerFooterComponent } from './buyer-footer/buyer-footer.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 
 
@@ -77,7 +78,7 @@ import { BuyerFooterComponent } from './buyer-footer/buyer-footer.component';
     BuyerNotificationComponent,
     BuyerFooterComponent,
  
-
+   
   ],
   imports: [
     RouterModule,
