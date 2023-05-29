@@ -13,6 +13,8 @@ import { AddPlanComponent } from './add-plan/add-plan.component';
 import { ManagePlanComponent } from './manage-plan/manage-plan.component';
 import { StreamApprovalComponent } from './stream-approval/stream-approval.component';
 import { ResidentialRentStreamComponent } from './stream-view/residential-rent-stream/residential-rent-stream.component';
+import { ManageFaqComponent } from './manage-faq/manage-faq.component';
+import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 
 
 
@@ -27,7 +29,9 @@ import { ResidentialRentStreamComponent } from './stream-view/residential-rent-s
     AddPlanComponent,
     ManagePlanComponent,
     StreamApprovalComponent,
-    ResidentialRentStreamComponent
+    ResidentialRentStreamComponent,
+    ManageFaqComponent,
+    ManageEnquiryComponent
 
   ],
   imports: [

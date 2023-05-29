@@ -141,7 +141,8 @@ export class RsGalleryComponent implements OnInit{
     async submit(){
       this.submited=true;
     
-      if( this.videoSrc && this.imagePreview.length > 0 || this.data.image!= ''){
+      if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+      || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
       await  this.uploadimg();
       let data={
         routeLink:this.routerlink,
@@ -196,7 +197,8 @@ export class RsGalleryComponent implements OnInit{
     } 
     async  routetopreview(){
       this.submited=true;
-      if(this.data.image!= ''){
+      if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+      || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
       await  this.uploadimg();
       await  this.uploadvid();
       

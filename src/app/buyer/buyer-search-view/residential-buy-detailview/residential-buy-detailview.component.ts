@@ -44,7 +44,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           shopIcon='./assets/images/shop.png';
         checkInterest:any;
         showshedule:any;
-  
+        imageLength:any;
     ngOnInit(): void {
       
       this.arouter.queryParams.subscribe((params) => {
@@ -86,6 +86,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
         this.lat=this.data.lat;
         this.long=this.data.long;
         this.history=res.relation;
+        this.imageLength=this.data.image.length
         console.log(this.lat,'lat,',this.long,'long')
         this.get_landmarks_forbuyer('School');
       })

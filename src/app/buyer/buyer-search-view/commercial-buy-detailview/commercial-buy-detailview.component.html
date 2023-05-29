@@ -70,12 +70,12 @@ justify-content: end;">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" *ngIf="imageLength >= 1" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" *ngIf="imageLength >= 2" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" *ngIf="imageLength >= 3" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
 
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          <button type="button" *ngIf="imageLength >= 4" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" *ngIf="imageLength >= 5" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
 
 
         </div>
@@ -207,14 +207,7 @@ Interested
         <label>Age of property :</label>
         <p>{{data.ageOfBuilding}}</p>
     </div>
-    <div>
-        <label>Lease Duration:</label>
-        <p>{{data.leaseDuration}}</p>
-    </div>
-    <div>
-        <label>Lack in Period :</label>
-        <p>{{data.lock_in_period}}</p>
-    </div>
+
 
     <div>
         <label>Maintenance :</label>
@@ -260,7 +253,7 @@ Interested
 
     <div>
         <label>Washroom :</label>
-        <p>{{data.waterSupply}}</p>
+        <p>{{data.bathRoomType}}</p>
     </div>
 
     <div>
@@ -457,5 +450,3 @@ Interested
     
     </div>
     <buyer-footer></buyer-footer>
-
-   

@@ -342,8 +342,41 @@
         <button class="refine-results" (click)="refineFilters()" >Refine Results</button>
     </div>
     <div class="main">
- 
-        <div class="property-tab"  >
+        <div class="property-tab" *ngIf="!notLogin" >
+
+            <div class="property-tab-select sort">
+                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z" fill="white"/>
+                    </svg>
+        
+                    <!-- sort dropdown -->
+                    <div class="sort-dropdown">
+                        <p>Relevance</p>
+                        <p>Date</p>
+                    </div>
+                    
+            </div>
+            <div class="property-tab-select "  (click)="showTab('post')"  [ngClass]="postshow == true? 'property-tab-active':''">
+                <svg  *ngIf="postshow" width="23" height="20" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.15385 19.4615V14.4615C7.15385 13.8246 7.67077 13.3077 8.30769 13.3077H10.6154C11.2523 13.3077 11.7692 13.8246 11.7692 14.4615V19.4615M11.7692 19.4615H16.3846V1.55897M11.7692 19.4615H19.4615V8.94872M16.3846 1.55897L17.9231 1M16.3846 1.55897L5.61538 5.4759M19.4615 8.94872L16.3846 7.92308M19.4615 8.94872L21 9.46154M1 19.4615H2.53846M2.53846 19.4615H21M2.53846 19.4615V1H5.61538V5.4759M1 7.15385L5.61538 5.4759" stroke="#473B32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg  *ngIf="!postshow" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.15385 19.4615V14.4615C7.15385 13.8246 7.67077 13.3077 8.30769 13.3077H10.6154C11.2523 13.3077 11.7692 13.8246 11.7692 14.4615V19.4615M11.7692 19.4615H16.3846V1.55897M11.7692 19.4615H19.4615V8.94872M16.3846 1.55897L17.9231 1M16.3846 1.55897L5.61538 5.4759M19.4615 8.94872L16.3846 7.92308M19.4615 8.94872L21 9.46154M1 19.4615H2.53846M2.53846 19.4615H21M2.53846 19.4615V1H5.61538V5.4759M1 7.15385L5.61538 5.4759" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Property
+                    
+                    
+            </div>
+            <div class="property-tab-select"></div>
+            <div class="property-tab-select"></div>
+            <div class="property-tab-select"></div>
+            <div class="property-tab-select notification"></div>
+            
+          
+           
+        
+        </div>
+        <div class="property-tab" *ngIf="notLogin"  >
 
             <div class="property-tab-select sort">
                 <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -474,7 +507,7 @@
             <td>{{v.BHKType}}</td>
             <td>{{v.BuildedSize}}sq.ft</td>
             <td><p *ngIf="v.MonthlyRentFrom >= 100000">{{v.MonthlyRentFrom/100000  | indianCurrency}} lakhs</p>
-                <p *ngIf="v.MonthlyRentFrom <= 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
+                <p *ngIf="v.MonthlyRentFrom < 100000">{{v.MonthlyRentFrom | indianCurrency }} </p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount >= 100000">{{v.depositeAmount/100000 | indianCurrency }} lakhs</p>
                 <p *ngIf="v.rentDetails == 'lease' && v.depositeAmount <= 100000">{{v.depositeAmount | indianCurrency }}</p>
             

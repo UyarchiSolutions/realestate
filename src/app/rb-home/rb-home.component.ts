@@ -67,6 +67,7 @@ export class RbHomeComponent implements OnInit {
   BhkTypeShow: any = [];
   floorShow:any=[]
   ffloor:any=[]
+  notLogin:any;
 
 
   options1: Options = {
@@ -98,7 +99,8 @@ export class RbHomeComponent implements OnInit {
 
   ngOnInit(): void {
   
- 
+    this.notLogin = this.service.findCookie()
+    console.log(this.notLogin,'not login')
     this.showRecentSer = this.service.findCookie()
     if(this.showRecentSer){
       this.Getbuyer();

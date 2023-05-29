@@ -320,7 +320,7 @@
 
             <div *ngIf="data.rentDetails == 'lease'">
               <label>Expected Lease :</label>
-              <p style="text-align: left;">{{ data.depositeAmount }}
+              <p style="text-align: left;">{{ data.MonthlyRentFrom }}
                 <span
                 *ngIf="data.depositeNegociable == 'true'"
                 style="
@@ -336,7 +336,7 @@
             </div>
             <div *ngIf="data.rentDetails == 'rent'">
               <label>Advance Amount :</label>
-              <p style="text-align: left;">{{ data.depositeAmount }}
+              <p style="text-align: left;">{{ data.MonthlyRentFrom }}
                 <span
                 *ngIf="data.depositeNegociable == 'true'"
                 style="

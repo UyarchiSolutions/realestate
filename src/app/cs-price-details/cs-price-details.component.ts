@@ -160,22 +160,51 @@ export class CsPriceDetailsComponent {
      
     
       routetopreview(){
+        var data;
+        if(this.maintanceVal=='Exclude Maintenance'){
+          data={
     
-        var data={
-  
-          MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
-          RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+            maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+            
+          }
+        }else{
+          data={
+    
+            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }
+        if(this.allKeysHaveValue(data) ){ 
+          console.log('updated',this.Checkdata);
+        if(this.maintanceVal=='Exclude Maintenance'){
+          data={
+    
+            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+            RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
          
-          current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-          squareFT:this.mainmon,
-          MaintenanceStatus:this.maintanceVal,
-        }   
-             
+            current_in_loan:this.priceform.get('CurrentlyInLoan').value,
+            maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+            
+          }
+        }else{
+          data={
+    
+            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+            RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+            current_in_loan:this.priceform.get('CurrentlyInLoan').value,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }  
+        }
+            console.log(data) 
        this.service.formput(this.id,data).subscribe((res:any)=>{});
             
-             
-    
         var postdata = {
           id: this.id,
         };
@@ -185,6 +214,7 @@ export class CsPriceDetailsComponent {
         this.service.formget(this.id).subscribe((res: any) => {
           location.reload();
         });
+      }
       }
     
       back(count: any) {

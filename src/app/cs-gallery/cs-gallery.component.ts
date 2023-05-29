@@ -140,11 +140,16 @@ export class CsGalleryComponent {
           submited=false;
        async submit(){
         this.submited=true;
-        if( this.videoSrc && this.imagePreview.length > 0 || this.data.image!= ''){    
+        console.log( (this.videoSrc && this.imagePreview.length > 0) , (this.data.image != '' && this.data.video != null)
+        , (this.imagePreview.length > 0 && this.data.videos != null) , (this.data.image != '' && this.videoSrc)  )
+
+        console.log(this.imagePreview.length,'preview length')
+        if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+       || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)  ){    
         await  this.uploadimg();
          let data={
       routeLink:this.routerlink,
-    }
+           }
     this.service.formput(this.id,data);
           const formdata = new FormData();
           formdata.append('video',this.selectedfile);
@@ -189,7 +194,9 @@ export class CsGalleryComponent {
         } 
         async  routetopreview(){
           this.submited=true;
-          if(this.data.image!= ''){
+          if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+          || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
+            console.log('if works')
           await  this.uploadimg();
           await  this.uploadvid();
 

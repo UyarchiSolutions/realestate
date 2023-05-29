@@ -97,6 +97,8 @@ import { BuyerNotificationComponent } from './buyer/buyer-notification/buyer-not
 import { SellerFooterComponent } from './seller/seller-footer/seller-footer.component';
 import { BuyerFooterComponent } from './buyer/buyer-footer/buyer-footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ManageFaqComponent } from './admin/manage-faq/manage-faq.component';
+import { ManageEnquiryComponent } from './admin/manage-enquiry/manage-enquiry.component';
 
 
 const routes: Routes = [
@@ -311,6 +313,8 @@ const routes: Routes = [
         {path:'', component: ManagePlanComponent},
         {path:'add-plan', component: AddPlanComponent},
       ]  },
+      { path: 'manage-faq', component: ManageFaqComponent },
+      { path: 'manage-enquiry', component: ManageEnquiryComponent },
      
     ],
   },

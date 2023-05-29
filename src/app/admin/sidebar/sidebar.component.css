@@ -34,3 +34,9 @@ ul li p{
     background-color: var(--brown);
     color: white;
 }
+.active-svg{
+    fill: white;
+}
+.active-svg2{
+    stroke: white !important;
+}

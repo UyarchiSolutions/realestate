@@ -88,6 +88,8 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.lat=this.data.lat;
       this.long=this.data.long;
       this.history=res.relation;
+      this.imageLength=this.data.image.length
+
       console.log(this.lat,'lat,',this.long,'long')
       this.get_landmarks_forbuyer('School');
     })

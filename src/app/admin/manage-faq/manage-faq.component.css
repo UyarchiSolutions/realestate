@@ -1,0 +1,75 @@
+.buttons span{
+    display: flex;
+    max-width: fit-content;
+    align-items: center;
+}
+.buttons span button:nth-child(2){
+ margin-left: 10px;
+}
+table tr td{
+ max-width: fit-content !important;
+}
+.remove-btn{
+    color: #B73E3E ;
+}
+.property-type{
+    min-width: 20%;
+}
+.propery-btn{
+    width: 100%;
+    border-radius:0;
+    text-align: left;
+    background-color: white;
+    color: black;
+}
+.main-content-header{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between !important;
+}
+.main-content-header button{
+    background: none;
+    border: none;
+    display: flex;
+    color: white;
+align-items: center;
+}
+.main-content-header button svg{
+    margin-left: 10px;
+}
+.main-content-header h5{
+    display: flex;
+    align-items: center;
+}
+.main-content-header h5 svg{
+    margin-right: 5px;
+}
+
+table tr td span{
+    display: flex;
+    /* align-items: center; */
+}
+table tr td span button{
+    min-width: 100px;
+    margin:0 10px;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+table tr td span button svg{
+    margin-right: 5px;
+}
+.pagenation-section{
+    display: flex;
+}
+.action{
+    display: flex;
+    justify-content: space-between;
+    width: 32%;
+}
+.answer{
+  text-overflow: ellipsis;
+  overflow: hidden;
+ 
+}

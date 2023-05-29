@@ -68,7 +68,7 @@ export class CommercialRentViewComponent implements OnInit {
   ffloor:any=[]
   floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
   floorDataArr:any=['0','1-3','4-7','8-12','13']
-
+  notLogin:any;
 
   options1: Options = {
     floor: 5000,
@@ -101,11 +101,10 @@ export class CommercialRentViewComponent implements OnInit {
   }
   ngOnInit(): void {
     this.Getbuyer();
-    this.Get_all_interest();
-    this.Get_all_saved();
+   
     this.FetchRecentSearch();
     this.showRecentSer = this.service.findCookie()
-
+    this.notLogin=this.service.findCookie()
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
       if (params.params.formatAdd != null) {
