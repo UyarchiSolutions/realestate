@@ -81,7 +81,7 @@ export class RrRentalDetailsComponent implements OnInit{
       if(this.data.rentDetails=='lease'){
         this.leaseform.patchValue({
           
-          LExpectedDeposit:res.depositeAmount,
+          LExpectedDeposit:res.MonthlyRentFrom,
           LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
           LExcludeMaintenance:res.maintainenceCost,
           routeLink:this.routerlink

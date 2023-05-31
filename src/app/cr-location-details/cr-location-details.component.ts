@@ -143,7 +143,7 @@ export class CrLocationDetailsComponent {
             id: this.id,
           };
           var queryString = new URLSearchParams(postdata).toString();
-          this.router.navigateByUrl('/start-posting//commercial-rent-preview?' + queryString);
+          this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
       
           this.service.formget(this.id).subscribe((res: any) => {
             location.reload();

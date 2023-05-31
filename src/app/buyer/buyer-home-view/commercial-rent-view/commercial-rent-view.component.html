@@ -59,18 +59,18 @@
     <label>Residential :</label>
     <div>
         <div>
-        <input type="radio" name="type" (change)="onChange($event)"  value="Lease" ><p>Buy</p></div>
+        <input type="radio" name="type" (change)="toResBuy()"  value="Lease" ><p>Buy</p></div>
         <div>
-        <input type="radio"  name="type" [checked]="type == 'Rent'" value="Rent" (change)="onChange($event)"><p>Rent</p></div>
+        <input type="radio"  name="type"  (change)="toResRent()"><p>Rent</p></div>
     </div>
 </div>
 <div class="commercial" *ngIf="show_top">
     <label>Commercial :</label>
     <div>
         <div>
-        <input type="radio"><p>Buy</p></div>
+        <input type="radio" (change)="toComBuy()"><p>Buy</p></div>
         <div>
-            <input type="radio"><p>Rent</p></div>
+            <input type="radio" checked (change)="toComRent()"><p>Rent</p></div>
     </div>
 </div>
         </div>

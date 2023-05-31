@@ -134,7 +134,8 @@
             <p *ngIf="!bv && !data.balconyCount" style="opacity: 0.5;">Balconies</p>
           
             <ul class="dropdown-menu select-filed-options" >
-    
+
+               <li><a class="dropdown-item" (click)="balTv('None')" >None</a></li>
               <li><a class="dropdown-item" (click)="balTv('1 Balcony')" >1 Balcony</a></li>
               <li><a class="dropdown-item" (click)="balTv('2 Balcony')" >2 Balcony</a></li>
               <li><a class="dropdown-item" (click)="balTv('3 Balcony')" >3 Balcony</a></li>

@@ -140,7 +140,7 @@ export class CrGalleryComponent {
      async submit(){
 
       this.submited=true;
-    if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+    if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.videos != null)
     || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
       await  this.uploadimg();
       let data={
@@ -197,7 +197,7 @@ export class CrGalleryComponent {
       } 
       async  routetopreview(){
         this.submited=true;
-        if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
+        if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.videos != null)
         || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
         await  this.uploadimg();
         await  this.uploadvid();

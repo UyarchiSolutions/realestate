@@ -17,18 +17,18 @@
     <label>Residential :</label>
     <div>
         <div>
-        <input type="radio" name="type" (change)="onChange($event)"  [checked]="Data.baseRType =='Residential' && Data.type=='Buy'" value="Lease" ><p>Buy</p></div>
+        <input type="radio" name="type" (change)="toResBuy()"  [checked]="Data.baseRType =='Residential' && Data.type=='Buy'" value="Lease" ><p>Buy</p></div>
         <div>
-        <input type="radio"  name="type" [checked]="Data.baseRType =='Residential' && Data.type=='Rent'" value="Rent" (change)="onChange($event)"><p>Rent</p></div>
+        <input type="radio"  name="type"  value="Rent" (change)="toResRent()"><p>Rent</p></div>
     </div>
 </div>
 <div class="commercial" *ngIf="show_top">
     <label>Commercial :</label>
     <div>
         <div>
-        <input type="radio" name="type" [checked]="Data.baseRType =='Commercial' && Data.type=='Buy'"><p>Buy</p></div>
+        <input type="radio" name="type"  checked (change)="toComBuy()"><p>Buy</p></div>
         <div>
-            <input type="radio" name="type" [checked]="Data.baseRType =='Commercial' && Data.type=='Rent'"><p>Rent</p></div>
+            <input type="radio" name="type" (change)="toComRent()"><p>Rent</p></div>
     </div>
 </div>
         </div>

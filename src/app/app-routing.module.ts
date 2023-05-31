@@ -99,6 +99,7 @@ import { BuyerFooterComponent } from './buyer/buyer-footer/buyer-footer.componen
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ManageFaqComponent } from './admin/manage-faq/manage-faq.component';
 import { ManageEnquiryComponent } from './admin/manage-enquiry/manage-enquiry.component';
+import { ReportedPostComponent } from './admin/reported-post/reported-post.component';
 
 
 const routes: Routes = [
@@ -315,6 +316,7 @@ const routes: Routes = [
       ]  },
       { path: 'manage-faq', component: ManageFaqComponent },
       { path: 'manage-enquiry', component: ManageEnquiryComponent },
+      { path: 'reported-posts', component: ReportedPostComponent },
      
     ],
   },

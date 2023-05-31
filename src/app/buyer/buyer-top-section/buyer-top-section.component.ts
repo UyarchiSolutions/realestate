@@ -109,5 +109,17 @@ export class BuyerTopSectionComponent implements OnInit {
   options: any = {
     componentRestrictions: { country: 'IN' },
   };
+  toResBuy() {
+    this.router.navigateByUrl('/buyer-residential-buy-view')
+   }
+   toComRent(){
+     this.router.navigateByUrl('/buyer-commercial-rent-view')
+   }
+   toComBuy(){
+     this.router.navigateByUrl('/buyer-commercial-buy-view')
+   }
+   toResRent(){
+     this.router.navigateByUrl('/buyer-residential-rent-view')
+   }
 
 }

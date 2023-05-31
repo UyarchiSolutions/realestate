@@ -167,7 +167,7 @@ export class OwnerComponent implements OnInit {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/residentaial-rent-preview?' + queryString
+        '/start-posting/residentaial-rent-preview?' + queryString
       );
     }
     if(rentType== 'Sale' && placeType == 'Residential'){
@@ -179,7 +179,7 @@ export class OwnerComponent implements OnInit {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/residential-sale-property?' + queryString
+        '/start-posting/residential-sale-preview?' + queryString
       );
     }
     if(rentType== 'Rent' && placeType == 'Commercial'){
@@ -191,7 +191,7 @@ export class OwnerComponent implements OnInit {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/commercial-rent-property?' + queryString
+        '/start-posting/commercial-rent-preview?' + queryString
       );
     }
     if(rentType== 'Sale' && placeType == 'Commercial'){
@@ -203,7 +203,7 @@ export class OwnerComponent implements OnInit {
       };
       var queryString = new URLSearchParams(postdata).toString();
       this.router.navigateByUrl(
-        '/commercial-sale-property?' + queryString
+        '/start-posting/commercial-sale-preview?' + queryString
       );
     }
 

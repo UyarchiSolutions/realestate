@@ -104,8 +104,9 @@ justify-content: end;">
       <div class="table">
 <div class="table-content"><p>Property Type</p><h6>{{data.propertType}}</h6></div>
 <div  class="table-content"> <p>BHK Type</p>  <h6>{{data.BHKType}}</h6> </div>
-<div  class="table-content"> <p>Rent</p> <h6>{{data.MonthlyRentFrom|indianCurrency}}</h6> <p *ngIf="data.RentNegociable" class="negotiable">Negotiable</p> </div>
-<div  class="table-content"> <p>Deposit</p> <h6>{{data.depositeAmount| indianCurrency}}</h6> <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p> </div>
+<div  *ngIf="data.rentDetails !== 'lease'"   class="table-content"> <p>Rent</p> <h6>{{data.MonthlyRentFrom|indianCurrency}}</h6> <p *ngIf="data.RentNegociable" class="negotiable">Negotiable</p> </div>
+<div  *ngIf="data.rentDetails !== 'lease'"  class="table-content"> <p>Deposit</p> <h6>{{data.depositeAmount| indianCurrency}}</h6> <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p> </div>
+<div *ngIf="data.rentDetails == 'lease'"  class="table-content lease"> <p>Deposit</p> <h6>{{data.MonthlyRentFrom| indianCurrency}}</h6> <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p> </div>
 <div  class="table-content"> <p>Built Up Area</p>  <h6>{{data.BuildedSize}}.sqFt</h6>   </div>
 <div  class="table-content">  <p>Floor</p>  <h6>{{data.noOfFloor}}/{{data.floorNo}}</h6> </div>
       </div>

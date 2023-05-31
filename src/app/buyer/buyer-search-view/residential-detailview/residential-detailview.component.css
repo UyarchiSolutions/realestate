@@ -339,3 +339,10 @@ margin-bottom: 0 !important;
 .sub-content-1 p{
     font-weight: 700;
 }
+.lease{
+    width: 100% !important;
+    align-items: center;
+    display: flex;
+    padding: 22px;
+    justify-content: center;
+}

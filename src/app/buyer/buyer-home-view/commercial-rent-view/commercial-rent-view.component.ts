@@ -290,7 +290,18 @@ export class CommercialRentViewComponent implements OnInit {
     this.type = e.target.value;
   }
   floordata:any=[]
-
+  toResBuy() {
+    this.router.navigateByUrl('/buyer-residential-buy-view')
+   }
+   toComRent(){
+     this.router.navigateByUrl('/buyer-commercial-rent-view')
+   }
+   toComBuy(){
+     this.router.navigateByUrl('/buyer-commercial-buy-view')
+   }
+   toResRent(){
+     this.router.navigateByUrl('/buyer-residential-rent-view')
+   }
 
 
 

@@ -15,6 +15,7 @@ import { StreamApprovalComponent } from './stream-approval/stream-approval.compo
 import { ResidentialRentStreamComponent } from './stream-view/residential-rent-stream/residential-rent-stream.component';
 import { ManageFaqComponent } from './manage-faq/manage-faq.component';
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
+import { ReportedPostComponent } from './reported-post/reported-post.component';
 
 
 
@@ -31,7 +32,8 @@ import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.componen
     StreamApprovalComponent,
     ResidentialRentStreamComponent,
     ManageFaqComponent,
-    ManageEnquiryComponent
+    ManageEnquiryComponent,
+    ReportedPostComponent
 
   ],
   imports: [

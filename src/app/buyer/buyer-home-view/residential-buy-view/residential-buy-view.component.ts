@@ -223,6 +223,18 @@ export class ResidentialBuyViewComponent implements OnInit {
     });
     this.getAlert();
   }
+  toResBuy() {
+    this.router.navigateByUrl('/buyer-residential-buy-view')
+   }
+   toComRent(){
+     this.router.navigateByUrl('/buyer-commercial-rent-view')
+   }
+   toComBuy(){
+     this.router.navigateByUrl('/buyer-commercial-buy-view')
+   }
+   toResRent(){
+     this.router.navigateByUrl('/buyer-residential-rent-view')
+   }
   showInput = true;
   sendData: any;
   totalval: any;
