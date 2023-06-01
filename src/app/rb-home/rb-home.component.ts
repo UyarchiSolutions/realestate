@@ -28,6 +28,7 @@ export class RbHomeComponent implements OnInit {
   pagetotal = 0;
   totalcount = 0;
   areaArr: any = [];
+  areaArrF: any = [];
   formatAdd: any = [];
   data: any;
   type: any;
@@ -106,8 +107,6 @@ export class RbHomeComponent implements OnInit {
     this.showRecentSer = this.service.findCookie();
     if (this.showRecentSer) {
       this.Getbuyer();
-      this.Get_all_interest();
-      this.Get_all_saved();
       this.FetchRecentSearch();
       this.get_all_notification();
     }
@@ -129,7 +128,11 @@ export class RbHomeComponent implements OnInit {
             : [];
         this.areaArr =
           params.params['area'] != null && params.params['area'] != ''
-            ? params.params['area'].replace(/-/g, ' ').split(',')
+            ? params.params['area'].split('+')
+            : [];
+        this.areaArrF =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area']
             : [];
         //console.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
@@ -221,11 +224,14 @@ export class RbHomeComponent implements OnInit {
           this.showInput = false;
           // console.log(this.showInput, 'inpout show');
         }
+        console.log(this.areaArr, 'Area',this.areaArrF);
         this.GetDataForFilter();
       }
     });
+
     this.getAlert();
   }
+  nextPage:any;
   showRecentSer = false;
   showInput = true;
   sendData: any;
@@ -234,7 +240,6 @@ export class RbHomeComponent implements OnInit {
   GetDataForFilter() {
     let Data = {
       HouseOrCommercialType: 'Residential',
-      formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.propertType,
       BHKType: this.BHKType,
@@ -249,21 +254,28 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       floor: this.floordata,
-      finish: true,
+     
     };
     console.log(Data);
     this.service
-      .getSellerDetails(this.page, this.range, Data, this.floordata)
+      .getSellerDetails2(
+        this.page,
+        this.range,
+        Data,
+        this.floordata,
+        this.areaArr
+      )
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
         this.showPag_rag = false;
+        this.nextPage=res.next
         if (this.totalval > 10) {
           this.showPag_rag = true;
           console.log(this.totalval, 'ghghg');
         }
-        //console.log(this.data, 'data');
+ 
 
         if (this.page == 0) {
           let page = res.total / (this.page + 1);
@@ -283,16 +295,16 @@ export class RbHomeComponent implements OnInit {
   showPag_rag = false;
 
   toResBuy() {
-   this.router.navigateByUrl('/buyer-residential-buy-view')
+    this.router.navigateByUrl('/buyer-residential-buy-view');
   }
-  toComRent(){
-    this.router.navigateByUrl('/buyer-commercial-rent-view')
+  toComRent() {
+    this.router.navigateByUrl('/buyer-commercial-rent-view');
   }
-  toComBuy(){
-    this.router.navigateByUrl('/buyer-commercial-buy-view')
+  toComBuy() {
+    this.router.navigateByUrl('/buyer-commercial-buy-view');
   }
-  toResRent(){
-    this.router.navigateByUrl('/buyer-residential-rent-view')
+  toResRent() {
+    this.router.navigateByUrl('/buyer-residential-rent-view');
   }
   floordata: any = [];
   FloorArr: any = [];
@@ -501,9 +513,20 @@ export class RbHomeComponent implements OnInit {
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   assignToSaveData() {
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
     this.sendData = {
       formatAdd: this.formatAdd,
-      area: this.areaArr,
+      area: this.areaF,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -704,13 +727,14 @@ export class RbHomeComponent implements OnInit {
     this.formatAdd = input.value;
 
     let Showvalue = input.value;
-    let Sendvalue = Showvalue.split(',').join('-');
+    let Sendvalue = Showvalue;
 
     this.areaArr.push(Sendvalue);
     if (this.areaArr.length >= 3) {
       this.showInput = false;
       console.log(this.showInput, 'inpout show');
     }
+    console.log(this.areaArr,'area arr in the function')
     input.value = '';
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
@@ -766,9 +790,13 @@ export class RbHomeComponent implements OnInit {
       console.log(res, 'recent search');
     });
   }
+  areaF:any
   submitAddress() {
     this.sendRecentSearch();
+   
+   
     this.assignToSaveData();
+
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
@@ -974,62 +1002,8 @@ export class RbHomeComponent implements OnInit {
       this.nofiShow = true;
     }
   }
-  RBtab = true;
-  RRtab = false;
-  CBtab = false;
-  CRtab = false;
-  interestTab(tab: any) {
-    if (tab == 'RB') {
-      this.RBtab = true;
-      this.RRtab = false;
-      this.CBtab = false;
-      this.CRtab = false;
-    }
-    if (tab == 'RR') {
-      this.RBtab = false;
-      this.RRtab = true;
-      this.CBtab = false;
-      this.CRtab = false;
-    }
-    if (tab == 'CB') {
-      this.RBtab = false;
-      this.RRtab = false;
-      this.CBtab = true;
-      this.CRtab = false;
-    }
-    if (tab == 'CR') {
-      this.RBtab = false;
-      this.RRtab = false;
-      this.CBtab = false;
-      this.CRtab = true;
-    }
-  }
-  save(tab: any) {
-    if (tab == 'RB') {
-      this.RBtab = true;
-      this.RRtab = false;
-      this.CBtab = false;
-      this.CRtab = false;
-    }
-    if (tab == 'RR') {
-      this.RBtab = false;
-      this.RRtab = true;
-      this.CBtab = false;
-      this.CRtab = false;
-    }
-    if (tab == 'CB') {
-      this.RBtab = false;
-      this.RRtab = false;
-      this.CBtab = true;
-      this.CRtab = false;
-    }
-    if (tab == 'CR') {
-      this.RBtab = false;
-      this.RRtab = false;
-      this.CBtab = false;
-      this.CRtab = true;
-    }
-  }
+ 
+  
   AllInterested: any;
   ResiRent: any = [];
   ResiBuy: any = [];
@@ -1091,24 +1065,7 @@ export class RbHomeComponent implements OnInit {
   CommRentS: any = [];
   CommBuyS: any = [];
 
-  Get_all_saved() {
-    this.buyerService.getAll_saved().subscribe((res: any) => {
-      console.log(res, 'all saved');
-      this.AllSaved = res;
-      this.ResiRentS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.ResiBuyS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.CommRentS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Commercial';
-      });
-      this.CommBuyS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Commercial';
-      });
-    });
-  }
+ 
   show_top = false;
   viewtop() {
     this.show_top = !this.show_top;

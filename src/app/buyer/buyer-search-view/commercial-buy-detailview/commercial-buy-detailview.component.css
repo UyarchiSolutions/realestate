@@ -341,3 +341,16 @@ margin-bottom: 0 !important;
 .sub-content-1 p{
     font-weight: 700;
 }
+.cus-body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-evenly;
+    background-color: beige;
+}
+.con-btn{
+    padding: 5px 13px;
+    color: white;
+    background: #473B32;
+}

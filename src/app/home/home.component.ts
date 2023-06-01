@@ -54,13 +54,14 @@ export class HomeComponent implements OnInit {
   localities:any[]=[];
   zoom=10;
   areaSend:any=[];
-
-
+  areaF:any;
+   
   handleAddressChange(address: Address,input:any) {
 
     let Showvalue = input.value;
    let  Sendvalue = Showvalue.split(',').join('-');
     this.area.push(Showvalue);
+    
     console.log(this.area,'show address');
     this.areaSend.push(Sendvalue)
     console.log(this.areaSend,'show address');
@@ -177,13 +178,24 @@ export class HomeComponent implements OnInit {
     }
     if(this.Resform.get('type')?.value == 'Rent' && this.areaSend.length>0){
     
-      
+    switch(this.area.length){
+      case 1:
+      this.areaF = this.area[0]
+      break;
+      case 2:
+        this.areaF = this.area[0]+'+'+this.area[1]
+        break;
+      case 3:
+      this.areaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+      break;
+    }
+    console.log(this.areaF)
     let data ={
       formatAdd:this.BuyerAddres,
       type:this.Resform.get('type')?.value,
       propertType:this.Resform.get('PropertyType')?.value,
       BHKType:this.Resform.get('BHK')?.value? this.bhkArr.indexOf( this.Resform.get('BHK')?.value).toString():'',
-      area:this.areaSend,
+      area:this.areaF,
     }
    
       var queryString = new URLSearchParams(data).toString();

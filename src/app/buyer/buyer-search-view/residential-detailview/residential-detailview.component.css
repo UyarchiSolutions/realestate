@@ -346,3 +346,16 @@ margin-bottom: 0 !important;
     padding: 22px;
     justify-content: center;
 }
+.cus-body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-evenly;
+    background-color: beige;
+}
+.con-btn{
+    padding: 5px 13px;
+    color: white;
+    background: #473B32;
+}

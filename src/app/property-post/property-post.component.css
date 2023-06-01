@@ -497,3 +497,7 @@ header{
     color: white;
     font-size: 14px;
 }
+.st-btn{
+    padding: 5px 20px;
+    max-width: 125px;
+}
