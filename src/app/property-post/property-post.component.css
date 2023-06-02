@@ -500,4 +500,38 @@ header{
 .st-btn{
     padding: 5px 20px;
     max-width: 125px;
+    border-radius: 12%;
+}
+.reject{
+   background-color: rgba(255, 0, 0, 0.058);
+   color: #FF0000;
+}
+.st-btn svg{
+    margin-right: 5px;
+}
+.sch{
+    background-color:  rgba(71, 59, 50, 0.1);
+    color: rgba(71, 59, 50, 1);
+}
+.fix{
+    background-color: rgba(24, 119, 242, 0.1);
+    color: rgba(24, 119, 242, 1);
+}
+.vis{
+    background: rgba(253, 132, 31, 0.1);
+    color: rgba(253, 132, 31, 1);
+
+}
+.cus-body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-evenly;
+    background-color: beige;
+}
+.con-btn{
+    padding: 5px 13px;
+    color: white;
+    background: #473B32;
 }

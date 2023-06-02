@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
 import { Cookie } from 'ng2-cookies';
 import { FormBuilder, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-property-post',
@@ -87,11 +88,11 @@ export class PropertyPostComponent implements OnInit {
       postId:postId,
       buyerId:buyerId
     }
-    this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
-      console.log(res)
-      this.get_all_interst();
+    // this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
+    //   console.log(res)
+    //   this.get_all_interst();
       
-    })
+    // })
     console.log(data)
     this.stime=false
     this.sschedule=false
@@ -106,6 +107,6 @@ export class PropertyPostComponent implements OnInit {
   backToRoute(){
     console.log('clicked')
     this.router.navigate(['/owner'])
-  }
-
+    }
+    
 }

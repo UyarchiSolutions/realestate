@@ -6,6 +6,7 @@ import { PostPropertyService } from 'src/app/services/post-property.service';
 import { BuyerService } from '../../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
 import { Cookie } from 'ng2-cookies';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-residential-buy-view',
@@ -17,7 +18,8 @@ export class ResidentialBuyViewComponent implements OnInit {
   showRecentSer: any;
   constructor(private arouter:ActivatedRoute,
     private fb:FormBuilder ,private router:Router, private service:PostPropertyService,
-    private buyerService: BuyerService
+    private buyerService: BuyerService,
+    private toastr: ToastrService
     ){
 
   }
@@ -70,6 +72,8 @@ export class ResidentialBuyViewComponent implements OnInit {
   floorDataArr:any=['0','1-3','4-7','8-12','13']
   notLogin:any;
 
+  areaArrF:any=[];
+
   options1: Options = {
     floor: 5000,
     ceil: 1000000,
@@ -118,10 +122,14 @@ export class ResidentialBuyViewComponent implements OnInit {
           params.params['BHKType'] != null && params.params['BHKType'] != ''
             ? params.params['BHKType'].split(',')
             : [];
-        this.areaArr =
-          params.params['area'] != null && params.params['area'] != ''
-            ? params.params['area'].replace(/-/g, ' ').split(',')
-            : [];
+            this.areaArr =
+            params.params['area'] != null && params.params['area'] != ''
+              ? params.params['area'].split('+')
+              : [];
+       this.areaArrF =
+              params.params['area'] != null && params.params['area'] != ''
+                ? params.params['area']
+                : [];
         ////consolele.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
 
@@ -236,13 +244,13 @@ export class ResidentialBuyViewComponent implements OnInit {
      this.router.navigateByUrl('/buyer-residential-rent-view')
    }
   showInput = true;
+  nextPage=false;
   sendData: any;
   totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
   let  Data = {
     HouseOrCommercialType:'Residential',
-      formatAdd: this.formatAdd,
       type: this.type,
       propertType: this.propertType,
       BHKType: this.BHKType,
@@ -262,11 +270,17 @@ export class ResidentialBuyViewComponent implements OnInit {
     };
     //consolele.log(Data);
     this.service
-      .getSellerDetails(this.page, this.range, Data,this.floordata)
+    .getSellerDetails2(
+      this.page,
+      this.range,
+      Data,
+      this.floordata,
+      this.areaArr)
       .subscribe((res: any) => {
         //consolele.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
+        this.nextPage=res.next
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
@@ -519,10 +533,22 @@ export class ResidentialBuyViewComponent implements OnInit {
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
+  areaF:any;
   assignToSaveData(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
     this.sendData = {
       formatAdd: this.formatAdd,
-      area: this.areaArr,
+      area: this.areaF,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -732,47 +758,27 @@ export class ResidentialBuyViewComponent implements OnInit {
    }
   handleAddressChange(address: Address, input: any) {
     ////consolele.log(input.value);
+  console.log(input.value);
+    console.log(address);
     this.formatAdd = input.value;
-    
+
     let Showvalue = input.value;
-   let  Sendvalue = Showvalue.split(',').join('-');
-   
-    this.areaArr.push(Sendvalue);
+    
+    if(address.formatted_address){
+      this.areaArr.push(Showvalue);
+     }
+     else{
+     
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-bottom-center'});
+     }
     if (this.areaArr.length >= 3) {
       this.showInput = false;
-      //consolele.log(this.showInput, 'inpout show');
+      console.log(this.showInput, 'inpout show');
     }
-    input.value = ''; 
-    this.latitude = address.geometry.location.lat();
-    this.longtitude = address.geometry.location.lng();
-
-    this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-        ////consolele.log(res)
-          this.Address = res[0].address_components;
-        ////consolele.log(this.Address)
-
-        ////consolele.log( res,'zxczc',input.value)
-
-        let area = this.Address.find((component: any) => {
-          if (component.types.includes('locality')) {
-            ////consolele.log(component.types.includes('locality'),'locality');
-
-            return component.types.includes('locality');
-          }
-
-          if (component.types.includes('sublocality_level_1')) {
-            ////consolele.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-            return component.types.includes('sublocality_level_1');
-          }
-        }).long_name;
-        ////consolele.log(area);
-
-        //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-        //   ////consolele.log(city);
-        //   this.city= city;
-      });
-   
+    this.Address = address.address_components;
+    console.log(this.areaArr,'area arr in the function')
+    this.filter.get('search').reset();
   }
   sendRecentSearch() {
     let data = {
@@ -800,6 +806,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.sendRecentSearch();
     this.assignToSaveData()
     let query = new URLSearchParams(this.sendData).toString();
+    
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
   options: any = {

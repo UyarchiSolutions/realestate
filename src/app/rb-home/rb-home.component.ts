@@ -6,6 +6,7 @@ import { Cookie } from 'ng2-cookies';
 import { PostPropertyService } from '../services/post-property.service';
 import { BuyerService } from '../buyer/buyer.service';
 import { Options } from '@angular-slider/ngx-slider';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rb-home',
@@ -19,7 +20,8 @@ export class RbHomeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: PostPropertyService,
-    private buyerService: BuyerService
+    private buyerService: BuyerService,
+    private toastr: ToastrService
   ) {}
   range = 10;
   page = 0;
@@ -727,46 +729,23 @@ export class RbHomeComponent implements OnInit {
     this.formatAdd = input.value;
 
     let Showvalue = input.value;
-    let Sendvalue = Showvalue;
-
-    this.areaArr.push(Sendvalue);
+    
+    if(address.formatted_address){
+      this.areaArr.push(Showvalue);
+     }
+     else{
+     
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-bottom-center'});
+     }
     if (this.areaArr.length >= 3) {
       this.showInput = false;
       console.log(this.showInput, 'inpout show');
     }
-    console.log(this.areaArr,'area arr in the function')
-    input.value = '';
-    this.latitude = address.geometry.location.lat();
-    this.longtitude = address.geometry.location.lng();
-
-    // this.service
-    //   .getAddress(this.latitude, this.longtitude)
-    //   .subscribe((res: any) => {
-    // console.log(res)
     this.Address = address.address_components;
-    //console.log(this.Address)
-
-    //console.log( res,'zxczc',input.value)
-
-    let area = this.Address.find((component: any) => {
-      if (component.types.includes('locality')) {
-        //console.log(component.types.includes('locality'),'locality');
-
-        return component.types.includes('locality');
-      }
-
-      if (component.types.includes('sublocality_level_1')) {
-        //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-        return component.types.includes('sublocality_level_1');
-      }
-    }).long_name;
-    console.log(area);
-
-    //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-    //   //console.log(city);
-    //   this.city= city;
-    // });
+    console.log(this.areaArr,'area arr in the function')
+    this.filter.get('search').reset();
+   
   }
   sendRecentSearch() {
     let data = {
@@ -793,8 +772,6 @@ export class RbHomeComponent implements OnInit {
   areaF:any
   submitAddress() {
     this.sendRecentSearch();
-   
-   
     this.assignToSaveData();
 
     let query = new URLSearchParams(this.sendData).toString();
@@ -1017,53 +994,7 @@ export class RbHomeComponent implements OnInit {
       this.nofi = res;
     });
   }
-  Get_all_interest() {
-    this.buyerService.getAll_Interested().subscribe((res: any) => {
-      console.log(res, 'all interest');
-      // console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
-      this.AllInterested = res;
-      this.ResiRent = this.AllInterested.filter((v: any) => {
-        return (
-          v.Type == 'Rent' &&
-          v.HouseOrCommercialType == 'Residential' &&
-          (v.userStatus.status == 'Intrested' ||
-            v.userStatus.status == 'Shcedule')
-        );
-      });
-      this.ResiBuy = this.AllInterested.filter((v: any) => {
-        return (
-          v.Type == 'Sale' &&
-          v.HouseOrCommercialType == 'Residential' &&
-          (v.userStatus.status == 'Intrested' ||
-            v.userStatus.status == 'Shcedule')
-        );
-      });
-      this.CommRent = this.AllInterested.filter((v: any) => {
-        return (
-          v.Type == 'Rent' &&
-          v.HouseOrCommercialType == 'Commercial' &&
-          (v.userStatus.status == 'Intrested' ||
-            v.userStatus.status == 'Shcedule')
-        );
-      });
-      this.CommBuy = this.AllInterested.filter((v: any) => {
-        return (
-          v.Type == 'Sale' &&
-          v.HouseOrCommercialType == 'Commercial' &&
-          (v.userStatus.status == 'Intrested' ||
-            v.userStatus.status == 'Shcedule')
-        );
-      });
-      console.log('resdiental rent', this.ResiRent, 'resi sale', this.ResiBuy);
-      console.log('com rent', this.CommRent, 'com buy', this.CommBuy);
-      //  console.log(res[0].userStatus.status,res[1].userStatus.status,res[2].userStatus.status)
-    });
-  }
-  AllSaved: any;
-  ResiRentS: any = [];
-  ResiBuyS: any = [];
-  CommRentS: any = [];
-  CommBuyS: any = [];
+ 
 
  
   show_top = false;

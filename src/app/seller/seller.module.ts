@@ -75,6 +75,8 @@ import { SubHostPropertyViewComponent } from './sub-host/sub-host-property-view/
 import { NotificationComponent } from './notification/notification.component';
 import { SellerFooterComponent } from './seller-footer/seller-footer.component';
 
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     SellerLoginComponent,
@@ -162,10 +164,12 @@ import { SellerFooterComponent } from './seller-footer/seller-footer.component';
     ReactiveFormsModule,
     CommonModule,
     GooglePlaceModule,
+  
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
     }),
   ],
+  
 })
 export class SellerModule {}

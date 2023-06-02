@@ -101,7 +101,7 @@
                             
                            <p> Status</p></span>
                             </th>
-                            <th><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <th style="display: flex;justify-content: center;align-items: center; margin-top: 15px;"><span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7091 4.44269L11.5574 0.290985C11.37 0.103379 11.1205 0 10.8554 0C10.5902 0 10.3412 0.103264 10.1538 0.290755L7.07396 3.37057C6.65965 3.78476 6.74303 4.33856 6.77149 4.52756L6.77156 4.52806L7.20159 7.20138L4.5119 6.76917C4.39975 6.75394 4.30099 6.74655 4.21006 6.74655C3.87015 6.74655 3.5876 6.85674 3.37057 7.07388L0.290755 10.1537C0.103149 10.3411 9.62398e-08 10.5904 9.62398e-08 10.8552C-0.000115142 11.1204 0.103264 11.3698 0.290755 11.557L4.44276 15.7093C4.63036 15.8969 4.87946 16.0001 5.14437 16.0001C5.4094 16.0001 5.65873 15.8968 5.84623 15.7093L8.92604 12.6295C9.34035 12.2153 9.25697 11.6615 9.22851 11.4725L9.22844 11.472L8.79841 8.79872L11.4881 9.23093C11.6002 9.24616 11.699 9.25354 11.7899 9.25354C12.1298 9.25354 12.4124 9.14336 12.6294 8.92622L15.7092 5.84641C15.8969 5.65903 16 5.4097 16 5.1449C16 4.87965 15.8967 4.63019 15.7091 4.44269ZM4.55174 9.33407L6.90697 9.33366L6.90656 11.6889L5.02094 13.5745L2.66612 11.2197L4.55174 9.33407ZM9.17843 6.90658L11.5337 6.90616L13.4193 5.02054L11.0645 2.66573L9.17884 4.55134L9.17843 6.90658Z" fill="white"/>
                                 </svg>
                                 
@@ -117,7 +117,7 @@
                {{v.userName}}
             <td>{{v.mobile}}</td>
             <td>{{v.intrestedDate | date:'dd/MM/YY'}}- {{v.intrestedDate |date:"HH:mm a"}}</td>
-            <td><p *ngIf="v.status == 'Intrested'">Pending</p>
+            <td  style="font-weight: 700;"><p *ngIf="v.status == 'Intrested'">Pending</p>
                 <p   *ngIf="v.status == 'Rejected'" class="rejected"><svg width="16" height="18" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 12.5C2.6862 12.5 0 9.8138 0 6.5C0 3.1862 2.6862 0.5 6 0.5C9.3138 0.5 12 3.1862 12 6.5C12 9.8138 9.3138 12.5 6 12.5ZM6 11.3C7.27304 11.3 8.49394 10.7943 9.39411 9.89411C10.2943 8.99394 10.8 7.77304 10.8 6.5C10.8 5.22696 10.2943 4.00606 9.39411 3.10589C8.49394 2.20571 7.27304 1.7 6 1.7C4.72696 1.7 3.50606 2.20571 2.60589 3.10589C1.70571 4.00606 1.2 5.22696 1.2 6.5C1.2 7.77304 1.70571 8.99394 2.60589 9.89411C3.50606 10.7943 4.72696 11.3 6 11.3ZM6 5.6516L7.6968 3.9542L8.5458 4.8032L6.8484 6.5L8.5458 8.1968L7.6968 9.0458L6 7.3484L4.3032 9.0458L3.4542 8.1968L5.1516 6.5L3.4542 4.8032L4.3032 3.9542L6 5.6516Z" fill="#FF0000"/>
                     </svg>Rejected
@@ -151,58 +151,35 @@
                         <div class="button">
                             <button class="select-time-btn" (click)="closeAll(date,time,v._id,v.propertyId,v.userId)" >Set Date and Time</button>
                             </div>
-                        <!-- <h6>Select Date</h6>
-                        <section>
-                        <div class="select-date-input"><p (click)="showdate()">Date</p> <p>Month</p>  <p>Year</p></div>
-                        <div class="selections">
-                            <span class="dates"  *ngIf="showD" >
-                                <p>1</p>
-                                <p>2</p>
-                                <p>3</p>
-                                <p>4</p>
-                                <p>5</p>
-                                <p>6</p>
-                            </span>
-                            <span class="months"><p>january</p><p>February</p></span> 
-                            <span class="years"><p>2000</p><p>2001</p></span> 
-                             </div>
-                        <div class="button">
-                        <button class="select-time-btn" (click)="showTime()">Select Time</button>    
-                        
-                         </div> -->
-                           
-                        <!-- </section> -->
+            
                     </span>
 
-
-                    <span class="select-date" *ngIf="stime">
-                        <h6>Select Time</h6>
-                        <section>
-                            
-                        <div class="select-date-input"><p>--</p> <p>--</p>  <p>AM</p></div>
-                        <div class="selections"><span class="hours"><p>1</p><p>2</p><p>3</p></span>
-                             <span class="minutes"><p>5</p><p>10</p><p>15</p></span> 
-                             <span class="am-pm"><p>AM</p><p>PM</p></span> 
-                             </div>
-                    <div class="button">
-                    <button class="select-time-btn"  >Select Time</button>
-                    </div>
-                           
-                            </section>
-                    </span>
 
                 </span>
-                <button class="st-btn">
-                <svg (click)="showAll(v._id)" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 1.6H15.2C15.4122 1.6 15.6157 1.68429 15.7657 1.83431C15.9157 1.98434 16 2.18783 16 2.4V15.2C16 15.4122 15.9157 15.6157 15.7657 15.7657C15.6157 15.9157 15.4122 16 15.2 16H0.8C0.587827 16 0.384344 15.9157 0.234315 15.7657C0.0842854 15.6157 0 15.4122 0 15.2V2.4C0 2.18783 0.0842854 1.98434 0.234315 1.83431C0.384344 1.68429 0.587827 1.6 0.8 1.6H4V0H5.6V1.6H10.4V0H12V1.6ZM10.4 3.2H5.6V4.8H4V3.2H1.6V6.4H14.4V3.2H12V4.8H10.4V3.2ZM14.4 8H1.6V14.4H14.4V8ZM3.2 10.4H4.8V12H3.2V10.4ZM6.4 10.4H12.8V12H6.4V10.4Z" fill="#473B32"/>
-                </svg>Schedule
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="v.status == 'Intrested'" class="st-btn sch" > 
+                    <!-- (click)="showAll(v._id)" -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1.6H15.2C15.4122 1.6 15.6157 1.68429 15.7657 1.83431C15.9157 1.98434 16 2.18783 16 2.4V15.2C16 15.4122 15.9157 15.6157 15.7657 15.7657C15.6157 15.9157 15.4122 16 15.2 16H0.8C0.587827 16 0.384344 15.9157 0.234315 15.7657C0.0842854 15.6157 0 15.4122 0 15.2V2.4C0 2.18783 0.0842854 1.98434 0.234315 1.83431C0.384344 1.68429 0.587827 1.6 0.8 1.6H4V0H5.6V1.6H10.4V0H12V1.6ZM10.4 3.2H5.6V4.8H4V3.2H1.6V6.4H14.4V3.2H12V4.8H10.4V3.2ZM14.4 8H1.6V14.4H14.4V8ZM3.2 10.4H4.8V12H3.2V10.4ZM6.4 10.4H12.8V12H6.4V10.4Z" fill="#473B32"/>
+                        </svg>Schedule
                 </button>
-              
-                <button class="st-btn">
-                <svg (click)="reject_status(v._id)" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button *ngIf="false" class="st-btn fix">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM7.2024 11.2L3.808 7.8056L4.9392 6.6744L7.2024 8.9376L11.7272 4.412L12.8592 5.5432L7.2024 11.2Z" fill="#1877F2"/>
+                        </svg>
+                        Fixed
+                    </button>
+                <button *ngIf="false" class="st-btn vis ">
+                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0.844727C11.9871 0.844727 15.3042 3.71375 16 7.49969C15.3049 11.2856 11.9871 14.1546 8 14.1546C4.01294 14.1546 0.695813 11.2856 0 7.49969C0.695073 3.71375 4.01294 0.844727 8 0.844727ZM8 12.6758C9.50806 12.6754 10.9714 12.1632 12.1504 11.2229C13.3294 10.2826 14.1543 8.96989 14.4901 7.49969C14.1531 6.03064 13.3276 4.71939 12.1487 3.78032C10.9698 2.84125 9.5072 2.32991 8 2.32991C6.4928 2.32991 5.03018 2.84125 3.85128 3.78032C2.67238 4.71939 1.84695 6.03064 1.50994 7.49969C1.84571 8.96989 2.67062 10.2826 3.84963 11.2229C5.02865 12.1632 6.49194 12.6754 8 12.6758ZM8 10.8272C7.1175 10.8272 6.27114 10.4766 5.64712 9.85257C5.02309 9.22854 4.67252 8.38219 4.67252 7.49969C4.67252 6.61718 5.02309 5.77083 5.64712 5.1468C6.27114 4.52278 7.1175 4.17221 8 4.17221C8.8825 4.17221 9.72886 4.52278 10.3529 5.1468C10.9769 5.77083 11.3275 6.61718 11.3275 7.49969C11.3275 8.38219 10.9769 9.22854 10.3529 9.85257C9.72886 10.4766 8.8825 10.8272 8 10.8272ZM8 9.34828C8.49028 9.34828 8.96048 9.15352 9.30716 8.80684C9.65384 8.46016 9.8486 7.98996 9.8486 7.49969C9.8486 7.00941 9.65384 6.53921 9.30716 6.19253C8.96048 5.84585 8.49028 5.65109 8 5.65109C7.50972 5.65109 7.03952 5.84585 6.69284 6.19253C6.34616 6.53921 6.1514 7.00941 6.1514 7.49969C6.1514 7.98996 6.34616 8.46016 6.69284 8.80684C7.03952 9.15352 7.50972 9.34828 8 9.34828Z" fill="#FD841F"/>
+                        </svg>
+                        Visited
+                    </button>
+                <button class="st-btn reject" (click)="reject_status(v._id)">
+                <svg  width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM8 6.8688L10.2624 4.6056L11.3944 5.7376L9.1312 8L11.3944 10.2624L10.2624 11.3944L8 9.1312L5.7376 11.3944L4.6056 10.2624L6.8688 8L4.6056 5.7376L5.7376 4.6056L8 6.8688Z" fill="#FF0000"/>
                     </svg>Reject
                 </button>
+               
                 </td>
                 
             </tr> 
@@ -248,3 +225,21 @@
         
      </div>
      <seller-footer></seller-footer>
+
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content" style="    background-color: beige;">
+            <div class="modal-header" style="display: flex;justify-content: center;">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          </div>
+
+            <div class="modal-body cus-body" >
+               <input type="date"  min="{{today | date:'yyyy-MM-dd'}}">
+           
+                
+            </div>
+
+            <p><button class="con-btn">Contact Now</button></p>
+          </div>
+        </div>
+      </div>

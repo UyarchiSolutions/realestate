@@ -59,62 +59,27 @@ export class HomeComponent implements OnInit {
   handleAddressChange(address: Address,input:any) {
 
     let Showvalue = input.value;
-   let  Sendvalue = Showvalue.split(',').join('-');
-    this.area.push(Showvalue);
-    
-    console.log(this.area,'show address');
-    this.areaSend.push(Sendvalue)
-    console.log(this.areaSend,'show address');
+  
 
   
-      this.BuyerAddres = address.formatted_address;
+      
+  //  this.latitude = address.geometry.location.lat();
+  //  this.longtitude = address.geometry.location.lng();
+     if(address.formatted_address){
+          this.area.push(Showvalue);
+          this.BuyerAddres = address.formatted_address;
       this.Resform.patchValue({
         BuyerAddres: this.BuyerAddres,
      })
-
-   this.latitude = address.geometry.location.lat();
-   this.longtitude = address.geometry.location.lng();
-
-
-  
-
-  //  this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-  //   console.log(res)
+      console.log('ok')
+     }
+     else{
      
-     
-  //     let address = res[0].address_components;
-  //     let area = address.find((component:any) =>{ 
-  //       if( component.types.includes('locality')){
-
-  //         console.log(component.types.includes('locality'),'locality');
-
-  //       return component.types.includes('locality')}
-
-  //       if( component.types.includes('sublocality_level_1')){
-
-  //         console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-  //       return component.types.includes('sublocality_level_1')}
-     
-  //     }
-  //     ).long_name; 
-  //     console.log(area);
-     
-  //     this.service.GAreaArr = this.area;
-  //     console.log(this.area,'area arry')
-
-  //    let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-  //     console.log(city);
-  //     this.city= city; 
-
-  //    
-  //     this.Resform.setValue({
-  //       BuyerAddres: this.BuyerAddres,
-  //    })
-  //   }) 
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-bottom-center'});
+     }
   this.Resform.get('BuyerAddres').reset();
 
-    console.log(this.Resform.get('BuyerAddres')?.value,'buyer address')
     
      
    }
@@ -133,21 +98,24 @@ export class HomeComponent implements OnInit {
     
 
       let Showvalue = input.value;
-     let  Sendvalue = Showvalue.split(',').join('-');
+   
       this.Carea.push(Showvalue);
       console.log(this.Carea,'show address');
-      this.CareaSend.push(Sendvalue)
-      console.log(this.CareaSend,'show address');
-  
     
         this.CBuyerAddres = address.formatted_address;
         this.Comform.patchValue({
           CBuyerAddres: this.CBuyerAddres,
        })
        
-       console.log(this.CBuyerAddres,this.Comform.get('CBuyerAddres')?.value);
-     this.latitude = address.geometry.location.lat();
-     this.longtitude = address.geometry.location.lng();
+       if(address.formatted_address){
+      console.log('ok')
+     }
+     else{
+      this.Carea=[]
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-bottom-center'});
+     }
+
   
      this.Comform.get('CBuyerAddres').reset();
   }
@@ -166,7 +134,8 @@ export class HomeComponent implements OnInit {
   ,'7 BHK','8 BHK','9 BHK','10+ BHK'] ;
   Ressubmit()
   {
-    if(this.areaSend.length==0){
+   
+    if(this.area.length==0){
       this.toastr.error('Fill the field', 'Please fil the address!', {
         positionClass: 'toast-bottom-center'
      });
@@ -176,8 +145,8 @@ export class HomeComponent implements OnInit {
         positionClass: 'toast-bottom-center'
      });
     }
-    if(this.Resform.get('type')?.value == 'Rent' && this.areaSend.length>0){
-    
+
+    if(this.Resform.get('type')?.value == 'Rent' && this.area.length>0){
     switch(this.area.length){
       case 1:
       this.areaF = this.area[0]
@@ -190,6 +159,7 @@ export class HomeComponent implements OnInit {
       break;
     }
     console.log(this.areaF)
+    
     let data ={
       formatAdd:this.BuyerAddres,
       type:this.Resform.get('type')?.value,
@@ -199,17 +169,29 @@ export class HomeComponent implements OnInit {
     }
    
       var queryString = new URLSearchParams(data).toString();
-      this.route.navigateByUrl('/buyer-residential-rent-view?' + queryString );
+       this.route.navigateByUrl('/buyer-residential-rent-view?' + queryString );
     
   }
 
-    if(this.Resform.get('type')?.value == 'Sale' && this.areaSend.length>0 ){
+    if(this.Resform.get('type')?.value == 'Sale' && this.area.length>0 ){
+      switch(this.area.length){
+        case 1:
+        this.areaF = this.area[0]
+        break;
+        case 2:
+          this.areaF = this.area[0]+'+'+this.area[1]
+          break;
+        case 3:
+        this.areaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+        break;
+      }
+      console.log(this.areaF)
       let data ={
         formatAdd:this.BuyerAddres,
         type:'Sale',
         propertType:this.Resform.get('PropertyType')?.value,
         BHKType:this.Resform.get('BHK')?.value? this.bhkArr.indexOf( this.Resform.get('BHK')?.value).toString():'',
-        area:this.areaSend,
+        area:this.areaF,
       }
 
       var queryString = new URLSearchParams(data).toString();
@@ -217,10 +199,10 @@ export class HomeComponent implements OnInit {
     
   }
   };
-
+  CareaF:any;
   Comsubmit()
   {
-    if(this.CareaSend.length==0){
+    if(this.Carea.length==0){
       this.toastr.error('Fill the field', 'Please fil the address!', {
         positionClass: 'toast-bottom-center'
      });
@@ -230,15 +212,26 @@ export class HomeComponent implements OnInit {
         positionClass: 'toast-bottom-center'
      });
     }
-    if(this.Comform.get('Ctype')?.value == 'Rent' && this.CareaSend.length>0){
-    console.log('iside if')
+    if(this.Comform.get('Ctype')?.value == 'Rent' && this.Carea.length>0){
+      switch(this.Carea.length){
+        case 1:
+        this.CareaF = this.area[0]
+        break;
+        case 2:
+          this.CareaF = this.area[0]+'+'+this.area[1]
+          break;
+        case 3:
+        this.CareaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+        break;
+      }
+      console.log(this.CareaF)
       
     let data ={
       formatAdd:this.CBuyerAddres,
       type:'Rent',
       // propertType:this.Comform.get('CPropertyType')?.value,
       // BHKType:this.Comform.get('CBHK')?.value? this.bhkArr.indexOf( this.Comform.get('BHK')?.value).toString():'',
-      area:this.CareaSend,
+      area:this.CareaF,
     }
    
       var queryString = new URLSearchParams(data).toString();
@@ -246,14 +239,26 @@ export class HomeComponent implements OnInit {
     
   }
 
-    if(this.Comform.get('Ctype')?.value == 'Buy' && this.CareaSend.length>0 ){
+    if(this.Comform.get('Ctype')?.value == 'Buy' && this.Carea.length>0 ){
       console.log('iside if')
+      switch(this.Carea.length){
+        case 1:
+        this.CareaF = this.area[0]
+        break;
+        case 2:
+          this.CareaF = this.area[0]+'+'+this.area[1]
+          break;
+        case 3:
+        this.CareaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+        break;
+      }
+      console.log(this.CareaF)
       let data ={
         formatAdd:this.CBuyerAddres,
         type:'Sale',
         // propertType:this.Comform.get('CPropertyType')?.value,
         // BHKType:this.Comform.get('CBHK')?.value? this.bhkArr.indexOf( this.Comform.get('BHK')?.value).toString():'',
-        area:this.CareaSend,
+        area:this.CareaF,
       }
 
       var queryString = new URLSearchParams(data).toString();
