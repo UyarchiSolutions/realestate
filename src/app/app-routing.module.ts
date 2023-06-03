@@ -100,6 +100,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ManageFaqComponent } from './admin/manage-faq/manage-faq.component';
 import { ManageEnquiryComponent } from './admin/manage-enquiry/manage-enquiry.component';
 import { ReportedPostComponent } from './admin/reported-post/reported-post.component';
+import { BuyerProfileComponent } from './buyer/buyer-profile/buyer-profile.component';
+import { BuyerProfileEditComponent } from './buyer/buyer-profile-edit/buyer-profile-edit.component';
 
 
 const routes: Routes = [
@@ -263,6 +265,8 @@ const routes: Routes = [
 
   //buyer home
   { path: 'buyer-residential-rent-view', component: RbHomeComponent },
+  { path: 'buyer-profile', component: BuyerProfileComponent },
+  { path: 'buyer-profile-edit', component: BuyerProfileEditComponent },
   {
     path: 'buyer-residential-buy-view',
     component: ResidentialBuyViewComponent,

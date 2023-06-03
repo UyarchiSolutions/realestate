@@ -171,3 +171,12 @@
     padding: 0;
     margin-left: 400px;
 }
+.img-upl{
+    border-style: groove;
+    padding: 5px;
+    align-items: center;
+    margin-right: 30%;
+    justify-content: center;
+    display: grid;
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
+}

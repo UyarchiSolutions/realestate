@@ -77,33 +77,6 @@ export class BuyerTopSectionComponent implements OnInit {
     
     this.latitude = address.geometry.location.lat();
     this.longtitude = address.geometry.location.lng();
-
-    // this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-    //     //console.log(res)
-    //       this.Address = res[0].address_components;
-    //     //console.log(this.Address)
-
-    //     //console.log( res,'zxczc',input.value)
-
-    //     // let area = this.Address.find((component: any) => {
-    //     //   if (component.types.includes('locality')) {
-    //     //     //console.log(component.types.includes('locality'),'locality');
-
-    //     //     return component.types.includes('locality');
-    //     //   }
-
-    //     //   if (component.types.includes('sublocality_level_1')) {
-    //     //     //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-    //     //     return component.types.includes('sublocality_level_1');
-    //     //   }
-    //     // }).long_name;
-    //     // this.areaArr.push(area)
-    //     //console.log(area);
-    //      //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-    //     //   //console.log(city);
-    //     //   this.city= city;
-    //   });  
    
   }
   options: any = {

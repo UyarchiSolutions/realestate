@@ -98,17 +98,13 @@ export class HomeComponent implements OnInit {
     
 
       let Showvalue = input.value;
-   
-      this.Carea.push(Showvalue);
-      console.log(this.Carea,'show address');
-    
+       if(address.formatted_address){
+        this.Carea.push(Showvalue);
         this.CBuyerAddres = address.formatted_address;
         this.Comform.patchValue({
           CBuyerAddres: this.CBuyerAddres,
        })
-       
-       if(address.formatted_address){
-      console.log('ok')
+       console.log(this.Carea,'show address');
      }
      else{
       this.Carea=[]
@@ -215,13 +211,13 @@ export class HomeComponent implements OnInit {
     if(this.Comform.get('Ctype')?.value == 'Rent' && this.Carea.length>0){
       switch(this.Carea.length){
         case 1:
-        this.CareaF = this.area[0]
+        this.CareaF = this.Carea[0]
         break;
         case 2:
-          this.CareaF = this.area[0]+'+'+this.area[1]
+          this.CareaF = this.Carea[0]+'+'+this.Carea[1]
           break;
         case 3:
-        this.CareaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+        this.CareaF = this.Carea[0]+'+'+this.Carea[1]+'+'+this.Carea[2];
         break;
       }
       console.log(this.CareaF)
@@ -243,13 +239,13 @@ export class HomeComponent implements OnInit {
       console.log('iside if')
       switch(this.Carea.length){
         case 1:
-        this.CareaF = this.area[0]
+        this.CareaF = this.Carea[0]
         break;
         case 2:
-          this.CareaF = this.area[0]+'+'+this.area[1]
+          this.CareaF = this.Carea[0]+'+'+this.Carea[1]
           break;
         case 3:
-        this.CareaF = this.area[0]+'+'+this.area[1]+'+'+this.area[2];
+        this.CareaF = this.Carea[0]+'+'+this.Carea[1]+'+'+this.Carea[2];
         break;
       }
       console.log(this.CareaF)

@@ -138,8 +138,17 @@ export class RrGalleryComponent implements OnInit {
   async submit() {
    
     this.submited=true;
-    if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.videos != null)
-    || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
+    console.log( (this.videoSrc && this.imagePreview.length > 0) ,
+    (this.data.image != ''  && this.data.videos.length > 0 )
+   , (this.imagePreview.length > 0 && this.data.videos.length  > 0 )
+     , (this.data.image != '' && this.videoSrc) ,'if cond' )
+
+    //  console.log(this.data.image ,this.data.videos,this.data.image != '',this.data.videos.length >0,'2')
+    // console.log(this.imagePreview,this.data.videos,this.imagePreview.length > 0 , this.data.videos  > 0,'3')
+
+    if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
+    || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
+    {
     await this.uploadimg();
     let data={
       routeLink:this.routerlink,
@@ -188,8 +197,11 @@ export class RrGalleryComponent implements OnInit {
   }
   async  routetopreview(){
     this.submited=true;
-    if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.videos != null)
-    || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
+   
+
+    if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
+    || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
+    {
     await  this.uploadimg();
     await  this.uploadvid();
     }

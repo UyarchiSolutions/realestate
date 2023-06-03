@@ -37,6 +37,8 @@ import { BuyerAlertPopComponent } from './buyer-alert-pop/buyer-alert-pop.compon
 import { BuyerNotificationComponent } from './buyer-notification/buyer-notification.component';
 import { BuyerFooterComponent } from './buyer-footer/buyer-footer.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
+import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-edit.component';
 
 
 
@@ -77,6 +79,8 @@ import { LoaderComponent } from '../loader/loader.component';
     BuyerAlertPopComponent,
     BuyerNotificationComponent,
     BuyerFooterComponent,
+    BuyerProfileComponent,
+    BuyerProfileEditComponent,
  
    
   ],

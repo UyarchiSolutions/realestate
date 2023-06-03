@@ -1,0 +1,141 @@
+
+
+.container{
+    display: flex;
+  }
+  .sidebar{
+    width: 15%;
+    background-color:var(--sandal);
+    margin: 10px;
+  
+  }
+  .main{
+    width: 70%;
+    background-color:var(--sandal);
+  
+    margin: 10px 0px;
+  
+  }
+  
+  .ad{
+    width: 15%;
+   background-image: url(../../assets/images/ad-post.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 717px;
+    margin: 10px;
+  }
+  .sidebar-content-list{
+    background: none;
+    color: black;
+    padding: 10px;
+  
+  }
+  .sidebar-content-list span{
+    display: flex;
+    align-items: center;
+  }
+  .sidebar-content-list svg{
+    margin-right: 10px;
+  }
+  
+  .active {
+    background-color: var(--brown);
+    color: white;
+  }
+  .form{
+    width: 550px;
+  
+    margin: 50px auto;
+  }
+  .select-city{
+  display: flex;
+  justify-content: center;
+  }
+  .select-city input{
+    width: 60%;
+    padding: 10px;
+    border: none;
+    background: none;
+    border-bottom: solid var(--brown) 1px;
+  }
+  .heading{
+  
+  text-align: center;
+    margin-top: 30px;
+  
+    color: var(--brown);
+  }
+  
+  .edit-btn{
+    display: flex;
+    align-items: center;
+    height:fit-content;
+    padding: 3px 15px;
+    color: white;
+    background-color: var(--brown);
+    border: none;
+  }
+  
+  .edit-btn svg{
+    margin-right: 5px;
+  }
+  .none{
+  visibility: hidden;
+  }
+  .profile{
+    width: 80%;
+    border-radius: 5px;
+    padding: 15px 5%;
+    margin: auto;
+  }
+  .profile div{
+    width: 100%;
+    display: flex;
+    margin: 30px 0;
+  }
+  .profile div label{
+    width: 30%;
+    color: var(--brown);
+    font-weight: 700;
+  }
+  .profile div input{
+    font-weight: 400;
+    color: black;
+    width: 60%;
+    padding-left: 10px;
+    border: none;
+    border-bottom: solid var(--brown) 1px;
+    background: none !important;
+  }
+  .seller-owner{
+    width: fit-content !important;
+    margin: auto !important;
+  }
+  .seller-owner span{
+    display: flex;
+    align-items: center;
+    width: fit-content !important;
+    margin: 0 30px;
+  }
+  .seller-owner span label,.seller-owner span p{
+    width: fit-content;
+    margin:  0 5px;
+  }
+  .profile .submit{
+    width: fit-content;
+    margin: auto !important;
+    margin-top: 20px !important;
+  
+  }
+  .profile .submit button{
+    padding: 5px 30px;
+    color: white;
+    border: none;
+    background-color: var(--brown);
+  }
+  .redtext{
+    color: red;
+    display: flex;
+    justify-content: center;
+  }

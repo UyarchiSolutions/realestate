@@ -140,12 +140,13 @@ export class CsGalleryComponent {
           submited=false;
        async submit(){
         this.submited=true;
-        console.log( (this.videoSrc && this.imagePreview.length > 0) , (this.data.image != '' && this.data.video != null)
-        , (this.imagePreview.length > 0 && this.data.videos != null) , (this.data.image != '' && this.videoSrc)  )
+        // console.log( (this.videoSrc && this.imagePreview.length > 0) , (this.data.image != '' && this.data.video != null)
+        // , (this.imagePreview.length > 0 && this.data.videos != null) , (this.data.image != '' && this.videoSrc)  )
 
-        console.log(this.imagePreview.length,'preview length')
-        if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.video != null)
-       || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)  ){    
+
+        if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
+        || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
+       {    
         await  this.uploadimg();
          let data={
       routeLink:this.routerlink,
@@ -197,8 +198,9 @@ export class CsGalleryComponent {
         
 
 
-          if((this.videoSrc && this.imagePreview.length > 0) || (this.data.image != '' && this.data.videos != null)
-          || (this.imagePreview.length > 0 && this.data.videos != null) || (this.data.image != '' && this.videoSrc)){
+          if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
+          || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
+          {
             console.log('if works')
           await  this.uploadimg();
           await  this.uploadvid();

@@ -6,6 +6,7 @@ import { BuyerService } from '../../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
 import { Options } from '@angular-slider/ngx-slider';
 import { Cookie } from 'ng2-cookies';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-commercial-rent-view',
@@ -19,7 +20,8 @@ export class CommercialRentViewComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private service: PostPropertyService,
-    private buyerService: BuyerService
+    private buyerService: BuyerService,
+    private toastr: ToastrService
   ) {}
   range = 10;
   page = 0;
@@ -69,6 +71,8 @@ export class CommercialRentViewComponent implements OnInit {
   floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
   floorDataArr:any=['0','1-3','4-7','8-12','13']
   notLogin:any;
+
+  areaArrF:any=[]
 
   options1: Options = {
     floor: 5000,
@@ -122,7 +126,11 @@ export class CommercialRentViewComponent implements OnInit {
             : [];
         this.areaArr =
           params.params['area'] != null && params.params['area'] != ''
-            ? params.params['area'].replace(/-/g, ' ').split(',')
+            ? params.params['area'].split('+')
+            : [];
+            this.areaArrF =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area']
             : [];
         //console.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
@@ -166,6 +174,7 @@ export class CommercialRentViewComponent implements OnInit {
               params.params['floor'] != null && params.params['floor'] != ''
                 ? params.params['floor'].split(',')
                 : [];
+          
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -237,7 +246,7 @@ export class CommercialRentViewComponent implements OnInit {
   sendDataBOOL = true;
   GetDataForFilter() {
   let  Data = {
-      formatAdd: this.formatAdd,
+
       HouseOrCommercialType:'Commercial',
       type: 'Rent',
       propertType: this.propertType,
@@ -259,7 +268,13 @@ export class CommercialRentViewComponent implements OnInit {
     };
     console.log(Data);
     this.service
-      .getSellerDetails(this.page, this.range, Data,this.floordata)
+    .getSellerDetails2(
+      this.page,
+      this.range,
+      Data,
+      this.floordata,
+      this.areaArr
+    )
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
@@ -268,19 +283,13 @@ export class CommercialRentViewComponent implements OnInit {
           this.showPag_rag = true;
         }
         //console.log(this.data, 'data');
-
         if (this.page == 0) {
           let page = res.total / (this.page + 1);
-
-          //console.log(res.total, 'range', this.range);
-
-          this.displaycount = Math.ceil(page / this.range);
-
-          //console.log(page, 'dc', this.page + 1);
+          this.displaycount = Math.ceil(page / this.range)
         }
         this.sendDataBOOL = false;
       });
-    // console.log(this.sendData, 'updated');
+ 
     this.bathtypeShow = [];
     this.BhkTypeShow = [];
   }
@@ -544,10 +553,22 @@ export class CommercialRentViewComponent implements OnInit {
     this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
     console.log('function end')
   }
+  areaF:any;
   assignToSaveData(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
     this.sendData = {
       formatAdd: this.formatAdd,
-      area: this.areaArr,
+      area: this.areaF,
       type: this.type,
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
@@ -782,47 +803,27 @@ export class CommercialRentViewComponent implements OnInit {
      this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
    }
   handleAddressChange(address: Address, input: any) {
-    //console.log(input.value);
+    console.log(input.value);
+    console.log(address);
     this.formatAdd = input.value;
-    
+
     let Showvalue = input.value;
-   let  Sendvalue = Showvalue.split(',').join('-');
-   
-    this.areaArr.push(Sendvalue);
+    
+    if(address.formatted_address){
+      this.areaArr.push(Showvalue);
+     }
+     else{
+     
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-bottom-center'});
+     }
     if (this.areaArr.length >= 3) {
       this.showInput = false;
       console.log(this.showInput, 'inpout show');
     }
-    input.value = ''; 
-    this.latitude = address.geometry.location.lat();
-    this.longtitude = address.geometry.location.lng();
-
-    this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-        //console.log(res)
-          this.Address = res[0].address_components;
-        //console.log(this.Address)
-
-        //console.log( res,'zxczc',input.value)
-
-        let area = this.Address.find((component: any) => {
-          if (component.types.includes('locality')) {
-            //console.log(component.types.includes('locality'),'locality');
-
-            return component.types.includes('locality');
-          }
-
-          if (component.types.includes('sublocality_level_1')) {
-            //console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-
-            return component.types.includes('sublocality_level_1');
-          }
-        }).long_name;
-        //console.log(area);
-
-        //  let city = this.Address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-        //   //console.log(city);
-        //   this.city= city;
-      });
+    this.Address = address.address_components;
+    console.log(this.areaArr,'area arr in the function')
+      this.filter.get('search').reset();
    
   }
   sendRecentSearch() {
