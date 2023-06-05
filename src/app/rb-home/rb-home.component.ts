@@ -789,10 +789,21 @@ export class RbHomeComponent implements OnInit {
       this.service.userStatusCheck(id).subscribe((res: any) => {
         console.log(res, 'view res');
 
-        let oneid = {
-          id: id,
-          index: i,
+        switch(this.areaArr.length){
+          case 1:
+          this.areaF = this.areaArr[0]
+          break;
+          case 2:
+            this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+            break;
+          case 3:
+          this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+          break;
+        }
+        let data = {
+          index:i,
           formatAdd: this.formatAdd,
+          area: this.areaF,
           type: this.type,
           propertType: this.proptArr,
           BHKType: this.BhkCountArr,
@@ -801,13 +812,18 @@ export class RbHomeComponent implements OnInit {
           parking: this.ParkArr,
           rentprefer: this.TentArr,
           propAge: this.PropAgeArr,
-          area: this.areaArr,
-        };
+          bathroom: this.bathCountArr,
+          buildupfrom: this.builtMin,
+          buildupto: this.builtMax,
+          priceFrom: this.rentMin,
+          priceTo: this.rentMax,
+          floor: this.floordata,
+          range:String(this.range)
 
-        this.service.Alldata = this.sendData;
-        this.service.send_ALLres(this.data);
-        console.log(oneid);
-        const query = new URLSearchParams(oneid).toString();
+        };
+       
+        console.log(this.data);
+        const query = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
           '/buyer-residential-rent-search-view?' + query
         );

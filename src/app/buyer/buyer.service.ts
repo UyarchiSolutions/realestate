@@ -91,5 +91,8 @@ export class BuyerService {
     const data = {postId:id,status:status}
     return this.http.post(this.base_url+'/v1/BuyerSeller/Reshedule/BuyerReshedule',data,{ headers: { auth: Cookie.get('buyer') }})
   }
+  editAccountSeller(data:any){
+    return this.http.put(this.base_url+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('buyer')}})
+  }
 }
 

@@ -11,24 +11,24 @@
     <h2>Edit Account</h2>
   </div>
 
-<div class="profile"  >
+<div class="profile" [formGroup]="form" >
 
 <div>
-  <label>Name :</label> <input type="text"   formControlName="userName">
+  <label>Name :</label> <input type="text" [value]="data.userName"   formControlName="userName">
 </div>
 
 <div>
-  <label>Mobile Number :</label> <input type="text"   formControlName="mobile">
+  <label>Mobile Number :</label> <input type="text" [value]="data.mobile"  formControlName="mobile">
 </div>
-<p class="redtext">Enter a Valid Number </p>
+<p class="redtext" *ngIf="form.get('mobile').errors?.pattern && submitted" >Enter a Valid Number </p>
 <div>
-  <label>Email ID :</label> <input type="email"  formControlName="email">
+  <label>Email ID :</label> <input type="email" [value]="data.email"  formControlName="email">
 </div>
-<p class="redtext" >Enter a Email Number </p>
+<p class="redtext" *ngIf="form.get('email').errors?.pattern && submitted"  >Enter a Email Number </p>
 
 
 <div class="submit">
-  <button >Submit</button>
+  <button (click)="submit()">Submit</button>
 </div>
 
 

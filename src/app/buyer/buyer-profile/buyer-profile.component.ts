@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BuyerService } from '../buyer.service';
 
 @Component({
   selector: 'app-buyer-profile',
@@ -7,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./buyer-profile.component.css']
 })
 export class BuyerProfileComponent implements OnInit {
-  constructor(private router:Router){
+  data:any=[]
+  constructor(private router:Router, private service:BuyerService){
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.service.myAcount().subscribe((res:any)=>{
+      console.log(res);
+      this.data=res;
+    })
   }
   toEdit(){
     this.router.navigate(['/buyer-profile-edit']);
   }
-  
 }

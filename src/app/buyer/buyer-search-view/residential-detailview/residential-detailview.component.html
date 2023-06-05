@@ -20,7 +20,8 @@
         <svg  (click)="backToSearch()" width="15" height="25" viewBox="0 0 20 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path  d="M7.27179 16.1559L20 28.0722L16.3641 31.4762L0 16.1559L16.3641 0.835693L20 4.23965L7.27179 16.1559Z" fill="#473B32" fill-opacity="0.6"/>
             </svg>
-<p>{{data.BHKType}} House For {{data.Type}} in, {{data.formatedAddress}}</p>       
+<p>{{data.BHKType}} House For {{data.Type}} in, {{data.formatedAddress}}</p>      
+<p>{{index}}{{TotalData }}</p> 
 </div>
 <div class="page-navigator">
     <svg  *ngIf="!checkInterest"  (click)="previous()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +44,7 @@ justify-content: end;">
 <p style="margin-right: 19px;" class="show">Previous</p>
 <p style="margin-right: 46px;" class="show">Next</p>   
 </div>
-<div class="pop-div" *ngIf="showRes" >
+<div class="pop-div" *ngIf="data.users?data.users.status =='Shcedule':false" >
     <div class="pop-div-content"><p>This Property has be Shceduled on {{history.scheduleDate | date:'dd-MM-YYYY'}} {{history.scheduletime }}</p></div>
     <div class="pop-div-content">
         <button  (click)="sendResponse('Accept')" class="green"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +70,7 @@ justify-content: end;">
         <div class="carousel-indicators">
           <button *ngIf="data.videos" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button  *ngIf="imageLength >= 2" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button   type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
           <button  *ngIf="imageLength >= 3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
 
           <button  *ngIf="imageLength >= 4" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
@@ -82,7 +83,7 @@ justify-content: end;">
              <video controls="false" autoplay [src]="data.videos"   width="100%"  ></video>            
               </div>
 
-          <div class="carousel-item "  *ngFor="let img of data.image; let i = index"  width="100%" >
+          <div class="carousel-item "  *ngFor="let img of images; let i = index"  width="100%" >
             <img [src]="'https://uyarchicrm.click/'+ img" style="width: -webkit-fill-available !important; ">
             
           </div>
