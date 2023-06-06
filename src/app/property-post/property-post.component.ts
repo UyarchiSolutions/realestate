@@ -88,11 +88,11 @@ export class PropertyPostComponent implements OnInit {
       postId:postId,
       buyerId:buyerId
     }
-    // this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
-    //   console.log(res)
-    //   this.get_all_interst();
+    this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
+      console.log(res)
+      this.get_all_interst();
       
-    // })
+    })
     console.log(data)
     this.stime=false
     this.sschedule=false

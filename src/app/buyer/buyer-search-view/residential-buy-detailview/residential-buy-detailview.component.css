@@ -353,3 +353,10 @@ margin-bottom: 0 !important;
     color: white;
     background: #473B32;
 }
+.lease{
+    width: 100% !important;
+    align-items: center;
+    display: flex;
+    padding: 22px;
+    justify-content: center;
+}

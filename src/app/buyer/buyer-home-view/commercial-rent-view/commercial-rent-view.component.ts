@@ -111,7 +111,7 @@ export class CommercialRentViewComponent implements OnInit {
     this.notLogin=this.service.findCookie()
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
-      if (params.params.formatAdd != null) {
+   
         console.log(params);
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
@@ -234,10 +234,11 @@ export class CommercialRentViewComponent implements OnInit {
         if (this.areaArr.length >= 3) {
           this.showInput = false;
           // console.log(this.showInput, 'inpout show');
-        }
+        
         this.GetDataForFilter();
       }
     });
+     this.GetDataForFilter();
     this.getAlert();
   }
   showInput = true;
@@ -299,18 +300,56 @@ export class CommercialRentViewComponent implements OnInit {
     this.type = e.target.value;
   }
   floordata:any=[]
+  sendArea(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
+
+  }
   toResBuy() {
-    this.router.navigateByUrl('/buyer-residential-buy-view')
-   }
-   toComRent(){
-     this.router.navigateByUrl('/buyer-commercial-rent-view')
-   }
-   toComBuy(){
-     this.router.navigateByUrl('/buyer-commercial-buy-view')
-   }
-   toResRent(){
-     this.router.navigateByUrl('/buyer-residential-rent-view')
-   }
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+  }
+  toComRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+  }
+  toComBuy() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
+  }
+  toResRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(this.data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  }
 
 
 
@@ -866,10 +905,21 @@ export class CommercialRentViewComponent implements OnInit {
       this.service.userStatusCheck(id).subscribe((res: any) => {
         console.log(res, 'view res');
 
-        let oneid = {
-          id: id,
-          index: i,
+        switch(this.areaArr.length){
+          case 1:
+          this.areaF = this.areaArr[0]
+          break;
+          case 2:
+            this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+            break;
+          case 3:
+          this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+          break;
+        }
+        let Data = {
+          index:i,
           formatAdd: this.formatAdd,
+          area: this.areaF,
           type: this.type,
           propertType: this.proptArr,
           BHKType: this.BhkCountArr,
@@ -878,15 +928,20 @@ export class CommercialRentViewComponent implements OnInit {
           parking: this.ParkArr,
           rentprefer: this.TentArr,
           propAge: this.PropAgeArr,
-          area: this.areaArr,
-          amenities:this.amenities,
+          bathroom: this.bathCountArr,
           buildingType:this.buildArr,
-        };
+          amenities:this.ametArr,
+          buildupfrom: this.builtMin,
+          buildupto: this.builtMax,
+          priceFrom: this.rentMin,
+          priceTo: this.rentMax,
+          floor:this.floordata,
+          page:String(this.page),
+          range:String(this.range),
 
-        this.service.Alldata = this.sendData;
-        this.service.send_ALLres(this.data);
-        console.log(oneid)
-        const query = new URLSearchParams(oneid).toString();
+
+        };
+        const query = new URLSearchParams(Data).toString();
         this.router.navigateByUrl(
           '/buyer-commercial-rent-search-view?' + query
         );

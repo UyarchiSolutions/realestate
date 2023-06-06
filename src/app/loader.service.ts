@@ -15,7 +15,7 @@ export class LoaderService {
   public hide(): void {
     if (this.loadingCount > 0) {
       this.loadingCount--;
-      console.log(this.loadingCount);
+      // console.log(this.loadingCount);
     }
     if (this.loadingCount == 0) {
       this.isloadingnow.next(false);

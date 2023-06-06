@@ -115,7 +115,7 @@ export class RbHomeComponent implements OnInit {
 
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
-      if (params.params.formatAdd != null) {
+    
         console.log(params);
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
@@ -227,10 +227,10 @@ export class RbHomeComponent implements OnInit {
           // console.log(this.showInput, 'inpout show');
         }
         console.log(this.areaArr, 'Area',this.areaArrF);
-        this.GetDataForFilter();
-      }
+      
+      
     });
-
+    this.GetDataForFilter();
     this.getAlert();
   }
   nextPage:any;
@@ -242,7 +242,7 @@ export class RbHomeComponent implements OnInit {
   GetDataForFilter() {
     let Data = {
       HouseOrCommercialType: 'Residential',
-      type: this.type,
+      type: 'Rent',
       propertType: this.propertType,
       BHKType: this.BHKType,
       rentDetails: this.showOnlyType,
@@ -295,18 +295,55 @@ export class RbHomeComponent implements OnInit {
     this.BhkTypeShow = [];
   }
   showPag_rag = false;
+  sendArea(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
 
+  }
   toResBuy() {
-    this.router.navigateByUrl('/buyer-residential-buy-view');
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
   }
   toComRent() {
-    this.router.navigateByUrl('/buyer-commercial-rent-view');
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
   }
   toComBuy() {
-    this.router.navigateByUrl('/buyer-commercial-buy-view');
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
   }
   toResRent() {
-    this.router.navigateByUrl('/buyer-residential-rent-view');
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(this.data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
   }
   floordata: any = [];
   FloorArr: any = [];
@@ -818,7 +855,8 @@ export class RbHomeComponent implements OnInit {
           priceFrom: this.rentMin,
           priceTo: this.rentMax,
           floor: this.floordata,
-          range:String(this.range)
+          range:String(this.range),
+          page:String(this.page),
 
         };
        

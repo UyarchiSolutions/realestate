@@ -13,6 +13,20 @@ import {Location} from '@angular/common';
 export class ResidentialBuyDetailviewComponent implements OnInit {
 
     allFilter: any;
+  areaArrF: any;
+  showOnlyType: any;
+  furType: any;
+  tentType: any;
+  propageType: any;
+  bathType: any;
+  parkType: any;
+  floordata: any;
+  builtMin: any;
+  builtMax: any;
+  rentMin: any;
+  rentMax: any;
+  images: any;
+  TotalData: any;
     constructor(private arouter:ActivatedRoute, private service: PostPropertyService, private router: Router
       ,private buyerService:BuyerService,private spinner: NgxSpinnerService,private location_:Location){
   
@@ -47,34 +61,138 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
         imageLength:any;
     ngOnInit(): void {
       
-      this.arouter.queryParams.subscribe((params) => {
+      this.arouter.queryParamMap.subscribe((params: any) => {
         console.log(params);
-        this.id = params['id'];
-        this.checkInterest=params['interested'];
-        this.index=params['index'];
+        this.id = params.params['id'];
+        this.checkInterest = params.params['interested'];
+  
+        this.index = params.params['index'];
         //to return
-        this.formatAdd=params['formatAdd'];
-        this.type=params['type'];
-        this.BHKType=params['BHKType'];
-        this.rentDetails=params['rentDetails'];
-        this.furnishing=params['furnishing'];
-        this.parking=params['parking'];
-        this.rentprefer=params['rentprefer'];
-        this.propAge=params['propAge'];
-        this.propertType=params['propertType'];
-        this.areaArr=params['area']
+        this.type = params.params['type'];
+        this.propertType =
+          params.params['propertType'] != null &&
+          params.params['propertType'] != ''
+            ? params.params['propertType'].split(',')
+            : [];
+        this.BHKType =
+          params.params['BHKType'] != null && params.params['BHKType'] != ''
+            ? params.params['BHKType'].split(',')
+            : [];
+        this.areaArr =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area'].split('+')
+            : [];
+        this.areaArrF =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area']
+            : [];
+        //console.log(this.areaArr,this.areaArr.length);
+        // for(let i=0;)
+  
+        this.showOnlyType =
+          params.params['rentDetails'] != null &&
+          params.params['rentDetails'] != ''
+            ? params.params['rentDetails'].split(',')
+            : [];
+        this.furType =
+          params.params['furnishing'] != null && params.params['furnishing'] != ''
+            ? params.params['furnishing'].split(',')
+            : [];
+        this.tentType =
+          params.params['rentprefer'] != null && params.params['rentprefer'] != ''
+            ? params.params['rentprefer'].split(',')
+            : [];
+        this.propageType =
+          params.params['propAge'] != null && params.params['propAge'] != ''
+            ? params.params['propAge'].split(',')
+            : [];
+        this.bathType =
+          params.params['bathroom'] != null && params.params['bathroom'] != ''
+            ? params.params['bathroom'].split(',')
+            : [];
+        this.parkType =
+          params.params['parking'] != null && params.params['parking'] != ''
+            ? params.params['parking'].split(',')
+            : [];
+        this.floordata =
+          params.params['floor'] != null && params.params['floor'] != ''
+            ? params.params['floor'].split(',')
+            : [];
+        this.range = params.params['range'];
+        this.builtMin = params.params['buildupfrom'];
+        this.builtMax = params.params['buildupto'];
+        this.rentMin = params.params['priceFrom'];
+        this.rentMax = params.params['priceTo'];
+        this.page = params.params['page']
       });
-      this.index =Number(this.index) ;
-   
-  
-      this.allFilter =this.service.Alldata;
-  
-      console.log(this.allFilter,'All filters');
-  
-      this.Alldata=this.service.get_ALLres();
-  
-      console.log(this.Alldata,'All data');
-      this.get_post();
+      this.index = Number(this.index);
+      this.page = Number(this.page);
+      this.range=Number(this.range);
+      this.index=Number(this.index);
+
+      this.get_buyer()
+      this.GetDataForFilter();
+    }
+    GetDataForFilter() {
+      let Data = {
+        HouseOrCommercialType: 'Residential',
+        type: this.type,
+        propertType: this.propertType,
+        BHKType: this.BHKType,
+        rentDetails: this.showOnlyType,
+        furnishing: this.furType,
+        parking: this.parkType,
+        rentprefer: this.tentType,
+        propAge: this.propageType,
+        bathroom: this.bathType,
+        buildupfrom: this.builtMin,
+        buildupto: this.builtMax,
+        priceFrom: this.rentMin,
+        priceTo: this.rentMax,
+        floor: this.floordata,
+        index: this.index,
+      };
+      console.log(Data);
+      this.service
+        .getSellerDetails2(
+          this.page,
+          this.range,
+          Data,
+          this.floordata,
+          this.areaArr
+        )
+        .subscribe((res: any) => {
+          console.log(res, 'data from backend');
+          this.data = res.nextData;
+          this.images = res.nextData.image;
+          this.TotalData = res.values.length;
+          this.lat = this.data.lat;
+          this.long = this.data.long;
+          this.imageLength = this.data.image.length;
+          this.get_landmarks_forbuyer('School');
+          if(this.data.users){
+            console.log('ok correct')
+            this.interestV= this.data.users.status=='Intrested'?  true : false;
+          }
+          else{
+            this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
+              console.log('changed viewed')
+              this.interestV= this.data.users.status=='Intrested'?  true : false;
+            })
+          }
+          
+          this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
+          console.log(this.saveV,'save v')
+          console.log(this.data);
+        
+        });
+    }
+    buyerId:any;
+    get_buyer(){
+      this.buyerService.myAcount().subscribe((res:any)=>{
+        this.buyerId = res._id;
+        console.log(this.buyerId,'buyerid')
+      })
     }
     get_post(){
       this.service.formget1(this.id).subscribe((res:any)=>{
@@ -132,36 +250,22 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       })}
     }
   
-    next(){
-      this.index= this.index+1;
-      console.log(this.index);
-      console.log(this.Alldata,this.Alldata.length)
-      if(this.index+1 > this.Alldata.length ){
-       
+    next() {
+      this.index = this.index + 1;
+      if (this.index > this.TotalData - 1) {
         this.index = 0;
       }
-      console.log(this.index,'after if');
-      this.id = this.Alldata[this.index]._id;
-      
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res);
-        this.data=res.values;
-      })
+      this.GetDataForFilter();
+      this.imageLength = '';
     }
-    previous(){
-      
-      this.index= this.index - 1;
-      console.log(this.index);
-      if(this.index == -1){
-        let length = this.Alldata.length - 1
-        this.index = length
+    previous() {
+      this.index = this.index - 1;
+      if (this.index == -1) {
+        this.index = this.TotalData - 1;
       }
-      console.log(this.index,'after if');
-      this.id = this.Alldata[this.index]._id;
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res);
-        this.data=res.values;
-      })
+  
+      this.GetDataForFilter();
+      this.imageLength = '';
     }
     backToSearch(){
       this.location_.back();
@@ -195,17 +299,17 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
      
       this.service.interest(id).subscribe((res:any)=>{
         console.log(res);
-        this.get_post();
+       this.GetDataForFilter()
       });
     
   
     }
     saveV:any;
     save(id:any){
-  
+      console.log(id,'prop id')
       this.service.save(id).subscribe((res:any)=>{
         console.log(res,'save');
-        this.get_post();
+        this.GetDataForFilter()
       })
   
       

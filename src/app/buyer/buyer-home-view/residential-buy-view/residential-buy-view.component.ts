@@ -11,20 +11,21 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-residential-buy-view',
   templateUrl: './residential-buy-view.component.html',
-  styleUrls: ['./residential-buy-view.component.css']
+  styleUrls: ['./residential-buy-view.component.css'],
 })
 export class ResidentialBuyViewComponent implements OnInit {
   buyer: any;
   showRecentSer: any;
-  constructor(private arouter:ActivatedRoute,
-    private fb:FormBuilder ,private router:Router, private service:PostPropertyService,
+  constructor(
+    private arouter: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router,
+    private service: PostPropertyService,
     private buyerService: BuyerService,
     private toastr: ToastrService
-    ){
-
-  }
-  range=10;
-  page=0;
+  ) {}
+  range = 10;
+  page = 0;
 
   displaycount = 0;
 
@@ -42,16 +43,16 @@ export class ResidentialBuyViewComponent implements OnInit {
   propageType: any = [];
   bathType: any = [];
   parkType: any = [];
-  ageType:any=[]
+  ageType: any = [];
 
-  ageArr:any=[]
+  ageArr: any = [];
   SelectedFilters: any = [];
   FbhkArr: any = [];
   proptArr: any = [];
   bhkArr: any = ['1 Rk', '1 BHK', '2 BHK', '3 BHK', '4+ BHK'];
   bathArr: any = ['1 Bathroom', '2 Bathroom', '3 Bathroom', '4+ Bathroom'];
   FbathArr: any = [];
-  newBath:any=[];
+  newBath: any = [];
   bathtypeShow: any = [];
   bathCountArr: any = [];
   ShowOnlyArr: any = [];
@@ -65,24 +66,30 @@ export class ResidentialBuyViewComponent implements OnInit {
   BhkCountArr: any = [];
   BhkTypeShow: any = [];
 
-  floorType:any =[];
-  floorShow:any=[]
-  ffloor:any=[]
-  floorArr:any=['Ground Floor','1 to 3 Floor','4 to 7 Floor','8 to 12 Floor','13+ Floor']
-  floorDataArr:any=['0','1-3','4-7','8-12','13']
-  notLogin:any;
+  floorType: any = [];
+  floorShow: any = [];
+  ffloor: any = [];
+  floorArr: any = [
+    'Ground Floor',
+    '1 to 3 Floor',
+    '4 to 7 Floor',
+    '8 to 12 Floor',
+    '13+ Floor',
+  ];
+  floorDataArr: any = ['0', '1-3', '4-7', '8-12', '13'];
+  notLogin: any;
 
-  areaArrF:any=[];
+  areaArrF: any = [];
 
   options1: Options = {
     floor: 5000,
     ceil: 1000000,
-    step:500,
+    step: 500,
   };
   options2: Options = {
     floor: 0,
     ceil: 50000,
-    step:500,
+    step: 500,
   };
 
   filter: any = this.fb.group({
@@ -92,24 +99,24 @@ export class ResidentialBuyViewComponent implements OnInit {
     priceFrom: new FormControl(0),
     priceTo: new FormControl(10000000),
     search: new FormControl(),
-    price: new FormControl([0, 10000000])
+    price: new FormControl([0, 10000000]),
   });
-  rentMin:any=5000;
-  rentMax:any=1000000;
-  builtMin:any=0;
-  builtMax:any=50000;
+  rentMin: any = 5000;
+  rentMax: any = 1000000;
+  builtMin: any = 0;
+  builtMax: any = 50000;
 
   ngOnInit(): void {
     this.Getbuyer();
- 
+
     this.FetchRecentSearch();
-    this.showRecentSer = this.service.findCookie()
-    this.notLogin=this.service.findCookie()
+    this.showRecentSer = this.service.findCookie();
+    this.notLogin = this.service.findCookie();
     this.arouter.queryParamMap.subscribe((params: any) => {
       ////consolele.log(params.params.formatAdd)
-      console.log(params);
+      console.log(params,params.params);
       this.showTab(params['show']);
-      if (params.params.formatAdd != null) {
+     
         //consolele.log(params);
         this.formatAdd = params.params.formatAdd;
         this.type = params.params['type'];
@@ -122,14 +129,15 @@ export class ResidentialBuyViewComponent implements OnInit {
           params.params['BHKType'] != null && params.params['BHKType'] != ''
             ? params.params['BHKType'].split(',')
             : [];
-            this.areaArr =
-            params.params['area'] != null && params.params['area'] != ''
-              ? params.params['area'].split('+')
-              : [];
-       this.areaArrF =
-              params.params['area'] != null && params.params['area'] != ''
-                ? params.params['area']
-                : [];
+        this.areaArr =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area'].split('+')
+            : [];
+        this.areaArrF =
+          params.params['area'] != null && params.params['area'] != ''
+            ? params.params['area']
+            : [];
+          
         ////consolele.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
 
@@ -161,16 +169,15 @@ export class ResidentialBuyViewComponent implements OnInit {
             ? params.params['parking'].split(',')
             : [];
         this.ageType =
-          params.params['ageOfBuilding'] != null && params.params['ageOfBuilding'] != ''
+          params.params['ageOfBuilding'] != null &&
+          params.params['ageOfBuilding'] != ''
             ? params.params['ageOfBuilding'].split(',')
             : [];
-            this.floorType =
-            params.params['floor'] != null && params.params['floor'] != ''
-              ? params.params['floor'].split(',')
-              : [];
+        this.floorType =
+          params.params['floor'] != null && params.params['floor'] != ''
+            ? params.params['floor'].split(',')
+            : [];
 
-        // this.areaArr =this.areaArr.split(',');
-        ////consolele.log(this.propertType,this.BHKType,'gfgbgfh');
         if (!(this.BHKType == '' && this.BHKType == null)) {
           this.BHKType.forEach((a: any) => {
             this.BhkTypeShow.push(this.bhkArr[a]);
@@ -179,17 +186,17 @@ export class ResidentialBuyViewComponent implements OnInit {
         }
         if (!(this.bathType == '' && this.bathType == null)) {
           this.bathType.forEach((a: any) => {
-            this.bathtypeShow.push(this.bathArr[a-1]);
+            this.bathtypeShow.push(this.bathArr[a - 1]);
             // //consolele.log(this.bathType,'final bath',this.bathArr[a])
           });
         }
         if (!(this.floorType == '' && this.floorType == null)) {
-          this.floorShow=[]
+          this.floorShow = [];
           this.floorType.forEach((a: any) => {
-           let index = this.floorDataArr.indexOf(a)
-           this.floorShow.push(this.floorArr[index])
+            let index = this.floorDataArr.indexOf(a);
+            this.floorShow.push(this.floorArr[index]);
           });
-          console.log(this.floorShow,'floorshow')
+          console.log(this.floorShow, 'floorshow');
         }
         this.SelectedFilters = [
           ...this.propertType,
@@ -201,7 +208,7 @@ export class ResidentialBuyViewComponent implements OnInit {
           ...this.bathtypeShow,
           ...this.parkType,
           ...this.ageType,
-          ...this.floorShow
+          ...this.floorShow,
         ];
 
         this.proptArr = this.propertType;
@@ -214,44 +221,83 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.TentArr = this.tentType;
         this.FbhkArr = this.BhkTypeShow;
         this.newBath = this.bathtypeShow;
-        this.ageArr=this.ageType
-        this.floordata =this.floorType
-
+        this.ageArr = this.ageType;
+        this.floordata = this.floorType;
+     
         // //consolele.log(this.proptArr,'proppt arry',this.propertType)
 
         this.SelectedFilters = this.SelectedFilters.filter((e: any) => e != '');
-        // //consolele.log(this.SelectedFilters, 234234);
-        //consolele.log(this.areaArr, this.areaArr.length);
+     
         if (this.areaArr.length >= 3) {
           this.showInput = false;
           // //consolele.log(this.showInput, 'inpout show');
-        }
-        this.GetDataForFilter();
+      
+        console.log('checjing route');
+       
       }
     });
+    this.GetDataForFilter();
+    console.log(this.areaArrF,'area')
     this.getAlert();
+  } sendArea(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
+
   }
   toResBuy() {
-    this.router.navigateByUrl('/buyer-residential-buy-view')
-   }
-   toComRent(){
-     this.router.navigateByUrl('/buyer-commercial-rent-view')
-   }
-   toComBuy(){
-     this.router.navigateByUrl('/buyer-commercial-buy-view')
-   }
-   toResRent(){
-     this.router.navigateByUrl('/buyer-residential-rent-view')
-   }
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+  }
+  toComRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+  }
+  toComBuy() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
+  }
+  toResRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(this.data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  }
   showInput = true;
-  nextPage=false;
+  nextPage = false;
   sendData: any;
   totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
-  let  Data = {
-    HouseOrCommercialType:'Residential',
-      type: this.type,
+    let Data = {
+      HouseOrCommercialType: 'Residential',
+      type: 'Sale',
       propertType: this.propertType,
       BHKType: this.BHKType,
       rentDetails: this.showOnlyType,
@@ -259,28 +305,29 @@ export class ResidentialBuyViewComponent implements OnInit {
       parking: this.parkType,
       rentprefer: this.tentType,
       propAge: this.propageType,
-      bathroom:this.bathType ,
+      bathroom: this.bathType,
       buildupfrom: this.builtMin,
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
-      ageOfBuilding:this.ageArr,
-      floor:this.floordata,
-      finish:true,
+      ageOfBuilding: this.ageArr,
+      floor: this.floordata,
+      finish: true,
     };
     //consolele.log(Data);
     this.service
-    .getSellerDetails2(
-      this.page,
-      this.range,
-      Data,
-      this.floordata,
-      this.areaArr)
+      .getSellerDetails2(
+        this.page,
+        this.range,
+        Data,
+        this.floordata,
+        this.areaArr
+      )
       .subscribe((res: any) => {
         //consolele.log(res, 'data from backend');
         this.data = res.values;
         this.totalval = res.total;
-        this.nextPage=res.next
+        this.nextPage = res.next;
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
@@ -306,20 +353,16 @@ export class ResidentialBuyViewComponent implements OnInit {
   onChange(e: any) {
     this.type = e.target.value;
   }
-  floordata:any={arr:[]};
-  FloorArr:any=[];
-
-
-
+  floordata: any = { arr: [] };
+  FloorArr: any = [];
 
   updateFilter(v: any, position: any) {
-    position=position.toString();
-   let value= v.target.value
-    console.log(v.target.value,position,'selected',value)
+    position = position.toString();
+    let value = v.target.value;
+    console.log(v.target.value, position, 'selected', value);
     if (v.target.checked) {
       var val = v.target.value;
       this.SelectedFilters.push(val);
-     
     } else {
       let index = this.SelectedFilters.findIndex(
         (res: any) => res == v.target.value
@@ -378,33 +421,28 @@ export class ResidentialBuyViewComponent implements OnInit {
     }
     //bathroom arr
 
-    
     if (
       v.target.value == '1 Bathroom' ||
       v.target.value == '2 Bathroom' ||
-      v.target.value == '3 Bathroom' ||  v.target.value == '4+ Bathroom'
+      v.target.value == '3 Bathroom' ||
+      v.target.value == '4+ Bathroom'
     ) {
       if (this.newBath.findIndex((res: any) => res == v.target.value) == -1) {
         this.newBath.push(v.target.value);
-      
-        this.bathCountArr.push(position)
-        console.log(this.newBath,this.bathCountArr,'bath update',)
+
+        this.bathCountArr.push(position);
+        console.log(this.newBath, this.bathCountArr, 'bath update');
       } else {
-        let index = this.newBath.findIndex(
-          (res: any) => res == v.target.value
-        );
-        this.bathCountArr.splice(index,1);
+        let index = this.newBath.findIndex((res: any) => res == v.target.value);
+        this.bathCountArr.splice(index, 1);
         this.newBath.splice(index, 1);
-        console.log(this.newBath,position,this.bathCountArr,'remove')
-       
+        console.log(this.newBath, position, this.bathCountArr, 'remove');
       }
     }
     //show only
     if (v.target.value == 'rent' || v.target.value == 'lease') {
       ////consolele.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
-      let i = this.ShowOnlyArr.findIndex(
-        (res: any) => res == v.target.value
-      );
+      let i = this.ShowOnlyArr.findIndex((res: any) => res == v.target.value);
       if (i == -1) {
         this.ShowOnlyArr.push(v.target.value);
         ////consolele.log(this.ShowOnlyArr, 'if');
@@ -419,9 +457,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       v.target.value == 'Semi Furnished' ||
       v.target.value == 'UnFurnished'
     ) {
-      let i = this.FurArr.findIndex(
-        (res: any) => res == v.target.value
-      );
+      let i = this.FurArr.findIndex((res: any) => res == v.target.value);
       //consolele.log(i,this.FurArr.findIndex((res: any) => res == v.target.value),v.target.value,this.FurArr)
       if (i == -1) {
         this.FurArr.push(v.target.value);
@@ -439,9 +475,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       v.target.value == 'Car' ||
       v.target.value == 'Both'
     ) {
-      let i = this.ParkArr.findIndex(
-        (res: any) => res == v.target.value
-      );
+      let i = this.ParkArr.findIndex((res: any) => res == v.target.value);
       if (i == -1) {
         this.ParkArr.push(v.target.value);
         ////consolele.log(this.ParkArr, 'if');
@@ -451,14 +485,8 @@ export class ResidentialBuyViewComponent implements OnInit {
       }
     }
     //propstat arr
-    if (
-      v.target.value == 'Under Construction' ||
-      v.target.value == 'Ready'
-     
-    ) {
-      let i = this.ageArr.findIndex(
-        (res: any) => res == v.target.value
-      );
+    if (v.target.value == 'Under Construction' || v.target.value == 'Ready') {
+      let i = this.ageArr.findIndex((res: any) => res == v.target.value);
       if (i == -1) {
         this.ageArr.push(v.target.value);
         ////consolele.log(this.ageArr, 'if');
@@ -504,47 +532,56 @@ export class ResidentialBuyViewComponent implements OnInit {
         ////consolele.log(this.PropAgeArr);
       }
     }
-       //floor arr
-       if(      v.target.value == 'Ground Floor' ||
-       v.target.value == '1 to 3 Floor' ||
-       v.target.value == '4 to 7 Floor' ||
-       v.target.value == '8 to 12 Floor' ||
-       v.target.value == '13+ Floor'){
-         let i = this.ffloor.indexOf(v.target.value)
-         console.log(i,)
-         if(i == -1){
-           this.ffloor.push(v.target.value);
-           let index = this.floorArr.indexOf(v.target.value)
-           this.floordata.push(this.floorDataArr[index])
-   
-           console.log('floor',this.ffloor,'floor data',this.floordata)
-         } 
-         else{
-           let index = this.ffloor.indexOf(v.target.value)
-           this.ffloor.splice(index,1)
-           this.floordata.splice(index,1)
-   
-           console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
-         }
-       }
+    //floor arr
+    if (
+      v.target.value == 'Ground Floor' ||
+      v.target.value == '1 to 3 Floor' ||
+      v.target.value == '4 to 7 Floor' ||
+      v.target.value == '8 to 12 Floor' ||
+      v.target.value == '13+ Floor'
+    ) {
+      let i = this.ffloor.indexOf(v.target.value);
+      console.log(i);
+      if (i == -1) {
+        this.ffloor.push(v.target.value);
+        let index = this.floorArr.indexOf(v.target.value);
+        this.floordata.push(this.floorDataArr[index]);
+
+        console.log('floor', this.ffloor, 'floor data', this.floordata);
+      } else {
+        let index = this.ffloor.indexOf(v.target.value);
+        this.ffloor.splice(index, 1);
+        this.floordata.splice(index, 1);
+
+        console.log(
+          'floor',
+          this.ffloor,
+          'floor data',
+          this.floordata,
+          'remove'
+        );
+      }
+    }
     //data to api
-    this.assignToSaveData()
+    this.assignToSaveData();
     ////consolele.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
-  areaF:any;
-  assignToSaveData(){
-    switch(this.areaArr.length){
+  
+  areaF: any;
+  assignToSaveData() {
+    switch (this.areaArr.length) {
       case 1:
-      this.areaF = this.areaArr[0]
-      break;
+        this.areaF = this.areaArr[0];
+        break;
       case 2:
-        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        this.areaF = this.areaArr[0] + '+' + this.areaArr[1];
         break;
       case 3:
-      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
-      break;
+        this.areaF =
+          this.areaArr[0] + '+' + this.areaArr[1] + '+' + this.areaArr[2];
+        break;
     }
     this.sendData = {
       formatAdd: this.formatAdd,
@@ -558,16 +595,16 @@ export class ResidentialBuyViewComponent implements OnInit {
       rentprefer: this.TentArr,
       propAge: this.PropAgeArr,
       bathroom: this.bathCountArr,
-      ageOfBuilding:this.ageArr,
+      ageOfBuilding: this.ageArr,
       buildupfrom: this.builtMin,
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
-      floor:this.floordata
+      floor: this.floordata,
     };
   }
   deleteFilter(v: any) {
-    let index = this.SelectedFilters.findIndex((res:any)=>res==v);
+    let index = this.SelectedFilters.findIndex((res: any) => res == v);
 
     if (index > -1) {
       this.SelectedFilters.splice(index, 1);
@@ -592,15 +629,14 @@ export class ResidentialBuyViewComponent implements OnInit {
     if (
       v == '1 Bathroom' ||
       v == '2 Bathroom' ||
-      v == '3 Bathroom' ||  v == '4+ Bathroom'
+      v == '3 Bathroom' ||
+      v == '4+ Bathroom'
     ) {
       ////consolele.log(this.FbathArr, 'sfsdf');
-      let index = this.newBath.findIndex(
-        (res: any) => res == v
-      );
-      this.bathCountArr.splice(index,1);
+      let index = this.newBath.findIndex((res: any) => res == v);
+      this.bathCountArr.splice(index, 1);
       this.newBath.splice(index, 1);
-      console.log(this.newBath,this.bathCountArr,'remove')
+      console.log(this.newBath, this.bathCountArr, 'remove');
     }
 
     //prop arr
@@ -608,7 +644,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       let index = this.proptArr.findIndex((res: any) => {
         res == v;
       });
-      let i = this.proptArr.indexOf(v)
+      let i = this.proptArr.indexOf(v);
       //consolele.log(this.proptArr,v,index,i)
       if (i > -1) {
         this.proptArr.splice(i, 1);
@@ -616,7 +652,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     }
     //show only arr
     if (v == 'rent' || 'lease') {
-      let index = this.ShowOnlyArr.findIndex((res:any)=>res == v);
+      let index = this.ShowOnlyArr.findIndex((res: any) => res == v);
       ////consolele.log(index, 234234);
       if (index > -1) {
         this.ShowOnlyArr.splice(index, 1);
@@ -624,7 +660,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     }
     //fur arr
     if (v == 'Fully Furnished' || 'Semi Furnished' || 'UnFurnished') {
-      let index = this.FurArr.findIndex((res:any)=>res==v);
+      let index = this.FurArr.findIndex((res: any) => res == v);
       if (index > -1) {
         this.FurArr.splice(index, 1);
       }
@@ -635,33 +671,27 @@ export class ResidentialBuyViewComponent implements OnInit {
       let index = this.ParkArr.findIndex((res: any) => {
         res == v;
       });
-      let i = this.ParkArr.indexOf(v)
-    
+      let i = this.ParkArr.indexOf(v);
+
       if (i > -1) {
         this.ParkArr.splice(i, 1);
       }
-     
     }
     // park arr
-    if (
-      v == 'Under Construction' ||
-      v == 'Ready'
-     
-    ) {
+    if (v == 'Under Construction' || v == 'Ready') {
       let index = this.ageArr.findIndex((res: any) => {
         res == v;
       });
-      let i = this.ageArr.indexOf(v)
-    
+      let i = this.ageArr.indexOf(v);
+
       if (i > -1) {
         this.ageArr.splice(i, 1);
       }
-     
     }
     //tent arr
     if (v == 'Family' || v == 'Bachelor' || v == 'Company' || v == 'Any') {
-      let index = this.TentArr.indexOf(v)
-    
+      let index = this.TentArr.indexOf(v);
+
       if (index > -1) {
         this.TentArr.splice(index, 1);
       }
@@ -681,19 +711,21 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.PropAgeArr.splice(index, 1);
       }
     }
-      //floor
-      if(      v == 'Ground Floor' ||
+    //floor
+    if (
+      v == 'Ground Floor' ||
       v == '1 to 3 Floor' ||
       v == '4 to 7 Floor' ||
       v == '8 to 12 Floor' ||
-      v == '13+ Floor'){
-        let index = this.ffloor.indexOf(v)
-        this.ffloor.splice(index,1)
-        this.floordata.splice(index,1)
-  
-        console.log('floor',this.ffloor,'floor data',this.floordata,'remove')
-      }
-  this.assignToSaveData()
+      v == '13+ Floor'
+    ) {
+      let index = this.ffloor.indexOf(v);
+      this.ffloor.splice(index, 1);
+      this.floordata.splice(index, 1);
+
+      console.log('floor', this.ffloor, 'floor data', this.floordata, 'remove');
+    }
+    this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
@@ -701,8 +733,10 @@ export class ResidentialBuyViewComponent implements OnInit {
   is_chckked(val: any, filter: any) {
     // //consolele.log(val,filter)
     if (filter != '') {
-      let index = filter.findIndex((res:any)=>{ res==val});
-      let i = filter.indexOf(val)
+      let index = filter.findIndex((res: any) => {
+        res == val;
+      });
+      let i = filter.indexOf(val);
       // //consolele.log(index,'find index','is cheked',i,'indexof')
       if (i == -1) {
         return false;
@@ -719,65 +753,64 @@ export class ResidentialBuyViewComponent implements OnInit {
   area: any;
   city: any;
 
-  changeRent(input:any){
-    this.rentMin=input.value
- 
-    this.assignToSaveData()
-   let query = new URLSearchParams(this.sendData).toString();
-   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
-   changeRent1(input:any){
-    this.rentMax=input.value;
-    this.assignToSaveData()
-   let query = new URLSearchParams(this.sendData).toString();
-   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
-   Rentchange(){
-     console.log('change')
-     this.assignToSaveData()
-     let query = new URLSearchParams(this.sendData).toString();
-     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
-   changeBuilt(input:any){
-    this.builtMin=input.value
- 
-    this.assignToSaveData()
-   let query = new URLSearchParams(this.sendData).toString();
-   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
-   changeBuilt1(input:any){
-    this.assignToSaveData()
-   let query = new URLSearchParams(this.sendData).toString();
-   this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
-   Builtchange(){
-     console.log('change')
-     this.assignToSaveData()
-     let query = new URLSearchParams(this.sendData).toString();
-     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-   }
+  changeRent(input: any) {
+    this.rentMin = input.value;
+
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  changeRent1(input: any) {
+    this.rentMax = input.value;
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  Rentchange() {
+    console.log('change');
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  changeBuilt(input: any) {
+    this.builtMin = input.value;
+
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  changeBuilt1(input: any) {
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
+  Builtchange() {
+    console.log('change');
+    this.assignToSaveData();
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+  }
   handleAddressChange(address: Address, input: any) {
     ////consolele.log(input.value);
-  console.log(input.value);
+    console.log(input.value);
     console.log(address);
     this.formatAdd = input.value;
 
     let Showvalue = input.value;
-    
-    if(address.formatted_address){
+
+    if (address.formatted_address) {
       this.areaArr.push(Showvalue);
-     }
-     else{
-     
+    } else {
       this.toastr.error('Fill the field', 'Please Select correct location!', {
-        positionClass: 'toast-bottom-center'});
-     }
+        positionClass: 'toast-bottom-center',
+      });
+    }
     if (this.areaArr.length >= 3) {
       this.showInput = false;
       console.log(this.showInput, 'inpout show');
     }
     this.Address = address.address_components;
-    console.log(this.areaArr,'area arr in the function')
+    console.log(this.areaArr, 'area arr in the function');
     this.filter.get('search').reset();
   }
   sendRecentSearch() {
@@ -804,9 +837,9 @@ export class ResidentialBuyViewComponent implements OnInit {
   }
   submitAddress() {
     this.sendRecentSearch();
-    this.assignToSaveData()
+    this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
-    
+
     this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
   }
   options: any = {
@@ -821,10 +854,22 @@ export class ResidentialBuyViewComponent implements OnInit {
       this.service.userStatusCheck(id).subscribe((res: any) => {
         //consolele.log(res, 'view res');
 
-        let oneid = {
-          id: id,
+        switch (this.areaArr.length) {
+          case 1:
+            this.areaF = this.areaArr[0];
+            break;
+          case 2:
+            this.areaF = this.areaArr[0] + '+' + this.areaArr[1];
+            break;
+          case 3:
+            this.areaF =
+              this.areaArr[0] + '+' + this.areaArr[1] + '+' + this.areaArr[2];
+            break;
+        }
+        let data = {
           index: i,
           formatAdd: this.formatAdd,
+          area: this.areaF,
           type: this.type,
           propertType: this.proptArr,
           BHKType: this.BhkCountArr,
@@ -833,13 +878,18 @@ export class ResidentialBuyViewComponent implements OnInit {
           parking: this.ParkArr,
           rentprefer: this.TentArr,
           propAge: this.PropAgeArr,
-          area: this.areaArr,
+          bathroom: this.bathCountArr,
+          buildupfrom: this.builtMin,
+          buildupto: this.builtMax,
+          priceFrom: this.rentMin,
+          priceTo: this.rentMax,
+          floor: this.floordata,
+          ageOfBuilding: this.ageArr,
+          range: String(this.range),
+          page: String(this.page),
         };
 
-        this.service.Alldata = this.sendData;
-        this.service.send_ALLres(this.data);
-        //consolele.log(oneid)
-        const query = new URLSearchParams(oneid).toString();
+        const query = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
           '/buyer-residential-buy-search-view?' + query
         );
@@ -875,7 +925,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.filter.get('priceTo').patchValue(this.RecentSearchArr[index].priceTo);
 
     this.service
-      .getSellerDetails(this.page, this.range, v,this.floordata)
+      .getSellerDetails(this.page, this.range, v, this.floordata)
       .subscribe((res: any) => {
         this.data = res.values;
       });
@@ -920,13 +970,13 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.FbathArr = [];
     this.BhkCountArr = [];
     this.areaArr = [];
-    this.floordata=[];
-    this.ffloor=[]
+    this.floordata = [];
+    this.ffloor = [];
 
-    this.assignToSaveData()
+    this.assignToSaveData();
 
     this.service
-      .getSellerDetails(this.page, this.range, this.sendData,this.floordata)
+      .getSellerDetails(this.page, this.range, this.sendData, this.floordata)
       .subscribe((res: any) => {
         this.data = res.values;
         ////consolele.log(this.data, 'data');
@@ -957,43 +1007,43 @@ export class ResidentialBuyViewComponent implements OnInit {
   interestShow = false;
   saveShow = false;
   alertShow = false;
-    nofiShow=false;
+  nofiShow = false;
   showTab(tab: any) {
-    console.log('tab choose')
+    console.log('tab choose');
     if (tab == 'post') {
       this.postshow = true;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
-      this.nofiShow=false;
+      this.nofiShow = false;
     }
     if (tab == 'interest') {
       this.postshow = false;
       this.interestShow = true;
       this.saveShow = false;
       this.alertShow = false;
-      this.nofiShow=false;
+      this.nofiShow = false;
     }
     if (tab == 'save') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
-      this.nofiShow=false;
+      this.nofiShow = false;
     }
     if (tab == 'alert') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = true;
-      this.nofiShow=false;
+      this.nofiShow = false;
     }
     if (tab == 'nofi') {
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
-      this.nofiShow=true;
+      this.nofiShow = true;
     }
   }
   RBtab = true;
@@ -1053,58 +1103,51 @@ export class ResidentialBuyViewComponent implements OnInit {
     }
   }
   AllInterested: any;
-  ResiRent:any=[];
-  ResiBuy:any=[];
-  CommRent:any=[];
-  CommBuy:any=[];
-
+  ResiRent: any = [];
+  ResiBuy: any = [];
+  CommRent: any = [];
+  CommBuy: any = [];
 
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
       //consolele.log(res,'all interest')
       this.AllInterested = res;
-      this.ResiRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
-      })
-      this.ResiBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential';
-      })
-      this.CommRent= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial';
-      })
-      this.CommBuy= this.AllInterested.filter((v:any)=>{
-       return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
-      })
-
-
-    
+      this.ResiRent = this.AllInterested.filter((v: any) => {
+        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Residential';
+      });
+      this.ResiBuy = this.AllInterested.filter((v: any) => {
+        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Residential';
+      });
+      this.CommRent = this.AllInterested.filter((v: any) => {
+        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Commercial';
+      });
+      this.CommBuy = this.AllInterested.filter((v: any) => {
+        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Commercial';
+      });
     });
-  
   }
   AllSaved: any;
-  ResiRentS:any=[];
-  ResiBuyS:any=[];
-  CommRentS:any=[];
-  CommBuyS:any=[];
+  ResiRentS: any = [];
+  ResiBuyS: any = [];
+  CommRentS: any = [];
+  CommBuyS: any = [];
 
   Get_all_saved() {
-    
     this.buyerService.getAll_saved().subscribe((res: any) => {
       //consolele.log(res,'all saved')
       this.AllSaved = res;
-      this.ResiRentS= this.AllSaved.filter((v:any)=>{
-        return v.Type == 'Rent' && v.HouseOrCommercialType =='Residential';
-       })
-       this.ResiBuyS= this.AllSaved.filter((v:any)=>{
-        return v.Type == 'Sale' && v.HouseOrCommercialType =='Residential';
-       })
-       this.CommRentS= this.AllSaved.filter((v:any)=>{
-        return v.Type == 'Rent' && v.HouseOrCommercialType =='Commercial';
-       })
-       this.CommBuyS= this.AllSaved.filter((v:any)=>{
-        return v.Type == 'Sale' && v.HouseOrCommercialType =='Commercial';
-       })
-
+      this.ResiRentS = this.AllSaved.filter((v: any) => {
+        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Residential';
+      });
+      this.ResiBuyS = this.AllSaved.filter((v: any) => {
+        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Residential';
+      });
+      this.CommRentS = this.AllSaved.filter((v: any) => {
+        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Commercial';
+      });
+      this.CommBuyS = this.AllSaved.filter((v: any) => {
+        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Commercial';
+      });
     });
   }
   show_top = false;
@@ -1120,330 +1163,345 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.service.Get_buyer_account().subscribe((res: any) => {
       // //consolele.log(res);
       this.buyer = res;
-      this.showProfileHeader=true
-
+      this.showProfileHeader = true;
     });
   }
   //alert pop
-  minValue:any=5000;
-  maxValue:any=100000;
-  sendAlert=true;
-  recAlert=false;
-  showProfileHeader=false;
-  check:boolean=true;
-  check1:boolean=false;
+  minValue: any = 5000;
+  maxValue: any = 100000;
+  sendAlert = true;
+  recAlert = false;
+  showProfileHeader = false;
+  check: boolean = true;
+  check1: boolean = false;
 
+  myform: any = this.fb.group({
+    type: new FormControl(''),
+  });
 
-myform:any=this.fb.group({
-  type:new FormControl(''),
-})
+  popform: any = this.fb.group({
+    foodType: new FormControl(''),
+    PropertyStatus: new FormControl(''),
+  });
 
-  popform:any=this.fb.group({
-  foodType:new FormControl(''),
-  PropertyStatus: new FormControl(''),
-
-})
-
-popOptions: Options = {
-  floor: 5000,
-  ceil: 100000,
-  step:500,
-};
-BuildupOptions: Options = {
-  floor: 500,
-  ceil: 10000,
-  step:500,
-};
-property="Residential";
- Residential(){
-  
-  this.check=true;
-  this.check1=false;
-  this.property="Residential";
-
- }
-
- Commercial(){
-
-  this.check1=true;
-  this.check=false;
-  this.property="Commercial";
- }
- showAlertpop=false;
-
- ResiRentpop=false;
- ResiSalepop=false;
- CommRentpop=false;
- CommSalepop=false;
-
- popup(){
-  //consolele.log(this.property,this.myform.get('type')?.value)
-
-  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
-    this.ResiRentpop=true;
+  popOptions: Options = {
+    floor: 5000,
+    ceil: 100000,
+    step: 500,
+  };
+  BuildupOptions: Options = {
+    floor: 500,
+    ceil: 10000,
+    step: 500,
+  };
+  property = 'Residential';
+  Residential() {
+    this.check = true;
+    this.check1 = false;
+    this.property = 'Residential';
   }
-  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
-    this.ResiSalepop=true;
-  }
-  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
-    this.CommRentpop=true;
-  }
-  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
-    this.CommSalepop=true;
-  }
-  // this.showAlertpop=!this.showAlertpop;
- }
 
- pop_cheked(val: any, filter: any) {
-  if (filter != '') {
-    let index = filter.indexOf(val);
+  Commercial() {
+    this.check1 = true;
+    this.check = false;
+    this.property = 'Commercial';
+  }
+  showAlertpop = false;
 
-    if (index == -1) {
-      return false;
-    } else {
-      return true;
+  ResiRentpop = false;
+  ResiSalepop = false;
+  CommRentpop = false;
+  CommSalepop = false;
+
+  popup() {
+    //consolele.log(this.property,this.myform.get('type')?.value)
+
+    if (
+      this.property == 'Residential' &&
+      this.myform.get('type')?.value == 'Rent'
+    ) {
+      this.ResiRentpop = true;
     }
-  } else {
-    return false;
+    if (
+      this.property == 'Residential' &&
+      this.myform.get('type')?.value == 'Buy'
+    ) {
+      this.ResiSalepop = true;
+    }
+    if (
+      this.property == 'Commercial' &&
+      this.myform.get('type')?.value == 'Rent'
+    ) {
+      this.CommRentpop = true;
+    }
+    if (
+      this.property == 'Commercial' &&
+      this.myform.get('type')?.value == 'Buy'
+    ) {
+      this.CommSalepop = true;
+    }
+    // this.showAlertpop=!this.showAlertpop;
   }
-}
-areaP:any;
-addressP:any;
-propertyTypeP:any;
-BhkTypeP:any;
-amountFromP:any;
-amountToP:any;
-parkingP:any;
-propertyStatusP:any;
-shftingDateP:any;
 
+  pop_cheked(val: any, filter: any) {
+    if (filter != '') {
+      let index = filter.indexOf(val);
 
-
-
-
-areaPArr:any=[];
-propertyTypePArr:any=[];
-BhkTypePPArr:any=[];
-parkingPArr:any=[];
-propertyStatusPArr:any=[];
-shftingDatePPArr:any=[];
-
-planToBuy:any=[];
-CommProperty:any=[];
-CommBuildType:any=[];
-amenities:any=[];
-BuildminValue:any=500;
-BuildmaxValue:any=10000;
-
-update_pop_filter(v:any,arr:any){
-
-  if(v.target.checked){
-
-    arr.push(v.target.value)
-    //consolele.log(arr)
-  }
-  else{
-    let index = arr.indexOf(v.target.value);
-    arr.splice(index,1)
-    //consolele.log(arr)
-  }
-}
-letType:any;
-popcheck(){
-  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
-  let data= {
-    area:this.areaSend,
-    ResOrCom:this.property,
-    type:'Rent',
-    // address:this.areaPArr,
-    amountFrom:this.minValue,
-    amountTo:this.maxValue,
-    propertyType:this.propertyTypePArr,
-    BhkType:this.BhkTypePPArr,
-    parking:this.parkingPArr,
-    shftingDate:this.shftingDatePPArr,
-    furnish:this.propertyStatusPArr,
-    foodType:this.popform.get('foodType')?.value,
-    PropertyStatus:this.popform.get('PropertyStatus')?.value
-  }
-  //consolele.log(data,'data');
-  if(this.firstAlert){
-    this.buyerService.send_alert(data).subscribe((res:any)=>{
-      //consolele.log(res)
-      this.ResiRentpop=false;
-      this.getAlert();
-      this.empty();
-      this.letType='Rent'
-    })
-  }else{
-    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      //consolele.log(res)
-      this.ResiRentpop=false;
-      this.getAlert();
-      this.empty();
-      this.letType='Rent'
-    })
-  }
-}
-if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
-  let data= {
-    area:this.areaSend,
-    // address:this.areaPArr,
-    ResOrCom:this.property,
-    type:'Sale',
-    amountFrom:this.minValue,
-    amountTo:this.maxValue,
-    propertyType:this.propertyTypePArr,
-    BhkType:this.BhkTypePPArr,
-    parking:this.parkingPArr,
-    planToBuy:this.planToBuy,
-    furnish:this.propertyStatusPArr,
-    PropertyStatus:this.popform.get('PropertyStatus')?.value
-  }
-  //consolele.log(data,'data');
-  if(this.firstAlert){
-    this.buyerService.send_alert(data).subscribe((res:any)=>{
-      //consolele.log(res)
-    
-      this.getAlert();
-      this.empty();
-      this.letType='Buy'
-      this.ResiSalepop=false;
-  
-    })
-  }else{
-    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      //consolele.log(res)
-      this.getAlert();
-      this.empty();
-      this.letType='Buy'
-      this.ResiSalepop=false;
-    })
-  }
-}
-if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
-  let data= {
-    area:this.areaSend,
-    ResOrCom:this.property,
-    type:'Rent',
-    // address:this.areaPArr,
-    amountFrom:this.minValue,
-    amountTo:this.maxValue,
-    propertyType:this.CommProperty,
-    buildtype:this.CommBuildType,
-    parking:this.parkingPArr,
-    shftingDate:this.shftingDatePPArr,
-    furnish:this.propertyStatusPArr,
-    amenities:this.amenities,
-    buildFrom:this.BuildminValue,
-    buildTo:this.BuildmaxValue
-   
-  }
-  //consolele.log(data,'data');
-  if(this.firstAlert){
-    this.buyerService.send_alert(data).subscribe((res:any)=>{
-      //consolele.log(res)
-      
-      this.getAlert();
-      this.empty();
-      this.letType='Rent'
-      this.CommRentpop=false;
-    })
-  }else{
-    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      //consolele.log(res)
-     
-      this.getAlert();
-      this.empty();
-      this.letType='Rent'
-      this.CommRentpop=false;
-    })
-  }
-}
-if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
-  let data= {
-    area:this.areaSend,
-    ResOrCom:this.property,
-    type:'Sale',
-    // address:this.areaPArr,
-    amountFrom:this.minValue,
-    amountTo:this.maxValue,
-    propertyType:this.CommProperty,
-    buildtype:this.CommBuildType,
-    parking:this.parkingPArr,
-    planToBuy:this.planToBuy,
-    furnish:this.propertyStatusPArr,
-    amenities:this.amenities,
-    buildFrom:this.BuildminValue,
-    buildTo:this.BuildmaxValue
-   
-  }
-  //consolele.log(data,'data');
-  if(this.firstAlert){
-    this.buyerService.send_alert(data).subscribe((res:any)=>{
-      //consolele.log(res)
-     
-      this.getAlert();
-      this.empty();
-      this.letType='Buy'
-      this.CommSalepop=false;
-
-    })
-  }else{
-    this.buyerService.resend_alert(this.popid,data).subscribe((res:any)=>{
-      //consolele.log(res)
-    
-      this.getAlert();
-      this.empty();
-      this.letType='Buy'
-      this.CommSalepop=false;
-    })
-  }
-}
-
-
-}
-empty(){
-  this.propertyTypePArr=[];
-  this.BhkTypePPArr=[];
-  this.CommProperty=[]
-  this.CommBuildType=[]
-  this.parkingPArr=[]
-  this.propertyStatusPArr=[]
-  this.amenities=[]
-  this.shftingDatePPArr=[]
-  this.areaSend=[]
-  this.CommProperty=[]
-  this.CommBuildType=[]
-}
-
-areaSend:any=[];
-showinput2=true;
-popValue:any=[];
-alertaddress(address: Address, input: any) {
-  ////consolele.log(input.value);
-
-  this.areaPArr.push(input.value);
-  if (this.areaPArr.length >= 3) {
-    this.showinput2 = false;
-    //consolele.log(this.showinput2, 'showinput2 show');
-  }
-  this.latitude = address.geometry.location.lat();
-  this.longtitude = address.geometry.location.lng();
-  this.service.getAddress(this.latitude,this.longtitude).subscribe((res: any) => {
-    this.Address = res[0].address_components;
-    let area = this.Address.find((component: any) => {
-      if (component.types.includes('locality')) {
-        return component.types.includes('locality');
+      if (index == -1) {
+        return false;
+      } else {
+        return true;
       }
-      if (component.types.includes('sublocality_level_1')) {
-        return component.types.includes('sublocality_level_1');
+    } else {
+      return false;
+    }
+  }
+  areaP: any;
+  addressP: any;
+  propertyTypeP: any;
+  BhkTypeP: any;
+  amountFromP: any;
+  amountToP: any;
+  parkingP: any;
+  propertyStatusP: any;
+  shftingDateP: any;
+
+  areaPArr: any = [];
+  propertyTypePArr: any = [];
+  BhkTypePPArr: any = [];
+  parkingPArr: any = [];
+  propertyStatusPArr: any = [];
+  shftingDatePPArr: any = [];
+
+  planToBuy: any = [];
+  CommProperty: any = [];
+  CommBuildType: any = [];
+  amenities: any = [];
+  BuildminValue: any = 500;
+  BuildmaxValue: any = 10000;
+
+  update_pop_filter(v: any, arr: any) {
+    if (v.target.checked) {
+      arr.push(v.target.value);
+      //consolele.log(arr)
+    } else {
+      let index = arr.indexOf(v.target.value);
+      arr.splice(index, 1);
+      //consolele.log(arr)
+    }
+  }
+  letType: any;
+  popcheck() {
+    if (
+      this.property == 'Residential' &&
+      this.myform.get('type')?.value == 'Rent'
+    ) {
+      let data = {
+        area: this.areaSend,
+        ResOrCom: this.property,
+        type: 'Rent',
+        // address:this.areaPArr,
+        amountFrom: this.minValue,
+        amountTo: this.maxValue,
+        propertyType: this.propertyTypePArr,
+        BhkType: this.BhkTypePPArr,
+        parking: this.parkingPArr,
+        shftingDate: this.shftingDatePPArr,
+        furnish: this.propertyStatusPArr,
+        foodType: this.popform.get('foodType')?.value,
+        PropertyStatus: this.popform.get('PropertyStatus')?.value,
+      };
+      //consolele.log(data,'data');
+      if (this.firstAlert) {
+        this.buyerService.send_alert(data).subscribe((res: any) => {
+          //consolele.log(res)
+          this.ResiRentpop = false;
+          this.getAlert();
+          this.empty();
+          this.letType = 'Rent';
+        });
+      } else {
+        this.buyerService
+          .resend_alert(this.popid, data)
+          .subscribe((res: any) => {
+            //consolele.log(res)
+            this.ResiRentpop = false;
+            this.getAlert();
+            this.empty();
+            this.letType = 'Rent';
+          });
       }
-    }).long_name;
-    //consolele.log(area);
-    this.areaSend.push(area)
-})
-}
+    }
+    if (
+      this.property == 'Residential' &&
+      this.myform.get('type')?.value == 'Buy'
+    ) {
+      let data = {
+        area: this.areaSend,
+        // address:this.areaPArr,
+        ResOrCom: this.property,
+        type: 'Sale',
+        amountFrom: this.minValue,
+        amountTo: this.maxValue,
+        propertyType: this.propertyTypePArr,
+        BhkType: this.BhkTypePPArr,
+        parking: this.parkingPArr,
+        planToBuy: this.planToBuy,
+        furnish: this.propertyStatusPArr,
+        PropertyStatus: this.popform.get('PropertyStatus')?.value,
+      };
+      //consolele.log(data,'data');
+      if (this.firstAlert) {
+        this.buyerService.send_alert(data).subscribe((res: any) => {
+          //consolele.log(res)
+
+          this.getAlert();
+          this.empty();
+          this.letType = 'Buy';
+          this.ResiSalepop = false;
+        });
+      } else {
+        this.buyerService
+          .resend_alert(this.popid, data)
+          .subscribe((res: any) => {
+            //consolele.log(res)
+            this.getAlert();
+            this.empty();
+            this.letType = 'Buy';
+            this.ResiSalepop = false;
+          });
+      }
+    }
+    if (
+      this.property == 'Commercial' &&
+      this.myform.get('type')?.value == 'Rent'
+    ) {
+      let data = {
+        area: this.areaSend,
+        ResOrCom: this.property,
+        type: 'Rent',
+        // address:this.areaPArr,
+        amountFrom: this.minValue,
+        amountTo: this.maxValue,
+        propertyType: this.CommProperty,
+        buildtype: this.CommBuildType,
+        parking: this.parkingPArr,
+        shftingDate: this.shftingDatePPArr,
+        furnish: this.propertyStatusPArr,
+        amenities: this.amenities,
+        buildFrom: this.BuildminValue,
+        buildTo: this.BuildmaxValue,
+      };
+      //consolele.log(data,'data');
+      if (this.firstAlert) {
+        this.buyerService.send_alert(data).subscribe((res: any) => {
+          //consolele.log(res)
+
+          this.getAlert();
+          this.empty();
+          this.letType = 'Rent';
+          this.CommRentpop = false;
+        });
+      } else {
+        this.buyerService
+          .resend_alert(this.popid, data)
+          .subscribe((res: any) => {
+            //consolele.log(res)
+
+            this.getAlert();
+            this.empty();
+            this.letType = 'Rent';
+            this.CommRentpop = false;
+          });
+      }
+    }
+    if (
+      this.property == 'Commercial' &&
+      this.myform.get('type')?.value == 'Buy'
+    ) {
+      let data = {
+        area: this.areaSend,
+        ResOrCom: this.property,
+        type: 'Sale',
+        // address:this.areaPArr,
+        amountFrom: this.minValue,
+        amountTo: this.maxValue,
+        propertyType: this.CommProperty,
+        buildtype: this.CommBuildType,
+        parking: this.parkingPArr,
+        planToBuy: this.planToBuy,
+        furnish: this.propertyStatusPArr,
+        amenities: this.amenities,
+        buildFrom: this.BuildminValue,
+        buildTo: this.BuildmaxValue,
+      };
+      //consolele.log(data,'data');
+      if (this.firstAlert) {
+        this.buyerService.send_alert(data).subscribe((res: any) => {
+          //consolele.log(res)
+
+          this.getAlert();
+          this.empty();
+          this.letType = 'Buy';
+          this.CommSalepop = false;
+        });
+      } else {
+        this.buyerService
+          .resend_alert(this.popid, data)
+          .subscribe((res: any) => {
+            //consolele.log(res)
+
+            this.getAlert();
+            this.empty();
+            this.letType = 'Buy';
+            this.CommSalepop = false;
+          });
+      }
+    }
+  }
+  empty() {
+    this.propertyTypePArr = [];
+    this.BhkTypePPArr = [];
+    this.CommProperty = [];
+    this.CommBuildType = [];
+    this.parkingPArr = [];
+    this.propertyStatusPArr = [];
+    this.amenities = [];
+    this.shftingDatePPArr = [];
+    this.areaSend = [];
+    this.CommProperty = [];
+    this.CommBuildType = [];
+  }
+
+  areaSend: any = [];
+  showinput2 = true;
+  popValue: any = [];
+  alertaddress(address: Address, input: any) {
+    ////consolele.log(input.value);
+
+    this.areaPArr.push(input.value);
+    if (this.areaPArr.length >= 3) {
+      this.showinput2 = false;
+      //consolele.log(this.showinput2, 'showinput2 show');
+    }
+    this.latitude = address.geometry.location.lat();
+    this.longtitude = address.geometry.location.lng();
+    this.service
+      .getAddress(this.latitude, this.longtitude)
+      .subscribe((res: any) => {
+        this.Address = res[0].address_components;
+        let area = this.Address.find((component: any) => {
+          if (component.types.includes('locality')) {
+            return component.types.includes('locality');
+          }
+          if (component.types.includes('sublocality_level_1')) {
+            return component.types.includes('sublocality_level_1');
+          }
+        }).long_name;
+        //consolele.log(area);
+        this.areaSend.push(area);
+      });
+  }
 
   removeArea2(i: any) {
     ////consolele.log(i);
@@ -1452,50 +1510,47 @@ alertaddress(address: Address, input: any) {
       this.showinput2 = true;
       //consolele.log(this.showinput2, 'showinput2 show');
     }
-   }
-  getRentRange1(v:any){
-    this.maxValue=v.value;
   }
-  getRentRange(v:any){
-    this.minValue=v.value;
+  getRentRange1(v: any) {
+    this.maxValue = v.value;
   }
-  getBuiltRange(v:any){
-    this.BuildminValue=v.value;
+  getRentRange(v: any) {
+    this.minValue = v.value;
   }
-  getBuiltRange1(v:any){
-    this.BuildmaxValue=v.value;
+  getBuiltRange(v: any) {
+    this.BuildminValue = v.value;
+  }
+  getBuiltRange1(v: any) {
+    this.BuildmaxValue = v.value;
   }
 
-  firstAlert=true;
-  popid:any;
-  getAlert(){
-    this.buyerService.get_alert().subscribe((res:any)=>{
+  firstAlert = true;
+  popid: any;
+  getAlert() {
+    this.buyerService.get_alert().subscribe((res: any) => {
       //consolele.log(res,'get alert',)
-      
-      
-      this.popValue=res.values
-      this.popid=res.data._id;
-      this.property=res.data.ResOrCom;
-      this.letType=res.data.type;
 
-      if(res.data._id !=null){
-        this.firstAlert=false;
+      this.popValue = res.values;
+      this.popid = res.data._id;
+      this.property = res.data.ResOrCom;
+      this.letType = res.data.type;
+
+      if (res.data._id != null) {
+        this.firstAlert = false;
         //consolele.log(this.firstAlert,'first alert','inside if')
       }
-      if(res.data == null){
-        this.recAlert=false;
-        this.sendAlert=true;
-      }
-      else{
-        this.recAlert=true;
-        this.sendAlert=false;
+      if (res.data == null) {
+        this.recAlert = false;
+        this.sendAlert = true;
+      } else {
+        this.recAlert = true;
+        this.sendAlert = false;
       }
       //consolele.log(this.firstAlert,'first alert','in function')
-    })
+    });
   }
-  changeAlert(){
-    this.recAlert=false;
-     this.sendAlert=true;
+  changeAlert() {
+    this.recAlert = false;
+    this.sendAlert = true;
   }
- 
 }

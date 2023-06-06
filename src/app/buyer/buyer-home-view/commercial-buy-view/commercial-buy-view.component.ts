@@ -112,7 +112,7 @@ export class CommercialBuyViewComponent implements OnInit {
     this.arouter.queryParamMap.subscribe((params: any) => {
       //console.log(params.params.formatAdd)
       
-      if (params.params.formatAdd != null) {
+     
         console.log(params);
         this.showTab(params['show']);
         this.formatAdd = params.params.formatAdd;
@@ -237,17 +237,13 @@ export class CommercialBuyViewComponent implements OnInit {
         if (this.areaArr.length >= 3) {
           this.showInput = false;
           // console.log(this.showInput, 'inpout show');
-        }
-        this.GetDataForFilter();
+        
+       
       }
+
     });
-    this.getAlert();
-    this.sendTop={
-      baseRType:'Commercial',
-      type:'Buy',
-      add:this.formatAdd,
-      area:this.areaArr
-    }
+    this.GetDataForFilter();
+   
   
   }
   
@@ -734,20 +730,56 @@ export class CommercialBuyViewComponent implements OnInit {
   this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
+  } sendArea(){
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
+
   }
   toResBuy() {
-    this.router.navigateByUrl('/buyer-residential-buy-view')
-   }
-   toComRent(){
-     this.router.navigateByUrl('/buyer-commercial-rent-view')
-   }
-   toComBuy(){
-     this.router.navigateByUrl('/buyer-commercial-buy-view')
-   }
-   toResRent(){
-     this.router.navigateByUrl('/buyer-residential-rent-view')
-   }
-
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+  }
+  toComRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+  }
+  toComBuy() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
+  }
+  toResRent() {
+    this.sendArea();
+    let data={
+      area:this.areaF
+    }
+    console.log(this.data);
+    const query = new URLSearchParams(data).toString();
+    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  }
   is_chckked(val: any, filter: any) {
     // console.log(val,filter)
     if (filter != '') {

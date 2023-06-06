@@ -35,7 +35,7 @@ export class ResidentialDetailviewComponent implements OnInit {
     private location_: Location
   ) {}
   id: any;
-  data: any;
+  data: any=[]
   images: any;
   index: any;
   page = 0;
@@ -127,12 +127,19 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.builtMax = params.params['buildupto'];
       this.rentMin = params.params['priceFrom'];
       this.rentMax = params.params['priceTo'];
+      this.page = params.params['page']
     });
     this.index = Number(this.index);
-    console.log(this.index, 'index');
-
+    this.page = Number(this.page);
+    this.range=Number(this.range);
+    this.index=Number(this.index)
+    // if(this.page){
+    //   this.index = this.page+1 * this.range 
+    // }
+    this.get_buyer()
     this.GetDataForFilter();
   }
+
   TotalData: any;
   GetDataForFilter() {
     let Data = {
@@ -180,10 +187,18 @@ export class ResidentialDetailviewComponent implements OnInit {
           })
         }
         this.interestV= this.data.users.status=='Intrested'?  true : false;
-
+        this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
+        console.log(this.saveV,'save v')
         console.log(this.data);
       
       });
+  }
+  buyerId:any;
+  get_buyer(){
+    this.buyerService.myAcount().subscribe((res:any)=>{
+      this.buyerId = res._id;
+      console.log(this.buyerId,'buyerid')
+    })
   }
   lat: any;
   long: any;

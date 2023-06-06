@@ -182,7 +182,7 @@ Interested
         <p>{{data.BuildingName}} </p>
     </div>
 
-    <div>
+    <div *ngIf="data.buildingDirection">
         <label>Direction :</label>
         <p>{{data.buildingDirection}}</p>
     </div>
@@ -224,15 +224,15 @@ Interested
 
     <div>
         <label>Maintenance :</label>
-        <p>{{data.MaintenanceStatus}}, {{data.maintainenceCost | indianCurrency}}/{{data.squareFT}}</p>
+        <p>{{data.MaintenanceStatus}}, {{data.maintainenceCost | indianCurrency}}</p><p *ngIf="data.squareFT">/{{ data.squareFT}}</p>
     </div>
 
-    <div>
+    <div *ngIf="data.facingDirection">
         <label>Facing direction :</label>
         <p>{{data.facingDirection}}</p>
     </div>
 
-    <div>
+    <div *ngIf="data.discription">
         <label>Description :</label>
         <p>{{data.discription}}</p>
     </div>
@@ -283,22 +283,23 @@ Interested
         <p>{{data.parkingFacilities}}</p>
     </div>
 
-    <div>
+    <div *ngIf="data.kitchen || data.hall_FLoor || data.bedRoom
+    || data.Bathroom || data.balCony">
         <label>Flooring Type :</label>
       <ul>
-        <li>Kitchen-{{data.kitchen}}</li>
-        <li>Hall Floor-{{data.hall_FLoor}}</li>
+        <li *ngIf="data.kitchen" >Kitchen-{{data.kitchen}}</li>
+        <li *ngIf="data.hall_FLoor" >Hall Floor-{{data.hall_FLoor}}</li>
 
-        <li>Bedroom-{{data.bedRoom}}</li>
+        <li *ngIf="data.bedRoom">Bedroom-{{data.bedRoom}}</li>
 
-        <li>Bathroom-{{data.bathRoom}}</li>
+        <li *ngIf="data.bathRoom">Bathroom-{{data.bathRoom}}</li>
 
-        <li>Balcony-{{data.balCony}}</li>
+        <li *ngIf="data.balCony">Balcony-{{data.balCony}}</li>
 
       </ul>
     </div>
 
-    <div>
+    <div *ngIf="data.amenities">
         <label>Amenities :</label>
        <div> 
         <span *ngFor="let amt of data.Amenities"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
