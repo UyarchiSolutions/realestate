@@ -38,12 +38,8 @@
 
   
 </div>
-<div *ngIf="!checkInterest"  style="    display: flex;
-justify-content: end;">
-<p style="margin-right: 19px;" class="show">Previous</p>
-<p style="margin-right: 46px;" class="show">Next</p>   
-</div>
-<div class="pop-div" *ngIf="showRes">
+
+<div class="pop-div" *ngIf="data.users?data.users.status =='Shcedule':false">
     <div class="pop-div-content"><p>This Property has be Shceduled on {{history.scheduleDate | date:'dd-MM-YYYY'}} {{history.scheduletime }}</p></div>
     <div class="pop-div-content">
         <button  (click)="sendResponse('Accept')" class="green"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,9 +178,9 @@ Interested
         <p>{{data.BuildingName}} </p>
     </div>
 
-    <div>
+    <div >
         <label>Direction :</label>
-        <p>{{data.buildingDirection}}</p>
+        <p [innerText]=" data.buildingDirection ? data.buildingDirection:'Nill' "></p>
     </div>
 
     <div>
@@ -228,7 +224,7 @@ Interested
 
     <div>
         <label>Maintenance :</label>
-        <p>{{data.MaintenanceStatus}},</p><p *ngIf="data.maintainenceCost"> {{data.maintainenceCost | indianCurrency}}/{{data.squareFT}}</p>
+        <p>{{data.MaintenanceStatus}},</p><p *ngIf="data.maintainenceCost"> {{data.maintainenceCost | indianCurrency}}</p><p *ngIf="data.squareFT">/{{ data.squareFT}}</p>
     </div>
 
     <div>
@@ -248,9 +244,9 @@ Interested
         <label>Ideal for :</label>
         <p>{{data.ideaFor}}</p>
     </div>
-    <div>
+    <div >
         <label>Description :</label>
-        <p>{{data.discription}}</p>
+        <p [innerHTML]="data.discription? data.discription : 'Nill'"></p>
     </div>
 
     <h5>Amenities :</h5>

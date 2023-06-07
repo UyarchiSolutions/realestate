@@ -21,7 +21,7 @@
             <path  d="M7.27179 16.1559L20 28.0722L16.3641 31.4762L0 16.1559L16.3641 0.835693L20 4.23965L7.27179 16.1559Z" fill="#473B32" fill-opacity="0.6"/>
             </svg>
 <p>{{data.BHKType}} House For {{data.Type}} in, {{data.formatedAddress}}</p>
-<p>{{index}}{{TotalData }}</p>        
+       
 </div>
 <div class="page-navigator">
     <svg  *ngIf="!checkInterest"  (click)="previous()" width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,11 +39,7 @@
 
   
 </div>
-<div  *ngIf="!checkInterest" style="    display: flex;
-justify-content: end;">
-<p style="margin-right: 19px;" class="show">Previous</p>
-<p style="margin-right: 46px;" class="show">Next</p>   
-</div>
+
 <div class="pop-div" *ngIf="data.users?data.users.status =='Shcedule':false" >
     <div class="pop-div-content"><p>This Property has be Shceduled on {{history.scheduleDate | date:'dd-MM-YYYY'}} {{history.scheduletime }}</p></div>
     <div class="pop-div-content">
@@ -181,9 +177,9 @@ Interested
         <p>{{data.BuildingName}} </p>
     </div>
 
-    <div *ngIf="data.buildingDirection" >
+    <div >
         <label>Direction :</label>
-        <p>{{data.buildingDirection}}</p>
+        <p [innerText]=" data.buildingDirection ? data.buildingDirection:'Nill' "></p>
     </div>
 
     <div>
@@ -219,12 +215,12 @@ Interested
 
     <div>
         <label>Maintenance :</label>
-        <p>{{data.MaintenanceStatus}}, {{data.maintainenceCost | indianCurrency}}/{{data.squareFT}}</p>
+        <p>{{data.MaintenanceStatus}}, {{data.maintainenceCost | indianCurrency}}</p><p *ngIf="data.squareFT">/{{ data.squareFT}}</p>
     </div>
 
-    <div>
+    <div >
         <label>Facing direction :</label>
-        <p>{{data.facingDirection}}</p>
+        <p [innerHTML]="data.facingDirection? data.facingDirection:'Nill'"></p>
     </div>
 
     <div>
@@ -235,9 +231,9 @@ Interested
         <label>USD/Landsize :</label>
         <p>{{data.landSize}}.sqft</p>
     </div>
-    <div *ngIf="data.discription">
+    <div >
         <label>Description :</label>
-        <p>{{data.discription}}</p>
+        <p [innerHTML]="data.discription? data.discription : 'Nill'"></p>
     </div>
 
     <h5>Amenities :</h5>
@@ -288,19 +284,14 @@ Interested
         <p>{{data.parkingFacilities}}</p>
     </div>
 
-    <div *ngIf="data.kitchen || data.hall_FLoor || data.bedRoom 
-      || data.bathRoom || data.balCony">
+    <div>
         <label>Flooring Type :</label>
-      <ul>
-        <li *ngIf="data.kitchen">Kitchen-{{data.kitchen}}</li>
-        <li *ngIf="data.hall_FLoor">Hall Floor-{{data.hall_FLoor}}</li>
-
-        <li *ngIf="data.bedRoom">Bedroom-{{data.bedRoom}}</li>
-
-        <li *ngIf="data.bathRoom">Bathroom-{{data.bathRoom}}</li>
-
-        <li *ngIf="data.balCony">Balcony-{{data.balCony}}</li>
-
+      <ul class="floor">
+        <li >Kitchen- <p [innerHTML]="data.kitchen ? data.kitchen: 'Nill'"></p></li>
+        <li >Hall Floor- <p [innerHTML]="data.hall_FLoor ? data.hall_FLoor: 'Nill'"></p></li>
+        <li >Bedroom- <p [innerHTML]="data.bedRoom ? data.bedRoom: 'Nill'"></p></li>
+        <li >Bathroom- <p [innerHTML]="data.bathRoom ? data.bathRoom: 'Nill'"></p></li>
+        <li >Balcony- <p [innerHTML]="data.balCony ? data.balCony: 'Nill'"></p></li>
       </ul>
     </div>
 

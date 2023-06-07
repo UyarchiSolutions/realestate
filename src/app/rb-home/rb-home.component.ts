@@ -228,7 +228,7 @@ export class RbHomeComponent implements OnInit {
         }
         console.log(this.areaArr, 'Area',this.areaArrF);
       
-      
+        this.GetDataForFilter();
     });
     this.GetDataForFilter();
     this.getAlert();
@@ -349,7 +349,9 @@ export class RbHomeComponent implements OnInit {
   FloorArr: any = [];
 
   updateFilter(v: any, position: any) {
-    position = position.toString();
+
+    if(this.areaArr.length>0){
+      position = position.toString();
     console.log(v.target.value);
     if (v.target.checked) {
       var val = v.target.value;
@@ -550,6 +552,11 @@ export class RbHomeComponent implements OnInit {
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+    
   }
   assignToSaveData() {
     switch(this.areaArr.length){
@@ -717,26 +724,54 @@ export class RbHomeComponent implements OnInit {
       return false;
     }
   }
+ 
+  Rentchange() {
+    if(this.areaArr.length > 0){
+      console.log('change');
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
+  }
   changeRent(input: any) {
-    this.rentMin = input.value;
-
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    console.log(this.areaArr.length,this.areaArr.length > 0)
+    if(this.areaArr.length > 0){
+      this.rentMin = input.value;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
   }
   changeRent1(input: any) {
-    this.rentMax = input.value;
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
-  }
-  Rentchange() {
-    console.log('change');
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    if(this.areaArr.length > 0){
+      this.rentMax = input.value;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
   }
   changeBuilt(input: any) {
+    if(this.areaArr.length > 0){
+
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
     this.builtMin = input.value;
 
     this.assignToSaveData();
@@ -744,16 +779,30 @@ export class RbHomeComponent implements OnInit {
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   changeBuilt1(input: any) {
+    if(this.areaArr.length > 0){
+
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
     this.builtMax = input.value;
     this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   Builtchange() {
-    console.log('change');
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    if(this.areaArr.length > 0){
+      console.log('change');
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+  
   }
   latitude: any;
   Address: any = [];
@@ -808,11 +857,46 @@ export class RbHomeComponent implements OnInit {
   }
   areaF:any
   submitAddress() {
-    this.sendRecentSearch();
-    this.assignToSaveData();
-
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    if(this.areaArr.length > 0){
+      this.sendRecentSearch();
+      switch(this.areaArr.length){
+        case 1:
+        this.areaF = this.areaArr[0]
+        break;
+        case 2:
+          this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+          break;
+        case 3:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+        break;
+      }
+      this.sendData = {
+        formatAdd: this.formatAdd,
+        area: this.areaF,
+        type: this.type,
+        propertType: this.proptArr,
+        BHKType: this.BhkCountArr,
+        rentDetails: this.ShowOnlyArr,
+        furnishing: this.FurArr,
+        parking: this.ParkArr,
+        rentprefer: this.TentArr,
+        propAge: this.PropAgeArr,
+        bathroom: this.bathCountArr,
+        buildupfrom: this.builtMin,
+        buildupto: this.builtMax,
+        priceFrom: this.rentMin,
+        priceTo: this.rentMax,
+        floor: this.floordata,
+      };
+      let query = new URLSearchParams(this.sendData).toString();
+      console.log('sending data')
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
   }
   options: any = {
     componentRestrictions: { country: 'IN' },

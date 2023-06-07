@@ -27,63 +27,133 @@ export class CommercialBuyDetailviewComponent implements OnInit {
     range=20;
     Alldata:any;
     formatAdd:any;
-          type: any;
-          propertType: any;
-          BHKType: any;
-          rentDetails: any;
-          furnishing: any;
-          parking: any;
-          rentprefer: any;
-          propAge:any;
-          areaArr:any;
-          buildArr:any;
-          amtArr:any;
+    type: any;
+     propertType: any;
+     BHKType: any;
+     rentDetails: any;
+     furnishing: any;
+     parking: any;
+     rentprefer: any;
+     propAge:any;
+    areaArr:any;
+     buildArr:any;
+     amtArr:any;
+
+     areaArrF: any;
+     showOnlyType: any;
+     furType: any;
+     tentType: any;
+     propageType: any;
+     bathType: any;
+     parkType: any;
+     buildType: any;
+     amtType: any;
+     floorType: any;
+     builtMin: any;
+     builtMax: any;
+     rentMin: any;
+     rentMax: any;
+     floordata: any;
+     totalval: any;
+     images: any;
+     TotalData: any;
          
-          hospitalIcon='./assets/images/hospital.png';
-          cinemaIcon='./assets/images/cinema.png';
-          hotelIcon='./assets/images/hotel.png';
-          schoolIcon='./assets/images/school.png';
-          transportIcon='./assets/images/transport.png';
-          atmIcon='./assets/images/atm.png';
-          shopIcon='./assets/images/shop.png';
-          checkInterest:any;    
-          history:any=[];
-          imageLength:any;
-    ngOnInit(): void {
+ hospitalIcon='./assets/images/hospital.png';
+ cinemaIcon='./assets/images/cinema.png';
+   hotelIcon='./assets/images/hotel.png';
+   schoolIcon='./assets/images/school.png';
+   transportIcon='./assets/images/transport.png';
+  atmIcon='./assets/images/atm.png';
+ shopIcon='./assets/images/shop.png';
+ checkInterest:any;    
+ history:any=[];
+ imageLength:any;
+ ngOnInit(): void {
       
-      this.arouter.queryParams.subscribe((params) => {
-        console.log(params);
-        this.id = params['id'];
-        this.index=params['index'];
-        this.checkInterest=params['interested'];
-        //to return
-        this.formatAdd=params['formatAdd'];
-        this.type=params['type'];
-        this.BHKType=params['BHKType'];
-        this.rentDetails=params['rentDetails'];
-        this.furnishing=params['furnishing'];
-        this.parking=params['parking'];
-        this.rentprefer=params['rentprefer'];
-        this.propAge=params['propAge'];
-        this.propertType=params['propertType'];
-        this.buildArr=params['buildingType']
-        this.amtArr=params['amenities']
-        this.areaArr=params['area']
-      });
-      this.index =Number(this.index) ;
-   
-  
-      this.allFilter =this.service.Alldata;
-  
-      console.log(this.allFilter,'All filters');
-  
-      this.Alldata=this.service.get_ALLres();
-  
-      console.log(this.Alldata,'All data');
-     this.get_post();
-    }
-    get_post(){
-      this.service.formget1(this.id).subscribe((res:any)=>{
+  this.arouter.queryParamMap.subscribe((params: any) => {
+    //console.log(params.params.formatAdd)
+    if (params.params.formatAdd != null) {
+      console.log(params);
+      this.index = params.params['index'];
+      this.formatAdd = params.params.formatAdd;
+      this.type = params.params['type'];
+      this.propertType =
+        params.params['propertType'] != null &&
+        params.params['propertType'] != ''
+          ? params.params['propertType'].split(',')
+          : [];
+      this.BHKType =
+        params.params['BHKType'] != null && params.params['BHKType'] != ''
+          ? params.params['BHKType'].split(',')
+          : [];
+      this.areaArr =
+        params.params['area'] != null && params.params['area'] != ''
+          ? params.params['area'].split('+')
+          : [];
+          this.areaArrF =
+        params.params['area'] != null && params.params['area'] != ''
+          ? params.params['area']
+          : [];
+      //console.log(this.areaArr,this.areaArr.length);
+      // for(let i=0;)
+
+      this.showOnlyType =
+        params.params['rentDetails'] != null &&
+        params.params['rentDetails'] != ''
+          ? params.params['rentDetails'].split(',')
+          : [];
+      this.furType =
+        params.params['furnishing'] != null &&
+        params.params['furnishing'] != ''
+          ? params.params['furnishing'].split(',')
+          : [];
+      this.tentType =
+        params.params['rentprefer'] != null &&
+        params.params['rentprefer'] != ''
+          ? params.params['rentprefer'].split(',')
+          : [];
+      this.propageType =
+        params.params['propAge'] != null && params.params['propAge'] != ''
+          ? params.params['propAge'].split(',')
+          : [];
+      this.bathType =
+        params.params['bathroom'] != null && params.params['bathroom'] != ''
+          ? params.params['bathroom'].split(',')
+          : [];
+      this.parkType =
+        params.params['parking'] != null && params.params['parking'] != ''
+          ? params.params['parking'].split(',')
+          : [];
+          this.buildType =
+          params.params['buildingType'] != null && params.params['buildingType'] != ''
+            ? params.params['buildingType'].split(',')
+            : [];
+        this.amtType =
+          params.params['amenities'] != null && params.params['amenities'] != ''
+            ? params.params['amenities'].split(',')
+            : [];
+            this.floorType =
+            params.params['floor'] != null && params.params['floor'] != ''
+              ? params.params['floor'].split(',')
+              : [];
+              this.range = params.params['range'];
+              this.builtMin = params.params['buildupfrom'];
+              this.builtMax = params.params['buildupto'];
+              this.rentMin = params.params['priceFrom'];
+              this.rentMax = params.params['priceTo'];
+              this.page = params.params['page']
+ } });
+ this.index = Number(this.index);
+ this.page = Number(this.page);
+ this.range=Number(this.range);
+
+ this.get_buyer()
+ this.GetDataForFilter();
+ 
+
+}
+    get_post(id:any){
+      this.service.formget1(id).subscribe((res:any)=>{
         console.log(res,res.intrest,'formget');
         this.data=res.values;
         this.interestV=res.intrest;
@@ -138,37 +208,83 @@ export class CommercialBuyDetailviewComponent implements OnInit {
       })}
     }
   
-    next(){
-      this.index= this.index+1;
-      console.log(this.index);
-      console.log(this.Alldata,this.Alldata.length)
-      if(this.index+1 > this.Alldata.length ){
-       
+    next() {
+      this.index = this.index + 1;
+      if (this.index > this.TotalData - 1) {
         this.index = 0;
       }
-      console.log(this.index,'after if');
-      this.id = this.Alldata[this.index]._id;
-      
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res);
-        this.data=res.values;
-      })
+      this.GetDataForFilter();
+      this.imageLength = '';
     }
-    previous(){
-      
-      this.index= this.index - 1;
-      console.log(this.index);
-      if(this.index == -1){
-        let length = this.Alldata.length - 1
-        this.index = length
+    previous() {
+      this.index = this.index - 1;
+      if (this.index == -1) {
+        this.index = this.TotalData - 1;
       }
-      console.log(this.index,'after if');
-      this.id = this.Alldata[this.index]._id;
-      this.service.formget1(this.id).subscribe((res:any)=>{
-        console.log(res);
-        this.data=res.values;
-      })
+  
+      this.GetDataForFilter();
+      this.imageLength = '';
     }
+    GetDataForFilter() {
+      let  Data = {
+    
+          HouseOrCommercialType:'Commercial',
+          type: 'Sale',
+          index:this.index,
+          propertType: this.propertType,
+          BHKType: this.BHKType,
+          rentDetails: this.showOnlyType,
+          furnishing: this.furType,
+          parking: this.parkType,
+          rentprefer: this.tentType,
+          propAge: this.propageType,
+          bathroom: this.bathType,
+          buildingType:this.buildType,
+          amenities:this.amtType,
+          buildupfrom: this.builtMin,
+          buildupto: this.builtMax,
+          priceFrom: this.rentMin,
+          priceTo: this.rentMax,
+          floor:this.floordata,
+          finish:true,
+        };
+        console.log(Data);
+        this.service
+        .getSellerDetails2(
+          this.page,
+          this.range,
+          Data,
+          this.floordata,
+          this.areaArr
+        )
+          .subscribe((res: any) => {
+
+            this.id=res.nextData._id
+            this.images = res.nextData.image;
+            this.TotalData = res.values.length;
+            this.get_post(this.id);
+            // this.imageLength = this.data.image.length;
+         
+            // this.get_landmarks_forbuyer('School');
+            // if(this.data.users){
+            //   console.log('ok correct')
+            //   this.interestV= this.data.users.status=='Intrested'?  true : false;
+            // }
+            // else{
+            //   this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
+            //     console.log('changed viewed')
+            //     this.interestV= this.data.users.status=='Intrested'?  true : false;
+            //   })
+            // }
+            
+            // this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
+            // console.log(this.saveV,'save v')
+            // console.log(this.data);
+          
+          });
+     
+       
+      }
     backToSearch(){
       this.location_.back();
       // let sendData = {
@@ -189,26 +305,29 @@ export class CommercialBuyDetailviewComponent implements OnInit {
       // const query = new URLSearchParams(sendData).toString();
       // this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
     }
+    buyerId:any;
+    get_buyer(){
+      this.buyerService.myAcount().subscribe((res:any)=>{
+        this.buyerId = res._id;
+        console.log(this.buyerId,'buyerid')
+      })
+    }
     
     interestV:any;
     interest(id:any){
      
       this.service.interest(id).subscribe((res:any)=>{
-        console.log(res);
-        this.get_post();
+        console.log(res,'give interest');
+       this.GetDataForFilter()
       });
-    
-  
     }
     saveV:any;
     save(id:any){
   
       this.service.save(id).subscribe((res:any)=>{
         console.log(res,'save');
-        this.get_post();
+       this.GetDataForFilter()
       })
-    
-      
     }
    
     

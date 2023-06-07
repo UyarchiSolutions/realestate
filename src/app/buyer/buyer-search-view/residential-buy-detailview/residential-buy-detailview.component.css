@@ -360,3 +360,6 @@ margin-bottom: 0 !important;
     padding: 22px;
     justify-content: center;
 }
+.floor li{
+    display: flex;
+}

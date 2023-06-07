@@ -144,7 +144,7 @@ export class ResidentialDetailviewComponent implements OnInit {
   GetDataForFilter() {
     let Data = {
       HouseOrCommercialType: 'Residential',
-      type: this.type,
+      type: 'Rent',
       propertType: this.propertType,
       BHKType: this.BHKType,
       rentDetails: this.showOnlyType,
@@ -171,25 +171,29 @@ export class ResidentialDetailviewComponent implements OnInit {
       )
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
-        this.data = res.nextData;
+        this.id=res.nextData._id
         this.images = res.nextData.image;
         this.TotalData = res.values.length;
-        this.lat = this.data.lat;
-        this.long = this.data.long;
-        this.imageLength = this.data.image.length;
-        this.get_landmarks_forbuyer('School');
-        if(this.data.users){
-          console.log('ok correct')
-        }
-        else{
-          this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
-            console.log('changed viewed')
-          })
-        }
-        this.interestV= this.data.users.status=='Intrested'?  true : false;
-        this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
-        console.log(this.saveV,'save v')
-        console.log(this.data);
+        this.get_post(this.id);
+        // this.data = res.nextData;
+        // this.images = res.nextData.image;
+        // this.TotalData = res.values.length;
+        // this.lat = this.data.lat;
+        // this.long = this.data.long;
+        // this.imageLength = this.data.image.length;
+        // this.get_landmarks_forbuyer('School');
+        // if(this.data.users){
+        //   console.log('ok correct')
+        // }
+        // else{
+        //   this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
+        //     console.log('changed viewed')
+        //   })
+        // }
+        // this.interestV= this.data.users.status=='Intrested'?  true : false;
+        // this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
+        // console.log(this.saveV,'save v')
+        // console.log(this.data);
       
       });
   }
@@ -198,6 +202,21 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.buyerService.myAcount().subscribe((res:any)=>{
       this.buyerId = res._id;
       console.log(this.buyerId,'buyerid')
+    })
+  }
+  get_post(id:any){
+    this.service.formget1(id).subscribe((res:any)=>{
+      console.log(res,res.intrest,'formget');
+      this.data=res.values;
+      this.interestV=res.intrest;
+      this.saveV=res.savedStatus;
+      this.showRes=res.show;
+      this.lat=this.data.lat;
+      this.long=this.data.long;
+      this.history=res.relation;
+       this.imageLength=this.data.image.length
+     
+      this.get_landmarks_forbuyer('School');
     })
   }
   lat: any;

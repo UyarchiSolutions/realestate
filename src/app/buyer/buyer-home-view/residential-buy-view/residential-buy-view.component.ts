@@ -178,12 +178,12 @@ export class ResidentialBuyViewComponent implements OnInit {
             ? params.params['floor'].split(',')
             : [];
 
-        if (!(this.BHKType == '' && this.BHKType == null)) {
-          this.BHKType.forEach((a: any) => {
-            this.BhkTypeShow.push(this.bhkArr[a]);
-            // //consolele.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
-          });
-        }
+            if (!(this.BHKType == '' && this.BHKType == null)) {
+              this.BHKType.forEach((a: any) => {
+                this.BhkTypeShow.push(this.bhkArr[a]);
+                // console.log(this.BhkTypeShow,'final bhk',this.bhkArr[a])
+              });
+            }
         if (!(this.bathType == '' && this.bathType == null)) {
           this.bathType.forEach((a: any) => {
             this.bathtypeShow.push(this.bathArr[a - 1]);
@@ -210,6 +210,7 @@ export class ResidentialBuyViewComponent implements OnInit {
           ...this.ageType,
           ...this.floorShow,
         ];
+     
 
         this.proptArr = this.propertType;
         this.BhkCountArr = this.BHKType;
@@ -225,7 +226,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.floordata = this.floorType;
      
         // //consolele.log(this.proptArr,'proppt arry',this.propertType)
-
+        this.GetDataForFilter();
         this.SelectedFilters = this.SelectedFilters.filter((e: any) => e != '');
      
         if (this.areaArr.length >= 3) {
@@ -328,6 +329,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.data = res.values;
         this.totalval = res.total;
         this.nextPage = res.next;
+        
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
@@ -344,9 +346,9 @@ export class ResidentialBuyViewComponent implements OnInit {
         }
         this.sendDataBOOL = false;
       });
-    // //consolele.log(this.sendData, 'updated');
-    this.bathtypeShow = [];
-    this.BhkTypeShow = [];
+      this.bathtypeShow = [];
+      this.BhkTypeShow = [];
+    
   }
   showPag_rag = false;
 
@@ -357,216 +359,223 @@ export class ResidentialBuyViewComponent implements OnInit {
   FloorArr: any = [];
 
   updateFilter(v: any, position: any) {
-    position = position.toString();
-    let value = v.target.value;
-    console.log(v.target.value, position, 'selected', value);
-    if (v.target.checked) {
-      var val = v.target.value;
-      this.SelectedFilters.push(val);
-    } else {
-      let index = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      if (index != -1) {
-        this.SelectedFilters.splice(index, 1);
-      }
-    }
-
-    ////consolele.log('updted', this.SelectedFilters);
-    //prop arr
-
-    if (
-      v.target.value == 'Gated Community' ||
-      v.target.value == 'Individual House/Villa' ||
-      v.target.value == 'Apartment'
-    ) {
-      if (this.proptArr.findIndex((res: any) => res == v.target.value) == -1) {
-        this.proptArr.push(v.target.value);
-        ////consolele.log(this.proptArr, 'proparr, update filter');
+    if(this.areaArr.length > 0){
+      position = position.toString();
+      let value = v.target.value;
+      console.log(v.target.value, 'selected', value);
+      if (v.target.checked) {
+        var val = v.target.value;
+        this.SelectedFilters.push(val);
       } else {
-        let index = this.proptArr.findIndex(
+        let index = this.SelectedFilters.findIndex(
           (res: any) => res == v.target.value
         );
-
-        this.proptArr.splice(index, 1);
-        ////consolele.log('prop removed', this.proptArr);
+        if (index != -1) {
+          this.SelectedFilters.splice(index, 1);
+        }
       }
-    }
-
-    //bhk arr
-    if (
-      this.bhkArr.findIndex((res: any) => {
-        return res == v.target.value;
-      }) != -1
-    ) {
-      let index = this.bhkArr.indexOf(v.target.value);
-
+  
+      ////consolele.log('updted', this.SelectedFilters);
+      //prop arr
+  
       if (
-        this.FbhkArr.findIndex((res: any) => {
-          return res == v.target.value;
-        }) == -1
+        v.target.value == 'Gated Community' ||
+        v.target.value == 'Individual House/Villa' ||
+        v.target.value == 'Apartment'
       ) {
-        this.FbhkArr.push(v.target.value);
-        this.BhkCountArr.push(index);
-        ////consolele.log(this.BhkCountArr,'bhk count')
-        ////consolele.log(this.FbhkArr, 'final bhk arr');
-      } else {
-        let index = this.FbhkArr.findIndex((res: any) => res == v.target.value);
-
-        this.FbhkArr.splice(index, 1);
-        this.BhkCountArr.splice(index, 1);
-        ////consolele.log(this.BhkCountArr,'bhk count')
-        ////consolele.log('f bhk removed', this.FbhkArr);
+        if (this.proptArr.findIndex((res: any) => res == v.target.value) == -1) {
+          this.proptArr.push(v.target.value);
+          ////consolele.log(this.proptArr, 'proparr, update filter');
+        } else {
+          let index = this.proptArr.findIndex(
+            (res: any) => res == v.target.value
+          );
+  
+          this.proptArr.splice(index, 1);
+          ////consolele.log('prop removed', this.proptArr);
+        }
       }
-    }
-    //bathroom arr
-
-    if (
-      v.target.value == '1 Bathroom' ||
-      v.target.value == '2 Bathroom' ||
-      v.target.value == '3 Bathroom' ||
-      v.target.value == '4+ Bathroom'
-    ) {
-      if (this.newBath.findIndex((res: any) => res == v.target.value) == -1) {
-        this.newBath.push(v.target.value);
-
-        this.bathCountArr.push(position);
-        console.log(this.newBath, this.bathCountArr, 'bath update');
-      } else {
-        let index = this.newBath.findIndex((res: any) => res == v.target.value);
-        this.bathCountArr.splice(index, 1);
-        this.newBath.splice(index, 1);
-        console.log(this.newBath, position, this.bathCountArr, 'remove');
+  
+      //bhk arr
+      if (
+        this.bhkArr.findIndex((res: any) => {
+          return res == v.target.value;
+        }) != -1
+      ) {
+        let index = this.bhkArr.indexOf(v.target.value);
+  
+        if (
+          this.FbhkArr.findIndex((res: any) => {
+            return res == v.target.value;
+          }) == -1
+        ) {
+          this.FbhkArr.push(v.target.value);
+          this.BhkCountArr.push(index);
+          console.log(this.BhkCountArr,'bhk count')
+          console.log(this.FbhkArr, 'final bhk arr');
+        } else {
+          let index = this.FbhkArr.findIndex((res: any) => res == v.target.value);
+  
+          this.FbhkArr.splice(index, 1);
+          this.BhkCountArr.splice(index, 1);
+          ////consolele.log(this.BhkCountArr,'bhk count')
+          ////consolele.log('f bhk removed', this.FbhkArr);
+        }
       }
-    }
-    //show only
-    if (v.target.value == 'rent' || v.target.value == 'lease') {
-      ////consolele.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
-      let i = this.ShowOnlyArr.findIndex((res: any) => res == v.target.value);
-      if (i == -1) {
-        this.ShowOnlyArr.push(v.target.value);
-        ////consolele.log(this.ShowOnlyArr, 'if');
-      } else {
-        this.ShowOnlyArr.splice(i, 1);
-        ////consolele.log(this.ShowOnlyArr, 'else');
+      //bathroom arr
+  
+      if (
+        v.target.value == '1 Bathroom' ||
+        v.target.value == '2 Bathroom' ||
+        v.target.value == '3 Bathroom' ||
+        v.target.value == '4+ Bathroom'
+      ) {
+        if (this.newBath.findIndex((res: any) => res == v.target.value) == -1) {
+          this.newBath.push(v.target.value);
+  
+          this.bathCountArr.push(position);
+          console.log(this.newBath, this.bathCountArr, 'bath update');
+        } else {
+          let index = this.newBath.findIndex((res: any) => res == v.target.value);
+          this.bathCountArr.splice(index, 1);
+          this.newBath.splice(index, 1);
+          console.log(this.newBath, position, this.bathCountArr, 'remove');
+        }
       }
-    }
-    //furnished
-    if (
-      v.target.value == 'Fully Furnished' ||
-      v.target.value == 'Semi Furnished' ||
-      v.target.value == 'UnFurnished'
-    ) {
-      let i = this.FurArr.findIndex((res: any) => res == v.target.value);
-      //consolele.log(i,this.FurArr.findIndex((res: any) => res == v.target.value),v.target.value,this.FurArr)
-      if (i == -1) {
-        this.FurArr.push(v.target.value);
-        //consolele.log(this.FurArr, 'if');
-        //consolele.log(this.SelectedFilters,'selected filter')
-      } else {
-        this.FurArr.splice(i, 1);
-        //consolele.log(this.FurArr, 'else');
-        //consolele.log(this.SelectedFilters,'selected filter',i)
+      //show only
+      if (v.target.value == 'rent' || v.target.value == 'lease') {
+        ////consolele.log('inside rebt r lease', this.SelectedFilters.findIndex((res: any) => res == v.target.value) );
+        let i = this.ShowOnlyArr.findIndex((res: any) => res == v.target.value);
+        if (i == -1) {
+          this.ShowOnlyArr.push(v.target.value);
+          ////consolele.log(this.ShowOnlyArr, 'if');
+        } else {
+          this.ShowOnlyArr.splice(i, 1);
+          ////consolele.log(this.ShowOnlyArr, 'else');
+        }
       }
-    }
-    //park arr
-    if (
-      v.target.value == 'Bike' ||
-      v.target.value == 'Car' ||
-      v.target.value == 'Both'
-    ) {
-      let i = this.ParkArr.findIndex((res: any) => res == v.target.value);
-      if (i == -1) {
-        this.ParkArr.push(v.target.value);
-        ////consolele.log(this.ParkArr, 'if');
-      } else {
-        this.ParkArr.splice(i, 1);
-        ////consolele.log(this.ParkArr, 'else');
+      //furnished
+      if (
+        v.target.value == 'Fully Furnished' ||
+        v.target.value == 'Semi Furnished' ||
+        v.target.value == 'UnFurnished'
+      ) {
+        let i = this.FurArr.findIndex((res: any) => res == v.target.value);
+        //consolele.log(i,this.FurArr.findIndex((res: any) => res == v.target.value),v.target.value,this.FurArr)
+        if (i == -1) {
+          this.FurArr.push(v.target.value);
+          //consolele.log(this.FurArr, 'if');
+          //consolele.log(this.SelectedFilters,'selected filter')
+        } else {
+          this.FurArr.splice(i, 1);
+          //consolele.log(this.FurArr, 'else');
+          //consolele.log(this.SelectedFilters,'selected filter',i)
+        }
       }
-    }
-    //propstat arr
-    if (v.target.value == 'Under Construction' || v.target.value == 'Ready') {
-      let i = this.ageArr.findIndex((res: any) => res == v.target.value);
-      if (i == -1) {
-        this.ageArr.push(v.target.value);
-        ////consolele.log(this.ageArr, 'if');
-      } else {
-        this.ageArr.splice(i, 1);
-        ////consolele.log(this.ParkArr, 'else');
+      //park arr
+      if (
+        v.target.value == 'Bike' ||
+        v.target.value == 'Car' ||
+        v.target.value == 'Both'
+      ) {
+        let i = this.ParkArr.findIndex((res: any) => res == v.target.value);
+        if (i == -1) {
+          this.ParkArr.push(v.target.value);
+          ////consolele.log(this.ParkArr, 'if');
+        } else {
+          this.ParkArr.splice(i, 1);
+          ////consolele.log(this.ParkArr, 'else');
+        }
       }
-    }
-    //tent arr
-    if (
-      v.target.value == 'Family' ||
-      v.target.value == 'Bachelor' ||
-      v.target.value == 'Company' ||
-      v.target.value == 'Any'
-    ) {
-      let i = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      if (i != -1) {
-        this.TentArr.push(v.target.value);
-        ////consolele.log(this.TentArr);
-      } else {
-        this.TentArr.splice(i, 1);
-        ////consolele.log(this.TentArr);
+      //propstat arr
+      if (v.target.value == 'Under Construction' || v.target.value == 'Ready') {
+        let i = this.ageArr.findIndex((res: any) => res == v.target.value);
+        if (i == -1) {
+          this.ageArr.push(v.target.value);
+          ////consolele.log(this.ageArr, 'if');
+        } else {
+          this.ageArr.splice(i, 1);
+          ////consolele.log(this.ParkArr, 'else');
+        }
       }
-    }
-    //prop age arr
-    if (
-      v.target.value == 'Less than Year' ||
-      v.target.value == '1 to 3 Years' ||
-      v.target.value == '3 to 5 Years' ||
-      v.target.value == '5 to 10 Years' ||
-      v.target.value == '10+ Years'
-    ) {
-      let i = this.SelectedFilters.findIndex(
-        (res: any) => res == v.target.value
-      );
-      if (i != -1) {
-        this.PropAgeArr.push(v.target.value);
-        ////consolele.log(this.PropAgeArr);
-      } else {
-        this.PropAgeArr.splice(i, 1);
-        ////consolele.log(this.PropAgeArr);
-      }
-    }
-    //floor arr
-    if (
-      v.target.value == 'Ground Floor' ||
-      v.target.value == '1 to 3 Floor' ||
-      v.target.value == '4 to 7 Floor' ||
-      v.target.value == '8 to 12 Floor' ||
-      v.target.value == '13+ Floor'
-    ) {
-      let i = this.ffloor.indexOf(v.target.value);
-      console.log(i);
-      if (i == -1) {
-        this.ffloor.push(v.target.value);
-        let index = this.floorArr.indexOf(v.target.value);
-        this.floordata.push(this.floorDataArr[index]);
-
-        console.log('floor', this.ffloor, 'floor data', this.floordata);
-      } else {
-        let index = this.ffloor.indexOf(v.target.value);
-        this.ffloor.splice(index, 1);
-        this.floordata.splice(index, 1);
-
-        console.log(
-          'floor',
-          this.ffloor,
-          'floor data',
-          this.floordata,
-          'remove'
+      //tent arr
+      if (
+        v.target.value == 'Family' ||
+        v.target.value == 'Bachelor' ||
+        v.target.value == 'Company' ||
+        v.target.value == 'Any'
+      ) {
+        let i = this.SelectedFilters.findIndex(
+          (res: any) => res == v.target.value
         );
+        if (i != -1) {
+          this.TentArr.push(v.target.value);
+          ////consolele.log(this.TentArr);
+        } else {
+          this.TentArr.splice(i, 1);
+          ////consolele.log(this.TentArr);
+        }
       }
+      //prop age arr
+      if (
+        v.target.value == 'Less than Year' ||
+        v.target.value == '1 to 3 Years' ||
+        v.target.value == '3 to 5 Years' ||
+        v.target.value == '5 to 10 Years' ||
+        v.target.value == '10+ Years'
+      ) {
+        let i = this.SelectedFilters.findIndex(
+          (res: any) => res == v.target.value
+        );
+        if (i != -1) {
+          this.PropAgeArr.push(v.target.value);
+          ////consolele.log(this.PropAgeArr);
+        } else {
+          this.PropAgeArr.splice(i, 1);
+          ////consolele.log(this.PropAgeArr);
+        }
+      }
+      //floor arr
+      if (
+        v.target.value == 'Ground Floor' ||
+        v.target.value == '1 to 3 Floor' ||
+        v.target.value == '4 to 7 Floor' ||
+        v.target.value == '8 to 12 Floor' ||
+        v.target.value == '13+ Floor'
+      ) {
+        let i = this.ffloor.indexOf(v.target.value);
+        console.log(i);
+        if (i == -1) {
+          this.ffloor.push(v.target.value);
+          let index = this.floorArr.indexOf(v.target.value);
+          this.floordata.push(this.floorDataArr[index]);
+  
+          console.log('floor', this.ffloor, 'floor data', this.floordata);
+        } else {
+          let index = this.ffloor.indexOf(v.target.value);
+          this.ffloor.splice(index, 1);
+          this.floordata.splice(index, 1);
+  
+          console.log(
+            'floor',
+            this.ffloor,
+            'floor data',
+            this.floordata,
+            'remove'
+          );
+        }
+      }
+      //data to api
+      this.assignToSaveData();
+      ////consolele.log(this.ShowOnlyArr);
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
     }
-    //data to api
-    this.assignToSaveData();
-    ////consolele.log(this.ShowOnlyArr);
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+  
   }
   
   areaF: any;
@@ -753,42 +762,84 @@ export class ResidentialBuyViewComponent implements OnInit {
   area: any;
   city: any;
 
+  Rentchange() {
+    if(this.areaArr.length > 0){
+      console.log('change');
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
+  }
   changeRent(input: any) {
-    this.rentMin = input.value;
-
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    console.log(this.areaArr.length,this.areaArr.length > 0)
+    if(this.areaArr.length > 0){
+      this.rentMin = input.value;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
   }
   changeRent1(input: any) {
-    this.rentMax = input.value;
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-  }
-  Rentchange() {
-    console.log('change');
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    if(this.areaArr.length > 0){
+      this.rentMax = input.value;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
   }
   changeBuilt(input: any) {
+    if(this.areaArr.length > 0){
+
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
     this.builtMin = input.value;
 
     this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   changeBuilt1(input: any) {
+    if(this.areaArr.length > 0){
+
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+    this.builtMax = input.value;
     this.assignToSaveData();
     let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
   }
   Builtchange() {
-    console.log('change');
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    if(this.areaArr.length > 0){
+      console.log('change');
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+  
   }
   handleAddressChange(address: Address, input: any) {
     ////consolele.log(input.value);
@@ -836,11 +887,18 @@ export class ResidentialBuyViewComponent implements OnInit {
     });
   }
   submitAddress() {
-    this.sendRecentSearch();
-    this.assignToSaveData();
-    let query = new URLSearchParams(this.sendData).toString();
-
-    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    if(this.areaArr.length > 0){
+      this.sendRecentSearch();
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+  
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+  
   }
   options: any = {
     componentRestrictions: { country: 'IN' },
@@ -1108,48 +1166,13 @@ export class ResidentialBuyViewComponent implements OnInit {
   CommRent: any = [];
   CommBuy: any = [];
 
-  Get_all_interest() {
-    this.buyerService.getAll_Interested().subscribe((res: any) => {
-      //consolele.log(res,'all interest')
-      this.AllInterested = res;
-      this.ResiRent = this.AllInterested.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.ResiBuy = this.AllInterested.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.CommRent = this.AllInterested.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Commercial';
-      });
-      this.CommBuy = this.AllInterested.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Commercial';
-      });
-    });
-  }
   AllSaved: any;
   ResiRentS: any = [];
   ResiBuyS: any = [];
   CommRentS: any = [];
   CommBuyS: any = [];
 
-  Get_all_saved() {
-    this.buyerService.getAll_saved().subscribe((res: any) => {
-      //consolele.log(res,'all saved')
-      this.AllSaved = res;
-      this.ResiRentS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.ResiBuyS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Residential';
-      });
-      this.CommRentS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Rent' && v.HouseOrCommercialType == 'Commercial';
-      });
-      this.CommBuyS = this.AllSaved.filter((v: any) => {
-        return v.Type == 'Sale' && v.HouseOrCommercialType == 'Commercial';
-      });
-    });
-  }
+
   show_top = false;
   viewtop() {
     this.show_top = !this.show_top;

@@ -359,3 +359,6 @@ margin-bottom: 0 !important;
     color: white;
     background: #473B32;
 }
+.floor li{
+    display: flex;
+}
