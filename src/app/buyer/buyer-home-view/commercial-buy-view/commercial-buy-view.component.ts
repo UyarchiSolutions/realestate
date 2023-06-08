@@ -17,6 +17,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CommercialBuyViewComponent implements OnInit {
   buyer: any = [];
+  ageType: any;
+  ageArr: any=[];
   constructor(
     private arouter: ActivatedRoute,
     private fb: FormBuilder,
@@ -147,6 +149,11 @@ export class CommercialBuyViewComponent implements OnInit {
           params.params['furnishing'] != ''
             ? params.params['furnishing'].split(',')
             : [];
+              this.ageType =
+          params.params['ageOfBuilding'] != null &&
+          params.params['ageOfBuilding'] != ''
+            ? params.params['ageOfBuilding'].split(',')
+            : [];
         this.tentType =
           params.params['rentprefer'] != null &&
           params.params['rentprefer'] != ''
@@ -209,6 +216,7 @@ export class CommercialBuyViewComponent implements OnInit {
           ...this.bathtypeShow,
           ...this.parkType,
           ...this.buildType,
+          ...this.ageType,
           ...this.amtType,
           ...this.floorShow
 
@@ -225,6 +233,7 @@ export class CommercialBuyViewComponent implements OnInit {
         this.FbhkArr = this.BhkTypeShow;
         this.FbathArr = this.bathtypeShow;
         this.ametArr = this.amtType;
+        this.ageArr = this.ageType;
         this.buildArr = this.buildType;
         this.floordata =this.floorType
 
@@ -272,6 +281,7 @@ export class CommercialBuyViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       floor:this.floordata,
+       ageOfBuilding: this.ageArr,
       finish:true,
     };
     console.log(Data);
@@ -352,7 +362,17 @@ export class CommercialBuyViewComponent implements OnInit {
           //console.log('prop removed', this.proptArr);
         }
       }
-  
+        //propstat arr
+      if (v.target.value == 'Under Construction' || v.target.value == 'Ready') {
+        let i = this.ageArr.findIndex((res: any) => res == v.target.value);
+        if (i == -1) {
+          this.ageArr.push(v.target.value);
+          ////consolele.log(this.ageArr, 'if');
+        } else {
+          this.ageArr.splice(i, 1);
+          ////consolele.log(this.ParkArr, 'else');
+        }
+      }
       //bhk arr
       if (
         this.bhkArr.findIndex((res: any) => {
@@ -578,7 +598,8 @@ export class CommercialBuyViewComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
-      floor:this.floordata
+      floor:this.floordata,
+      ageOfBuilding: this.ageArr,
     };
   }
   deleteFilter(v: any) {
@@ -602,6 +623,16 @@ export class CommercialBuyViewComponent implements OnInit {
       });
       this.FbhkArr.splice(index, 1);
       this.BhkCountArr.splice(index, 1);
+    }
+      if (v == 'Under Construction' || v == 'Ready') {
+      let index = this.ageArr.findIndex((res: any) => {
+        res == v;
+      });
+      let i = this.ageArr.indexOf(v);
+
+      if (i > -1) {
+        this.ageArr.splice(i, 1);
+      }
     }
     //bath arr
     if (
@@ -913,9 +944,20 @@ export class CommercialBuyViewComponent implements OnInit {
    }
 
   sendRecentSearch() {
+    switch(this.areaArr.length){
+      case 1:
+      this.areaF = this.areaArr[0]
+      break;
+      case 2:
+        this.areaF = this.areaArr[0]+'+'+this.areaArr[1]
+        break;
+      case 3:
+      this.areaF = this.areaArr[0]+'+'+this.areaArr[1]+'+'+this.areaArr[2];
+      break;
+    }
     let data = {
       formatAdd: this.formatAdd,
-      type: this.type,
+      type:'Buy',
       propertType: this.proptArr,
       BHKType: this.BhkCountArr,
       rentDetails: this.ShowOnlyArr,
@@ -929,6 +971,14 @@ export class CommercialBuyViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       selected: this.SelectedFilters,
+      HouseOrCommercialType:'Commercial',
+      floor:this.floordata,
+      routeLink:'/buyer-commercial-buy-view?',
+      area:this.areaF,
+      ageOfBuilding:this.ageArr,
+
+      amenities:this.ametArr,
+      buildingType:this.buildType,
     };
     this.service.RecentSearch(data).subscribe((res: any) => {
       console.log(res, 'recent search');
@@ -989,6 +1039,7 @@ export class CommercialBuyViewComponent implements OnInit {
           buildupto: this.builtMax,
           priceFrom: this.rentMin,
           priceTo: this.rentMax,
+           ageOfBuilding: this.ageArr,
           floor:this.floordata,
           page:String(this.page),
           range:String(this.range),
@@ -997,8 +1048,7 @@ export class CommercialBuyViewComponent implements OnInit {
         };
         const query = new URLSearchParams(Data).toString();
         this.router.navigateByUrl(
-          '/buyer-commercial-buy-search-view?' + query
-        );
+          '/buyer-commercial-buy-search-view?' + query);
       });
     } else {
       //console.log('route to login')
@@ -1007,34 +1057,85 @@ export class CommercialBuyViewComponent implements OnInit {
   }
   GetRecentSearch(index: any) {
     let v = this.RecentSearchArr[index];
-    console.log(v, 'get recent search', this.RecentSearchArr[index].buildupto);
-
-    this.SelectedFilters = this.RecentSearchArr[index].selected;
-    this.proptArr = this.RecentSearchArr[index].propertType;
-    this.BhkCountArr = this.RecentSearchArr[index].BHKType;
-    this.ShowOnlyArr = this.RecentSearchArr[index].rentDetails;
-    this.FurArr = this.RecentSearchArr[index].furnishing;
-    this.ParkArr = this.RecentSearchArr[index].parking;
-    this.TentArr = this.RecentSearchArr[index].rentprefer;
-    this.PropAgeArr = this.RecentSearchArr[index].propAge;
-    this.formatAdd = this.RecentSearchArr[index].formatAdd;
-    this.bathCountArr = this.RecentSearchArr[index].bathroom;
-    this.filter
-      .get('buildupFrom')
-      .patchValue(this.RecentSearchArr[index].buildupfrom);
-    this.filter
-      .get('buildupTo')
-      .patchValue(this.RecentSearchArr[index].buildupto);
-    this.filter
-      .get('priceFrom')
-      .patchValue(this.RecentSearchArr[index].priceFrom);
-    this.filter.get('priceTo').patchValue(this.RecentSearchArr[index].priceTo);
-
-    this.service
-      .getSellerDetails(this.page, this.range, v,this.floordata)
-      .subscribe((res: any) => {
-        this.data = res.values;
-      });
+    console.log(v)
+    if(v.routeLink=='/buyer-commercial-buy-view?'){
+    
+      let data={
+        propertType: v.propertType,
+        furnishing: v.furnishing,
+        parking: v.parking,
+        propAge: v.propAge,
+        buildingType:v.buildingType,
+        amenities:v.amenities,
+        ageOfBuilding:v.ageOfBuilding,
+        buildupfrom: v.buildupfrom,
+        buildupto: v.buildupto,
+        priceFrom:v.priceFrom,
+        priceTo:  v.priceTo,
+        area:v.area,
+        floor:v.floor,
+      }
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
+    }
+    if(v.routeLink=='/buyer-commercial-rent-view?'){
+     
+      let data={
+        propertType: v.propertType,
+        furnishing: v.furnishing,
+        parking: v.parking,
+        propAge: v.propAge,
+        buildingType:v.buildingType,
+        amenities:v.amenities,
+        buildupfrom: v.buildupfrom,
+        buildupto: v.buildupto,
+        priceFrom:v.priceFrom,
+        priceTo:  v.priceTo,
+        area:v.area,
+        floor:v.floor,
+      }
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+    }
+    if(v.routeLink== '/buyer-residential-buy-view?'){
+      let data={
+        propertType: v.propertType,
+        BHKType:v.BHKType,
+        furnishing: v.furnishing,
+        parking: v.parking,
+        ageOfBuilding:v.ageOfBuilding,
+        propAge:v.propAge,
+        bathroom: v.bathroom,
+        buildupfrom: v.buildupfrom,
+        buildupto: v.buildupto,
+        priceFrom:v.priceFrom,
+        priceTo:  v.priceTo,
+        floor:v.floor,
+        area:v.area,
+      }
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    if(v.routeLink== "/buyer-residential-rent-view?"){
+      let data={
+        propertType: v.propertType,
+        BHKType:v.BHKType,
+        rentDetails:v.rentDetails,
+        furnishing: v.furnishing,
+        parking: v.parking,
+        rentprefer:v.rentprefer,
+        propAge:v.propAge,
+        bathroom: v.bathroom,
+        buildupfrom: v.buildupfrom,
+        buildupto: v.buildupto,
+        priceFrom:v.priceFrom,
+        priceTo:  v.priceTo,
+        floor:v.floor,
+        area:v.area,
+      }
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    } 
   }
 
   pagination(val: any) {

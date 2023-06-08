@@ -204,9 +204,11 @@ export class ResidentialDetailviewComponent implements OnInit {
       console.log(this.buyerId,'buyerid')
     })
   }
+  relation:any
   get_post(id:any){
     this.service.formget1(id).subscribe((res:any)=>{
       console.log(res,res.intrest,'formget');
+      this.relation=res.relation;
       this.data=res.values;
       this.interestV=res.intrest;
       this.saveV=res.savedStatus;
@@ -215,7 +217,15 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.long=this.data.long;
       this.history=res.relation;
        this.imageLength=this.data.image.length
-     
+     if(this.relation == null){
+      this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
+        console.log('changed viewed')
+      })
+        }
+        else{
+         console.log('ok')
+          
+        }
       this.get_landmarks_forbuyer('School');
     })
   }

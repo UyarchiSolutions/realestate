@@ -199,10 +199,12 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
         console.log(this.buyerId,'buyerid')
       })
     }
+    relation:any
     get_post(id:any){
       this.service.formget1(id).subscribe((res:any)=>{
         console.log(res,res.intrest,'formget');
         this.data=res.values;
+        this.relation=res.relation;
         this.interestV=res.intrest;
         this.saveV=res.savedStatus;
         this.showRes=res.show;
@@ -211,6 +213,16 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
         this.history=res.relation;
         this.imageLength=this.data.image.length
         console.log(this.lat,'lat,',this.long,'long')
+        if(this.relation == null){
+          this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
+            console.log('changed viewed')
+          })
+            }
+            else{
+             console.log('ok')
+              
+            }
+    
         this.get_landmarks_forbuyer('School');
       })
     }

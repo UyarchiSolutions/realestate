@@ -658,8 +658,8 @@
                     </li>
                     <div class="overflow-contents" >
                 <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
-                   <div class="breadcrumbs">Chennai>Residential>{{arr.type}}</div>
-                   <p>{{arr.formatAdd}}>{{arr.furnishing}}</p>
+                   <div class="breadcrumbs">Chennai>{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
+                   <p>{{arr.area}}>{{arr.furnishing}}</p>
                 </li>
                
                 </div>
