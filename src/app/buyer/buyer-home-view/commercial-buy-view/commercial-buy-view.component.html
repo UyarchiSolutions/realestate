@@ -580,7 +580,7 @@
 
 
 <div class="bottom-section">
-    <div class="pagination" *ngIf="showPag_rag">
+    <div class="pagination" *ngIf="totalval >= 10 ">
         <button>
         <div class="page-prev"  (click)="pagination(0)">
             
@@ -637,10 +637,10 @@
                      Recent Search
                     </li>
                     <div class="overflow-contents" >
-                <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
-                   <div class="breadcrumbs">Chennai>Residential>{{arr.type}}</div>
-                   <p>{{arr.formatAdd}}>{{arr.furnishing}}</p>
-                </li>
+                        <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
+                            <div class="breadcrumbs">{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
+                            <p>{{ctArray(arr.area)}}>{{arr.furnishing}}</p>
+                         </li>
                
                 </div>
             </ul>

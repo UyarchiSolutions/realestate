@@ -1,6 +1,6 @@
 header{
     height: 80px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -281,7 +281,7 @@ export class CommercialRentViewComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
-        this.totalval = res.total;
+        this.totalval = res.values.length;
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
@@ -352,7 +352,21 @@ export class CommercialRentViewComponent implements OnInit {
     const query = new URLSearchParams(data).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
   }
-
+  ctArray(str:any) : any{
+    let farr: any[]=[];
+    if(str)
+    { let array= str.split('+')
+    
+      array.forEach((res:any)=>{
+      // console.log(res.split(',')[0])
+      let local = res.split(',')[0]
+      farr.push(local)
+      })
+    
+      // console.log(farr,'area arr for html')
+    return  farr
+    }
+   }
 
 
   updateFilter(v: any, position: any) {

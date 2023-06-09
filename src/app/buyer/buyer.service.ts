@@ -94,5 +94,8 @@ export class BuyerService {
   editAccountSeller(data:any){
     return this.http.put(this.base_url+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('buyer')}})
   }
+  send_enquiry(data:any){
+    return this.http.post(this.base_url+'/v1/EnquieryRoute',data)
+  }
 }
 

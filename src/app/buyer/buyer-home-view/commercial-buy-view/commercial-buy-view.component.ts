@@ -296,7 +296,7 @@ export class CommercialBuyViewComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
-        this.totalval = res.total;
+        this.totalval = res.values.length;
         if (this.totalval > 10) {
           this.showPag_rag = true;
         }
@@ -568,6 +568,21 @@ export class CommercialBuyViewComponent implements OnInit {
   
   }
   areaF:any;
+  ctArray(str:any) : any{
+    let farr: any[]=[];
+    if(str)
+    { let array= str.split('+')
+    
+      array.forEach((res:any)=>{
+     
+      let local = res.split(',')[0]
+      farr.push(local)
+      })
+    
+      // console.log(farr,'area arr for html')
+    return  farr
+    }
+   }
   assignToSaveData(){
     switch(this.areaArr.length){
       case 1:

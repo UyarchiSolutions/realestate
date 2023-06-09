@@ -5,7 +5,7 @@
                 <h4>Support</h4>
                 <p>Contact us</p>
                 <p>FAQ's</p>
-                <p>Enquirey</p>
+                <p  (click)="check()">Enquirey</p>
             </div>
             <div class="content-2 margin-top">
                 <h4>Search Property</h4>
@@ -52,3 +52,24 @@
         </div>
     </div>
 </div>
+
+<div class="modal1" [ngStyle]="{'display': ok==true? 'block':'none'}" >
+    <div class="modal-dialog1 ">
+      <div class="modal-content1">
+        <div class="modal-header1">
+          <h5 class="modal-title1" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body1">
+          ...
+        </div>
+        <div class="modal-footer1">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

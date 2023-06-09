@@ -270,7 +270,7 @@ export class RbHomeComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
         this.data = res.values;
-        this.totalval = res.total;
+        this.totalval = res.values.length;
         this.showPag_rag = false;
         this.nextPage=res.next
         if (this.totalval > 10) {
@@ -939,7 +939,22 @@ export class RbHomeComponent implements OnInit {
     componentRestrictions: { country: 'IN' },
   };
   checkCookie: any;
-
+  
+  ctArray(str:any) : any{
+    let farr: any[]=[];
+    if(str)
+    { let array= str.split('+')
+    
+      array.forEach((res:any)=>{
+      // console.log(res.split(',')[0])
+      let local = res.split(',')[0]
+      farr.push(local)
+      })
+    
+      // console.log(farr,'area arr for html')
+    return  farr
+    }
+   }
   GetDataBYId(id: any, i: any) {
     console.log(i);
     this.checkCookie = this.service.findCookie();
@@ -1229,6 +1244,7 @@ export class RbHomeComponent implements OnInit {
   }
   FetchRecentSearch() {
     this.service.RecentSearchGet().subscribe((res: any) => {
+      
       this.RecentSearchArr = res;
     });
   }

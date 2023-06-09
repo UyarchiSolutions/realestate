@@ -598,7 +598,7 @@
  
 
 
-<div class="bottom-section" *ngIf="postshow">
+<div class="bottom-section" *ngIf="totalval >= 10 ">
     <div class="pagination">
         <button>
         <div class="page-prev"  (click)="pagination(0)">
@@ -658,8 +658,8 @@
                     </li>
                     <div class="overflow-contents" >
                 <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
-                   <div class="breadcrumbs">Chennai>{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
-                   <p>{{arr.area}}>{{arr.furnishing}}</p>
+                   <div class="breadcrumbs">{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
+                   <p>{{ctArray(arr.area)}}>{{arr.furnishing}}</p>
                 </li>
                
                 </div>

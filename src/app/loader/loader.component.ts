@@ -17,7 +17,7 @@ export class LoaderComponent implements OnInit {
     this.loaderService.isloadingnow.subscribe((e: any) => {
       this.showLoader = e;
       // this.cdref.detectChanges();
-      console.log(e);
+      // console.log(e);
       // alert(e);
     });
   }

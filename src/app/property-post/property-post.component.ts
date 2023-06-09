@@ -61,6 +61,15 @@ export class PropertyPostComponent implements OnInit {
       this.get_all_interst();
     })
   }
+  visited_status(id:any){
+    var data={
+      type:'Visited'
+    }
+    this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
+      console.log(res,'rejected')
+      this.get_all_interst();
+    })
+  }
   sschedule=false;
   stime=false;
   sAllpop=false;

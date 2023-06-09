@@ -535,3 +535,9 @@ header{
     color: white;
     background: #473B32;
 }
+.fix{
+    color: 
+    rgba(24, 119, 242, 1);
+    background-color: 
+    rgba(24, 119, 242, 0.1);
+}

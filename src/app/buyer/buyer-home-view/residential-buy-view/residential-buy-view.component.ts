@@ -293,6 +293,22 @@ export class ResidentialBuyViewComponent implements OnInit {
     const query = new URLSearchParams(data).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
   }
+  ctArray(str:any) : any{
+    let farr: any[]=[];
+    if(str)
+    { let array= str.split('+')
+    
+      array.forEach((res:any)=>{
+      // console.log(res.split(',')[0])
+      let local = res.split(',')[0]
+      farr.push(local)
+      })
+    
+      // console.log(farr,'area arr for html')
+    return  farr
+    }
+   }
+
   showInput = true;
   nextPage = false;
   sendData: any;
@@ -332,6 +348,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.data = res.values;
         this.totalval = res.total;
         this.nextPage = res.next;
+        this.totalval = res.values.length;
         
         if (this.totalval > 10) {
           this.showPag_rag = true;

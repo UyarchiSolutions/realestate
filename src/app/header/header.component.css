@@ -1,6 +1,7 @@
 header{
   height: 80px;
-  background-color: var(--brown);
+  background-color: 
+  rgba(57, 72, 103, 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
