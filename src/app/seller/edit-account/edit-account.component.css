@@ -5,13 +5,13 @@
 }
 .sidebar{
   width: 15%;
-  background-color:var(--sandal);
+  background-color:var( --bgligthBlue);
   margin: 10px;
 
 }
 .main{
   width: 70%;
-  background-color:var(--sandal);
+  background-color:var( --bgligthBlue);
 
   margin: 10px 0px;
 
@@ -40,7 +40,7 @@
 }
 
 .active {
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
   color: white;
 }
 .form{
@@ -57,14 +57,14 @@ justify-content: center;
   padding: 10px;
   border: none;
   background: none;
-  border-bottom: solid var(--brown) 1px;
+  border-bottom: solid var(--bgBlue) 1px;
 }
 .heading{
 
 text-align: center;
   margin-top: 30px;
 
-  color: var(--brown);
+  color: var(--bgBlue);
 }
 
 .edit-btn{
@@ -73,7 +73,7 @@ text-align: center;
   height:fit-content;
   padding: 3px 15px;
   color: white;
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
   border: none;
 }
 
@@ -96,7 +96,7 @@ visibility: hidden;
 }
 .profile div label{
   width: 30%;
-  color: var(--brown);
+  color: var(--bgBlue);
   font-weight: 700;
 }
 .profile div input{
@@ -105,7 +105,7 @@ visibility: hidden;
   width: 60%;
   padding-left: 10px;
   border: none;
-  border-bottom: solid var(--brown) 1px;
+  border-bottom: solid var(--bgBlue) 1px;
   background: none !important;
 }
 .seller-owner{
@@ -132,7 +132,7 @@ visibility: hidden;
   padding: 5px 30px;
   color: white;
   border: none;
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
 }
 .redtext{
   color: red;

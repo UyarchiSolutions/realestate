@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
  padding-right: 13px;
     color: white;
 }
@@ -34,7 +34,7 @@
 }
 
 .tb-heading{
-    background-color: var(--lightBrown) !important;
+    background-color: var(--bgligthBlue) !important;
     color: white;
     border-bottom: none !important;
 
@@ -42,7 +42,7 @@
 table tr{
     border-bottom: solid black 1px;
     padding: 10px;  
-    background-color: var(--sandal);
+    background-color: var( --bgligthBlue);
 }
 table tr td{
     white-space: nowrap;
@@ -75,7 +75,7 @@ table tr td button p{
     font-weight: bold;
 }
 .pagenation-section{
-    background-color: var(--sandal);
+    background-color: var( --bgligthBlue);
     padding: 30px 0;
 }
 .pagenation{
@@ -88,7 +88,7 @@ table tr td button p{
 cursor: default !important;
 }
 .pagenation div{
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     height: 40px;
     cursor: pointer;
     display: flex;

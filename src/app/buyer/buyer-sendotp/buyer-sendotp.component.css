@@ -3,13 +3,13 @@
 }
 .sidebar{
   width: 15%;
-  background-color:var(--sandal);
+  background-color:var( --bgligthBlue);
   margin: 10px;
 
 }
 .main{
   width: 70%;
-  background-color:var(--sandal);
+  background-color:var( --bgligthBlue);
 
   margin: 10px 0px;
 
@@ -41,7 +41,7 @@
 }
 
 .active {
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
   color: white;
 }
 .top-ad{
@@ -49,14 +49,14 @@
 }
 .main h1,.main h5{
   text-align: center;
-  color: var(--brown);
+  color: var(--bgBlue);
   font-family: var(--ralewaybold);
   margin: 20px 0;
   font-weight: 700;
 }
 .main>h3{
   text-align: center;
-  color: var(--brown);
+  color: var(--bgBlue);
   font-family: var(--ralewaybold);
   margin: 40px 0;
   font-weight: 700;
@@ -71,7 +71,7 @@ justify-content: space-between;
 }
 label{
   width: 20% !important;
-  color: var(--brown) !important;
+  color: var(--bgBlue) !important;
   font-weight: 500 !important;
 
 }
@@ -98,14 +98,14 @@ text-decoration: underline;
   margin:20px auto;
 }
 .verify-btn>button{
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
   color: white;
   padding: 10px 50px;
 }
 
 header{
   height: 80px;
-  background-color: var(--brown);
+  background-color: var(--bgBlue);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,7 +126,7 @@ header>div>.login-button{
   background: white;
 }
 header>div>.register-button{
-  background:var(--lightbrown);
+  background:var(--bgligthBlue);
 
 }
 header>div>button{

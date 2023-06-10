@@ -33,6 +33,6 @@ export class BuyerFooterComponent implements OnInit {
   ok=false
   check(){
     this.ok=!this.ok
-    console.log('checking')
+    console.log('checking',this.ok)
   }
 }

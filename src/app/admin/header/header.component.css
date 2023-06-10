@@ -15,7 +15,7 @@ header{
     padding: 10px 50px;
     display: flex;
     align-items: center;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     justify-content: space-between;
 }
 header .logo img{

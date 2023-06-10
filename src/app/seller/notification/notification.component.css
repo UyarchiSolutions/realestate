@@ -6,14 +6,14 @@
 
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
     justify-content: unset !important;
 
 }
 .main{
     width: 85%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
 
     margin: 10px 10px 0 0;
 
@@ -46,7 +46,7 @@
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -54,7 +54,7 @@
 }
 .main h1{
     text-align: center;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-family: var(--ralewaybold);
     margin: 20px 0;
 }
@@ -95,7 +95,7 @@ label{
 .login-btn button{
     border: none;
     padding: 15px 70px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     margin-left: 30%;
     cursor: pointer;
@@ -124,7 +124,7 @@ display: flex;
 width: 100%;
 padding: 10px 0;
 align-items: center;
-background-color: var(--brown);
+background-color: var(--bgBlue);
 
 }
 .notification{
@@ -136,7 +136,7 @@ background-color: var(--brown);
     padding: 10px;
     margin: 0 !important;
     color:white;
-        background-color: var(--brown);
+        background-color: var(--bgBlue);
 display: flex;
 align-items: center;
     font-family: var(--ralewaybold);
@@ -146,7 +146,7 @@ align-items: center;
     margin-right: 10px;
 }
 .notification{
-background-color: var(--brown);
+background-color: var(--bgBlue);
 height: 100%;
 margin-right: 30px;
 }
@@ -154,13 +154,13 @@ margin-right: 30px;
     margin-left: 10px;
 }
 .property-tab-active{
-    color: var(--brown);
+    color: var(--bgBlue);
     background-color:white;
   
 }
 .active{
-    color: var(--sandal);
-    background-color: var(--brown);
+    color: var( --bgligthBlue);
+    background-color: var(--bgBlue);
 }
 .property-tab-select svg{
     margin-right: 5px;
@@ -181,7 +181,7 @@ table tr th{
 
 }
 .table-head{
-background-color: var( --lightbrown);
+background-color: var( --bgligthBlue);
 color: white;
 height: 50px;
 }
@@ -267,7 +267,7 @@ margin-left: 45%;
 }
 .range p{
     font-weight: 500;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-size: 18px;
 }
 .pagination{
@@ -282,7 +282,7 @@ margin-left: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     height: 40px;
     width: 40px;
 }

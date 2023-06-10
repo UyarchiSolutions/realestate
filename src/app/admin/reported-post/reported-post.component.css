@@ -86,7 +86,7 @@ table tr td span button svg{
     position: relative;
 }
 .table-content>p{
-    color :var(--brown);
+    color :var(--bgBlue);
     font-weight: 500;
 }
 .table .negotiable{

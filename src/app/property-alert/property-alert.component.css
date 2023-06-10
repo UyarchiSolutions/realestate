@@ -78,7 +78,7 @@ border: solid rgba(128, 128, 128, 0.523) 1px;
     align-items: center;
     margin: 10px 0;
 background-color: #473B32;
-color: var(--sandal);
+color: var( --bgligthBlue);
 font-size: 12px;
 padding: 5px 10px;
 border-radius: 5px;
@@ -97,13 +97,13 @@ margin:0 10px;
 }
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
 
 }
 .main{
     width: 70%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
 
     margin: 10px 0px;
 
@@ -136,7 +136,7 @@ margin:0 10px;
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -144,7 +144,7 @@ margin:0 10px;
 }
 .main h1{
     text-align: center;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-family: var(--ralewaybold);
     margin: 20px 0;
 }
@@ -185,7 +185,7 @@ label{
 .login-btn button{
     border: none;
     padding: 15px 70px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     margin-left: 30%;
     cursor: pointer;
@@ -223,8 +223,8 @@ width: 100%;
     justify-content: center;
     padding: 10px 0;
     margin: 0 !important;
-    color:var(--sandal);
-    background-color: var(--brown);
+    color:var( --bgligthBlue);
+    background-color: var(--bgBlue);
     cursor: pointer;
 }
 .sort,.notification{
@@ -238,8 +238,8 @@ width: 100%;
     top: 40px;
     border: solid gray 1px;
     left: 0;
-    background-color: var(--sandal);
-    color: var(--brown);
+    background-color: var( --bgligthBlue);
+    color: var(--bgBlue);
     min-width: 200px;
     display: none;
 }
@@ -248,13 +248,13 @@ width: 100%;
     border-bottom:solid gray 1px; 
 }
 .property-tab-active{
-    color: var(--brown);
+    color: var(--bgBlue);
     background-color:white;
   
 }
 .active{
-    color: var(--sandal);
-    background-color: var(--brown);
+    color: var( --bgligthBlue);
+    background-color: var(--bgBlue);
 }
 .property-tab-select svg{
     margin-right: 5px;
@@ -274,7 +274,7 @@ sup{
     width: 50%;
     text-align: center;
     padding: 15px;
-    background-color: var(--lightbrown);
+    background-color: var(--bgligthBlue);
     color: white;
 }
 .commercial{
@@ -282,7 +282,7 @@ sup{
     text-align: center;
     padding: 15px;
     background-color:white;
-    color: var(--brown);
+    color: var(--bgBlue);
 }
 .main .container p{
     text-align: center;
@@ -309,7 +309,7 @@ flex-wrap: wrap;
 }
 .buy-rent button{
     width: 100%;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     border: none;
     color: white;
     padding: 10px 0;

@@ -3,13 +3,13 @@
 }
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
 
 }
 .main{
     width: 70%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
 
     margin: 10px 0px;
 
@@ -45,7 +45,7 @@
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -53,7 +53,7 @@
 }
 .main h1{
     text-align: center;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-family: var(--ralewaybold);
     margin: 20px 0;
 }
@@ -118,7 +118,7 @@ label{
 .login-btn button{
     border: none;
     padding: 15px 70px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     margin-left: 30%;
     cursor: pointer;
@@ -126,18 +126,18 @@ label{
   nav{
     display: flex;
     justify-content: space-between;
-    color: var(--sandal);
-    background-color: var(--brown);
+    color: var( --bgligthBlue);
+    background-color: var(--bgBlue);
   }
   nav p{
   width: 100%;
   padding: 10px;
   text-align: center;
-  border-right: solid var(--sandal) 1px;
+  border-right: solid var( --bgligthBlue) 1px;
   }
 .nav-active{
-    background-color: var(--sandal);
-    color: var(--brown);
+    background-color: var( --bgligthBlue);
+    color: var(--bgBlue);
 }
 .save-continue{
     display: flex;
@@ -147,7 +147,7 @@ label{
 .save-continue button{
     width: fit-content;
     padding: 15px 50px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     border: none;
 }
@@ -192,11 +192,11 @@ label{
     color: black;
 }
 .rent-lease-active:hover{
-    background-color:var(--lightbrown) !important;
+    background-color:var(--bgligthBlue) !important;
     color: white;
 }
 .selected{
-    background-color:var(--lightbrown) !important;
+    background-color:var(--bgligthBlue) !important;
     color: white;
 }
 .rent-lease-active:active{

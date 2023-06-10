@@ -1,6 +1,6 @@
 header{
     height: 80px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,7 +21,7 @@ header{
     background: white;
   }
   header>div>.register-button{
-    background:var(--lightbrown);
+    background:var(--bgligthBlue);
   
   }
   header>div>button{

@@ -10,7 +10,7 @@ table tr th{
 
 }
 .table-head{
-background-color: var( --lightbrown);
+background-color: var( --bgligthBlue);
 color: white;
 height: 50px;
 }

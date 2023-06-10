@@ -1,5 +1,5 @@
 .pending,.ignored,.accepted{
-    color: var(--brown);
+    color: var(--bgBlue);
 }
 .status{
     display: flex;

@@ -3,13 +3,13 @@
 }
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
 
 }
 .main{
     width: 70%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
 
     margin: 10px 0px;
 
@@ -45,7 +45,7 @@
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -60,7 +60,7 @@ nav ul{
     display: flex;
     list-style-type: none;
     padding: 10px 5px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 nav ul li{
@@ -78,7 +78,7 @@ nav ul li{
     max-height: fit-content !important;
     padding: 20px 0;
     border-bottom: solid gray 1px;
-    color: var(--brown);
+    color: var(--bgBlue);
     margin-top: 0 !important;
 }
 .property-details>.container{
@@ -91,7 +91,7 @@ nav ul li{
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    color: var(--brown);
+    color: var(--bgBlue);
     width: 100%;
 }
 .property-details .heading p{
@@ -188,7 +188,7 @@ nav ul li{
 .post-btn button{
     width: fit-content;
     border: none;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     padding: 15px 60px ;
 }

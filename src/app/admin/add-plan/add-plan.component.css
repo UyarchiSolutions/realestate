@@ -50,7 +50,7 @@
 
 }
 .button button{
-background-color: var(--brown);
+background-color: var(--bgBlue);
 color: white;
 padding: 5px 45px;
 border: none;

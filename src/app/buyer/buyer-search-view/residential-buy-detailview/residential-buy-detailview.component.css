@@ -3,13 +3,13 @@
 }
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
 
 }
 .main{
     width: 70%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
 
     margin: 10px 0px;
 
@@ -45,7 +45,7 @@
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -60,7 +60,7 @@ nav ul{
     display: flex;
     list-style-type: none;
     padding: 10px 5px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 nav ul li{
@@ -135,7 +135,7 @@ left: -30px;
     position: relative;
 }
 .table-content>p{
-    color :var(--brown);
+    color :var(--bgBlue);
     font-weight: 500;
 }
 .table .negotiable{
@@ -151,10 +151,10 @@ left: -30px;
 .detail-nav button{
     background: none;
     padding: 3px 0;
-    border: solid var(--brown) 2px;
+    border: solid var(--bgBlue) 2px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     font-weight: 500;
-    color: var(--brown);
+    color: var(--bgBlue);
 
 }
 .detail-nav .view-contact{
@@ -168,7 +168,7 @@ left: -30px;
    
 }
 .active{
-    background-color: var(--brown)!important;
+    background-color: var(--bgBlue)!important;
     color: white !important;
 }
 .form-detail{
@@ -180,7 +180,7 @@ left: -30px;
     display: flex;
     font-weight: 500;
     margin: 10px 0;
-    color: var(--brown);
+    color: var(--bgBlue);
 }
 .form-detail div label{
     min-width: 40%;

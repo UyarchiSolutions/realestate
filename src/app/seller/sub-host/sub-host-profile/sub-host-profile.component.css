@@ -5,13 +5,13 @@
   }
   .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
   
   }
   .main{
     width: 70%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
   
     margin: 10px 0px;
   
@@ -43,7 +43,7 @@
   }
   
   .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
   }
   .form{
@@ -60,7 +60,7 @@
     padding: 10px;
     border: none;
     background: none;
-    border-bottom: solid var(--brown) 1px;
+    border-bottom: solid var(--bgBlue) 1px;
   }
   .heading{
     display: flex;
@@ -69,7 +69,7 @@
     margin-top: 30px;
     align-items: center;
     justify-content: space-between;
-    color: var(--brown);
+    color: var(--bgBlue);
   }
   .heading h2{
     margin-left: 5%;
@@ -81,7 +81,7 @@
     height:fit-content;
     padding: 3px 15px;
     color: white;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     border: none;
   }
   
@@ -106,7 +106,7 @@
   }
   .profile div label,.profile div p{
     width: 50%;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-family: 600 !important;
     font-weight: 700;
   }

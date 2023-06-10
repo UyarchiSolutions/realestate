@@ -12,8 +12,8 @@
         justify-content: center;
         padding: 10px 0;
         margin: 0 !important;
-        color:var(--sandal);
-        background-color: var(--brown);
+        color:var( --bgligthBlue);
+        background-color: var(--bgBlue);
         cursor: pointer;
     }
     .property-type{
@@ -24,11 +24,11 @@
         width: 25%;
         text-align: center;
         padding: 5px 0;
-        color: var(--brown);
+        color: var(--bgBlue);
         cursor: pointer;
     }
     .property-type .active{
-        background-color: var(--lightbrown) !important;
+        background-color: var(--bgligthBlue) !important;
         color: white;
     }
     .property-tab-select svg{
@@ -50,7 +50,7 @@
     
     }
     .table-head{
-    background-color: var( --lightbrown);
+    background-color: var( --bgligthBlue);
     color: white;
     height: 50px;
     }
@@ -73,7 +73,7 @@
         margin-right: 5px;
     }
     .property-tab-active{
-        color: var(--brown);
+        color: var(--bgBlue);
         background-color:white;
       
     }
@@ -88,8 +88,8 @@
         top: 40px;
         border: solid gray 1px;
         left: 0;
-        background-color: var(--sandal);
-        color: var(--brown);
+        background-color: var( --bgligthBlue);
+        color: var(--bgBlue);
         min-width: 200px;
         display: none;
     }

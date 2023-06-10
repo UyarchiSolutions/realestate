@@ -56,7 +56,7 @@ width: 100%;
 }
 .search-box button{
     min-width: 20%;
-    background-color:var(--brown);
+    background-color:var(--bgBlue);
     color: white;
     display: flex;
     align-items: center;

@@ -4,8 +4,8 @@
 
 
 <header *ngIf="buyershow">
-  <div class="logo" >
-    <img src="../../assets/images/logo.png">
+  <div class="logo" style="z-index: 5000;" >
+    <img src="../../assets/images/ownerLogo .png">
   </div>
  
  <!-- <div>
@@ -83,7 +83,7 @@
       
 </div>
   <input *ngIf="!(area.length >= 3)" class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark"  (onAddressChange)="handleAddressChange($event,input)" #input [options]="options" formControlName="BuyerAddres">
-  <button type="submit" style="background-color:  #473B32;border: none;" (click)="Ressubmit()">
+  <button type="submit" style="background-color:  var(--bgBlue);border: none;" (click)="Ressubmit()">
   <div class="search">
     
       <span><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -193,7 +193,7 @@
         
   </div>
     <input *ngIf="!(Carea.length >= 3)" class="input" type="text" ngx-google-places-autocomplete placeholder="Search localities & Landmark"  (onAddressChange)="ChandleAddressChange($event,input2)" #input2 [options]="options" formControlName="CBuyerAddres">
-    <button type="submit" style="background-color:  #473B32;border: none;" (click)="Comsubmit()">
+    <button type="submit" style="background-color: var(--bgBlue);border: none;" (click)="Comsubmit()">
     <div class="search">
       
         <span><svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -21,7 +21,7 @@ header{
     background: white;
   }
   header>div>.register-button{
-    background:var(--lightbrown);
+    background:var(--bgligthBlue);
   
   }
   header>div>button{

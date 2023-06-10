@@ -6,7 +6,7 @@
 
 .sidebar{
     width: 15%;
-    background-color:var(--sandal);
+    background-color:var( --bgligthBlue);
     margin: 10px;
     justify-content: unset !important;
 
@@ -46,7 +46,7 @@
 }
 
 .active {
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
 }
 .top-ad{
@@ -54,7 +54,7 @@
 }
 .main h1{
     text-align: center;
-    color: var(--brown);
+    color: var(--bgBlue);
     font-family: var(--ralewaybold);
     margin: 20px 0;
 }
@@ -95,7 +95,7 @@ label{
 .login-btn button{
     border: none;
     padding: 15px 70px;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     color: white;
     margin-left: 30%;
     cursor: pointer;
@@ -125,7 +125,7 @@ justify-content:flex-start !important;
 width: 100%;
 padding: 10px 0;
 align-items: center;
-background-color: var(--brown);
+background-color: var(--bgBlue);
 
 }
 .back{
@@ -139,7 +139,7 @@ background-color: var(--brown);
     color:white;
     display: flex;
     align-items: center;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     cursor: pointer;
     font-family: var(--ralewaybold);
     font-weight: 700;
@@ -151,18 +151,18 @@ background-color: var(--brown);
     margin-left: 10px;
 }
 .notification{
-background-color: var(--brown);
+background-color: var(--bgBlue);
 height: 100%;
 margin-right: 30px;
 }
 .property-tab-active{
-    color: var(--brown);
+    color: var(--bgBlue);
     background-color:white;
   
 }
 .active{
-    color: var(--sandal);
-    background-color: var(--brown);
+    color: var( --bgligthBlue);
+    background-color: var(--bgBlue);
 }
 .property-tab-select svg{
     margin-right: 5px;
@@ -183,7 +183,7 @@ table tr th{
 
 }
 .table-head{
-background-color: var( --lightbrown);
+background-color: var( --bgligthBlue);
 color: white;
 height: 50px;
 }
@@ -224,7 +224,7 @@ td .active p{
 }
 .repost{
     padding-left: 0 !important;
-    border: solid var(--brown) 1px;
+    border: solid var(--bgBlue) 1px;
 
 }
 td .active i{
@@ -236,10 +236,10 @@ td .active i{
     margin-left: 3px;
 }
 td .repost p{
-color: var(--brown);
+color: var(--bgBlue);
 }
 td .repost i{
-    background-color:var(--brown);
+    background-color:var(--bgBlue);
     padding:  0 3px 0 5px;
     display: flex;
     align-items: center;
@@ -248,7 +248,7 @@ td .repost i{
 
 }
 .empty{
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     padding: 32px 0;
     margin-bottom: 5px;
 }
@@ -287,7 +287,7 @@ border-radius: 5px;
     min-width: 100%;
     background: none;
     border: none;
-    background-color: var(--brown);
+    background-color: var(--bgBlue);
     padding: 10px ;
     align-items: center;
     display: flex;
@@ -374,7 +374,7 @@ min-width:50% !important;
 .pay{
     min-width: 50% !important;
     border: none;
-    background: var(--brown);
+    background: var(--bgBlue);
     padding: 10px;
     border-radius: 3px;
     color: white;
