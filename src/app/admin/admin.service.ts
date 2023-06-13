@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  } from '@angular/common/http';
+import { Env } from '../environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  baseURL: any = 'https://uyarchicrm.click/v1/BuyerSeller/';
-  planBase:any='https://uyarchicrm.click/v1/StreamPlan/';
-  streamBase:any='https://uyarchicrm.click/v1/requestStream/';
+  baseURL: any =  Env.baseAPi+'/v1/BuyerSeller/';
+  planBase:any= Env.baseAPi+'/v1/StreamPlan/';
+  streamBase:any= Env.baseAPi+'/v1/requestStream/';
+  baseApi = Env.baseAPi
   constructor(private http:HttpClient) { }
 
   get_All_user(type:any,range:any,page:any,role:any){
@@ -46,5 +48,23 @@ export class AdminService {
   }
   get_post_stream(id: any) {
     return this.http.get(this.streamBase + 'getStreamById/' + id);
+  }
+  send_enq(data:any){
+    return this.http.post(this.baseApi+'/v1/EnquieryRoute',data)
+  }
+  get_All_enq(page:any,range:any){
+    return this.http.get(this.baseApi+`/v1/EnquieryRoute?page=${page}&range=${range}`)
+  }
+  send_enq_ans(data:any){
+    return this.http.post(this.baseApi+'/v1/EnquieryRoute/sendReplay/Enquiry',data)
+  }
+  enq_reject(id:any){
+    return this.http.get(this.baseApi+'/v1/EnquieryRoute/remove/'+id)
+  }
+  send_faq(data:any){
+    return this.http.post(this.baseApi+'/v1/EnquieryRoute/create/faq',data)
+  }
+  get_faq(){
+    return this.http.get(this.baseApi+'/v1/EnquieryRoute/create/faq')
   }
 }

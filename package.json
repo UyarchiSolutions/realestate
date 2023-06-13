@@ -27,6 +27,7 @@
     "bootstrap": "^5.2.3",
     "ng-google-places-autocomplete": "^0.3.3",
     "ng2-cookies": "^1.0.12",
+    "ngx-editor": "^15.3.0",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^16.1.0",

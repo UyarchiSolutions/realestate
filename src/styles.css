@@ -189,7 +189,7 @@ background-color: #473B32;
     border-radius: 50%;
 }
 input[type="range"]::-moz-range-thumb{
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     height: 1.7em;
     width: 1.7em;
     cursor: pointer;

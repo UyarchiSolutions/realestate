@@ -16,7 +16,7 @@ import { ResidentialRentStreamComponent } from './stream-view/residential-rent-s
 import { ManageFaqComponent } from './manage-faq/manage-faq.component';
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 import { ReportedPostComponent } from './reported-post/reported-post.component';
-
+import { NgxEditorModule } from 'ngx-editor';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { ReportedPostComponent } from './reported-post/reported-post.component';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxEditorModule
 
     
   ]
