@@ -7,42 +7,27 @@
   <div class="main-content">
     <div class="main-content-header">
       <button class="none">
-        Add Plans<svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        Add Plans<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1 0H17C17.5523 0 18 0.44772 18 1V17C18 17.5523 17.5523 18 17 18H1C0.44772 18 0 17.5523 0 17V1C0 0.44772 0.44772 0 1 0ZM2 2V16H16V2H2ZM8 8V4H10V8H14V10H10V14H8V10H4V8H8Z"
-            fill="white"
-          />
+            fill="white" />
         </svg>
       </button>
 
       <h5>Manage FAQ's</h5>
 
-      <button routerLink="add-plan"  data-bs-toggle="modal"
-      data-bs-target="#exampleModal">
-        Add FAQ's<svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add FAQ's<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1 0H17C17.5523 0 18 0.44772 18 1V17C18 17.5523 17.5523 18 17 18H1C0.44772 18 0 17.5523 0 17V1C0 0.44772 0.44772 0 1 0ZM2 2V16H16V2H2ZM8 8V4H10V8H14V10H10V14H8V10H4V8H8Z"
-            fill="white"
-          />
+            fill="white" />
         </svg>
       </button>
     </div>
 
     <div class="main-content-table">
       <table>
-        <tr class="tb-heading">
+        <tr class="tb-heading" style="color: var(--bgBlue)">
           <td style="width: 15%">Heading</td>
           <td style="width: 35%">Question</td>
           <td style="width: 40%">Answer</td>
@@ -50,42 +35,27 @@
         </tr>
 
         <tr *ngFor="let v of data">
-          <td style="width: 15%">{{v.heading}}</td>
-          <td style="width: 35%">{{v.Question}}</td>
+          <td style="width: 15%">{{ v.heading.heading }}</td>
+          <td style="width: 35%">{{ v.Question }}</td>
           <td class="answer" style="max-width: 40%">
-            <span
-              >{{v.Answer}}</span>
+            <span>{{ v.Answer }}</span>
           </td>
           <td style="min-width: 10%">
             <span class="action">
-              <svg
-                class="edit-icon"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg (click)="patchfaq(v)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="edit-icon" width="16" height="16"
+                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M8.8143 3.4089L12.5911 7.18658L3.7768 16H0V12.2223L8.8143 3.40801V3.4089ZM10.0732 2.14997L11.9616 0.260678C12.1286 0.093766 12.355 0 12.5911 0C12.8272 0 13.0536 0.093766 13.2206 0.260678L15.7393 2.77943C15.9062 2.94639 16 3.17281 16 3.4089C16 3.64498 15.9062 3.8714 15.7393 4.03836L13.85 5.92676L10.0732 2.14997Z"
-                  fill="#473B32"
-                />
+                  fill="#473B32" />
               </svg>
 
               <!-- active btn -->
 
-              <svg
-                class="delete-icon"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg (click)="delete_faq(v._id)" class="delete-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M1.6 4.8H14.4V15.2C14.4 15.4122 14.3157 15.6157 14.1657 15.7657C14.0157 15.9157 13.8122 16 13.6 16H2.4C2.18783 16 1.98434 15.9157 1.83431 15.7657C1.68429 15.6157 1.6 15.4122 1.6 15.2V4.8ZM3.2 6.4V14.4H12.8V6.4H3.2ZM5.6 8H7.2V12.8H5.6V8ZM8.8 8H10.4V12.8H8.8V8ZM4 2.4V0.8C4 0.587827 4.08429 0.384344 4.23431 0.234315C4.38434 0.0842854 4.58783 0 4.8 0H11.2C11.4122 0 11.6157 0.0842854 11.7657 0.234315C11.9157 0.384344 12 0.587827 12 0.8V2.4H16V4H0V2.4H4ZM5.6 1.6V2.4H10.4V1.6H5.6Z"
-                  fill="#B73E3E"
-                />
+                  fill="#B73E3E" />
               </svg>
             </span>
           </td>
@@ -94,70 +64,37 @@
 
       <div class="pagenation-section">
         <div class="range none">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.55556 1.11111H20V3.33333H5.55556V1.11111ZM2.22222 0V3.33333H3.33333V4.44444H0V3.33333H1.11111V1.11111H0V0H2.22222ZM0 12.2222V9.44444H2.22222V8.88889H0V7.77778H3.33333V10.5556H1.11111V11.1111H3.33333V12.2222H0ZM2.22222 18.3333H0V17.2222H2.22222V16.6667H0V15.5556H3.33333V20H0V18.8889H2.22222V18.3333ZM5.55556 8.88889H20V11.1111H5.55556V8.88889ZM5.55556 16.6667H20V18.8889H5.55556V16.6667Z"
-              fill="#473B32"
-            />
+              fill="#473B32" />
           </svg>
           <p>Range</p>
         </div>
 
         <div class="pagenation">
           <div class="prev">
-            <svg
-              width="11"
-              height="20"
-              viewBox="0 0 11 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+            <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M4.02968 10.0004L10.4986 16.8907C11.1666 17.6022 11.1666 18.7557 10.4986 19.4672C9.83064 20.1787 8.74767 20.1787 8.07971 19.4672L0.500539 11.3943C0.141463 11.0118 -0.0245831 10.5016 0.0024007 10.001C-0.0248874 9.49999 0.141139 8.9893 0.50048 8.60655L8.07965 0.533605C8.74761 -0.177868 9.83058 -0.177868 10.4985 0.533605C11.1665 1.24508 11.1665 2.3986 10.4985 3.11008L4.02968 10.0004Z"
-                fill="white"
-                fill-opacity="0.5"
-              />
+                fill="white" fill-opacity="0.5" />
             </svg>
           </div>
           <div class="page-count">1</div>
           <div class="next">
-            <svg
-              width="11"
-              height="20"
-              viewBox="0 0 11 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+            <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M6.96989 9.99986L0.500479 16.8907C-0.167477 17.6022 -0.167478 18.7557 0.500479 19.4672C1.16844 20.1787 2.25141 20.1787 2.91937 19.4672L10.4985 11.3943C10.8555 11.0141 11.0217 10.5077 10.9971 10.01C11.0269 9.50612 10.8611 8.9916 10.4996 8.60655L2.9204 0.533605C2.25244 -0.177868 1.16947 -0.177868 0.501516 0.533605C-0.166441 1.24508 -0.166441 2.3986 0.501516 3.11008L6.96989 9.99986Z"
-                fill="white"
-              />
+                fill="white" />
             </svg>
           </div>
         </div>
 
         <div class="range">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.55556 1.11111H20V3.33333H5.55556V1.11111ZM2.22222 0V3.33333H3.33333V4.44444H0V3.33333H1.11111V1.11111H0V0H2.22222ZM0 12.2222V9.44444H2.22222V8.88889H0V7.77778H3.33333V10.5556H1.11111V11.1111H3.33333V12.2222H0ZM2.22222 18.3333H0V17.2222H2.22222V16.6667H0V15.5556H3.33333V20H0V18.8889H2.22222V18.3333ZM5.55556 8.88889H20V11.1111H5.55556V8.88889ZM5.55556 16.6667H20V18.8889H5.55556V16.6667Z"
-              fill="#473B32"
-            />
+              fill="#473B32" />
           </svg>
           <p>Range</p>
         </div>
@@ -169,77 +106,133 @@
 <!-- add faq -->
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-content">
+      <div class="popup-parent">
+        <div class="popup">
+          <h3 *ngIf="!showEdit">Add FAQ's</h3>
+          <h3 *ngIf="showEdit">Edit FAQ's</h3>
+          <form [formGroup]="myform">
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+              <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                <input type="radio" id="head" name="head" (click)="showTab('new')" />
+                <label style="width: 71%" for="head">Use Existing Headings
+                </label>
+              </div>
+              <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                <input type="radio" id="head2" name="head" (click)="showTab('old')" />
+                <label style="width: 41%" for="head2">Add new one</label>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <label>Heading :</label>
+              <div class="input-filed">
+                <input *ngIf="!show" type="text" placeholder="Enter Heading" formControlName="heading" />
+                <select *ngIf="show" formControlName="heading">
+                  <option>select</option>
+                  <option *ngFor="let head of headdata" value="{{ head._id }}">
+                    {{ head.heading }}
+                  </option>
+                </select>
+              </div>
+            </div>
 
-          <div class="popup-parent">
-              <div class="popup">
-                  <h3>Add FAQ's</h3>
-                  <form [formGroup]="myform">
-                  <div class="d-flex align-items-center">
-                      <label>Heading :</label>
-                      <div class="input-filed">
-                      <input *ngIf="!find" type="text" placeholder="Enter Heading" formControlName="heading" >
-                      <select *ngIf="find" formControlName="heading">
-                          <option>select</option>
-                          <option *ngFor="let head of headdata" value="{{head.heading}}" >{{head.heading}}</option>
-                         
-                      </select>
-                      <button *ngIf="find" class="btn btn-brand-blue px-3 ms-2" style="margin-top: 0 !important;white-space:nowrap;" >Add New</button>
-                  </div>
-                  </div>
-          
-                  <div class="d-flex align-items-center">
-                      <label>Question :</label>
-                      <div class="input-filed">
-                          <input type="text" placeholder="Enter Questions" formControlName="Question" [(ngModel)]="qusvalue">
-                      </div>
-                  </div>
-          
-                  <div class="d-flex align-items-start">
-                      <label class="mt-3">Answer :</label>
-                      <div class="input-filed textarea">
-                        <textarea formControlName="Answer" [(ngModel)]="ansvalue"></textarea>
-                        <div class="font-style">
-                          <i><svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1.66667 6.16732H5.41667C5.9692 6.16732 6.4991 5.94782 6.88981 5.55712C7.28051 5.16642 7.5 4.63652 7.5 4.08398C7.5 3.53145 7.28051 3.00155 6.88981 2.61085C6.4991 2.22014 5.9692 2.00065 5.41667 2.00065H1.66667V6.16732ZM10 9.91732C10 10.4098 9.903 10.8974 9.71455 11.3524C9.52609 11.8074 9.24987 12.2207 8.90165 12.569C8.55343 12.9172 8.14003 13.1934 7.68506 13.3819C7.23009 13.5703 6.74246 13.6673 6.25 13.6673H0V0.333984H5.41667C6.1508 0.334015 6.86877 0.549528 7.48156 0.9538C8.09435 1.35807 8.575 1.93332 8.86391 2.60821C9.15282 3.2831 9.23728 4.02795 9.10682 4.7504C8.97636 5.47284 8.63671 6.1411 8.13 6.67232C8.69887 7.00173 9.17111 7.47496 9.49934 8.04452C9.82756 8.61409 10.0002 9.25995 10 9.91732ZM1.66667 7.83398V12.0007H6.25C6.80253 12.0007 7.33244 11.7812 7.72314 11.3905C8.11384 10.9998 8.33333 10.4699 8.33333 9.91732C8.33333 9.36478 8.11384 8.83488 7.72314 8.44418C7.33244 8.05348 6.80253 7.83398 6.25 7.83398H1.66667Z" fill="black"/>
-                              </svg>
-                              </i>
-                              <i><svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M7.49967 13.6673H0.833008V12.0007H3.27217L5.03551 2.00065H2.49967V0.333984H9.16634V2.00065H6.72717L4.96384 12.0007H7.49967V13.6673Z" fill="black"/>
-                                  </svg>
-                                  </i>
-                                  <i><svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M3.66634 0.5V8C3.66634 8.88406 4.01753 9.7319 4.64265 10.357C5.26777 10.9821 6.11562 11.3333 6.99967 11.3333C7.88373 11.3333 8.73158 10.9821 9.3567 10.357C9.98182 9.7319 10.333 8.88406 10.333 8V0.5H11.9997V8C11.9997 9.32608 11.4729 10.5979 10.5352 11.5355C9.59753 12.4732 8.32576 13 6.99967 13C5.67359 13 4.40182 12.4732 3.46414 11.5355C2.52646 10.5979 1.99967 9.32608 1.99967 8V0.5H3.66634ZM0.333008 14.6667H13.6663V16.3333H0.333008V14.6667Z" fill="black"/>
-                                      </svg>
-                                      </i>
-                                      <i><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M4.66667 1.33268H15.5V2.99935H4.66667V1.33268ZM1.75 3.41602C1.41848 3.41602 1.10054 3.28432 0.866117 3.0499C0.631696 2.81548 0.5 2.49754 0.5 2.16602C0.5 1.8345 0.631696 1.51655 0.866117 1.28213C1.10054 1.04771 1.41848 0.916016 1.75 0.916016C2.08152 0.916016 2.39946 1.04771 2.63388 1.28213C2.8683 1.51655 3 1.8345 3 2.16602C3 2.49754 2.8683 2.81548 2.63388 3.0499C2.39946 3.28432 2.08152 3.41602 1.75 3.41602ZM1.75 9.24935C1.41848 9.24935 1.10054 9.11765 0.866117 8.88323C0.631696 8.64881 0.5 8.33087 0.5 7.99935C0.5 7.66783 0.631696 7.34989 0.866117 7.11547C1.10054 6.88104 1.41848 6.74935 1.75 6.74935C2.08152 6.74935 2.39946 6.88104 2.63388 7.11547C2.8683 7.34989 3 7.66783 3 7.99935C3 8.33087 2.8683 8.64881 2.63388 8.88323C2.39946 9.11765 2.08152 9.24935 1.75 9.24935ZM1.75 14.9993C1.41848 14.9993 1.10054 14.8677 0.866117 14.6332C0.631696 14.3988 0.5 14.0809 0.5 13.7493C0.5 13.4178 0.631696 13.0999 0.866117 12.8655C1.10054 12.631 1.41848 12.4993 1.75 12.4993C2.08152 12.4993 2.39946 12.631 2.63388 12.8655C2.8683 13.0999 3 13.4178 3 13.7493C3 14.0809 2.8683 14.3988 2.63388 14.6332C2.39946 14.8677 2.08152 14.9993 1.75 14.9993ZM4.66667 7.16602H15.5V8.83268H4.66667V7.16602ZM4.66667 12.9993H15.5V14.666H4.66667V12.9993Z" fill="black"/>
-                                          </svg>
-                                          </i>
-                                          <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                              <path d="M4.66667 1.33333H15.5V3H4.66667V1.33333ZM2.16667 0.5V3H3V3.83333H0.5V3H1.33333V1.33333H0.5V0.5H2.16667ZM0.5 9.66667V7.58333H2.16667V7.16667H0.5V6.33333H3V8.41667H1.33333V8.83333H3V9.66667H0.5ZM2.16667 14.25H0.5V13.4167H2.16667V13H0.5V12.1667H3V15.5H0.5V14.6667H2.16667V14.25ZM4.66667 7.16667H15.5V8.83333H4.66667V7.16667ZM4.66667 13H15.5V14.6667H4.66667V13Z" fill="black"/>
-                                              </svg>
-                                              </i>
-                                              <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                  <path d="M11.0174 7.16859C11.5728 7.43376 12.0565 7.82836 12.4278 8.31922C12.799 8.81008 13.0471 9.38287 13.1511 9.98948C13.2551 10.5961 13.212 11.2188 13.0255 11.8053C12.8389 12.3918 12.5143 12.925 12.079 13.36L8.23281 17.2062C7.51151 17.9275 6.53323 18.3327 5.51316 18.3327C4.49309 18.3327 3.5148 17.9275 2.79351 17.2062C2.07221 16.4849 1.66699 15.5066 1.66699 14.4865C1.66699 13.4664 2.07221 12.4882 2.79351 11.7669L4.29521 10.2652M15.7054 9.73354L17.2071 8.23183C17.9284 7.51054 18.3337 6.53225 18.3337 5.51218C18.3337 4.49212 17.9284 3.51383 17.2071 2.79253C16.4858 2.07124 15.5076 1.66602 14.4875 1.66602C13.4674 1.66602 12.4891 2.07124 11.7678 2.79253L7.9217 6.63867C7.48635 7.07372 7.16176 7.60689 6.97519 8.19339C6.78863 8.77989 6.74554 9.40261 6.84954 10.0092C6.95355 10.6158 7.20161 11.1886 7.57289 11.6795C7.94417 12.1703 8.42783 12.5649 8.98324 12.8301" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                  </svg>
-                                                  
-                                                  </i>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="faq-btn">
-                      <button  *ngIf="!find" class="use-exist btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.85714 6.85714V0H9.14286V6.85714H16V9.14286H9.14286V16H6.85714V9.14286H0V6.85714H6.85714Z" fill="#0A2647"/>
-                          </svg>
-                          Use Existing</button>
-                  <button class="btn btn-brand-blue px-5 mt-5"  data-bs-dismiss="modal" (click)="addfaq()">Add</button>
-              
-              
+            <div class="d-flex align-items-center">
+              <label>Question :</label>
+              <div class="input-filed">
+                <input type="text" placeholder="Enter Questions" formControlName="Question" [(ngModel)]="qusvalue" />
               </div>
-               </form>
+            </div>
+
+            <div class="d-flex align-items-start">
+              <label class="mt-3">Answer :</label>
+              <div class="input-filed textarea">
+                <textarea formControlName="Answer" [(ngModel)]="ansvalue"></textarea>
+                <div class="font-style">
+                  <i><svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M1.66667 6.16732H5.41667C5.9692 6.16732 6.4991 5.94782 6.88981 5.55712C7.28051 5.16642 7.5 4.63652 7.5 4.08398C7.5 3.53145 7.28051 3.00155 6.88981 2.61085C6.4991 2.22014 5.9692 2.00065 5.41667 2.00065H1.66667V6.16732ZM10 9.91732C10 10.4098 9.903 10.8974 9.71455 11.3524C9.52609 11.8074 9.24987 12.2207 8.90165 12.569C8.55343 12.9172 8.14003 13.1934 7.68506 13.3819C7.23009 13.5703 6.74246 13.6673 6.25 13.6673H0V0.333984H5.41667C6.1508 0.334015 6.86877 0.549528 7.48156 0.9538C8.09435 1.35807 8.575 1.93332 8.86391 2.60821C9.15282 3.2831 9.23728 4.02795 9.10682 4.7504C8.97636 5.47284 8.63671 6.1411 8.13 6.67232C8.69887 7.00173 9.17111 7.47496 9.49934 8.04452C9.82756 8.61409 10.0002 9.25995 10 9.91732ZM1.66667 7.83398V12.0007H6.25C6.80253 12.0007 7.33244 11.7812 7.72314 11.3905C8.11384 10.9998 8.33333 10.4699 8.33333 9.91732C8.33333 9.36478 8.11384 8.83488 7.72314 8.44418C7.33244 8.05348 6.80253 7.83398 6.25 7.83398H1.66667Z"
+                        fill="black" />
+                    </svg>
+                  </i>
+                  <i><svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M7.49967 13.6673H0.833008V12.0007H3.27217L5.03551 2.00065H2.49967V0.333984H9.16634V2.00065H6.72717L4.96384 12.0007H7.49967V13.6673Z"
+                        fill="black" />
+                    </svg>
+                  </i>
+                  <i><svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3.66634 0.5V8C3.66634 8.88406 4.01753 9.7319 4.64265 10.357C5.26777 10.9821 6.11562 11.3333 6.99967 11.3333C7.88373 11.3333 8.73158 10.9821 9.3567 10.357C9.98182 9.7319 10.333 8.88406 10.333 8V0.5H11.9997V8C11.9997 9.32608 11.4729 10.5979 10.5352 11.5355C9.59753 12.4732 8.32576 13 6.99967 13C5.67359 13 4.40182 12.4732 3.46414 11.5355C2.52646 10.5979 1.99967 9.32608 1.99967 8V0.5H3.66634ZM0.333008 14.6667H13.6663V16.3333H0.333008V14.6667Z"
+                        fill="black" />
+                    </svg>
+                  </i>
+                  <i><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.66667 1.33268H15.5V2.99935H4.66667V1.33268ZM1.75 3.41602C1.41848 3.41602 1.10054 3.28432 0.866117 3.0499C0.631696 2.81548 0.5 2.49754 0.5 2.16602C0.5 1.8345 0.631696 1.51655 0.866117 1.28213C1.10054 1.04771 1.41848 0.916016 1.75 0.916016C2.08152 0.916016 2.39946 1.04771 2.63388 1.28213C2.8683 1.51655 3 1.8345 3 2.16602C3 2.49754 2.8683 2.81548 2.63388 3.0499C2.39946 3.28432 2.08152 3.41602 1.75 3.41602ZM1.75 9.24935C1.41848 9.24935 1.10054 9.11765 0.866117 8.88323C0.631696 8.64881 0.5 8.33087 0.5 7.99935C0.5 7.66783 0.631696 7.34989 0.866117 7.11547C1.10054 6.88104 1.41848 6.74935 1.75 6.74935C2.08152 6.74935 2.39946 6.88104 2.63388 7.11547C2.8683 7.34989 3 7.66783 3 7.99935C3 8.33087 2.8683 8.64881 2.63388 8.88323C2.39946 9.11765 2.08152 9.24935 1.75 9.24935ZM1.75 14.9993C1.41848 14.9993 1.10054 14.8677 0.866117 14.6332C0.631696 14.3988 0.5 14.0809 0.5 13.7493C0.5 13.4178 0.631696 13.0999 0.866117 12.8655C1.10054 12.631 1.41848 12.4993 1.75 12.4993C2.08152 12.4993 2.39946 12.631 2.63388 12.8655C2.8683 13.0999 3 13.4178 3 13.7493C3 14.0809 2.8683 14.3988 2.63388 14.6332C2.39946 14.8677 2.08152 14.9993 1.75 14.9993ZM4.66667 7.16602H15.5V8.83268H4.66667V7.16602ZM4.66667 12.9993H15.5V14.666H4.66667V12.9993Z"
+                        fill="black" />
+                    </svg>
+                  </i>
+                  <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.66667 1.33333H15.5V3H4.66667V1.33333ZM2.16667 0.5V3H3V3.83333H0.5V3H1.33333V1.33333H0.5V0.5H2.16667ZM0.5 9.66667V7.58333H2.16667V7.16667H0.5V6.33333H3V8.41667H1.33333V8.83333H3V9.66667H0.5ZM2.16667 14.25H0.5V13.4167H2.16667V13H0.5V12.1667H3V15.5H0.5V14.6667H2.16667V14.25ZM4.66667 7.16667H15.5V8.83333H4.66667V7.16667ZM4.66667 13H15.5V14.6667H4.66667V13Z"
+                        fill="black" />
+                    </svg>
+                  </i>
+                  <i><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M11.0174 7.16859C11.5728 7.43376 12.0565 7.82836 12.4278 8.31922C12.799 8.81008 13.0471 9.38287 13.1511 9.98948C13.2551 10.5961 13.212 11.2188 13.0255 11.8053C12.8389 12.3918 12.5143 12.925 12.079 13.36L8.23281 17.2062C7.51151 17.9275 6.53323 18.3327 5.51316 18.3327C4.49309 18.3327 3.5148 17.9275 2.79351 17.2062C2.07221 16.4849 1.66699 15.5066 1.66699 14.4865C1.66699 13.4664 2.07221 12.4882 2.79351 11.7669L4.29521 10.2652M15.7054 9.73354L17.2071 8.23183C17.9284 7.51054 18.3337 6.53225 18.3337 5.51218C18.3337 4.49212 17.9284 3.51383 17.2071 2.79253C16.4858 2.07124 15.5076 1.66602 14.4875 1.66602C13.4674 1.66602 12.4891 2.07124 11.7678 2.79253L7.9217 6.63867C7.48635 7.07372 7.16176 7.60689 6.97519 8.19339C6.78863 8.77989 6.74554 9.40261 6.84954 10.0092C6.95355 10.6158 7.20161 11.1886 7.57289 11.6795C7.94417 12.1703 8.42783 12.5649 8.98324 12.8301"
+                        stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </i>
+                </div>
               </div>
-          </div>
+            </div>
+            <div class="faq-btn">
+              <button class="btn btn-brand-blue" *ngIf="!show && !showEdit" style="
+                  background-color: var(--bgBlue);
+                  color: white;
+                  padding: 5px 20px px;
+                " data-bs-dismiss="modal" (click)="addfaq()">
+                Add
+              </button>
+              <button *ngIf="show && !showEdit" class="btn btn-brand-blue" style="
+                  background-color: var(--bgBlue);
+                  color: white;
+                  padding: 5px 20px px;
+                " data-bs-dismiss="modal" (click)="addfaq_id()">
+                2Add
+              </button>
+              <button class="btn btn-brand-blue" *ngIf="!show && showEdit" style="
+                  background-color: var(--bgBlue);
+                  color: white;
+                  padding: 5px 20px px;
+                " data-bs-dismiss="modal" (click)="editFaq()">
+                Edit
+              </button>
+              <button *ngIf="show && showEdit" class="btn btn-brand-blue" style="
+                  background-color: var(--bgBlue);
+                  color: white;
+                  padding: 5px 20px px;
+                " data-bs-dismiss="modal" (click)="editfaq_id()">
+                2Edit
+              </button>
+              <button class="btn btn-danger" data-bs-dismiss="modal" >Close</button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
 </div>

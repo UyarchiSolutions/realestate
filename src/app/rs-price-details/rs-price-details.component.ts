@@ -20,7 +20,7 @@ export class RsPriceDetailsComponent implements OnInit {
       MonthlyRentFrom: new FormControl('',Validators.required),
       ExpectedpricetNegotiable:new FormControl(),
       CurrentlyInLoan:new FormControl(),
-      ExcludeMaintenance:new FormControl(),
+     
       MrSq: new FormControl()
   
     })
@@ -48,7 +48,10 @@ export class RsPriceDetailsComponent implements OnInit {
         this.data=res;
   
         console.log(res);
-        
+        if(res.MaintenanceStatus =='Exclude Maintenance'){
+          this.maintance(this.data.MaintenanceStatus);
+          this.mainmon=res.squareFT;
+         }
         this.priceform.patchValue({
           MonthlyRentFrom:res.MonthlyRentFrom,
           ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
@@ -75,9 +78,13 @@ export class RsPriceDetailsComponent implements OnInit {
     mv='Include Maintenance';
     maintance(a:any){
       console.log(this.maintanceVal);
-      
-      this.mv=a;
-      this.maintanceVal=this.mv;
+      this.maintanceVal=a;
+
+      if(this.maintanceVal=='Exclude Maintenance'){
+        this.priceform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+      }else{
+        this.priceform.removeControl('ExcludeMaintenance');
+      }
     }
 
     mainmon='';
@@ -94,24 +101,32 @@ export class RsPriceDetailsComponent implements OnInit {
     }
     routerlink='/start-posting/residential-sale-price-details';
     submitted=false;
+    Checkdata:any=[];
     rentsub(){
       
       this.submitted=true;
       if ( this.priceform.valid){
-      var data={
-
-        MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-        RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-       
-        current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-        maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-        squareFT:this.mainmon,
-        MaintenanceStatus:this.maintanceVal,
-        routeLink:this.routerlink
-      }
-      console.log('sub triggered',data)
+        if(this.maintanceVal=='Exclude Maintenance'){
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+   
+            maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }else{
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+          
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }
       
-      this.service.formput(this.id,data).subscribe((res:any)=>{
+      this.service.formput(this.id, this.Checkdata).subscribe((res:any)=>{
         console.log(res);
         
         var postdata ={
@@ -129,20 +144,31 @@ export class RsPriceDetailsComponent implements OnInit {
    
   
     routetopreview(){
-  
-      var data={
-
-        MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-        RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-       
-        current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-        maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-        squareFT:this.mainmon,
-        MaintenanceStatus:this.maintanceVal,
-      }   
+      console.log(this.priceform)
+     
+        if(this.maintanceVal=='Exclude Maintenance'){
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+   
+            maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }else{
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+          
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }
+      
       console.log('route triggered')
            
-      this.service.formput(this.id,data).subscribe((res:any)=>{
+      this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
         
       var postdata = {
         id: this.id,

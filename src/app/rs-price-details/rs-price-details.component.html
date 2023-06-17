@@ -50,7 +50,7 @@
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-    <p >{{mv}}</p>
+    <p >{{maintanceVal}}</p>
       
         <ul class="dropdown-menu select-filed-options" >
 
@@ -80,10 +80,15 @@
                   <li><a class="dropdown-item" (click)="mainmonv('Per Month')">Per Month</a></li>
                 </ul>
               </div>
+             
     </div>
     </div>
 
     <div></div>
+    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+        <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+      </div>
 
 <div class="save-continue">
     <button type="submit" (click)="rentsub()" *ngIf="!data.final" >Save & Continue</button>

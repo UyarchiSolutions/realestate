@@ -90,7 +90,7 @@
 
   <div>
     <label>Primary Communication :</label>
-    <select  formControlName="primCom">
+    <select  formControlName="primCom" (change)="forSecLang($event)">
       <option disabled>select</option>
       <option  *ngFor="let lang of lang" [value]="lang" >{{lang}}</option>
     </select>
@@ -99,8 +99,9 @@
   <div>
     <label>Secondary Communication :</label>
     <select formControlName="secCom">
-      <option disabled>select</option>
-      <option  *ngFor="let lang of lang" [value]="lang" >{{lang}}</option>
+      <option disabled *ngIf="!primComm">First select Primary Communication</option>
+      <option disabled *ngIf="primComm">Select</option>
+      <option  *ngFor="let lang of lang3" [value]="lang" >{{lang}}</option>
     </select>
   </div>
 

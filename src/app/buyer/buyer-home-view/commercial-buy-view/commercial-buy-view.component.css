@@ -260,8 +260,8 @@ table tr th{
 
 }
 .table-head{
-background-color: var( --bgligthBlue);
-color: white;
+background-color: var( --midBlue);
+color: var(--bgBlue);
 height: 50px;
 }
 .main-section .main{
@@ -352,7 +352,7 @@ margin-left: 45%;
       padding: 5px 10px;
     font-size: 12px;
     border-radius: 5px;
-      background-color: #B99B6B;
+    background-color: var(--bgBlue);
     color: white;
       min-width: fit-content;
       align-items: center;
@@ -370,14 +370,21 @@ margin-left: 45%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 50px 0 10px;
-      
+        padding: 0 70px 0 0;
+        background-image: url(../../../../assets/images/build.png);
+        background-size: cover;
       }
       header>.logo{
-        height: 55px;
+      
+        height: 100%;
+        background-color: rgba(36, 45, 64, 0.336);
+        width: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       header>.logo>img{
-        height: 100%;
+        height: 40px;
       }
       header>div{
         display: flex;
@@ -656,12 +663,11 @@ position: relative;
 }
 .slider{
     background-color:var(--bgBlue) !important;
-}
-.search{
+}.search{
     width: 20%;
     padding: 10px 20px;
     display: flex;
-    background-color: #473B32;
+    background-color: var(--bgBlue);
     align-items: center;
     color: #FEFFEF;
     cursor: pointer;
@@ -673,4 +679,52 @@ position: relative;
 }
 .search svg{
     margin-right: 10px;
+}
+.nearby-locations{
+    display: flex;
+    align-items: center;
+    box-shadow: 0px -1px 4px #cfb9978b;
+    padding: 5px 0;
+    /* visibility: hidden; */
+}
+.nearby-locations label{
+    width: 20%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px !important;
+}
+.nearby-locations span{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+background-color: var(--bgBlue);
+color: var( --bgligthBlue);
+font-size: 12px;
+padding: 5px 10px;
+border-radius: 5px;
+margin:0 10px;
+}
+.nearby-locations span p{
+    margin-left: 5px;
+}
+.locality{
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+.locality span{
+    cursor: pointer;
+}
+.sidebar{
+    width: 15%;
+    background-color:var( --bgligthBlue);
+    margin: 10px;
+
+}
+.main{
+    width: 70%;
+    background-color:var( --bgligthBlue);
+
+    margin: 10px 0px;
+
 }

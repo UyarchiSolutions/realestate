@@ -47,6 +47,7 @@ export class CrRentalDetailsComponent implements OnInit {
           console.log(res);
           if(res.MaintenanceStatus =='Exclude Maintenance'){
             this.maintance(this.data.MaintenanceStatus);
+            this.mainmon=res.squareFT;
            }
           
           this.priceform.patchValue({
@@ -62,7 +63,7 @@ export class CrRentalDetailsComponent implements OnInit {
           if(res.MaintenanceStatus){
             this.maintanceVal=res.MaintenanceStatus;
           }
-          this.mainmon=res.squareFT;
+         
 
            })
               this.leaseloop();
@@ -188,20 +189,31 @@ export class CrRentalDetailsComponent implements OnInit {
      
     
       routetopreview(){
-        var data={
-  
-          MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
-          RentNegociable:this.priceform.get('ExpectedrenttNegotiable').value,
-          AdvanceAmt:this.priceform.get('AdvanceAmount').value,
-          depositeNegociable:this.priceform.get('AdvanceAmountNegotiable').value,
-          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-          leaseDuration:this.ldv,
-          lock_in_period:this.lipv,
-          squareFT:this.mainmon,
-          MaintenanceStatus:this.maintanceVal,
-        }  
+        if(this.maintanceVal=='Exclude Maintenance'){
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
+            AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+            maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+            leaseDuration:this.ldv,
+            lock_in_period:this.lipv,
+            squareFT:this.mainmon,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }else{
+          this.Checkdata={
+    
+            MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
+            AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+            leaseDuration:this.ldv,
+            lock_in_period:this.lipv,
+            MaintenanceStatus:this.maintanceVal,
+          
+          }
+        }
              
-              this.service.formput(this.id,data).subscribe((res:any)=>{
+              this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
                 var postdata = {
                   id: this.id,
                 };

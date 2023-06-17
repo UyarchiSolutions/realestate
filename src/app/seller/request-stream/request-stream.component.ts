@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Validators } from 'ngx-editor';
 
 @Component({
   selector: 'app-request-stream',
@@ -26,6 +27,8 @@ export class RequestStreamComponent implements OnInit {
   date:any=[];
   dateArr:any=[];
   lang:any=['Tamil','English','Malayalam','Kannada','Telugu','Hindi']
+  lang2:any=['Tamil','English','Malayalam','Kannada','Telugu','Hindi']
+  lang3:any=[]
   planId:any;
   id:any;
 
@@ -278,6 +281,24 @@ export class RequestStreamComponent implements OnInit {
     })
     this.planName=this.planName[0].planName
     // console.log(this.planName)
+  }
+  primComm:any;
+  forSecLang(v:any){
+    // this.lang2=this.lang3
+    // let index = this.lang2.indexOf(v.target.value)
+    // this.lang2.splice(1,index)
+    // console.log(this.lang2)
+    this.lang3=[]
+    this.primComm=v.target.value
+    this.lang2.forEach((res:any) => {
+      if(res== v.target.value){
+        console.log(res,'no pusg')
+      }
+      else{
+        this.lang3.push(res)
+      }
+    });
+    console.log(this.lang3,'lang3')
   }
 
 }

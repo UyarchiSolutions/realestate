@@ -188,19 +188,20 @@ label{
     cursor: pointer;
 }
 .rent-lease-active{
-    background-color:white;
+    background-color:var(--midBlue);
     color: black;
+    transition: background-color 0.4s ease-in;
 }
 .rent-lease-active:hover{
-    background-color:var(--bgligthBlue) !important;
+    background-color:var(--bgBlue) !important;
     color: white;
 }
 .selected{
-    background-color:var(--bgligthBlue) !important;
+    background-color:var(--bgBlue) !important;
     color: white;
 }
 .rent-lease-active:active{
-    background-color:brown !important;
+    background-color:var(--bgBlue) !important;
     color: white;
 }
 

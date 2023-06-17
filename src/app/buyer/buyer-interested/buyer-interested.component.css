@@ -28,8 +28,8 @@
         cursor: pointer;
     }
     .property-type .active{
-        background-color: var(--bgligthBlue) !important;
-        color: white;
+        background-color: var(--midBlue) !important;
+        color: var(--bgBlue);
     }
     .property-tab-select svg{
         margin-right: 5px;
@@ -50,8 +50,8 @@
     
     }
     .table-head{
-    background-color: var( --bgligthBlue);
-    color: white;
+    background-color: var( --midBlue);
+    color: var(--bgBlue);
     height: 50px;
     }
     table tr th{

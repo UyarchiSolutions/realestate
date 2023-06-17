@@ -163,7 +163,9 @@ export class RsPropertyDetailsComponent implements OnInit {
       RentPrefer: this.rpv,
       discription: this.propsform.get('Description')?.value,
       BhkCount:this.BhkCount,
-      floorCount:this.FloorCount
+      floorCount:this.FloorCount,
+      ownerType:this.ost,
+      landSize:this.propsform.get('UDSlandsize')?.value,
     };
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {

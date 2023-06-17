@@ -63,14 +63,14 @@
           <td>{{v.status}}</td>
           <td style="min-width: 10%">
             <span class="action">
-              <button class="act-btn"> <svg [ngClass]="v.status === 'Rejected' || 'Replied' ? 'opa':''" data-bs-toggle="modal" (click)="viewenq(i)" data-bs-target="#reply-popup" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <button class="act-btn"> <svg [ngClass]="v.status === 'Rejected' ||v.status === 'Replied' ? 'opa':''" data-bs-toggle="modal" (click)="viewenq(i)" data-bs-target="#reply-popup" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 14L0 7L8 0V4.375C12.4184 4.375 16 8.29238 16 13.125C16 13.3639 15.992 13.6001 15.9744 13.8337C14.804 11.4065 12.5104 9.72913 9.8504 9.62938L9.6 9.625H8V14ZM6.4 7.875H9.6272L9.9048 7.88112C10.9328 7.91875 11.924 8.15238 12.8456 8.55137C11.672 7.06562 9.936 6.125 8 6.125H6.4V3.64088L2.5616 7L6.4 10.3591V7.875Z" fill="#473B32"/>
                 </svg></button>
                
                     
 
               <!-- active btn -->
-                <button class="act-btn" >  <svg [ngClass]="v.status === 'Rejected' || 'Replied' ? 'opa':''" (click)="rejectEnq(v._id)"  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="act-btn" >  <svg [ngClass]="v.status === 'Rejected' ||v.status === 'Replied' ? 'opa':''" (click)="rejectEnq(v._id)"  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 16C3.5816 16 0 12.4184 0 8C0 3.5816 3.5816 0 8 0C12.4184 0 16 3.5816 16 8C16 12.4184 12.4184 16 8 16ZM8 14.4C9.69739 14.4 11.3253 13.7257 12.5255 12.5255C13.7257 11.3253 14.4 9.69739 14.4 8C14.4 6.30261 13.7257 4.67475 12.5255 3.47452C11.3253 2.27428 9.69739 1.6 8 1.6C6.30261 1.6 4.67475 2.27428 3.47452 3.47452C2.27428 4.67475 1.6 6.30261 1.6 8C1.6 9.69739 2.27428 11.3253 3.47452 12.5255C4.67475 13.7257 6.30261 14.4 8 14.4ZM8 6.8688L10.2624 4.6056L11.3944 5.7376L9.1312 8L11.3944 10.2624L10.2624 11.3944L8 9.1312L5.7376 11.3944L4.6056 10.2624L6.8688 8L4.6056 5.7376L5.7376 4.6056L8 6.8688Z" fill="#FF0000"/>
                   </svg></button>
            

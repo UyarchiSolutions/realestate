@@ -67,4 +67,13 @@ export class AdminService {
   get_faq(){
     return this.http.get(this.baseApi+'/v1/EnquieryRoute/create/faq')
   }
+  edit_faq(id:any,data:any){
+    return this.http.put(this.baseApi+'/v1/EnquieryRoute/updateFaq/'+id,data)
+  }
+  get_head_faq(){
+    return this.http.get(this.baseApi+'/v1/EnquieryRoute/getHeading/Only')
+  }
+  delete_faq(id:any){
+    return this.http.get(this.baseApi+'/v1/EnquieryRoute/RemoveFAQ/'+id)
+  }
 }
