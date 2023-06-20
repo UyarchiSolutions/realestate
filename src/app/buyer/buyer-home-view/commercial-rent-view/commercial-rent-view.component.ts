@@ -976,6 +976,7 @@ export class CommercialRentViewComponent implements OnInit {
       this.sendRecentSearch();
       this.assignToSaveData();
       let query = new URLSearchParams(this.sendData).toString();
+      this.FetchRecentSearch();
       this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
     }
     else{
@@ -1009,6 +1010,7 @@ export class CommercialRentViewComponent implements OnInit {
         }
         let Data = {
           index:i,
+          home:'true',
           formatAdd: this.formatAdd,
           area: this.areaF,
           type: this.type,

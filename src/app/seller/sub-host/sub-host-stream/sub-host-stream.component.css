@@ -375,3 +375,6 @@ table tr td:last-child{
     text-decoration: underline;
     cursor: pointer;
 }
+.table-head{
+    color: var(--bgBlue);
+}

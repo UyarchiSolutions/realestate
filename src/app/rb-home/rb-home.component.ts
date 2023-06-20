@@ -927,6 +927,7 @@ export class RbHomeComponent implements OnInit {
       };
       let query = new URLSearchParams(this.sendData).toString();
       console.log('sending data')
+      this.FetchRecentSearch();
       this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
     else{
@@ -975,6 +976,7 @@ export class RbHomeComponent implements OnInit {
         }
         let data = {
           index:i,
+          home:'true',
           formatAdd: this.formatAdd,
           area: this.areaF,
           type: this.type,

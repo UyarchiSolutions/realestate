@@ -30,7 +30,7 @@
     <div class="expected-rent">
         <label>Expected Rent :</label>
    <div >
-    <input type="number" placeholder="Expected Rent" formControlName="ExpectedRent">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
         <input type="checkbox" formControlName="ExpectedrenttNegotiable" [value]="true" (click)="check()"><label>Negotiable</label>
     </div>
@@ -41,7 +41,7 @@
     <div class="expected-rent">
         <label>Advance Amount :</label>
    <div >
-    <input type="number" placeholder="Advance Amount" formControlName="AdvanceAmount">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
         <input type="checkbox" formControlName="AdvanceAmountNegotiable"   [value]="true" ><label>Negotiable</label>
     </div>
@@ -124,7 +124,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == null &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="mainmon == null ">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> 
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -134,8 +134,8 @@
               </div>
     </div>
     </div>
-    <div *ngIf="maintanceVal=='Exclude Maintenance'">
-    <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+    <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: inline;">
+    <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').invalid && submitted ">Exclude Maintance is required!</p>
     <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
   </div>
     <div></div>

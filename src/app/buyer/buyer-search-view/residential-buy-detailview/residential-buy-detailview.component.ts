@@ -57,16 +57,22 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
           atmIcon='./assets/images/atm.png';
           shopIcon='./assets/images/shop.png';
         checkInterest:any;
+
         showshedule:any;
         imageLength:any;
+        checkSave:any
+        checkNotification:any;
+        checkhome!:string;
     ngOnInit(): void {
       
       this.arouter.queryParamMap.subscribe((params: any) => {
         console.log(params);
         this.id = params.params['id'];
         this.checkInterest = params.params['interested'];
-  
+        this.checkSave=params.params['saved']
         this.index = params.params['index'];
+        this.checkNotification=params.params['noti']
+        this.checkhome=params.params['home']
         //to return
         this.type = params.params['type'];
         this.propertType =
@@ -131,9 +137,22 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       this.index=Number(this.index);
 
       this.get_buyer()
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkNotification){
+        this.get_post(this.id)
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
+     console.log(this.checkInterest,'check intersetr')
     }
     GetDataForFilter() {
+      console.log('filter working')
       let Data = {
         HouseOrCommercialType: 'Residential',
         type: 'Sale',
@@ -200,6 +219,24 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       })
     }
     relation:any
+    get_interst(){
+      let type='Sale'
+      let ctype='Residential'
+      console.log('interst working')
+    this.buyerService.get_interest_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
+    }
+    get_save(){
+      let type='Sale'
+      let ctype='Residential'
+      console.log('interst working')
+    this.buyerService.get_save_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
+    }
     get_post(id:any){
       this.service.formget1(id).subscribe((res:any)=>{
         console.log(res,res.intrest,'formget');
@@ -272,7 +309,16 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       if (this.index > this.TotalData - 1) {
         this.index = 0;
       }
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
+     
       this.imageLength = '';
     }
     previous() {
@@ -280,8 +326,15 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       if (this.index == -1) {
         this.index = this.TotalData - 1;
       }
-  
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
       this.imageLength = '';
     }
     backToSearch(){

@@ -127,6 +127,8 @@ export class CsLocationDetailsComponent {
             })
           }
           routetopreview(){
+            this.submitted = true;
+            if( this.rrlocform.valid ){
             var data={
               area:this.area,
               city:this.city,
@@ -149,7 +151,7 @@ export class CsLocationDetailsComponent {
               });
       
      
-          
+            }
           }
           back(count: any) {
             if (count == 0) {

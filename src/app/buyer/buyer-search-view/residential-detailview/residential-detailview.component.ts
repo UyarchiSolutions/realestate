@@ -64,13 +64,18 @@ export class ResidentialDetailviewComponent implements OnInit {
   checkSchedule: any;
   history: any = [];
 
+  checkSave:any
+  checkNotification:any;
+  checkhome!:string;
   ngOnInit(): void {
     this.arouter.queryParamMap.subscribe((params: any) => {
       console.log(params);
       this.id = params.params['id'];
       this.checkInterest = params.params['interested'];
-
+      this.checkSave=params.params['saved']
+      this.checkNotification=params.params['noti']
       this.index = params.params['index'];
+      this.checkhome=params.params['home']
       //to return
       this.type = params.params['type'];
       this.propertType =
@@ -130,18 +135,31 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.page = params.params['page']
     });
     this.index = Number(this.index);
+   
     this.page = Number(this.page);
     this.range=Number(this.range);
-    this.index=Number(this.index)
+   
     // if(this.page){
     //   this.index = this.page+1 * this.range 
     // }
     this.get_buyer()
-    this.GetDataForFilter();
+    if(this.checkInterest){
+      this.get_interst()
+    }
+    if(this.checkSave){
+      this.get_save()
+    }
+    if(this.checkNotification){
+      this.get_post(this.id)
+    }
+    if(this.checkhome){
+      this.GetDataForFilter();
+    }
   }
 
   TotalData: any;
   GetDataForFilter() {
+   
     let Data = {
       HouseOrCommercialType: 'Residential',
       type: 'Rent',
@@ -204,6 +222,33 @@ export class ResidentialDetailviewComponent implements OnInit {
       console.log(this.buyerId,'buyerid')
     })
   }
+  get_interst(){
+
+    let type='Rent'
+    let ctype='Residential'
+    console.log('interst working')
+  this.buyerService.get_interest_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+    this.get_post(res.nextData._id)
+    this.TotalData=res.total
+  })
+  }
+  get_save(){
+    let type='Rent'
+    let ctype='Residential'
+    console.log('interst working')
+  this.buyerService.get_save_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+    this.get_post(res.nextData._id)
+    this.TotalData=res.total
+  })
+  }
+  imgSliderCheker: any;
+  imgslider(a: any) {
+    this.imgSliderCheker = a;
+  }
+  imgSLnonw() {
+    this.imgSliderCheker = '';
+  }
+
   relation:any
   get_post(id:any){
     this.service.formget1(id).subscribe((res:any)=>{
@@ -275,7 +320,15 @@ export class ResidentialDetailviewComponent implements OnInit {
     if (this.index > this.TotalData - 1) {
       this.index = 0;
     }
-    this.GetDataForFilter();
+    if(this.checkInterest){
+      this.get_interst()
+    }
+    if(this.checkSave){
+      this.get_save()
+    }
+    if(this.checkhome){
+      this.GetDataForFilter();
+    }
     this.imageLength = '';
   }
   previous() {
@@ -284,7 +337,15 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.index = this.TotalData - 1;
     }
 
-    this.GetDataForFilter();
+    if(this.checkInterest){
+      this.get_interst()
+    }
+    if(this.checkSave){
+      this.get_save()
+    }
+    if(this.checkhome){
+      this.GetDataForFilter();
+    }
     this.imageLength = '';
   }
   backToSearch() {

@@ -17,6 +17,8 @@ export class PropertyPostComponent implements OnInit {
     this.arouter.queryParams.subscribe((params:any)=>{
       console.log(params);
       this.id=params['id']
+      this.add=params['add']
+      
 
     })
     console.log(this.id)
@@ -24,6 +26,7 @@ export class PropertyPostComponent implements OnInit {
     this.GetuserName();
   }
   user:any=[];
+  add:any;
   GetuserName(){
     this.service.myAcount().subscribe((res:any)=>{
       console.log(res);

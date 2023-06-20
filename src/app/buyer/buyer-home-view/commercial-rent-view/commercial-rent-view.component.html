@@ -619,7 +619,8 @@
                     <div class="overflow-contents" >
                         <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
                             <div class="breadcrumbs">{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
-                            <p>{{ctArray(arr.area)}}>{{arr.furnishing}}</p>
+                            <p>{{ctArray(arr.area)}} <span>>{{arr.furnishing}}</span><span *ngIf="arr.BHKType">{{arr.BHKType}}</span>
+                             <span *ngIf="arr.propertType">{{arr.propertType}}</span> </p>
                          </li>
                
                 </div>

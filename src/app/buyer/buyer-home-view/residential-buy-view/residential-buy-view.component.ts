@@ -928,7 +928,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       this.sendRecentSearch();
       this.assignToSaveData();
       let query = new URLSearchParams(this.sendData).toString();
-  
+      this.FetchRecentSearch();
       this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
     }
     else{
@@ -963,6 +963,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         }
         let data = {
           index: i,
+          home:'true',
           formatAdd: this.formatAdd,
           area: this.areaF,
           type: this.type,

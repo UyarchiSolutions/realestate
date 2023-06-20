@@ -44,12 +44,13 @@ export class CrRentalDetailsComponent implements OnInit {
     
           this.data=res;
     
-          console.log(res);
+          console.log(res,'res');
           if(res.MaintenanceStatus =='Exclude Maintenance'){
             this.maintance(this.data.MaintenanceStatus);
-            this.mainmon=res.squareFT;
+           
            }
-          
+           this.ldv=res.leaseDuration;
+           this.lipv=res.lock_in_period;
           this.priceform.patchValue({
             ExpectedRent:res.MonthlyRentFrom,
             ExpectedrenttNegotiable:res.RentNegociable=='true'?true:null,
@@ -62,6 +63,7 @@ export class CrRentalDetailsComponent implements OnInit {
           }); 
           if(res.MaintenanceStatus){
             this.maintanceVal=res.MaintenanceStatus;
+            this.mainmon=res.squareFT;
           }
          
 
@@ -85,7 +87,7 @@ export class CrRentalDetailsComponent implements OnInit {
         console.log(this.priceform.get('ExpectedrenttNegotiable').value)
       }
   
-      mainmon='';
+      mainmon:any;
     
       mainmonv(a:any){
     
@@ -116,7 +118,7 @@ export class CrRentalDetailsComponent implements OnInit {
       Checkdata:any;
       rentsub(){
         
-        this.submitted = this.data.MonthlyRentFrom !=  null ? false : true;
+        this.submitted =  true;
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
   
@@ -140,7 +142,7 @@ export class CrRentalDetailsComponent implements OnInit {
         
         }
       }
-        if(this.allKeysHaveValue(this.Checkdata) || this.data.MonthlyRentFrom ){ 
+        if(this.allKeysHaveValue(this.Checkdata)  ){ 
    
           console.log(this.Checkdata,'uploaded');
         var data={

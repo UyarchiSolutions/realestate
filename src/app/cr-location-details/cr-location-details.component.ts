@@ -125,6 +125,8 @@ export class CrLocationDetailsComponent {
           })
         }
         routetopreview(){
+          this.submitted = true;
+          if( this.rrlocform.valid ){
           var data={
             area:this.area,
             city:this.city,
@@ -148,6 +150,7 @@ export class CrLocationDetailsComponent {
           this.service.formget(this.id).subscribe((res: any) => {
             location.reload();
           });
+        }
         }
         back(count: any) {
           if (count == 0) {

@@ -97,5 +97,17 @@ export class BuyerService {
   send_enquiry(data:any){
     return this.http.post(this.base_url+'/v1/EnquieryRoute',data)
   }
+  get_interest_new(type:any,ctype:any,page:any,range:any,index:any){
+    return this.http.get(this.base_url+`/v1/BuyerSeller/getIntrestedPropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}&ind=${index}`,{headers:{auth:Cookie.get('buyer')}})
+  }
+  get_interest_new_noind(type:any,ctype:any,page:any,range:any){
+    return this.http.get(this.base_url+`/v1/BuyerSeller/getIntrestedPropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}`,{headers:{auth:Cookie.get('buyer')}})
+  }
+  get_save_new(type:any,ctype:any,page:any,range:any,index:any){
+    return this.http.get(this.base_url+`/v1/BuyerSeller/getsaved/PropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}&ind=${index}`,{headers:{auth:Cookie.get('buyer')}})
+  }
+  get_save_new_noInd(type:any,ctype:any,page:any,range:any){
+    return this.http.get(this.base_url+`/v1/BuyerSeller/getsaved/PropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}`,{headers:{auth:Cookie.get('buyer')}})
+  }
 }
 

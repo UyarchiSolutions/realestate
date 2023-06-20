@@ -68,14 +68,21 @@ export class CommercialBuyDetailviewComponent implements OnInit {
  checkInterest:any;    
  history:any=[];
  imageLength:any;
+ checkSave:any;
+ checkNotification:any;
+ checkhome!:string;
  ngOnInit(): void {
       
   this.arouter.queryParamMap.subscribe((params: any) => {
     //console.log(params.params.formatAdd)
-    if (params.params.formatAdd != null) {
+   
       console.log(params);
       this.index = params.params['index'];
       this.formatAdd = params.params.formatAdd;
+      this.checkSave=params.params['saved']
+      this.index = params.params['index'];
+      this.checkhome=params.params['home']
+      this.checkInterest = params.params['interested'];
       this.type = params.params['type'];
       this.propertType =
         params.params['propertType'] != null &&
@@ -142,13 +149,24 @@ export class CommercialBuyDetailviewComponent implements OnInit {
               this.rentMin = params.params['priceFrom'];
               this.rentMax = params.params['priceTo'];
               this.page = params.params['page']
- } });
+   });
  this.index = Number(this.index);
  this.page = Number(this.page);
  this.range=Number(this.range);
 
  this.get_buyer()
- this.GetDataForFilter();
+ if(this.checkInterest){
+  this.get_interst()
+}
+if(this.checkSave){
+  this.get_save()
+}
+if(this.checkNotification){
+  this.get_post(this.id)
+}
+if(this.checkhome){
+  this.GetDataForFilter();
+}
  
 
 }
@@ -184,6 +202,7 @@ export class CommercialBuyDetailviewComponent implements OnInit {
     LMlat_long:any=[];
     icon:any='';
     radius=2000;
+      
     get_landmarks_forbuyer(landmak:any){
       this.place=landmak
       this.landmarks=[];
@@ -224,7 +243,15 @@ export class CommercialBuyDetailviewComponent implements OnInit {
       if (this.index > this.TotalData - 1) {
         this.index = 0;
       }
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
       this.imageLength = '';
     }
     previous() {
@@ -233,8 +260,35 @@ export class CommercialBuyDetailviewComponent implements OnInit {
         this.index = this.TotalData - 1;
       }
   
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
       this.imageLength = '';
+    }
+    get_interst(){
+
+      let type='Sale'
+      let ctype='Commercial'
+      console.log('interst working')
+    this.buyerService.get_interest_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
+    }
+    get_save(){
+      let type='Sale'
+      let ctype='Commercial'
+      console.log('interst working')
+    this.buyerService.get_save_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
     }
     GetDataForFilter() {
       let  Data = {

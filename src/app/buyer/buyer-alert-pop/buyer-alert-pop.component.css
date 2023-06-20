@@ -289,3 +289,12 @@ margin:0 10px;
         text-overflow: ellipsis;
         max-width: 76px;
       }
+      .table-head{
+        background-color: var( --midBlue);
+        color: var(--bgBlue);
+        height: 50px;
+        }
+table{
+    margin-top: 0 !important;
+    width: 100%;
+}

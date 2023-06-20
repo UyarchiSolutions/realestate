@@ -20,7 +20,7 @@ export class RrRentalDetailsComponent implements OnInit{
     ExpectedRentNegotiable:new FormControl(),
     ExpectedDeposit:new FormControl('',Validators.required),
     ExpectedDepositNegotiable:new FormControl(),
-    ExcludeMaintenance:new FormControl(),
+   
     MrSq: new FormControl()
 
   })
@@ -28,7 +28,7 @@ export class RrRentalDetailsComponent implements OnInit{
   leaseform:any =this.fb.group({
     LExpectedDeposit:new FormControl('',Validators.required),
     LExpectedDepositNegotiable:new FormControl(),
-    LExcludeMaintenance:new FormControl(),
+ 
     LMrSq: new FormControl()
   })
 
@@ -55,43 +55,63 @@ export class RrRentalDetailsComponent implements OnInit{
     this.service.formget(this.id).subscribe((res:any)=>{
 
       this.data=res;
-      
-     
 
       console.log(res);
+   
       if(this.data.rentDetails=='rent'){
-      this.rentform.patchValue({
-        ExpectedRent:res.MonthlyRentFrom,
-        ExpectedRentNegotiable:res.RentNegociable=='true'?true:null,
-        ExpectedDeposit:res.depositeAmount,
-        ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
-        ExcludeMaintenance:res.maintainenceCost,
-        routeLink:this.routerlink
-        
-        
-      });
+        this.switch= this.data.rentDetails;
+        if(this.data.MaintenanceStatus){
+          this.maintance(this.data.MaintenanceStatus);
+          this.maintanceVal= this.data.MaintenanceStatus;
+          this.mainmon=res.squareFT; 
+          this.rentform.patchValue({
+            ExpectedRent:res.MonthlyRentFrom,
+            ExpectedRentNegotiable:res.RentNegociable=='true'?true:null,
+            ExpectedDeposit:res.depositeAmount,
+            ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
+            ExcludeMaintenance:res.maintainenceCost,
+            routeLink:this.routerlink
+            
+          });
+        }
+        else{ this.rentform.patchValue({
+          ExpectedRent:res.MonthlyRentFrom,
+          ExpectedRentNegotiable:res.RentNegociable=='true'?true:null,
+          ExpectedDeposit:res.depositeAmount,
+          ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
+          ExcludeMaintenance:res.maintainenceCost,
+          routeLink:this.routerlink
+          
+        });}
+     
       console.log('value patched',this.rentform.value) ;
-      this.switch= this.data.rentDetails;
-      if(this.data.MaintenanceStatus){
-        this.maintanceVal= this.data.MaintenanceStatus;
-      }
-    
-      this.mainmon=res.squareFT; }
+     
+     }
 
       if(this.data.rentDetails=='lease'){
-        this.leaseform.patchValue({
-          
-          LExpectedDeposit:res.MonthlyRentFrom,
-          LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
-          LExcludeMaintenance:res.maintainenceCost,
-          routeLink:this.routerlink
-        }); 
+        this.switch= this.data.rentDetails;
         if(this.data.MaintenanceStatus){
+          this.Lmaintance(this.data.MaintenanceStatus);
           this.LmaintanceVal= this.data.MaintenanceStatus; 
+          this.Lmainmon=res.squareFT;
+          this.leaseform.patchValue({
+          
+            LExpectedDeposit:res.MonthlyRentFrom,
+            LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
+            LExcludeMaintenance:res.maintainenceCost,
+          
+          }); 
         }
-      
-      this.switch= this.data.rentDetails;
-      this.Lmainmon=res.squareFT;}
+        else{
+          this.leaseform.patchValue({
+            LExpectedDeposit:res.MonthlyRentFrom,
+            LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
+            routeLink:this.routerlink
+          }); 
+         
+        }
+ 
+      }
       
     })
   console.log(this.switch,'end')
@@ -100,16 +120,29 @@ export class RrRentalDetailsComponent implements OnInit{
   maintanceVal='Include Maintenance';
 
   maintance(a:any){
-    this.maintanceVal=a;
     console.log(this.maintanceVal);
+    this.maintanceVal=a;
+
+    if(this.maintanceVal=='Exclude Maintenance'){
+      this.rentform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+    }else{
+      this.rentform.removeControl('ExcludeMaintenance');
+    }
+  }
+  Lmaintance(a:any){
+ 
+    this.LmaintanceVal=a;
+
+    if(this.LmaintanceVal=='Exclude Maintenance'){
+      this.leaseform.addControl('LExcludeMaintenance', new FormControl('', [Validators.required,]));
+    }else{
+      this.leaseform.removeControl('LExcludeMaintenance');
+    }
   }
   LmaintanceVal='Include Maintenance';
 
-  Lmaintance(a:any){
-    this.LmaintanceVal=a;
-    console.log(this.maintanceVal);
-  }
-  mainmon='';
+
+  mainmon:any;
 
   mainmonv(a:any){
 
@@ -121,11 +154,13 @@ export class RrRentalDetailsComponent implements OnInit{
 
     this.Lmainmon=a;
   }
+  Checkdata:any=[];
   rentsub(){
 
     this.submitted=true;
     if(this.rentform.valid){
-    var data={
+      if(this.maintanceVal=='Exclude Maintenance'){
+    this.Checkdata={
       rentDetails:this.switch,
       MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
       RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
@@ -134,10 +169,19 @@ export class RrRentalDetailsComponent implements OnInit{
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
       squareFT:this.mainmon,
       MaintenanceStatus:this.maintanceVal,
+    }}
+    else{
+      this.Checkdata={
+        rentDetails:this.switch,
+        MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
+        RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
+        depositeAmount:this.rentform.get('ExpectedDeposit').value,
+        depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
+        MaintenanceStatus:this.maintanceVal,
     }
-    console.log(data,'rentsub');
-    
-    this.service.formput(this.id,data).subscribe((res:any)=>{
+   }
+    console.log(this.Checkdata,'rentsub');
+    this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
       console.log(res);
       
       var postdata ={
@@ -149,13 +193,16 @@ export class RrRentalDetailsComponent implements OnInit{
      
     })
   }
+    
   }
+  
   submittedL=false
   leasesub(){
     
     this.submittedL=true;
     if(this.leaseform.valid){
-    var data={
+      if(this.LmaintanceVal=='Exclude Maintenance'){
+    this.Checkdata={
 
       rentDetails:this.switch,
       MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
@@ -164,8 +211,17 @@ export class RrRentalDetailsComponent implements OnInit{
       squareFT:this.Lmainmon,
       MaintenanceStatus:this.LmaintanceVal,
     }
-    console.log(data);
-    this.service.formput(this.id,data).subscribe((res:any)=>{
+    console.log(this.Checkdata);}
+    else{
+      this.Checkdata={
+
+        rentDetails:this.switch,
+        MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
+        depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
+        MaintenanceStatus:this.LmaintanceVal,
+      }
+    }
+    this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
       console.log(res);
       var postdata ={
         id:res._id
@@ -194,34 +250,56 @@ export class RrRentalDetailsComponent implements OnInit{
   routetopreview(){
 
          if(this.switch == 'rent')  {
-          var data={
-            rentDetails:this.switch,
-            MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
-            RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
-            depositeAmount:this.rentform.get('ExpectedDeposit').value,
-            depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
-            maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
-            squareFT:this.mainmon,
-            MaintenanceStatus:this.maintanceVal,
-          }
-          console.log(data,4564,this.rentform.value)
-          this.service.formput(this.id,data).subscribe((res:any)=>{
+          if(this.maintanceVal=='Exclude Maintenance'){
+            this.Checkdata={
+              rentDetails:this.switch,
+              MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
+              RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
+              depositeAmount:this.rentform.get('ExpectedDeposit').value,
+              depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
+              maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
+              squareFT:this.mainmon,
+              MaintenanceStatus:this.maintanceVal,
+            }}
+            else{
+              this.Checkdata={
+                rentDetails:this.switch,
+                MonthlyRentFrom:this.rentform.get('ExpectedRent').value,
+                RentNegociable:this.rentform.get('ExpectedRentNegotiable').value,
+                depositeAmount:this.rentform.get('ExpectedDeposit').value,
+                depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
+                MaintenanceStatus:this.maintanceVal,
+            }
+           }
+          console.log(this.Checkdata,4564,this.rentform.value)
+          this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
             var queryString = new URLSearchParams(postdata).toString();
             this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
           });
          }  
          if(this.switch == 'lease'){
-          var ldata={
-
-            rentDetails:this.switch,
-            MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
-            depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
-            maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
-            squareFT:this.Lmainmon,
-            MaintenanceStatus:this.LmaintanceVal,
-          }
-          console.log(ldata);
-          this.service.formput(this.id,ldata).subscribe((res:any)=>{
+          if(this.LmaintanceVal=='Exclude Maintenance'){
+            this.Checkdata={
+        
+              rentDetails:this.switch,
+              MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
+              depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
+              maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
+              squareFT:this.Lmainmon,
+              MaintenanceStatus:this.LmaintanceVal,
+            }
+            console.log(this.Checkdata);}
+            else{
+              this.Checkdata={
+        
+                rentDetails:this.switch,
+                MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
+                depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
+                MaintenanceStatus:this.LmaintanceVal,
+              }
+            }
+          
+          this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
             var queryString = new URLSearchParams(postdata).toString();
             this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
           });

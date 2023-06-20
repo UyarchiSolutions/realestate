@@ -26,8 +26,8 @@ export class BuyerNotificationComponent implements OnInit {
     if(Rtype =='Residential' && type =='Rent'){
       let data={
         id:id,
-        interested:'true',
-        schedule:'true',
+        noti:'true',
+       
       }
       let query = new URLSearchParams(data).toString()
       this.router.navigateByUrl('/buyer-residential-rent-search-view?'+query);
@@ -35,8 +35,8 @@ export class BuyerNotificationComponent implements OnInit {
     if(Rtype =='Residential' && type =='Sale'){
       let data={
         id:id,
-        interested:'true',
-        schedule:'true',
+        noti:'true',
+       
       }
       let query = new URLSearchParams(data).toString()
       this.router.navigateByUrl('/buyer-residential-buy-search-view?'+query);
@@ -44,8 +44,8 @@ export class BuyerNotificationComponent implements OnInit {
     if(Rtype =='Commercial' && type =='Sale'){
       let data={
         id:id,
-        interested:'true',
-        schedule:'true',
+        noti:'true',
+       
       }
       let query = new URLSearchParams(data).toString()
       this.router.navigateByUrl('/buyer-commercial-buy-search-view?'+query);
@@ -53,8 +53,8 @@ export class BuyerNotificationComponent implements OnInit {
     if(Rtype =='Commercial' && type =='Rent'){
       let data={
         id:id,
-        interested:'true',
-        schedule:'true',
+        noti:'true',
+       
       }
       let query = new URLSearchParams(data).toString()
       this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);

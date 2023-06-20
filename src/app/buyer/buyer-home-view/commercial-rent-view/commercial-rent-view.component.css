@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
 }
+.overflow-contents span{
+    font-size: 12px;
+   }
 
 .search-field{
     box-shadow: 0px -1px 4px #cfb9978b;

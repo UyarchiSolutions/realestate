@@ -33,9 +33,9 @@
     <div class="expected-rent">
         <label>Expected Rent :</label>
    <div>
-    <input type="number" placeholder="Rent Amount" formControlName="ExpectedRent">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Rent Amount" formControlName="ExpectedRent">
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedRentNegotiable" [value]="true"><label>Negotiable</label>
+        <input type="checkbox"  formControlName="ExpectedRentNegotiable" [value]="true"><label>Negotiable</label>
     </div>
    </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="expected-rent">
         <label>Expected Deposit :</label>
    <div>
-    <input type="number" placeholder="Deposit Amount" formControlName="ExpectedDeposit">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Deposit Amount" formControlName="ExpectedDeposit">
     <div class="negotiable">
         <input type="checkbox" formControlName="ExpectedDepositNegotiable" [value]="true" ><label>Negotiable</label>
     </div>
@@ -71,7 +71,7 @@
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
-        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <input type="text" style="width: 55%;" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
         <!-- <select   formControlName="MrSq">
  
             <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
@@ -92,7 +92,10 @@
     </div>
 
     <div></div>
-
+    <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: inline;">
+        <p class="redtext" *ngIf="rentform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
+        <p  class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+      </div>
 
 <div class="save-continue">
     <button type="submit" (click)="rentsub()" *ngIf="!data.final">Save & Continue</button>
@@ -122,7 +125,7 @@
     <div class="expected-rent">
         <label>Expected Lease :</label>
    <div>
-    <input type="text" placeholder="Expected Lease" formControlName="LExpectedDeposit">
+    <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Lease" formControlName="LExpectedDeposit">
     <div class="negotiable">
         <input type="checkbox" formControlName="LExpectedDepositNegotiable" [value]="true" ><label>Negotiable</label>
     </div>
@@ -150,7 +153,7 @@
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
-        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
+        <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
            <p *ngIf="!Lmainmon && !data.squareFT  "> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon && data.squareFT"></p>
@@ -166,7 +169,10 @@
     </div>
 
     <div></div>
-
+    <div *ngIf="LmaintanceVal=='Exclude Maintenance'" style="display: inline;">
+        <p class="redtext" *ngIf="leaseform.get('LExcludeMaintenance').invalid && submittedL ">Exclude Maintance is required!</p>
+        <p  class="redtext" *ngIf=" Lmainmon==null && submittedL ">Select Type!</p>
+      </div>
   
 
    

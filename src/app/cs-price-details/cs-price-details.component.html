@@ -30,7 +30,7 @@
     <div class="expected-rent">
         <label>Expected Price :</label>
     <div >
-    <input type="text" placeholder="Expected Price" formControlName="ExpectedPrice">
+    <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Price" formControlName="ExpectedPrice">
     
     </div>
    
@@ -67,7 +67,7 @@
         <label>Exclude Maintenance :</label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
-        <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
+        <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance">
         <!-- <select   formControlName="MrSq">
  
             <option value="Per Sq.ft/Month" >Per Sq.ft/Month</option>
@@ -86,7 +86,7 @@
     </div>
     </div>
     <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: block">
-        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance')?.errors.required && submitted ">Exclude Maintance is required!</p>
+        <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').invalid && submitted ">Exclude Maintance is required!</p>
         <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
       </div>
 

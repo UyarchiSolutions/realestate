@@ -55,7 +55,6 @@ export class RsPriceDetailsComponent implements OnInit {
         this.priceform.patchValue({
           MonthlyRentFrom:res.MonthlyRentFrom,
           ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
-       
           ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
           ExcludeMaintenance:res.maintainenceCost,
           CurrentlyInLoan:res.current_in_loan=='true'?true:null,
@@ -69,9 +68,6 @@ export class RsPriceDetailsComponent implements OnInit {
         
         
          }
-  
-      
-        
       )
     }
     maintanceVal='Include Maintenance';

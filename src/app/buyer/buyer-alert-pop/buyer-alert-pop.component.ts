@@ -12,7 +12,7 @@ import { Options } from '@angular-slider/ngx-slider';
 export class BuyerAlertPopComponent implements OnInit {
  constructor(private fb:FormBuilder,private buyerService:BuyerService,private service:PostPropertyService) { }
   ngOnInit(): void {
-   
+   this.getAlert();
   }
   check:boolean=true;
   check1:boolean=false;

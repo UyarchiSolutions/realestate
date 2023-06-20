@@ -66,16 +66,24 @@ export class CommercialRentDetailviewComponent implements OnInit {
           shopIcon='./assets/images/shop.png';
           checkInterest:any;
           imageLength:any;
+          checkSave:any;
+          checkNotification:any;
+          checkhome!:string;
   
     ngOnInit(): void {
       
       this.arouter.queryParamMap.subscribe((params: any) => {
         //console.log(params.params.formatAdd)
-        if (params.params.formatAdd != null) {
+       
           console.log(params);
           this.index = params.params['index'];
+          this.id = params.params['id'];
+          this.checkSave=params.params['saved']
+          this.checkNotification=params.params['noti']
           this.formatAdd = params.params.formatAdd;
+          this.checkInterest = params.params['interested'];
           this.type = params.params['type'];
+          this.checkhome=params.params['home']
           this.propertType =
             params.params['propertType'] != null &&
             params.params['propertType'] != ''
@@ -141,15 +149,25 @@ export class CommercialRentDetailviewComponent implements OnInit {
                   this.rentMin = params.params['priceFrom'];
                   this.rentMax = params.params['priceTo'];
                   this.page = params.params['page']
-     } });
+      });
      this.index = Number(this.index);
      this.page = Number(this.page);
      this.range=Number(this.range);
 
      this.get_buyer()
-     this.GetDataForFilter();
+     if(this.checkInterest){
+      this.get_interst()
+    }
+    if(this.checkSave){
+      this.get_save()
+    }
+    if(this.checkNotification){
+      this.get_post(this.id)
+    }
+    if(this.checkhome){
+      this.GetDataForFilter();
+    }
      
-    
     }
     buyerId:any;
     get_buyer(){
@@ -255,6 +273,25 @@ export class CommercialRentDetailviewComponent implements OnInit {
     LMlat_long:any=[];
     icon:any='';
     radius=2000;
+    get_interst(){
+
+      let type='Rent'
+      let ctype='Commercial'
+      console.log('interst working')
+    this.buyerService.get_interest_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
+    }
+    get_save(){
+      let type='Rent'
+      let ctype='Commercial'
+      console.log('interst working')
+    this.buyerService.get_save_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
+      this.get_post(res.nextData._id)
+      this.TotalData=res.total
+    })
+    }
     get_landmarks_forbuyer(landmak:any){
       this.place=landmak
       this.landmarks=[];
@@ -295,7 +332,15 @@ export class CommercialRentDetailviewComponent implements OnInit {
       if (this.index > this.TotalData - 1) {
         this.index = 0;
       }
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
       this.imageLength = '';
     }
     previous() {
@@ -304,7 +349,15 @@ export class CommercialRentDetailviewComponent implements OnInit {
         this.index = this.TotalData - 1;
       }
   
-      this.GetDataForFilter();
+      if(this.checkInterest){
+        this.get_interst()
+      }
+      if(this.checkSave){
+        this.get_save()
+      }
+      if(this.checkhome){
+        this.GetDataForFilter();
+      }
       this.imageLength = '';
     }
     backToSearch(){

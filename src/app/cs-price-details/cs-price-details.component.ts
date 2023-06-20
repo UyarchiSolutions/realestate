@@ -94,7 +94,7 @@ export class CsPriceDetailsComponent {
       Checkdata:any;
       rentsub(){
 
-        this.submitted = this.data.MonthlyRentFrom !=  null ? false : true;
+        this.submitted = true;
        
         if(this.maintanceVal=='Exclude Maintenance'){
         this.Checkdata={
@@ -113,13 +113,12 @@ export class CsPriceDetailsComponent {
         
         }
       }
-      if(this.allKeysHaveValue(this.Checkdata) || this.data.MonthlyRentFrom ){ 
+      if(this.allKeysHaveValue(this.Checkdata)  ){ 
         console.log('updated',this.Checkdata);
         var data={
   
           MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
           RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-         
           current_in_loan:this.priceform.get('CurrentlyInLoan').value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
           squareFT:this.mainmon,
@@ -185,7 +184,6 @@ export class CsPriceDetailsComponent {
     
             MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
             RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-         
             current_in_loan:this.priceform.get('CurrentlyInLoan').value,
             maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
             squareFT:this.mainmon,
@@ -203,17 +201,17 @@ export class CsPriceDetailsComponent {
           }  
         }
             console.log(data) 
-       this.service.formput(this.id,data).subscribe((res:any)=>{});
-            
+       this.service.formput(this.id,data).subscribe((res:any)=>{
         var postdata = {
           id: this.id,
         };
         var queryString = new URLSearchParams(postdata).toString();
         this.router.navigateByUrl('/start-posting/commercial-sale-preview?' + queryString);
     
-        this.service.formget(this.id).subscribe((res: any) => {
-          location.reload();
-        });
+       
+       });
+            
+       
       }
       }
     

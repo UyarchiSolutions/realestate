@@ -1004,6 +1004,7 @@ export class CommercialBuyViewComponent implements OnInit {
       this.sendRecentSearch();
       this.assignToSaveData();
       let query = new URLSearchParams(this.sendData).toString();
+      this.FetchRecentSearch();
       this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
     }
     else{
@@ -1038,6 +1039,7 @@ export class CommercialBuyViewComponent implements OnInit {
         let Data = {
           index:i,
           formatAdd: this.formatAdd,
+          home:'true',
           area: this.areaF,
           type: this.type,
           propertType: this.proptArr,
