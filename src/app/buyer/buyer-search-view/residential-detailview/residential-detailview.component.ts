@@ -143,6 +143,10 @@ export class ResidentialDetailviewComponent implements OnInit {
     //   this.index = this.page+1 * this.range 
     // }
     this.get_buyer()
+    console.log(this.checkInterest,'interest')
+      console.log(this.checkSave,'checkSave')
+      console.log(this.checkNotification,'checkNotification')
+      console.log(this.checkhome,'checkhome')
     if(this.checkInterest){
       this.get_interst()
     }
@@ -349,22 +353,32 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.imageLength = '';
   }
   backToSearch() {
-    this.location_.back();
-    // let sendData = {
-    //   formatAdd: this.formatAdd,
-    //   type: this.type,
-    //   propertType: this.propertType,
-    //   BHKType: this.BHKType,
-    //   rentDetails: this.rentDetails,
-    //   furnishing: this.furnishing,
-    //   parking: this.parking,
-    //   rentprefer: this.rentprefer,
-    //   propAge: this.propAge,
-    //   area:this.areaArr
-    // };
-    // console.log(sendData,'data back to home')
-    // const query = new URLSearchParams(sendData).toString();
-    // this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+  
+    if(this.checkInterest){
+      console.log(this.checkInterest,'interest')
+      console.log(this.checkSave,'checkSave')
+      console.log(this.checkNotification,'checkNotification')
+      console.log(this.checkhome,'checkhome')
+     let data={
+      interest:'true'
+     }
+     let query= new URLSearchParams(data).toString()
+     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+    }
+    if(this.checkSave){
+
+      this.get_save()
+    }
+    if(this.checkNotification){
+      this.get_post(this.id)
+    }
+    if(this.checkhome){
+      console.log(this.checkInterest,'interest')
+      console.log(this.checkSave,'checkSave')
+      console.log(this.checkNotification,'checkNotification')
+      console.log(this.checkhome,'checkhome')
+      this.location_.back();
+    }
   }
 
   interestV: any;

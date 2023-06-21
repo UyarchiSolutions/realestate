@@ -71,7 +71,7 @@ export class BuyerInterestedComponent implements OnInit {
    let ctype='Residential'
 
     this.buyerService.get_interest_new_noind(type,ctype,this.page1,this.range1).subscribe((res:any)=>{
-      console.log(res,'new')
+      // console.log(res,'new')
       this.ResiRent=res.values;
     })
   }
@@ -80,7 +80,7 @@ export class BuyerInterestedComponent implements OnInit {
    let ctype='Residential'
    
     this.buyerService.get_interest_new_noind(type,ctype,this.page2,this.range2).subscribe((res:any)=>{
-      console.log(res,'new')
+      // console.log(res,'new')
       this.ResiBuy=res.values
     })
   }
@@ -89,7 +89,7 @@ export class BuyerInterestedComponent implements OnInit {
    let ctype='Commercial'
    
     this.buyerService.get_interest_new_noind(type,ctype,this.page3,this.range3).subscribe((res:any)=>{
-      console.log(res,'new')
+      // console.log(res,'new')
       this.CommRent=res.values
     })
   }
@@ -98,14 +98,14 @@ export class BuyerInterestedComponent implements OnInit {
    let ctype='Commercial'
    
     this.buyerService.get_interest_new_noind(type,ctype,this.page4,this.range4).subscribe((res:any)=>{
-      console.log(res,'new')
+      // console.log(res,'new')
       this.CommBuy=res.values
     })
   }
 
   Get_all_interest() {
     this.buyerService.getAll_Interested().subscribe((res: any) => {
-      console.log(res,'all interest','child')
+      // console.log(res,'all interest','child')
       this.AllInterested = res;
     
       this.ResiRent= this.AllInterested.filter((v:any)=>{

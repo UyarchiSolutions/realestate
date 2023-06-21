@@ -258,40 +258,68 @@ export class ResidentialBuyViewComponent implements OnInit {
 
   }
   toResBuy() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
     }
-    console.log(data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+ 
   }
   toComRent() {
-    this.sendArea();
+    if(this.areaArr.length>0){
+      this.sendArea();
     let data={
       area:this.areaF
     }
     console.log(data);
     const query = new URLSearchParams(data).toString();
     this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    }
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+    
   }
   toComBuy() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
     }
-    console.log(data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
   }
   toResRent() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(this.data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
     }
-    console.log(this.data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+   
   }
   ctArray(str:any) : any{
     let farr: any[]=[];

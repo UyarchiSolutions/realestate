@@ -103,6 +103,7 @@ export class RbHomeComponent implements OnInit {
   builtMin: any = 0;
   builtMax: any = 10000;
 
+  checkinterest:any;
   ngOnInit(): void {
     this.notLogin = this.service.findCookie();
     console.log(this.notLogin, 'not login');
@@ -118,6 +119,7 @@ export class RbHomeComponent implements OnInit {
     
         console.log(params);
         this.formatAdd = params.params.formatAdd;
+        this.checkinterest=params.params['interest']
         this.type = params.params['type'];
         this.propertType =
           params.params['propertType'] != null &&
@@ -173,6 +175,9 @@ export class RbHomeComponent implements OnInit {
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
+        if(this.checkinterest=='true'){
+          this.showTab('interest');
+        }
         if (!(this.BHKType == '' && this.BHKType == null)) {
           this.BHKType.forEach((a: any) => {
             this.BhkTypeShow.push(this.bhkArr[a]);
@@ -191,7 +196,7 @@ export class RbHomeComponent implements OnInit {
             let index = this.floorDataArr.indexOf(a);
             this.floorShow.push(this.floorArr[index]);
           });
-          console.log(this.floorShow, 'floorshow');
+          // console.log(this.floorShow, 'floorshow');
         }
         this.SelectedFilters = [
           ...this.propertType,
@@ -226,12 +231,14 @@ export class RbHomeComponent implements OnInit {
           this.showInput = false;
           // console.log(this.showInput, 'inpout show');
         }
-        console.log(this.areaArr, 'Area',this.areaArrF);
+        // console.log(this.areaArr, 'Area',this.areaArrF);
       
         this.GetDataForFilter();
     });
     this.GetDataForFilter();
     this.getAlert();
+    this.checkinterest=null;
+    console.log(this.checkinterest,'check interste')
   }
   nextPage:any;
   showRecentSer = false;
@@ -310,40 +317,67 @@ export class RbHomeComponent implements OnInit {
 
   }
   toResBuy() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
     }
-    console.log(data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-residential-buy-view?'+ query);
+    else{
+      this.toastr.error('Fill the field', 'Please Select correct location!', {
+        positionClass: 'toast-top-center'});
+    }
+   
   }
   toComRent() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
     }
-    console.log(data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
   }
   toComBuy() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
     }
-    console.log(data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-commercial-buy-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+   
   }
   toResRent() {
-    this.sendArea();
-    let data={
-      area:this.areaF
+    if(this.areaArr.length>0){
+      this.sendArea();
+      let data={
+        area:this.areaF
+      }
+      console.log(this.data);
+      const query = new URLSearchParams(data).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
     }
-    console.log(this.data);
-    const query = new URLSearchParams(data).toString();
-    this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
+    else{
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+  
   }
   floordata: any = [];
   FloorArr: any = [];
@@ -624,7 +658,7 @@ export class RbHomeComponent implements OnInit {
       let index = this.newBath.findIndex((res: any) => res == v);
       this.bathCountArr.splice(index, 1);
       this.newBath.splice(index, 1);
-      console.log(this.newBath, this.bathCountArr, 'remove');
+      // console.log(this.newBath, this.bathCountArr, 'remove');
     }
     //prop arr
     if (v == 'Gated Community' || 'Individual House/Villa' || 'Apartment') {
@@ -632,7 +666,7 @@ export class RbHomeComponent implements OnInit {
         res == v;
       });
       let i = this.proptArr.indexOf(v);
-      console.log(this.proptArr, v, index, i);
+      // console.log(this.proptArr, v, index, i);
       if (i > -1) {
         this.proptArr.splice(i, 1);
       }
@@ -685,7 +719,7 @@ export class RbHomeComponent implements OnInit {
 
       this.PropAgeArr.splice(index, 1);
 
-      console.log('outside', this.PropAgeArr);
+      // console.log('outside', this.PropAgeArr);
     }
     //floor
     if (
@@ -699,7 +733,7 @@ export class RbHomeComponent implements OnInit {
       this.ffloor.splice(index, 1);
       this.floordata.splice(index, 1);
 
-      console.log('floor', this.ffloor, 'floor data', this.floordata, 'remove');
+      // console.log('floor', this.ffloor, 'floor data', this.floordata, 'remove');
     }
 
     this.assignToSaveData();
@@ -709,22 +743,28 @@ export class RbHomeComponent implements OnInit {
 
   is_chckked(val: any, filter: any) {
     // console.log(val,filter)
-    if (filter != '') {
-      let index = filter.findIndex((res: any) => {
-        res == val;
-      });
-      let i = filter.indexOf(val);
-      // console.log(index,'find index','is cheked',i,'indexof')
-      if (i == -1) {
-        return false;
+   
+    if(this.areaArr.length > 0){
+      if (filter != '') {
+        let index = filter.findIndex((res: any) => {
+          res == val;
+        });
+        let i = filter.indexOf(val);
+        // console.log(index,'find index','is cheked',i,'indexof')
+        if (i == -1) {
+          return false;
+        } else {
+          return true;
+        }
       } else {
-        return true;
+        return false;
       }
-    } else {
-      return false;
     }
-  }
- 
+    else{
+      console.log('inside first else')
+      return false
+    }
+  } 
   Rentchange() {
     if(this.areaArr.length > 0){
       console.log('change');
