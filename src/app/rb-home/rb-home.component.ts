@@ -138,6 +138,7 @@ export class RbHomeComponent implements OnInit {
           params.params['area'] != null && params.params['area'] != ''
             ? params.params['area']
             : [];
+
         //console.log(this.areaArr,this.areaArr.length);
         // for(let i=0;)
 
@@ -172,6 +173,8 @@ export class RbHomeComponent implements OnInit {
           params.params['floor'] != null && params.params['floor'] != ''
             ? params.params['floor'].split(',')
             : [];
+        this.showCurrentTab=params.params['showtab']
+        this.showTab(this.showCurrentTab)
 
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
@@ -279,7 +282,8 @@ export class RbHomeComponent implements OnInit {
         this.data = res.values;
         this.totalval = res.values.length;
         this.showPag_rag = false;
-        this.nextPage=res.next
+        this.nextPage=res.next;
+      
         if (this.totalval > 10) {
           this.showPag_rag = true;
           console.log(this.totalval, 'ghghg');
@@ -621,6 +625,7 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       floor: this.floordata,
+      showtab:this.showCurrentTab
     };
   }
 
@@ -761,7 +766,7 @@ export class RbHomeComponent implements OnInit {
       }
     }
     else{
-      console.log('inside first else')
+      // console.log('inside first else')
       return false
     }
   } 
@@ -901,6 +906,7 @@ export class RbHomeComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       selected: this.SelectedFilters,
+    
     };
     let dataf = {
       formatAdd: this.formatAdd,
@@ -1038,7 +1044,7 @@ export class RbHomeComponent implements OnInit {
 
         };
        
-        console.log(this.data);
+        console.log(this.data,'find');
         const query = new URLSearchParams(data).toString();
         this.router.navigateByUrl(
           '/buyer-residential-rent-search-view?' + query
@@ -1170,7 +1176,6 @@ export class RbHomeComponent implements OnInit {
     this.bathCountArr = [];
     this.FbathArr = [];
     this.BhkCountArr = [];
-    this.areaArr = [];
     this.floordata = [];
     this.ffloor = [];
 
@@ -1220,46 +1225,65 @@ export class RbHomeComponent implements OnInit {
   changepassword() {
     this.router.navigateByUrl('/changepassword-buyer');
   }
+  showCurrentTab='post';
   postshow = true;
   interestShow = false;
   saveShow = false;
   alertShow = false;
   nofiShow = false;
   showTab(tab: any) {
-    if (tab == 'post') {
+    this.showCurrentTab=tab
+    if (this.showCurrentTab == 'post') {
+      this.assignToSaveData();
       this.postshow = true;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    
     }
-    if (tab == 'interest') {
+    if (this.showCurrentTab == 'interest') {
+   
       this.postshow = false;
       this.interestShow = true;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = false;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
-    if (tab == 'save') {
+    if (this.showCurrentTab == 'save') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
-    if (tab == 'alert') {
+    if (this.showCurrentTab == 'alert') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = true;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
-    if (tab == 'nofi') {
+    if (this.showCurrentTab == 'nofi') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = true;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
   }
  

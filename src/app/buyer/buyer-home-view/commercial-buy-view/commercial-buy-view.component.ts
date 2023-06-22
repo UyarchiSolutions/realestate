@@ -1221,7 +1221,6 @@ export class CommercialBuyViewComponent implements OnInit {
     this.bathCountArr = [];
     this.FbathArr = [];
     this.BhkCountArr = [];
-    this.areaArr = [];
     this.floordata=[];
     this.ffloor=[];
 

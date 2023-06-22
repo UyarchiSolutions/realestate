@@ -1193,7 +1193,7 @@ export class CommercialRentViewComponent implements OnInit {
     this.bathCountArr = [];
     this.FbathArr = [];
     this.BhkCountArr = [];
-    this.areaArr = [];
+   
     this.floordata=[];
     this.ffloor=[];
 

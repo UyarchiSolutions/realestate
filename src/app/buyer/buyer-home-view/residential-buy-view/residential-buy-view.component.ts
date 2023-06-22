@@ -181,6 +181,9 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.builtMin=params.params['buildupfrom'] ? params.params['buildupfrom'] : 0;
         this.builtMax=params.params['buildupto'] ? params.params['buildupto'] : 50000;
 
+        this.showCurrentTab=params.params['showtab']
+        this.showTab(this.showCurrentTab)
+
             if (!(this.BHKType == '' && this.BHKType == null)) {
               this.BHKType.forEach((a: any) => {
                 this.BhkTypeShow.push(this.bhkArr[a]);
@@ -658,6 +661,7 @@ export class ResidentialBuyViewComponent implements OnInit {
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
       floor: this.floordata,
+      showtab:this.showCurrentTab
     };
   }
   deleteFilter(v: any) {
@@ -1143,7 +1147,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.bathCountArr = [];
     this.FbathArr = [];
     this.BhkCountArr = [];
-    this.areaArr = [];
+   
     this.floordata = [];
     this.ffloor = [];
 
@@ -1177,47 +1181,65 @@ export class ResidentialBuyViewComponent implements OnInit {
   changepassword() {
     this.router.navigateByUrl('/changepassword-buyer');
   }
+  showCurrentTab='post';
   postshow = true;
   interestShow = false;
   saveShow = false;
   alertShow = false;
   nofiShow = false;
   showTab(tab: any) {
-    console.log('tab choose');
-    if (tab == 'post') {
+    this.showCurrentTab=tab
+    if (this.showCurrentTab == 'post') {
+      this.assignToSaveData();
       this.postshow = true;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    
     }
-    if (tab == 'interest') {
+    if (this.showCurrentTab == 'interest') {
+   
       this.postshow = false;
       this.interestShow = true;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = false;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
     }
-    if (tab == 'save') {
+    if (this.showCurrentTab == 'save') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = true;
       this.alertShow = false;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
     }
-    if (tab == 'alert') {
+    if (this.showCurrentTab == 'alert') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = true;
       this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
     }
-    if (tab == 'nofi') {
+    if (this.showCurrentTab == 'nofi') {
+      this.assignToSaveData();
       this.postshow = false;
       this.interestShow = false;
       this.saveShow = false;
       this.alertShow = false;
       this.nofiShow = true;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
   }
   RBtab = true;

@@ -353,32 +353,9 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.imageLength = '';
   }
   backToSearch() {
-  
-    if(this.checkInterest){
-      console.log(this.checkInterest,'interest')
-      console.log(this.checkSave,'checkSave')
-      console.log(this.checkNotification,'checkNotification')
-      console.log(this.checkhome,'checkhome')
-     let data={
-      interest:'true'
-     }
-     let query= new URLSearchParams(data).toString()
-     this.router.navigateByUrl('/buyer-residential-rent-view?'+ query);
-    }
-    if(this.checkSave){
-
-      this.get_save()
-    }
-    if(this.checkNotification){
-      this.get_post(this.id)
-    }
-    if(this.checkhome){
-      console.log(this.checkInterest,'interest')
-      console.log(this.checkSave,'checkSave')
-      console.log(this.checkNotification,'checkNotification')
-      console.log(this.checkhome,'checkhome')
-      this.location_.back();
-    }
+    window.history.back();
+   
+    
   }
 
   interestV: any;
