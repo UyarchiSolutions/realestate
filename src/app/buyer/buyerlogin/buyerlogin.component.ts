@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BuyerService } from '../buyer.service';
 
 @Component({
@@ -15,10 +15,14 @@ export class BuyerloginComponent {
     Type: new FormControl()
   });
   emailSubmit = false;
-  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
+  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router,
+    private arouter:ActivatedRoute) { }
 
+    next:any;
   ngOnInit() {
-    
+    this.arouter.queryParams.subscribe((params)=>{
+      this.next=params["next"]
+    })
   }
 
   genterateOtp(val: any) {
@@ -48,7 +52,11 @@ export class BuyerloginComponent {
       this.buyerService.Submit(this.loginForm.value).subscribe((res: any) => {
         this.emailSubmit = false;
         this.setCookie(res.token.access.token);
-        this.route.navigate(['/'])
+        // this.route.navigate(['/'])
+        if(this.next){
+          this.route.navigateByUrl('/')
+        }else{ window.history.back();}
+       
       }, error => {
         if (error.error.status != 401) {
 

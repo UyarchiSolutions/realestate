@@ -185,7 +185,7 @@ table tr th{
 }
 .table-head{
 background-color: var( --bgligthBlue);
-color: white;
+color: var(--bgBlue);
 height: 50px;
 }
 .main-section .main{

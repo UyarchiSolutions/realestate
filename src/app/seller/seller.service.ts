@@ -88,6 +88,9 @@ update_stream(id:any,data:any){
 get_single_plan(id:any){
   return this.http.get(this.planBase+id,{headers:{auth:Cookie.get('tokens')}})
 }
+cancel_stream(id:any){
+  return this.http.get(this.baseUrl+ `/v1/requestStream/CancelStreamById/`+id)
+}
 //host
   add_Sub_host(data:any){
     return this.http.post(this.baseUrl+`/v1/subHost`,data,{headers:{auth:Cookie.get('tokens')}})
@@ -115,5 +118,8 @@ get_single_plan(id:any){
   }
   get_all_interest(){
     return this.http.get(this.baseUrl+'/v1/BuyerSeller/getNotification/Details/intrested',{headers:{auth:Cookie.get('tokens')}})
+  }
+  delete_host(id:any){
+    return this.http.delete(this.baseUrl+`/v1/subHost/DeleteSubHostById/`+id)
   }
 }

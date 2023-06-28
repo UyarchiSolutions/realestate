@@ -388,7 +388,7 @@ export class RbHomeComponent implements OnInit {
 
   updateFilter(v: any, position: any) {
 
-    if(this.areaArr.length>0){
+    
       position = position.toString();
     console.log(v.target.value);
     if (v.target.checked) {
@@ -586,14 +586,17 @@ export class RbHomeComponent implements OnInit {
       }
     }
     //data to api
-    this.assignToSaveData();
+    if(this.areaArr.length>0){
+      this.assignToSaveData();
     //console.log(this.ShowOnlyArr);
     let query = new URLSearchParams(this.sendData).toString();
     this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }else{
-      this.toastr.error('Fill the field', 'Please Select correct location!', {
-        positionClass: 'toast-top-center'});
-    }
+          this.toastr.error('Fill the field', 'Please Select correct location!', {
+            positionClass: 'toast-top-center'});
+        }
+    
+    
     
   }
   assignToSaveData() {

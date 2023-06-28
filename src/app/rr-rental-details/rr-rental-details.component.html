@@ -94,7 +94,7 @@
     <div></div>
     <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: inline;">
         <p class="redtext" *ngIf="rentform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
-        <p  class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+        <p  class="redtext" *ngIf="rentform.get('sqft').invalid && submitted ">Select Type!</p>
       </div>
 
 <div class="save-continue">
@@ -156,7 +156,7 @@
         <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" style="width: 55%;" placeholder="Enter Amount" formControlName="LExcludeMaintenance">
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="!Lmainmon && !data.squareFT  "> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> <p [innerText]="data.squareFT" *ngIf="!Lmainmon && data.squareFT"></p>
+           <p *ngIf="!Lmainmon"> select</p> <p [innerHTML]="Lmainmon" *ngIf="Lmainmon "></p> 
               
               
                 <ul class="dropdown-menu select-filed-options" >
@@ -171,7 +171,7 @@
     <div></div>
     <div *ngIf="LmaintanceVal=='Exclude Maintenance'" style="display: inline;">
         <p class="redtext" *ngIf="leaseform.get('LExcludeMaintenance').invalid && submittedL ">Exclude Maintance is required!</p>
-        <p  class="redtext" *ngIf=" Lmainmon==null && submittedL ">Select Type!</p>
+        <p  class="redtext" *ngIf="leaseform.get('sqft').invalid && submittedL ">Select Type!</p>
       </div>
   
 

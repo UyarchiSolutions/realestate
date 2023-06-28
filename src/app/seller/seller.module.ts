@@ -74,6 +74,10 @@ import { SubHostNewPasswordComponent } from './sub-host/sub-host-new-password/su
 import { SubHostPropertyViewComponent } from './sub-host/sub-host-property-view/sub-host-property-view.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SellerFooterComponent } from './seller-footer/seller-footer.component';
+import { ResidentialRent2Component } from './seller-buyer-view/residential-rent2/residential-rent2.component';
+import { ResidentialSaleComponent } from './seller-buyer-view/residential-sale/residential-sale.component';
+import { CommercialRentComponent } from './seller-buyer-view/commercial-rent/commercial-rent.component';
+import { CommercialSaleComponent } from './seller-buyer-view/commercial-sale/commercial-sale.component';
 
 
 @NgModule({
@@ -151,7 +155,11 @@ import { SellerFooterComponent } from './seller-footer/seller-footer.component';
     SubHostForgotOtpComponent,
     SubHostNewPasswordComponent,
     SubHostPropertyViewComponent,
-    SellerFooterComponent
+    SellerFooterComponent,
+    ResidentialRent2Component,
+    ResidentialSaleComponent,
+    CommercialRentComponent,
+    CommercialSaleComponent
 
     
   ],

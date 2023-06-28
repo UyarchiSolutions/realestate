@@ -102,6 +102,11 @@ import { ManageEnquiryComponent } from './admin/manage-enquiry/manage-enquiry.co
 import { ReportedPostComponent } from './admin/reported-post/reported-post.component';
 import { BuyerProfileComponent } from './buyer/buyer-profile/buyer-profile.component';
 import { BuyerProfileEditComponent } from './buyer/buyer-profile-edit/buyer-profile-edit.component';
+import { ResidentialRent2Component } from './seller/seller-buyer-view/residential-rent2/residential-rent2.component';
+import { ResidentialSaleComponent } from './seller/seller-buyer-view/residential-sale/residential-sale.component';
+import { CommercialRentComponent } from './seller/seller-buyer-view/commercial-rent/commercial-rent.component';
+import { CommercialSaleComponent } from './seller/seller-buyer-view/commercial-sale/commercial-sale.component';
+
 
 
 const routes: Routes = [
@@ -249,6 +254,11 @@ const routes: Routes = [
   {path:'assign-host',component:AssignHostComponent},
 ],
 },
+{path:'rr-view',component:ResidentialRent2Component},
+{path:'rs-view',component:ResidentialSaleComponent},
+{path:'cr-view',component:CommercialRentComponent},
+{path:'cs-view',component:CommercialSaleComponent},
+
 //sub-host 
 { path: 'sub-host-login', component: SubHostLoginComponent },
 { path: 'sub-host-verfiy', component: SubHostNumberVerfiyComponent },

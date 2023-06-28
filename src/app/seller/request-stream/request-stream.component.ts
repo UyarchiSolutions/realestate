@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Validators } from 'ngx-editor';
+
 
 @Component({
   selector: 'app-request-stream',
@@ -33,17 +33,16 @@ export class RequestStreamComponent implements OnInit {
   id:any;
 
   myform:any=this.fb.group({
-    choosePlan:new FormControl(),
-    streamName: new FormControl(),
-    dateDate: new FormControl(),
-    dateMon: new FormControl(),
-    dateYear: new FormControl(),
-    timeHr: new FormControl(),
-    timeMin: new FormControl(),
-    timeZone: new FormControl(),
-    primCom: new FormControl(),
-    secCom: new FormControl(),
-    des: new FormControl(),
+    streamName: new FormControl('',Validators.required),
+    dateDate: new FormControl('',Validators.required),
+    dateMon: new FormControl('',Validators.required),
+    dateYear: new FormControl('',Validators.required),
+    timeHr: new FormControl('',Validators.required),
+    timeMin: new FormControl('',Validators.required),
+    timeZone: new FormControl('',Validators.required),
+    primCom: new FormControl('',Validators.required),
+    secCom: new FormControl('',Validators.required),
+    des: new FormControl('',Validators.required),
   })
   ngOnInit(): void {
    this.getAllPlans();
@@ -55,13 +54,16 @@ export class RequestStreamComponent implements OnInit {
    })
   }
   monNum:any;
+  editStream:any;
+ 
   getSingle(){
     if(this.id){
     this.service.get_single_stream(this.id).subscribe((res:any)=>{
       console.log(res)
-    
+      this.editStream=res
       this.getPostid(res.postId);
       this.getPlanName(res.planId);
+      this.forSecLang1(res.primaryCommunication)
       this.planId=res.planId
       this.myform.patchValue({
         streamName: res.streamName,
@@ -84,9 +86,15 @@ export class RequestStreamComponent implements OnInit {
       // console.log(res);
       this.getSingle();
       this.AllData=res
-      this.planNames=this.AllData.map((res:any)=>{
+      this.planNames=this.AllData.filter((res:any):any=>{
+       if(res.status == false){
+        let data={
+          planeName:res.planName,
+          planId:res._id
+        } 
+        return data
+       }
        
-        return res.planName;
       })
       console.log(this.planNames,this.AllData);
     })
@@ -172,8 +180,9 @@ export class RequestStreamComponent implements OnInit {
   dateStr:any;
   monChang:any;
   dateChang:any;
+  submitted:boolean=false;
   submit(){
-    
+    this.submitted=true;
     this.monChang= Number(this.monNum+1);
     this.monChang= this.monChang.toString()
    
@@ -192,8 +201,32 @@ export class RequestStreamComponent implements OnInit {
     }
 
     this.dateStr= String(this.myform.get('dateYear')?.value+'-'+ this.monChang+'-'+this.dateChang)
-    if(this.id){
+    if(this.myform.valid){
+      if(this.id){
     
+        let data={
+          planId:this.planId,
+          hour:this.myform.get('timeHr')?.value,
+          minute:this.myform.get('timeMin')?.value,
+         timeMode:this.myform.get('timeZone')?.value,
+         streamingDate:this.dateStr,
+         streamName:this.myform.get('streamName')?.value,
+         postId:this.postId,
+         primaryCommunication:this.myform.get('primCom')?.value,
+         secondaryCommunication:this.myform.get('secCom')?.value,
+         description:this.myform.get('des')?.value,
+         year:this.myform.get('dateYear')?.value,
+         month:this.myform.get('dateMon')?.value,
+         day:this.myform.get('dateDate')?.value,
+         zone:this.myform.get('timeZone')?.value
+         }
+         console.log('form update',data)
+        this.service.update_stream(this.id,data).subscribe((res:any)=>{
+          console.log(res)
+          this.route.navigateByUrl('/my-streams')
+        })
+      }
+      else{
       let data={
         planId:this.planId,
         hour:this.myform.get('timeHr')?.value,
@@ -210,35 +243,14 @@ export class RequestStreamComponent implements OnInit {
        day:this.myform.get('dateDate')?.value,
        zone:this.myform.get('timeZone')?.value
        }
-       console.log('form update',data)
-      this.service.update_stream(this.id,data).subscribe((res:any)=>{
+       console.log(data)
+      this.service.send_stream(data).subscribe((res:any)=>{
         console.log(res)
         this.route.navigateByUrl('/my-streams')
       })
     }
-    else{
-    let data={
-      planId:this.planId,
-      hour:this.myform.get('timeHr')?.value,
-      minute:this.myform.get('timeMin')?.value,
-     timeMode:this.myform.get('timeZone')?.value,
-     streamingDate:this.dateStr,
-     streamName:this.myform.get('streamName')?.value,
-     postId:this.postId,
-     primaryCommunication:this.myform.get('primCom')?.value,
-     secondaryCommunication:this.myform.get('secCom')?.value,
-     description:this.myform.get('des')?.value,
-     year:this.myform.get('dateYear')?.value,
-     month:this.myform.get('dateMon')?.value,
-     day:this.myform.get('dateDate')?.value,
-     zone:this.myform.get('timeZone')?.value
-     }
-     console.log(data)
-    this.service.send_stream(data).subscribe((res:any)=>{
-      console.log(res)
-      this.route.navigateByUrl('/my-streams')
-    })
-  }
+    }
+ 
   }
   Allpost:any=[]
   get_allpost(){
@@ -275,12 +287,14 @@ export class RequestStreamComponent implements OnInit {
 
     this.planName=this.AllData.filter((res:any)=>{
      
-      if(res._id == id){
+      if(res.planId == id){
         return res.planName
       }
     })
+ 
     this.planName=this.planName[0].planName
-    // console.log(this.planName)
+    console.log(this.planName,this.AllData,id)
+    
   }
   primComm:any;
   forSecLang(v:any){
@@ -292,6 +306,23 @@ export class RequestStreamComponent implements OnInit {
     this.primComm=v.target.value
     this.lang2.forEach((res:any) => {
       if(res== v.target.value){
+        console.log(res,'no pusg')
+      }
+      else{
+        this.lang3.push(res)
+      }
+    });
+    console.log(this.lang3,'lang3')
+  }
+  forSecLang1(v:any){
+    // this.lang2=this.lang3
+    // let index = this.lang2.indexOf(v.target.value)
+    // this.lang2.splice(1,index)
+    // console.log(this.lang2)
+    this.lang3=[]
+    this.primComm=v
+    this.lang2.forEach((res:any) => {
+      if(res== v){
         console.log(res,'no pusg')
       }
       else{

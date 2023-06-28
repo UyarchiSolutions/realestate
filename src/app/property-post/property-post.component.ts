@@ -64,9 +64,10 @@ export class PropertyPostComponent implements OnInit {
       this.get_all_interst();
     })
   }
-  visited_status(id:any){
+  change_status(id:any,v:string,postid:any){
     var data={
-      type:'Visited'
+      type:v,
+      postId:postid
     }
     this.service.update_Interest_buyer(id,data).subscribe((res:any)=>{
       console.log(res,'rejected')

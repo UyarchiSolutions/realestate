@@ -4,13 +4,17 @@ import { BuyerService } from '../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { Options } from '@angular-slider/ngx-slider';
+import { Router } from '@angular/router';
 @Component({
   selector: 'buyer-alert-pop',
   templateUrl: './buyer-alert-pop.component.html',
   styleUrls: ['./buyer-alert-pop.component.css']
 })
 export class BuyerAlertPopComponent implements OnInit {
- constructor(private fb:FormBuilder,private buyerService:BuyerService,private service:PostPropertyService) { }
+ constructor(private fb:FormBuilder,private buyerService:BuyerService
+  ,private service:PostPropertyService
+  ,private router:Router
+  ) { }
   ngOnInit(): void {
    this.getAlert();
   }
@@ -292,7 +296,19 @@ popValue:any=[];
 latitude:any;
 longtitude:any;
 Address:any;
-
+close(){
+    if(this.ResiRentpop == true){
+      this.ResiRentpop= false
+    }
+    if(this.ResiSalepop == true){
+      this.ResiSalepop=false
+    }
+    if(this.CommRentpop==true ){
+      this.CommRentpop=false}
+      if(this.CommSalepop == true){
+        this.CommSalepop =false
+      }
+}
 alertaddress(address: Address, input: any) {
   //console.log(input.value);
 
@@ -370,7 +386,45 @@ alertaddress(address: Address, input: any) {
     this.recAlert=false;
      this.sendAlert=true;
   }
-  GetDataBYId(id: any, i: any) {}
+  GetDataBYId(e:any) {
+    console.log(e,'recent')
+    if(e.HouseOrCommercialType=="Commercial" && e.Type=='Rent'){
+      let data={
+        id:e._id,
+        noti:'true',
+       
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);
+    }
+    if(e.HouseOrCommercialType =='Commercial' && e.Type =='Sale'){
+      let data={
+        id:e._id,
+        noti:'true',
+       
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-commercial-buy-search-view?'+query);
+    }
+    if(e.HouseOrCommercialType =='Residential' && e.Type =='Rent'){
+      let data={
+        id:e._id,
+        noti:'true',
+       
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-residential-rent-search-view?'+query);
+    }
+    if(e.HouseOrCommercialType =='Residential' && e.Type =='Sale'){
+      let data={
+        id:e._id,
+        noti:'true',
+       
+      }
+      let query = new URLSearchParams(data).toString()
+      this.router.navigateByUrl('/buyer-residential-buy-search-view?'+query);
+    }
+  }
   RBtab = true;
   RRtab = false;
   CBtab = false;

@@ -33,5 +33,61 @@ export class MyStreamsComponent implements OnInit {
     let query = new URLSearchParams(data).toString()
     this.router.navigateByUrl('/my-streams/assign-host?'+ query)
   }
+  remove(id:any){
+    this.service.cancel_stream(id).subscribe((res:any)=>{
+      this.getAll()
+    })
+  }
+  view(rentType:any,placeType:any,id:any){
+    if(rentType== 'Rent' && placeType == 'Residential'){
+
+
+      var postdata = {
+        id: id,
+        view:'ok'
+      };
+      var queryString = new URLSearchParams(postdata).toString();
+      this.router.navigateByUrl(
+        '/rr-view?' + queryString
+      );
+    }
+    if(rentType== 'Sale' && placeType == 'Residential'){
+
+
+      var data = {
+        id: id,
+        view:'ok'
+      };
+      var queryString = new URLSearchParams(data).toString();
+      this.router.navigateByUrl(
+        '/rs-view?' + queryString
+      );
+    }
+    if(rentType== 'Rent' && placeType == 'Commercial'){
+
+
+      var postdata1 = {
+        id: id,
+        view:'ok'
+      };
+      var queryString = new URLSearchParams(postdata1).toString();
+      this.router.navigateByUrl(
+        '/cr-view?' + queryString
+      );
+    }
+    if(rentType== 'Sale' && placeType == 'Commercial'){
+
+
+      var postdata2 = {
+        id: id,
+        view:'ok'
+      };
+      var queryString = new URLSearchParams(postdata2).toString();
+      this.router.navigateByUrl(
+        '/cs-view?' + queryString
+      );
+    }
+
+  }
 
 }

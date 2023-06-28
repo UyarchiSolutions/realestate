@@ -561,9 +561,9 @@
 
 
 <div class="bottom-section">
-    <div class="pagination" *ngIf="totalval >= 10 && postshow ">
+    <div class="pagination" *ngIf="postshow && !(page ==0 && totalval < 9)">
         <button>
-        <div class="page-prev"  (click)="pagination(0)">
+        <div class="page-prev" [ngStyle]="{'pointer-events': page ==0 ? 'none' : 'auto' }" (click)="pagination(0)">
             
             <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -620,8 +620,8 @@
                     <div class="overflow-contents" >
                         <li *ngFor="let arr of RecentSearchArr; let i = index" (click)="GetRecentSearch(i)">
                             <div class="breadcrumbs">{{arr.HouseOrCommercialType}}>{{arr.type}}</div>
-                            <p>{{ctArray(arr.area)}} <span>>{{arr.furnishing}}</span><span *ngIf="arr.BHKType">{{arr.BHKType}}</span>
-                             <span *ngIf="arr.propertType">{{arr.propertType}}</span> </p>
+                            <p>{{ctArray(arr.area)}} <span>>{{arr.furnishing}}</span>
+                                <span *ngFor="let data of arr.selected">{{data}} > </span> </p>
                          </li>
                
                 </div>

@@ -27,7 +27,12 @@ export class CreatepasswordComponent {
     if (this.password.valid && this.password.get('password')?.value == this.password.get('confirmPassword')?.value) {
       this.buyerService.createPassword(this.id, this.password.value).subscribe((res: any) => {
         this.isSubmit=false;
-        this.route.navigate(['/buyerLogin'])
+        let data={
+          next:'true'
+        }
+        let query = new URLSearchParams(data).toString()
+        this.route.navigateByUrl('/buyerLogin?' + query)
+        // this.route.navigate(['/buyerLogin'])
       })
     }
 

@@ -98,7 +98,7 @@
                                         </th>
             </tr>
     
-            <tr *ngFor="let v of popValue;let i =index" (click)="GetDataBYId(v._id,i)" >
+            <tr *ngFor="let v of popValue;let i =index" (click)="GetDataBYId(v)" >
                 <td>{{v.propertType}}</td>
                 <td>{{v.area}}</td>
                 <td>{{v.BHKType}}</td>
@@ -126,12 +126,14 @@
 <ng-container *ngIf="ResiRentpop"> 
     <div class="popup-parent" [formGroup]="popform">
         <div class="popup">
+            <button type="button" class="btn-close" (click)="close()"  aria-label="Close" style="margin-left: 100%;" ></button>
  <div class="breadcrumbs">
     <ul>
         
         <li>Residential ></li>
         <li>Rent :</li>
     </ul>
+   
  </div>
 <div class="search-field">
     <div class="searched" *ngIf="areaPArr">
@@ -346,6 +348,7 @@
  <ng-container *ngIf="ResiSalepop"> 
     <div class="popup-parent" [formGroup]="popform">
         <div class="popup">
+            <button type="button" class="btn-close" (click)="close()"  aria-label="Close" style="margin-left: 100%;" ></button>
  <div class="breadcrumbs">
     <ul>
      
@@ -551,6 +554,7 @@
  <ng-container *ngIf="CommRentpop"> 
     <div class="popup-parent" [formGroup]="popform">
         <div class="popup">
+            <button type="button" class="btn-close" (click)="close()"  aria-label="Close" style="margin-left: 100%;" ></button>
  <div class="breadcrumbs">
     <ul>
      
@@ -807,6 +811,7 @@
  <ng-container *ngIf="CommSalepop"> 
     <div class="popup-parent" [formGroup]="popform">
         <div class="popup">
+            <button type="button" class="btn-close" (click)="close()"  aria-label="Close" style="margin-left: 100%;" ></button>
  <div class="breadcrumbs">
     <ul>
      

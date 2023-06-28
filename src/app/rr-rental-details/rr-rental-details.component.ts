@@ -70,7 +70,8 @@ export class RrRentalDetailsComponent implements OnInit{
             ExpectedDeposit:res.depositeAmount,
             ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
             ExcludeMaintenance:res.maintainenceCost,
-            routeLink:this.routerlink
+            routeLink:this.routerlink,
+            sqft:res.squareFT
             
           });
         }
@@ -93,13 +94,12 @@ export class RrRentalDetailsComponent implements OnInit{
         if(this.data.MaintenanceStatus){
           this.Lmaintance(this.data.MaintenanceStatus);
           this.LmaintanceVal= this.data.MaintenanceStatus; 
-          this.Lmainmon=res.squareFT;
           this.leaseform.patchValue({
           
             LExpectedDeposit:res.MonthlyRentFrom,
             LExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
             LExcludeMaintenance:res.maintainenceCost,
-          
+            sqft:res.squareFT
           }); 
         }
         else{
@@ -125,8 +125,10 @@ export class RrRentalDetailsComponent implements OnInit{
 
     if(this.maintanceVal=='Exclude Maintenance'){
       this.rentform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+      this.rentform.addControl('sqft', new FormControl('', [Validators.required,]));
     }else{
       this.rentform.removeControl('ExcludeMaintenance');
+      this.rentform.removeControl('sqft');
     }
   }
   Lmaintance(a:any){
@@ -135,8 +137,10 @@ export class RrRentalDetailsComponent implements OnInit{
 
     if(this.LmaintanceVal=='Exclude Maintenance'){
       this.leaseform.addControl('LExcludeMaintenance', new FormControl('', [Validators.required,]));
+      this.leaseform.addControl('sqft', new FormControl('', [Validators.required,]));
     }else{
       this.leaseform.removeControl('LExcludeMaintenance');
+      this.leaseform.removeControl('sqft');
     }
   }
   LmaintanceVal='Include Maintenance';
@@ -145,13 +149,17 @@ export class RrRentalDetailsComponent implements OnInit{
   mainmon:any;
 
   mainmonv(a:any){
-
+    this.rentform.patchValue({
+      sqft:a
+    })
     this.mainmon=a;
   }
   Lmainmon:any;
 
   Lmainmonv(a:any){
-
+    this.leaseform.patchValue({
+      sqft:a
+    })
     this.Lmainmon=a;
   }
   Checkdata:any=[];
@@ -167,7 +175,7 @@ export class RrRentalDetailsComponent implements OnInit{
       depositeAmount:this.rentform.get('ExpectedDeposit').value,
       depositeNegociable:this.rentform.get('ExpectedDepositNegotiable').value,
       maintainenceCost:this.rentform.get('ExcludeMaintenance').value,
-      squareFT:this.mainmon,
+      squareFT:this.rentform.get('sqft').value,
       MaintenanceStatus:this.maintanceVal,
     }}
     else{
@@ -180,7 +188,7 @@ export class RrRentalDetailsComponent implements OnInit{
         MaintenanceStatus:this.maintanceVal,
     }
    }
-    console.log(this.Checkdata,'rentsub');
+   if(this.rentform.valid){
     this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
       console.log(res);
       
@@ -193,6 +201,9 @@ export class RrRentalDetailsComponent implements OnInit{
      
     })
   }
+   }
+    console.log(this.Checkdata,'rentsub');
+  
     
   }
   
@@ -208,7 +219,7 @@ export class RrRentalDetailsComponent implements OnInit{
       MonthlyRentFrom:this.leaseform.get('LExpectedDeposit').value,
       depositeNegociable:this.leaseform.get('LExpectedDepositNegotiable').value,
       maintainenceCost:this.leaseform.get('LExcludeMaintenance').value,
-      squareFT:this.Lmainmon,
+      squareFT:this.leaseform.get('sqft').value,
       MaintenanceStatus:this.LmaintanceVal,
     }
     console.log(this.Checkdata);}
@@ -221,17 +232,20 @@ export class RrRentalDetailsComponent implements OnInit{
         MaintenanceStatus:this.LmaintanceVal,
       }
     }
-    this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
-      console.log(res);
-      var postdata ={
-        id:res._id
-      }
-      var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
-      console.log(res);
-      this.formSubmitted=true;
-    })
-
+    if(this.leaseform.valid){
+      this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
+        console.log(res);
+        var postdata ={
+          id:res._id
+        }
+        var queryString = new URLSearchParams(postdata).toString();
+        this.router.navigateByUrl('/start-posting/residentaial-rent-amentites?' + queryString);
+        console.log(res);
+        this.formSubmitted=true;
+      })
+  
+    }
+  
   }
   }
  

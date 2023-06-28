@@ -175,7 +175,8 @@ export class CommercialRentViewComponent implements OnInit {
                 ? params.params['floor'].split(',')
                 : [];
           
-
+                this.showCurrentTab=params.params['showtab']
+                this.showTab1(this.showCurrentTab)
         // this.areaArr =this.areaArr.split(',');
         //console.log(this.propertType,this.BHKType,'gfgbgfh');
         if (!(this.BHKType == '' && this.BHKType == null)) {
@@ -398,7 +399,7 @@ export class CommercialRentViewComponent implements OnInit {
 
 
   updateFilter(v: any, position: any) {
-    if(this.areaArr.length > 0){
+  
       position=position.toString();
       console.log(v.target.value,'function')
       if (v.target.checked) {
@@ -631,16 +632,18 @@ export class CommercialRentViewComponent implements OnInit {
             }
           }
       //data to api
-      this.assignToSaveData();
-      //console.log(this.ShowOnlyArr);
-      let query = new URLSearchParams(this.sendData).toString();
-      this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
-      console.log('function end')
-    }
-    else{
-      this.toastr.error('Fill the field', 'Please Select correct location!', {
-        positionClass: 'toast-top-center'});
-    }
+      if(this.areaArr.length>0){
+        this.assignToSaveData();
+        //console.log(this.ShowOnlyArr);
+        let query = new URLSearchParams(this.sendData).toString();
+        this.router.navigateByUrl('/buyer-commercial-rent-view?' + query);
+        console.log('function end')
+      }else{
+            this.toastr.error('Fill the field', 'Please Select correct location!', {
+              positionClass: 'toast-top-center'});
+          }
+   
+   
    
   }
   areaF:any;
@@ -674,7 +677,8 @@ export class CommercialRentViewComponent implements OnInit {
       buildupto: this.builtMax,
       priceFrom: this.rentMin,
       priceTo: this.rentMax,
-      floor:this.floordata
+      floor:this.floordata,
+      showtab:this.showCurrentTab
     };
     console.log(this.ametArr,'jhvjhv')
   }
@@ -1231,7 +1235,64 @@ export class CommercialRentViewComponent implements OnInit {
   saveShow = false;
   alertShow = false;
   nofiShow=false;
+  showCurrentTab='post';
+
   showTab(tab: any) {
+    this.showCurrentTab=tab
+    if (this.showCurrentTab == 'post') {
+      this.assignToSaveData();
+      this.postshow = true;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    
+    }
+    if (this.showCurrentTab == 'interest') {
+   
+      this.postshow = false;
+      this.interestShow = true;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = false;
+      this.assignToSaveData();
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    }
+    if (this.showCurrentTab == 'save') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = true;
+      this.alertShow = false;
+      this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    }
+    if (this.showCurrentTab == 'alert') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = true;
+      this.nofiShow = false;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    }
+    if (this.showCurrentTab == 'nofi') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = true;
+      let query = new URLSearchParams(this.sendData).toString();
+      this.router.navigateByUrl('/buyer-commercial-rent-view?'+ query);
+    }
+  }
+  showTab1(tab: any) {
     console.log('tab choose')
     if (tab == 'post') {
       this.postshow = true;

@@ -46,6 +46,9 @@ export class ManageSubHostComponent implements OnInit {
     let query = new URLSearchParams(data).toString()
     this.router.navigateByUrl('/manage-sub-host/add-sub-host?'+query)
   }
-
-
+  delete(id:any){
+    this.service.delete_host(id).subscribe((res:any)=>{
+      this.getAll();
+    })
+  }
 }

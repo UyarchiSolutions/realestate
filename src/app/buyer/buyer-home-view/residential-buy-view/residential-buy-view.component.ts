@@ -115,7 +115,7 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.arouter.queryParamMap.subscribe((params: any) => {
       ////consolele.log(params.params.formatAdd)
       console.log(params,params.params);
-      this.showTab(params['show']);
+   
      
         //consolele.log(params);
         this.formatAdd = params.params.formatAdd;
@@ -182,7 +182,7 @@ export class ResidentialBuyViewComponent implements OnInit {
         this.builtMax=params.params['buildupto'] ? params.params['buildupto'] : 50000;
 
         this.showCurrentTab=params.params['showtab']
-        this.showTab(this.showCurrentTab)
+         this.showTab1(this.showCurrentTab)
 
             if (!(this.BHKType == '' && this.BHKType == null)) {
               this.BHKType.forEach((a: any) => {
@@ -410,7 +410,7 @@ export class ResidentialBuyViewComponent implements OnInit {
   FloorArr: any = [];
 
   updateFilter(v: any, position: any) {
-    if(this.areaArr.length > 0){
+   
       position = position.toString();
       let value = v.target.value;
       console.log(v.target.value, 'selected', value);
@@ -617,16 +617,16 @@ export class ResidentialBuyViewComponent implements OnInit {
         }
       }
       //data to api
-      this.assignToSaveData();
-      ////consolele.log(this.ShowOnlyArr);
-      let query = new URLSearchParams(this.sendData).toString();
-      this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
-    }
-    else{
-      this.toastr.error('Fill the field', 'Please Select correct location!', {
-        positionClass: 'toast-top-center'});
-    }
-  
+      if(this.areaArr.length>0){
+        this.assignToSaveData();
+        ////consolele.log(this.ShowOnlyArr);
+        let query = new URLSearchParams(this.sendData).toString();
+        this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+      }else{
+            this.toastr.error('Fill the field', 'Please Select correct location!', {
+              positionClass: 'toast-top-center'});
+          }
+
   }
   
   areaF: any;
@@ -1240,6 +1240,61 @@ export class ResidentialBuyViewComponent implements OnInit {
       this.nofiShow = true;
       let query = new URLSearchParams(this.sendData).toString();
       this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+    }
+  }
+  showTab1(tab: any) {
+    this.showCurrentTab=tab
+    if (this.showCurrentTab == 'post') {
+      this.assignToSaveData();
+      this.postshow = true;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = false;
+      // let query = new URLSearchParams(this.sendData).toString();
+      // this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    
+    }
+    if (this.showCurrentTab == 'interest') {
+   
+      this.postshow = false;
+      this.interestShow = true;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = false;
+      this.assignToSaveData();
+      // let query = new URLSearchParams(this.sendData).toString();
+      // this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    if (this.showCurrentTab == 'save') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = true;
+      this.alertShow = false;
+      this.nofiShow = false;
+      // let query = new URLSearchParams(this.sendData).toString();
+      // this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    if (this.showCurrentTab == 'alert') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = true;
+      this.nofiShow = false;
+      // let query = new URLSearchParams(this.sendData).toString();
+      // this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+    }
+    if (this.showCurrentTab == 'nofi') {
+      this.assignToSaveData();
+      this.postshow = false;
+      this.interestShow = false;
+      this.saveShow = false;
+      this.alertShow = false;
+      this.nofiShow = true;
+      // let query = new URLSearchParams(this.sendData).toString();
+      // this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
     }
   }
   RBtab = true;

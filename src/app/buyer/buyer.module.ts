@@ -41,7 +41,6 @@ import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-edit.component';
 
 
-
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
   declarations: [
@@ -81,6 +80,8 @@ import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-ed
     BuyerFooterComponent,
     BuyerProfileComponent,
     BuyerProfileEditComponent,
+  
+   
  
    
   ],

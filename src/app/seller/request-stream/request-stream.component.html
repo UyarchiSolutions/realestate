@@ -18,19 +18,20 @@
     <label>Choose Plan :</label>
      <select type="text"  (change)="getPlanId($event)"   >
         <option disabled selected  >Choose plan</option>
-        <option *ngFor=" let name of AllData"[value]="name.planId" >{{name.planName}}</option>
-     
-
+        <option *ngFor=" let name of planNames"[value]="name.planId" > {{name.planName}}</option>
         </select>
   </div>
+  <p style="color: red;" *ngIf="planId==null && submitted">Please fill the Stream Name!</p>
+  
   <div  *ngIf="id">
-    <label>Chosen Plan :</label>
+    <label>Plan :</label>
     <p style="margin-right: 175px;">{{planName}}</p>
   </div>
 
   <div>
     <label>Stream Name :</label> <input  formControlName="streamName" type="text" placeholder="Enter Stream Name">
   </div>
+  <p style="color: red;" *ngIf="myform.get('streamName').invalid && submitted">Please fill the Stream Name!</p>
   <div style="display: flex; align-items: center;">
     <label>Stream Date :</label> 
     <div class="stream-date" style="margin: 0;">
@@ -48,6 +49,12 @@
         </select>
     </div>
   </div>
+  <div *ngIf="submitted && myform.invalid" style="display: flex; flex-direction: row;color: red;">
+    <p *ngIf="myform.get('dateDate').invalid && submitted">Please fill the Date!</p>
+    <p *ngIf="myform.get('dateMon').invalid && submitted">Please fill the Month!</p>
+    <p *ngIf="myform.get('dateYear').invalid && submitted">Please fill the Year!</p>
+  </div>
+  
 
   <div style="display: flex; align-items: center;">
     <label>Stream Time :</label> 
@@ -63,6 +70,11 @@
             <option value="PM" >P.M </option>
         </select>
     </div>
+  </div>
+  <div *ngIf="submitted && myform.invalid" style="display: flex; flex-direction: row;color: red;">
+    <p *ngIf="myform.get('timeHr').invalid && submitted">Please fill the Hour!</p>
+    <p *ngIf="myform.get('timeMin').invalid && submitted">Please fill the Min!</p>
+    <p *ngIf="myform.get('timeZone').invalid && submitted">Please fill the Time zone!</p>
   </div>
 
   <div>
@@ -87,6 +99,7 @@
 </div>
   </div>
   </div>
+  <p style="color: red;" *ngIf="postId==null && submitted">Please fill the Stream Name!</p>
 
   <div>
     <label>Primary Communication :</label>
@@ -95,21 +108,24 @@
       <option  *ngFor="let lang of lang" [value]="lang" >{{lang}}</option>
     </select>
   </div>
-
+  <p style="color: red;" *ngIf="myform.get('primCom').invalid && submitted">Please fill the primary zone!</p>
   <div>
     <label>Secondary Communication :</label>
     <select formControlName="secCom">
       <option disabled *ngIf="!primComm">First select Primary Communication</option>
-      <option disabled *ngIf="primComm">Select</option>
-      <option  *ngFor="let lang of lang3" [value]="lang" >{{lang}}</option>
+      <option     >Select</option>
+     
+        <option  *ngFor="let lang of lang3" [value]="lang" >{{lang}}</option>
+     
     </select>
   </div>
+  <p style="color: red;" *ngIf="myform.get('secCom').invalid && submitted">Please fill the Secondary zone!</p>
 
   <div>
     <label>Description :</label>
     <textarea  formControlName="des" placeholder="Type here.."></textarea>
   </div>
-  
+  <p style="color: red;" *ngIf="myform.get('des').invalid && submitted">Please fill the Description !</p>
  
   
   <div class="submit">

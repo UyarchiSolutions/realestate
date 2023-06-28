@@ -179,7 +179,7 @@ border: solid rgba(128, 128, 128, 0.523) 1px;
     width: 20%;
     padding: 10px 20px;
     display: flex;
-    background-color: #473B32;
+    background-color: var(--bgBlue);
     align-items: center;
     color: #FEFFEF;
     cursor: pointer;
@@ -195,7 +195,7 @@ border: solid rgba(128, 128, 128, 0.523) 1px;
 .nearby-locations{
     display: flex;
     align-items: center;
-    box-shadow: 0px -1px 4px #cfb9978b;
+    box-shadow: 0px -1px 4px var(--bgBlue);
     padding: 5px 0;
     /* visibility: hidden; */
 }
@@ -209,7 +209,7 @@ border: solid rgba(128, 128, 128, 0.523) 1px;
     display: flex;
     align-items: center;
     margin: 10px 0;
-background-color: #473B32;
+background-color: var(--bgBlue);
 color: var( --bgligthBlue);
 font-size: 12px;
 padding: 5px 10px;
@@ -271,7 +271,7 @@ margin:0 10px;
       padding: 5px 10px;
     font-size: 12px;
     border-radius: 5px;
-      background-color: #B99B6B;
+      background-color: var(--bgBlue);
     color: white;
       min-width: fit-content;
       align-items: center;

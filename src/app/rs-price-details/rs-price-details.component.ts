@@ -20,8 +20,6 @@ export class RsPriceDetailsComponent implements OnInit {
       MonthlyRentFrom: new FormControl('',Validators.required),
       ExpectedpricetNegotiable:new FormControl(),
       CurrentlyInLoan:new FormControl(),
-     
-      MrSq: new FormControl()
   
     })
   
@@ -29,46 +27,66 @@ export class RsPriceDetailsComponent implements OnInit {
     constructor(private fb:FormBuilder,private arouter: ActivatedRoute,
       private service:PostPropertyService,
       private router:Router){}
-     
+     edit:any;
     ngOnInit(): void {
-  
+  this.maintanceVal='Include Maintenance';
       
       
      
       this.arouter.queryParams.subscribe(params => {
         console.log(params);
         this.id=params['id'];
+        this.edit=params['edit'];
+
         console.log(this.id,"this is id from sp");
         
       });
   
   
-      this.service.formget(this.id).subscribe((res:any)=>{
+this.service.formget(this.id).subscribe((res:any)=>{
   
         this.data=res;
   
         console.log(res);
         if(res.MaintenanceStatus =='Exclude Maintenance'){
           this.maintance(this.data.MaintenanceStatus);
-          this.mainmon=res.squareFT;
-         }
-        this.priceform.patchValue({
-          MonthlyRentFrom:res.MonthlyRentFrom,
-          ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
-          ExpectedDepositNegotiable:res.depositeNegociable=='true'?true:null,
-          ExcludeMaintenance:res.maintainenceCost,
-          CurrentlyInLoan:res.current_in_loan=='true'?true:null,
+          this.maintanceVal=res.MaintenanceStatus;
+          this.priceform.patchValue({
+            MonthlyRentFrom:res.MonthlyRentFrom,
+            ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
           
-          
-        });console.log('value patched') ;
-          this.mainmon=res.squareFT;
+            ExcludeMaintenance:res.maintainenceCost,
+            CurrentlyInLoan:res.current_in_loan=='true'?true:null,
+            sqft:res.squareFT
+            
+          });console.log('value patched') ;
           if(res.MaintenanceStatus){
-            this.maintanceVal=res.MaintenanceStatus;
+            this.mainmon=res.squareFT
+            this.maintanceVal=res.MaintenanceStatus
           }
+         }
+       
+         else{
+          if(res.MaintenanceStatus){
+            this.mainmon=res.squareFT
+            this.maintanceVal=res.MaintenanceStatus
+          }
+          console.log('value patched')
+           
+          this.priceform.patchValue({
+            MonthlyRentFrom:res.MonthlyRentFrom,
+            ExpectedpricetNegotiable:res.RentNegociable=='true'?true:null,
+            CurrentlyInLoan:res.current_in_loan=='true'?true:null,
+            
+            
+          })
+         }
         
         
          }
       )
+  
+      
     }
     maintanceVal='Include Maintenance';
     mv='Include Maintenance';
@@ -78,23 +96,22 @@ export class RsPriceDetailsComponent implements OnInit {
 
       if(this.maintanceVal=='Exclude Maintenance'){
         this.priceform.addControl('ExcludeMaintenance', new FormControl('', [Validators.required,]));
+        this.priceform.addControl('sqft', new FormControl('', [Validators.required,]));
       }else{
         this.priceform.removeControl('ExcludeMaintenance');
+        this.priceform.removeControl('sqft');
       }
     }
 
     mainmon='';
   
     mainmonv(a:any){
-  
+      this.priceform.patchValue({
+        sqft: a
+      })
       this.mainmon=a;
     }
-    Lmainmon:any;
-  
-    Lmainmonv(a:any){
-  
-      this.Lmainmon=a;
-    }
+   
     routerlink='/start-posting/residential-sale-price-details';
     submitted=false;
     Checkdata:any=[];
@@ -106,9 +123,10 @@ export class RsPriceDetailsComponent implements OnInit {
           this.Checkdata={
     
             MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-   
+            current_in_loan:this.priceform.get('CurrentlyInLoan')?.value,
+            RentNegociable:this.priceform.get('ExpectedpricetNegotiable')?.value,
             maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-            squareFT:this.mainmon,
+            squareFT:this.priceform.get('sqft').value,
             MaintenanceStatus:this.maintanceVal,
           
           }
@@ -116,23 +134,28 @@ export class RsPriceDetailsComponent implements OnInit {
           this.Checkdata={
     
             MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-          
+            RentNegociable:this.priceform.get('ExpectedpricetNegotiable')?.value,
+            CurrentlyInLoan:this.priceform.get('CurrentlyInLoan')?.value,
             MaintenanceStatus:this.maintanceVal,
           
           }
         }
-      
-      this.service.formput(this.id, this.Checkdata).subscribe((res:any)=>{
-        console.log(res);
-        
-        var postdata ={
-          id:res._id
+        if(this.priceform.valid){
+          this.service.formput(this.id, this.Checkdata).subscribe((res:any)=>{
+            console.log(res);
+            
+            var postdata ={
+              id:res._id
+            }
+            var queryString = new URLSearchParams(postdata).toString();
+            this.router.navigateByUrl('/start-posting/residential-sale-amentites?' + queryString);
+            console.log(res);
+            
+          })
+
         }
-        var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/start-posting/residential-sale-amentites?' + queryString);
-        console.log(res);
-        
-      })
+      
+   
      }
     }
   

@@ -50,7 +50,7 @@
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-    <p >{{maintanceVal}}</p>
+    <p *ngIf="maintanceVal" >{{maintanceVal}}</p>
       
         <ul class="dropdown-menu select-filed-options" >
 
@@ -72,7 +72,7 @@
         </select>  -->
         <div class="dropdown select-field" style="width: 45%;font-size: 12px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
-           <p *ngIf="mainmon == null &&  !data.squareFT">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> <p [innerText]="data.squareFT" *ngIf="data.squareFT && !mainmon"></p>
+           <p *ngIf="!mainmon ">select</p> <p [innerHTML]="mainmon" *ngIf="mainmon" ></p> 
               
                 <ul class="dropdown-menu select-filed-options" >
         
@@ -85,9 +85,9 @@
     </div>
 
     <div></div>
-    <div *ngIf="maintanceVal=='Exclude Maintenance'">
+    <div *ngIf="maintanceVal=='Exclude Maintenance'" style="display: grid;">
         <p class="redtext" *ngIf="priceform.get('ExcludeMaintenance').errors?.required && submitted ">Exclude Maintance is required!</p>
-        <p class="redtext" *ngIf=" mainmon==null && submitted ">Select Type!</p>
+        <p class="redtext" *ngIf=" priceform.get('sqft').invalid && submitted ">Select Type!</p>
       </div>
 
 <div class="save-continue">
