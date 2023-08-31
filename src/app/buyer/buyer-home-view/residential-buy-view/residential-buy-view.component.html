@@ -285,9 +285,9 @@
                             <ngx-slider [options]="options2" [(value)]="builtMin"
                             [(highValue)]="builtMax"  (userChangeEnd)="Builtchange()"></ngx-slider>  </li>
                         <li class="price-range">
-                            <input class="from" type="number" placeholder="From"  [(value)]="builtMin"  #builtLow  (change)="changeBuilt(builtLow)" ><p>-
+                            <input class="from" type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="From"  [(value)]="builtMin"  #builtLow  (change)="changeBuilt(builtLow)" ><p>-
 
-                            </p><input class="to" type="number" placeholder="To"  [(value)]="builtMax" #builtHigh (change)="changeBuilt1(builtHigh)" ></li>
+                            </p><input class="to" type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="To"  [(value)]="builtMax" #builtHigh (change)="changeBuilt1(builtHigh)" ></li>
                        </ul>
                   </div>
             </li>
@@ -778,8 +778,8 @@
 </section>
 
 <div class="min-max">
-    <input type="number" placeholder="Min"  [(value)]="minValue"  #minval (change)="getRentRange(minval)" >
-    <input type="number" placeholder="Max" [(value)]="maxValue" #maxval (change)="getRentRange1(maxval)" >
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Min"  [(value)]="minValue"  #minval (change)="getRentRange(minval)" >
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Max" [(value)]="maxValue" #maxval (change)="getRentRange1(maxval)" >
 </div>
 
 

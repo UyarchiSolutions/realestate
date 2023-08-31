@@ -27,8 +27,13 @@
               aria-expanded="false"
             >
               <p [innerHTML]="pv"></p>
-              <p [innerHTML]="data.propertType" *ngIf="data.propertType && !pv" ></p>
-              <p *ngIf="!pv && !data.propertType" style="opacity: 0.5">Property Type</p>
+              <p
+                [innerHTML]="data.propertType"
+                *ngIf="data.propertType && !pv"
+              ></p>
+              <p *ngIf="!pv && !data.propertType" style="opacity: 0.5">
+                Property Type
+              </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
@@ -44,66 +49,97 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="propertyv('Gated Community')"
+                  <a
+                    class="dropdown-item"
+                    (click)="propertyv('Gated Community')"
                     >Gated Community</a
                   >
                 </li>
               </ul>
             </div>
           </div>
-          <p class="redtext" *ngIf=" pv ==null && submitted">Select Property Type</p>
+          <p class="redtext" *ngIf="pv == null && submitted">
+            Select Property Type
+          </p>
 
           <div class="floors">
             <label>Floors :</label>
-            <div style="position: static !important">
+            <div >
               <div class="dropdown select-field">
-
-                <p [innerHTML]="tfv" *ngIf="tfv" type="button" data-bs-toggle="dropdown" aria-expanded="false"></p>
-                <p  *ngIf="!tfv && !data.noOfFloor" style="opacity: 0.5"   type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">Total Floors</p>
-                <p [innerText]="data.noOfFloor" *ngIf="!tfv &&  data.noOfFloor "  data-bs-toggle="dropdown" aria-expanded="false" ></p>
+                <p 
                 
+                  [innerHTML]="tfv"
+                  *ngIf="tfv"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                ></p>
+                <p
+                  *ngIf="!tfv && !data.noOfFloor"
+                  style="opacity: 0.5"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Total Floors
+                </p>
+                <p
+                  [innerText]="data.noOfFloor"
+                  *ngIf="!tfv && data.noOfFloor"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                ></p>
+
                 <ul class="dropdown-menu select-filed-options">
                   <li>
-                    <a class="dropdown-item" (click)="groundFloorv(0)"
-                    data-bs-toggle="dropdown" aria-expanded="false" >Ground Floor</a
+                    <a
+                     class="dropdown-item"
+                      (click)="groundFloorv(0)"
+                      >Ground Floor</a
                     >
                   </li>
                   <li
+                  
                     (click)="groundFloorv(countf)"
                     *ngFor="let countf of myarray"
-                    data-bs-toggle="dropdown" aria-expanded="false"
                   >
                     {{ countf }} floors
                   </li>
                 </ul>
               </div>
 
-              <div class="dropdown select-field">
-                <p
-                  [innerHTML]="ofv"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false" *ngIf="ofv"
-                ></p>
-                <p  data-bs-toggle="dropdown"
-                aria-expanded="false" *ngIf="!ofv && !data.floorNo " style="opacity: 0.5">On Floors</p>
-                <p [innerText]="data.floorNo" *ngIf="!ofv && data.floorNo " data-bs-toggle="dropdown"
-                aria-expanded="false" ></p>
-                
+              <div class="dd select-field">
+                <p (click)="toggleDropdown()" [innerHTML]="ofv" *ngIf="ofv"></p>
+                <p (click)="toggleDropdown()" *ngIf="!ofv && !data.floorNo" style="opacity: 0.5">
+                  On Floors
+                </p>
+                <p (click)="toggleDropdown()"  [innerText]="data.floorNo" *ngIf="!ofv && data.floorNo"></p>
 
-                <ul class="dropdown-menu select-filed-options">
-                  <li><a class="dropdown-item" (click)="onFloorv('Groud Floor',0)" data-bs-toggle="dropdown"
-                    aria-expanded="false" >Groud Floor</a></li>
-                  <li *ngFor="let floor of numarray" (click)="onFloorv(floor,floor)" data-bs-toggle="dropdown"
-                  aria-expanded="false">{{ floor }} Floors</li>
+                <ul class="dd-menu select-filed-options" [class.open]="isDropdownOpen">
+                  <li>
+                    <a
+                      
+                      (click)="onFloorv('Groud Floor', 0)"
+                      >Groud Floor</a
+                    >
+                  </li>
+                  <li
+                    *ngFor="let floor of numarray"
+                    (click)="onFloorv(floor, floor)"
+                  >
+                    {{ floor }} Floors
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="err-msg" >
-            <p  *ngIf=" tfv == null && submitted" style ="width: 25%;">Select Total floors</p>
-            <p  *ngIf=" ofv == null && submitted"  style ="width: 21%;" >Select On floor</p>
-
+          <div class="err-msg">
+            <p *ngIf="tfv == null && submitted" style="width: 25%">
+              Select Total floors
+            </p>
+            <p *ngIf="ofv == null && submitted" style="width: 21%">
+              Select On floor
+            </p>
           </div>
 
           <div>
@@ -115,9 +151,11 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <p [innerHTML]="aop" *ngIf="aop" ></p>
-              <p [innerHTML]="data.ageOfBuilding" *ngIf="!aop" ></p>
-              <p p *ngIf="!aop && !data.ageOfBuilding" style="opacity: 0.5">Age of Property</p>
+              <p [innerHTML]="aop" *ngIf="aop"></p>
+              <p [innerHTML]="data.ageOfBuilding" *ngIf="!aop"></p>
+              <p p *ngIf="!aop && !data.ageOfBuilding" style="opacity: 0.5">
+                Age of Property
+              </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
@@ -151,7 +189,9 @@
               </ul>
             </div>
           </div>
-          <p class="redtext"  *ngIf=" aop == null && submitted">Select Age pf property Type</p>
+          <p class="redtext" *ngIf="aop == null && submitted">
+            Select Age pf property Type
+          </p>
           <div>
             <label>BHK Type :</label>
 
@@ -162,42 +202,62 @@
               aria-expanded="false"
             >
               <p [innerHTML]="bhkv"></p>
-              <p [innerHTML]="data.BHKType" *ngIf="!bhkv" ></p>
-              <p p *ngIf="!bhkv && !data.BHKType" style="opacity: 0.5">BHK Type</p>
+              <p [innerHTML]="data.BHKType" *ngIf="!bhkv"></p>
+              <p p *ngIf="!bhkv && !data.BHKType" style="opacity: 0.5">
+                BHK Type
+              </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('1 RK',0)">1 RK</a>
+                  <a class="dropdown-item" (click)="bhktyev('1 RK', 0)">1 RK</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('1 BHK',1)">1 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('1 BHK', 1)"
+                    >1 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('2 BHK',2)">2 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('2 BHK', 2)"
+                    >2 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('3 BHK',3)">3 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('3 BHK', 3)"
+                    >3 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('4 BHK',4)">4 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('4 BHK', 4)"
+                    >4 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('5 BHK',5)">5 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('5 BHK', 5)"
+                    >5 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('6 BHK',6)">6 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('6 BHK', 6)"
+                    >6 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('7 BHK',7)">7 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('7 BHK', 7)"
+                    >7 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('8 BHK',8)">8 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('8 BHK', 8)"
+                    >8 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('9 BHK',9)">9 BHK</a>
+                  <a class="dropdown-item" (click)="bhktyev('9 BHK', 9)"
+                    >9 BHK</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" (click)="bhktyev('10+ BHK',10)"
+                  <a class="dropdown-item" (click)="bhktyev('10+ BHK', 10)"
                     >10 BHK</a
                   >
                 </li>
@@ -205,7 +265,9 @@
             </div>
           </div>
 
-          <p class="redtext" *ngIf=" bhkv == null && submitted">Select BHK Type</p>
+          <p class="redtext" *ngIf="bhkv == null && submitted">
+            Select BHK Type
+          </p>
 
           <div>
             <label>Build up Area :</label>
@@ -219,8 +281,9 @@
                 margin-bottom: 0 !important;
               "
             >
-              <input style="width: 90%" formControlName="BuildupArea" />
-              <p
+              <input  type="number"
+              onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" style="width: 90%" formControlName="BuildupArea" />
+              <p 
                 style="
                   width: 10%;
                   border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
@@ -230,8 +293,13 @@
               </p>
             </div>
           </div>
-          
-          <p class="redtext" *ngIf=" propform.get('BuildupArea').invalid &&submitted">Build Up Area is Required</p>
+
+          <p
+            class="redtext"
+            *ngIf="propform.get('BuildupArea').invalid && submitted"
+          >
+            Build Up Area is Required
+          </p>
 
           <div>
             <label>Rent Preference :</label>
@@ -243,8 +311,10 @@
               aria-expanded="false"
             >
               <p [innerHTML]="rpv"></p>
-              <p [innerHTML]="data.RentPrefer" *ngIf="!rpv" ></p>
-              <p *ngIf="!rpv && !data.RentPrefer" style="opacity: 0.5">Rent Preference</p>
+              <p [innerHTML]="data.RentPrefer" *ngIf="!rpv"></p>
+              <p *ngIf="!rpv && !data.RentPrefer" style="opacity: 0.5">
+                Rent Preference
+              </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
@@ -269,7 +339,9 @@
             </div>
           </div>
 
-          <p class="redtext" *ngIf=" rpv == null && submitted">Select Rent Preference Type</p>
+          <p class="redtext" *ngIf="rpv == null && submitted">
+            Select Rent Preference Type
+          </p>
 
           <div>
             <label>Facing Direction :</label>
@@ -280,8 +352,10 @@
               aria-expanded="false"
             >
               <p [innerHTML]="fdv"></p>
-              <p [innerHTML]="data.facingDirection" *ngIf="!fdv" ></p>
-              <p *ngIf="!fdv && !data.facingDirection" style="opacity: 0.5">Facing Direction </p>
+              <p [innerHTML]="data.facingDirection" *ngIf="!fdv"></p>
+              <p *ngIf="!fdv && !data.facingDirection" style="opacity: 0.5">
+                Facing Direction
+              </p>
 
               <ul class="dropdown-menu select-filed-options">
                 <li>
@@ -327,7 +401,9 @@
               </ul>
             </div>
           </div>
-          <p class="redtext" *ngIf=" fdv == null && submitted">Select Facing Direction</p>
+          <p class="redtext" *ngIf="fdv == null && submitted">
+            Select Facing Direction
+          </p>
 
           <div style="display: flex; align-items: flex-start">
             <label>Description :</label>
@@ -353,11 +429,15 @@
             </div>
           </div>
 
-          <div class="save-continue" >
-            <button type="submit" *ngIf="!data.final" (click)="propsub()">Save & Continue</button>
+          <div class="save-continue">
+            <button type="submit" *ngIf="!data.final" (click)="propsub()">
+              Save & Continue
+            </button>
           </div>
-          <div class="save-continue" >
-            <button type="button" *ngIf="data.final" (click)="routetopreview()">Save</button>
+          <div class="save-continue">
+            <button type="button" *ngIf="data.final" (click)="routetopreview()">
+              Save
+            </button>
           </div>
         </div>
       </form>

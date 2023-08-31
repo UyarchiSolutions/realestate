@@ -90,5 +90,12 @@ export class SellerLoginComponent {
    routeTohost(){
     this.route.navigateByUrl('/sub-host-login');
    }
-   
+   show1:boolean=false;
+   show2:boolean=false;
+   change1(){
+     this.show1=!this.show1
+    }
+    change2(){
+     this.show2=!this.show2
+    }
 }

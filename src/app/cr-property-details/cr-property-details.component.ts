@@ -189,6 +189,7 @@ export class CrPropertyDetailsComponent {
   pv:any;
   propertyv(a: any) {
     this.pv = a;
+    this.bt=null
     this.loopBuilding(a);
     console.log(a)
     

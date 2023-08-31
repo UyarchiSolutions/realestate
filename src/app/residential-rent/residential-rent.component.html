@@ -312,7 +312,7 @@
                 <li>Balcony -{{ data.balCony }}</li>
               </ul>
             </div>
-             <div class="amenities">
+             <div *ngIf="data.Amenities.length > 0" class="amenities">
               <label>Amenities :</label>
               <div >
                 <span *ngFor="let amt of data.Amenities">

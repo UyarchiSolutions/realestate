@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { SellerService } from '../seller.service';
+import { StrongPasswordValidator } from 'src/app/buyer/createpassword/password.validator';
 
 @Component({
   selector: 'app-createpasswordseller',
@@ -13,7 +14,7 @@ export class CreatepasswordsellerComponent implements OnInit {
 
   id: any;
   password = this.fb.group({
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required,StrongPasswordValidator]),
     confirmPassword: new FormControl('', Validators.required),
   })
   constructor(private fb: FormBuilder, private sellerService: SellerService, private route: Router,private active:ActivatedRoute) { }
@@ -40,5 +41,16 @@ export class CreatepasswordsellerComponent implements OnInit {
     }else{
       this.mismatch=false;
     }
+  }
+  show1:boolean=false;
+  show2:boolean=false;
+  change1(){
+    this.show1=!this.show1
+   }
+   change2(){
+    this.show2=!this.show2
+   }
+   get passwordControl() {
+    return this.password.controls;
   }
 }

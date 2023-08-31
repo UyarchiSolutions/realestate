@@ -17,7 +17,10 @@ export class RrPropertyDetailsComponent implements OnInit {
   data:any=[];
   submitted= false;
   isSaved=false;
-
+  isDropdownOpen: boolean = false;
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
   propform: any = this.fb.group({
     BuildupArea: new FormControl('', Validators.required),
     Description: new FormControl('', Validators.required),
@@ -286,6 +289,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.FloorCount=count;
     console.log(this.ofv);
    }
+   this.toggleDropdown()
   }
   aop: any;
   ageofpropv(a: any) {

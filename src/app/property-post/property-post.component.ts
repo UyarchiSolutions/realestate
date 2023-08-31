@@ -14,17 +14,8 @@ export class PropertyPostComponent implements OnInit {
 
   constructor(private arouter:ActivatedRoute,private service: PostPropertyService,private router:Router,private fb:FormBuilder){
 
-    this.arouter.queryParams.subscribe((params:any)=>{
-      console.log(params);
-      this.id=params['id']
-      this.add=params['add']
-      
-
-    })
-    console.log(this.id)
-    this.get_all_interst();
-    this.GetuserName();
   }
+  
   user:any=[];
   add:any;
   GetuserName(){
@@ -35,7 +26,15 @@ export class PropertyPostComponent implements OnInit {
   }
   id:any;
   ngOnInit(): void {
-   
+    this.arouter.queryParams.subscribe((params:any)=>{
+      console.log(params);
+      this.id=params['id']
+      this.add=params['add']
+    
+    })
+    console.log(this.id)
+    this.get_all_interst();
+    this.GetuserName();
   }
   data:any=[]
   get_all_interst(){

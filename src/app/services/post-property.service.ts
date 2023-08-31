@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cookie } from 'ng2-cookies/cookie';
+import { Env } from '../environment.dev';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostPropertyService {
-  baseURL: any = 'https://uyarchicrm.click';
+  baseURL: any = Env.baseAPi;
 
   Alldata = [];
   AllResForView: any = [];

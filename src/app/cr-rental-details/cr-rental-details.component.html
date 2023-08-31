@@ -30,7 +30,7 @@
     <div class="expected-rent">
         <label>Expected Rent :</label>
    <div >
-    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Rent" formControlName="ExpectedRent">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
         <input type="checkbox" formControlName="ExpectedrenttNegotiable" [value]="true" (click)="check()"><label>Negotiable</label>
     </div>
@@ -41,7 +41,7 @@
     <div class="expected-rent">
         <label>Advance Amount :</label>
    <div >
-    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Advance Amount" formControlName="AdvanceAmount">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
         <input type="checkbox" formControlName="AdvanceAmountNegotiable"   [value]="true" ><label>Negotiable</label>
     </div>

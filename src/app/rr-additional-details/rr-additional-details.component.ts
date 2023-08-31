@@ -15,7 +15,7 @@ adform:any = new FormGroup({
   datetostart : new FormControl ('',Validators.required),
   contactname: new FormControl('',Validators.required),
   cnumber: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
-  c2number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')])
+  c2number: new FormControl('',[Validators.pattern('^[6-9]{1}[0-9]{9}$')])
 })
 
 

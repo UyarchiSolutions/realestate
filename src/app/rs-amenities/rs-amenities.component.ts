@@ -70,7 +70,6 @@ none: any;
         bathRoomType:this.btv,
         toiletType:this.ttv,
         balconyCount:this.bv,
-      
         gate_Security: this.myform.get('gate_Security')?.value,
         parkingFacilities:this.pv,
         kitchen:this.kv,

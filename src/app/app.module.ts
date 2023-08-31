@@ -41,7 +41,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     }),
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
+      apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
     }),
   ],
   exports: [],

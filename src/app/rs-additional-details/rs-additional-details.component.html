@@ -42,14 +42,14 @@
 
         <div>
             <label>Contact Number 1 :</label>
-    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Contact Number" formControlName="cnumber" (keyup)="default()">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Contact Number" formControlName="cnumber" (keyup)="default()">
         </div>
 
         <p *ngIf="adform.get('cnumber').errors?.required && submited" class="redtext">Contact Number 1 Required!</p>
         <p *ngIf="adform.get('cnumber').errors?.pattern && submited" class="redtext">Enter a valid Number!</p>
         <div>
             <label>Contact Number 2 :</label>
-    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Contact Number 2" formControlName="c2number" (keyup)="default()">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Contact Number 2" formControlName="c2number" (keyup)="default()">
         </div>
 
         <p *ngIf="adform.get('c2number').errors?.required && submited" class="redtext">Contact Number 2 Required!</p>

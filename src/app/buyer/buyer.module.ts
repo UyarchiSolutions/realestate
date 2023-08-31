@@ -40,6 +40,8 @@ import { LoaderComponent } from '../loader/loader.component';
 import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-edit.component';
 
+import { NgxEditorModule } from 'ngx-editor';
+
 
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
@@ -94,9 +96,10 @@ import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-ed
     GooglePlaceModule,
     NgxSpinnerModule,
     NgxSliderModule,
+    NgxEditorModule,
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
+      apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
     }),
    
   ]

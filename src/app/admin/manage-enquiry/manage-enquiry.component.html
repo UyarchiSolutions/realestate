@@ -178,7 +178,7 @@
       </div>
       <div>
           <label>Phone Number :</label>
-          <input type="number" class="form-control" formControlName="phoneNumber" >
+          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="form-control" formControlName="phoneNumber" >
       </div>
       
       <div class="answer">
@@ -186,6 +186,8 @@
               Enquiry :
           </label>
           <div>
+            <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+            <ngx-editor [editor]="editor"  ></ngx-editor>
               <textarea formControlName="Enquiry" ></textarea>
               <div class="font-style">
                   <i><svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">

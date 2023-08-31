@@ -94,6 +94,7 @@ export class BuyerService {
   editAccountSeller(data:any){
     return this.http.put(this.base_url+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('buyer')}})
   }
+  //enq send
   send_enquiry(data:any){
     return this.http.post(this.base_url+'/v1/EnquieryRoute',data)
   }
@@ -109,5 +110,7 @@ export class BuyerService {
   get_save_new_noInd(type:any,ctype:any,page:any,range:any){
     return this.http.get(this.base_url+`/v1/BuyerSeller/getsaved/PropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}`,{headers:{auth:Cookie.get('buyer')}})
   }
+  
+ 
 }
 

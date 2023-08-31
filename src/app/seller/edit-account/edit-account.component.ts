@@ -18,8 +18,6 @@ export class EditAccountComponent implements OnInit {
     email:  new FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     mobile: new FormControl('',[Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
     Role:new FormControl('')
-
-    
   })
   ngOnInit(){
     this.service.myAcount().subscribe((res:any)=>{

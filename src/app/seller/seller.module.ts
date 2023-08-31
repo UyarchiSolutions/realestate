@@ -78,6 +78,7 @@ import { ResidentialRent2Component } from './seller-buyer-view/residential-rent2
 import { ResidentialSaleComponent } from './seller-buyer-view/residential-sale/residential-sale.component';
 import { CommercialRentComponent } from './seller-buyer-view/commercial-rent/commercial-rent.component';
 import { CommercialSaleComponent } from './seller-buyer-view/commercial-sale/commercial-sale.component';
+import { CommonElementsModule } from '../common-elements/common-elements.module';
 
 
 @NgModule({
@@ -164,6 +165,7 @@ import { CommercialSaleComponent } from './seller-buyer-view/commercial-sale/com
     
   ],
   imports: [
+    CommonElementsModule,
     CommonModule,
     HttpClientModule,
     RouterModule,
@@ -174,7 +176,7 @@ import { CommercialSaleComponent } from './seller-buyer-view/commercial-sale/com
   
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD8NFC9JWmp2ofQFhglFmovCa-pzPUn-gE',
+      apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
     }),
   ],
   

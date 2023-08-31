@@ -206,6 +206,7 @@ export class CsPropertyDetailsComponent {
     pv:any;
     propertyv(a: any) {
       this.pv = a;
+      this.bt=null
       console.log(this.pv);
       this.loopBuilding(a);
     }

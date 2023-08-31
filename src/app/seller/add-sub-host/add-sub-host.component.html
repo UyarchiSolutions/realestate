@@ -28,7 +28,7 @@
   <p class="error-msg" *ngIf="isSubmit&&myform.get('email').errors?.pattern">Enter a Valid Email</p>
   <div>
     <label>Mobile Number :</label> 
-    <input type="number" placeholder="Enter Mobile Number" formControlName="phoneNumber">
+    <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Mobile Number" formControlName="phoneNumber">
   </div>
   <p class="error-msg" *ngIf="isSubmit&&myform.get('phoneNumber')?.errors?.required">Mobile Number is required</p>
   <p class="error-msg" *ngIf="isSubmit&&myform.get('phoneNumber').errors?.pattern">Enter a Valid Mobile Number</p>

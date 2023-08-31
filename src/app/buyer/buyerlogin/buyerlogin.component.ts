@@ -21,8 +21,11 @@ export class BuyerloginComponent {
     next:any;
   ngOnInit() {
     this.arouter.queryParams.subscribe((params)=>{
+      console.log(params)
       this.next=params["next"]
+
     })
+    console.log(this.next)
   }
 
   genterateOtp(val: any) {
@@ -90,4 +93,12 @@ export class BuyerloginComponent {
     this.Emailnotfound = false;
     this.notfound=false;
    }
+   show1:boolean=false;
+   show2:boolean=false;
+   change1(){
+     this.show1=!this.show1
+    }
+    change2(){
+     this.show2=!this.show2
+    }
 }

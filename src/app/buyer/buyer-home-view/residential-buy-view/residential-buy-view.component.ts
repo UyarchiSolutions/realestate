@@ -1161,14 +1161,10 @@ export class ResidentialBuyViewComponent implements OnInit {
       });
   }
   removeArea(i: any) {
-    ////consolele.log(i);
     this.areaArr.splice(i, 1);
     if (!(this.areaArr.length >= 3)) {
       this.showInput = true;
-      //consolele.log(this.showInput, 'inpout show');
     }
-
-    ////consolele.log(this.areaArr,'area arry');
   }
 
   logOut() {

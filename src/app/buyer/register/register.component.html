@@ -52,7 +52,7 @@
       <form [formGroup]="loginForm">
         <div>
           <label>Name :</label>
-          <input type="email" placeholder="Enter Your name" formControlName="userName">
+          <input type="text" placeholder="Enter Your name" formControlName="userName">
         </div>
         <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('userName')?.invalid">
           <label></label>
@@ -60,7 +60,7 @@
         </div>
         <div>
           <label>Mobile Number :</label>
-          <input type="number" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile" (keyup)="errmsg()">
+          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile" (keyup)="errmsg()">
         </div>
         <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('mobile')?.invalid">
           <label></label>

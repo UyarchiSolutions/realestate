@@ -21,7 +21,6 @@ export class RsLocationDetailsComponent implements OnInit{
   
     submitted:boolean=false;
     rrlocform:any = this.fb.group({
-     
       Landmark: new FormControl ('',Validators.required),
       Pincode: new FormControl ('',[Validators.required,Validators.pattern(/^[0-9]{0,6}$/),Validators.minLength(6)]),
       BuildingName: new FormControl ('',Validators.required),

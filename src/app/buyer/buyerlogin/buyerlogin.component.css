@@ -70,9 +70,9 @@
 
 }
 
-.form div {
+.form .inputs {
   width: 100%;
-
+ 
   display: flex;
   margin: 20px 0;
   align-items: center;
@@ -201,4 +201,18 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.pas{
+  position: relative;
+}
+.svg svg{
+  width: 20px;
+  height: 30px;
+  opacity: 0.5;
+}
+
+.svg{
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
 }

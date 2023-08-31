@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{SellerService} from '../seller.service'
+import { StrongPasswordValidator } from 'src/app/buyer/createpassword/password.validator';
 
 @Component({
   selector: 'app-change-seller',
@@ -13,7 +14,7 @@ export class ChangeSellerComponent {
   id:any;
   changeFrom:any =this.fb.group({
     oldPassword:new FormControl('',Validators.required),
-    newPassword:new FormControl('',Validators.required),
+    newPassword:new FormControl('',[Validators.required,StrongPasswordValidator]),
     confirmPassword:new FormControl('',Validators.required),
     password:new FormControl(),
   });
@@ -66,5 +67,20 @@ export class ChangeSellerComponent {
     errMsg() {
       this.notMatch=false;
       this.oldPassword=false;
+    }
+    show1:boolean=false;
+    show2:boolean=false;
+    show3:boolean=false;
+    change1(){
+      this.show1=!this.show1
+     }
+     change2(){
+      this.show2=!this.show2
+     }
+     change3(){
+      this.show3=!this.show3
+     }
+     get changeFromControl() {
+      return this.changeFrom.controls;
     }
 }

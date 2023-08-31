@@ -1,25 +1,25 @@
 header{
-  height: 80px;
-  background-color: var(--bgBlue);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 70px 0 0;
-  background-image: url(../../../assets/images/build.png);
-  background-size: cover;
-}
-header>.logo{
-
-  height: 100%;
-  background-color: rgba(36, 45, 64, 0.336);
-  width: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-header>.logo>img{
-  height: 40px;
-}
+    height: 80px;
+    background-color: var(--bgBlue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px 0 0;
+    background-image: url(../../../assets/images/build.png);
+    background-size: cover;
+  }
+  header>.logo{
+ 
+    height: 100%;
+    background-color: rgba(36, 45, 64, 0.336);
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header>.logo>img{
+    height: 40px;
+  }
   header>div{
     display: flex;
   align-items: center;
@@ -69,6 +69,7 @@ header>.logo>img{
   }
   .user-name{
     color: white;
+    font-weight:700 ;
   }
   
   
@@ -82,17 +83,4 @@ header>.logo>img{
     border-bottom: 0;
     border-left: 0.3em solid transparent;
   }
-  .bottom{
-    width: 33%;
-    display: flex;
-    justify-content: space-between;
-  }
-  .bottom-content{
-    color:white;
-  }
-  .active-content :hover{
-    text-decoration: underline;
-  }
-  img{
-    height: 40px;
-  }
+  

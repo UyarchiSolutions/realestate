@@ -151,7 +151,7 @@
                     margin-bottom: 0 !important;
                   "
                 >
-                  <input style="width: 90%" formControlName="BuildupArea" type="number" />
+                  <input style="width: 90%" formControlName="BuildupArea" type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" />
                   <p
                     style="
                       width: 10%;

@@ -19,7 +19,7 @@
       <div class="otp-field">
         <label>OTP :</label>
         <div>
-          <input type="text" placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
+          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
           <p style="cursor: pointer;"  (click)="ResendOtp()">Resend OTP !</p>
         </div>
       </div>

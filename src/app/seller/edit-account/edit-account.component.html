@@ -22,7 +22,7 @@
 </div>
 <p class="redtext" *ngIf="form.get('mobile').errors?.pattern && submitted" >Enter a Valid Number </p>
 <div>
-  <label>Email ID :</label> <input type="email" value="{{data.email}}" formControlName="email">
+  <label>Email ID :</label> <input readonly type="email" value="{{data.email}}" formControlName="email">
 </div>
 <p class="redtext" *ngIf="form.get('email').errors?.pattern && submitted">Enter a Email Number </p>
 <div class="seller-owner">

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BuyerService } from '../buyer.service';
+import { StrongPasswordValidator } from '../createpassword/password.validator';
 
 @Component({
   selector: 'app-change-buyer',
@@ -12,7 +13,7 @@ export class ChangeBuyerComponent {
   isSubmit=false;
   changeFrom:any =this.fb.group({
     oldPassword:new FormControl('',Validators.required),
-    newPassword:new FormControl('',Validators.required),
+    newPassword:new FormControl('',[Validators.required,StrongPasswordValidator]),
     confirmPassword:new FormControl('',Validators.required)
   });
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
@@ -41,7 +42,12 @@ export class ChangeBuyerComponent {
       this.isSubmit=false;
       this.notMatch=false;
       console.log('proper login')
-      this.route.navigate(['/buyerLogin'])
+      let data={
+        next:'true'
+      }
+      let query = new URLSearchParams(data).toString()
+      this.route.navigateByUrl('/buyerLogin?' + query)
+     
     },error => {
       if(error.error.message == "Old PassWord Incorrect Or Invalid User"){
        this.oldPassword=true;
@@ -54,5 +60,20 @@ export class ChangeBuyerComponent {
   errMsg() {
     this.notMatch=false;
     this.oldPassword=false;
+  }
+  show1:boolean=false;
+  show2:boolean=false;
+  show3:boolean=false;
+  change1(){
+    this.show1=!this.show1
+   }
+   change2(){
+    this.show2=!this.show2
+   }
+   change3(){
+    this.show3=!this.show3
+   }
+   get changeFromControl() {
+    return this.changeFrom.controls;
   }
 }
