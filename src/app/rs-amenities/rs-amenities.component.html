@@ -172,10 +172,12 @@
             <label>Gated Security</label>
             <div>
                 <div>
-                    <input type="radio" name="gs" (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">Yes
+                    <input type="radio" name="gs" (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">
+                    <label for="">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" name="gs" (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">No
+                    <input type="radio" name="gs" (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">
+                    <label for="">No</label>
                 </div>
             </div>
         </div>

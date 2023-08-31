@@ -221,4 +221,7 @@ export class PostPropertyService {
       this.baseURL + `/v1/BuyerSeller/Delete/property/video/` + id
     );
   }
+  send_enquiry(data:any){
+    return this.http.post(this.baseURL+'/v1/EnquieryRoute',data)
+  }
 }

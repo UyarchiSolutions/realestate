@@ -149,13 +149,15 @@
         <p class="redtext"  *ngIf=" bv == null && submited">Select Balcony Count Type </p>
 
         <div class="non-veg-allowed">
-            <label>Non-Veg Allowed</label>
+            <label>Non-Veg Allowed:</label>
             <div>
                 <div>
-                    <input type="radio" name="Non_veg"  (click)="nvallowed('yes')" [checked]="data.Non_veg == 'yes'">Yes
+                    <input type="radio" name="Non_veg"  (click)="nvallowed('yes')" [checked]="data.Non_veg == 'yes'">
+                    <label for="">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" name="Non_veg"   (click)="nvallowed('no')"  [checked]="data.Non_veg == 'no'">No
+                    <input type="radio" name="Non_veg"   (click)="nvallowed('no')"  [checked]="data.Non_veg == 'no'">
+                    <label for="">No</label>
                 </div>
             </div>
         </div>
@@ -163,13 +165,15 @@
         <p class="redtext"  *ngIf=" nv== null && submited">Select Allowed or Not </p>
 
         <div class="non-veg-allowed gated-security">
-            <label>Gated Security</label>
+            <label>Gated Security:</label>
             <div>
                 <div>
-                    <input type="radio" name="gate_Security"  (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">Yes
+                    <input type="radio" name="gate_Security"  (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">
+                    <label for="">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" name="gate_Security"  (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">No
+                    <input type="radio" name="gate_Security"  (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">
+                    <label for="">No</label>
                 </div>
             </div>
         </div>

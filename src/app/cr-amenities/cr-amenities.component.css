@@ -176,8 +176,10 @@ label{
 }
 .non-veg-allowed div div{
    
+    justify-content: unset !important;
     width: 30%;
-    align-items: center;
+    display: flex;
+    align-items: baseline;
 }
 .gated-security{
     display: flex;
@@ -207,6 +209,7 @@ label{
 }
 .flooring-type>div>div{
     width: 100% !important;
+    max-width: 80% !important;
 }
 .flooring-type-section{
     display: flex;

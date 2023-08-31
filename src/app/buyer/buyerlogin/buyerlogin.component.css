@@ -117,7 +117,7 @@ a{
 }
 
 /* header */
-header{
+/* header{
   height: 80px;
   background-color: var(--bgBlue);
   display: flex;
@@ -163,7 +163,7 @@ header>div>button{
 }
 .post-your-property>svg{
   margin-left: 5px;
-}
+} */
 
 
 .user{
@@ -215,4 +215,57 @@ input::-webkit-inner-spin-button {
   position: absolute;
   bottom: 0px;
   right: 10px;
+}
+
+
+header{
+  height: 80px;
+  background-color: var(--bgBlue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 70px 0 0;
+  background-image: url(../../../assets/images/build.png);
+  background-size: cover;
+}
+header>.logo{
+
+  height: 100%;
+  background-color: rgba(36, 45, 64, 0.336);
+  width: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header>.logo>img{
+  height: 40px;
+}
+header>div{
+  display: flex;
+align-items: center;
+}
+header>div>.login-button{
+  background: white;
+}
+header>div>.register-button{
+  background:var(--bgligthBlue);
+
+}
+header>div>button{
+  padding: 7px 10px;
+  margin: 0 5px;display: flex;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  border: none;
+  border-radius: 2px;
+
+}
+.post-your-property{
+  background: none;
+  border: none;
+  color: white;
+}
+.post-your-property>svg{
+  margin-left: 5px;
 }

@@ -46,7 +46,6 @@ export class BuyerFooterComponent implements OnInit ,OnDestroy{
         this.check()
       })
     }
-   
   }
   ok=false
   check(){

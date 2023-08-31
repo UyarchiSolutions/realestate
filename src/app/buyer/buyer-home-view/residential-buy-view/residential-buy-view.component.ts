@@ -1147,18 +1147,14 @@ export class ResidentialBuyViewComponent implements OnInit {
     this.bathCountArr = [];
     this.FbathArr = [];
     this.BhkCountArr = [];
-   
+   this.ageArr=[]
     this.floordata = [];
     this.ffloor = [];
 
     this.assignToSaveData();
-
-    this.service
-      .getSellerDetails(this.page, this.range, this.sendData, this.floordata)
-      .subscribe((res: any) => {
-        this.data = res.values;
-        ////consolele.log(this.data, 'data');
-      });
+    let query = new URLSearchParams(this.sendData).toString();
+    this.router.navigateByUrl('/buyer-residential-buy-view?' + query);
+   
   }
   removeArea(i: any) {
     this.areaArr.splice(i, 1);
