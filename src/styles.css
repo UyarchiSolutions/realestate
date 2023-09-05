@@ -252,7 +252,7 @@ height: 95%;
   overflow: hidden;
    white-space: nowrap;
 }
-.dropdown a span{
+ .dropdown a span{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -265,13 +265,15 @@ height: 95%;
     padding-left: 20px;
     border-radius: 0 !important;
     background-color: var( --bgligthBlue);
- top: -3px !important;
+ /* top: -3px !important; */
 
 }
+
 .dropdown-menu li{
  padding: 5px 0;
     border-bottom: solid gray 1px;
 }
+
 .dropdown-menu.show{
     padding-left: 0 !important;
     padding: 0 !important;
