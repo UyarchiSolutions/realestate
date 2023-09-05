@@ -3,10 +3,10 @@
     <img src="../../assets/images/logo.png">
   </div>
 
- 
- 
- 
- </header>
+
+
+
+</header>
 <div class="container">
 
 
@@ -27,12 +27,22 @@
       <div class="otp-field">
         <label>OTP :</label>
         <div>
-          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
-          <p (click)="ResendOtp()">Resent OTP !</p>
+          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
+          <!-- <p (click)="ResendOtp()">Resent OTP !</p> -->
+          <div class="resend-otp" style="display: flex; justify-content: end;">
+            <p style="color: var(--bgBlue); text-decoration: underline; cursor: pointer;" *ngIf="recentShow"
+              (click)="ResendOtp()">Resend OTP
+            </p>
+            <p style="color: var(--bgBlue);" *ngIf="!recentShow">
+             Expired in <span style="font-weight: 600;">{{remainingTime}}</span>
+            </p>
+          </div>
         </div>
+
       </div>
-      <div style="color: red;text-align: center;" >
-        <p *ngIf="notfound">Invalid OTP</p>
+      <div style="color: red;text-align: center;">
+        <p *ngIf="notfound">{{errormsg}}</p>
       </div>
       <div class="verify-btn">
         <button (click)="submitOTP()">Verify</button>

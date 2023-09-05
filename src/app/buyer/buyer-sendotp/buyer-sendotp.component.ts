@@ -6,55 +6,89 @@ import { BuyerService } from '../buyer.service';
 @Component({
   selector: 'app-buyer-sendotp',
   templateUrl: './buyer-sendotp.component.html',
-  styleUrls: ['./buyer-sendotp.component.css']
+  styleUrls: ['./buyer-sendotp.component.css'],
 })
 export class BuyerSendotpComponent implements OnInit {
   ForgotPassword = this.fb.group({
     otp: new FormControl('', Validators.required),
-    type: new FormControl('Buyer')
-  })
-  number:any;
+    type: new FormControl('Buyer'),
+  });
+  number: any;
   show = false;
-  notfound=false;
+  notfound = false;
   id: any;
-  constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router,private arouter:ActivatedRoute) { }
+  errormsg: any;
+  remainingTime: number = 60;
+  private intervalId: any;
+  recentShow: any = false;
+  constructor(
+    private fb: FormBuilder,
+    private buyerService: BuyerService,
+    private route: Router,
+    private arouter: ActivatedRoute
+  ) {}
   ngOnInit(): void {
     this.arouter.queryParams.subscribe((params) => {
       console.log(params);
       this.number = params['number'];
-     
-      
     });
+    this.startTimer();
   }
   submitOTP() {
-    console.log("working")
+    console.log('working');
     if (this.ForgotPassword.get('otp')?.valid) {
-      this.buyerService.otp_send({ otp: this.ForgotPassword.get('otp')?.value, type: this.ForgotPassword.get('type')?.value }).subscribe((data: any) => {
-        this.show = true;
-        this.id = data.value._id
-        this.route.navigate(['/buyer-update'],{queryParams:{id:this.id}})
-      },error => {
-        console.log(error);
-        if(error.error.message == "Invalid OTP"){
+      this.buyerService
+        .otp_send({
+          otp: this.ForgotPassword.get('otp')?.value,
+          type: this.ForgotPassword.get('type')?.value,
+        })
+        .subscribe(
+          (data: any) => {
+            this.show = true;
+            this.id = data.value._id;
+            this.route.navigate(['/buyer-update'], {
+              queryParams: { id: this.id },
+            });
+          },
+          (error) => {
+            console.log(error);
+            this.notfound = true;
+            this.errormsg = error.error.message;
+          }
+        );
+    }
+  }
 
-          this.notfound=true;
-        }
+  startTimer() {
+    this.intervalId = setInterval(() => {
+      this.remainingTime--;
+      if (this.remainingTime === 0) {
+        this.clearTimer();
+        // Timer expired, perform necessary actions
+
+        this.recentShow = true;
       }
-      )
-    }
+    }, 1000); // Update every second (1000 milliseconds)
   }
-  ResendOtp(){
+
+  clearTimer() {
+    clearInterval(this.intervalId);
+  }
+
+  ResendOtp() {
     this.number = parseInt(this.number);
-    
-    let data={
-      number:this.number,
-    resend:true
-    }
-    this.buyerService.sentOtp(data).subscribe((res:any)=>{
-     
-    })
+
+    let data = {
+      number: this.number,
+      resend: true,
+    };
+    this.buyerService.sentOtp(data).subscribe((res: any) => {
+      this.recentShow = false;
+      this.remainingTime = 60;
+      this.startTimer();
+    });
   }
-  errmsg(){
-    this.notfound=false;
+  errmsg() {
+    this.notfound = false;
   }
 }
