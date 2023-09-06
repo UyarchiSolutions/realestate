@@ -17,6 +17,7 @@ export class ManageSellerOwnerComponent implements OnInit {
   type:any='Seller';
   range=10;
   page=0;
+  pages:any;
   role:any='';
   totalpage:any;
   data:any=[];
@@ -27,6 +28,8 @@ export class ManageSellerOwnerComponent implements OnInit {
     
       console.log(this.data)
       this.totalpage=res.total
+      this.pages =Math.ceil(this.totalpage/this.range) 
+      console.log(this.pages,this.page)
     })
   }
   setRole(a:any){
@@ -48,6 +51,16 @@ export class ManageSellerOwnerComponent implements OnInit {
       })
     }
  
+  }
+  pagination(count:number){
+    if(count == 0){
+      
+      this.page= this.page - 1
+    }
+    if(count == 1){
+      this.page = this.page + 1
+    }
+    this.getAll();
   }
   
 }

@@ -17,7 +17,7 @@ export class CsAdditionalDetailsComponent {
       contactname: new FormControl('',Validators.required),
       cnumber: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
       c2number: new FormControl('',[Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
-      preOccupancy:new FormControl('')
+      
     })
     
     today: Date = new Date();
@@ -49,19 +49,25 @@ export class CsAdditionalDetailsComponent {
           preOccupancy:res.preOccupy,
           routeLink:this.routerlink
         });
+        this.pov=res.preOccupy
       })
     
     }
     
-    data:any;
+    data:any=[]
     submited=false;
     sameNum=false;
     Onsubmit(){
     
       this.submited=true;
+      // console.log(this.adform.value,this.pov,this.adform.valid)
+      // console.log(this.adform.get('cnumber')?.value == this.adform.get('c2number')?.value , !(this.adform.get('cnumber')?.value == undefined),this.adform.get('cnumber')?.value == undefined)
       if(this.adform.get('cnumber')?.value == this.adform.get('c2number')?.value && !(this.adform.get('cnumber')?.value == undefined) ){
         this.sameNum=true;
-        
+
+      }else{
+        this.sameNum=false;
+
       }
       if(this.adform.valid && !this.sameNum && this.pov){
       let data ={

@@ -76,4 +76,7 @@ export class AdminService {
   delete_faq(id:any){
     return this.http.get(this.baseApi+'/v1/EnquieryRoute/RemoveFAQ/'+id)
   }
+  get_All_reports(){
+    return this.http.get(this.baseApi+'/v1/EnquieryRoute/getAll/Report')
+  }
 }

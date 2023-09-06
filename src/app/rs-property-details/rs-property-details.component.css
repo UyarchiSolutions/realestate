@@ -150,3 +150,6 @@ label{
     opacity: 0.8;
     font-size: 14px;
 }
+.dropdown-toggle::after {
+    display:none;
+}

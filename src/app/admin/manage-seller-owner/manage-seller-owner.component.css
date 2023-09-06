@@ -19,7 +19,7 @@
     justify-content: flex-end;
     background-color: var(--bgBlue);
  padding-right: 13px;
-    color: white;
+    color: var(--blue);
 }
 .sort-btn{
     width: 100px;
@@ -35,7 +35,7 @@
 
 .tb-heading{
     background-color: var(--bgligthBlue) !important;
-    color: white;
+    color:var(--dblue);
     border-bottom: none !important;
 
 }
@@ -95,4 +95,7 @@ cursor: default !important;
     width: 40px;
     align-items: center;
     justify-content: center;
+}
+.no-move{
+ pointer-events: none !important;
 }

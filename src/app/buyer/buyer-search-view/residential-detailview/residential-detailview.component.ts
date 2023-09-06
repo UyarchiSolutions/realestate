@@ -63,6 +63,8 @@ export class ResidentialDetailviewComponent implements OnInit {
   checkInterest: any;
   checkSchedule: any;
   history: any = [];
+  report:any=['Fake Account','Price Manipulation','Fake Properties listing',
+'Misleading Advertisement','Rental Scam','Seems Like Broker','Wrong Mobile Number']
 
   checkSave:any
   checkNotification:any;
@@ -308,11 +310,10 @@ export class ResidentialDetailviewComponent implements OnInit {
           this.landmarks = res.results;
           // console.log(res,this.landmarks,'from landmaks');
           for (let i = 0; i < this.landmarks.length; i++) {
-            this.LMlat_long.push({
-              lat: this.landmarks[i].geometry.location.lat,
-              long: this.landmarks[i].geometry.location.lng,
-              icon: this.landmarks[i].icon,
-            });
+            this.LMlat_long.push({lat:this.landmarks[i].geometry.location.lat
+              ,long:this.landmarks[i].geometry.location.lng,icon:this.landmarks[i].icon
+            ,name:this.landmarks[i].name,add:this.landmarks[i].vicinity
+          });
           }
           // console.log(this.LMlat_long,'lat,long');
         });
@@ -377,5 +378,36 @@ export class ResidentialDetailviewComponent implements OnInit {
       console.log(res);
       this.showRes = false;
     });
+  }
+  calculateDistance(
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ): any {
+   return  this.buyerService.calculateDistance(lat1,lon1,lat2,lon2)
+  }
+  infoWindowOpen = false;
+  showcount:any;
+  openInfoWindow(v:any) {
+   this.showcount =v
+  }
+  closeInfoWindow(){
+    this.showcount=-1
+  }
+  reason:any;
+  des:any;
+  reportProp(click:HTMLButtonElement){
+    console.log(this.reason,this.des)
+    let data={
+      propertyId:this.id,
+      reason:this.reason,
+      description:this.des
+    }
+    console.log(data)
+    this.buyerService.report_prop(data).subscribe((res:any)=>{
+      console.log(res)
+      click.click()
+    })
   }
 }

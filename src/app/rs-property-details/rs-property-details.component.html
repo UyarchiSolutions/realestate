@@ -139,78 +139,91 @@
           <div class="err-msg" *ngIf="bhkv == null && submitted">
             Select BHK Type
           </div>
-
           <div class="floors">
             <label>Floors :</label>
-            <div style="position: static !important">
+            <div>
               <div class="dropdown select-field">
-                <!-- <p [innerHTML]="tfv" *ngIf="tfv"  data-bs-toggle="dropdown" aria-expanded="false" class='dropdown-toggle'></p>
-                  <p  *ngIf="!tfv && !data.noOfFloor" style="opacity: 0.5"   
-                  data-bs-toggle="dropdown" aria-expanded="false"  class='dropdown-toggle'>Total Floors</p>
-                  <p  class='dropdown-toggle' [innerText]="data.noOfFloor" *ngIf="!tfv &&  data.noOfFloor "  data-bs-toggle="dropdown" aria-expanded="false" ></p>
-                   -->
-                <button
-                  [innerHTML]="tfv"
-                  *ngIf="tfv"
+                <p
+                  style="width: 100%"
                   type="button"
-                  class="btn btn-primary dropdown-toggle"
+                  class="dropdown-toggle"
                   data-bs-toggle="dropdown"
                 >
-                  Dropdown button
-                </button>
-                <button
-                  *ngIf="!tfv && !data.noOfFloor"
-                  type="button"
-                  class="btn btn-primary dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Dropdown button
-                </button>
-                <button
-                  [innerText]="data.noOfFloor"
-                  *ngIf="!tfv && data.noOfFloor"
-                  class="btn btn-primary dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Dropdown button
-                </button>
+                  <span [innerHTML]="tfv" *ngIf="tfv"></span>
+                  <span style="opacity: 0.5" *ngIf="!tfv && !data.noOfFloor"
+                    >Total Floors</span
+                  >
+                  <span
+                    [innerText]="data.noOfFloor"
+                    *ngIf="!tfv && data.noOfFloor"
+                  ></span>
+                </p>
                 <ul class="dropdown-menu select-filed-options">
                   <li>
-                    <a class="dropdown-item" (click)="groundFloorv(0)"
+                    <a
+                      class="dropdown-item"
+                      (click)="groundFloorv('Full Building')"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      >Full Building</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="groundFloorv('Lower Basement')"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      >Lower Basement</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="groundFloorv('Upper Basement')"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      >Upper Basement</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="groundFloorv(0)"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                       >Ground Floor</a
                     >
                   </li>
-                  <li
-                    class="dropdown-item"
-                    (click)="groundFloorv(countf)"
-                    *ngFor="let countf of myarray"
-                  >
-                    {{ countf }} floors
+                  <li *ngFor="let countf of myarray">
+                    <a
+                      class="dropdown-item"
+                      (click)="groundFloorv(countf)"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {{ countf }} floors</a
+                    >
                   </li>
                 </ul>
               </div>
+
               <div class="dropdown select-field">
                 <p
-                  [innerHTML]="ofv"
+                  style="width: 100%"
+                  type="button"
+                  class="dropdown-toggle"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  *ngIf="ofv"
-                ></p>
-                <p
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  *ngIf="!ofv && !data.floorNo"
-                  style="opacity: 0.5"
                 >
-                  On Floors
+                  <span [innerHTML]="ofv" *ngIf="ofv"></span>
+                  <span *ngIf="!ofv && !data.floorNo" style="opacity: 0.5"
+                    >On Floors</span
+                  >
+                  <span
+                    [innerText]="data.floorNo"
+                    *ngIf="!ofv && data.floorNo"
+                  ></span>
                 </p>
-                <p
-                  [innerText]="data.floorNo"
-                  *ngIf="!ofv && data.floorNo"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></p>
-
                 <ul class="dropdown-menu select-filed-options">
                   <li>
                     <a
@@ -218,11 +231,11 @@
                       (click)="onFloorv('Groud Floor', 0)"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      >Groud Floor</a
+                      >Ground Floor</a
                     >
                   </li>
+
                   <li
-                    class="dropdown-item"
                     *ngFor="let floor of numarray"
                     (click)="onFloorv(floor, floor)"
                     data-bs-toggle="dropdown"
@@ -234,6 +247,7 @@
               </div>
             </div>
           </div>
+          
 
           <div
             class="err-msg"

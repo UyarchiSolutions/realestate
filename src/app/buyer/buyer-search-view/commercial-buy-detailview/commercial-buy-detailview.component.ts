@@ -228,9 +228,13 @@ if(this.checkhome){
         for(let i=0;i< this.landmarks.length;i++){
          
         
-          this.LMlat_long.push({lat:this.landmarks[i].geometry.location.lat
-            ,long:this.landmarks[i].geometry.location.lng,icon:this.landmarks[i].icon});
-          
+          this.LMlat_long.push({
+            lat: this.landmarks[i].geometry.location.lat,
+            long: this.landmarks[i].geometry.location.lng,
+            icon: this.landmarks[i].icon,
+            name: this.landmarks[i].name,
+            add: this.landmarks[i].vicinity,
+          });
         
         }
         console.log(this.LMlat_long,'lat,long');
@@ -404,6 +408,21 @@ if(this.checkhome){
        this.showRes=false
      })
     }
-  
+    calculateDistance(
+      lat1: number,
+      lon1: number,
+      lat2: number,
+      lon2: number
+    ): any {
+      return this.buyerService.calculateDistance(lat1, lon1, lat2, lon2);
+    }
+    infoWindowOpen = false;
+    showcount: any;
+    openInfoWindow(v: any) {
+      this.showcount = v;
+    }
+    closeInfoWindow() {
+      this.showcount = -1;
+    }
   }
 

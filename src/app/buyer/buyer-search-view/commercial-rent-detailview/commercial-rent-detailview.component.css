@@ -365,3 +365,15 @@ margin-bottom: 0 !important;
     vertical-align: middle;
     margin: auto;
 }
+
+.details-loc{
+    list-style: none;
+    height: auto;
+    width: 300px;
+}
+.details-loc li{
+    font-size: 13px;
+}
+.details-loc label{
+   font-weight: bold;
+}

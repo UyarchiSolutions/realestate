@@ -206,7 +206,7 @@
             style="
                   background-image: url('../../../assets//images//Frame 2072.png');">
               <video
-                controls="false"
+               
                 autoplay
                 [src]="data.videos"
                 width="100%"
@@ -922,15 +922,24 @@
             </agm-marker>
             <ng-container *ngFor="let lat_lon of LMlat_long; index as i">
               <agm-marker
+              (mouseOver)="openInfoWindow(i)"
+              (mouseOut)="closeInfoWindow()"
                 [latitude]="lat_lon.lat"
                 [longitude]="lat_lon.long"
                 [iconUrl]="icon"
               >
+              <agm-info-window [isOpen]="showcount ==i">
+                <ul class="details-loc">
+                  <li><label>Name</label> :{{lat_lon.name}}</li>
+                  <li><label>Address</label> :{{lat_lon.add}}</li>
+                  <li><label>Distance</label> :{{calculateDistance(data.lat,data.long,lat_lon.lat,lat_lon.long)}}Km</li>
+                </ul>
+              </agm-info-window>
               </agm-marker>
             </ng-container>
           </agm-map>
 
-          <p class="report">
+          <p class="report" data-bs-toggle="modal" data-bs-target="#report">
             <svg
               width="15"
               height="15.2"
@@ -973,7 +982,7 @@
         <p>Contact Name : {{ data.contactName }}</p>
         <p>Contact Number 1 : {{ data.primaryContactNumber }}</p>
         <p>Contact Number 2 : {{ data.secondaryContactNumber }}</p>
-        <p><button class="con-btn">Contact Now</button></p>
+        <!-- <p><button class="con-btn">Contact Now</button></p> -->
       </div>
     </div>
   </div>
@@ -1060,6 +1069,48 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="report" tabindex="-1" aria-labelledby="report" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content report-pop">
+      <div class="pop-container">
+        <div class="form">
+          <div class="title">
+            <h2>Reason For Report </h2>
+          
+          </div>
+          <div class="content" >
+            <div >
+              <label for="reason">Reason :</label>
+             <select name="" id="reason" [(ngModel)]="reason">
+              <option [value]="v" *ngFor="let v of report">{{v}}</option>
+             </select>
+          </div>
+          <!-- <p class="err" *ngIf="submitted && enqform.get('Name').invalid">Name is required!</p> -->
+          <!-- <p  class="err" *ngIf="submitted && enqform.get('email').invalid">email is required!</p> -->
+         
+          <!-- <p class="err" *ngIf="submitted && enqform.get('phoneNumber').invalid">phoneNumber is required!</p> -->
+          <div>
+            <label for="">Description</label>
+           <input [(ngModel)]="des" class="des-in" type="text" class="form-control"  maxlength="100" #enq>
+         
+      
+            </div>
+            <!-- <p class="err" *ngIf="submitted && enqform.get('Enquiry').invalid">Enquiry is required!</p> -->
+            <div style="display: flex;align-items: center;justify-content: center;">
+              <button class="bttn" (click)="reportProp(close)">Submit</button>
+              <button #close  data-bs-toggle="modal" data-bs-target="#report" style="display: none;" >xczxc</button>
+            </div>
+          </div>
+          
+          </div>
+        </div>
     </div>
   </div>
 </div>

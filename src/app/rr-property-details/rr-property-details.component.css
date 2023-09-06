@@ -199,3 +199,6 @@ label{
   .dd-menu li:hover {
     background-color: #ddd;
   }
+  .dropdown-toggle::after {
+    display:none;
+}

@@ -78,33 +78,25 @@
           <p class="redtext" *ngIf="bt == null && submitted">
             Select Building Type
           </p>
-          <div class="floors">
+         <div class="floors">
             <label>Floors :</label>
-            <div style="position: static !important">
+            <div>
               <div class="dropdown select-field">
                 <p
-                  [innerHTML]="tfv"
-                  *ngIf="tfv"
+                  style="width: 100%"
                   type="button"
+                  class="dropdown-toggle"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></p>
-                <p
-                  *ngIf="!tfv && !data.noOfFloor"
-                  style="opacity: 0.5"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
-                  Total Floors
+                  <span [innerHTML]="tfv" *ngIf="tfv"></span>
+                  <span style="opacity: 0.5" *ngIf="!tfv && !data.noOfFloor"
+                    >Total Floors</span
+                  >
+                  <span
+                    [innerText]="data.noOfFloor"
+                    *ngIf="!tfv && data.noOfFloor"
+                  ></span>
                 </p>
-                <p
-                  [innerText]="data.noOfFloor"
-                  *ngIf="!tfv && data.noOfFloor"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></p>
-
                 <ul class="dropdown-menu select-filed-options">
                   <li>
                     <a
@@ -142,39 +134,35 @@
                       >Ground Floor</a
                     >
                   </li>
-                  <li
-                    (click)="numberFloorv(countf)"
-                    *ngFor="let countf of myarray"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    {{ countf }} floors
+                  <li *ngFor="let countf of myarray">
+                    <a
+                      class="dropdown-item"
+                      (click)="numberFloorv(countf)"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {{ countf }} floors</a
+                    >
                   </li>
                 </ul>
               </div>
 
               <div class="dropdown select-field">
                 <p
-                  [innerHTML]="ofv"
+                  style="width: 100%"
+                  type="button"
+                  class="dropdown-toggle"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  *ngIf="ofv"
-                ></p>
-                <p
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  *ngIf="!ofv && !data.floorNo"
-                  style="opacity: 0.5"
                 >
-                  On Floors
+                  <span [innerHTML]="ofv" *ngIf="ofv"></span>
+                  <span *ngIf="!ofv && !data.floorNo" style="opacity: 0.5"
+                    >On Floors</span
+                  >
+                  <span
+                    [innerText]="data.floorNo"
+                    *ngIf="!ofv && data.floorNo"
+                  ></span>
                 </p>
-                <p
-                  [innerText]="data.floorNo"
-                  *ngIf="!ofv && data.floorNo"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></p>
-
                 <ul class="dropdown-menu select-filed-options">
                   <li>
                     <a

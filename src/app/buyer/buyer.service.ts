@@ -110,7 +110,40 @@ export class BuyerService {
   get_save_new_noInd(type:any,ctype:any,page:any,range:any){
     return this.http.get(this.base_url+`/v1/BuyerSeller/getsaved/PropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}`,{headers:{auth:Cookie.get('buyer')}})
   }
+  report_prop(data:any){
+    return this.http.post(this.base_url+'/v1/EnquieryRoute/create/Report',data)
+  }
+
+
+
+
+
+  calculateDistance(
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ): any {
+    const earthRadiusKm = 6371; // Radius of the Earth in kilometers
+    const dLat = this.degreesToRadians(lat2 - lat1);
+    const dLon = this.degreesToRadians(lon2 - lon1);
   
+    lat1 = this.degreesToRadians(lat1);
+    lat2 = this.degreesToRadians(lat2);
+  
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let distance = earthRadiusKm * c;
+    let dis =String(distance)
+    dis =dis.substring(0, 3)
+    return dis;
+  }
+  
+   degreesToRadians(degrees: number): number {
+    return (degrees * Math.PI) / 180;
+  }
  
 }
 

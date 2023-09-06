@@ -206,7 +206,7 @@
             <div class="carousel-item active"  style="
             background-image: url('../../../assets//images//Frame 2072.png');">
               <video
-                controls="false"
+               
                 autoplay
                 [src]="data.videos"
                 width="100%"
@@ -831,10 +831,19 @@
             </agm-marker>
             <ng-container *ngFor="let lat_lon of LMlat_long; index as i">
               <agm-marker
+              (mouseOver)="openInfoWindow(i)"
+              (mouseOut)="closeInfoWindow()"
                 [latitude]="lat_lon.lat"
                 [longitude]="lat_lon.long"
                 [iconUrl]="icon"
               >
+              <agm-info-window [isOpen]="showcount ==i">
+                <ul class="details-loc">
+                  <li><label>Name</label> :{{lat_lon.name}}</li>
+                  <li><label>Address</label> :{{lat_lon.add}}</li>
+                  <li><label>Distance</label> :{{calculateDistance(data.lat,data.long,lat_lon.lat,lat_lon.long)}}Km</li>
+                </ul>
+              </agm-info-window>
               </agm-marker>
             </ng-container>
           </agm-map>
@@ -881,7 +890,7 @@
         <p>Contact Name : {{ data.contactName }}</p>
         <p>Contact Number 1 : {{ data.primaryContactNumber }}</p>
         <p>Contact Number 2 : {{ data.secondaryContactNumber }}</p>
-        <p><button class="con-btn">Contact Now</button></p>
+        <!-- <p><button class="con-btn">Contact Now</button></p> -->
       </div>
     </div>
   </div>
