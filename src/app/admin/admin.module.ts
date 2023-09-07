@@ -17,6 +17,12 @@ import { ManageFaqComponent } from './manage-faq/manage-faq.component';
 import { ManageEnquiryComponent } from './manage-enquiry/manage-enquiry.component';
 import { ReportedPostComponent } from './reported-post/reported-post.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { ResidentialRentComponent } from './admin-property-view/residential-rent/residential-rent.component';
+import { ResidentialSaleComponent } from './admin-property-view/residential-sale/residential-sale.component';
+import { CommercialSaleComponent } from './admin-property-view/commercial-sale/commercial-sale.component';
+import { CommercialRentComponent } from './admin-property-view/commercial-rent/commercial-rent.component';
+import { AgmCoreModule } from '@agm/core';
+import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
 
 
 @NgModule({
@@ -33,17 +39,24 @@ import { NgxEditorModule } from 'ngx-editor';
     ResidentialRentStreamComponent,
     ManageFaqComponent,
     ManageEnquiryComponent,
-    ReportedPostComponent
+    ReportedPostComponent,
+    ResidentialRentComponent,
+    ResidentialSaleComponent,
+    CommercialSaleComponent,
+    CommercialRentComponent
 
   ],
   imports: [
+    AdminRoutingRoutingModule,
     CommonModule,
     FormsModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxEditorModule
-
+    NgxEditorModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
+    }),
     
   ]
 })

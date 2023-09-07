@@ -937,7 +937,7 @@
             </ng-container>
           </agm-map>
 
-          <p class="report">
+          <p class="report" data-bs-toggle="modal" data-bs-target="#report" class="report">
             <svg
               width="15"
               height="15.2"
@@ -983,6 +983,45 @@
         <p>Contact Number 2 : {{ data.secondaryContactNumber }}</p>
         <!-- <p><button class="con-btn">Contact Now</button></p> -->
       </div>
+    </div>
+  </div>
+</div>
+<!-- reportProp -->
+<div class="modal fade" id="report" tabindex="-1" aria-labelledby="report" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content report-pop">
+      <div class="pop-container">
+        <div class="form">
+          <div class="title">
+            <h2>Reason For Report </h2>
+          
+          </div>
+          <div class="content" >
+            <div >
+              <label for="reason">Reason :</label>
+             <select name="" id="reason" [(ngModel)]="reason">
+              <option [value]="v" *ngFor="let v of report">{{v}}</option>
+             </select>
+          </div>
+          <!-- <p class="err" *ngIf="submitted && enqform.get('Name').invalid">Name is required!</p> -->
+          <!-- <p  class="err" *ngIf="submitted && enqform.get('email').invalid">email is required!</p> -->
+         
+          <!-- <p class="err" *ngIf="submitted && enqform.get('phoneNumber').invalid">phoneNumber is required!</p> -->
+          <div>
+            <label for="">Description</label>
+           <input [(ngModel)]="des" class="des-in" type="text" class="form-control"  maxlength="100" #enq>
+         
+      
+            </div>
+            <!-- <p class="err" *ngIf="submitted && enqform.get('Enquiry').invalid">Enquiry is required!</p> -->
+            <div style="display: flex;align-items: center;justify-content: center;">
+              <button class="bttn" (click)="reportProp(close)">Submit</button>
+              <button #close  data-bs-toggle="modal" data-bs-target="#report" style="display: none;" >xczxc</button>
+            </div>
+          </div>
+          
+          </div>
+        </div>
     </div>
   </div>
 </div>

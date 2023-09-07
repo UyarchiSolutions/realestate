@@ -1,3 +1,6 @@
+::-webkit-scrollbar {
+    display: none;
+  }
 .add-plan-btn{
     padding: 6px 10px;
     background: white;
@@ -109,4 +112,40 @@ table tr td span button svg{
 .tb-heading{
     color: var(--dblue);
     background-color: rgba(222, 228, 240, 1);
+}
+.card-title{
+    background-color: var(--bgBlue);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+.card-content{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 15px 10px;
+}
+.card-content label,.card-content p{
+    width: 90%;
+}
+.modal-header{
+    display: flex;
+    justify-content: center;
+}
+.modal-header h1{
+    font-weight: 900;
+    color: var(--bgBlue);
+}
+.modal-body{
+    padding: 0;
+}
+.card-title h4{
+    font-size: 18px;
+    font-weight: bold;
+}
+.card-content label{
+    font-weight: 700;
+    padding-left: 10px;
 }

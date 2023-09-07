@@ -49,14 +49,14 @@
             <ng-container  *ngIf=" v.posts.HouseOrCommercialType =='Residential'">
                 <p *ngIf="v.type =='Schedule'"> {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}} Scheduled on {{v.scheduleDate}},{{v.scheduleTime}} </p>
                 <p *ngIf="v.type =='Accept'">Thanks for Accepting the {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}}  </p>
-                <!-- <p *ngIf="v.type =='Fixed'"> {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}} has been fixed </p>
-                <p *ngIf="v.type =='Visited'">Thanks for visited  {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}}  </p> -->
+                <p *ngIf="v.type =='Fixed'"> {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}} has been fixed </p>
+                <p *ngIf="v.type =='Visited'">Thanks for visited  {{v.posts.BHKType}} house for {{v.posts.Type}}, {{v.posts.Address}}  </p>
            </ng-container>
             <ng-container *ngIf=" v.posts.HouseOrCommercialType=='Commercial'" >
                 <p *ngIf="v.type =='Schedule'">{{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} has been Scheduled on {{v.scheduleDate}},{{v.scheduleTime}}</p>
                 <p *ngIf="v.type =='Accept'"> Thanks for Accepting the {{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}}</p>
-                <!-- <p *ngIf="v.type =='Fixed'">{{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} has been fixed</p>
-                <p *ngIf="v.type =='Visited'">Thanks for visited {{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} </p> -->
+                <p *ngIf="v.type =='Fixed'">{{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} has been fixed</p>
+                <p *ngIf="v.type =='Visited'">Thanks for visited {{v.posts.propertType}} property for {{v.posts.Type}}, {{v.posts.Address}} </p>
             </ng-container>
         
         </td>

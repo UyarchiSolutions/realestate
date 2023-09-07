@@ -1,4 +1,4 @@
-<buyer-header-profile></buyer-header-profile>
+
 <div class="container">
   <div class="sidebar">
     <img src="../../../../assets/images/ad-post.png" alt="" srcset="" />
@@ -6,8 +6,8 @@
   <div class="main">
     <nav>
       <ul>
-        <li>Commercial ></li>
-        <li>Rent</li>
+        <li>Residential ></li>
+        <li>Buy</li>
       </ul>
     </nav>
 
@@ -32,237 +32,128 @@
           {{ data.formatedAddress }}
         </p>
       </div>
-      <div class="page-navigator">
-        <svg
-          *ngIf="!checkNotification"
-          (click)="previous()"
-          width="30"
-          height="32"
-          viewBox="0 0 30 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10 16.1561L20 5.94263V26.3696L10 16.1561Z"
-            fill="#473B32"
-            fill-opacity="0.6"
-          />
-          <rect
-            x="1"
-            y="1.83569"
-            width="28"
-            height="28.6405"
-            rx="14"
-            stroke="#473B32"
-            stroke-opacity="0.6"
-            stroke-width="2"
-          />
-        </svg>
-
-        <svg
-          *ngIf="!checkNotification"
-          (click)="next()"
-          width="30"
-          height="32"
-          viewBox="0 0 30 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20 16.1561L10 26.3696L10 5.94265L20 16.1561Z"
-            fill="#473B32"
-            fill-opacity="0.6"
-          />
-          <rect
-            x="29"
-            y="30.4763"
-            width="28"
-            height="28.6405"
-            rx="14"
-            transform="rotate(-180 29 30.4763)"
-            stroke="#473B32"
-            stroke-opacity="0.6"
-            stroke-width="2"
-          />
-        </svg>
-      </div>
+   
     </div>
 
-    <div class="pop-div" *ngIf="showRes">
-      <div class="pop-div-content">
-        <p>
-          This Property has be Shceduled on
-          {{ history.scheduleDate | date : "dd-MM-YYYY" }}
-          {{ history.scheduletime }}
-        </p>
-      </div>
-      <div class="pop-div-content">
-        <button (click)="sendResponse('Accept')" class="green">
-          <svg
-            width="16"
-            height="17"
-            viewBox="0 0 16 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 16.2009C3.5816 16.2009 0 12.6005 0 8.1589C0 3.71733 3.5816 0.116943 8 0.116943C12.4184 0.116943 16 3.71733 16 8.1589C16 12.6005 12.4184 16.2009 8 16.2009ZM8 14.5925C9.69739 14.5925 11.3253 13.9146 12.5255 12.7081C13.7257 11.5016 14.4 9.86518 14.4 8.1589C14.4 6.45261 13.7257 4.81621 12.5255 3.60968C11.3253 2.40315 9.69739 1.72533 8 1.72533C6.30261 1.72533 4.67475 2.40315 3.47452 3.60968C2.27428 4.81621 1.6 6.45261 1.6 8.1589C1.6 9.86518 2.27428 11.5016 3.47452 12.7081C4.67475 13.9146 6.30261 14.5925 8 14.5925ZM7.2024 11.3757L3.808 7.96348L4.9392 6.82635L7.2024 9.10141L11.7272 4.55208L12.8592 5.68921L7.2024 11.3757Z"
-              fill="#34A853"
-            />
-          </svg>
-          Accept
-        </button>
-        <button (click)="sendResponse('request_Reschedule')" class="blue">
-          <svg
-            width="18"
-            height="19"
-            viewBox="0 0 18 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9 3.79759V9.1589H13M17 9.1589C17 10.215 16.7931 11.2607 16.391 12.2364C15.989 13.2121 15.3997 14.0987 14.6569 14.8454C13.914 15.5922 13.0321 16.1845 12.0615 16.5887C11.0909 16.9928 10.0506 17.2009 9 17.2009C7.94943 17.2009 6.90914 16.9928 5.93853 16.5887C4.96793 16.1845 4.08601 15.5922 3.34315 14.8454C2.60028 14.0987 2.011 13.2121 1.60896 12.2364C1.20693 11.2607 1 10.215 1 9.1589C1 7.02604 1.84285 4.98054 3.34315 3.47238C4.84344 1.96422 6.87827 1.11694 9 1.11694C11.1217 1.11694 13.1566 1.96422 14.6569 3.47238C16.1571 4.98054 17 7.02604 17 9.1589Z"
-              stroke="#1877F2"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          Reschedule
-        </button>
-        <button (click)="sendResponse('Reject')">
-          <svg
-            width="16"
-            height="17"
-            viewBox="0 0 16 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8 16.2009C3.5816 16.2009 0 12.6005 0 8.1589C0 3.71733 3.5816 0.116943 8 0.116943C12.4184 0.116943 16 3.71733 16 8.1589C16 12.6005 12.4184 16.2009 8 16.2009ZM8 14.5925C9.69739 14.5925 11.3253 13.9146 12.5255 12.7081C13.7257 11.5016 14.4 9.86518 14.4 8.1589C14.4 6.45261 13.7257 4.81621 12.5255 3.60968C11.3253 2.40315 9.69739 1.72533 8 1.72533C6.30261 1.72533 4.67475 2.40315 3.47452 3.60968C2.27428 4.81621 1.6 6.45261 1.6 8.1589C1.6 9.86518 2.27428 11.5016 3.47452 12.7081C4.67475 13.9146 6.30261 14.5925 8 14.5925ZM8 7.02177L10.2624 4.7467L11.3944 5.88463L9.1312 8.1589L11.3944 10.4332L10.2624 11.5711L8 9.29603L5.7376 11.5711L4.6056 10.4332L6.8688 8.1589L4.6056 5.88463L5.7376 4.7467L8 7.02177Z"
-              fill="#473B32"
-            />
-          </svg>
-          Reject
-        </button>
-      </div>
-    </div>
+  
 
     <div class="detail-container">
       <div class="image row">
         <div class="col">
-        <div
-          id="carouselExampleCaptions"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              *ngIf="imageLength >= 1"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              *ngIf="imageLength >= 2"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-            <button
-              type="button"
-              *ngIf="imageLength >= 3"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="3"
-              aria-label="Slide 4"
-            ></button>
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 1"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 2"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 3"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="3"
+                aria-label="Slide 4"
+              ></button>
 
-            <button
-              type="button"
-              *ngIf="imageLength >= 4"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="4"
-              aria-label="Slide 5"
-            ></button>
-            <button
-              type="button"
-              *ngIf="imageLength >= 5"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="5"
-              aria-label="Slide 6"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active"
-            style="
-            background-image: url('../../../assets//images//Frame 2072.png');">
-              <video
-                
-                autoplay
-                [src]="data.videos"
-                width="100%"
-              ></video>
+              <button
+                type="button"
+                *ngIf="imageLength >= 4"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="4"
+                aria-label="Slide 5"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 5"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="5"
+                aria-label="Slide 6"
+              ></button>
             </div>
-
-            <div
-              class="carousel-item"
-              style="
+            <div class="carousel-inner">
+              <div
+                class="carousel-item active"
+                style="
+                  background-image: url('../../../assets//images//Frame 2072.png');"
+              >
+                <video
+                 
+                  autoplay
+                  [src]="data.videos"
+                  width="100%"
+                ></video>
+              </div>
+              <div
+                class="carousel-item"
+                *ngFor="let img of data.image; let i = index"   style="
                 background-image: url('../../../assets//images//Frame 2072.png');"
-              *ngFor="let img of data.image; let i = index"
-            >
-              <img [src]="'https://uyarchicrm.click/' + img" />
+              >
+                <img [src]="'https://uyarchicrm.click/' + img" />
+              </div>
             </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
-    </div>
-        <div class="table">
+        <div class="table col">
           <div class="table-content">
             <p>Property Type</p>
             <h6>{{ data.propertType }}</h6>
           </div>
           <div class="table-content">
-            <p>Building Type</p>
-            <h6>{{ data.buildingType }}</h6>
+            <p>BHK Type</p>
+            <h6>{{ data.BHKType }}</h6>
           </div>
-          <div class="table-content">
-            <p>Rent</p>
-            <h6>{{ data.MonthlyRentFrom | indianCurrency }}</h6>
+          <div class="table-content lease">
+            <p>Price</p>
+            <h6>{{ data.MonthlyRentFrom  }}</h6>
             <p *ngIf="data.RentNegociable" class="negotiable">Negotiable</p>
             <p *ngIf="data.current_in_loan">(Current in loan)</p>
           </div>
-          <div class="table-content">
-            <p>Deposit</p>
-            <h6>{{ data.AdvanceAmt | indianCurrency }}</h6>
-            <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p>
-          </div>
+
           <div class="table-content">
             <p>Built Up Area</p>
             <h6>{{ data.BuildedSize }}.sqFt</h6>
@@ -274,152 +165,8 @@
         </div>
       </div>
 
-      <div class="detail-nav">
-        <button
-          class="view-contact"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          View Contact Details
-        </button>
-
-        <button
-          class="save"
-          (click)="save(data._id)"
-          [ngClass]="saveV ? 'active' : ''"
-        >
-          <svg
-            *ngIf="!saveV"
-            width="22"
-            height="22"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 24.5439L5.73031 30L7.80032 19.0437L0 11.4594L10.5498 10.1437L15 0L19.4502 10.1437L30 11.4594L22.1997 19.0437L24.2697 30L15 24.5439ZM15 21.3765L20.5818 24.6614L19.3345 18.0652L24.0305 13.4978L17.6785 12.7059L15 6.59895L12.3215 12.7073L5.96951 13.4978L10.6655 18.0652L9.41821 24.6614L15 21.3765Z"
-              fill="#473B32"
-            />
-          </svg>
-
-          <svg
-            *ngIf="saveV"
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style="display: inline-block; width: 17px; margin-right: 5px"
-          >
-            <path
-              d="M10.4312 1.839C10.4774 1.72632 10.5561 1.62992 10.6572 1.56208C10.7584 1.49423 10.8774 1.45801 10.9992 1.45801C11.121 1.45801 11.24 1.49423 11.3411 1.56208C11.4423 1.62992 11.5209 1.72632 11.5671 1.839L13.8881 7.42133C13.9316 7.52578 14.003 7.61623 14.0945 7.68271C14.186 7.74919 14.2941 7.78914 14.4069 7.79814L20.4338 8.2809C20.9788 8.32459 21.1994 9.00504 20.7844 9.36002L16.1927 13.2942C16.1069 13.3676 16.043 13.4632 16.0079 13.5705C15.9728 13.6778 15.968 13.7927 15.9939 13.9026L17.3974 19.7841C17.4256 19.9021 17.4182 20.0259 17.3762 20.1397C17.3341 20.2535 17.2593 20.3523 17.1611 20.4235C17.0629 20.4948 16.9458 20.5354 16.8246 20.5402C16.7034 20.545 16.5834 20.5137 16.4799 20.4504L11.3192 17.2994C11.2228 17.2406 11.1121 17.2095 10.9992 17.2095C10.8863 17.2095 10.7756 17.2406 10.6792 17.2994L5.51844 20.4515C5.41496 20.5148 5.29503 20.5461 5.1738 20.5413C5.05256 20.5365 4.93547 20.4959 4.83729 20.4246C4.73912 20.3533 4.66428 20.2546 4.62222 20.1408C4.58016 20.027 4.57277 19.9032 4.60097 19.7852L6.00447 13.9026C6.0305 13.7927 6.02572 13.6777 5.99065 13.5704C5.95558 13.4631 5.89158 13.3675 5.80569 13.2942L1.214 9.36002C1.12205 9.28095 1.05553 9.17646 1.02281 9.05969C0.990088 8.94292 0.992621 8.81909 1.03009 8.70375C1.06756 8.58842 1.1383 8.48674 1.23341 8.4115C1.32852 8.33626 1.44375 8.29083 1.56461 8.2809L7.59147 7.79814C7.70424 7.78914 7.81234 7.74919 7.90387 7.68271C7.99541 7.61623 8.06682 7.52578 8.11027 7.42133L10.4312 1.839Z"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          Save
-        </button>
-
-        <button class="share">
-          <svg
-            width="15"
-            height="13"
-            viewBox="0 0 30 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.6341 17.1886H11.7073C9.30673 17.1876 6.95156 17.8569 4.8964 19.124C2.84125 20.3911 1.16429 22.2079 0.0468313 24.3778C0.0154214 23.9751 -0.000200901 23.5712 1.95016e-06 23.1672C1.95016e-06 14.9122 6.55171 8.22061 14.6341 8.22061V0L30 12.7046L14.6341 25.4092V17.1886ZM11.7073 14.1992H17.561V19.1436L25.3478 12.7046L17.561 6.2656V11.2099H14.6341C12.9516 11.208 11.2885 11.5773 9.75862 12.2927C8.22876 13.008 6.86827 14.0525 5.77025 15.3546C7.65998 14.5897 9.67458 14.1976 11.7073 14.1992Z"
-              fill="#473B32"
-            />
-          </svg>
-          Share
-        </button>
-
-        <button
-          class="interested"
-          *ngIf="!interestV"
-          style="display: flex; padding: 0; height: 33px; transition: 0.5s ease"
-          (click)="interest(data._id)"
-        >
-          <div
-            style="
-              background-color: var(--bgBlue);
-              display: inline;
-              width: 20%;
-              height: 100%;
-            "
-          >
-            <svg
-              width="26"
-              height="20"
-              viewBox="0 0 26 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.39446 11.0833C7.38646 11.0833 8.28123 10.5382 8.89415 9.76333C9.84954 8.55287 11.0489 7.55378 12.4154 6.83C13.3052 6.36067 14.0769 5.66156 14.4498 4.73389C14.7118 4.08397 14.8463 3.39036 14.8461 2.69033V1.91667C14.8461 1.67355 14.9434 1.44039 15.1165 1.26849C15.2896 1.09658 15.5244 1 15.7692 1C16.5037 1 17.208 1.28973 17.7274 1.80546C18.2467 2.32118 18.5385 3.02065 18.5385 3.75C18.5385 5.158 18.2185 6.49144 17.6486 7.68311C17.3212 8.36511 17.7803 9.25 18.5409 9.25H22.3883C23.6511 9.25 24.7821 10.0982 24.9163 11.3461C24.9717 11.8619 25 12.385 25 12.9167C25.0051 16.2611 23.8542 19.5059 21.7397 22.109C21.2621 22.6981 20.5249 23 19.7643 23H14.8215C14.2271 23 13.6351 22.9047 13.0701 22.7189L9.23754 21.4478C8.67274 21.2612 8.08136 21.1663 7.48615 21.1667H5.49723M5.49723 21.1667C5.59939 21.4172 5.71015 21.6617 5.82954 21.9024C6.072 22.3913 5.73354 23 5.18585 23H4.06831C2.97416 23 1.96 22.3669 1.64123 21.328C1.21495 19.9386 0.998849 18.4941 1 17.0417C1 15.1436 1.36308 13.331 2.02277 11.6663C2.39939 10.7203 3.35939 10.1667 4.38462 10.1667H5.68062C6.26154 10.1667 6.59754 10.8462 6.296 11.34C5.24479 13.0584 4.69037 15.031 4.69354 17.0417C4.69354 18.501 4.97908 19.8931 5.49846 21.1667H5.49723ZM15.7692 9.25H18.5385"
-                stroke="white"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-
-          <div style="display: inline; width: 80%; align-items: center">
-            <p style="margin-top: 4px; font-weight: 800">Interest</p>
-          </div>
-        </button>
-        <button
-          (click)="interest(data._id)"
-          class="interested"
-          style="
-            background-color: var(--bgBlue);
-            color: white;
-            font-weight: 800;
-          "
-          *ngIf="interestV"
-        >
-          <svg
-            style="margin-right: 10px"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 24C5.3724 24 0 18.6276 0 12C0 5.3724 5.3724 0 12 0C18.6276 0 24 5.3724 24 12C24 18.6276 18.6276 24 12 24ZM12 21.6C14.5461 21.6 16.9879 20.5886 18.7882 18.7882C20.5886 16.9879 21.6 14.5461 21.6 12C21.6 9.45392 20.5886 7.01212 18.7882 5.21178C16.9879 3.41143 14.5461 2.4 12 2.4C9.45392 2.4 7.01212 3.41143 5.21178 5.21178C3.41143 7.01212 2.4 9.45392 2.4 12C2.4 14.5461 3.41143 16.9879 5.21178 18.7882C7.01212 20.5886 9.45392 21.6 12 21.6ZM11.5107 16.0929C11.1202 16.4834 10.487 16.4834 10.0965 16.0929L6.41911 12.4155C6.02858 12.025 6.02858 11.3918 6.41911 11.0013L6.70169 10.7187C7.09222 10.3282 7.72538 10.3282 8.11591 10.7187L10.0964 12.6992C10.487 13.0898 11.1202 13.0898 11.5107 12.6992L16.8839 7.32498C17.2744 6.9345 17.9074 6.93436 18.298 7.32467L18.5812 7.60769C18.972 7.99818 18.9721 8.63153 18.5814 9.02216L11.5107 16.0929Z"
-              fill="#FEFFEF"
-            />
-          </svg>
-          Interested
-        </button>
-      </div>
-      <div class="stream-container" *ngIf="false">
-        <div class="stream-content">
-          <div class="content-1">
-            <div class="sub-content-1"><p>stream name</p></div>
-            <div class="sub-content-2">
-              <p>22-02-2023,8.00 am</p>
-              <p>Tamil& english</p>
-            </div>
-          </div>
-          <div class="content-2"><button>Register</button></div>
-        </div>
-        <div class="stream-content">
-          <p>
-            fsdfsdffffffffffffffffffffffffffffffffffffffffffffffjhjhjhjhjhdf
-            ffffffffffffffjhjhjhjhjhdddddddddddddddddddddddjhjhjhjhjh
-            dfglkadogjnlsdfkgnhkadjhglkjdshfngkjdhkfgjnhdkjfgnhadkjngjkdmgnlkdfjglkdjgdgjlpdjgldg
-            dfoikgdlkg'lodjg'df dfgkidlkfgmndflkgjlklkjlkjoijlkn
-          </p>
-        </div>
-      </div>
-
+ 
+  
       <div class="form-detail">
         <div>
           <label>Address :</label>
@@ -469,14 +216,6 @@
           <label>Age of property :</label>
           <p>{{ data.ageOfBuilding }}</p>
         </div>
-        <div>
-          <label>Lease Duration:</label>
-          <p>{{ data.leaseDuration }}</p>
-        </div>
-        <div>
-          <label>Lack in Period :</label>
-          <p>{{ data.lock_in_period }}</p>
-        </div>
 
         <div>
           <label>Maintenance :</label>
@@ -487,11 +226,11 @@
               data.MaintenanceStatus == 'Exclude Maintenance'
             "
           >
-            {{ data.maintainenceCost | indianCurrency }}
+            {{ data.maintainenceCost  }}
           </p>
           <p
             *ngIf="
-              data.squareFT && data.MaintenanceStatus == 'Exclude Maintenance,'
+              data.squareFT && data.MaintenanceStatus == 'Exclude Maintenance'
             "
           >
             /{{ data.squareFT }}
@@ -500,7 +239,9 @@
 
         <div>
           <label>Facing direction :</label>
-          <p>{{ data.facingDirection }}</p>
+          <p
+            [innerHTML]="data.facingDirection ? data.facingDirection : 'Nill'"
+          ></p>
         </div>
 
         <div>
@@ -508,12 +249,8 @@
           <p>{{ data.BuildedSize }}.sqft</p>
         </div>
         <div>
-          <label>Other feature :</label>
-          <p>{{ data.otherFeature }}</p>
-        </div>
-        <div>
-          <label>Ideal for :</label>
-          <p>{{ data.ideaFor }}</p>
+          <label>USD/Landsize :</label>
+          <p>{{ data.landSize }}.sqft</p>
         </div>
         <div>
           <label>Description :</label>
@@ -523,40 +260,109 @@
         <h5>Amenities :</h5>
 
         <div>
-          <label>Parking :</label>
-          <p>{{ data.parkingFacilities }}</p>
+          <label>Power Backup :</label>
+          <p>{{ data.powerBackup }}</p>
         </div>
         <div>
           <label>Furnishing Status :</label>
           <p>{{ data.furnishingStatus }}</p>
         </div>
+
         <div>
-          <label>Power Backup :</label>
-          <p>{{ data.powerBackup }}</p>
+          <label>Water supply :</label>
+          <p>{{ data.waterSupply }}</p>
         </div>
 
         <div>
-          <label>Washroom :</label>
+          <label>Bathroom :</label>
+          <p>{{ data.bathRoomCount }}</p>
+        </div>
+        <div>
+          <label>Bathroom Type :</label>
           <p>{{ data.bathRoomType }}</p>
         </div>
 
         <div>
-          <label>Lift :</label>
-          <p>{{ data.Lift }}</p>
-        </div>
-        <div>
-          <label>Water Storage:</label>
-          <p>{{ data.waterStorage }}</p>
+          <label>Toilet Type :</label>
+          <p>{{ data.toiletType }}</p>
         </div>
 
         <div>
-          <label>Escalator :</label>
-          <p>{{ data.escalator }}</p>
+          <label>Balconies :</label>
+          <p>{{ data.balconyCount }}</p>
+        </div>
+        <div>
+          <label>Gated Security :</label>
+          <p>{{ data.gate_Security }}</p>
+        </div>
+        <div>
+          <label>Kitchen :</label>
+          <p>{{ data.kitchenType }}</p>
         </div>
 
         <div>
-          <label>Security :</label>
-          <p>{{ data.security }}</p>
+          <label>Parking :</label>
+          <p>{{ data.parkingFacilities }}</p>
+        </div>
+
+        <div>
+          <label>Flooring Type :</label>
+          <ul class="floor">
+            <li>
+              Kitchen-
+              <p [innerHTML]="data.kitchen ? data.kitchen : 'Nill'"></p>
+            </li>
+            <li>
+              Hall Floor-
+              <p [innerHTML]="data.hall_FLoor ? data.hall_FLoor : 'Nill'"></p>
+            </li>
+            <li>
+              Bedroom-
+              <p [innerHTML]="data.bedRoom ? data.bedRoom : 'Nill'"></p>
+            </li>
+            <li>
+              Bathroom-
+              <p [innerHTML]="data.bathRoom ? data.bathRoom : 'Nill'"></p>
+            </li>
+            <li>
+              Balcony-
+              <p [innerHTML]="data.balCony ? data.balCony : 'Nill'"></p>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="data.Amenities !== ['']">
+          <label>Amenities :</label>
+          <div>
+            <span *ngFor="let amt of data.Amenities"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="1"
+                  y="1"
+                  width="18"
+                  height="18"
+                  rx="1"
+                  fill="#473B32"
+                  stroke="#473B32"
+                  stroke-width="2"
+                />
+                <path
+                  d="M7.66667 10.5833L9.41667 12.3333L12.3333 8.25M17 10C17 10.9193 16.8189 11.8295 16.4672 12.6788C16.1154 13.5281 15.5998 14.2997 14.9497 14.9497C14.2997 15.5998 13.5281 16.1154 12.6788 16.4672C11.8295 16.8189 10.9193 17 10 17C9.08075 17 8.17049 16.8189 7.32122 16.4672C6.47194 16.1154 5.70026 15.5998 5.05025 14.9497C4.40024 14.2997 3.88463 13.5281 3.53284 12.6788C3.18106 11.8295 3 10.9193 3 10C3 8.14348 3.7375 6.36301 5.05025 5.05025C6.36301 3.7375 8.14348 3 10 3C11.8565 3 13.637 3.7375 14.9497 5.05025C16.2625 6.36301 17 8.14348 17 10Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p>{{ amt }}</p>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -833,14 +639,7 @@
               </p>
             </div>
           </div>
-          <ngx-spinner
-            bdColor="rgba(51,51,51,0.8)"
-            size="medium"
-            color="#fff"
-            type="ball-scale-multiple"
-          >
-            <p style="font-size: 20px; color: white">Loading...</p>
-          </ngx-spinner>
+          
           <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7774.084947361879!2d80.24697922233015!3d13.03296726575864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b4687f6ae9%3A0x671019410bd08a22!2sAlwarpet%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1679896040876!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
           <agm-map
             #myDiv
@@ -872,10 +671,11 @@
                 </ul>
               </agm-info-window>
               </agm-marker>
+             
             </ng-container>
           </agm-map>
 
-          <p class="report" class="report" data-bs-toggle="modal" data-bs-target="#report">
+          <p class="report" data-bs-toggle="modal" data-bs-target="#report" class="report">
             <svg
               width="15"
               height="15.2"
@@ -886,8 +686,9 @@
               <path
                 d="M10 20.9168C4.477 20.9168 0 16.2533 0 10.5002C0 4.74704 4.477 0.0834961 10 0.0834961C15.523 0.0834961 20 4.74704 20 10.5002C20 16.2533 15.523 20.9168 10 20.9168ZM10 18.8335C12.1217 18.8335 14.1566 17.9555 15.6569 16.3927C17.1571 14.8299 18 12.7103 18 10.5002C18 8.29003 17.1571 6.17041 15.6569 4.60761C14.1566 3.0448 12.1217 2.16683 10 2.16683C7.87827 2.16683 5.84344 3.0448 4.34315 4.60761C2.84285 6.17041 2 8.29003 2 10.5002C2 12.7103 2.84285 14.8299 4.34315 16.3927C5.84344 17.9555 7.87827 18.8335 10 18.8335ZM9 13.6252H11V15.7085H9V13.6252ZM9 5.29183H11V11.5418H9V5.29183Z"
                 fill="#473B32"
-              /></svg
-            >Report
+              />
+            </svg>
+            Report
           </p>
         </div>
       </div>
@@ -899,7 +700,7 @@
   </div>
 </div>
 
-<buyer-footer></buyer-footer>
+
 <div
   class="modal fade"
   id="exampleModal"
@@ -920,46 +721,6 @@
         <p>Contact Number 2 : {{ data.secondaryContactNumber }}</p>
         <!-- <p><button class="con-btn">Contact Now</button></p> -->
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- reportProp -->
-<div class="modal fade" id="report" tabindex="-1" aria-labelledby="report" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
-    <div class="modal-content report-pop">
-      <div class="pop-container">
-        <div class="form">
-          <div class="title">
-            <h2>Reason For Report </h2>
-          
-          </div>
-          <div class="content" >
-            <div >
-              <label for="reason">Reason :</label>
-             <select name="" id="reason" [(ngModel)]="reason">
-              <option [value]="v" *ngFor="let v of report">{{v}}</option>
-             </select>
-          </div>
-          <!-- <p class="err" *ngIf="submitted && enqform.get('Name').invalid">Name is required!</p> -->
-          <!-- <p  class="err" *ngIf="submitted && enqform.get('email').invalid">email is required!</p> -->
-         
-          <!-- <p class="err" *ngIf="submitted && enqform.get('phoneNumber').invalid">phoneNumber is required!</p> -->
-          <div>
-            <label for="">Description</label>
-           <input [(ngModel)]="des" class="des-in" type="text" class="form-control"  maxlength="100" #enq>
-         
-      
-            </div>
-            <!-- <p class="err" *ngIf="submitted && enqform.get('Enquiry').invalid">Enquiry is required!</p> -->
-            <div style="display: flex;align-items: center;justify-content: center;">
-              <button class="bttn" (click)="reportProp(close)">Submit</button>
-              <button #close  data-bs-toggle="modal" data-bs-target="#report" style="display: none;" >xczxc</button>
-            </div>
-          </div>
-          
-          </div>
-        </div>
     </div>
   </div>
 </div>

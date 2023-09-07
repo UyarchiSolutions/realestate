@@ -106,6 +106,7 @@ import { ResidentialRent2Component } from './seller/seller-buyer-view/residentia
 import { ResidentialSaleComponent } from './seller/seller-buyer-view/residential-sale/residential-sale.component';
 import { CommercialRentComponent } from './seller/seller-buyer-view/commercial-rent/commercial-rent.component';
 import { CommercialSaleComponent } from './seller/seller-buyer-view/commercial-sale/commercial-sale.component';
+import { AdminModule } from '../app/admin/admin.module';
 
 
 
@@ -315,24 +316,7 @@ const routes: Routes = [
 
   //admin
   {
-    path: 'admin',
-    children: [
-      { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
-      { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
-      { path: 'manage-post', component: ManagePostComponent },
-      { path: 'stream-approval',children:[
-        {path:'',component: StreamApprovalComponent },
-        {path:'stream-view',component:ResidentialRentStreamComponent},
-      ] },
-      { path: 'manage-plan', children:[
-        {path:'', component: ManagePlanComponent},
-        {path:'add-plan', component: AddPlanComponent},
-      ]  },
-      { path: 'manage-faq', component: ManageFaqComponent },
-      { path: 'manage-enquiry', component: ManageEnquiryComponent },
-      { path: 'reported-posts', component: ReportedPostComponent },
-     
-    ],
+    path: 'admin',loadChildren:()=>import('../app/admin/admin.module').then((m)=>m.AdminModule)
   },
 
 

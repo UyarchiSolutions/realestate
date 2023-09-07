@@ -55,7 +55,11 @@ export class RegisterComponent {
 
   }
   routeToLog(){
-    this.route.navigateByUrl('/buyerLogin');
+    let data={
+      next:'true'
+    }
+    let query = new URLSearchParams(data).toString()
+    this.route.navigateByUrl('/buyerLogin?' + query)
   }
   routeToHome(){
     this.route.navigateByUrl('/');

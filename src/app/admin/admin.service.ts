@@ -79,4 +79,40 @@ export class AdminService {
   get_All_reports(){
     return this.http.get(this.baseApi+'/v1/EnquieryRoute/getAll/Report')
   }
+   get_property(id: any) {
+    return this.http.get(
+      this.baseApi + '/v1/BuyerSeller/getSellerPostById/' + id
+    );
+  }
+  get_landmarks(lat:any,long:any,radius:any,type:any){
+   
+    return this.http.get(this.baseApi+`/v1/BuyerSeller/neighbour_api?lat=${lat}&long=${long}&radius=${radius}&type=${type}`)
+  }
+  
+  calculateDistance(
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ): any {
+    const earthRadiusKm = 6371; // Radius of the Earth in kilometers
+    const dLat = this.degreesToRadians(lat2 - lat1);
+    const dLon = this.degreesToRadians(lon2 - lon1);
+  
+    lat1 = this.degreesToRadians(lat1);
+    lat2 = this.degreesToRadians(lat2);
+  
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let distance = earthRadiusKm * c;
+    let dis =String(distance)
+    dis =dis.substring(0, 3)
+    return dis;
+  }
+  
+   degreesToRadians(degrees: number): number {
+    return (degrees * Math.PI) / 180;
+  }
 }

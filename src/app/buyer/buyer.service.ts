@@ -111,7 +111,7 @@ export class BuyerService {
     return this.http.get(this.base_url+`/v1/BuyerSeller/getsaved/PropertyByUser/pagination?type=${type}&ctype=${ctype}&page=${page}&range=${range}`,{headers:{auth:Cookie.get('buyer')}})
   }
   report_prop(data:any){
-    return this.http.post(this.base_url+'/v1/EnquieryRoute/create/Report',data)
+    return this.http.post(this.base_url+'/v1/EnquieryRoute/create/Report',data,{headers:{auth:Cookie.get('buyer')}})
   }
 
 

@@ -424,5 +424,22 @@ if(this.checkhome){
     closeInfoWindow() {
       this.showcount = -1;
     }
+    reason:any;
+    report:any=['Fake Account','Price Manipulation','Fake Properties listing',
+    'Misleading Advertisement','Rental Scam','Seems Like Broker','Wrong Mobile Number']
+    des:any;
+    reportProp(click:HTMLButtonElement){
+      console.log(this.reason,this.des)
+      let data={
+        propertyId:this.id,
+        reason:this.reason,
+        description:this.des
+      }
+      console.log(data)
+      this.buyerService.report_prop(data).subscribe((res:any)=>{
+        console.log(res)
+        click.click()
+      })
+    }
   }
 
