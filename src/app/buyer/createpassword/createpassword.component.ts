@@ -23,12 +23,17 @@ export class CreatepasswordComponent {
     console.log(this.id);
   }
   isSubmit=false;
-
+  notsame=false;
   submitOTP() {
     this.isSubmit=true;
+    console.log()
+    if(this.passwordForm.get('password')?.value != this.passwordForm.get('confirmPassword')?.value && this.passwordForm.get('password')?.valid ){
+      this.notsame=true
+    }
     if (this.passwordForm.valid && this.passwordForm.get('password')?.value == this.passwordForm.get('confirmPassword')?.value) {
       this.buyerService.createPassword(this.id, this.passwordForm.value).subscribe((res: any) => {
         this.isSubmit=false;
+        this.notsame=false 
         let data={
           next:'true'
         }

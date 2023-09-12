@@ -182,7 +182,7 @@ table tr th{
 }
 .table-head{
 background-color: var( --bgligthBlue);
-color: white;
+color:var(--darkb);
 height: 50px;
 }
 .main-section .main{

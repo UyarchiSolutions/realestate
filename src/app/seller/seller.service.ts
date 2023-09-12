@@ -60,6 +60,9 @@ changePasswordForseller(data:any){
 editAccountSeller(data:any){
   return this.http.put(this.baseUrl+`/v1/BuyerSeller/updateuserProfile`,data,{headers:{auth:Cookie.get('tokens')}})
 }
+delete_notification(id:string){
+  return this.http.get(this.baseUrl+'/v1/BuyerSeller/Disable/Notifications/'+id)
+}
 // plans
 get_All_Plan(){
   return this.http.get(this.planBase)

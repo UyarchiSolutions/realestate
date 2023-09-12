@@ -68,4 +68,7 @@ export class RegisterComponent {
     this.mobile=false;
     this.mailAlready=false
   }
+  get Formcontrol() {
+    return this.loginForm.controls;
+  }
 }

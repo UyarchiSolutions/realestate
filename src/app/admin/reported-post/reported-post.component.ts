@@ -54,5 +54,10 @@ export class ReportedPostComponent implements OnInit {
       this.router.navigateByUrl('/admin/commercial-rent?'+ query)
     }
   }
- 
+  disable(id:any){
+    this.service.disable_report_notification(id).subscribe((res:any)=>{
+      console.log(res)
+      this.getAll()
+    })
+  }
 }

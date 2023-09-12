@@ -64,19 +64,23 @@
         </div>
         <div class="form-data">
           <label>Mobile Number :</label>
-          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile" (keyup)="errmsg()">
+          <input type="number"  onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" maxlength="10" pattern="[6789][0-9]{9}" placeholder="Enter Your Mobile Number" formControlName="mobile" (keyup)="errmsg()">
         </div>
-        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('mobile')?.invalid">
+        <div class="error-msg" *ngIf="isSubmit">
           <label></label>
-         <p>Mobile Number is required!</p>
+         <p *ngIf="Formcontrol.mobile.errors?.['required']">Mobile Number is required!</p>
+         <p *ngIf="Formcontrol.mobile.errors?.['pattern']">Enter a valid Number!</p>
+        
         </div>
+       
         <div class="form-data">
           <label>Email :</label>
           <input type="email" placeholder="Enter Your Email ID"  formControlName="email" (keyup)="errmsg()">
         </div>
-        <div class="error-msg" *ngIf="isSubmit&&loginForm.get('email')?.invalid">
+        <div class="error-msg" *ngIf="isSubmit">
           <label></label>
-         <p>Email is required!</p>
+         <p *ngIf=" Formcontrol.email.errors?.['required']">Email is required!</p>
+         <p *ngIf=" Formcontrol.email.errors?.['pattern']">Enter a valid Email!</p>
         </div>
        
         <div class="buyer-tenant form-data">

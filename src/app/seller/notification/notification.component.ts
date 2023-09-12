@@ -13,6 +13,9 @@ export class NotificationComponent implements OnInit {
 
  }
   ngOnInit(): void {
+   this.getAll()
+  }
+  getAll(){
     this.service.get_all_interest().subscribe((res:any)=>{
       console.log(res)
       this.data=res
@@ -25,6 +28,11 @@ export class NotificationComponent implements OnInit {
     let query = new URLSearchParams(data).toString()
     this.router.navigateByUrl('/owner/interest-post?'+query)
   }
-
+  delete(id:string){
+    console.log(id)
+    this.service.delete_notification(id).subscribe((res:any)=>{
+      this.getAll()
+    })
+  }
  
 }

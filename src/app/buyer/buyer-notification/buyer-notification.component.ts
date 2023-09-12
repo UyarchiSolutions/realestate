@@ -60,4 +60,9 @@ export class BuyerNotificationComponent implements OnInit {
       this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);
     }
   }
+  delete(id:any){
+    this.buyerService.delete_notification(id).subscribe((res:any)=>{
+      this.get_all_notification()
+    })
+  }
 }

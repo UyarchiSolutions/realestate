@@ -87,6 +87,9 @@ export class BuyerService {
   get_all_notification(){
     return this.http.get(this.base_url+'/v1/BuyerSeller/getNotificationFor/Buyers',{ headers: { auth: Cookie.get('buyer') }})
   }
+  delete_notification(id:string){
+    return this.http.get(this.base_url+'/v1/BuyerSeller/Disable/Notifications/'+id)
+  }
   send_schedule_res(id:any,status:any){
     const data = {postId:id,status:status}
     return this.http.post(this.base_url+'/v1/BuyerSeller/Reshedule/BuyerReshedule',data,{ headers: { auth: Cookie.get('buyer') }})

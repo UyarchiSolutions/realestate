@@ -27,6 +27,9 @@ export class AdminService {
   change_staus_post(id:any,data:any){
     return this.http.put(this.baseURL+'post/active/inactive/'+id,data)
   }
+  disable_report_notification(id:any){
+    return this.http.get(this.baseApi+'/v1/BuyerSeller/Disable/Reported/Property/'+id)
+  }
   remove_post(id:any){
    
     return this.http.get(this.baseURL+'Remove/Post/'+id)
