@@ -34,8 +34,10 @@ export class SellerforotpComponent implements OnInit {
     });
     this.startTimer();
   }
+  isSubmitted=false
   submitOTP() {
     console.log('working,Invalid OTP');
+    this.isSubmitted=true
     if (this.ForgotPassword.get('otp')?.valid) {
       this.sellerService
         .otp_send({
@@ -45,6 +47,7 @@ export class SellerforotpComponent implements OnInit {
         .subscribe(
           (data: any) => {
             this.show = true;
+            this.isSubmitted=false
             this.id = data.value._id;
             this.route.navigate(['/updatePassword-seller'], {
               queryParams: { id: this.id },
@@ -53,6 +56,7 @@ export class SellerforotpComponent implements OnInit {
           (error) => {
             console.log(error);
             this.notfound = true;
+            this.isSubmitted=false
             this.errormsg = error.error.message;
           }
         );
@@ -76,6 +80,9 @@ export class SellerforotpComponent implements OnInit {
   }
 
   ResendOtp() {
+    this.notfound=false
+    this.ForgotPassword.get('otp')?.reset()
+    this.isSubmitted=false
     this.number = parseInt(this.number);
 
     let data = {

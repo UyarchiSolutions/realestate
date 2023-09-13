@@ -32,6 +32,7 @@
         </div>
       </div>
       <div style="color: red;text-align: center;" >
+        <p *ngIf=" isSubmitted &&ForgotPassword.get('otp')?.invalid" class=" error-msg">OTP is required!</p>
         <p *ngIf="notfound">{{errormsg}}</p>
       </div>
       <div class="verify-btn">

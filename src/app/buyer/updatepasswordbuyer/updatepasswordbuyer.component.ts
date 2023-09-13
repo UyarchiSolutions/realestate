@@ -27,10 +27,10 @@ export class UpdatepasswordbuyerComponent implements OnInit{
   }
   changePassword() {
     this.isSubmit=true
-    if( !(this.password.get('confirmPassword')?.value == this.password.get('password')?.value) ){
+    if( !(this.password.get('confirmPassword')?.value == this.password.get('password')?.value) && this.password.valid){
       this.matchPas=true;
     }
-    if( this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
+    if(this.password.valid && this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
       this.matchPas=false;
     this.buyerService.changePassword(this.id, this.password.value).subscribe((res: any) => {
       console.log('working')

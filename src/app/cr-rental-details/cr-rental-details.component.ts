@@ -191,37 +191,43 @@ export class CrRentalDetailsComponent implements OnInit {
      
     
       routetopreview(){
-        if(this.maintanceVal=='Exclude Maintenance'){
-          this.Checkdata={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
-            AdvanceAmt:this.priceform.get('AdvanceAmount').value,
-            maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-            leaseDuration:this.ldv,
-            lock_in_period:this.lipv,
-            squareFT:this.mainmon,
-            MaintenanceStatus:this.maintanceVal,
-          
+        this.submitted=true
+        if(this.priceform.valid){
+          if(this.maintanceVal=='Exclude Maintenance'){
+
+            this.Checkdata={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
+              AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+              maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+              leaseDuration:this.ldv,
+              lock_in_period:this.lipv,
+              squareFT:this.mainmon,
+              MaintenanceStatus:this.maintanceVal,
+            
+            }
+          }else{
+            this.Checkdata={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
+              AdvanceAmt:this.priceform.get('AdvanceAmount').value,
+              leaseDuration:this.ldv,
+              lock_in_period:this.lipv,
+              MaintenanceStatus:this.maintanceVal,
+            
+            }
           }
-        }else{
-          this.Checkdata={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedRent').value,
-            AdvanceAmt:this.priceform.get('AdvanceAmount').value,
-            leaseDuration:this.ldv,
-            lock_in_period:this.lipv,
-            MaintenanceStatus:this.maintanceVal,
-          
-          }
+          this.submitted=false
+               
+                this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
+                  var postdata = {
+                    id: this.id,
+                  };
+                  var queryString = new URLSearchParams(postdata).toString();
+                  this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
+                });
         }
-             
-              this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
-                var postdata = {
-                  id: this.id,
-                };
-                var queryString = new URLSearchParams(postdata).toString();
-                this.router.navigateByUrl('/start-posting/commercial-rent-preview?' + queryString);
-              });
+      
       
       }
     

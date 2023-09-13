@@ -41,6 +41,7 @@ import { BuyerProfileComponent } from './buyer-profile/buyer-profile.component';
 import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-edit.component';
 
 import { NgxEditorModule } from 'ngx-editor';
+import { CommonElementsModule } from '../common-elements/common-elements.module';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { NgxEditorModule } from 'ngx-editor';
   ],
   imports: [
     RouterModule,
+    CommonElementsModule,
     CommonModule,
     HttpClientModule,
     FormsModule,

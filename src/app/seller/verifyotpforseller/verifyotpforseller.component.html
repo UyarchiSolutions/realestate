@@ -13,19 +13,20 @@
         <label>OTP :</label>
         <div>
           <input type="text" placeholder="Enter OTP" formControlName="otp">
-          <div style="display: flex;
-          flex-direction: row-reverse;
-          cursor: pointer;
-          font-size: .9rem">
-            
-            <a (click)="resend()">Resend OTP !</a>
+          <div class="resend-otp" style="display: flex; justify-content: end;">
+            <p style="color: var(--bgBlue); text-decoration: underline; cursor: pointer;" *ngIf="recentShow"
+              (click)="resend()">Resend OTP
+            </p>
+            <p style="color: var(--bgBlue);" *ngIf="!recentShow">
+             Expired in <span style="font-weight: 600;">{{remainingTime}}</span>
+            </p>
           </div>
         </div>
       </div>
     </form>
-    <div style="color:red;text-align: right;">
+    <div style="color:red;text-align: center;;">
     <p *ngIf=" isSubmitted &&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p>
-    <p *ngIf="notfound">Invalid OTP</p>
+    <p  *ngIf="notfound">{{errormsg}}</p>
   </div>
     <div class="verify-btn">
       <button (click)="submitOTP()">Verify</button>

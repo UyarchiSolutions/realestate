@@ -59,7 +59,7 @@
         </div>
         <div class="error-msg" *ngIf="isSubmitted&&loginForm.get('userName')?.invalid">
           <label></label>
-         <p>Name Number is require!</p>
+         <p>Name is required!</p>
         </div>
         <div>
           <label>Mobile Number :</label>
@@ -93,8 +93,8 @@
          <p>Role is require!</p>
         </div>
         <div style="color:red;text-align: right;">
-          <p *ngIf="mailAlready">Email is Already Registered Please Login</p>
-          <p *ngIf="mobile">Mobile is Already Registered Please Login</p>
+          <p *ngIf="mailAlready">Email is Already Registered </p>
+          <p *ngIf="mobile">Mobile Number is Already Registered </p>
         </div>
         <div class="login-btn">
           <button type="button" (click)="onSubmitted()">Register</button>

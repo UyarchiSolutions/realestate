@@ -77,7 +77,23 @@
           </div>
         </div>
       </div>
-      <div
+      <div class="error-box"
+      *ngIf="isSubmit"
+      
+    ><label for=""></label>
+    <div>
+      <p  *ngIf="isSubmit && changeFromControl.newPassword.errors?.['required']">
+        Password required
+      </p>
+      <p 
+        *ngIf="isSubmit && changeFromControl.newPassword.errors?.['strongPassword']"
+      >
+      Create an 8+ character password with 1 special character, 1 number, 1 uppercase letter, and 1 lowercase letter
+      </p>
+    </div>
+     
+    </div>
+      <!-- <div
       *ngIf="isSubmit"
       style="color: red !important; text-align: right !important"
     >
@@ -89,7 +105,7 @@
       >
       Create an 8+ character password with 1 special character, 1 number, 1 uppercase letter, and 1 lowercase letter
       </p>
-    </div>
+    </div> -->
       <div class="otp-field" style="margin-top: 20px">
         <label>Confirm Password :</label>
         <div>
@@ -124,14 +140,19 @@
           </div>
         </div>
       </div>
+      <div class="error-box">
+        <label for=""></label>
+        <div>
+          <p *ngIf="oldPassword">Old password is Incorrect</p>
+          <p *ngIf="notMatch">Password and Confirm password are not same</p>
+        </div>
+       
+      </div>
       <div class="verify-btn">
         <button (click)="onSubmit()">Change Password</button>
       </div>
     </form>
-    <div style="color: red; text-align: right">
-      <p *ngIf="oldPassword">Old password is Incorrect</p>
-      <p *ngIf="notMatch">Password and Confirm password are not same</p>
-    </div>
+
   </div>
   <div class="ad">
     <img src="../../assets/images/ad-post.png" width="100%" />

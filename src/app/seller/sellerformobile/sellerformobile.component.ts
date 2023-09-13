@@ -20,10 +20,11 @@ export class SellerformobileComponent {
   })
   isDisplay=false;
   notfound=false;
+  submit=false;
   number:any;
   constructor(private fb: FormBuilder, private SellerService: SellerService, private route: Router) { }
   submitOTP() {
-    
+    this.submit=true
     this.isDisplay=true;
     const a={
       number:this.ForgotPassword.get('number')?.value,
@@ -50,5 +51,9 @@ export class SellerformobileComponent {
   }
   errMsg(){
     this.notfound=false;
+    this.submit=false
   }
+   get controls(){
+    return this.ForgotPassword.controls
+   }
 }

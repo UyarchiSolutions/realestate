@@ -24,8 +24,10 @@
           </div>
         </div>
 
-        <div style="color: red; text-align: right">
+        <div style="color: red; text-align: center">
           <p *ngIf="notfound">Mobile Number Not Registered!</p>
+          <p *ngIf="submit && formcontrol.number.errors?.['required']">Mobile Number is required!</p>
+          <p *ngIf="submit && formcontrol.number.errors?.['pattern']">Enter a valid number!</p>
         </div>
         <div class="verify-btn">
           <button (click)="submitOTP()">Send OTP</button>

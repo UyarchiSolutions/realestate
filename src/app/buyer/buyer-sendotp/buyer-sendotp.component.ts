@@ -34,8 +34,10 @@ export class BuyerSendotpComponent implements OnInit {
     });
     this.startTimer();
   }
+  isSubmit=false
   submitOTP() {
-    console.log('working');
+    this.isSubmit = true;
+   
     if (this.ForgotPassword.get('otp')?.valid) {
       this.buyerService
         .otp_send({
@@ -44,6 +46,7 @@ export class BuyerSendotpComponent implements OnInit {
         })
         .subscribe(
           (data: any) => {
+            this.isSubmit = false;
             this.show = true;
             this.id = data.value._id;
             this.route.navigate(['/buyer-update'], {
@@ -76,6 +79,9 @@ export class BuyerSendotpComponent implements OnInit {
   }
 
   ResendOtp() {
+    this.notfound=false
+    this.isSubmit=false
+    this.ForgotPassword.get('otp')?.reset()
     this.number = parseInt(this.number);
 
     let data = {
@@ -90,5 +96,8 @@ export class BuyerSendotpComponent implements OnInit {
   }
   errmsg() {
     this.notfound = false;
+  }
+  get formcontrol(){
+    return this.ForgotPassword.controls;
   }
 }

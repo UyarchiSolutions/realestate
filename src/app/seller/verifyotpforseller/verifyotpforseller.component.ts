@@ -26,6 +26,7 @@ export class VerifyotpforsellerComponent {
       console.log(this.mobile)
       this.getMobile(this.mobile)
     })
+    this.startTimer()
   }
   getMobile(number: any) {
     const a = {
@@ -48,26 +49,56 @@ export class VerifyotpforsellerComponent {
   }
   isSubmitted: any = false;
   already=false;
+  errormsg:any
   submitOTP() {
     this.isSubmitted = true;
     if (this.otp_Form.valid) {
       this.sellerSerivece.getOtp(this.otp_Form.value).subscribe((res: any) => {
         this.isSubmitted = false;
         this.route.navigate(['/createPassword-seller'], { queryParams: { id: res._id } })
+      },
+      (error) => {
+        console.log(error);
+        this.notfound = true;
+        this.errormsg = error.error.message;
       })
     }
 
   }
   resend(){
+    this.notfound=false
+    this.otp_Form.get('otp')?.reset()
+    this.isSubmitted=false
     const a={
       number:this.mobile,
       resend:true
     }
     this.sellerSerivece.sendOtptoMobile(a).subscribe((res:any) => {
-
+      this.recentShow = false;
+      this.remainingTime = 60;
+      this.startTimer();
     })
   }
   errmsg(){
     this.notfound=false;
   }
+  remainingTime: number = 60;
+  private intervalId: any;
+  recentShow: any = false;
+  startTimer() {
+    this.intervalId = setInterval(() => {
+      this.remainingTime--;
+      if (this.remainingTime === 0) {
+        this.clearTimer();
+        // Timer expired, perform necessary actions
+
+        this.recentShow = true;
+      }
+    }, 1000); // Update every second (1000 milliseconds)
+  }
+
+  clearTimer() {
+    clearInterval(this.intervalId);
+  }
+
 }

@@ -23,6 +23,7 @@ export class UpdatepasswordsellerComponent {
    this.activate_router.queryParams.subscribe((res:Params) =>{
     this.id=res['id'];
    })
+   
   }
   changePassword() {
     this.isSubmit=true
@@ -30,7 +31,7 @@ export class UpdatepasswordsellerComponent {
       this.matchPas=true;
     }
 
-    if( this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
+    if(this.password.valid&& this.password.get('password')?.value == this.password.get('confirmPassword')?.value ){
       this.matchPas=false;
     let data={
       password:this.password.get('password')?.value,
@@ -57,4 +58,5 @@ export class UpdatepasswordsellerComponent {
    get passwordControl() {
     return this.password.controls;
   }
+
 }

@@ -262,8 +262,8 @@ export class RrRentalDetailsComponent implements OnInit{
     this.check1= true;
   }
   routetopreview(){
-
-         if(this.switch == 'rent')  {
+    this.submitted=true
+         if(this.switch == 'rent' && this.rentform.valid)  {
           if(this.maintanceVal=='Exclude Maintenance'){
             this.Checkdata={
               rentDetails:this.switch,
@@ -291,7 +291,7 @@ export class RrRentalDetailsComponent implements OnInit{
             this.router.navigateByUrl('/start-posting/residentaial-rent-preview?' + queryString);
           });
          }  
-         if(this.switch == 'lease'){
+         if(this.switch == 'lease' && this.leaseform.valid){
           if(this.LmaintanceVal=='Exclude Maintenance'){
             this.Checkdata={
         

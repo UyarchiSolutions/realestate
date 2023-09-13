@@ -164,40 +164,43 @@ this.service.formget(this.id).subscribe((res:any)=>{
   
     routetopreview(){
       console.log(this.priceform)
-     
-        if(this.maintanceVal=='Exclude Maintenance'){
-          this.Checkdata={
-    
-            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-   
-            maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
-            squareFT:this.mainmon,
-            MaintenanceStatus:this.maintanceVal,
-          
-          }
-        }else{
-          this.Checkdata={
-    
-            MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-          
-            MaintenanceStatus:this.maintanceVal,
-          
-          }
-        }
-      
-      console.log('route triggered')
-           
-      this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
-        
-      var postdata = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/start-posting/residential-sale-preview?' + queryString);
+     this.submitted=true
+     if(this.priceform.valid){
+      if(this.maintanceVal=='Exclude Maintenance'){
+        this.Checkdata={
   
+          MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+ 
+          maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
+          squareFT:this.mainmon,
+          MaintenanceStatus:this.maintanceVal,
+        
+        }
+      }else{
+        this.Checkdata={
+  
+          MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
+        
+          MaintenanceStatus:this.maintanceVal,
+        
+        }
+      }
+    
+    console.log('route triggered')
+         this.submitted=false
+    this.service.formput(this.id,this.Checkdata).subscribe((res:any)=>{
       
-      });
-          
+    var postdata = {
+      id: this.id,
+    };
+    var queryString = new URLSearchParams(postdata).toString();
+    this.router.navigateByUrl('/start-posting/residential-sale-preview?' + queryString);
+
+    
+    });
+        
+     }
+        
            
   
     }

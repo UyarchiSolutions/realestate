@@ -27,7 +27,7 @@ export class CreatepasswordComponent {
   submitOTP() {
     this.isSubmit=true;
     console.log()
-    if(this.passwordForm.get('password')?.value != this.passwordForm.get('confirmPassword')?.value && this.passwordForm.get('password')?.valid ){
+    if(this.passwordForm.get('password')?.value != this.passwordForm.get('confirmPassword')?.value && this.passwordForm.valid ){
       this.notsame=true
     }
     if (this.passwordForm.valid && this.passwordForm.get('password')?.value == this.passwordForm.get('confirmPassword')?.value) {

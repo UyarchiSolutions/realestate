@@ -160,59 +160,64 @@ export class CsPriceDetailsComponent {
     
       routetopreview(){
         var data;
-        if(this.maintanceVal=='Exclude Maintenance'){
-          data={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
-            maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
-            squareFT:this.mainmon,
-            MaintenanceStatus:this.maintanceVal,
+        this.submitted=true
+        if(this.priceform.valid){
+          if(this.maintanceVal=='Exclude Maintenance'){
+            data={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+              maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
+              squareFT:this.mainmon,
+              MaintenanceStatus:this.maintanceVal,
+              
+            }
+          }else{
+            data={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+              MaintenanceStatus:this.maintanceVal,
             
+            }
           }
-        }else{
-          data={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
-            MaintenanceStatus:this.maintanceVal,
-          
+          if(this.allKeysHaveValue(data) ){ 
+            console.log('updated',this.Checkdata);
+          if(this.maintanceVal=='Exclude Maintenance'){
+            data={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+              RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+              current_in_loan:this.priceform.get('CurrentlyInLoan').value,
+              maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
+              squareFT:this.mainmon,
+              MaintenanceStatus:this.maintanceVal,
+              
+            }
+          }else{
+            data={
+      
+              MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
+              RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
+              current_in_loan:this.priceform.get('CurrentlyInLoan').value,
+              MaintenanceStatus:this.maintanceVal,
+            
+            }  
           }
+          this.submitted=false
+              console.log(data) 
+         this.service.formput(this.id,data).subscribe((res:any)=>{
+          var postdata = {
+            id: this.id,
+          };
+          var queryString = new URLSearchParams(postdata).toString();
+          this.router.navigateByUrl('/start-posting/commercial-sale-preview?' + queryString);
+      
+         
+         });
+              
+         
         }
-        if(this.allKeysHaveValue(data) ){ 
-          console.log('updated',this.Checkdata);
-        if(this.maintanceVal=='Exclude Maintenance'){
-          data={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
-            RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-            current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-            maintainenceCost:this.priceform.get('ExcludeMaintenance')?.value,
-            squareFT:this.mainmon,
-            MaintenanceStatus:this.maintanceVal,
-            
-          }
-        }else{
-          data={
-    
-            MonthlyRentFrom:this.priceform.get('ExpectedPrice').value,
-            RentNegociable:this.priceform.get('ExpectedpricetNegotiable').value,
-            current_in_loan:this.priceform.get('CurrentlyInLoan').value,
-            MaintenanceStatus:this.maintanceVal,
-          
-          }  
         }
-            console.log(data) 
-       this.service.formput(this.id,data).subscribe((res:any)=>{
-        var postdata = {
-          id: this.id,
-        };
-        var queryString = new URLSearchParams(postdata).toString();
-        this.router.navigateByUrl('/start-posting/commercial-sale-preview?' + queryString);
-    
-       
-       });
-            
-       
-      }
+      
       }
     
       back(count: any) {

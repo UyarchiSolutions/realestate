@@ -276,11 +276,11 @@
               <div>
                 <label>Flooring Type :</label>
                 <ul>
-                  <li>Kitchen - {{ data.kitchen }}</li>
-                  <li>Hall Floor - {{ data.hall_FLoor }}</li>
-                  <li>Bed Room -{{ data.bedRoom }}</li>
-                  <li>Bathroom -{{ data.bathRoom }}</li>
-                  <li>Balcony -{{ data.balCony }}</li>
+                  <li *ngIf="data.kitchen">Kitchen - {{ data.kitchen }}</li>
+                  <li  *ngIf="data.hall_FLoor">Hall Floor - {{ data.hall_FLoor }}</li>
+                  <li *ngIf="data.bedRoom">Bed Room -{{ data.bedRoom }}</li>
+                  <li *ngIf="data.bathRoom">Bathroom -{{ data.bathRoom }}</li>
+                  <li *ngIf="data.balCony">Balcony -{{ data.balCony }}</li>
                 </ul>
               </div>
                <div *ngIf="data.Amenities.length > 0" class="amenities">

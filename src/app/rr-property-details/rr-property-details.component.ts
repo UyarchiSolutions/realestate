@@ -258,10 +258,12 @@ export class RrPropertyDetailsComponent implements OnInit {
   totalfloorforon!: any;
 
   groundFloorv(total: any) {
-    if (total == 0) {
-      this.tfv = 'Ground Floor';
-    } else {
+    this.ofv=null
+    
+    if(typeof(total) == 'number') {
       this.tfv = total + ' Floors';
+    }else{
+      this.tfv = total;
     }
     this.floorarraygenerate(total);
   }

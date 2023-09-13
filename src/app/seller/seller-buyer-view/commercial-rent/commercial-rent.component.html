@@ -1,251 +1,367 @@
 <header-with-profile></header-with-profile>
 <div class="container">
-
-
-
-    <div class="sidebar">
-        <img src="../../../../assets/images/ad-post.png" alt="" srcset="">
-    </div>
-    <div class="main">
- 
-<nav>
-    <ul>
+  <div class="sidebar">
+    <img src="../../../../assets/images/ad-post.png" alt="" srcset="" />
+  </div>
+  <div class="main">
+    <nav>
+      <ul>
         <li>Commercial ></li>
         <li>Rent</li>
-    </ul>
-</nav>
+      </ul>
+    </nav>
 
-<div class="top-section">
-    <div class="back" style="cursor:pointer !important">
-        <svg   (click)="back()" width="15" height="25" viewBox="0 0 20 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path  d="M7.27179 16.1559L20 28.0722L16.3641 31.4762L0 16.1559L16.3641 0.835693L20 4.23965L7.27179 16.1559Z" fill="#473B32" fill-opacity="0.6"/>
-            </svg>
-<p>{{data.BHKType}} House For {{data.Type}} in, {{data.formatedAddress}}</p>       
-</div>
-<div class="page-navigator">
-    <svg *ngIf="!checkForview" style="cursor:pointer" (click)="edit()" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.8288 2.90909L14.2683 1.46868C14.5684 1.16859 14.9754 1 15.3998 1C15.8242 1 16.2312 1.16859 16.5313 1.46868C16.8314 1.76878 17 2.17579 17 2.60019C17 3.02459 16.8314 3.4316 16.5313 3.7317L7.46989 12.7931C7.01876 13.244 6.46243 13.5754 5.85114 13.7574L3.55997 14.44L4.24262 12.1489C4.42462 11.5376 4.75601 10.9812 5.20688 10.5301L12.8288 2.90909ZM12.8288 2.90909L15.0798 5.16016M13.7998 11.0267V15.08C13.7998 15.5892 13.5975 16.0776 13.2375 16.4377C12.8774 16.7977 12.3891 17 11.8799 17H2.91997C2.41077 17 1.92241 16.7977 1.56235 16.4377C1.20228 16.0776 1 15.5892 1 15.08V6.12014C1 5.61093 1.20228 5.12258 1.56235 4.76252C1.92241 4.40245 2.41077 4.20017 2.91997 4.20017H6.97325" stroke="#394867" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>   
-       
-        
-</div>
+    <div class="top-section">
+      <div class="back" style="cursor: pointer !important">
+        <svg
+          (click)="back()"
+          width="15"
+          height="25"
+          viewBox="0 0 20 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.27179 16.1559L20 28.0722L16.3641 31.4762L0 16.1559L16.3641 0.835693L20 4.23965L7.27179 16.1559Z"
+            fill="#473B32"
+            fill-opacity="0.6"
+          />
+        </svg>
+        <p>
+          {{ data.BHKType }} House For {{ data.Type }} in,
+          {{ data.formatedAddress }}
+        </p>
+      </div>
+      <div class="page-navigator">
+        <svg
+          *ngIf="!checkForview"
+          style="cursor: pointer"
+          (click)="edit()"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.8288 2.90909L14.2683 1.46868C14.5684 1.16859 14.9754 1 15.3998 1C15.8242 1 16.2312 1.16859 16.5313 1.46868C16.8314 1.76878 17 2.17579 17 2.60019C17 3.02459 16.8314 3.4316 16.5313 3.7317L7.46989 12.7931C7.01876 13.244 6.46243 13.5754 5.85114 13.7574L3.55997 14.44L4.24262 12.1489C4.42462 11.5376 4.75601 10.9812 5.20688 10.5301L12.8288 2.90909ZM12.8288 2.90909L15.0798 5.16016M13.7998 11.0267V15.08C13.7998 15.5892 13.5975 16.0776 13.2375 16.4377C12.8774 16.7977 12.3891 17 11.8799 17H2.91997C2.41077 17 1.92241 16.7977 1.56235 16.4377C1.20228 16.0776 1 15.5892 1 15.08V6.12014C1 5.61093 1.20228 5.12258 1.56235 4.76252C1.92241 4.40245 2.41077 4.20017 2.91997 4.20017H6.97325"
+            stroke="#394867"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
 
-  
-</div>
+    <div class="detail-container">
+      <div class="image row">
+        <div class="col">
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 1"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 2"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 3"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="3"
+                aria-label="Slide 4"
+              ></button>
 
-<div class="detail-container">
-
-
-<div class="image">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button"  *ngIf="imageLength >= 1" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button"  *ngIf="imageLength >= 2" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" *ngIf="imageLength >= 3" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-
-          <button type="button"  *ngIf="imageLength >= 4" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          <button type="button"  *ngIf="imageLength >= 5" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
-
-
-        </div>
-        <div class="carousel-inner" >
-            <div class="carousel-item active">
-             <video controls="false" autoplay [src]="data.videos"   width="100%"  ></video>            
+              <button
+                type="button"
+                *ngIf="imageLength >= 4"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="4"
+                aria-label="Slide 5"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 5"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="5"
+                aria-label="Slide 6"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active"
+              style="
+                  background-image: url('../../../assets//images//Frame 2072.png');
+                ">
+                <video
+                  controls="false"
+                  autoplay
+                  [src]="data.videos"
+                  width="100%"
+                ></video>
               </div>
 
-          <div class="carousel-item "  *ngFor="let img of data.image; let i = index">
-            <img [src]="'https://uyarchicrm.click/'+ img" >
-            
+              <div
+                class="carousel-item"
+                *ngFor="let img of data.image; let i = index"
+                style="
+                  background-image: url('../../../assets//images//Frame 2072.png');
+                "
+              >
+                <img [src]="'https://uyarchicrm.click/' + img" />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-       
-         
-         
-        
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="table">
+          <div class="table-content">
+            <p>Property Type</p>
+            <h6>{{ data.propertType }}</h6>
+          </div>
+          <div class="table-content">
+            <p>Building Type</p>
+            <h6>{{ data.buildingType }}</h6>
+          </div>
+          <div class="table-content">
+            <p>Rent</p>
+            <h6>{{ data.MonthlyRentFrom | indianCurrencyS }}</h6>
+            <p *ngIf="data.RentNegociable" class="negotiable">Negotiable</p>
+            <p *ngIf="data.current_in_loan">(Current in loan)</p>
+          </div>
+          <div class="table-content">
+            <p>Deposit</p>
+            <h6>{{ data.AdvanceAmt | indianCurrencyS }}</h6>
+            <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p>
+          </div>
+          <div class="table-content">
+            <p>Built Up Area</p>
+            <h6>{{ data.BuildedSize }}.sqFt</h6>
+          </div>
+          <div class="table-content">
+            <p>Floor</p>
+            <h6>{{ data.noOfFloor }}/{{ data.floorNo }}</h6>
+          </div>
+        </div>
       </div>
 
-      <div class="table">
-<div class="table-content"><p>Property Type</p><h6>{{data.propertType}}</h6></div>
-<div  class="table-content"> <p>Building Type</p>  <h6>{{data.buildingType}}</h6> </div>
-<div  class="table-content"> <p>Rent</p> <h6>{{data.MonthlyRentFrom|indianCurrencyS}}</h6> <p *ngIf="data.RentNegociable" class="negotiable">Negotiable</p><p *ngIf="data.current_in_loan">(Current in loan)</p> </div>
-<div  class="table-content"> <p>Deposit</p> <h6>{{data.AdvanceAmt| indianCurrencyS}}</h6> <p *ngIf="data.depositeNegociable" class="negotiable">Negotiable</p> </div>
-<div  class="table-content"> <p>Built Up Area</p>  <h6>{{data.BuildedSize}}.sqFt</h6>   </div>
-<div  class="table-content">  <p>Floor</p>  <h6>{{data.noOfFloor}}/{{data.floorNo}}</h6> </div>
+      <div class="stream-container" *ngIf="false">
+        <div class="stream-content">
+          <div class="content-1">
+            <div class="sub-content-1"><p>stream name</p></div>
+            <div class="sub-content-2">
+              <p>22-02-2023,8.00 am</p>
+              <p>Tamil& english</p>
+            </div>
+          </div>
+          <div class="content-2"><button>Register</button></div>
+        </div>
+        <div class="stream-content">
+          <p>
+            fsdfsdffffffffffffffffffffffffffffffffffffffffffffffjhjhjhjhjhdf
+            ffffffffffffffjhjhjhjhjhdddddddddddddddddddddddjhjhjhjhjh
+            dfglkadogjnlsdfkgnhkadjhglkjdshfngkjdhkfgjnhdkjfgnhadkjngjkdmgnlkdfjglkdjgdgjlpdjgldg
+            dfoikgdlkg'lodjg'df dfgkidlkfgmndflkgjlklkjlkjoijlkn
+          </p>
+        </div>
       </div>
-</div>
 
-
-<div class="stream-container" *ngIf="false" >
-    <div class="stream-content">
-        <div class="content-1">
-         <div class="sub-content-1">   <p>stream name</p></div>   
-        <div class="sub-content-2">
-            <p>22-02-2023,8.00 am</p>
-            <p>Tamil& english</p>
+      <div class="form-detail">
+        <div>
+          <label>Contact name:</label>
+          <p>{{ data.contactName }}</p>
         </div>
+        <div>
+          <label>Primary Number:</label>
+          <p>{{ data.primaryContactNumber }}</p>
         </div>
-        <div class="content-2"><button>Register</button></div>
-    </div>
-    <div class="stream-content">
-    <p>
-        fsdfsdffffffffffffffffffffffffffffffffffffffffffffffjhjhjhjhjhdf
-        ffffffffffffffjhjhjhjhjhdddddddddddddddddddddddjhjhjhjhjh
-        dfglkadogjnlsdfkgnhkadjhglkjdshfngkjdhkfgjnhdkjfgnhadkjngjkdmgnlkdfjglkdjgdgjlpdjgldg
-        dfoikgdlkg'lodjg'df
-        dfgkidlkfgmndflkgjlklkjlkjoijlkn
-    </p>
-    </div>
-</div>
+        <div>
+          <label>Secondary Number:</label>
+          <p>{{ data.secondaryContactNumber }}</p>
+        </div>
+        <div>
+          <label>Address :</label>
+          <p>{{ data.formatedAddress }}</p>
+        </div>
 
-<div class="form-detail">
-    <div>
-        <label>Contact name:</label>
-        <p>{{data.contactName}}</p>
-    </div>
-    <div>
-        <label>Primary Number:</label>
-        <p>{{data.primaryContactNumber}}</p>
-    </div>
-    <div>
-        <label>Secondary Number:</label>
-        <p>{{data.secondaryContactNumber}}</p>
-    </div>
-    <div>
-        <label>Address :</label>
-        <p>{{data.formatedAddress}}</p>
-    </div>
+        <div>
+          <label>Building name :</label>
+          <p>{{ data.BuildingName }}</p>
+        </div>
 
-    <div>
-        <label>Building name :</label>
-        <p>{{data.BuildingName}} </p>
-    </div>
+        <div>
+          <label>Direction :</label>
+          <p
+            [innerText]="
+              data.buildingDirection ? data.buildingDirection : 'Nill'
+            "
+          ></p>
+        </div>
 
-    <div >
-        <label>Direction :</label>
-        <p [innerText]=" data.buildingDirection ? data.buildingDirection:'Nill' "></p>
-    </div>
+        <div>
+          <label>Landmark :</label>
+          <p>{{ data.landMark }}</p>
+        </div>
 
-    <div>
-        <label>Landmark :</label>
-        <p>{{data.landMark}}</p>
-    </div>
+        <div>
+          <label>Area :</label>
+          <p>{{ data.area }}</p>
+        </div>
 
-    <div>
-        <label>Area :</label>
-        <p>{{data.area}}</p>
-    </div>
+        <div>
+          <label>City :</label>
+          <p>{{ data.city }}</p>
+        </div>
 
-    <div>
-        <label>City :</label>
-        <p>{{data.city}}</p>
-    </div>
+        <div>
+          <label>Pincode :</label>
+          <p>{{ data.pineCode }}</p>
+        </div>
 
-    <div>
-        <label>Pincode :</label>
-        <p>{{data.pineCode}}</p>
-    </div>
+        <div>
+          <label>Available from :</label>
+          <p>{{ data.availabilityDate }}</p>
+        </div>
 
-    <div>
-        <label>Available from :</label>
-        <p>{{data.availabilityDate}}</p>
-    </div>
+        <div>
+          <label>Age of property :</label>
+          <p>{{ data.ageOfBuilding }}</p>
+        </div>
+        <div>
+          <label>Lease Duration:</label>
+          <p>{{ data.leaseDuration }}</p>
+        </div>
+        <div>
+          <label>Lack in Period :</label>
+          <p>{{ data.lock_in_period }}</p>
+        </div>
 
+        <div>
+          <label>Maintenance :</label>
+          <p>{{ data.MaintenanceStatus }},</p>
+          <p
+            *ngIf="
+              data.maintainenceCost &&
+              data.MaintenanceStatus == 'Exclude Maintenance'
+            "
+          >
+            {{ data.maintainenceCost | indianCurrencyS }}
+          </p>
+          <p
+            *ngIf="
+              data.squareFT && data.MaintenanceStatus == 'Exclude Maintenance,'
+            "
+          >
+            /{{ data.squareFT }}
+          </p>
+        </div>
 
-    <div>
-        <label>Age of property :</label>
-        <p>{{data.ageOfBuilding}}</p>
-    </div>
-    <div>
-        <label>Lease Duration:</label>
-        <p>{{data.leaseDuration}}</p>
-    </div>
-    <div>
-        <label>Lack in Period :</label>
-        <p>{{data.lock_in_period}}</p>
-    </div>
+        <div>
+          <label>Facing direction :</label>
+          <p>{{ data.facingDirection }}</p>
+        </div>
 
-    <div>
-        <label>Maintenance :</label>
-        <p>{{data.MaintenanceStatus}},</p><p *ngIf="data.maintainenceCost && data.MaintenanceStatus =='Exclude Maintenance'"> {{data.maintainenceCost | indianCurrencyS}}</p><p *ngIf="data.squareFT  && data.MaintenanceStatus =='Exclude Maintenance,'">/{{ data.squareFT}}</p>
-    </div>
+        <div>
+          <label>Build up Area :</label>
+          <p>{{ data.BuildedSize }}.sqft</p>
+        </div>
+        <div>
+          <label>Other feature :</label>
+          <p>{{ data.otherFeature }}</p>
+        </div>
+        <div>
+          <label>Ideal for :</label>
+          <p>{{ data.ideaFor }}</p>
+        </div>
+        <div>
+          <label>Description :</label>
+          <p [innerHTML]="data.discription ? data.discription : 'Nill'"></p>
+        </div>
 
-    <div>
-        <label>Facing direction :</label>
-        <p>{{data.facingDirection}}</p>
-    </div>
+        <h5>Amenities :</h5>
 
-    <div>
-        <label>Build up Area :</label>
-        <p>{{data.BuildedSize}}.sqft</p>
-    </div>
-    <div>
-        <label>Other feature :</label>
-        <p>{{data.otherFeature}}</p>
-    </div>
-    <div>
-        <label>Ideal for :</label>
-        <p>{{data.ideaFor}}</p>
-    </div>
-    <div >
-        <label>Description :</label>
-        <p [innerHTML]="data.discription? data.discription : 'Nill'"></p>
-    </div>
+        <div>
+          <label>Parking :</label>
+          <p>{{ data.parkingFacilities }}</p>
+        </div>
+        <div>
+          <label>Furnishing Status :</label>
+          <p>{{ data.furnishingStatus }}</p>
+        </div>
+        <div>
+          <label>Power Backup :</label>
+          <p>{{ data.powerBackup }}</p>
+        </div>
 
-    <h5>Amenities :</h5>
+        <div>
+          <label>Washroom :</label>
+          <p>{{ data.bathRoomType }}</p>
+        </div>
 
-    <div>
-        <label>Parking :</label>
-    <p>{{data.parkingFacilities}}</p>
-    </div>
-    <div>
-        <label>Furnishing Status :</label>
-    <p>{{data.furnishingStatus}}</p>
-    </div>
-    <div>
-        <label>Power Backup :</label>
-    <p>{{data.powerBackup}}</p>
-    </div>
+        <div>
+          <label>Lift :</label>
+          <p>{{ data.Lift }}</p>
+        </div>
+        <div>
+          <label>Water Storage:</label>
+          <p>{{ data.waterStorage }}</p>
+        </div>
 
-    <div>
-        <label>Washroom :</label>
-        <p>{{data.bathRoomType}}</p>
-    </div>
+        <div>
+          <label>Escalator :</label>
+          <p>{{ data.escalator }}</p>
+        </div>
 
-    <div>
-        <label>Lift :</label>
-        <p>{{data.Lift}}</p>
-    </div>
-    <div>
-        <label>Water Storage:</label>
-        <p>{{data.waterStorage}}</p>
-    </div>
+        <div>
+          <label>Security :</label>
+          <p>{{ data.security }}</p>
+        </div>
+      </div>
 
-    <div>
-        <label>Escalator :</label>
-        <p>{{data.escalator}}</p>
-    </div>
-
-    <div>
-        <label>Security :</label>
-        <p>{{data.security}}</p>
-    </div>
-
-
-  
-
-</div>
-
-
-<!-- <div class="neighbourhood">
+      <!-- <div class="neighbourhood">
     <h5>Neighbourhood</h5>
 
     <div class="neighbourhood-container" style="cursor:pointer">
@@ -377,39 +493,11 @@
 </div>
 
 </div> -->
+    </div>
+  </div>
 
-
+  <div class="sidebar">
+    <img src="../../../../assets/images/ad-post.png" alt="" srcset="" />
+  </div>
 </div>
-
-
-
-
-
-
-    
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="sidebar">
-        <img src="../../../../assets/images/ad-post.png" alt="" srcset="">
-    </div>
-    
-    </div>
-    <seller-footer></seller-footer>
+<seller-footer></seller-footer>

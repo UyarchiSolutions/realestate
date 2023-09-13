@@ -67,9 +67,7 @@ margin-right: 17%;
     font-weight: 500;
     color: var(--bgBlue);
 }
-::-webkit-scrollbar {
-    display: none;
-  }
+
 .popup .container{
     width: 95%;
     margin: auto;
@@ -103,7 +101,7 @@ margin-right: 17%;
     row-gap: 10px;
 }
 .option-selects div{
-  width: 33.33%;
+  width: 100% !important;
     display: flex;
     align-items: center !important;
     margin-bottom: 0 !important;
@@ -114,6 +112,8 @@ margin-right: 17%;
 
 }
 .option-selects {
+    display: grid  !important;
+    grid-template-columns: auto auto auto;
     color: var(--bgBlue) !important;
 }
 .set-alert-btn{
@@ -297,3 +297,7 @@ table{
     margin-top: 0 !important;
     width: 100%;
 }
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }

@@ -10,7 +10,7 @@ import { BuyerService } from '../buyer.service';
 })
 export class BuyerForgotComponent {
   ForgotPassword = this.fb.group({
-    number: new FormControl('',Validators.required),
+    number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
     // otp: new FormControl(''),
     type: new FormControl('Buyer')
   })
@@ -22,8 +22,10 @@ export class BuyerForgotComponent {
   constructor(private fb: FormBuilder, private buyerService: BuyerService, private route: Router) { }
   notfound=false;
   number:any;
+  submit=false
   submitOTP() {
     this.isDisplay=true;
+    this.submit=true
     const a={
       number:this.ForgotPassword.get('number')?.value,
       Type:"Buyer"
@@ -35,7 +37,7 @@ export class BuyerForgotComponent {
           number:this.number
         };
         const querystring = new URLSearchParams(data).toString();
-      
+      this.submit=false
         this.route.navigateByUrl('/buyer-sendotp?' + querystring)
        this.isDisplay=true;
       },error => {
@@ -46,6 +48,9 @@ export class BuyerForgotComponent {
         }})
     }
 
+  }
+  get formcontrol() {
+    return this.ForgotPassword.controls;
   }
   errMsg(){
     this.notfound=false;
