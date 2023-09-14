@@ -100,7 +100,12 @@
             </tr>
     
             
-    </table>
+  
+</table>
+<div class="no-prop-found" *ngIf=" interestShow && RBtab &&  (ResiBuy == undefined ||ResiBuy.length == 0)">
+           
+    <img src="../../assets/images/nopropfound.png" alt="">
+</div>
 </ng-container>
 <!-- residential Rent -->
 <ng-container  *ngIf="interestShow && RRtab" >
@@ -202,6 +207,10 @@
             </tr>
            
     </table>
+    <div class="no-prop-found" *ngIf=" interestShow && RRtab &&  (ResiRent == undefined ||ResiRent.length == 0)">
+           
+        <img src="../../assets/images/nopropfound.png" alt="">
+    </div>
 </ng-container>
 
 <!-- commercial Buy -->
@@ -303,6 +312,10 @@
                     </td>
             </tr>
     </table>
+    <div class="no-prop-found" *ngIf=" interestShow && CBtab &&  (CommBuy == undefined ||CommBuy.length == 0)">
+           
+        <img src="../../assets/images/nopropfound.png" alt="">
+    </div>
 </ng-container>
 
 <!-- commercial Rent -->
@@ -404,4 +417,7 @@
                     </td>
             </tr>
     </table>
+    <div class="no-prop-found" *ngIf=" interestShow && CRtab &&  (CommRent == undefined ||CommRent.length == 0)">
+           <img src="../../assets/images/nopropfound.png" alt="">
+    </div>
 </ng-container>

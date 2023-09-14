@@ -26,7 +26,7 @@
 
    
 <div class="upload-image">
-    <label style="font-weight: 700 !important;font-size: 1.2rem;color: var(--bgBlue);">Photos :</label>
+    <label style="font-weight: 700 !important;font-size: 1.2rem;color: var(--bgBlue);">Photos :<span class="red">*</span></label>
     <label for="imageinput" class="img-upl">Choose Image</label>
     <input type="file" style="display: none;" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
 
@@ -78,7 +78,7 @@
 
 
 <div class="upload-video">
-    <label style="font-weight: 700 !important;font-size: 1.2rem;">Video :</label>
+    <label style="font-weight: 700 !important;font-size: 1.2rem;">Video :<span class="red">*</span></label>
     <label for="videoinput" class="img-upl">Choose Video</label>
     <input type="file" style="display: none;" (change)="onvidselect($event)" id="videoinput" accept="video/mp4,video/x-m4v,video/*">
     <div *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</div>

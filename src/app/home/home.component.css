@@ -99,6 +99,11 @@ margin:0 10px;
 }
 .nearby-locations span p{
   margin-left: 5px;
+  
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
 }
 .locality{
   width: 80%;

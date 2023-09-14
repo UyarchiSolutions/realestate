@@ -31,7 +31,7 @@
 
     <div class="form">
     <div class="expected-rent">
-        <label>Expected Rent :</label>
+        <label>Expected Rent :<span class="red">*</span></label>
    <div>
     <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Rent Amount" formControlName="ExpectedRent">
     <div class="negotiable">
@@ -41,7 +41,7 @@
     </div>
     <p class="redtext" *ngIf="rentform.get('ExpectedRent').invalid && submitted">Expected Rent is required!</p>
     <div class="expected-rent">
-        <label>Expected Deposit :</label>
+        <label>Expected Deposit :<span class="red">*</span></label>
    <div>
     <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Deposit Amount" formControlName="ExpectedDeposit">
     <div class="negotiable">
@@ -53,7 +53,7 @@
 
  
     <div>
-        <label>Maintenance : </label>
+        <label>Maintenance :<span class="red">*</span></label>
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
@@ -68,7 +68,7 @@
     </div>
 
     <div *ngIf="maintanceVal=='Exclude Maintenance'">
-        <label>Exclude Maintenance :</label>
+        <label>Exclude Maintenance :<span class="red">*</span></label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
         <input type="text" style="width: 55%;" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Amount" formControlName="ExcludeMaintenance">

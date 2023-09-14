@@ -46,6 +46,7 @@ export class CrAdditionalDetailsComponent {
         c2number:res.secondaryContactNumber,
         preOccupancy:res.preOccupy
       });
+      this.pov=res.preOccupy
     })
   
   }

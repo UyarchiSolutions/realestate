@@ -582,10 +582,15 @@
 </td>
 <!-- <td>condition:{{v.condition}}</td> -->
         </tr>
+    
 
        
 
 </table>
+<div class="no-prop-found" *ngIf=" postshow && (data == undefined ||data.length == 0)">
+           
+    <img src="../../assets/images/nopropfound.png" alt="">
+</div>
 <!-- interest-tab -->
 <buyer-interested  *ngIf="interestShow"></buyer-interested>
    
@@ -598,8 +603,12 @@
 <buyer-notification  *ngIf="nofiShow" ></buyer-notification>  
  
 
+<!-- {{!(totalval== undefined) }}
+{{ (postshow && !(page ==0 && totalval < 9))}}
+{{postshow}}
+{{(page ==0 && totalval < 9)}}{{page}}{{totalval>9}} -->
 
-<div class="bottom-section" *ngIf="postshow && !(page ==0 && totalval < 9)" >
+<div class="bottom-section" *ngIf="totalval !== undefined && (postshow && (page ==0 && totalval > 9))" >
     <div class="pagination">
         <button>
         <div class="page-prev" [ngStyle]="{'pointer-events': page ==0 ? 'none' : 'auto' }"  (click)="pagination(0)">

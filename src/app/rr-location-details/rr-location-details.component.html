@@ -24,19 +24,19 @@
     <div class="form">
   
      <div>
-            <label>Building Name :</label>
+            <label>Building Name :<span class="red">*</span></label>
          <input type="text" placeholder="Enter Building Name" formControlName="BuildingName">
     </div>
         <p *ngIf="rrlocform.get('BuildingName')?.invalid && submitted" class="redtext">Please fill the Building Name </p>
     
         <div>
-            <label>Address:</label>
+            <label>Address:<span class="red">*</span></label>
          <input type="text" placeholder="Enter Address " formControlName="Address">
     </div>
     <p *ngIf="rrlocform.get('Address')?.invalid && submitted" class="redtext">Please fill the Address </p>
    
     <div>
-        <label>Pincode :</label>
+        <label>Pincode :<span class="red">*</span></label>
   <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Pincode" formControlName="Pincode" maxlength="6">
     </div>
     <p *ngIf="rrlocform.get('Pincode')?.errors?.required && submitted" class="redtext">Please fill the Pincode </p>
@@ -46,13 +46,13 @@
    
     <div>
         
-        <label>Landmark :</label>
+        <label>Landmark :<span class="red">*</span></label>
   <input type="text" placeholder="Enter landmark" formControlName="Landmark" >
     </div>
     <p *ngIf="rrlocform.get('Landmark')?.invalid && submitted" class="redtext">Please fill the Landmark </p>
 
     <div class="address">
-        <label>Select location Via Map :</label>
+        <label>Select location Via Map :<span class="red">*</span></label>
         <div>
       <span style="min-width: 100%;"><svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.99961 15.451L2.4741 10.9255C1.57905 10.0304 0.96952 8.89002 0.722581 7.64855C0.475642 6.40707 0.602388 5.12025 1.08679 3.95081C1.57119 2.78136 2.3915 1.78183 3.44397 1.07859C4.49644 0.375351 5.73381 0 6.99961 0C8.26541 0 9.50278 0.375351 10.5552 1.07859C11.6077 1.78183 12.428 2.78136 12.9124 3.95081C13.3968 5.12025 13.5236 6.40707 13.2766 7.64855C13.0297 8.89002 12.4202 10.0304 11.5251 10.9255L6.99961 15.451ZM10.5196 9.91994C11.2157 9.22377 11.6897 8.33681 11.8818 7.37123C12.0738 6.40565 11.9752 5.40481 11.5984 4.49527C11.2217 3.58573 10.5836 2.80834 9.76506 2.2614C8.94648 1.71445 7.9841 1.42253 6.99961 1.42253C6.01512 1.42253 5.05274 1.71445 4.23416 2.2614C3.41558 2.80834 2.77756 3.58573 2.40079 4.49527C2.02402 5.40481 1.92542 6.40565 2.11744 7.37123C2.30947 8.33681 2.78351 9.22377 3.47961 9.91994L6.99961 13.4399L10.5196 9.91994ZM6.99961 7.82216C6.62241 7.82216 6.26066 7.67232 5.99395 7.4056C5.72723 7.13889 5.57739 6.77714 5.57739 6.39994C5.57739 6.02275 5.72723 5.661 5.99395 5.39428C6.26066 5.12756 6.62241 4.97772 6.99961 4.97772C7.37681 4.97772 7.73855 5.12756 8.00527 5.39428C8.27199 5.661 8.42183 6.02275 8.42183 6.39994C8.42183 6.77714 8.27199 7.13889 8.00527 7.4056C7.73855 7.67232 7.37681 7.82216 6.99961 7.82216Z" fill="#222222"/>

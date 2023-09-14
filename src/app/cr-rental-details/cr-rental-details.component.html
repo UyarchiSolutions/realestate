@@ -28,7 +28,7 @@
 
     <div class="form">
     <div class="expected-rent">
-        <label>Expected Rent :</label>
+        <label>Expected Rent :<span class="red">*</span></label>
    <div >
     <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Expected Rent" formControlName="ExpectedRent">
     <div class="negotiable">
@@ -39,7 +39,7 @@
     </div>
     <p class="redtext" *ngIf="priceform.get('ExpectedRent').invalid && submitted">Expected Rent is required!</p>
     <div class="expected-rent">
-        <label>Advance Amount :</label>
+        <label>Advance Amount :<span class="red">*</span></label>
    <div >
     <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Advance Amount" formControlName="AdvanceAmount">
     <div class="negotiable">
@@ -50,7 +50,7 @@
     </div>
     <p class="redtext" *ngIf="priceform.get('AdvanceAmount').invalid && submitted">Expected Rent is required!</p>
     <div>
-        <label>Lease Duration :</label>
+        <label>Lease Duration :<span class="red">*</span></label>
         <div
           class="dropdown select-field"
           type="button"
@@ -72,7 +72,7 @@
       </div>
       <p class="redtext" *ngIf="ldv==null && submitted">Lease Duration is required!</p>
     <div>
-        <label>Lock in Period :</label>
+        <label>Lock in Period :<span class="red">*</span></label>
         <div
           class="dropdown select-field"
           type="button"
@@ -96,7 +96,7 @@
  
 
     <div>
-        <label>Maintenance : </label>
+        <label>Maintenance :<span class="red">*</span> </label>
    
       <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
     
@@ -113,7 +113,7 @@
     <p class="redtext" *ngIf=" maintanceVal==null && submitted">Maintenance is required!</p>
     
     <div *ngIf="maintanceVal=='Exclude Maintenance'">
-        <label>Exclude Maintenance :</label>
+        <label>Exclude Maintenance :<span class="red">*</span></label>
      <div style="width: 50%; display: flex;
      align-items: flex-end;">
         <input type="text" style="width: 55%;" placeholder="Enter Amount" formControlName="ExcludeMaintenance"   >

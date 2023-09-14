@@ -28,7 +28,7 @@
     <div class="form" [formGroup]="myform">
        
         <div>
-            <label>Furnishing Status :</label>
+            <label>Furnishing Status :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -46,7 +46,7 @@
         </div>
         <p class="redtext" *ngIf="fsv==null && submited">Select furnishings Status Type</p>
         <div>
-            <label>Parking :</label>
+            <label>Parking :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -66,7 +66,7 @@
         </div>
         <p  class="redtext" *ngIf="pv ==null && submited">Select Parking Type</p>
         <div>
-            <label>Power Backup :</label>
+            <label>Power Backup :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -84,7 +84,7 @@
         </div>
         <p class="redtext" *ngIf="pb ==null && submited">Select Power Backup Type</p>
         <div>
-            <label>Washroom :</label>
+            <label>Washroom :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -102,7 +102,7 @@
         </div>
         <p class="redtext" *ngIf="btv ==null && submited">Select Power Backup Type</p>
         <div>
-            <label>Lift :</label>
+            <label>Lift :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -132,7 +132,7 @@
         </div>
         <p class="redtext" *ngIf=" myform.get('waterFacility')?.invalid && submited">Water Storage facility Required!</p>
         <div class="non-veg-allowed gated-security">
-            <label>Security:</label>
+            <label>Security:<span class="red">*</span></label>
             <div>
                 <div>
                     <input type="radio" name="Security"  [checked]="data.security == 'yes'" formControlName="Security" value="yes">Yes
@@ -144,7 +144,7 @@
         </div>
         <p class="redtext" *ngIf=" myform.get('Security')?.invalid && submited">Security Required!</p>
         <div class="non-veg-allowed gated-security">
-            <label>Escalator:</label>
+            <label>Escalator:<span class="red">*</span></label>
             <div>
                 <div>
                     <input type="radio" name="Escalator"  [checked]="data.escalator == 'yes'"  formControlName="Escalator" value="yes">Yes
@@ -156,7 +156,7 @@
         </div>
         <p class="redtext" *ngIf=" myform.get('Escalator')?.invalid && submited">Escalator Required!</p>
         <div class="non-veg-allowed gated-security">
-            <label>WIFI:</label>
+            <label>WIFI:<span class="red">*</span></label>
             <div>
                 <div>
                     <input type="radio" name="WIFI"  [checked]="data.gate_Security == 'yes'" formControlName="WIFI" value="yes">Yes

@@ -224,4 +224,7 @@ export class PostPropertyService {
   send_enquiry(data:any){
     return this.http.post(this.baseURL+'/v1/EnquieryRoute',data)
   }
+  get_nearby(placeId:any){
+    return this.http.get(this.baseURL+'/v1/BuyerSeller/get/LocalityBy/LocationId/'+placeId)
+  }
 }

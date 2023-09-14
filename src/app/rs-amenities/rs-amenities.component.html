@@ -28,7 +28,7 @@
     <div class="form">
        
         <div>
-            <label>Power Backup :</label>
+            <label>Power Backup :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -47,7 +47,7 @@
 
         <p class="redtext"  *ngIf=" pb == null && submited">Select Power Backup Type</p>
         <div>
-            <label>Furnishing Status :</label>
+            <label>Furnishing Status :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -66,7 +66,7 @@
 
         <p class="redtext"  *ngIf=" fsv == null && submited">Select Furnishing Status Type</p>
         <div>
-            <label>Water Supply :</label>
+            <label>Water Supply :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -85,7 +85,7 @@
         <p class="redtext"  *ngIf=" wsv == null && submited">Select Water Supply Type</p>
         
         <div>
-            <label>Bathroom :</label>
+            <label>Bathroom :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -107,7 +107,7 @@
 
         <p class="redtext"  *ngIf=" brv == null && submited">Select Bathroom Count</p> 
         <div>
-            <label>Bathroom Type :</label>
+            <label>Bathroom Type :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -126,7 +126,7 @@
 
         <p class="redtext"  *ngIf=" btv == null && submited">Select Bathroom Type</p> 
         <div>
-            <label>Toilet Type :</label>
+            <label>Toilet Type :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -145,7 +145,7 @@
 
         <p class="redtext"  *ngIf=" ttv == null && submited">Select Toilet Type</p> 
         <div>
-            <label>Balconies :</label>
+            <label>Balconies :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -169,7 +169,7 @@
         <p class="redtext"  *ngIf=" bv == null && submited">Select Balcony Count</p> 
        
         <div class="non-veg-allowed gated-security">
-            <label>Gated Security</label>
+            <label>Gated Security:<span class="red">*</span></label>
             <div>
                 <div>
                     <input type="radio" name="gs" (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">
@@ -184,7 +184,7 @@
         <p class="redtext"  *ngIf=" gs == null && submited">Select Allowed or Not</p> 
        
         <div>
-            <label>Kitchen Type :</label>
+            <label>Kitchen Type :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         
@@ -204,7 +204,7 @@
         </div>
         <p class="redtext"  *ngIf=" kitty == null && submited">Select Kitchen Type</p> 
         <div>
-            <label>Parking :</label>
+            <label>Parking :<span class="red">*</span></label>
        
           <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
         

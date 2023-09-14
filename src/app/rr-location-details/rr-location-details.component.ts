@@ -208,8 +208,10 @@ export class RrLocationDetailsComponent  implements OnInit{
     // address for map
     area:any;
     city: any;
+    pincode:any;
     handleAddressChange(address: Address) {
       this.myAddres = address.formatted_address;
+      console.log(address,'this. address')
       this.rrlocform.patchValue({
        addressLoaction: this.myAddres,
  
@@ -219,11 +221,23 @@ export class RrLocationDetailsComponent  implements OnInit{
        this.longtitude = address.geometry.location.lng();
       
       console.log(this.rrlocform.get('addressLoaction')?.value)
-       this.rrlocform.patchValue({
-         lat: this.latitude,
-         long: this.longtitude,
-         
+      this.rrlocform.patchValue({
+        lat: this.latitude,
+        long: this.longtitude,
+        
+      })
+       this.pincode = address.address_components.find((res:any)=>{
+        return res.types.includes('postal_code')
        })
+       this.pincode=this.pincode.long_name
+       
+       console.log(this.pincode,'this is pincode')
+      //  if(this.pincode){
+        this.rrlocform.setValue({
+          pineCode:this.pincode
+          
+        })
+      //  }
        this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
         console.log(res)
          

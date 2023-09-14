@@ -188,19 +188,11 @@
             
               <div >
                 <label>Advance Amount :</label>
-                <p style="margin-left: 170px">{{ data.AdvanceAmt }}</p>
-                <p
-                  *ngIf="data.depositeNegociable == 'true'"
-                  style="
-                    color: grey;
-                    position: relative;
-                    right: 90px;
-                    font-size: 0.8rem;
-                    top: 4px;
-                  "
-                >
-                  Negotiable
-                </p>
+                <p >{{ data.AdvanceAmt }} 
+                  <span  style="
+                  color: grey;
+                  font-size: 0.8rem;" *ngIf="data.depositeNegociable == 'true'">  Negotiable</span> </p>
+               
               </div>
               
 

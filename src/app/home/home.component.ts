@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor ( private service:PostPropertyService,
-    private fb:FormBuilder,private route:Router,private toastr: ToastrService){
+    private fb:FormBuilder,private route:Router,private toastr: ToastrService,
+    private sellerService:PostPropertyService){
 
 
   }
@@ -55,13 +56,17 @@ export class HomeComponent implements OnInit {
   zoom=10;
   areaSend:any=[];
   areaF:any;
+  nearby:any=[]
    
   handleAddressChange(address: Address,input:any) {
 
     let Showvalue = input.value;
-  
+    console.log(address,'address')
+    this.sellerService.get_nearby(address.place_id).subscribe((res:any)=>{
+      console.log(res)
+      this.nearby=res.responseBody.data
 
-  
+    })
       
   //  this.latitude = address.geometry.location.lat();
   //  this.longtitude = address.geometry.location.lng();

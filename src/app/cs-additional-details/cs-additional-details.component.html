@@ -27,17 +27,17 @@
 
     <div class="form" [formGroup]="adform" (ngSubmit)="Onsubmit()">
         <div>
-            <label>Available Form :</label>
+            <label>Available Form :<span class="red">*</span></label>
        <input type="Date" min="{{today | date:'yyyy-MM-dd'}}" formControlName="datetostart">
         </div>
         <p *ngIf="adform.get('datetostart').invalid && submited" class="redtext">Date is Required!</p>
         <div>
-            <label>Contact Name :</label>
+            <label>Contact Name :<span class="red">*</span></label>
     <input type="text"  placeholder="Contact Name" formControlName="contactname">
         </div>
         <p *ngIf="adform.get('contactname').invalid && submited" class="redtext">Contact Name is Required!</p>
         <div>
-            <label>Contact Number 1 :</label>
+            <label>Contact Number 1 :<span class="red">*</span></label>
     <input type="text" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Contact Number" formControlName="cnumber">
         </div>
         <p *ngIf="adform.get('cnumber').errors?.required && submited" class="redtext">Contact Number is Required!
@@ -56,7 +56,7 @@
       
 
         <div>
-            <label style="width:26% !important">Previous Occupancy :</label>
+            <label style="width:26% !important">Previous Occupancy :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"

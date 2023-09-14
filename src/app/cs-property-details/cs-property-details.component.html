@@ -18,7 +18,7 @@
         <h2>Property Details</h2>
         <div class="form">
           <div>
-            <label>Property Type :</label>
+            <label>Property Type :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"
@@ -49,7 +49,7 @@
           </p>
 
           <div>
-            <label>Building Type :</label>
+            <label>Building Type :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"
@@ -79,7 +79,7 @@
             Select Building Type
           </p>
          <div class="floors">
-            <label>Floors :</label>
+            <label>Floors :<span class="red">*</span></label>
             <div>
               <div class="dropdown select-field">
                 <p
@@ -195,7 +195,7 @@
             </p>
           </div>
           <div>
-            <label>Owner Ship Type :</label>
+            <label>Owner Ship Type :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"
@@ -230,7 +230,7 @@
             Select Owner Ship Type
           </p>
           <div>
-            <label>UDS/Land Size:</label>
+            <label>UDS/Land Size:<span class="red">*</span></label>
             <div
               style="
                 width: 50%;
@@ -264,7 +264,7 @@
             Land Size is Required!
           </p>
           <div>
-            <label>Build up Area :</label>
+            <label>Build up Area :<span class="red">*</span></label>
             <div
               style="
                 width: 50%;
@@ -298,7 +298,7 @@
             Build up Area is Required!
           </p>
           <div>
-            <label>Age of Property :</label>
+            <label>Age of Property :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"
@@ -359,7 +359,7 @@
             Select Age of Property Type
           </p>
           <div>
-            <label>Facing Direction :</label>
+            <label>Facing Direction :<span class="red">*</span></label>
             <div
               class="dropdown select-field"
               type="button"
@@ -423,7 +423,7 @@
             Select Facing Direction Type
           </p>
           <div>
-            <label>Other Feature:</label>
+            <label>Other Feature:<span class="red">*</span></label>
             <div class="other-features select-field">
               <span>
                 <input
@@ -448,10 +448,10 @@
             </div>
           </div>
           <p class="redtext" *ngIf="otherFeature == null && submitted">
-            Select Facing Direction Type
+            Select Other Feature
           </p>
           <div>
-            <label>Ideal for :</label>
+            <label>Ideal for :<span class="red">*</span></label>
 
             <div
               class="dropdown select-field"

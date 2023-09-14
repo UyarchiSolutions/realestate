@@ -688,3 +688,10 @@ position: relative;
 .overflow-contents span{
  font-size: 12px;
 }
+.no-prop-found{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}

@@ -308,8 +308,8 @@ export class ResidentialDetailviewComponent implements OnInit {
           this.LMlat_long = [];
           this.landmarks = [];
           this.landmarks = res.results;
-          // console.log(res,this.landmarks,'from landmaks');
-          for (let i = 0; i < this.landmarks.length; i++) {
+          console.log(res,this.landmarks,'from landmaks');
+          for (let i = 0; i < 8; i++) {
             this.LMlat_long.push({lat:this.landmarks[i].geometry.location.lat
               ,long:this.landmarks[i].geometry.location.lng,icon:this.landmarks[i].icon
             ,name:this.landmarks[i].name,add:this.landmarks[i].vicinity

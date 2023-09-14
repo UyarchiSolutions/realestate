@@ -239,7 +239,7 @@ export class RbHomeComponent implements OnInit {
         this.GetDataForFilter();
     });
     this.GetDataForFilter();
-    this.getAlert();
+    // this.getAlert();
     this.checkinterest=null;
     console.log(this.checkinterest,'check interste')
   }
@@ -250,6 +250,7 @@ export class RbHomeComponent implements OnInit {
   totalval: any;
   sendDataBOOL = true;
   GetDataForFilter() {
+    console.log(this.data,'this. is data')
     let Data = {
       HouseOrCommercialType: 'Residential',
       type: 'Rent',
@@ -283,7 +284,7 @@ export class RbHomeComponent implements OnInit {
         this.totalval = res.values.length;
         this.showPag_rag = false;
         this.nextPage=res.next;
-      
+      console.log(this.data,'this. is data')
         if (this.totalval > 10) {
           this.showPag_rag = true;
           console.log(this.totalval, 'ghghg');
