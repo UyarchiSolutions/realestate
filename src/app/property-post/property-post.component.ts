@@ -15,7 +15,7 @@ export class PropertyPostComponent implements OnInit {
   constructor(private arouter:ActivatedRoute,private service: PostPropertyService,private router:Router,private fb:FormBuilder){
 
   }
-  
+  propId:any;
   user:any=[];
   add:any;
   GetuserName(){
@@ -41,9 +41,16 @@ export class PropertyPostComponent implements OnInit {
     this.service.get_Interest_buyer(this.id).subscribe((res:any)=>{
       console.log(res)
       this.data=res;
+      this.propId=res[0].propertyId
+      this.get_prop(this.propId)
     })
   }
-
+  get_prop(id:any){
+    this.service.formget(id).subscribe((res:any)=>{
+      console.log(res)
+      this.add = res.area+','+res.city
+    })
+  }
 
   update_status(){
     var data={

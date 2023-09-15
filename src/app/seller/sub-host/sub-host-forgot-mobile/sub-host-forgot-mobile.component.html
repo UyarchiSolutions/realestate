@@ -13,7 +13,7 @@
         <div class="otp-field">
           <label>Registered Mobile Number :</label>
           <div>
-            <input type="text" placeholder="Enter Mobile" formControlName="mobileNumber" >
+            <input type="text"onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Mobile" formControlName="mobileNumber" >
           </div>
         </div>
         <div class="error-msg" *ngIf="notfound">

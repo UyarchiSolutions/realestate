@@ -329,7 +329,6 @@ margin-left: 45%;
     background-color: white;
 }
 .view{
-
     align-items: center;
     display: flex;
 }
@@ -345,8 +344,6 @@ margin-left: 45%;
 }
 
 .searched{
-
-
     margin-left: 5px;
     display: flex;
     align-items: center;

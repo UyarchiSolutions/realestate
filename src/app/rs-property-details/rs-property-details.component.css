@@ -153,3 +153,9 @@ label{
 .dropdown-toggle::after {
     display:none;
 }
+.redtext{
+    color: red;
+    font-size: 0.8rem;
+    padding: 0;
+    margin-left: 450px !important;
+}

@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf="pv == null && submitted">
+          <div class="redtext" *ngIf="pv == null && submitted">
             Select Property Type
           </div>
 
@@ -136,7 +136,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf="bhkv == null && submitted">
+          <div class="redtext" *ngIf="bhkv == null && submitted">
             Select BHK Type
           </div>
           <div class="floors">
@@ -253,10 +253,10 @@
             class="err-msg"
             [ngStyle]="{ display: submitted ? 'block' : 'none' }"
           >
-            <p *ngIf="tfv == null && submitted" style="width: 25%">
+            <p *ngIf="tfv == null && submitted" style="width: 25%;font-size: 0.8rem;">
               Select Total floors
             </p>
-            <p *ngIf="ofv == null && submitted" style="width: 21%">
+            <p *ngIf="ofv == null && submitted" style="width: 21%;font-size: 0.8rem;">
               Select On floor
             </p>
           </div>
@@ -294,7 +294,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf="ost == null && submitted">
+          <div class="redtext" *ngIf="ost == null && submitted">
             Select Owner Ship Type
           </div>
 
@@ -327,7 +327,7 @@
             </div>
           </div>
           <div
-            class="err-msg"
+            class="redtext"
             *ngIf="propsform.get('BuildupArea').invalid && submitted"
           >
             Build Up Area is Required
@@ -362,7 +362,7 @@
           </div>
 
           <div
-            class="err-msg"
+            class="redtext"
             *ngIf="propsform.get('UDSlandsize').invalid && submitted"
           >
             Landsize Area is Required
@@ -427,7 +427,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf="aop == null && submitted">
+          <div class="redtext" *ngIf="aop == null && submitted">
             Select Age of property Type
           </div>
 
@@ -493,7 +493,7 @@
             </div>
           </div>
 
-          <div class="err-msg" *ngIf="fdv == null && submitted">
+          <div class="redtext" *ngIf="fdv == null && submitted">
             Select Facing Direction Type
           </div>
 

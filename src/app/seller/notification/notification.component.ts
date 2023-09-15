@@ -19,6 +19,7 @@ export class NotificationComponent implements OnInit {
     this.service.get_all_interest().subscribe((res:any)=>{
       console.log(res)
       this.data=res
+      
     })
   }
   routetoInterest(id:any){

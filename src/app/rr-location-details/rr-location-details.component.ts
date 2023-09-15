@@ -232,12 +232,14 @@ export class RrLocationDetailsComponent  implements OnInit{
        this.pincode=this.pincode.long_name
        
        console.log(this.pincode,'this is pincode')
-      //  if(this.pincode){
-        this.rrlocform.setValue({
-          pineCode:this.pincode
+        if(this.pincode){
+        this.rrlocform.patchValue({
+          Pincode:this.pincode
           
         })
-      //  }
+      }else{
+        this.rrlocform.get('Pincode')?.reset()
+      }
        this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
         console.log(res)
          

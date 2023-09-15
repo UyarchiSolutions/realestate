@@ -18,6 +18,7 @@ export class SubHostOtpComponent implements OnInit {
     this.arouter.queryParams.subscribe((res:any)=>{
       this.number=res['num']
     })
+    this.startTimer();
   }
   data:any;
   submit=false;
@@ -44,11 +45,34 @@ export class SubHostOtpComponent implements OnInit {
   }
  }
  reSendOtp(){
+  this.noOtp=false
+    this.submit=false
   let data={
     mobileNumber:this.number
   }
   this.serivce.register(data).subscribe((res:any)=>{
+    this.recentShow = false;
+    this.remainingTime = 60;
+    this.startTimer();
     console.log(res)
   })
+ }
+ remainingTime: number = 60;
+ private intervalId: any;
+ recentShow: any = false;
+ clearTimer() {
+   clearInterval(this.intervalId);
+ }
+
+ startTimer() {
+   this.intervalId = setInterval(() => {
+     this.remainingTime--;
+     if (this.remainingTime === 0) {
+       this.clearTimer();
+       // Timer expired, perform necessary actions
+
+       this.recentShow = true;
+     }
+   }, 1000); // Update every second (1000 milliseconds)
  }
 }

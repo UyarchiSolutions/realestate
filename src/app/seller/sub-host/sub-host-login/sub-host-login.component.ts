@@ -46,6 +46,14 @@ setCookie(token: any) {
   let expires: string = `expires=${d.toUTCString()}`;
   document.cookie = `sub-host=${token}; ${expires}`;
 }
+show1:boolean=false;
+   show2:boolean=false;
+   change1(){
+     this.show1=!this.show1
+    }
+    change2(){
+     this.show2=!this.show2
+    }
   
 
 }

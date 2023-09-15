@@ -273,7 +273,7 @@
                 <label>Parking :</label>
                 <p>{{ data.parkingFacilities }}</p>
               </div>
-              <div>
+              <div *ngIf="data.kitchen || data.hall_FLoor || data.bedRoom || data.bathRoom || data.balCony ">
                 <label>Flooring Type :</label>
                 <ul>
                   <li *ngIf="data.kitchen">Kitchen - {{ data.kitchen }}</li>
