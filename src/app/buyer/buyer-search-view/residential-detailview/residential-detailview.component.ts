@@ -35,7 +35,7 @@ export class ResidentialDetailviewComponent implements OnInit {
     private location_: Location
   ) {}
   id: any;
-  data: any=[]
+  data: any = [];
   images: any;
   index: any;
   page = 0;
@@ -63,21 +63,28 @@ export class ResidentialDetailviewComponent implements OnInit {
   checkInterest: any;
   checkSchedule: any;
   history: any = [];
-  report:any=['Fake Account','Price Manipulation','Fake Properties listing',
-'Misleading Advertisement','Rental Scam','Seems Like Broker','Wrong Mobile Number']
+  report: any = [
+    'Fake Account',
+    'Price Manipulation',
+    'Fake Properties listing',
+    'Misleading Advertisement',
+    'Rental Scam',
+    'Seems Like Broker',
+    'Wrong Mobile Number',
+  ];
 
-  checkSave:any
-  checkNotification:any;
-  checkhome!:string;
+  checkSave: any;
+  checkNotification: any;
+  checkhome!: string;
   ngOnInit(): void {
     this.arouter.queryParamMap.subscribe((params: any) => {
       console.log(params);
       this.id = params.params['id'];
       this.checkInterest = params.params['interested'];
-      this.checkSave=params.params['saved']
-      this.checkNotification=params.params['noti']
+      this.checkSave = params.params['saved'];
+      this.checkNotification = params.params['noti'];
       this.index = params.params['index'];
-      this.checkhome=params.params['home']
+      this.checkhome = params.params['home'];
       //to return
       this.type = params.params['type'];
       this.propertType =
@@ -134,38 +141,37 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.builtMax = params.params['buildupto'];
       this.rentMin = params.params['priceFrom'];
       this.rentMax = params.params['priceTo'];
-      this.page = params.params['page']
+      this.page = params.params['page'];
     });
     this.index = Number(this.index);
-   
+
     this.page = Number(this.page);
-    this.range=Number(this.range);
-   
+    this.range = Number(this.range);
+
     // if(this.page){
-    //   this.index = this.page+1 * this.range 
+    //   this.index = this.page+1 * this.range
     // }
-    this.get_buyer()
-    console.log(this.checkInterest,'interest')
-      console.log(this.checkSave,'checkSave')
-      console.log(this.checkNotification,'checkNotification')
-      console.log(this.checkhome,'checkhome')
-    if(this.checkInterest){
-      this.get_interst()
+    this.get_buyer();
+    console.log(this.checkInterest, 'interest');
+    console.log(this.checkSave, 'checkSave');
+    console.log(this.checkNotification, 'checkNotification');
+    console.log(this.checkhome, 'checkhome');
+    if (this.checkInterest) {
+      this.get_interst();
     }
-    if(this.checkSave){
-      this.get_save()
+    if (this.checkSave) {
+      this.get_save();
     }
-    if(this.checkNotification){
-      this.get_post(this.id)
+    if (this.checkNotification) {
+      this.get_post(this.id);
     }
-    if(this.checkhome){
+    if (this.checkhome) {
       this.GetDataForFilter();
     }
   }
 
   TotalData: any;
   GetDataForFilter() {
-   
     let Data = {
       HouseOrCommercialType: 'Residential',
       type: 'Rent',
@@ -195,7 +201,7 @@ export class ResidentialDetailviewComponent implements OnInit {
       )
       .subscribe((res: any) => {
         console.log(res, 'data from backend');
-        this.id=res.nextData._id
+        this.id = res.nextData._id;
         this.images = res.nextData.image;
         this.TotalData = res.values.length;
         this.get_post(this.id);
@@ -218,34 +224,36 @@ export class ResidentialDetailviewComponent implements OnInit {
         // this.saveV=this.data.WhishList.indexOf(this.buyerId) > -1 ? true:false;
         // console.log(this.saveV,'save v')
         // console.log(this.data);
-      
       });
   }
-  buyerId:any;
-  get_buyer(){
-    this.buyerService.myAcount().subscribe((res:any)=>{
+  buyerId: any;
+  get_buyer() {
+    this.buyerService.myAcount().subscribe((res: any) => {
       this.buyerId = res._id;
-      console.log(this.buyerId,'buyerid')
-    })
+      console.log(this.buyerId, 'buyerid');
+    });
   }
-  get_interst(){
-
-    let type='Rent'
-    let ctype='Residential'
-    console.log('interst working')
-  this.buyerService.get_interest_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
-    this.get_post(res.nextData._id)
-    this.TotalData=res.total
-  })
+  get_interst() {
+    let type = 'Rent';
+    let ctype = 'Residential';
+    console.log('interst working');
+    this.buyerService
+      .get_interest_new(type, ctype, this.page, this.range, this.index)
+      .subscribe((res: any) => {
+        this.get_post(res.nextData._id);
+        this.TotalData = res.total;
+      });
   }
-  get_save(){
-    let type='Rent'
-    let ctype='Residential'
-    console.log('interst working')
-  this.buyerService.get_save_new(type,ctype,this.page,this.range,this.index).subscribe((res:any)=>{
-    this.get_post(res.nextData._id)
-    this.TotalData=res.total
-  })
+  get_save() {
+    let type = 'Rent';
+    let ctype = 'Residential';
+    console.log('interst working');
+    this.buyerService
+      .get_save_new(type, ctype, this.page, this.range, this.index)
+      .subscribe((res: any) => {
+        this.get_post(res.nextData._id);
+        this.TotalData = res.total;
+      });
   }
   imgSliderCheker: any;
   imgslider(a: any) {
@@ -255,30 +263,28 @@ export class ResidentialDetailviewComponent implements OnInit {
     this.imgSliderCheker = '';
   }
 
-  relation:any
-  get_post(id:any){
-    this.service.formget1(id).subscribe((res:any)=>{
-      console.log(res,res.intrest,'formget');
-      this.relation=res.relation;
-      this.data=res.values;
-      this.interestV=res.intrest;
-      this.saveV=res.savedStatus;
-      this.showRes=res.show;
-      this.lat=this.data.lat;
-      this.long=this.data.long;
-      this.history=res.relation;
-       this.imageLength=this.data.image.length
-     if(this.relation == null){
-      this.service.userStatusCheck(this.data._id).subscribe((res:any)=>{
-        console.log('changed viewed')
-      })
-        }
-        else{
-         console.log('ok')
-          
-        }
+  relation: any;
+  get_post(id: any) {
+    this.service.formget1(id).subscribe((res: any) => {
+      console.log(res, res.intrest, 'formget');
+      this.relation = res.relation;
+      this.data = res.values;
+      this.interestV = res.intrest;
+      this.saveV = res.savedStatus;
+      this.showRes = res.show;
+      this.lat = this.data.lat;
+      this.long = this.data.long;
+      this.history = res.relation;
+      this.imageLength = this.data.image.length;
+      if (this.relation == null) {
+        this.service.userStatusCheck(this.data._id).subscribe((res: any) => {
+          console.log('changed viewed');
+        });
+      } else {
+        console.log('ok');
+      }
       this.get_landmarks_forbuyer('School');
-    })
+    });
   }
   lat: any;
   long: any;
@@ -293,7 +299,7 @@ export class ResidentialDetailviewComponent implements OnInit {
     // console.log('empty',this.landmarks,this.LMlat_long)
 
     if (this.LMlat_long == '') {
-      this.icon = landmak == 'Cinema' ? this.cinemaIcon : this.icon;
+      this.icon = landmak == 'theater' ? this.cinemaIcon : this.icon;
       this.icon = landmak == 'Restaurant' ? this.hotelIcon : this.icon;
       this.icon = landmak == 'Hospital' ? this.hospitalIcon : this.icon;
       this.icon = landmak == 'School' ? this.schoolIcon : this.icon;
@@ -302,21 +308,62 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.icon = landmak == 'Grocery' ? this.shopIcon : this.icon;
 
       // console.log('inside if',this.landmarks,this.LMlat_long);
-      this.buyerService
+      if(landmak == 'Transportation'){
+
+        this.buyerService
+        .get_landmarks(this.lat, this.long, this.radius, 'bus')
+        .subscribe((res: any) => {
+          this.LMlat_long = [];
+          this.landmarks = [];
+          this.landmarks = res.results;
+          for (let i = 0; i < 4; i++) {
+            this.LMlat_long.push({
+              lat: this.landmarks[i].geometry.location.lat,
+              long: this.landmarks[i].geometry.location.lng,
+              icon: this.landmarks[i].icon,
+              name: this.landmarks[i].name,
+              add: this.landmarks[i].vicinity,
+            });
+          }
+        })
+        this.buyerService
+        .get_landmarks(this.lat, this.long, this.radius, 'Metro')
+        .subscribe((res: any) => {
+          this.landmarks = [];
+          this.landmarks = res.results;
+          for (let i = 0; i < 4; i++) {
+            this.LMlat_long.push({
+              lat: this.landmarks[i].geometry.location.lat,
+              long: this.landmarks[i].geometry.location.lng,
+              icon: this.landmarks[i].icon,
+              name: this.landmarks[i].name,
+              add: this.landmarks[i].vicinity,
+            });
+          }
+        })
+        console.log(this.LMlat_long,'fina lat long')
+      }
+      else{
+        this.buyerService
         .get_landmarks(this.lat, this.long, this.radius, this.place)
         .subscribe((res: any) => {
           this.LMlat_long = [];
           this.landmarks = [];
           this.landmarks = res.results;
-          console.log(res,this.landmarks,'from landmaks');
+          console.log(res, this.landmarks, 'from landmaks');
           for (let i = 0; i < 8; i++) {
-            this.LMlat_long.push({lat:this.landmarks[i].geometry.location.lat
-              ,long:this.landmarks[i].geometry.location.lng,icon:this.landmarks[i].icon
-            ,name:this.landmarks[i].name,add:this.landmarks[i].vicinity
-          });
+            this.LMlat_long.push({
+              lat: this.landmarks[i].geometry.location.lat,
+              long: this.landmarks[i].geometry.location.lng,
+              icon: this.landmarks[i].icon,
+              name: this.landmarks[i].name,
+              add: this.landmarks[i].vicinity,
+            });
           }
           // console.log(this.LMlat_long,'lat,long');
         });
+      }
+    
     }
   }
 
@@ -325,13 +372,13 @@ export class ResidentialDetailviewComponent implements OnInit {
     if (this.index > this.TotalData - 1) {
       this.index = 0;
     }
-    if(this.checkInterest){
-      this.get_interst()
+    if (this.checkInterest) {
+      this.get_interst();
     }
-    if(this.checkSave){
-      this.get_save()
+    if (this.checkSave) {
+      this.get_save();
     }
-    if(this.checkhome){
+    if (this.checkhome) {
       this.GetDataForFilter();
     }
     this.imageLength = '';
@@ -342,27 +389,25 @@ export class ResidentialDetailviewComponent implements OnInit {
       this.index = this.TotalData - 1;
     }
 
-    if(this.checkInterest){
-      this.get_interst()
+    if (this.checkInterest) {
+      this.get_interst();
     }
-    if(this.checkSave){
-      this.get_save()
+    if (this.checkSave) {
+      this.get_save();
     }
-    if(this.checkhome){
+    if (this.checkhome) {
       this.GetDataForFilter();
     }
     this.imageLength = '';
   }
   backToSearch() {
     window.history.back();
-   
-    
   }
 
   interestV: any;
   interest(id: any) {
     this.service.interest(id).subscribe((res: any) => {
-    this.GetDataForFilter();
+      this.GetDataForFilter();
     });
   }
   saveV: any;
@@ -385,29 +430,29 @@ export class ResidentialDetailviewComponent implements OnInit {
     lat2: number,
     lon2: number
   ): any {
-   return  this.buyerService.calculateDistance(lat1,lon1,lat2,lon2)
+    return this.buyerService.calculateDistance(lat1, lon1, lat2, lon2);
   }
   infoWindowOpen = false;
-  showcount:any;
-  openInfoWindow(v:any) {
-   this.showcount =v
+  showcount: any;
+  openInfoWindow(v: any) {
+    this.showcount = v;
   }
-  closeInfoWindow(){
-    this.showcount=-1
+  closeInfoWindow() {
+    this.showcount = -1;
   }
-  reason:any;
-  des:any;
-  reportProp(click:HTMLButtonElement){
-    console.log(this.reason,this.des)
-    let data={
-      propertyId:this.id,
-      reason:this.reason,
-      description:this.des
-    }
-    console.log(data)
-    this.buyerService.report_prop(data).subscribe((res:any)=>{
-      console.log(res)
-      click.click()
-    })
+  reason: any;
+  des: any;
+  reportProp(click: HTMLButtonElement) {
+    console.log(this.reason, this.des);
+    let data = {
+      propertyId: this.id,
+      reason: this.reason,
+      description: this.des,
+    };
+    console.log(data);
+    this.buyerService.report_prop(data).subscribe((res: any) => {
+      console.log(res);
+      click.click();
+    });
   }
 }

@@ -153,7 +153,7 @@
         <div class="col">
         <div
           id="carouselExampleCaptions"
-          class="carousel slide"
+          class="carousel slide home-car"
           data-bs-ride="carousel"
         >
           <div class="carousel-indicators">
@@ -216,6 +216,7 @@
             <div
               class="carousel-item"
               *ngFor="let img of images; let i = index"
+              (click)="imgslider(i)" data-bs-toggle="modal" data-bs-target="#image"
               style="
                   background-image: url('../../../assets//images//Frame 2072.png');"
               width="100%"
@@ -662,9 +663,9 @@
               <div class="end"></div>
             </div>
 
-            <div (click)="get_landmarks_forbuyer('Cinema')">
+            <div (click)="get_landmarks_forbuyer('theater')">
               <svg
-                *ngIf="place !== 'Cinema'"
+                *ngIf="place !== 'theater'"
                 width="15"
                 height="15"
                 viewBox="0 0 20 20"
@@ -677,7 +678,7 @@
                 />
               </svg>
               <svg
-                *ngIf="place == 'Cinema'"
+                *ngIf="place == 'theater'"
                 width="20"
                 height="20"
                 viewBox="0 0 20 20"
@@ -691,9 +692,9 @@
               </svg>
 
               <p
-                [ngStyle]="{ 'font-weight': place == 'Cinema' ? '600' : '200' }"
+                [ngStyle]="{ 'font-weight': place == 'theater' ? '600' : '200' }"
               >
-                Cinema
+                theater
               </p>
               <div class="end"></div>
             </div>
@@ -996,7 +997,7 @@
   aria-hidden="true"
 >
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content full-img">
       <div
         id="carouselExampleIndicators"
         class="carousel slide"
@@ -1043,7 +1044,8 @@
             (change)="imgSLnonw()"
             *ngFor="let img of data.image; let i = index"
           >
-            <img
+            <img  style="
+            background-image: url('../../../assets//images//Frame 2072.png');"
               [src]="'https://uyarchicrm.click/' + img"
               class="d-block w-100"
               alt="..."
@@ -1114,3 +1116,4 @@
     </div>
   </div>
 </div>
+

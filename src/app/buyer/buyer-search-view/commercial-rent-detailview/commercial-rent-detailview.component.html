@@ -216,6 +216,9 @@
 
             <div
               class="carousel-item"
+              data-bs-toggle="modal"
+              data-bs-target="#image"
+              (click)="imgslider(i)"
               style="
                 background-image: url('../../../assets//images//Frame 2072.png');"
               *ngFor="let img of data.image; let i = index"
@@ -598,9 +601,9 @@
               <div class="end"></div>
             </div>
 
-            <div (click)="get_landmarks_forbuyer('Cinema')">
+            <div (click)="get_landmarks_forbuyer('theater')">
               <svg
-                *ngIf="place !== 'Cinema'"
+                *ngIf="place !== 'theater'"
                 width="15"
                 height="15"
                 viewBox="0 0 20 20"
@@ -613,7 +616,7 @@
                 />
               </svg>
               <svg
-                *ngIf="place == 'Cinema'"
+                *ngIf="place == 'theater'"
                 width="20"
                 height="20"
                 viewBox="0 0 20 20"
@@ -627,9 +630,9 @@
               </svg>
 
               <p
-                [ngStyle]="{ 'font-weight': place == 'Cinema' ? '600' : '200' }"
+                [ngStyle]="{ 'font-weight': place == 'theater' ? '600' : '200' }"
               >
-                Cinema
+                theater
               </p>
               <div class="end"></div>
             </div>
@@ -960,6 +963,77 @@
           
           </div>
         </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for image -->
+<div class="modal fade" id="image" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content full-img">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            *ngIf="imageLength >= 1"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            *ngIf="imageLength >= 2"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            *ngIf="imageLength >= 3"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+
+          <button
+            type="button"
+            *ngIf="imageLength >= 4"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="4"
+            aria-label="Slide 5"
+          ></button>
+          <button
+            type="button"
+            *ngIf="imageLength >= 5"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="5"
+            aria-label="Slide 6"
+          ></button>
+        </div>
+        <div class="carousel-inner" >
+          <div class="carousel-item"  [ngClass]="{active: imgSliderCheker == i }" (change)="imgSLnonw()"  *ngFor="let img of data.image; let i = index">
+            <img [src]="'https://uyarchicrm.click/'+ img" class="d-block w-100" alt="..."> 
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+     
     </div>
   </div>
 </div>

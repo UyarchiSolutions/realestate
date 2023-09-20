@@ -69,9 +69,10 @@ export class PostPropertyService {
   uploadimg(id: any, img: any) {
     // console.log(img);
     return this.http.put(
-      this.baseURL + '/v1/BuyerSeller/Update/Seller/Post/' + id,
+      this.baseURL + '/v1/BuyerSeller/multipleImage/Upload/For/Post/' + id,
       img
     );
+    
   }
   //get data for owner
   getOwnerData(page: any, range: any, find: any) {

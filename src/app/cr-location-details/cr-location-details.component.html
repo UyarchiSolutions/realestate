@@ -37,7 +37,7 @@
    
     <div>
         <label>Pincode :<span class="red">*</span></label>
-  <input type="text" placeholder="Enter Pincode" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" formControlName="Pincode"   maxlength="6">
+  <input [class.mouse]="pincode" [readOnly]="pincode" type="text" placeholder="Enter Pincode" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" formControlName="Pincode"   maxlength="6">
     </div>
      <p *ngIf="rrlocform.get('Pincode')?.errors?.required && submitted" class="redtext">Please fill the Pincode </p>
     <p *ngIf="rrlocform.get('Pincode').errors?.pattern && submitted" class="redtext">Invalid Pincode!</p> 

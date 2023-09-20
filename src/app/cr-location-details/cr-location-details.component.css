@@ -164,3 +164,6 @@ iframe{
     padding: 0;
     margin-left: 400px;
 }
+.mouse{
+    cursor:not-allowed;
+}

@@ -218,6 +218,13 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       console.log(this.buyerId, 'buyerid');
     });
   }
+  imgSliderCheker: any;
+  imgslider(a: any) {
+    this.imgSliderCheker = a;
+  }
+  imgSLnonw() {
+    this.imgSliderCheker = '';
+  }
   relation: any;
   get_interst() {
     let type = 'Sale';
@@ -278,7 +285,7 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
     // console.log('empty',this.landmarks,this.LMlat_long)
 
     if (this.LMlat_long == '') {
-      this.icon = landmak == 'Cinema' ? this.cinemaIcon : this.icon;
+      this.icon = landmak == 'theater' ? this.cinemaIcon : this.icon;
       this.icon = landmak == 'Restaurant' ? this.hotelIcon : this.icon;
       this.icon = landmak == 'Hospital' ? this.hospitalIcon : this.icon;
       this.icon = landmak == 'School' ? this.schoolIcon : this.icon;
@@ -287,15 +294,31 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
       this.icon = landmak == 'Grocery' ? this.shopIcon : this.icon;
 
       // console.log('inside if',this.landmarks,this.LMlat_long);
-      this.buyerService
-        .get_landmarks(this.lat, this.long, this.radius, this.place)
+      if(landmak == 'Transportation'){
+
+        this.buyerService
+        .get_landmarks(this.lat, this.long, this.radius, 'bus')
         .subscribe((res: any) => {
           this.LMlat_long = [];
           this.landmarks = [];
           this.landmarks = res.results;
-
-          console.log(res, this.landmarks, 'from landmaks');
-          for (let i = 0; i < this.landmarks.length; i++) {
+          for (let i = 0; i < 4; i++) {
+            this.LMlat_long.push({
+              lat: this.landmarks[i].geometry.location.lat,
+              long: this.landmarks[i].geometry.location.lng,
+              icon: this.landmarks[i].icon,
+              name: this.landmarks[i].name,
+              add: this.landmarks[i].vicinity,
+            });
+            console.log(this.LMlat_long,'fina lat long')
+          }
+        })
+        this.buyerService
+        .get_landmarks(this.lat, this.long, this.radius, 'Metro')
+        .subscribe((res: any) => {
+          this.landmarks = [];
+          this.landmarks = res.results;
+          for (let i = 0; i < 4; i++) {
             this.LMlat_long.push({
               lat: this.landmarks[i].geometry.location.lat,
               long: this.landmarks[i].geometry.location.lng,
@@ -304,8 +327,31 @@ export class ResidentialBuyDetailviewComponent implements OnInit {
               add: this.landmarks[i].vicinity,
             });
           }
-          console.log(this.LMlat_long, 'lat,long');
+          console.log(this.LMlat_long,'fina lat long')
+        })
+        console.log(this.LMlat_long,'fina lat long')
+      }
+      else{
+        this.buyerService
+        .get_landmarks(this.lat, this.long, this.radius, this.place)
+        .subscribe((res: any) => {
+          this.LMlat_long = [];
+          this.landmarks = [];
+          this.landmarks = res.results;
+          console.log(res, this.landmarks, 'from landmaks');
+          for (let i = 0; i < 8; i++) {
+            this.LMlat_long.push({
+              lat: this.landmarks[i].geometry.location.lat,
+              long: this.landmarks[i].geometry.location.lng,
+              icon: this.landmarks[i].icon,
+              name: this.landmarks[i].name,
+              add: this.landmarks[i].vicinity,
+            });
+          }
+          // console.log(this.LMlat_long,'lat,long');
         });
+      }
+    
     }
   }
 

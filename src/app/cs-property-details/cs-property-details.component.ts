@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cs-property-details',
@@ -30,7 +31,8 @@ export class CsPropertyDetailsComponent {
       private fb: FormBuilder,
       private arouter: ActivatedRoute,
       private service: PostPropertyService,
-      private router: Router
+      private router: Router,
+      private toaster:ToastrService
     ) {}
    
   
@@ -65,6 +67,14 @@ export class CsPropertyDetailsComponent {
     }
     routerlink='/start-posting/commercial-sale-property';
     submitted=false;
+    checkUsd(){
+      if(this.propform.get('UDSlandsize')?.value < this.propform.get('BuildupArea')?.value)
+      {
+        this.toaster.error( 'Build Area should not be greater than USD/Landsize!','Error', {
+          positionClass: 'toast-bottom-right'});
+        this.propform.get('BuildupArea').reset()
+      }
+    }
     propsub() {
      
       this.submitted = this.data.propertType !=  null ? false : true;

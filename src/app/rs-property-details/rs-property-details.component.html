@@ -297,41 +297,6 @@
           <div class="redtext" *ngIf="ost == null && submitted">
             Select Owner Ship Type
           </div>
-
-          <div>
-            <label>Build up Area :<span class="red">*</span></label>
-            <div
-              style="
-                width: 50%;
-                display: flex;
-                align-items: flex-end;
-                margin-top: 0;
-                height: fit-content;
-                margin-bottom: 0 !important;
-              "
-            >
-              <input
-                type="number"
-                onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                style="width: 90%"
-                formControlName="BuildupArea"
-              />
-              <p
-                style="
-                  width: 10%;
-                  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
-                "
-              >
-                Sq.ft
-              </p>
-            </div>
-          </div>
-          <div
-            class="redtext"
-            *ngIf="propsform.get('BuildupArea').invalid && submitted"
-          >
-            Build Up Area is Required
-          </div>
           <div>
             <label>UDS/Land Size:<span class="red">*</span></label>
             <div
@@ -367,6 +332,42 @@
           >
             Landsize Area is Required
           </div>
+          <div>
+            <label>Build up Area :<span class="red">*</span></label>
+            <div
+              style="
+                width: 50%;
+                display: flex;
+                align-items: flex-end;
+                margin-top: 0;
+                height: fit-content;
+                margin-bottom: 0 !important;
+              "
+            >
+              <input
+                type="number"
+                (keyup)="checkUsd()"
+                onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+                style="width: 90%"
+                formControlName="BuildupArea"
+              />
+              <p
+                style="
+                  width: 10%;
+                  border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
+                "
+              >
+                Sq.ft
+              </p>
+            </div>
+          </div>
+          <div
+            class="redtext"
+            *ngIf="propsform.get('BuildupArea').invalid && submitted"
+          >
+            Build Up Area is Required
+          </div>
+       
 
           <div>
             <label>Age of Property :<span class="red">*</span></label>

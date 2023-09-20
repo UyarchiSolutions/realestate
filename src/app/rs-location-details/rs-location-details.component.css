@@ -169,3 +169,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.mouse{
+    cursor:not-allowed;
+}

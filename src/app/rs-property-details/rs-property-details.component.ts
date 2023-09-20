@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostPropertyService } from '../services/post-property.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rs-property-details',
@@ -28,7 +29,8 @@ export class RsPropertyDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private arouter: ActivatedRoute,
     private service: PostPropertyService,
-    private router: Router
+    private router: Router,
+    private toaster:ToastrService
   ) {}
  
 
@@ -150,6 +152,14 @@ export class RsPropertyDetailsComponent implements OnInit {
   }
   switchbutton(){
     this.isSaved= true;
+  }
+  checkUsd(){
+    if(this.propsform.get('UDSlandsize')?.value < this.propsform.get('BuildupArea')?.value)
+    {
+      this.toaster.error( 'Build Area should not be greater than USD/Landsize!','Error', {
+        positionClass: 'toast-bottom-right'});
+      this.propsform.get('BuildupArea').reset()
+    }
   }
   routetopreview(){
     var data = {

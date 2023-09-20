@@ -276,7 +276,7 @@
               "
             >
               <input
-              type="number"
+              type="text" (keyup)="checkUsd()"
               onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
                 style="width: 90%"
                 formControlName="BuildupArea"

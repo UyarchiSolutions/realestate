@@ -331,6 +331,7 @@ alertaddress(address: Address, input: any) {
     }).long_name;
     console.log(area);
     this.areaSend.push(area)
+    input.value=''
 })
 }
 

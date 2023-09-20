@@ -245,6 +245,7 @@ export class RrLocationDetailsComponent  implements OnInit{
          
          
           let address = res[0].address_components;
+          
           let area = address.find((component:any) =>{ 
             if( component.types.includes('locality')){
 
@@ -279,11 +280,26 @@ export class RrLocationDetailsComponent  implements OnInit{
       lat: $event.latLng.lat(),
       long: $event.latLng.lng()
     })
-    
+  
     this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
       console.log(res)
        
         this.myAddres = res[0].formatted_address
+       
+        this.pincode = res[0].address_components.find((res:any)=>{
+          return res.types.includes('postal_code')
+         })
+         this.pincode=this.pincode.long_name
+         
+         console.log(this.pincode,'this is pincode')
+          if(this.pincode){
+          this.rrlocform.patchValue({
+            Pincode:this.pincode
+            
+          })
+        }else{
+          this.rrlocform.get('Pincode')?.reset() 
+        }
 
         let address = res[0].address_components;
         let area = address.find((component:any) =>{ 
