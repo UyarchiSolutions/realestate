@@ -1,18 +1,11 @@
-<empty-header-all>
-</empty-header-all>
+<empty-header-all> </empty-header-all>
 <div class="container">
-
-
-
-
   <div class="ad">
-    <img src="../../assets/images/ad-post.png" width="100%">
+    <img src="../../assets/images/ad-post.png" width="100%" />
   </div>
   <div class="main">
-
     <div class="top-ad">
-
-      <img src="../../assets/images/top-container-ad.png" width="100%">
+      <img src="../../assets/images/top-container-ad.png" width="100%" />
     </div>
 
     <h1>Check Your Mobile For OTP</h1>
@@ -20,32 +13,54 @@
       <div class="otp-field">
         <label>OTP :</label>
         <div>
-          <input type="number" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-            placeholder="Enter OTP" formControlName="otp" (keyup)="errmsg()">
+          <input
+            type="number"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            placeholder="Enter OTP"
+            formControlName="otp"
+            (keyup)="errmsg()"
+          />
           <!-- <p (click)="ResendOtp()">Resent OTP !</p> -->
-          <div class="resend-otp" style="display: flex; justify-content: end;">
-            <p style="color: var(--bgBlue); text-decoration: underline; cursor: pointer;" *ngIf="recentShow"
-              (click)="ResendOtp()">Resend OTP
+          <div class="resend-otp" style="display: flex; justify-content: end">
+            <p
+              style="
+                color: var(--bgBlue);
+                text-decoration: underline;
+                cursor: pointer;
+              "
+              *ngIf="recentShow"
+              (click)="ResendOtp()"
+            >
+              Resend OTP
             </p>
-            <p style="color: var(--bgBlue);" *ngIf="!recentShow">
-             Expired in <span style="font-weight: 600;">{{remainingTime}}</span>
+            <p style="color: var(--bgBlue)" *ngIf="!recentShow">
+              Expired in
+              <span style="font-weight: 600">{{ remainingTime }}</span>
             </p>
           </div>
         </div>
-
       </div>
-      <div style="color: red;text-align: center;">
-        <p *ngIf=" isSubmit &&formcontrol.otp.errors?.['required']" class=" error-msg">OTP is required!</p>
-        <p *ngIf=" isSubmit &&formcontrol.otp.errors?.['pattern']" class=" error-msg">Enter a valid otp!</p>
-        <p *ngIf="notfound">{{errormsg}}</p>
+      <div style="color: red; text-align: center">
+        <p
+          *ngIf=" isSubmit &&formcontrol.otp.errors?.['required']"
+          class="error-msg"
+        >
+          OTP is required!
+        </p>
+        <p
+          *ngIf=" isSubmit &&formcontrol.otp.errors?.['pattern']"
+          class="error-msg"
+        >
+          Enter a valid otp!
+        </p>
+        <p *ngIf="notfound">{{ errormsg }}</p>
       </div>
       <div class="verify-btn">
         <button (click)="submitOTP()">Verify</button>
       </div>
     </form>
-
   </div>
   <div class="ad">
-    <img src="../../assets/images/ad-post.png" width="100%">
+    <img src="../../assets/images/ad-post.png" width="100%" />
   </div>
 </div>

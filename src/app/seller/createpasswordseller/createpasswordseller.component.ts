@@ -38,7 +38,7 @@ export class CreatepasswordsellerComponent implements OnInit {
   }
   mismatch=false;
   incorrect(){
-    if(this.password.get('password')?.value != this.password.get('confirmPassword')?.value){
+    if(this.password.valid && this.password.get('password')?.value != this.password.get('confirmPassword')?.value){
       this.mismatch=true;
     }else{
       this.mismatch=false;
@@ -54,5 +54,8 @@ export class CreatepasswordsellerComponent implements OnInit {
    }
    get passwordControl() {
     return this.password.controls;
+  }
+  err(){
+    this.mismatch=false
   }
 }

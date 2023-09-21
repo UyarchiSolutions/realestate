@@ -223,7 +223,7 @@
                 *ngFor="let img of data.image; let i = index"   style="
                 background-image: url('../../../assets//images//Frame 2072.png');"
               >
-                <img [src]="'https://uyarchicrm.click/' + img" />
+                <img [src]="img" />
               </div>
             </div>
             <button
@@ -561,7 +561,7 @@
           <p>{{ data.parkingFacilities }}</p>
         </div>
 
-        <div>
+        <div *ngIf="data.kitchen || data.hall_FLoor || data.bedRoom || data.bathRoom || data.balCony ">
           <label>Flooring Type :</label>
           <ul class="floor">
             <li>
@@ -1081,7 +1081,7 @@
         </div>
         <div class="carousel-inner" >
           <div class="carousel-item"  [ngClass]="{active: imgSliderCheker == i }" (change)="imgSLnonw()"  *ngFor="let img of data.image; let i = index">
-            <img [src]="'https://uyarchicrm.click/'+ img" class="d-block w-100" alt="..."> 
+            <img [src]="img" class="d-block w-100" alt="..."> 
           </div>
 
         </div>

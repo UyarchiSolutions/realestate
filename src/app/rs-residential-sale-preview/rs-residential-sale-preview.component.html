@@ -344,7 +344,7 @@
               <p style="font-weight: 500">Images :</p>
               <div class="image-gallery">
                 <div class="images" *ngFor="let img of data.image; let i = index">
-                  <img [src]="'https://uyarchicrm.click/'+ img" (click)="imgslider(i)" width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
+                  <img [src]="img" (click)="imgslider(i)" width="200px" height="150px" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
                   
                 </div>
               
@@ -441,7 +441,7 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item" [ngClass]="{active: imgSliderCheker == i }"     *ngFor="let img of data.image; let i = index">
-              <img [src]="'https://uyarchicrm.click/'+ img" class="d-block w-100" alt="..."> 
+              <img [src]="img" class="d-block w-100" alt="..."> 
             </div>
   
           </div>

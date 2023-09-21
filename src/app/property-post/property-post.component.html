@@ -146,7 +146,7 @@
                 <span class="schedule-popup" *ngIf="sAllpop && checkid == v._id">
                     <span class="select-date"  *ngIf="sschedule" [formGroup]="myform" >
 
-                        <input type="date" #date formControlName="Date1"  min="{{today | date:'yyyy-MM-dd'}}">
+                        <input type="date" #date formControlName="Date1"  [min]="mindate">
                         <input type="time" #time formControlName="time1" >
                         <div class="button">
                             <button class="select-time-btn" (click)="closeAll(date,time,v._id,v.propertyId,v.userId)" >Set Date and Time</button>

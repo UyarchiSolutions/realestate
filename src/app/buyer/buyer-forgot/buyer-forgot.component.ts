@@ -11,7 +11,6 @@ import { BuyerService } from '../buyer.service';
 export class BuyerForgotComponent {
   ForgotPassword = this.fb.group({
     number: new FormControl('',[Validators.required,Validators.pattern('^[6-9]{1}[0-9]{9}$')]),
-    // otp: new FormControl(''),
     type: new FormControl('Buyer')
   })
   password = this.fb.group({

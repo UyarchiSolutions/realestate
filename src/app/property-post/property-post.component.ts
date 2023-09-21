@@ -25,6 +25,7 @@ export class PropertyPostComponent implements OnInit {
     })
   }
   id:any;
+  mindate:any
   ngOnInit(): void {
     this.arouter.queryParams.subscribe((params:any)=>{
       console.log(params);
@@ -35,6 +36,12 @@ export class PropertyPostComponent implements OnInit {
     console.log(this.id)
     this.get_all_interst();
     this.GetuserName();
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    this.mindate = `${year}-${month}-${day}`;
   }
   data:any=[]
   get_all_interst(){
