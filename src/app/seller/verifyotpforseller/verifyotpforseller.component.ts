@@ -65,6 +65,9 @@ export class VerifyotpforsellerComponent {
     }
 
   }
+  get formcontrol() {
+    return this.otp_Form.controls
+  }
   resend(){
     this.notfound=false
     this.otp_Form.get('otp')?.reset()

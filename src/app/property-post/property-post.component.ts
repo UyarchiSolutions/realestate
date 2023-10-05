@@ -37,12 +37,12 @@ export class PropertyPostComponent implements OnInit {
     this.get_all_interst();
     this.GetuserName();
 
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    this.mindate = `${year}-${month}-${day}`;
+    this.currentDate.setTime(this.currentDate.getTime() + this.oneDayInMillis);
+    this.mindate = this.currentDate.toISOString().substring(0, 10);
+    
   }
+  currentDate: Date = new Date();
+  oneDayInMillis: number = 24 * 60 * 60 * 1000;
   data:any=[]
   get_all_interst(){
     this.service.get_Interest_buyer(this.id).subscribe((res:any)=>{

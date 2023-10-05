@@ -49,7 +49,7 @@
 
 
 </div>
-<p class="redtext" *ngIf="imagePreview.length == 0 && submited" >Mininum 1 photo required!</p>
+<p class="redtext" *ngIf="(imagePreview.length == 0 && submited) && !data.image" >Mininum 1 photo required!</p>
 <p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
 
 <div class="image-gallery">
@@ -57,9 +57,9 @@
     <div class="images"  *ngFor="let preview of imagePreview; let i = index">
         
         <img  [src]="preview"    width="200px" height="150ox">
-        <div class="when-hover">
+        <span class="when-hover">
             <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
+        </span>
     </div>
 
  
@@ -107,7 +107,7 @@
     </div>
 </div>
 
-<p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
+<p class="redtext" *ngIf=" !videoSrc && submited && !data.videos" >Video required!</p>
 </div>
 
 <div class="save-continue">

@@ -25,7 +25,8 @@
       </div>
     </form>
     <div style="color:red;text-align: center;;">
-    <p *ngIf=" isSubmitted &&otp_Form.get('otp')?.invalid" class=" error-msg">OTP is required!</p>
+    <p *ngIf=" isSubmitted &&formcontrol.otp.errors?.['required']" class=" error-msg">OTP is required!</p>
+    <p *ngIf=" isSubmitted &&formcontrol.otp.errors?.['pattern']" class=" error-msg">Enter a valid Otp !</p>
     <p  *ngIf="notfound">{{errormsg}}</p>
   </div>
     <div class="verify-btn">

@@ -466,3 +466,40 @@ margin-bottom: 0 !important;
     vertical-align: middle;
     margin: auto;
 }
+.nb-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.250);
+    height:80px ;
+    width: 100%;
+    padding: 10px;
+}
+.nb-box{
+    width: 120px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s ease-in-out all;
+}
+.nb-box path,p{
+    fill:#394867;
+
+}
+.act{
+    background-color: #394867;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: 0.5s ease-in-out all;
+}
+.act p{
+    color: white;
+}
+.act path{
+    fill: white;
+}

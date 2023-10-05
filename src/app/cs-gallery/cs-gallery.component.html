@@ -61,7 +61,7 @@
     </div>
  
 </div>
-<p class="redtext" *ngIf="imagePreview.length == 0 && submited" >Mininum 1 photo required!</p>
+<p class="redtext" *ngIf="(imagePreview.length == 0 && submited) && !data.image" >Mininum 1 photo required!</p>
 
 <div class="image-gallery" *ngIf="data.image != '' " >
     Uploaded Images             
@@ -81,7 +81,7 @@
     <input type="file" style="display: none;" (change)="onvidselect($event)" id="videoinput" accept="video/mp4,video/x-m4v,video/*">
    
 </div>
-<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}21321</p>
+<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</p>
 
 
 <div class="image-gallery"  *ngIf="videoSrc">
@@ -98,7 +98,7 @@
 
 
 </div>
-<p class="redtext" *ngIf=" !videoSrc && submited" >Video required!</p>
+<p class="redtext" *ngIf=" !videoSrc && submited && !data.videos" >Video required!</p>
 <div class="image-gallery" *ngIf="data.videos != '' ">
     Uploaded Video 
     <div class="images video" *ngFor="let vid of data.videos">

@@ -1,197 +1,327 @@
 <header-with-profile></header-with-profile>
 <div class="container">
+  <div class="sidebar">
+    <seller-admin-sidebar></seller-admin-sidebar>
+  </div>
+  <div class="main">
+    <nav>
+      <p class="navbar-links" (click)="back(0)">Property details</p>
+      <p class="navbar-links" (click)="back(1)">Location Details</p>
+      <p class="navbar-links" (click)="back(2)">Rental Details</p>
+      <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
+      <p class="navbar-links" (click)="back(4)">Gallery</p>
+      <p class="navbar-links" (click)="back(5)">Additional Details</p>
+    </nav>
 
+    <div class="Location-details">
+      <h2>Amenities</h2>
 
-
-    <div class="sidebar">
-      <seller-admin-sidebar></seller-admin-sidebar>
-    </div>
-    <div class="main">
- 
-        <nav>
-            <p class="navbar-links" (click)="back(0)">Property details</p>
-            <p class="navbar-links " (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Rental Details</p>
-            <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
-            <p class="navbar-links" (click)="back(4)">Gallery</p>
-            <p class="navbar-links" (click)="back(5)">Additional Details </p>
-        </nav>
-
-
-
-<div class="Location-details">
-    <h2>Amenities</h2>
-
-
-
-
-    <div class="form" [formGroup]="myform">
-       
+      <div class="form" [formGroup]="myform">
         <div>
-            <label>Furnishing Status :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="fsv" *ngIf="fsv" ></p>
-            <p [innerText]="data.furnishingStatus" *ngIf="!fsv && data.furnishingStatus"></p>
-            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5;">Furnishing Status</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="furstav('Fully Furnished')" >Fully Furnished</a></li>
-              <li><a class="dropdown-item" (click)="furstav('Semi Furnished')">Semi Furnished</a></li>
-              <li><a class="dropdown-item" (click)="furstav('UnFurnished')">UnFurnished</a></li>
+          <label>Furnishing Status :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="fsv" *ngIf="fsv"></p>
+            <p
+              [innerText]="data.furnishingStatus"
+              *ngIf="!fsv && data.furnishingStatus"
+            ></p>
+            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5">
+              Furnishing Status
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="furstav('Fully Furnished')"
+                  >Fully Furnished</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="furstav('Semi Furnished')"
+                  >Semi Furnished</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="furstav('UnFurnished')"
+                  >UnFurnished</a
+                >
+              </li>
             </ul>
           </div>
         </div>
-        <p class="redtext" *ngIf="fsv==null && submited">Select furnishings Status Type</p>
+        <p class="redtext" *ngIf="fsv == null && submited">
+          Select furnishings Status Type
+        </p>
         <div>
-            <label>Parking :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="pv" *ngIf="pv" ></p>
-            <p [innerText]="data.parkingFacilities" *ngIf="!pv && data.parkingFacilities"></p>
-             <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5;">Parking</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="parkTv('Public And Reserved')" >Public And Reserved</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('Public')" >Public</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('Reserved')" >Reserved</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('None')" >None</a></li>
-           
+          <label>Parking :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="pv" *ngIf="pv"></p>
+            <p
+              [innerText]="data.parkingFacilities"
+              *ngIf="!pv && data.parkingFacilities"
+            ></p>
+            <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5">
+              Parking
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="parkTv('Public And Reserved')"
+                  >Public And Reserved</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('Public')">Public</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('Reserved')"
+                  >Reserved</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('None')">None</a>
+              </li>
             </ul>
           </div>
         </div>
-        <p  class="redtext" *ngIf="pv ==null && submited">Select Parking Type</p>
+        <p class="redtext" *ngIf="pv == null && submited">
+          Select Parking Type
+        </p>
         <div>
-            <label>Power Backup :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="pb" *ngIf="pb" ></p>
-            <p [innerText]="data.powerBackup" *ngIf="!pb && data.powerBackup"></p>
-            <p *ngIf="!pb && !data.powerBackup" style="opacity: 0.5;">Power Backup </p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="powerbv('Full')" >Full</a></li>
-              <li><a class="dropdown-item" (click)="powerbv('DG Backup')">DG Backup</a></li>
-              <li><a class="dropdown-item" (click)="powerbv('Need to Arrange')">Need to Arrange</a></li>
+          <label>Power Backup :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="pb" *ngIf="pb"></p>
+            <p
+              [innerText]="data.powerBackup"
+              *ngIf="!pb && data.powerBackup"
+            ></p>
+            <p *ngIf="!pb && !data.powerBackup" style="opacity: 0.5">
+              Power Backup
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="powerbv('Full')">Full</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="powerbv('DG Backup')"
+                  >DG Backup</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="powerbv('Need to Arrange')"
+                  >Need to Arrange</a
+                >
+              </li>
             </ul>
           </div>
         </div>
-        <p class="redtext" *ngIf="pb ==null && submited">Select Power Backup Type</p>
+        <p class="redtext" *ngIf="pb == null && submited">
+          Select Power Backup Type
+        </p>
         <div>
-            <label>Washroom :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="btv" *ngIf="btv" ></p> 
-            <p [innerText]="data.bathRoomType"  *ngIf="!btv && data.bathRoomType "></p> 
-            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5;">Washroom</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="bathTv('Private')" >Private</a></li>
-              <li><a class="dropdown-item" (click)="bathTv('Common')">Common</a></li>
-              <li><a class="dropdown-item" (click)="bathTv('No washroom')">No washroom</a></li>
+          <label>Washroom :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="btv" *ngIf="btv"></p>
+            <p
+              [innerText]="data.bathRoomType"
+              *ngIf="!btv && data.bathRoomType"
+            ></p>
+            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5">
+              Washroom
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="bathTv('Private')">Private</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathTv('Common')">Common</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathTv('No washroom')"
+                  >No washroom</a
+                >
+              </li>
             </ul>
           </div>
         </div>
-        <p class="redtext" *ngIf="btv ==null && submited">Select Power Backup Type</p>
+        <p class="redtext" *ngIf="btv == null && submited">
+          Select Power Backup Type
+        </p>
         <div>
-            <label>Lift :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="lft" *ngIf="lft" ></p> 
-            <p [innerText]="data.Lift"  *ngIf="!lft && data.Lift "></p> 
-            <p *ngIf="!lft && !data.Lift" style="opacity: 0.5;">Lift</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="liftTv('Personal')" >Personal</a></li>
-              <li><a class="dropdown-item" (click)="liftTv('Common')">Common</a></li>
+          <label>Lift :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="lft" *ngIf="lft"></p>
+            <p [innerText]="data.Lift" *ngIf="!lft && data.Lift"></p>
+            <p *ngIf="!lft && !data.Lift" style="opacity: 0.5">Lift</p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="liftTv('Personal')"
+                  >Personal</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="liftTv('Common')">Common</a>
+              </li>
               <li><a class="dropdown-item" (click)="liftTv('No')">No</a></li>
             </ul>
           </div>
         </div>
-        <p class="redtext" *ngIf="lft ==null && submited">Select Lift Type</p>
+        <p class="redtext" *ngIf="lft == null && submited">Select Lift Type</p>
         <div class="non-veg-allowed gated-security">
-            <label style="width: 30% !important">Water Storage facility:<span class="red">*</span></label>
+          <label style="width: 30% !important"
+            >Water Storage facility:<span class="red">*</span></label
+          >
+          <div>
             <div>
-                <div>
-                    <input type="radio" name="waterFacility"  [checked]="data.waterStorage == 'yes'" formControlName="waterFacility" value="yes">Yes
-                </div>
-                <div>
-                    <input type="radio" name="waterFacility"  [checked]="data.waterStorage == 'no'" formControlName="waterFacility" value="no">No
-                </div>
+              <input
+                type="radio"
+                name="waterFacility"
+                [checked]="data.waterStorage == 'yes'"
+                formControlName="waterFacility"
+                value="yes"
+              />Yes
             </div>
+            <div>
+              <input
+                type="radio"
+                name="waterFacility"
+                [checked]="data.waterStorage == 'no'"
+                formControlName="waterFacility"
+                value="no"
+              />No
+            </div>
+          </div>
         </div>
-        <p class="redtext" *ngIf=" myform.get('waterFacility')?.invalid && submited">Water Storage facility Required!</p>
+        <p
+          class="redtext"
+          *ngIf="myform.get('waterFacility')?.invalid && submited"
+        >
+          Water Storage facility Required!
+        </p>
         <div class="non-veg-allowed gated-security">
-            <label>Security:<span class="red">*</span></label>
+          <label>Security:<span class="red">*</span></label>
+          <div>
             <div>
-                <div>
-                    <input type="radio" name="Security"  [checked]="data.security == 'yes'" formControlName="Security" value="yes">Yes
-                </div>
-                <div>
-                    <input type="radio" name="Security"  [checked]="data.security == 'no'" formControlName="Security" value="no">No
-                </div>
+              <input
+                type="radio"
+                name="Security"
+                [checked]="data.security == 'yes'"
+                formControlName="Security"
+                value="yes"
+              />Yes
             </div>
+            <div>
+              <input
+                type="radio"
+                name="Security"
+                [checked]="data.security == 'no'"
+                formControlName="Security"
+                value="no"
+              />No
+            </div>
+          </div>
         </div>
-        <p class="redtext" *ngIf=" myform.get('Security')?.invalid && submited">Security Required!</p>
+        <p class="redtext" *ngIf="myform.get('Security')?.invalid && submited">
+          Security Required!
+        </p>
         <div class="non-veg-allowed gated-security">
-            <label>Escalator:<span class="red">*</span></label>
+          <label>Escalator:<span class="red">*</span></label>
+          <div>
             <div>
-                <div>
-                    <input type="radio" name="Escalator"  [checked]="data.escalator == 'yes'"  formControlName="Escalator" value="yes">Yes
-                </div>
-                <div>
-                    <input type="radio" name="Escalator"  [checked]="data.escalator == 'no'" formControlName="Escalator" value="no">No
-                </div>
+              <input
+                type="radio"
+                name="Escalator"
+                [checked]="data.escalator == 'yes'"
+                formControlName="Escalator"
+                value="yes"
+              />Yes
             </div>
+            <div>
+              <input
+                type="radio"
+                name="Escalator"
+                [checked]="data.escalator == 'no'"
+                formControlName="Escalator"
+                value="no"
+              />No
+            </div>
+          </div>
         </div>
-        <p class="redtext" *ngIf=" myform.get('Escalator')?.invalid && submited">Escalator Required!</p>
+        <p class="redtext" *ngIf="myform.get('Escalator')?.invalid && submited">
+          Escalator Required!
+        </p>
         <div class="non-veg-allowed gated-security">
-            <label>WIFI:<span class="red">*</span></label>
+          <label>WIFI:<span class="red">*</span></label>
+          <div>
             <div>
-                <div>
-                    <input type="radio" name="WIFI"  [checked]="data.gate_Security == 'yes'" formControlName="WIFI" value="yes">Yes
-                </div>
-                <div>
-                    <input type="radio" name="WIFI"  [checked]="data.gate_Security == 'no'" formControlName="WIFI" value="no">No
-                </div>
+              <input
+                type="radio"
+                name="WIFI"
+                [checked]="data.gate_Security == 'yes'"
+                formControlName="WIFI"
+                value="yes"
+              />Yes
             </div>
+            <div>
+              <input
+                type="radio"
+                name="WIFI"
+                [checked]="data.gate_Security == 'no'"
+                formControlName="WIFI"
+                value="no"
+              />No
+            </div>
+          </div>
         </div>
-        <p class="redtext" *ngIf=" myform.get('WIFI')?.invalid && submited">WIFI Required!</p>
-       
-      
+        <p class="redtext" *ngIf="myform.get('WIFI')?.invalid && submited">
+          WIFI Required!
+        </p>
 
-<div class="save-continue">
-    <button type="submit" (click)="submit()" *ngIf="!data.final">Save & Continue</button>
-</div>
+        <div class="save-continue">
+          <button type="submit" (click)="submit()" *ngIf="!data.final">
+            Save & Continue
+          </button>
+        </div>
 
-<div class="save-continue">
-    <button (click)="routetopreview()"  *ngIf="data.final">Save </button>
-</div>
-
-</div>
-
-</div>
-    
-
+        <div class="save-continue">
+          <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+        </div>
+      </div>
     </div>
-    
+  </div>
 
-    
-    <div class="ad"></div>
-    
-    
-    </div>
-    <seller-footer></seller-footer>
-
-
-    
+  <div class="ad"></div>
+</div>
+<seller-footer></seller-footer>

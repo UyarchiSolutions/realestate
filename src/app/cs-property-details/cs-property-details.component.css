@@ -191,3 +191,9 @@ textarea{
 .dropdown-toggle::after {
     display:none;
 }
+.sf{
+    padding: 10px;
+    width: 50% !important;
+    max-width: 50% !important;
+    background: none;
+}

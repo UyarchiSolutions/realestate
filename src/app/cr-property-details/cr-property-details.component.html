@@ -1,10 +1,10 @@
-<header-with-profile></header-with-profile>
+<header-with-profile></header-with-profile> 
 <div class="container">
-  <div class="sidebar">
+ <div class="sidebar">
     <seller-admin-sidebar></seller-admin-sidebar>
-  </div>
+  </div> 
   <div class="main">
-    <nav>
+     <nav>
       <p class="navbar-links nav-active" (click)="back(0)">Property details</p>
       <p class="navbar-links" (click)="back(1)">Location Details</p>
       <p class="navbar-links" (click)="back(2)">Rental Details</p>
@@ -17,7 +17,7 @@
       <form [formGroup]="propform" (ngSubmit)="propsub()">
         <h2>Property Details</h2>
         <div class="form">
-          <div>
+           <div>
             <label>Property Type :<span class="red">*</span></label>
 
             <div
@@ -43,11 +43,11 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> 
           <p class="redtext" *ngIf="pv == null && submitted">
             Select Property Type
           </p>
-          <div>
+           <div>
             <label>Building Type :<span class="red">*</span></label>
 
             <div
@@ -73,13 +73,13 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> 
 
           <p class="redtext" *ngIf="bt == null && submitted">
             Building Type Type
           </p>
 
-          <div class="floors">
+           <div class="floors">
             <label>Floors :<span class="red">*</span></label>
             <div>
               <div class="dropdown select-field">
@@ -186,16 +186,22 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> 
           <div class="err-msg">
-            <p *ngIf="tfv == null && submitted" style="width: 25%;font-size: 0.8rem;">
+            <p
+              *ngIf="tfv == null && submitted"
+              style="width: 25%; font-size: 0.8rem"
+            >
               Select Total floors
             </p>
-            <p *ngIf="ofv == null && submitted" style="width: 21%;font-size: 0.8rem;">
+            <p
+              *ngIf="ofv == null && submitted"
+              style="width: 21%; font-size: 0.8rem"
+            >
               Select On floor
             </p>
           </div>
-          <div>
+           <div>
             <label>Build up Area :<span class="red">*</span></label>
             <div
               style="
@@ -222,7 +228,7 @@
                 Sq.ft
               </p>
             </div>
-          </div>
+          </div> 
           <p
             class="redtext"
             *ngIf="propform.get('BuildupArea')?.invalid && submitted"
@@ -278,11 +284,11 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> 
           <p class="redtext" *ngIf="aop == null && submitted">
             Select Age of Property Type
           </p>
-          <div>
+         <div>
             <label>Facing Direction :<span class="red">*</span></label>
             <div
               class="dropdown select-field"
@@ -342,13 +348,14 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> 
           <p class="redtext" *ngIf="fdv == null && submitted">
             Select Facing Direction Type
           </p>
+        
           <div>
             <label>Other Feature:<span class="red">*</span></label>
-            <div class="select-field other-features">
+            <div class="sf other-features">
               <span>
                 <input
                   type="radio"

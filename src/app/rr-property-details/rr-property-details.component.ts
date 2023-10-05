@@ -23,7 +23,7 @@ export class RrPropertyDetailsComponent implements OnInit {
   }
   propform: any = this.fb.group({
     BuildupArea: new FormControl('', Validators.required),
-    Description: new FormControl('', Validators.required),
+    Description: new FormControl(''),
   });
 
   constructor(
@@ -142,21 +142,40 @@ export class RrPropertyDetailsComponent implements OnInit {
 
   updateform() {
     this.service.formget(this.id).subscribe((res: any) => {
+      this.pv= res.propertType,
+      this.tfv= res.noOfFloor,
+      this.ofv= res.floorNo,
+      this.aop=res.ageOfBuilding,
+      this.bhkv= res.BHKType,
+      this.rpv= res.RentPrefer,
+      this.fdv= res.facingDirection,
       this.propform.patchValue({
-        propertytype: res.propertType,
-        totalfloor: res.noOfFloor,
-        onfloor: res.floorNo,
-        AgeofProperty: res.ageOfBuilding,
-        BHKType: res.BHKType,
+       
         BuildupArea: res.BuildedSize,
-        RentPreference: res.RentPrefer,
+        
         Description: res.discription,
-        facingDirection: res.facingDirection,
+        
       }); console.log(res.facingDirection);
     });
   }
 
   routetopreview(){
+   
+    this.submitted = true;
+    var Checkdata = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
+      BuildedSize: this.propform.get('BuildupArea')?.value ,
+      facingDirection: this.fdv ,
+      RentPrefer: this.rpv,
+      routeLink:this.routerlink
+    };
+    console.log(Checkdata,'patch waiting')
+    
+   if(this.allKeysHaveValue(Checkdata) ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -172,6 +191,7 @@ export class RrPropertyDetailsComponent implements OnInit {
     };
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
+      this.submitted = false;
       console.log('updated')
     })
 
@@ -183,7 +203,7 @@ export class RrPropertyDetailsComponent implements OnInit {
 
     this.service.formget(this.id).subscribe((res: any) => 
     {location.reload();});
-    
+   }
   }
   back(count: any) {
     if (count == 0) {

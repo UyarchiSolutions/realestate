@@ -79,11 +79,12 @@ export class RsPropertyDetailsComponent implements OnInit {
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
       ownerType:this.ost,
+      RentPrefer: this.rpv,
       landSize:this.propsform.get('UDSlandsize')?.value,
      
     };
     console.log(Checkdata)
-    if(this.allKeysHaveValue(Checkdata) || this.data.propertType !=  null ){ 
+    if(this.allKeysHaveValue(Checkdata)  ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -136,16 +137,17 @@ export class RsPropertyDetailsComponent implements OnInit {
 
   updateform() {
     this.service.formget(this.id).subscribe((res: any) => {
+      this.pv= res.propertType,
+      this.tfv= res.noOfFloor,
+      this.ofv= res.floorNo,
+      this.aop=res.ageOfBuilding,
+      this.bhkv= res.BHKType,
+      this.rpv= res.RentPrefer,
+      this.fdv= res.facingDirection,
       this.propsform.patchValue({
-        propertytype: res.propertType,
-        totalfloor: res.noOfFloor,
-        onfloor: res.floorNo,
-        AgeofProperty: res.ageOfBuilding,
-        BHKType: res.BHKType,
+       
         BuildupArea: res.BuildedSize,
-        RentPreference: res.RentPrefer,
         Description: res.discription,
-        facingDirection: res.facingDirection,
         UDSlandsize:res.landSize,
       }); console.log(res.facingDirection);
     });
@@ -162,6 +164,22 @@ export class RsPropertyDetailsComponent implements OnInit {
     }
   }
   routetopreview(){
+    this.submitted=true;
+    var Checkdata = {
+      propertType: this.pv,
+      noOfFloor: this.tfv,
+      floorNo: this.ofv,
+      ageOfBuilding: this.aop,
+      BHKType: this.bhkv,
+      BuildedSize: this.propsform.get('BuildupArea')?.value,
+      facingDirection: this.fdv,
+      ownerType:this.ost,
+      RentPrefer: this.rpv,
+      landSize:this.propsform.get('UDSlandsize')?.value,
+     
+    };
+    console.log(Checkdata)
+    if(this.allKeysHaveValue(Checkdata)  ){ 
     var data = {
       propertType: this.pv,
       noOfFloor: this.tfv,
@@ -180,6 +198,7 @@ export class RsPropertyDetailsComponent implements OnInit {
     console.log(data);
     this.service.formput(this.id, data).subscribe((res: any) => {
       console.log('updated')
+      this.submitted= false
     })
 
     var postdata = {
@@ -190,7 +209,7 @@ export class RsPropertyDetailsComponent implements OnInit {
 
     this.service.formget(this.id).subscribe((res: any) => 
     {location.reload();});
-    
+  }
   }
 
   nave: boolean = false;

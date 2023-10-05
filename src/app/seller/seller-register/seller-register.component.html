@@ -85,11 +85,12 @@
        
         <div class="buyer-tenant form-data">
           <div>
-            <input type="radio" formControlName="Role" value="Seller">Seller
-          </div>
-          <div>
             <input type="radio" formControlName="Role" value="Owner">Owner
           </div>
+          <div>
+            <input type="radio" formControlName="Role" value="Builder">Builder
+          </div>
+         
         </div>
         <div class="error-msg" *ngIf="isSubmit&&loginForm.get('Role')?.invalid">
           <label></label>
