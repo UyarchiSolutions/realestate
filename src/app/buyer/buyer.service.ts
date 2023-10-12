@@ -116,7 +116,9 @@ export class BuyerService {
   report_prop(data:any){
     return this.http.post(this.base_url+'/v1/EnquieryRoute/create/Report',data,{headers:{auth:Cookie.get('buyer')}})
   }
-
+  get_faq(){
+    return this.http.get(this.base_url+'/v1/EnquieryRoute/getFAQByHeadingId')
+  }
 
 
 

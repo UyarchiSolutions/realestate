@@ -977,8 +977,9 @@ export class RbHomeComponent implements OnInit {
       };
       let query = new URLSearchParams(this.sendData).toString();
       console.log('sending data')
-      this.FetchRecentSearch();
+      
       this.router.navigateByUrl('/buyer-residential-rent-view?' + query);
+      this.FetchRecentSearch();
     }
     else{
       this.toastr.error('Fill the field', 'Please Select correct location!', {

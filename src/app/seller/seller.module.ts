@@ -79,6 +79,7 @@ import { ResidentialSaleComponent } from './seller-buyer-view/residential-sale/r
 import { CommercialRentComponent } from './seller-buyer-view/commercial-rent/commercial-rent.component';
 import { CommercialSaleComponent } from './seller-buyer-view/commercial-sale/commercial-sale.component';
 import { CommonElementsModule } from '../common-elements/common-elements.module';
+import { SellerFaqComponent } from './seller-faq/seller-faq.component';
 
 
 @NgModule({
@@ -160,7 +161,8 @@ import { CommonElementsModule } from '../common-elements/common-elements.module'
     ResidentialRent2Component,
     ResidentialSaleComponent,
     CommercialRentComponent,
-    CommercialSaleComponent
+    CommercialSaleComponent,
+    SellerFaqComponent
 
     
   ],

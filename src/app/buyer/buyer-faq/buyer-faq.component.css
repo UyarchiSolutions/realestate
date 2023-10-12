@@ -1,0 +1,155 @@
+header{
+    height: 80px;
+    background-color: var(--bgBlue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px 0 0;
+    background-image: url(../../../assets/images/build.png);
+    background-size: cover;
+  }
+  header>.logo{
+  
+    height: 100%;
+    background-color: rgba(36, 45, 64, 0.336);
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header>.logo>img{
+    height: 40px;
+  }
+  header>div{
+    display: flex;
+  align-items: center;
+  }
+  header>div>.login-button{
+    background: white;
+  }
+  header>div>.register-button{
+    background:var(--bgligthBlue);
+  
+  }
+  header>div>button{
+    padding: 7px 10px;
+    margin: 0 5px;display: flex;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    border-radius: 2px;
+  
+  }
+  .post-your-property{
+    background: none;
+    border: none;
+    color: white;
+  }
+  .post-your-property>svg{
+    margin-left: 5px;
+  }
+  
+  
+  .user{
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .user-img{
+    height: 35px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  .user-img img{
+    height: 100%;
+  }
+  .user-name{
+    color: white;
+  }
+  
+  
+  .dropdown-toggle::after {
+    display:none;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+  .location-name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 76px;
+  }
+  /* header */
+.main-body{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.add{
+    width: 15%;
+    padding: 10px;
+}
+.add img{
+    object-fit: contain;
+    width: -webkit-fill-available;
+}
+.contents{
+    width: 70%;
+    margin-top: 12px;
+}
+.content-box-head{
+    background-color: #394867;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    height: 50px;
+
+}
+.content-box-body{
+    background-color: #F1F6F9;
+    height: 600px;
+    overflow: auto;
+}
+.head-span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.head-span p{
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}
+.content-box-body{
+    background-color: #F1F6F9;
+}
+.content-box-body h4{
+    margin: 10px 20px;
+    font-weight: 600;
+}
+.card-box{
+    padding: 10px 30px;
+    border-bottom: .5px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+}
+.card-box :nth-child(1){
+    font-weight: 600;
+}
+::-webkit-scrollbar {
+    display: none;
+  }

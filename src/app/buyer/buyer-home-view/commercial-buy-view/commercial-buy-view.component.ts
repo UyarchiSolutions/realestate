@@ -1038,6 +1038,7 @@ export class CommercialBuyViewComponent implements OnInit {
       let query = new URLSearchParams(this.sendData).toString();
       this.FetchRecentSearch();
       this.router.navigateByUrl('/buyer-commercial-buy-view?' + query);
+      this.FetchRecentSearch();
     }
     else{
       this.toastr.error('Fill the field', 'Please Select correct location!', {

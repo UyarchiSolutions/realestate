@@ -42,6 +42,7 @@ import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-ed
 
 import { NgxEditorModule } from 'ngx-editor';
 import { CommonElementsModule } from '../common-elements/common-elements.module';
+import { BuyerFaqComponent } from './buyer-faq/buyer-faq.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { CommonElementsModule } from '../common-elements/common-elements.module'
     BuyerFooterComponent,
     BuyerProfileComponent,
     BuyerProfileEditComponent,
+    BuyerFaqComponent,
   
    
  

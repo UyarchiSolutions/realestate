@@ -107,6 +107,8 @@ import { ResidentialSaleComponent } from './seller/seller-buyer-view/residential
 import { CommercialRentComponent } from './seller/seller-buyer-view/commercial-rent/commercial-rent.component';
 import { CommercialSaleComponent } from './seller/seller-buyer-view/commercial-sale/commercial-sale.component';
 import { AdminModule } from '../app/admin/admin.module';
+import { BuyerFaqComponent } from './buyer/buyer-faq/buyer-faq.component';
+import { SellerFaqComponent } from './seller/seller-faq/seller-faq.component';
 
 
 
@@ -125,6 +127,8 @@ const routes: Routes = [
   {path:'buyer-streams',component:BuyerStreamsHomeComponent},
 
   {path:'buyer-interested',component:BuyerNotificationComponent},
+  {path:'buyer-faq',component:BuyerFaqComponent},
+ 
 
   // seller
   { path: 'sellerLogin', component: SellerLoginComponent },
@@ -138,7 +142,7 @@ const routes: Routes = [
   { path: 'seller-notification', component: NotificationComponent },
   { path: 'seller-footer', component: SellerFooterComponent },
 
-
+  {path:'seller-faq',component:SellerFaqComponent},
 
   {
     path: 'start-posting',
