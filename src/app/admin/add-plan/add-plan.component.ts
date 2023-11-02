@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-plan.component.css']
 })
 export class AddPlanComponent implements OnInit {
-
+  submitted=false
   constructor(private fb:FormBuilder,private service:AdminService,private router:Router){
     
   }
@@ -17,31 +17,69 @@ export class AddPlanComponent implements OnInit {
     
   }
   myform:any=this.fb.group({
-    userType: new FormControl(),
-    planType:new FormControl(),
-    planeName:new FormControl(),
-    planMode:new FormControl(),
-    no_of_Stream:new FormControl(),
-    no_of_host_per_Stream:new FormControl(),
-    Duration_per_stream:new FormControl(),
-    Entry_Permit_to_participants:new FormControl(),
-    No_buyer_contact_Reveals:new FormControl(),
-    No_of_participants_Limit:new FormControl(),
-    validity_of_plan:new FormControl(),
-    Stream_validity:new FormControl(),
-    Regular_Price:new FormControl(),
-    Offer_Price:new FormControl(),
-    Chat_Needed:new FormControl(),
-    post_Stream:new FormControl(),
-    service_Charges:new FormControl(),
-    Description:new FormControl(),
+    userType:new FormControl(),
+    planName: new FormControl('', Validators.required),
+    Duration: new FormControl('', Validators.required),
+    DurationType: new FormControl('', Validators.required),
+    numberOfParticipants: new FormControl('', Validators.required),
+    numberofStream: new FormControl('', Validators.required),
+    validityofplan: new FormControl('', Validators.required),
+    // additionalDuration: new FormControl(''),
+    // additionalParticipants: new FormControl(''),
+    // DurationIncrementCost: new FormControl(''),
+    // noOfParticipantsCost: new FormControl(''),
+    chat_Option: new FormControl('', Validators.required),
+    // commision: new FormControl('', Validators.required),
+    // commition_value: new FormControl(''),
+    regularPrice: new FormControl('', Validators.required),
+    // salesPrice: new FormControl('', Validators.required),
+    // max_post_per_stream: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    planmode: new FormControl('', Validators.required),
+    no_of_host: new FormControl('', Validators.required),
+    transaction: new FormControl('', Validators.required),
+
+    planType: new FormControl('', Validators.required),
+    streamvalidity: new FormControl('', Validators.required),
+    offer_price: new FormControl('', Validators.required),
+    PostCount: new FormControl('', Validators.required),
+    RaiseHands: new FormControl('', Validators.required),
+    raisehandcontrol: new FormControl('', Validators.required),
+    completedStream: new FormControl('', Validators.required),
+    Candidate_Contact_reveal: new FormControl('', Validators.required),
+    Pdf: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    Teaser: new FormControl('', Validators.required),
+    Special_Notification: new FormControl('', Validators.required),
+    Service_Charges: new FormControl('', Validators.required),
+    // TimeType: new FormControl('', Validators.required),
   })
   submit(){
     console.log(this.myform.value)
-    this.service.add_Plan(this.myform.value).subscribe((res:any)=>{
-      console.log(res);
-      this.router.navigateByUrl('/admin/manage-plan')
-    })
+   
+      this.service.add_Plan(this.myform.value).subscribe((res:any)=>{
+        console.log(res);
+        this.router.navigateByUrl('/admin/manage-plan')
+      })
+     
+   
+  }
+  raisehandVal: any = null;
+  raiseHandControl(e: any) {
+    let val = e.target.value;
+    this.raisehandVal = val;
+    if (val == 'No') {
+      this.myform.get('raisehandcontrol')?.setErrors(null);
+    }
+  }
+  completedStream: any = null;
+  completedStreamControl(e: any) {
+    let val = e.target.value;
+    this.completedStream = val;
+    if (val == 'No') {
+      this.myform.get('streamvalidity')?.setErrors(null);
+      this.myform.get('DurationType')?.setErrors(null);
+    }
   }
 
 }

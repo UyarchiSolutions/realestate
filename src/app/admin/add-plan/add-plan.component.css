@@ -55,3 +55,98 @@ color: white;
 padding: 5px 45px;
 border: none;
 }
+.page-forms {
+  margin-left: 16% !important;
+  width: 83%;
+  margin: auto;
+  /* min-height: 80vh; */
+}
+.plan-forms {
+    width: 60%;
+    height: 100px;
+    margin: auto;
+  }
+  .plan-forms div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .page-forms div p {
+    width: 34%;
+    margin: 0;
+  }
+  
+  .page-forms input[type="text"] {
+    display: block;
+    width: 330px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .page-forms input[type="tel"] {
+    display: block;
+    width: 330px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    margin-right: 60px;
+  }
+  .btn button {
+    width: 195px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0a2647;
+    color: #fff;
+  }
+  .page-forms input[type="tel"]:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+  
+  .page-forms input[type="text"]:focus {
+      color: #212529;
+      background-color: #fff;
+      border-color: #86b7fe;
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .page-forms select:focus {
+      color: #212529;
+      background-color: #fff;
+      border-color: #86b7fe;
+      outline: 0;
+      box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .err p{
+      color: red;
+    }

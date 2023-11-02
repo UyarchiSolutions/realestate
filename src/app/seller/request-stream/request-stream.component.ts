@@ -87,7 +87,7 @@ export class RequestStreamComponent implements OnInit {
       this.getSingle();
       this.AllData=res
       this.planNames=this.AllData.filter((res:any):any=>{
-       if(res.status == false){
+       if(res.status == true){
         let data={
           planeName:res.planName,
           planId:res._id

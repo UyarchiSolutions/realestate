@@ -112,8 +112,8 @@
             <td><span><p>{{v.no_of_Stream}}</p>/<p>18</p></span></td>
             <td>{{v.No_of_participants_Limit}}</td>
             <td>{{v.Chat_Needed}}</td>
-            <td><p *ngIf="v.status==false"> Active</p>
-                <p *ngIf="v.status !==false"> Expired</p></td>
+            <td><p *ngIf="v.status==true"> Active</p>
+                <p *ngIf="v.status ==false"> Expired</p></td>
           </tr>
 
          

@@ -38,7 +38,7 @@
     <div class="plan-cards">
 
 <div class="plan" *ngFor="let v of data,index as i">
-    <h3 class="plan-name">{{v.planeName}}</h3>
+    <h3 class="plan-name">{{v.planName}}</h3>
     <ul>
         <li>
         <p *ngIf="v.post_Stream !=='Single post'"><svg  width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@
                                 
                                             </li>
     </ul>
-    <h5 class="plan-price">₹{{v.Offer_Price}}<sub class="striked">/{{v.Regular_Price}}</sub></h5>
+    <h5 class="plan-price">₹{{v.offer_price}}<sub class="striked">/{{v.regularPrice}}</sub></h5>
     <button class="choose-plan-btn">
         Choose Plan
     </button>
@@ -108,7 +108,7 @@
     </div>
 
     <div class="plan-details" *ngIf="showDetails" >
-        <h3>{{Ddata.planeName}}</h3>
+        <h3>{{Ddata.planName}}</h3>
         <div class="plan-details-content">
             <div>
                 <label>User Type :</label>      <p>{{Ddata.userType}}</p>
@@ -119,7 +119,7 @@
             </div>
     
             <div>
-                <label>Plan Name :</label>      <p>{{Ddata.planeName}}</p>
+                <label>Plan Name :</label>      <p>{{Ddata.planName}}</p>
             </div>
     
             <div>

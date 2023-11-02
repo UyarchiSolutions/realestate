@@ -1,125 +1,326 @@
  <app-header></app-header>
  
-<div class="main-page">
+<div class="page-forms">
  <h3 class="title">
     Add Plan
  </h3>
 
- <div class="form"  [formGroup]="myform">
+ <div class="plan-forms" [formGroup]="myform">
+    <div class="rad">
+        <p>User Type:</p>
+        <input type="radio" id="Cand" name="userType" value="Seller" style="margin-left: 60px;"
+            formControlName="userType">
+        <label for="Cand" style="padding-left: 5px;">Seller</label>
+        <input type="radio" id="Emp" name="userType" value="Buyer" style="margin-left: 50px;"
+            formControlName="userType">
+        <label for="Emp" style="padding-left: 5px;">Buyer</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('userType')?.invalid">Select User Type !</p>
+    </div>
+    <div class="rad">
+        <p>Plan Type:</p>
+        <input type="radio" id="Normal" name="planType" value="Normal" style="margin-left: 60px;"
+            formControlName="planType">
+        <label for="Normal" style="padding-left: 5px;">Normal</label>
+        <input type="radio" id="addon" name="planType" value="Add on" style="margin-left: 35px;"
+            formControlName="planType">
+        <label for="addon" style="padding-left: 5px;">Add on</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('planType')?.invalid">Select Plan Type !</p>
+    </div>
 
-<div>
-    <label>User Type</label>  
-    <div class="input-options"> 
-        <span><input id="seller" name="userType" type="radio" formControlName="userType" value="Seller"><label for="seller">seller</label></span>   
-        <span><input name="userType" id="buyer" type="radio"  formControlName="userType" value="Buyer"><label for="buyer">Buyer</label></span> </div>
-</div>
+    <div>
+        <p>Plan Name:</p>
+        <input type="text" placeholder="Enter Plan Name" formControlName="planName" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('planName')?.invalid">Enter Plan Name !</p>
+    </div>
 
-<div>
-    <label>Plan Type</label>  
-    <div class="input-options"> 
-        <span><input id="normal" name="planType" type="radio" formControlName="planType" value="Normal Plan" ><label for="normal">Normal Plan</label></span>   
-        <span><input name="planType" id="add" type="radio"  formControlName="planType" value="Add On Plan"><label for="add">Add On Plan</label></span> </div>
-</div>
-<div>
-    <label>Plan Name</label>  
-    <input type="text" placeholder="Enter a Plan Name" formControlName="planeName"> 
-</div>
+    <div class="rad">
+        <p>Plan Mode:</p>
+        <input type="radio" id="Public" name="planmode" value="Public" style="margin-left: 60px;"
+            formControlName="planmode">
+        <label for="Public" style="padding-left: 5px;">Public</label>
+        <input type="radio" id="Private" name="planmode" value="Private" style="margin-left: 50px;"
+            formControlName="planmode">
+        <label for="Private" style="padding-left: 5px;">Private</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('planmode')?.invalid">Select Plan Mode !</p>
+    </div>
 
-<div>
-    <label>Plan Mode :</label> 
-    <select  formControlName="planMode"> 
-        <option name="planMode" ngDefaultControl  value="Public">Public</option>
-    </select> 
-</div>
+    <div class="rad">
+        <p>No Of Host Per Stream:</p>
+        <input type="radio" id="1host" name="no_of_host" value="1" style="margin-left: 0px;"
+            formControlName="no_of_host">
+        <label for="1host" style="padding-left: 5px;">Single Host</label>
+        <input type="radio" id="2host" name="no_of_host" value="2" style="margin-left: 50px;"
+            formControlName="no_of_host">
+        <label for="2host" style="padding-left: 5px;">Double Host</label>
+        <input type="radio" id="3host" name="no_of_host" value="3" style="margin-left: 50px;"
+            formControlName="no_of_host">
+        <label for="3host" style="padding-left: 5px;">Triple Host</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('no_of_host')?.invalid">Select Plan Mode !</p>
 
-<div>
-    <label>No Of Host per Stream :</label> 
-    <select  formControlName="no_of_host_per_Stream"> 
-        <option value='1' defaultSelected  >1</option>
-        <option  value='2' >2</option>
-        <option  value='3' >3</option>
-    </select> 
-</div>
+    </div>
+    <div>
+        <p>No Of Stream:</p>
+        <input type="tel" placeholder="Enter No Of Stream"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="numberofStream" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('numberofStream')?.invalid">Enter No Of Stream !</p>
+    </div>
+    <div>
+        <p>Stream Duration :</p>
+        <input type="tel" placeholder="Enter Stream Duration"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            style="border-bottom-right-radius: 0%;border-top-right-radius: 0%; width: 270px;"
+            formControlName="Duration" />
+        <input type="text" value="Min" readonly
+            style="width: 60px;border-radius: 0%; background-color: rgba(128, 128, 128, 0.329);">
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Duration')?.invalid">Enter Duration!</p>
+    </div>
+    <div>
+        <p>Participant Limit:</p>
+        <input type="tel" placeholder="Enter Participant Limit"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="numberOfParticipants" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('numberOfParticipants')?.invalid">Enter Participant Limit !
+        </p>
+    </div>
+    <div>
+        <p>Plan Validity :</p>
+        <input type="tel" placeholder="Enter Plan Validity"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            style="border-bottom-right-radius: 0%;border-top-right-radius: 0%; width: 260px;"
+            formControlName="validityofplan" />
+        <input type="text" value="Days" readonly
+            style="width: 70px;border-radius: 0%; background-color: rgba(128, 128, 128, 0.329);">
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('validityofplan')?.invalid">Enter validityofplan !</p>
+    </div>
+    <div>
+        <p>Regular Price:</p>
+        <input type="tel" placeholder=" ₹ Enter Regular Price"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="regularPrice" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('regularPrice')?.invalid">Enter regularPrice !</p>
+    </div>
+    <div>
+        <p>Offer Price:</p>
+        <input type="tel" placeholder=" ₹ Enter Offer Price"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="offer_price" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('offer_price')?.invalid">Enter Offer Price !</p>
+    </div>
+    <div class="rad">
+        <p>Chat Needed:</p>
+        <input type="radio" id="cyes" name="chat_Option" value="Yes" style="margin-left: 60px;"
+            formControlName="chat_Option">
+        <label for="cyes" style="padding-left: 5px;">Yes</label>
+        <input type="radio" id="cno" name="chat_Option" value="No" style="margin-left: 35px;"
+            formControlName="chat_Option">
+        <label for="cno" style="padding-left: 5px;">No</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('chat_Option')?.invalid">Select Chat Option !</p>
+    </div>
+    <div>
+        <p>No Of Post Per Stream:</p>
+        <input type="tel" placeholder="No Of Post Per Stream"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="PostCount" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('PostCount')?.invalid">Enter Post Count !</p>
+    </div>
+    <div class="rad">
+        <p>Raise Hand:</p>
+        <input type="radio" id="ryes" name="RaiseHands" value="Yes" style="margin-left: 60px;"
+            formControlName="RaiseHands" (change)="raiseHandControl($event)">
+        <label for="ryes" style="padding-left: 5px;">Yes</label>
+        <input type="radio" id="rno" name="RaiseHands" value="No" style="margin-left: 35px;"
+            formControlName="RaiseHands" (change)="raiseHandControl($event)">
+        <label for="rno" style="padding-left: 5px;">No</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('RaiseHands')?.invalid">Select Raise Hands !</p>
 
-<div>
-    <label>No of Stream :</label> 
-    <input type="text" placeholder="Enter No of Streams" formControlName="no_of_Stream"> 
+    </div>
 
-</div>
+    <!-- controll by Raise hand If Yes -->
+    <div class="rad" *ngIf="raisehandVal == 'Yes' ">
+        <p>Raise Hand control By:</p>
+        <input type="radio" id="rhcyes" name="raisehandcontrol" value="Admin" style="margin-left: 60px;"
+            formControlName="raisehandcontrol">
+        <label for="rhcyes" style="padding-left: 5px;">Admin</label>
+        <input type="radio" id="rhcno" name="raisehandcontrol" value="Seller" style="margin-left: 35px;"
+            formControlName="raisehandcontrol">
+        <label for="rhcno" style="padding-left: 5px;">Seller</label>
+    </div>
+    <div class="err" *ngIf="raisehandVal == 'Yes' ">
+        <p *ngIf="submitted && myform.get('RaiseHands')?.invalid">Select Raise Hands Controller !</p>
+    </div>
+    <!-- completed Stream -->
+    <div class="rad"> 
+        <p>Completed Stream:</p>
+        <input type="radio" id="csyes" name="completedStream" value="Yes" style="margin-left: 60px;"
+            formControlName="completedStream" (change)="completedStreamControl($event)">
+        <label for="csyes" style="padding-left: 5px;">Yes</label>
+        <input type="radio" id="csno" name="completedStream" value="No" style="margin-left: 35px;"
+            formControlName="completedStream" (change)="completedStreamControl($event)">
+        <label for="csno" style="padding-left: 5px;">No</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('completedStream')?.invalid">Select Completed Stream !</p>
+    </div>
+    <div  *ngIf="completedStream == 'Yes' ">
+        <p>Stream Validity :</p>
+        <input type="tel" placeholder="Enter Stream Validity"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            style="border-bottom-right-radius: 0%;border-top-right-radius: 0%; width: 240px;"
+            formControlName="streamvalidity" />
+        <!-- <input type="text" value="Days" readonly
+            style="width: 70px;border-radius: 0%; background-color: rgba(128, 128, 128, 0.329);"> -->
+        <select name="Select" id=""
+            style="width: 90px;border-radius: 0%; background-color: rgba(128, 128, 128, 0.329); height: 37px;border: none;"
+            formControlName="DurationType">
+            <option selected disabled>select</option>
+            <option value="hours">Hr</option>
+            <option value="minutes">Minutes</option>
+            <option value="days">Days</option>
+            <option value="months">Month</option>
+        </select>
+    </div>
 
-<div>
-    <label>Duration Per Stream :</label> 
-    <input type="text" placeholder="Enter Duration Per Stream in Min" formControlName="Duration_per_stream" > 
-</div>
+    <div class="err"  *ngIf="completedStream == 'Yes' ">
+        <p *ngIf="submitted && myform.get('streamvalidity')?.invalid">Enter streamvalidity</p>
+    </div>
+    <div class="err"  *ngIf="completedStream == 'Yes' ">
+        <p *ngIf="submitted && myform.get('DurationType')?.invalid">Select Duration Type</p>
+    </div>
+    <div class="rad">
+        <p>Transaction:</p>
+        <input type="radio" id="withtr" name="transaction" value="With Transaction"
+            style="margin-left: 60px;" formControlName="transaction">
+        <label for="withtr" style="padding-left: 5px;">With</label>
+        <input type="radio" id="whtr" name="transaction" value="Without Transaction"
+            style="margin-left: 35px;" formControlName="transaction">
+        <label for="whtr" style="padding-left: 5px;">Without</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('transaction')?.invalid">Select Transaction </p>
+    </div>
 
-<div>
-    <label>Entry Permit to Participants     :</label> 
-    <div class="input-options"> 
-        <span><input id="seller" name="Entry_Permit_to_participants" type="radio" value="Any Time" formControlName="Entry_Permit_to_participants"><label for="seller">Any Time</label></span>   
-        <span><input name="Entry_Permit_to_participants" id="buyer" type="radio"  value="Pre Register"  formControlName="Entry_Permit_to_participants"><label for="buyer">Pre Register</label></span> 
+    <div>
+        <p>No of Cand Contact Reveal:</p>
+        <input type="tel" placeholder="Enter Cand Contact Reveal"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="Candidate_Contact_reveal" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Candidate_Contact_reveal')?.invalid">Enter Candidate
+            Contact Reveal</p>
+    </div>
+    <div class="rad">
+        <p>Pdf Upload:</p>
+        <input type="radio" id="pdfy" name="Pdf" value="Yes" style="margin-left: 60px;"
+            formControlName="Pdf">
+        <label for="pdfy" style="padding-left: 5px;">Yes</label>
+        <input type="radio" id="pdfno" name="Pdf" value="No" style="margin-left: 35px;"
+            formControlName="Pdf">
+        <label for="pdfno" style="padding-left: 5px;">No</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Pdf')?.invalid">Select Pdf </p>
+    </div>
+    <div class="rad">
+        <p>Image Upload:</p>
+        <input type="radio" id="img1" name="image" value="5" style="margin-left: 60px;"
+            formControlName="image">
+        <label for="img1" style="padding-left: 5px;">Upto 5</label>
+        <input type="radio" id="img2" name="image" value="10" style="margin-left: 35px;"
+            formControlName="image">
+        <label for="img2" style="padding-left: 5px;">Upto 10</label>
+        <input type="radio" id="img3" name="image" value="0" style="margin-left: 35px;"
+            formControlName="image">
+        <label for="img3" style="padding-left: 5px;">Nill</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('image')?.invalid">Select Image Upload </p>
+    </div>
+    <div class="rad">
+        <p>Description:</p>
+        <input type="radio" id="desc1" name="description" value="250" style="margin-left: 60px;"
+            formControlName="description">
+        <label for="desc1" style="padding-left: 5px;">Upto 25 Words</label>
+        <input type="radio" id="desc2" name="description" value="Unlimited" style="margin-left: 35px;"
+            formControlName="description">
+        <label for="desc2" style="padding-left: 5px;">Unlimited Words</label>
+        <input type="radio" id="desc3" name="description" value="0" style="margin-left: 35px;"
+            formControlName="description">
+        <label for="desc3" style="padding-left: 5px;">Nill</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('description')?.invalid">Select Description </p>
+    </div>
+    <div class="rad">
+        <p>Teaser:</p>
+        <input type="radio" id="tsr1" name="Teaser" value="Yes" style="margin-left: 60px;"
+            formControlName="Teaser">
+        <label for="tsr1" style="padding-left: 5px;">Yes</label>
+        <input type="radio" id="tsr2" name="Teaser" value="No" style="margin-left: 35px;"
+            formControlName="Teaser">
+        <label for="tsr2" style="padding-left: 5px;">No</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Teaser')?.invalid">Select Teaser </p>
+    </div>
+    <div class="rad">
+        <p>Spl Notification:</p>
+        <input type="radio" id="not1" name="Special_Notification" value="5" style="margin-left: 60px;"
+            formControlName="Special_Notification">
+        <label for="not1" style="padding-left: 5px;">Upto 5</label>
+        <input type="radio" id="not" name="Special_Notification" value="10" style="margin-left: 35px;"
+            formControlName="Special_Notification">
+        <label for="not" style="padding-left: 5px;">Upto 10</label>
+        <input type="radio" id="not2" name="Special_Notification" value="Nill"
+            style="margin-left: 35px;" formControlName="Special_Notification">
+        <label for="not2" style="padding-left: 5px;">Nill</label>
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Special_Notification')?.invalid">Select Special
+            Notification </p>
+    </div>
+
+    <div>
+        <p>Service Charges:</p>
+        <input type="tel" placeholder="Enter Service Charges"
+            onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+            formControlName="Service_Charges" />
+    </div>
+    <div class="err">
+        <p *ngIf="submitted && myform.get('Service_Charges')?.invalid">Enter Service Charges </p>
+
+    </div>
+    <div class="btn">
+        <button (click)="submit()">Submit</button>
     </div>
 </div>
-
-<div>
-    <label>No Of Buyer Contact Reveals :</label> 
-    <input type="text" placeholder="Enter No Of Buyer Contact Reveals"  formControlName="No_buyer_contact_Reveals"> 
-</div>
-
-<div>
-    <label>Number of Participants Limit :</label> 
-    <input type="text" placeholder="Enter Participants Limit" formControlName="No_of_participants_Limit"> 
-</div>
-
-<div>
-    <label>Validity of plan (use paln by) :</label> 
-    <input type="text" placeholder="Enter Validity in Days" formControlName="validity_of_plan"> 
-</div>
-
-<div>
-    <label>Stream Validity :</label> 
-    <input type="text" value="30" placeholder="Enter Validity in Days" formControlName="Stream_validity" > 
-</div>
-
-<div>
-    <label>Regular price :</label> 
-    <input type="text" value="30" placeholder="Enter Regular price" formControlName="Regular_Price"> 
-</div>
-
-<div>
-    <label>Offer Price :</label> 
-    <input type="text"  placeholder="Enter Offer Price" formControlName="Offer_Price"> 
-</div>
-
-<div>
-    <label>Chat Needed :</label> 
-    <div class="input-options"> 
-        <span><input id="yes" name="Chat_Needed" type="radio" formControlName="Chat_Needed" value="Yes"><label for="yes" >Yes</label></span>   
-        <span><input name="Chat_Needed" id="No" type="radio" formControlName="Chat_Needed" value="No"><label for="No">No</label></span> </div>
-</div>
-
-<div>
-    <label>No Of Post per Stream :</label> 
-    <select  formControlName="post_Stream"> 
-        <option value="Single post">Single Post</option>
-    </select> 
-</div>
-
-<div>
-    <label>Service charges :</label> 
-    <select formControlName="service_Charges"> 
-        <option  value="50">50 rupes</option>
-    </select> 
-</div>
-
-<div>
-    <label>Description :</label> 
-    <textarea  placeholder="Enter Offer Price" formControlName="Description"> </textarea>
-</div>
-
-<div class="button">
-    <button (click)="submit()">Submit</button>
-</div>
-
-
- </div>
 </div> 

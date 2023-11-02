@@ -33,7 +33,7 @@ export class BuyerProfileEditComponent implements OnInit{
     this.submitted=true;
     if(this.form.valid){
     this.service.editAccountSeller(this.form.value).subscribe((res:any)=>{
-      this.router.navigateByUrl('/buyer-profile')
+      this.router.navigateByUrl('/buyer-profile') 
     })
   }
 }
