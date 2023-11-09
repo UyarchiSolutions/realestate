@@ -217,122 +217,139 @@ export class CsLocationDetailsComponent {
           city: any;
           pincode:any;
           handleAddressChange(address: Address) {
+            this.rrlocform.get('Pincode')?.reset();
             this.myAddres = address.formatted_address;
+            console.log(address, 'this. address');
             this.rrlocform.patchValue({
-             addressLoaction: this.myAddres,
-       
-           })
-            
-             this.latitude = address.geometry.location.lat();
-             this.longtitude = address.geometry.location.lng();
-            
-            
-             this.rrlocform.patchValue({
-               lat: this.latitude,
-               long: this.longtitude,
-               
-             })
-             this.pincode = address.address_components.find((res:any)=>{
-              return res.types.includes('postal_code')
-             })
-             this.pincode=this.pincode.long_name
-             
-             console.log(this.pincode,'this is pincode')
-              if(this.pincode){
-              this.rrlocform.patchValue({
-                Pincode:this.pincode
-                
-              })
-            }else{
-              this.rrlocform.get('Pincode')?.reset()
-            }
-             this.service.getAddress(this.latitude, this.longtitude).subscribe((res: any) => {
-              console.log(res)
-               
-               
+              addressLoaction: this.myAddres,
+            });
+        
+            this.latitude = address.geometry.location.lat();
+            this.longtitude = address.geometry.location.lng();
+        
+            console.log(this.rrlocform.get('addressLoaction')?.value);
+            this.rrlocform.patchValue({
+              lat: this.latitude,
+              long: this.longtitude,
+            });
+        
+            this.service
+              .getAddress(this.latitude, this.longtitude)
+              .subscribe((res: any) => {
+                console.log(res);
+        
                 let address = res[0].address_components;
-                let area = address.find((component:any) =>{ 
-                  if( component.types.includes('locality')){
-      
-                    console.log(component.types.includes('locality'),'locality');
-      
-                  return component.types.includes('locality')}
-      
-                  if( component.types.includes('sublocality_level_1')){
-      
-                    console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-      
-                  return component.types.includes('sublocality_level_1')}
-               
-                }
-                ).long_name;
-                console.log(area);
+                let area = address.find((component: any) => {
+                  if (component.types.includes('locality')) {
+                    console.log(component.types.includes('locality'), 'locality');
+        
+                    return component.types.includes('locality');
+                  }
+        
+                  if (component.types.includes('sublocality_level_1')) {
+                    console.log(
+                      component.types.includes('sublocality_level_1'),
+                      'sublocality_level_1'
+                    );
+        
+                    return component.types.includes('sublocality_level_1');
+                  }
+                }).long_name;
+                console.log(area, 'area', 'inside res');
                 this.area = area;
-      
-               let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-                console.log(city);
-                this.city= city; 
-                
+                if (this.area) {
+                } else {
+                 
+                }
+                console.log(address,'jkbkjn')
+                this.pincode = address.find((res: any) => {
+                  return res.types.includes('postal_code');
+                });
+                this.pincode = this.pincode.long_name ?this.pincode.long_name: null ;
             
-              })
-           }
+            
+                if (this.pincode) {
+                  this.rrlocform.patchValue({
+                    Pincode: this.pincode,
+                  });
+                } else {
+                  this.rrlocform.get('Pincode')?.reset();
+                  console.log('no pincode')
+                  
+                }
+                // let city = address.find((component: any) =>
+                //   component.types.includes('administrative_area_level_3')
+                // ).long_name;
+                // console.log(city, 'city');
+                // this.city = city;
+              });
+        
+          } 
         options: any = {
           componentRestrictions: { country: 'IN' }
         }
       
         draggEnded($event: any) {
+          this.rrlocform.get('Pincode')?.reset();
           this.rrlocform.patchValue({
             lat: $event.latLng.lat(),
-            long: $event.latLng.lng()
-          })
+            long: $event.latLng.lng(),
+          });
           
-          this.service.getAddress($event.latLng.lat(), $event.latLng.lng()).subscribe((res: any) => {
-            console.log(res)
-             
-              this.myAddres = res[0].formatted_address
-              this.pincode = res[0].address_components.find((res:any)=>{
-                return res.types.includes('postal_code')
-               })
-               this.pincode=this.pincode.long_name
-               
-               console.log(this.pincode,'this is pincode')
-                if(this.pincode){
-                this.rrlocform.patchValue({
-                  Pincode:this.pincode
-                  
-                })
-              }else{
-                this.rrlocform.get('Pincode')?.reset() 
-              }
-              let address = res[0].address_components;
-              let area = address.find((component:any) =>{ 
-                if( component.types.includes('locality')){
-    
-                  console.log(component.types.includes('locality'),'locality');
-    
-                return component.types.includes('locality')}
-    
-                if( component.types.includes('sublocality_level_1')){
-    
-                  console.log(component.types.includes('sublocality_level_1'),'sublocality_level_1');
-    
-                return component.types.includes('sublocality_level_1')}
-             
-              }
-              ).long_name;
-              console.log(area);
-              this.area = area;
+          this.service
+            .getAddress($event.latLng.lat(), $event.latLng.lng())
+            .subscribe((res: any) => {
+              console.log(res);
       
-              let city = address.find((component:any) => component.types.includes('administrative_area_level_3')).long_name;
-                console.log(city);
-                this.city= city; 
-            
+              this.myAddres = res[0].formatted_address;
               this.rrlocform.patchValue({
                 addressLoaction: this.myAddres,
+              });
+              let address = res[0].address_components;
+              let area = address.find((component: any) => {
+                if (component.types.includes('locality')) {
+                  console.log(component.types.includes('locality'), 'locality');
       
-              })
-            }
-          )
+                  return component.types.includes('locality');
+                }
+      
+                if (component.types.includes('sublocality_level_1')) {
+                  console.log(
+                    component.types.includes('sublocality_level_1'),
+                    'sublocality_level_1'
+                  );
+      
+                  return component.types.includes('sublocality_level_1');
+                }
+              }).long_name;
+              console.log(area, 'area', 'inside res');
+              this.area = area;
+              if (this.area) {
+              } else {
+               
+              }
+              console.log(address,'jkbkjn')
+              this.pincode = address.find((res: any) => {
+                return res.types.includes('postal_code');
+              });
+              this.pincode = this.pincode.long_name ?this.pincode.long_name: null ;
+          
+          
+              if (this.pincode) {
+                this.rrlocform.patchValue({
+                  Pincode: this.pincode,
+                });
+              } else {
+                this.rrlocform.get('Pincode')?.reset();
+                console.log('no pincode')
+              
+              }
+              // let city = address.find((component: any) =>
+              //   component.types.includes('administrative_area_level_3')
+              // ).long_name;
+              // console.log(city, 'city');
+              // this.city = city;
+            });
         }
         parseFloat(value: any) {
           return parseFloat(value);

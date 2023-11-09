@@ -1,150 +1,133 @@
 <header-with-profile></header-with-profile>
 <div class="container">
+  <div class="sidebar">
+    <seller-admin-sidebar></seller-admin-sidebar>
+  </div>
+  <div class="main">
+    <nav>
+      <p class="navbar-links" (click)="back(0)">Property details</p>
+      <p class="navbar-links" (click)="back(1)">Location Details</p>
+      <p class="navbar-links" (click)="back(2)">Price Details</p>
+      <p class="navbar-links" (click)="back(3)">Amenities</p>
+      <p class="navbar-links nav-active" (click)="back(4)">Gallery</p>
+      <p class="navbar-links" (click)="back(5)">Additional Details</p>
+    </nav>
 
+    <div class="Location-details">
+      <h2>Gallery</h2>
 
+      <div class="upload-section" >
+        <div class="upload-image" style="position: relative;">
+          <label
+            
+            >Photos :<span class="red">*</span></label
+          >
+          <label for="imageinput" class="img-upl">Choose Image</label>
+          <input
+            type="file"
+            style="display: none"
+            (change)="onFileselect($event)"
+            [multiple]="5"
+            accept="image/gif, image/jpeg, image/png"
+            id="imageinput"
+          />
 
-    <div class="sidebar">
-        <seller-admin-sidebar></seller-admin-sidebar>
-    </div>
-    <div class="main">
- 
-        <nav>
-            <p class="navbar-links"  (click)="back(0)">Property details</p>
-            <p class="navbar-links" (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Price Details</p>
-            <p class="navbar-links" (click)="back(3)">Amenities</p>
-            <p class="navbar-links nav-active" (click)="back(4)" >Gallery</p>
-            <p class="navbar-links" (click)="back(5)">Additional Details </p>
-        </nav>
-
-
-
-<div class="Location-details">
-    <h2>Gallery</h2>
-
-<div class="upload-section">
-
-   
-<div class="upload-image">
-    <label style="font-weight: 700 !important;font-size: 1.2rem;    color: var(--bgBlue);">Photos :<span class="red">*</span></label>
-    <label for="imageinput"  class="img-upl">Choose Image</label>
-    <input type="file" style="display: none;" (change)="onFileselect($event)" [multiple]="5" accept="image/gif, image/jpeg, image/png" id="imageinput">
-
-<!-- <div class="col-sm-10 col-md-8">
-                  <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;" [multiple]="5" accept="image/gif, image/jpeg, image/png" />
-                  <label for="Uploadss" class="resume-upload" style="background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;"><span>Choose
-                      Image</span></label>
-                  <div>
-                    <p *ngIf="this.plan_dt.totalImage < gallery.length">You can post only{{this.plan_dt.totalImage}}
-                      images</p> -->
-                  <!-- </div>
-                </div> --> 
-
-
-</div>
-<p *ngIf="errmsg" style="color:red">{{errmsg}}</p>
-
-<div class="image-gallery">
- 
-    <div class="images" *ngFor="let preview of imagePreview; let i = index">
-        
-        <img  [src]="preview"    width="200px" height="150ox">
-        <div class="when-hover">
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(i)">
-            </div>
-    </div>
- 
-</div>
-<p class="redtext" *ngIf="(imagePreview.length == 0 && submited) && !data.image" >Mininum 1 photo required!</p>
-
-<div class="image-gallery" *ngIf="data.image != '' " >
-    Uploaded Images             
- <div class="images" *ngFor="let img of data.image ; let i = index">
-     
-     <img  [src]="img" width="200px" height="150ox" >
-     <div  class="when-hover" >
-         <img src="../../assets/images/image-remove-btn.png" (click)="removeImgBackend(img)">
-         </div>
- </div>
-
-</div>
-
-<div class="upload-video">
-    <label style="font-weight: 700 !important;font-size: 1.2rem;">Video :<span class="red">*</span></label>
-    <label for="videoinput" class="img-upl">Choose Video</label>
-    <input type="file" style="display: none;" (change)="onvidselect($event)" id="videoinput" accept="video/mp4,video/x-m4v,video/*">
-   
-</div>
-<p *ngIf="viderrmsg" style="color:red">{{viderrmsg}}</p>
-
-
-<div class="image-gallery"  *ngIf="videoSrc">
-    
-    <div class="images video">
-        <video [src]="videoSrc" *ngIf="videoSrc" controls style="width:200px"></video>
-    <div class="when-hover">
-        <img src="../../assets/images/image-remove-btn.png" (click)="removevid()">
-    </div>
-    </div>
-  
-      
-          
-
-
-</div>
-<p class="redtext" *ngIf=" !videoSrc && submited && !data.videos" >Video required!</p>
-<div class="image-gallery" *ngIf="data.videos != '' ">
-    Uploaded Video 
-    <div class="images video" *ngFor="let vid of data.videos">
-        <video [src]="vid" controls style="width:200px"></video>
-        <div class="when-hover">
-            <img src="../../assets/images/image-remove-btn.png" (click)="removeVidBackend()">
+          <p class="det-tag">PNG, JPG (Up to 5 Images)</p>
         </div>
-  
+        <p *ngIf="errmsg" style="color: red">{{ errmsg }}</p>
+
+        <div class="image-gallery">
+          <div
+            class="images"
+            *ngFor="let preview of imagePreview; let i = index"
+          >
+            <img [src]="preview" width="200px" height="150ox" />
+            <div class="when-hover">
+              <img
+                src="../../assets/images/image-remove-btn.png"
+                (click)="removeimg(i)"
+              />
+            </div>
+          </div>
+        </div>
+        <p
+          class="redtext"
+          *ngIf="imagePreview.length == 0 && submited && !data.image"
+        >
+          Mininum 1 photo required!
+        </p>
+
+        <div class="image-gallery" *ngIf="data.image != ''">
+          Uploaded Images
+          <div class="images" *ngFor="let img of data.image; let i = index">
+            <img [src]="img" width="200px" height="150ox" />
+            <div class="when-hover">
+              <img
+                src="../../assets/images/image-remove-btn.png"
+                (click)="removeImgBackend(img)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-video"  style="position: relative;">
+          <label 
+            >Video :<span class="red">*</span></label
+          >
+          <label for="videoinput" class="img-upl">Choose Video</label>
+          <input
+            type="file"
+            style="display: none"
+            (change)="onvidselect($event)"
+            id="videoinput"
+            accept="video/mp4,video/x-m4v,video/*"
+          />
+          <p class="det-tag" style="right: 75px;">(File Size 40 MB)</p>
+        </div>
+        <p *ngIf="viderrmsg" style="color: red">{{ viderrmsg }}</p>
+
+        <div class="image-gallery" *ngIf="videoSrc">
+          <div class="images video">
+            <video
+              [src]="videoSrc"
+              *ngIf="videoSrc"
+              controls
+              style="width: 200px"
+            ></video>
+            <div class="when-hover">
+              <img
+                src="../../assets/images/image-remove-btn.png"
+                (click)="removevid()"
+              />
+            </div>
+          </div>
+        </div>
+        <p class="redtext" *ngIf="!videoSrc && submited && !data.videos">
+          Video required!
+        </p>
+        <div class="image-gallery" *ngIf="data.videos != ''">
+          Uploaded Video
+          <div class="images video" *ngFor="let vid of data.videos">
+            <video [src]="vid" controls style="width: 200px"></video>
+            <div class="when-hover">
+              <img
+                src="../../assets/images/image-remove-btn.png"
+                (click)="removeVidBackend()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="save-continue">
+        <button (click)="submit()" *ngIf="!data.final">Save & Continue</button>
+      </div>
+      <div class="save-continue" style="margin-top: 20px">
+        <button (click)="routetopreview()" *ngIf="data.final">Save</button>
+      </div>
     </div>
-</div>
+  </div>
 
+  <div class="ad"></div>
 </div>
-
-<div class="save-continue">
-    <button (click)="submit()" *ngIf="!data.final" >Save & Continue</button>
-</div>
-<div class="save-continue" style="margin-top: 20px;">
-    <button (click)="routetopreview()"  *ngIf="data.final">Save</button>
-</div>
-
-
-   
-</div>
-    
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="ad"></div>
-    
-    
-    </div>
-    <seller-footer></seller-footer>
+<seller-footer></seller-footer>

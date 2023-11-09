@@ -180,3 +180,9 @@
     display: grid;
     box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
 }
+.det-tag{
+    position: absolute;
+    right: 0;
+    color: gray;
+    opacity: 0.6;
+}

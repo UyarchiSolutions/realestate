@@ -17,13 +17,9 @@
       <h2>Gallery</h2>
 
       <div class="upload-section">
-        <div class="upload-image">
+        <div class="upload-image" style="position: relative;">
           <label
-            style="
-              font-weight: 700 !important;
-              font-size: 1.2rem;
-              color: var(--bgBlue);
-            "
+           
             >Photos :<span class="red">*</span></label
           >
           <label for="imageinput" class="img-upl">Choose Image</label>
@@ -35,25 +31,13 @@
             accept="image/gif, image/jpeg, image/png"
             id="imageinput"
           />
-
-          <!-- <div class="col-sm-10 col-md-8">
-                  <input type="file" id="Uploadss" required (change)="changeImage($event)" style="display: none;background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;" [multiple]="5" accept="image/gif, image/jpeg, image/png" />
-                  <label for="Uploadss" class="resume-upload" style="background-color: blue;
-                  color: white;
-                  padding: 5px;
-                  border-radius: 8px;"><span>Choose
-                      Image</span></label>
-                  <div>
-                    <p *ngIf="this.plan_dt.totalImage < gallery.length">You can post only{{this.plan_dt.totalImage}}
-                      images</p> -->
-          <!-- </div>
-                </div> -->
+          <p class="det-tag">PNG, JPG (Up to 5 Images)</p>
         </div>
         <p *ngIf="errmsg" style="color: red">{{ errmsg }}</p>
-        <p class="redtext" *ngIf="(imagePreview.length == 0 && submited) && !data.image">
+        <p
+          class="redtext"
+          *ngIf="imagePreview.length == 0 && submited && !data.image"
+        >
           Mininum 1 photo required!
         </p>
 
@@ -74,11 +58,7 @@
         <div class="image-gallery" *ngIf="data.image != ''">
           Uploaded Images
           <div class="images" *ngFor="let img of data.image; let i = index">
-            <img
-              [src]="img"
-              width="200px"
-              height="150ox"
-            />
+            <img [src]="img" width="200px" height="150ox" />
             <div class="when-hover">
               <img
                 src="../../assets/images/image-remove-btn.png"
@@ -88,7 +68,7 @@
           </div>
         </div>
 
-        <div class="upload-video">
+        <div class="upload-video" style="position: relative;">
           <label style="font-weight: 700 !important; font-size: 1.2rem"
             >Video :<span class="red">*</span></label
           >
@@ -100,6 +80,7 @@
             id="videoinput"
             accept="video/mp4,video/x-m4v,video/*"
           />
+          <p class="det-tag" style="right: 75px;">(File Size 40 MB)</p>
         </div>
         <p *ngIf="viderrmsg" style="color: red">{{ viderrmsg }}</p>
 
@@ -119,7 +100,9 @@
             </div>
           </div>
         </div>
-        <p class="redtext" *ngIf="!videoSrc && submited && !data.videos">Video required!</p>
+        <p class="redtext" *ngIf="!videoSrc && submited && !data.videos">
+          Video required!
+        </p>
         <div class="image-gallery" *ngIf="data.videos != ''">
           Uploaded Video
           <div class="images video" *ngFor="let vid of data.videos">

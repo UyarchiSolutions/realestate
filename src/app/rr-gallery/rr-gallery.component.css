@@ -114,7 +114,12 @@
         width: 25% !important;
 
     }
-
+.det-tag{
+    position: absolute;
+    right: 0;
+    color: gray;
+    opacity: 0.6;
+}
     .image-gallery{
         width: 100%;
         flex-wrap: wrap;

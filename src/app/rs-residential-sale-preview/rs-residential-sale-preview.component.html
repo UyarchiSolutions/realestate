@@ -68,7 +68,7 @@
               </div>
               <div>
                 <label>Description :</label>
-                <p>{{ data.discription }}</p>
+                <p>{{ data.discription ? data.discription:'Nill'  }}</p>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@
               </div>
               <div>
                 <label> Direction :</label>
-                <p>{{ data.buildingDirection }}</p>
+                <p>{{ data.buildingDirection ? data.buildingDirection:'Nill'  }}</p>
               </div>
             </div>
           </div>
@@ -394,7 +394,7 @@
                 <label>Contact number 1 :</label>
                 <p>{{ data.primaryContactNumber }}</p>
               </div>
-              <div>
+              <div *ngif="data.secondaryContactNumber">
                 <label>Contact number 2 :</label>
                 <p>{{ data.secondaryContactNumber }}</p>
               </div>
