@@ -310,7 +310,7 @@ border-radius: 5px;
 .plans-container{
     padding: 20px 40px;
     display: flex;
-    max-height: 100vh;
+   height: 750px;
 }
 .plan-cards{
     display: flex;
@@ -319,7 +319,10 @@ border-radius: 5px;
     max-height: 100%;
     overflow-y: auto;
 padding: 5px;
-    min-width: 49%;
+    min-width: 100%;
+}
+.small-plans{
+    min-width: 49% !important;
 }
 .plan-details{
     min-width: 49%;

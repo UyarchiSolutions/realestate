@@ -104,7 +104,7 @@ margin:0 10px;
 .main{
     width: 70%;
     background-color:var( --bgligthBlue);
-
+    height: 710px;
     margin: 10px 0px;
 
 }
@@ -694,4 +694,13 @@ position: relative;
     align-items: center;
     justify-content: center;
     padding: 20px 0;
+}
+.streams-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: 94%;
+    overflow: scroll;
+    padding-bottom: 30px;
 }

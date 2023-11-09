@@ -331,5 +331,4 @@ export class RequestStreamComponent implements OnInit {
     });
     console.log(this.lang3,'lang3')
   }
-
 }

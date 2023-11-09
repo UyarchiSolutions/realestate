@@ -38,6 +38,7 @@ export class RsResidentialSalePreviewComponent implements OnInit {
       this.service.formget(this.id).subscribe((res:any)=>{
     
         this.data = res;
+        console.log(res)
        
       })
       

@@ -1,0 +1,166 @@
+.prop-box{
+    height: 290px;
+    position: relative;
+    width: 330px;
+    margin-top: 10px;
+}
+.img-box{
+    max-height: 300px;
+    
+}
+.box-top{
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.750);
+}
+.box-center{
+    position: absolute;
+    top: 40px;
+    height: 30px;
+    width: 100%;
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box-center .icon
+{
+    height: 100%;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 0 10px 0 10px ;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.500);
+    width: 40px;
+}
+.box-interest{
+    position: absolute;
+    bottom: 90px;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.int{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-right: 15px;
+    align-items: baseline;
+    width: 101px;
+}
+.box-bottom{
+    position: absolute;
+    bottom: 40px;
+    height: 45px;
+    width: 100%;
+    background-color: white;
+}
+.bottom-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.bite{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    max-width: 30%;
+}
+.line{
+    margin-top: 10px;
+}
+.box-top p{
+    margin-left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.img-box img{
+    object-fit:cover;
+    height: 250px;
+    width: 100%;
+}
+.img-box video{
+    object-fit:cover;
+    height: 250px;
+    width: 100%;
+}
+.interest-bar{
+    height: 50px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+    padding: 3px 10px 6px 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.bite .data{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.bite .icon{
+   margin-right: 5px;
+}
+.count{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.stream-name{
+    display: flex;
+    flex-direction: column;
+}
+.stream-name h5{
+    font-size: 15px;
+}
+.stream-name p{
+    font-size: 11px;
+}
+.arrow{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+}
+.arrow .bttn{
+    margin-top: 0;
+    border: none;
+}
+.pink{
+    background-color: #ff7189;
+}
+.green{
+    background-color: rgb(76, 198, 76);
+}
+.blue{
+    background-color: rgb(72, 72, 204);
+}
+.carousel-inner .active{
+    display: flex;
+    background-color: unset!important;
+}
+.carousel-item img, .carousel-item video{
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    margin: auto;
+}
+.carousel-control-prev{
+    height: 40px;
+    top: 101px;
+}
+.arrow button{
+    border: none;
+    background-color: #80808030;
+    padding: 0 10px;
+    border-radius: 5px;
+}

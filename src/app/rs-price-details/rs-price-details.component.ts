@@ -170,7 +170,8 @@ this.service.formget(this.id).subscribe((res:any)=>{
         this.Checkdata={
   
           MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
- 
+          RentNegociable:this.priceform.get('ExpectedpricetNegotiable')?.value,
+          CurrentlyInLoan:this.priceform.get('CurrentlyInLoan')?.value,
           maintainenceCost:this.priceform.get('ExcludeMaintenance').value,
           squareFT:this.mainmon,
           MaintenanceStatus:this.maintanceVal,
@@ -180,7 +181,8 @@ this.service.formget(this.id).subscribe((res:any)=>{
         this.Checkdata={
   
           MonthlyRentFrom:this.priceform.get('MonthlyRentFrom').value,
-        
+          RentNegociable:this.priceform.get('ExpectedpricetNegotiable')?.value,
+            CurrentlyInLoan:this.priceform.get('CurrentlyInLoan')?.value,
           MaintenanceStatus:this.maintanceVal,
         
         }

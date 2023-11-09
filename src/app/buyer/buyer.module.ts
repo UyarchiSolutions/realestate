@@ -43,6 +43,7 @@ import { BuyerProfileEditComponent } from './buyer-profile-edit/buyer-profile-ed
 import { NgxEditorModule } from 'ngx-editor';
 import { CommonElementsModule } from '../common-elements/common-elements.module';
 import { BuyerFaqComponent } from './buyer-faq/buyer-faq.component';
+import { CarouselStreamsComponent } from './commen/carousel-streams/carousel-streams.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { BuyerFaqComponent } from './buyer-faq/buyer-faq.component';
     BuyerProfileComponent,
     BuyerProfileEditComponent,
     BuyerFaqComponent,
+    CarouselStreamsComponent,
   
    
  

@@ -79,7 +79,7 @@ export class RsPropertyDetailsComponent implements OnInit {
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
       ownerType:this.ost,
-      RentPrefer: this.rpv,
+   
       landSize:this.propsform.get('UDSlandsize')?.value,
      
     };
@@ -142,7 +142,7 @@ export class RsPropertyDetailsComponent implements OnInit {
       this.ofv= res.floorNo,
       this.aop=res.ageOfBuilding,
       this.bhkv= res.BHKType,
-      this.rpv= res.RentPrefer,
+    
       this.fdv= res.facingDirection,
       this.propsform.patchValue({
        
@@ -174,7 +174,7 @@ export class RsPropertyDetailsComponent implements OnInit {
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
       ownerType:this.ost,
-      RentPrefer: this.rpv,
+    
       landSize:this.propsform.get('UDSlandsize')?.value,
      
     };
@@ -188,7 +188,7 @@ export class RsPropertyDetailsComponent implements OnInit {
       BHKType: this.bhkv,
       BuildedSize: this.propsform.get('BuildupArea')?.value,
       facingDirection: this.fdv,
-      RentPrefer: this.rpv,
+    
       discription: this.propsform.get('Description')?.value,
       BhkCount:this.BhkCount,
       floorCount:this.FloorCount,
@@ -232,6 +232,7 @@ export class RsPropertyDetailsComponent implements OnInit {
   totalfloorforon!: any;
 
   groundFloorv(total: any) {
+    console.log('changing')
     this.ofv=null
     
     if(typeof(total) == 'number') {
