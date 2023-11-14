@@ -101,14 +101,14 @@ label {
   border-bottom: solid rgba(0, 0, 0, 0.212) 1px;
 }
 
-.otp-field>div>p {
+/* .otp-field>div>p {
   font-size: 10px;
   text-align: right;
   font-weight: 500;
   margin: 5px;
   cursor: pointer;
   text-decoration: underline;
-}
+} */
 
 .verify-btn {
   width: fit-content;

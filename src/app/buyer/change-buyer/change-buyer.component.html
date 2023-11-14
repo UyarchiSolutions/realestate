@@ -43,6 +43,18 @@
           </div>
         </div>
       </div>
+      <div class="error-box"
+      *ngIf="isSubmit"
+      
+    ><label for=""></label>
+    <div>
+      <p  *ngIf="isSubmit && changeFromControl.oldPassword.errors?.['required']">
+        Old Password required
+      </p>
+    
+    </div>
+     
+    </div>
       <div class="otp-field" style="margin-top: 20px">
         <label>New Password :</label>
         <div>
@@ -140,6 +152,18 @@
           </div>
         </div>
       </div>
+      <div class="error-box"
+      *ngIf="isSubmit"
+      
+    ><label for=""></label>
+    <div>
+      <p  *ngIf="isSubmit && changeFromControl.confirmPassword.errors?.['required']">
+        Confirm Password required
+      </p>
+    
+    </div>
+     
+    </div>
       <div class="error-box">
         <label for=""></label>
         <div>

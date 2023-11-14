@@ -112,7 +112,7 @@
                    </div>
                   
                  <button  type="submit">Start Posting</button>
-                 <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
+                 <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Select the type</P>
                  <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P>
                 </form>
             </div>

@@ -37,10 +37,11 @@
         </div>
         <p
           class="redtext"
-          *ngIf="imagePreview.length == 0 && submited && !data.image"
+          *ngIf=" submited && checkErrorImg (data.image , imagePreview )"
         >
           Mininum 1 photo required!
         </p>
+        <!-- *ngIf=" submited && (!data.image || imagePreview.length == 0 )" -->
         <p *ngIf="errmsg" style="color: red">{{ errmsg }}</p>
 
         <div class="image-gallery">
@@ -115,8 +116,8 @@
             </div>
           </div>
         </div>
-
-        <p class="redtext" *ngIf="!videoSrc && submited && !data.videos">
+        <!-- *ngIf="  submited && (!data.videos || !videoSrc) " -->
+        <p class="redtext"  *ngIf="submited && checkError(data.videos,videoSrc)">
           Video required!
         </p>
       </div>

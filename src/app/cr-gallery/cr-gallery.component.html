@@ -50,7 +50,7 @@
         </div>
         <p
           class="redtext"
-          *ngIf="imagePreview.length == 0 && submited && !data.image"
+          *ngIf=" submited && checkErrorImg (data.image , imagePreview )"
         >
           Mininum 1 photo required!
         </p>
@@ -116,7 +116,7 @@
             </div>
           </div>
         </div>
-        <p class="redtext" *ngIf="!videoSrc && submited && !data.videos">
+        <p class="redtext" *ngIf="submited && checkError(data.videos,videoSrc)">
           Video required!
         </p>
 

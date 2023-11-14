@@ -279,6 +279,28 @@ export class CsGalleryComponent {
              this.getall()
            })
          }
+         checkErrorImg(old:any,current:any){
+          console.log(old,'old',current,'current','img')
+          if(current.length > 0 || old .length > 0 ){
+            console.log('returned false img')
+            return false
+          }
+          else{
+            console.log('returned true img')
+            return true
+          }
+         }
+         checkError(old:any,current:any){
+          console.log(old,'old',current,'current')
+          if(old.length > 0 || current ){
+            console.log('returned false')
+            return false
+          }
+          else{
+            console.log('returned true')
+            return true
+          }
+         }
       }
       
     

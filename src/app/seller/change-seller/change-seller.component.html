@@ -13,7 +13,7 @@
         <label>Old Password :</label>
         <div>
           <input
-          [type]="show1 ? 'text' : 'password'"
+            [type]="show1 ? 'text' : 'password'"
             placeholder="Enter Old Password"
             formControlName="oldPassword"
             (keyup)="errMsg()"
@@ -42,13 +42,23 @@
             </svg>
           </div>
         </div>
-       
+      </div>
+      <div class="otp-field" *ngIf="isSubmit" style="margin: 5px 0px 0px 130px">
+        <label for=""></label>
+        <div>
+          <p
+            style="color: red !important"
+            *ngIf="isSubmit && changeFromControl.oldPassword.errors?.['required']"
+          >
+            Old Password required
+          </p>
+        </div>
       </div>
       <div class="otp-field" style="margin-top: 20px">
         <label>New Password :</label>
         <div>
           <input
-          [type]="show2 ? 'text':'password'"
+            [type]="show2 ? 'text' : 'password'"
             placeholder="Enter New Password"
             formControlName="newPassword"
             (keyup)="errMsg()"
@@ -78,24 +88,33 @@
           </div>
         </div>
       </div>
-      <div
-      *ngIf="isSubmit"
-      style="color: red !important; text-align: right !important"
-    >
-      <p style="color: red !important; text-align: right !important;" *ngIf="isSubmit && changeFromControl.newPassword.errors?.['required']">
-        Password required
-      </p>
-      <p style="color: red !important; text-align: right !important;font-size: 10px;"
-        *ngIf="isSubmit && changeFromControl.newPassword.errors?.['strongPassword']"
-      >
-      Create an 8+ character password with 1 special character, 1 number, 1 uppercase letter, and 1 lowercase letter
-      </p>
-    </div>
+      <div class="otp-field" *ngIf="isSubmit" style="margin: 5px 0px 0px 130px">
+        <label for=""></label>
+        <div>
+          <p
+            style="color: red !important"
+            *ngIf="isSubmit && changeFromControl.newPassword.errors?.['required']"
+          >
+            Password required
+          </p>
+          <p
+            style="
+              color: red !important;
+              text-align: right !important;
+              font-size: 10px;
+            "
+            *ngIf="isSubmit && changeFromControl.newPassword.errors?.['strongPassword']"
+          >
+            Create an 8+ character password with 1 special character, 1 number,
+            1 uppercase letter, and 1 lowercase letter
+          </p>
+        </div>
+      </div>
       <div class="otp-field" style="margin-top: 20px">
         <label>Confirm Password :</label>
         <div>
           <input
-          [type]="show3 ? 'text' : 'password'"
+            [type]="show3 ? 'text' : 'password'"
             placeholder="Re-enter Password"
             formControlName="confirmPassword"
             (keyup)="errMsg()"
@@ -123,6 +142,17 @@
               ></path>
             </svg>
           </div>
+        </div>
+      </div>
+      <div class="otp-field" *ngIf="isSubmit" style="margin: 5px 0px 0px 130px">
+        <label for=""></label>
+        <div>
+          <p
+            style="color: red !important"
+            *ngIf="isSubmit && changeFromControl.confirmPassword.errors?.['required']"
+          >
+            Confirm Password required
+          </p>
         </div>
       </div>
       <div class="verify-btn">
