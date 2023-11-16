@@ -407,14 +407,32 @@ export class ResidentialDetailviewComponent implements OnInit {
   interestV: any;
   interest(id: any) {
     this.service.interest(id).subscribe((res: any) => {
-      this.GetDataForFilter();
+      if (this.checkInterest) {
+        this.get_interst();
+      }
+      if (this.checkSave) {
+        this.get_save();
+      }
+      if (this.checkhome) {
+        this.GetDataForFilter();
+      }else{
+        this.get_post(this.id)
+      }
     });
   }
   saveV: any;
   place = 'hospital';
   save(id: any) {
     this.service.save(id).subscribe((res: any) => {
-      this.GetDataForFilter();
+      if (this.checkInterest) {
+        this.get_interst();
+      }
+      if (this.checkSave) {
+        this.get_save();
+      }
+      if (this.checkhome) {
+        this.GetDataForFilter();
+      }
     });
   }
   showRes = true;

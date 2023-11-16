@@ -63,7 +63,7 @@
                 
         </div>
         <div class="rc-select">
-<div class="residential" *ngIf="show_top">
+<div class="residential" >
     <label>Residential :</label>
     <div>
         <div>
@@ -72,7 +72,7 @@
         <input type="radio"  name="type" checked ><p>Rent</p></div>
     </div>
 </div>
-<div class="commercial" *ngIf="show_top">
+<div class="commercial" >
     <label>Commercial :</label>
     <div>
         <div>
@@ -480,26 +480,37 @@
             </div>
         
         </div>
-    
-<div class="streams-container" *ngIf="postshow">
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-    <carousel-streams></carousel-streams>
-</div>
-
-<!-- <div class="selected-tab" *ngIf="postshow" >
+   <div class="selected-tab" *ngIf="postshow" >
    <span *ngFor="let filter of SelectedFilters"> <p (click)="deleteFilter(filter)">{{filter}}<svg width="8" height="8" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path  fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
         </svg>
         </p></span>
 
- </div> -->
+ </div> 
+<div class="streams-container" *ngIf="postshow">
+    <ng-container  *ngFor="let v of data;index as i" >
+        <carousel-streams
+        [all]="{
+            'id':v._id,
+            'rent':v.MonthlyRentFrom,
+            'area':v.area,
+            'save':true,
+            'date':v.date,
+            'address':v.Address,
+            'video':v.videos,
+            'ctype':v.HouseOrCommercialType,
+            'type':v.Type,
+            'bhk':v.BHKType,
+            'floor':v.noOfFloor
+      
+        
+          }"  [index]="i" [images]="v.image"
+         ></carousel-streams>
+    </ng-container>
+ 
+</div>
+
+
 
 
 <!-- Table and no prop found -->
@@ -619,7 +630,7 @@
 {{postshow}}
 {{(page ==0 && totalval < 9)}}{{page}}{{totalval>9}} -->
 
-<div class="bottom-section" *ngIf="totalval !== undefined && (postshow && (page ==0 && totalval > 9))" >
+<!-- <div class="bottom-section" *ngIf="totalval !== undefined && (postshow && (page ==0 && totalval > 9))" >
     <div class="pagination">
         <button>
         <div class="page-prev" [ngStyle]="{'pointer-events': page ==0 ? 'none' : 'auto' }"  (click)="pagination(0)">
@@ -662,7 +673,7 @@
         </select>
     </div>
 
-</div>
+</div> -->
 
 
     

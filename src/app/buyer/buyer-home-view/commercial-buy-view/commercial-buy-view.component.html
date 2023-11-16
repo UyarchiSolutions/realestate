@@ -74,7 +74,7 @@
           </svg>
         </div>
         <div class="rc-select">
-          <div class="residential" *ngIf="show_top">
+          <div class="residential" >
             <label>Residential :</label>
             <div>
               <div>
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <div class="commercial" *ngIf="show_top">
+          <div class="commercial" >
             <label>Commercial :</label>
             <div>
               <div>
@@ -1171,8 +1171,29 @@
             </svg></p
         ></span>
       </div>
-
-      <table *ngIf="postshow">
+      <div class="streams-container" *ngIf="postshow">
+        <ng-container  *ngFor="let v of data;index as i" >
+            <carousel-streams
+            [all]="{
+                'id':v._id,
+                'rent':v.MonthlyRentFrom,
+                'area':v.area,
+                'save':true,
+                'date':v.date,
+                'address':v.Address,
+                'video':v.videos,
+                'ctype':v.HouseOrCommercialType,
+                'type':v.Type,
+                'bhk':v.buildingType,
+                'floor':v.noOfFloor
+          
+            
+              }"  [index]="i" [images]="v.image"
+             ></carousel-streams>
+        </ng-container>
+     
+    </div>
+      <!-- <table *ngIf="postshow">
         <tr class="table-head">
           <th>
             <span
@@ -1480,7 +1501,7 @@
             </p>
           </td>
         </tr>
-      </table>
+      </table> -->
 
       <!-- interest-tab -->
       <buyer-interested *ngIf="interestShow"></buyer-interested>
@@ -1493,7 +1514,7 @@
       <!-- Notification -->
       <buyer-notification *ngIf="nofiShow"></buyer-notification>
 
-      <div class="bottom-section">
+      <!-- <div class="bottom-section">
         <div
           class="pagination"
           *ngIf="postshow && !(page == 0 && totalval < 9)"
@@ -1569,7 +1590,7 @@
             <option value="30">30</option>
           </select>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="ad recent-search" *ngIf="showRecentSer">

@@ -110,3 +110,12 @@
     }.scheduled{
         color: #34A853;
     }
+    .streams-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        height: 89%;
+        overflow: scroll;
+        padding-bottom: 30px;
+    }

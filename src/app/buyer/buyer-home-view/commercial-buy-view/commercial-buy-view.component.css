@@ -729,3 +729,12 @@ margin:0 10px;
     margin: 10px 0px;
 
 }
+.streams-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: 94%;
+    overflow: scroll;
+    padding-bottom: 30px;
+}

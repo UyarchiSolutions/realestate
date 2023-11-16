@@ -3,6 +3,7 @@
     position: relative;
     width: 330px;
     margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .img-box{
     max-height: 300px;
@@ -163,4 +164,7 @@
     background-color: #80808030;
     padding: 0 10px;
     border-radius: 5px;
+}
+.bottom-content span{
+    font-size: 12px;
 }

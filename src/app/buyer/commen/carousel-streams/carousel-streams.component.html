@@ -1,38 +1,36 @@
 <div class="prop-box">
     <div class="img-box">
       <div
-        id="carouselExampleAutoplaying"
+        id="carouselExampleAutoplaying{{ index }}"
         class="carousel slide"
         data-bs-ride="carousel"
       >
         <div class="carousel-inner">
           <div
-            class="carousel-item active"
+            class="carousel-item "
+            [class.active]="i === 0"
+            *ngFor="let img of images; let i = index"
             style="
             background-image: url('../../../assets//images//Frame 2072.png');"
           >
-            <img loading="eager"  src="../../../../assets/images/170249.jpg"/>
+          <img loading="eager" [src]="img" alt="..." />
             
           </div>
+      
           <div
-            class="carousel-item active"
-            style="
-            background-image: url('../../../assets//images//Frame 2072.png');"
-          >
-          <img src="../../../../assets/images/pexels-bri-schneiter-346529.jpg" alt="">
-            
-          </div>
-          <div
-            class="carousel-item"
-          >
-            <img loading="eager" src="../../../../assets/images/170249.jpg"/>
-          </div>
+          class="carousel-item"
+          style="
+          background-image: url('../../../assets//images//Frame 2072.png');"
+          *ngFor="let img of all.video; let i = index"
+        >
+          <video [muted]="true" autoplay [src]="img" alt="..." ></video>
+        </div>
        
         </div>
         <button
           class="carousel-control-prev"
           type="button"
-          [attr.data-bs-target]="'#carouselExampleAutoplaying'"
+          [attr.data-bs-target]="'#carouselExampleAutoplaying' + index"
           data-bs-slide="prev"
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,7 +39,7 @@
         <button
           class="carousel-control-next"
           type="button"
-          [attr.data-bs-target]="'#carouselExampleAutoplaying'"
+          [attr.data-bs-target]="'#carouselExampleAutoplaying' + index"
           data-bs-slide="next"
         >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -49,7 +47,7 @@
         </button>
       </div>
       <div class="box-top">
-        <p>sdfsdfsdfdfssdf</p>
+        <p>{{all.bhk}} {{all.ctype == "Commercial" ? 'Building':'House'}} for {{all.type}} in {{all.area}}</p>
       </div>
       <!-- <div class="box-center">
       <div class="icon">
@@ -65,14 +63,15 @@
           
       </div>
       </div> -->
-      <div class="box-interest">
+
+      <!-- <div class="box-interest">
         <span class="int">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7454 3.88733L10.1126 0.254611C9.94868 0.0904561 9.73042 0 9.49841 0C9.26641 0 9.04845 0.0903554 8.8845 0.254409L6.18968 2.94923C5.82716 3.31164 5.90012 3.79622 5.92502 3.9616L5.92508 3.96203L6.30135 6.30117L3.94789 5.92299C3.84976 5.90966 3.76334 5.9032 3.68378 5.9032C3.38636 5.9032 3.13913 5.99961 2.94923 6.18961L0.25441 8.88443C0.0902548 9.04838 8.42018e-08 9.26654 8.42018e-08 9.49824C-0.000100744 9.73033 0.0903556 9.9485 0.25441 10.1124L3.88739 13.7456C4.05154 13.9097 4.2695 14 4.5013 14C4.7332 14 4.95136 13.9096 5.11542 13.7456L7.81024 11.0508C8.17276 10.6884 8.0998 10.2038 8.0749 10.0384L8.07483 10.038L7.69856 7.69883L10.052 8.07701C10.1502 8.09034 10.2366 8.0968 10.3161 8.0968C10.6136 8.0968 10.8608 8.00039 11.0507 7.81039L13.7455 5.11557C13.9097 4.95162 13.9999 4.73346 13.9999 4.50176C13.9999 4.26967 13.9095 4.05139 13.7454 3.88733ZM3.98286 8.16731L6.04367 8.16695L6.04331 10.2278L4.39341 11.8777L2.33295 9.81721L3.98286 8.16731ZM8.03105 6.04302L10.0919 6.04265L11.7418 4.39275L9.68132 2.3323L8.03141 3.9822L8.03105 6.04302Z" fill="#9BA4B5"/>
             </svg>
               <P>Waiting</P>            
         </span>
-      </div>
+      </div> -->
       <div class="box-bottom">
         <div class="bottom-content">
           <div class="bite">
@@ -90,7 +89,7 @@
               />
             </svg>
               </span>
-            <span class="data">10-30-2000</span>
+            <span class="data">{{all.date | date:'dd-MM-YYYY'}}</span>
           </div>
           <span class="line"
             ><svg
@@ -121,7 +120,7 @@
               />
             </svg>
               </span>
-            <span class="data">30000</span>
+            <span class="data">{{ all.rent > 100000 ? all.rent /100000 +'L' :  all.rent | currency:'INR':true:'2.0'}}</span>
           </div>
           <span class="line"
             ><svg
@@ -158,12 +157,12 @@
                   />
                 </svg></span>
         
-            <span class="data">cheanni</span>
+            <span class="data">{{all.floor}}</span>
           </div>
         </div>
       </div>
     </div> 
-    <div class="interest-bar" >
+    <div class="interest-bar" (click)="routeToDetail()" style="cursor: pointer;" >
       <div class="count">
         <span><svg width="16" style="width: 35px;" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.6364 3.68333L15.4279 1.09842C15.5924 0.986248 15.8191 1.02522 15.9343 1.18547C15.977 1.24499 16 1.3159 16 1.38857V9.94479C16 10.1404 15.8372 10.299 15.6364 10.299C15.5617 10.299 15.4889 10.2766 15.4279 10.2349L11.6364 7.65V10.625C11.6364 11.0162 11.3108 11.3333 10.9091 11.3333H0.727273C0.325615 11.3333 0 11.0162 0 10.625V0.708333C0 0.317135 0.325615 0 0.727273 0H10.9091C11.3108 0 11.6364 0.317135 11.6364 0.708333V3.68333ZM11.6364 5.66667C11.6364 5.82563 11.7149 5.97432 11.8463 6.06387L14.5455 7.90408V3.42926L11.8463 5.26946C11.715 5.35901 11.6364 5.5077 11.6364 5.66667ZM2.45455 1.41667C1.90226 1.41667 1.45455 1.86438 1.45455 2.41667V8.91667C1.45455 9.46895 1.90226 9.91667 2.45455 9.91667H9.18182C9.7341 9.91667 10.1818 9.46895 10.1818 8.91667V2.41667C10.1818 1.86438 9.7341 1.41667 9.18182 1.41667H2.45455ZM2.90909 3.54167C2.90909 3.15046 3.22622 2.83333 3.61742 2.83333H3.6553C4.0465 2.83333 4.36364 3.15046 4.36364 3.54167C4.36364 3.93287 4.04651 4.25 3.6553 4.25H3.61742C3.22622 4.25 2.90909 3.93287 2.90909 3.54167Z" fill="#34A853"/>

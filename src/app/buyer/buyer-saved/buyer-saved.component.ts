@@ -167,4 +167,6 @@ export class BuyerSavedComponent implements OnInit {
     let query = new URLSearchParams(data).toString()
     this.router.navigateByUrl('/buyer-commercial-rent-search-view?'+query);
   }
+
+  
 }

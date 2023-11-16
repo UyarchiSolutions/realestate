@@ -697,3 +697,12 @@ position: relative;
 .visited{
     color: #FD841F;
 }
+.streams-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: 94%;
+    overflow: scroll;
+    padding-bottom: 30px;
+}
