@@ -104,7 +104,7 @@ left: -30px;
     display: flex;
 }
 .carousel,.slide{
-    max-width: 50% !important;
+   
     height: 100%;
 }
 .carousel-inner{
@@ -169,7 +169,7 @@ left: -30px;
 }
 .active{
     background-color: var(--bgBlue)!important;
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
 }
 .form-detail{
     width: 100%;

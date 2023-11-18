@@ -277,11 +277,11 @@ export class CsLocationDetailsComponent {
                   console.log('no pincode')
                   
                 }
-                // let city = address.find((component: any) =>
-                //   component.types.includes('administrative_area_level_3')
-                // ).long_name;
-                // console.log(city, 'city');
-                // this.city = city;
+                let city = address.find((component: any) =>
+                  component.types.includes('administrative_area_level_3')
+                ).long_name;
+                console.log(city, 'city');
+                this.city = city;
               });
         
           } 
@@ -344,11 +344,11 @@ export class CsLocationDetailsComponent {
                 console.log('no pincode')
               
               }
-              // let city = address.find((component: any) =>
-              //   component.types.includes('administrative_area_level_3')
-              // ).long_name;
-              // console.log(city, 'city');
-              // this.city = city;
+              let city = address.find((component: any) =>
+                component.types.includes('administrative_area_level_3')
+              ).long_name;
+              console.log(city, 'city');
+              this.city = city;
             });
         }
         parseFloat(value: any) {

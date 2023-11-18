@@ -276,11 +276,11 @@ export class RrLocationDetailsComponent implements OnInit {
           this.toaster.error( 'Please give exact location!','Error', {
             positionClass: 'toast-bottom-right'});
         }
-        // let city = address.find((component: any) =>
-        //   component.types.includes('administrative_area_level_3')
-        // ).long_name;
-        // console.log(city, 'city');
-        // this.city = city;
+        let city = address.find((component: any) =>
+          component.types.includes('administrative_area_level_3')
+        ).long_name;
+        console.log(city, 'city');
+        this.city = city;
       });
 
   }
@@ -345,11 +345,11 @@ export class RrLocationDetailsComponent implements OnInit {
           this.toaster.error( 'Please give exact location!','Error', {
             positionClass: 'toast-bottom-right'});
         }
-        // let city = address.find((component: any) =>
-        //   component.types.includes('administrative_area_level_3')
-        // ).long_name;
-        // console.log(city, 'city');
-        // this.city = city;
+        let city = address.find((component: any) =>
+          component.types.includes('administrative_area_level_3')
+        ).long_name;
+        console.log(city, 'city');
+        this.city = city;
       });
   }
   parseFloat(value: any) {

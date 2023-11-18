@@ -98,7 +98,7 @@ justify-content: end;">
         </div>
         <div class="carousel-inner" >
             <div class="carousel-item active">
-             <video controls="false" autoplay [src]="data.videos"   width="100%"  ></video>            
+             <video [muted]="true" controls="false" autoplay [src]="data.videos"   width="100%"  ></video>            
               </div>
 
           <div class="carousel-item "  *ngFor="let img of data.image; let i = index">

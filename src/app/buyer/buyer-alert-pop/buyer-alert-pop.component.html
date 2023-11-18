@@ -56,7 +56,28 @@
             </svg>
             Edit Alert</span>
     </div>
-    <table>
+    <div class="streams-container"  >
+        <ng-container  *ngFor="let v of popValue;index as i" >
+            <carousel-streams
+            [all]="{
+                'id':v._id,
+                'rent':v.MonthlyRentFrom,
+                'area':v.area,
+                'save':true,
+                'date':v.date,
+                'address':v.Address,
+                'video':v.videos,
+                'ctype':v.HouseOrCommercialType,
+                'type':v.Type,
+                'bhk':v.BHKType,
+                'floor':v.noOfFloor
+          
+            
+              }"  [index]="i" [images]="v.image"
+             ></carousel-streams>
+        </ng-container>
+    </div>
+    <!-- <table>
         <tr class="table-head">
             <th><span><svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.92308 15.7692V11.7692C5.92308 11.2597 6.33662 10.8462 6.84615 10.8462H8.69231C9.20185 10.8462 9.61538 11.2597 9.61538 11.7692V15.7692M9.61538 15.7692H13.3077V1.44718M9.61538 15.7692H15.7692V7.35897M13.3077 1.44718L14.5385 1M13.3077 1.44718L4.69231 4.58072M15.7692 7.35897L13.3077 6.53846M15.7692 7.35897L17 7.76923M1 15.7692H2.23077M2.23077 15.7692H17M2.23077 15.7692V1H4.69231V4.58072M1 5.92308L4.69231 4.58072" stroke="var(--bgBlue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -117,7 +138,7 @@
             </tr>
           
            
-    </table>
+    </table> -->
     <nav  *ngIf="popValue == ''">
         <h1>You will get updates soon!</h1>
     </nav>

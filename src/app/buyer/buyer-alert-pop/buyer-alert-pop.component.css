@@ -301,3 +301,12 @@ table{
     -webkit-appearance: none;
     width: 7px;
   }
+  .streams-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: 89%;
+    overflow: scroll;
+    padding-bottom: 30px;
+}

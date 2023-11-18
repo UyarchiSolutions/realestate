@@ -151,105 +151,111 @@
     <div class="detail-container">
       <div class="image row">
         <div class="col">
-        <div
-          id="carouselExampleCaptions"
-          class="carousel slide home-car"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-indicators">
-            <button
-              *ngIf="data.videos"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-            <button
-              *ngIf="imageLength >= 3"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="3"
-              aria-label="Slide 4"
-            ></button>
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide home-car"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 1"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 2"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 3"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="3"
+                aria-label="Slide 4"
+              ></button>
 
-            <button
-              *ngIf="imageLength >= 4"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="4"
-              aria-label="Slide 5"
-            ></button>
-            <button
-              *ngIf="imageLength >= 5"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="5"
-              aria-label="Slide 6"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active"
-            style="
-                  background-image: url('../../../assets//images//Frame 2072.png');">
-              <video
-               
-                autoplay
-                [src]="data.videos"
-                width="100%"
-              ></video>
+              <button
+                type="button"
+                *ngIf="imageLength >= 4"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="4"
+                aria-label="Slide 5"
+              ></button>
+              <button
+                type="button"
+                *ngIf="imageLength >= 5"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="5"
+                aria-label="Slide 6"
+              ></button>
             </div>
-
-            <div
-              class="carousel-item"
-              *ngFor="let img of images; let i = index"
-              (click)="imgslider(i)" data-bs-toggle="modal" data-bs-target="#image"
-              style="
-                  background-image: url('../../../assets//images//Frame 2072.png');"
-              width="100%"
-            >
-              <img
-                [src]="img"
+            <div class="carousel-inner">
+              <div
+                class="carousel-item"
                 data-bs-toggle="modal"
                 data-bs-target="#image"
                 (click)="imgslider(i)"
-                style="width: -webkit-fill-available !important"
-              />
+                style="
+                  background-image: url('../../../assets//images//Frame 2072.png');
+                "
+                *ngFor="let img of data.image; let i = index"
+              >
+                <img [src]="img" />
+              </div>
+              <div
+                class="carousel-item active"
+                style="
+                  background-image: url('../../../assets//images//Frame 2072.png');
+                "
+              >
+                <video
+                  [muted]="true"
+                  autoplay
+                  [src]="data.videos"
+                  width="100%"
+                ></video>
+              </div>
             </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
-    </div>
+        
         <div class="table">
           <div class="table-content">
             <p>Property Type</p>
@@ -283,8 +289,7 @@
             <h6>{{ data.noOfFloor }}/{{ data.floorNo }}</h6>
           </div>
         </div>
-      
-    </div>
+      </div>
       <div class="detail-nav">
         <button
           class="view-contact"
@@ -434,7 +439,7 @@
       <div class="form-detail">
         <div>
           <label>Address :</label>
-          <p>{{ data.Address}}</p>
+          <p>{{ data.Address }}</p>
         </div>
         <div>
           <label>Location :</label>
@@ -568,7 +573,15 @@
           <p>{{ data.parkingFacilities }}</p>
         </div>
 
-        <div *ngIf="data.kitchen || data.hall_FLoor || data.bedRoom || data.bathRoom || data.balCony ">
+        <div
+          *ngIf="
+            data.kitchen ||
+            data.hall_FLoor ||
+            data.bedRoom ||
+            data.bathRoom ||
+            data.balCony
+          "
+        >
           <label>Flooring Type :</label>
           <ul class="floor">
             <li>
@@ -634,130 +647,156 @@
 
         <div class="neighbourhood-container" style="cursor: pointer">
           <div class="nb-container">
-            <div class="nb-box" [class.act]="place == 'atm'" (click)="get_landmarks_forbuyer('atm')">
-              <span><svg
-               
-                width="15"
-                height="15"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 18H20V20H0V18ZM2 10H4V17H2V10ZM7 10H9V17H7V10ZM11 10H13V17H11V10ZM16 10H18V17H16V10ZM0 5L10 0L20 5V9H0V5ZM2 6.236V7H18V6.236L10 2.236L2 6.236ZM10 6C9.73478 6 9.48043 5.89464 9.29289 5.70711C9.10536 5.51957 9 5.26522 9 5C9 4.73478 9.10536 4.48043 9.29289 4.29289C9.48043 4.10536 9.73478 4 10 4C10.2652 4 10.5196 4.10536 10.7071 4.29289C10.8946 4.48043 11 4.73478 11 5C11 5.26522 10.8946 5.51957 10.7071 5.70711C10.5196 5.89464 10.2652 6 10 6Z"
-                  fill="#394867"
-                />
-              </svg></span>
+            <div
+              class="nb-box"
+              [class.act]="place == 'atm'"
+              (click)="get_landmarks_forbuyer('atm')"
+            >
+              <span
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 18H20V20H0V18ZM2 10H4V17H2V10ZM7 10H9V17H7V10ZM11 10H13V17H11V10ZM16 10H18V17H16V10ZM0 5L10 0L20 5V9H0V5ZM2 6.236V7H18V6.236L10 2.236L2 6.236ZM10 6C9.73478 6 9.48043 5.89464 9.29289 5.70711C9.10536 5.51957 9 5.26522 9 5C9 4.73478 9.10536 4.48043 9.29289 4.29289C9.48043 4.10536 9.73478 4 10 4C10.2652 4 10.5196 4.10536 10.7071 4.29289C10.8946 4.48043 11 4.73478 11 5C11 5.26522 10.8946 5.51957 10.7071 5.70711C10.5196 5.89464 10.2652 6 10 6Z"
+                    fill="#394867"
+                  /></svg
+              ></span>
               <p>Atm</p>
             </div>
-            <div class="nb-box" [class.act]="place == 'theater'" (click)="get_landmarks_forbuyer('theater')">
-              <span> <svg
-               
-                width="15"
-                height="15"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10 18H18V20H10C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0C15.523 0 20 4.477 20 10C20.0032 12.1642 19.3011 14.2705 18 16H15.292C16.6963 14.7616 17.6217 13.0698 17.907 11.2193C18.1924 9.36887 17.8197 7.47692 16.8538 5.87296C15.8879 4.26899 14.39 3.05463 12.6209 2.44134C10.8519 1.82805 8.92374 1.85468 7.1723 2.5166C5.42086 3.17852 3.95708 4.43379 3.03584 6.06382C2.1146 7.69385 1.79428 9.59537 2.13066 11.4372C2.46704 13.2791 3.4388 14.9447 4.87673 16.1439C6.31466 17.343 8.12766 17.9999 10 18ZM10 8C9.46957 8 8.96086 7.78929 8.58579 7.41421C8.21071 7.03914 8 6.53043 8 6C8 5.46957 8.21071 4.96086 8.58579 4.58579C8.96086 4.21071 9.46957 4 10 4C10.5304 4 11.0391 4.21071 11.4142 4.58579C11.7893 4.96086 12 5.46957 12 6C12 6.53043 11.7893 7.03914 11.4142 7.41421C11.0391 7.78929 10.5304 8 10 8ZM6 12C5.46957 12 4.96086 11.7893 4.58579 11.4142C4.21071 11.0391 4 10.5304 4 10C4 9.46957 4.21071 8.96086 4.58579 8.58579C4.96086 8.21071 5.46957 8 6 8C6.53043 8 7.03914 8.21071 7.41421 8.58579C7.78929 8.96086 8 9.46957 8 10C8 10.5304 7.78929 11.0391 7.41421 11.4142C7.03914 11.7893 6.53043 12 6 12ZM14 12C13.4696 12 12.9609 11.7893 12.5858 11.4142C12.2107 11.0391 12 10.5304 12 10C12 9.46957 12.2107 8.96086 12.5858 8.58579C12.9609 8.21071 13.4696 8 14 8C14.5304 8 15.0391 8.21071 15.4142 8.58579C15.7893 8.96086 16 9.46957 16 10C16 10.5304 15.7893 11.0391 15.4142 11.4142C15.0391 11.7893 14.5304 12 14 12ZM10 16C9.46957 16 8.96086 15.7893 8.58579 15.4142C8.21071 15.0391 8 14.5304 8 14C8 13.4696 8.21071 12.9609 8.58579 12.5858C8.96086 12.2107 9.46957 12 10 12C10.5304 12 11.0391 12.2107 11.4142 12.5858C11.7893 12.9609 12 13.4696 12 14C12 14.5304 11.7893 15.0391 11.4142 15.4142C11.0391 15.7893 10.5304 16 10 16Z"
-                  fill="#473B32"
-                />
-              </svg>
+            <div
+              class="nb-box"
+              [class.act]="place == 'theater'"
+              (click)="get_landmarks_forbuyer('theater')"
+            >
+              <span>
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 18H18V20H10C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0C15.523 0 20 4.477 20 10C20.0032 12.1642 19.3011 14.2705 18 16H15.292C16.6963 14.7616 17.6217 13.0698 17.907 11.2193C18.1924 9.36887 17.8197 7.47692 16.8538 5.87296C15.8879 4.26899 14.39 3.05463 12.6209 2.44134C10.8519 1.82805 8.92374 1.85468 7.1723 2.5166C5.42086 3.17852 3.95708 4.43379 3.03584 6.06382C2.1146 7.69385 1.79428 9.59537 2.13066 11.4372C2.46704 13.2791 3.4388 14.9447 4.87673 16.1439C6.31466 17.343 8.12766 17.9999 10 18ZM10 8C9.46957 8 8.96086 7.78929 8.58579 7.41421C8.21071 7.03914 8 6.53043 8 6C8 5.46957 8.21071 4.96086 8.58579 4.58579C8.96086 4.21071 9.46957 4 10 4C10.5304 4 11.0391 4.21071 11.4142 4.58579C11.7893 4.96086 12 5.46957 12 6C12 6.53043 11.7893 7.03914 11.4142 7.41421C11.0391 7.78929 10.5304 8 10 8ZM6 12C5.46957 12 4.96086 11.7893 4.58579 11.4142C4.21071 11.0391 4 10.5304 4 10C4 9.46957 4.21071 8.96086 4.58579 8.58579C4.96086 8.21071 5.46957 8 6 8C6.53043 8 7.03914 8.21071 7.41421 8.58579C7.78929 8.96086 8 9.46957 8 10C8 10.5304 7.78929 11.0391 7.41421 11.4142C7.03914 11.7893 6.53043 12 6 12ZM14 12C13.4696 12 12.9609 11.7893 12.5858 11.4142C12.2107 11.0391 12 10.5304 12 10C12 9.46957 12.2107 8.96086 12.5858 8.58579C12.9609 8.21071 13.4696 8 14 8C14.5304 8 15.0391 8.21071 15.4142 8.58579C15.7893 8.96086 16 9.46957 16 10C16 10.5304 15.7893 11.0391 15.4142 11.4142C15.0391 11.7893 14.5304 12 14 12ZM10 16C9.46957 16 8.96086 15.7893 8.58579 15.4142C8.21071 15.0391 8 14.5304 8 14C8 13.4696 8.21071 12.9609 8.58579 12.5858C8.96086 12.2107 9.46957 12 10 12C10.5304 12 11.0391 12.2107 11.4142 12.5858C11.7893 12.9609 12 13.4696 12 14C12 14.5304 11.7893 15.0391 11.4142 15.4142C11.0391 15.7893 10.5304 16 10 16Z"
+                    fill="#473B32"
+                  />
+                </svg>
               </span>
               <p>Theater</p>
             </div>
-            <div class="nb-box" [class.act]="place == 'School'" (click)="get_landmarks_forbuyer('School')">
+            <div
+              class="nb-box"
+              [class.act]="place == 'School'"
+              (click)="get_landmarks_forbuyer('School')"
+            >
               <span>
                 <svg
-                width="15"
-                height="14"
-                viewBox="0 0 22 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 3.49402C9.16846 1.88506 6.79377 0.996683 4.33333 1.00001C3.16444 1.00001 2.04222 1.19587 1 1.55714V17.0631C2.07069 16.6932 3.19796 16.5048 4.33333 16.506C6.89444 16.506 9.23111 17.4494 11 19M11 3.49402C12.8315 1.88497 15.2062 0.99658 17.6667 1.00001C18.8356 1.00001 19.9578 1.19587 21 1.55714V17.0631C19.9293 16.6932 18.802 16.5048 17.6667 16.506C15.2062 16.5027 12.8315 17.391 11 19M11 3.49402V19"
-                  stroke="#473B32"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
+                  width="15"
+                  height="14"
+                  viewBox="0 0 22 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 3.49402C9.16846 1.88506 6.79377 0.996683 4.33333 1.00001C3.16444 1.00001 2.04222 1.19587 1 1.55714V17.0631C2.07069 16.6932 3.19796 16.5048 4.33333 16.506C6.89444 16.506 9.23111 17.4494 11 19M11 3.49402C12.8315 1.88497 15.2062 0.99658 17.6667 1.00001C18.8356 1.00001 19.9578 1.19587 21 1.55714V17.0631C19.9293 16.6932 18.802 16.5048 17.6667 16.506C15.2062 16.5027 12.8315 17.391 11 19M11 3.49402V19"
+                    stroke="#473B32"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
               <p>School</p>
             </div>
-            <div class="nb-box"  [class.act]="place == 'Restaurant'" (click)="get_landmarks_forbuyer('Restaurant')">
+            <div
+              class="nb-box"
+              [class.act]="place == 'Restaurant'"
+              (click)="get_landmarks_forbuyer('Restaurant')"
+            >
               <span>
                 <svg
-              
-                width="15"
-                height="15"
-                viewBox="0 0 20 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.317 9.00368L11.3793 9.91779L19.1429 17.4865L17.5904 19L9.82681 11.4324L2.06321 19L0.510707 17.4865L10.7645 7.49015C10.1189 5.9306 10.7864 3.68493 12.5431 1.97018C14.6874 -0.119213 17.642 -0.627645 19.1429 0.835571C20.6438 2.29879 20.1223 5.17919 17.9791 7.26858C16.2202 8.98334 13.9167 9.63413 12.317 9.00368ZM1.28696 0.0788088L8.66188 7.26858L5.55688 10.2967L1.28586 6.1329C0.462524 5.33 0 4.24117 0 3.10586C0 1.97055 0.463622 0.881716 1.28696 0.0788088ZM16.4255 5.75399C17.8067 4.40851 18.0911 2.83612 17.5904 2.34802C17.0897 1.85993 15.4769 2.13716 14.0967 3.48263C12.7166 4.82918 12.4322 6.40157 12.9329 6.88967C13.4325 7.37669 15.0454 7.09946 16.4255 5.75399Z"
-                  fill="#473B32"
-                />
+                  width="15"
+                  height="15"
+                  viewBox="0 0 20 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.317 9.00368L11.3793 9.91779L19.1429 17.4865L17.5904 19L9.82681 11.4324L2.06321 19L0.510707 17.4865L10.7645 7.49015C10.1189 5.9306 10.7864 3.68493 12.5431 1.97018C14.6874 -0.119213 17.642 -0.627645 19.1429 0.835571C20.6438 2.29879 20.1223 5.17919 17.9791 7.26858C16.2202 8.98334 13.9167 9.63413 12.317 9.00368ZM1.28696 0.0788088L8.66188 7.26858L5.55688 10.2967L1.28586 6.1329C0.462524 5.33 0 4.24117 0 3.10586C0 1.97055 0.463622 0.881716 1.28696 0.0788088ZM16.4255 5.75399C17.8067 4.40851 18.0911 2.83612 17.5904 2.34802C17.0897 1.85993 15.4769 2.13716 14.0967 3.48263C12.7166 4.82918 12.4322 6.40157 12.9329 6.88967C13.4325 7.37669 15.0454 7.09946 16.4255 5.75399Z"
+                    fill="#473B32"
+                  />
                 </svg>
-            </span>
+              </span>
               <p>Restaurant</p>
             </div>
-            <div class="nb-box" [class.act]="place == 'Transportation'" (click)="get_landmarks_forbuyer('Transportation')">
+            <div
+              class="nb-box"
+              [class.act]="place == 'Transportation'"
+              (click)="get_landmarks_forbuyer('Transportation')"
+            >
               <span>
                 <svg
-                width="15"
-                height="15"
-                viewBox="0 0 20 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 17H5V18C5 18.2652 4.89464 18.5196 4.70711 18.7071C4.51957 18.8946 4.26522 19 4 19H3C2.73478 19 2.48043 18.8946 2.29289 18.7071C2.10536 18.5196 2 18.2652 2 18V17H1V9H0V5H1V2C1 1.46957 1.21071 0.960859 1.58579 0.585786C1.96086 0.210714 2.46957 0 3 0H17C17.5304 0 18.0391 0.210714 18.4142 0.585786C18.7893 0.960859 19 1.46957 19 2V5H20V9H19V17H18V18C18 18.2652 17.8946 18.5196 17.7071 18.7071C17.5196 18.8946 17.2652 19 17 19H16C15.7348 19 15.4804 18.8946 15.2929 18.7071C15.1054 18.5196 15 18.2652 15 18V17ZM17 9V2H3V9H17ZM17 11H3V15H17V11ZM4 12H8V14H4V12ZM12 12H16V14H12V12Z"
-                  fill="#473B32"
-                />
-              </svg>
-            </span>
+                  width="15"
+                  height="15"
+                  viewBox="0 0 20 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 17H5V18C5 18.2652 4.89464 18.5196 4.70711 18.7071C4.51957 18.8946 4.26522 19 4 19H3C2.73478 19 2.48043 18.8946 2.29289 18.7071C2.10536 18.5196 2 18.2652 2 18V17H1V9H0V5H1V2C1 1.46957 1.21071 0.960859 1.58579 0.585786C1.96086 0.210714 2.46957 0 3 0H17C17.5304 0 18.0391 0.210714 18.4142 0.585786C18.7893 0.960859 19 1.46957 19 2V5H20V9H19V17H18V18C18 18.2652 17.8946 18.5196 17.7071 18.7071C17.5196 18.8946 17.2652 19 17 19H16C15.7348 19 15.4804 18.8946 15.2929 18.7071C15.1054 18.5196 15 18.2652 15 18V17ZM17 9V2H3V9H17ZM17 11H3V15H17V11ZM4 12H8V14H4V12ZM12 12H16V14H12V12Z"
+                    fill="#473B32"
+                  />
+                </svg>
+              </span>
               <p>Transportation</p>
             </div>
-            <div class="nb-box" [class.act]="place == 'Hospital'" (click)="get_landmarks_forbuyer('Hospital')">
+            <div
+              class="nb-box"
+              [class.act]="place == 'Hospital'"
+              (click)="get_landmarks_forbuyer('Hospital')"
+            >
               <span>
                 <svg
-                width="15"
-                height="14"
-                viewBox="0 0 20 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.36364 16.2V10.8H13.6364V16.2H16.3636V1.8H3.63636V16.2H6.36364ZM8.18182 16.2H11.8182V12.6H8.18182V16.2ZM18.1818 16.2H20V18H0V16.2H1.81818V0.9C1.81818 0.661305 1.91396 0.432387 2.08445 0.263604C2.25494 0.0948211 2.48617 0 2.72727 0H17.2727C17.5138 0 17.7451 0.0948211 17.9156 0.263604C18.086 0.432387 18.1818 0.661305 18.1818 0.9V16.2ZM9.09091 5.4V3.6H10.9091V5.4H12.7273V7.2H10.9091V9H9.09091V7.2H7.27273V5.4H9.09091Z"
-                  fill="#473B32"
-                />
-              </svg>
-            </span>
+                  width="15"
+                  height="14"
+                  viewBox="0 0 20 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.36364 16.2V10.8H13.6364V16.2H16.3636V1.8H3.63636V16.2H6.36364ZM8.18182 16.2H11.8182V12.6H8.18182V16.2ZM18.1818 16.2H20V18H0V16.2H1.81818V0.9C1.81818 0.661305 1.91396 0.432387 2.08445 0.263604C2.25494 0.0948211 2.48617 0 2.72727 0H17.2727C17.5138 0 17.7451 0.0948211 17.9156 0.263604C18.086 0.432387 18.1818 0.661305 18.1818 0.9V16.2ZM9.09091 5.4V3.6H10.9091V5.4H12.7273V7.2H10.9091V9H9.09091V7.2H7.27273V5.4H9.09091Z"
+                    fill="#473B32"
+                  />
+                </svg>
+              </span>
               <p>Hospital</p>
             </div>
-            <div class="nb-box" [class.act]="place == 'Grocery'" (click)="get_landmarks_forbuyer('Grocery')">
+            <div
+              class="nb-box"
+              [class.act]="place == 'Grocery'"
+              (click)="get_landmarks_forbuyer('Grocery')"
+            >
               <span>
                 <svg
-              
-                width="15"
-                height="14"
-                viewBox="0 0 23 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.7893 19.4636V11.7704C12.7893 11.5664 12.8704 11.3707 13.0146 11.2264C13.1589 11.0822 13.3546 11.0011 13.5586 11.0011H16.6359C16.8399 11.0011 17.0356 11.0822 17.1799 11.2264C17.3241 11.3707 17.4052 11.5664 17.4052 11.7704V19.4636M12.7893 19.4636H1.3624M12.7893 19.4636H17.4052M17.4052 19.4636H21.1389M19.7131 19.4636V7.51251C20.122 7.27649 20.4711 6.94957 20.7334 6.55704C20.9956 6.1645 21.1641 5.71689 21.2257 5.24883C21.2872 4.78077 21.2403 4.30482 21.0885 3.8578C20.9367 3.41079 20.684 3.0047 20.3501 2.67095L19.1295 1.45133C18.8412 1.1627 18.4501 1.00036 18.0422 1H4.45812C4.05019 1.00036 3.6591 1.1627 3.37082 1.45133L2.1512 2.66993C1.81808 3.00405 1.56613 3.41022 1.41478 3.85711C1.26344 4.304 1.21674 4.77967 1.27828 5.24746C1.33983 5.71525 1.50798 6.16266 1.76976 6.55519C2.03155 6.94772 2.37998 7.2749 2.7882 7.51149M2.7882 19.4625V7.51354C3.40367 7.86843 4.12296 7.9995 4.82406 7.88452C5.52515 7.76954 6.16489 7.41559 6.63477 6.8827C6.92332 7.21037 7.27843 7.47273 7.67642 7.65227C8.07441 7.83181 8.50611 7.92439 8.94272 7.92384C9.8618 7.92384 10.6865 7.52072 11.2507 6.88167C11.5391 7.20953 11.8942 7.47209 12.2922 7.6518C12.6902 7.83152 13.1219 7.92426 13.5586 7.92384C14.4777 7.92384 15.3024 7.52072 15.8666 6.88167C16.3366 7.4144 16.9764 7.76815 17.6775 7.88295C18.3786 7.99774 19.0978 7.8665 19.7131 7.51149M5.86546 16.3853H9.71204C9.91607 16.3853 10.1117 16.3042 10.256 16.16C10.4003 16.0157 10.4814 15.82 10.4814 15.616V11.7704C10.4814 11.5664 10.4003 11.3707 10.256 11.2264C10.1117 11.0822 9.91607 11.0011 9.71204 11.0011H5.86546C5.66142 11.0011 5.46574 11.0822 5.32147 11.2264C5.17719 11.3707 5.09614 11.5664 5.09614 11.7704V15.617C5.09614 16.0427 5.4408 16.3853 5.86546 16.3853Z"
-                  stroke="#473B32"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
+                  width="15"
+                  height="14"
+                  viewBox="0 0 23 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.7893 19.4636V11.7704C12.7893 11.5664 12.8704 11.3707 13.0146 11.2264C13.1589 11.0822 13.3546 11.0011 13.5586 11.0011H16.6359C16.8399 11.0011 17.0356 11.0822 17.1799 11.2264C17.3241 11.3707 17.4052 11.5664 17.4052 11.7704V19.4636M12.7893 19.4636H1.3624M12.7893 19.4636H17.4052M17.4052 19.4636H21.1389M19.7131 19.4636V7.51251C20.122 7.27649 20.4711 6.94957 20.7334 6.55704C20.9956 6.1645 21.1641 5.71689 21.2257 5.24883C21.2872 4.78077 21.2403 4.30482 21.0885 3.8578C20.9367 3.41079 20.684 3.0047 20.3501 2.67095L19.1295 1.45133C18.8412 1.1627 18.4501 1.00036 18.0422 1H4.45812C4.05019 1.00036 3.6591 1.1627 3.37082 1.45133L2.1512 2.66993C1.81808 3.00405 1.56613 3.41022 1.41478 3.85711C1.26344 4.304 1.21674 4.77967 1.27828 5.24746C1.33983 5.71525 1.50798 6.16266 1.76976 6.55519C2.03155 6.94772 2.37998 7.2749 2.7882 7.51149M2.7882 19.4625V7.51354C3.40367 7.86843 4.12296 7.9995 4.82406 7.88452C5.52515 7.76954 6.16489 7.41559 6.63477 6.8827C6.92332 7.21037 7.27843 7.47273 7.67642 7.65227C8.07441 7.83181 8.50611 7.92439 8.94272 7.92384C9.8618 7.92384 10.6865 7.52072 11.2507 6.88167C11.5391 7.20953 11.8942 7.47209 12.2922 7.6518C12.6902 7.83152 13.1219 7.92426 13.5586 7.92384C14.4777 7.92384 15.3024 7.52072 15.8666 6.88167C16.3366 7.4144 16.9764 7.76815 17.6775 7.88295C18.3786 7.99774 19.0978 7.8665 19.7131 7.51149M5.86546 16.3853H9.71204C9.91607 16.3853 10.1117 16.3042 10.256 16.16C10.4003 16.0157 10.4814 15.82 10.4814 15.616V11.7704C10.4814 11.5664 10.4003 11.3707 10.256 11.2264C10.1117 11.0822 9.91607 11.0011 9.71204 11.0011H5.86546C5.66142 11.0011 5.46574 11.0822 5.32147 11.2264C5.17719 11.3707 5.09614 11.5664 5.09614 11.7704V15.617C5.09614 16.0427 5.4408 16.3853 5.86546 16.3853Z"
+                    stroke="#473B32"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
               <p>Grocery</p>
             </div>
           </div>
@@ -1055,19 +1094,28 @@
             </agm-marker>
             <ng-container *ngFor="let lat_lon of LMlat_long; index as i">
               <agm-marker
-              (mouseOver)="openInfoWindow(i)"
-              (mouseOut)="closeInfoWindow()"
+                (mouseOver)="openInfoWindow(i)"
+                (mouseOut)="closeInfoWindow()"
                 [latitude]="lat_lon.lat"
                 [longitude]="lat_lon.long"
                 [iconUrl]="icon"
               >
-              <agm-info-window [isOpen]="showcount ==i">
-                <ul class="details-loc">
-                  <li><label>Name</label> :{{lat_lon.name}}</li>
-                  <li><label>Address</label> :{{lat_lon.add}}</li>
-                  <li><label>Distance</label> :{{calculateDistance(data.lat,data.long,lat_lon.lat,lat_lon.long)}}Km</li>
-                </ul>
-              </agm-info-window>
+                <agm-info-window [isOpen]="showcount == i">
+                  <ul class="details-loc">
+                    <li><label>Name</label> :{{ lat_lon.name }}</li>
+                    <li><label>Address</label> :{{ lat_lon.add }}</li>
+                    <li>
+                      <label>Distance</label> :{{
+                        calculateDistance(
+                          data.lat,
+                          data.long,
+                          lat_lon.lat,
+                          lat_lon.long
+                        )
+                      }}Km
+                    </li>
+                  </ul>
+                </agm-info-window>
               </agm-marker>
             </ng-container>
           </agm-map>
@@ -1176,8 +1224,10 @@
             (change)="imgSLnonw()"
             *ngFor="let img of data.image; let i = index"
           >
-            <img  style="
-            background-image: url('../../../assets//images//Frame 2072.png');"
+            <img
+              style="
+                background-image: url('../../../assets//images//Frame 2072.png');
+              "
               [src]="img"
               class="d-block w-100"
               alt="..."
@@ -1207,45 +1257,64 @@
   </div>
 </div>
 
-
-
 <!-- Modal -->
-<div class="modal fade" id="report" tabindex="-1" aria-labelledby="report" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered ">
+<div
+  class="modal fade"
+  id="report"
+  tabindex="-1"
+  aria-labelledby="report"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content report-pop">
       <div class="pop-container">
         <div class="form">
           <div class="title">
-            <h2>Reason For Report </h2>
-          
+            <h2>Reason For Report</h2>
           </div>
-          <div class="content" >
-            <div >
+          <div class="content">
+            <div>
               <label for="reason">Reason :</label>
-             <select name="" id="reason" [(ngModel)]="reason">
-              <option [value]="v" *ngFor="let v of report">{{v}}</option>
-             </select>
-          </div>
-          <!-- <p class="err" *ngIf="submitted && enqform.get('Name').invalid">Name is required!</p> -->
-          <!-- <p  class="err" *ngIf="submitted && enqform.get('email').invalid">email is required!</p> -->
-         
-          <!-- <p class="err" *ngIf="submitted && enqform.get('phoneNumber').invalid">phoneNumber is required!</p> -->
-          <div>
-            <label for="">Description</label>
-           <input [(ngModel)]="des" class="des-in" type="text" class="form-control"  maxlength="100" #enq>
-         
-      
+              <select name="" id="reason" [(ngModel)]="reason">
+                <option [value]="v" *ngFor="let v of report">{{ v }}</option>
+              </select>
+            </div>
+            <!-- <p class="err" *ngIf="submitted && enqform.get('Name').invalid">Name is required!</p> -->
+            <!-- <p  class="err" *ngIf="submitted && enqform.get('email').invalid">email is required!</p> -->
+
+            <!-- <p class="err" *ngIf="submitted && enqform.get('phoneNumber').invalid">phoneNumber is required!</p> -->
+            <div>
+              <label for="">Description</label>
+              <input
+                [(ngModel)]="des"
+                class="des-in"
+                type="text"
+                class="form-control"
+                maxlength="100"
+                #enq
+              />
             </div>
             <!-- <p class="err" *ngIf="submitted && enqform.get('Enquiry').invalid">Enquiry is required!</p> -->
-            <div style="display: flex;align-items: center;justify-content: center;">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
               <button class="bttn" (click)="reportProp(close)">Submit</button>
-              <button #close  data-bs-toggle="modal" data-bs-target="#report" style="display: none;" >xczxc</button>
+              <button
+                #close
+                data-bs-toggle="modal"
+                data-bs-target="#report"
+                style="display: none"
+              >
+                xczxc
+              </button>
             </div>
           </div>
-          
-          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
