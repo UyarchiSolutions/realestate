@@ -12,6 +12,12 @@ table tr td{
 .remove-btn{
     color: #B73E3E ;
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}
 .property-type{
     min-width: 20%;
 }

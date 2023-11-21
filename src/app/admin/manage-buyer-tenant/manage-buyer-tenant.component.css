@@ -1,0 +1,6 @@
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}

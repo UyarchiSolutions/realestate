@@ -127,7 +127,7 @@
             </div>
     
             <div>
-                <label>Duration Per Stream :</label>      <p>{{Ddata.Duration}},<sub>Minuets</sub></p>
+                <label>Duration Per Stream :</label>      <p>{{Ddata.Duration}},<sub>Minutes</sub></p>
             </div>
     
             <!-- <div>
@@ -153,7 +153,7 @@
                 <label>Validity of plan (use plan by) :</label>      <p>{{Ddata.validityofplan}}days</p>
             </div>
     
-            <div>
+            <div *ngIf="Ddata.completedStream=='Yes'">
                 <label>Stream Validity :</label>      <p>{{Ddata.streamvalidity}} days</p>
             </div>
     

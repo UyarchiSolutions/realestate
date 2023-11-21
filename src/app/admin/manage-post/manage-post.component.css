@@ -9,6 +9,12 @@
 table tr td{
  max-width: fit-content !important;
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}
 .remove-btn{
     color: #B73E3E ;
 }

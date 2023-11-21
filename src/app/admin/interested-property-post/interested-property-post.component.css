@@ -24,3 +24,9 @@ table tr td{
 .fixed{
     color: #1877F2;
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}

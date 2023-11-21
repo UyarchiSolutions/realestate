@@ -9,6 +9,12 @@
     margin-right: 5px;
 
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}
 .main-content-header{
     display: flex;
     justify-content: center;

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl,Validators } from '@angular/forms';
 import { BuyerService } from '../buyer.service';
 import { Address } from 'ng-google-places-autocomplete';
 import { PostPropertyService } from 'src/app/services/post-property.service';
 import { Options } from '@angular-slider/ngx-slider';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'buyer-alert-pop',
   templateUrl: './buyer-alert-pop.component.html',
@@ -29,7 +30,7 @@ export class BuyerAlertPopComponent implements OnInit {
 
 
 myform:any=this.fb.group({
-  type:new FormControl(''),
+  type:new FormControl('',Validators.required),
 })
 
   popform:any=this.fb.group({
@@ -44,18 +45,22 @@ CommSalepop=false;
 
 popup(){
  console.log(this.property,this.myform.get('type')?.value)
-
+ this.submitted=true
  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
    this.ResiRentpop=true;
+   this.submitted=false
  }
  if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
    this.ResiSalepop=true;
+   this.submitted=false
  }
  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
    this.CommRentpop=true;
+   this.submitted=false
  }
  if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
    this.CommSalepop=true;
+   this.submitted=false
  }
  // this.showAlertpop=!this.showAlertpop;
 }
@@ -138,8 +143,11 @@ empty(){
   this.CommProperty=[]
   this.CommBuildType=[]
 }
+submitted = false
 popcheck(){
+ 
   if(this.property == 'Residential' && this.myform.get('type')?.value == 'Rent' ){
+    
   let data= {
     area:this.areaSend,
     ResOrCom:this.property,
@@ -175,6 +183,7 @@ popcheck(){
   }
 }
 if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
+  
   let data= {
     area:this.areaSend,
     // address:this.areaPArr,
@@ -211,6 +220,7 @@ if(this.property == 'Residential' && this.myform.get('type')?.value == 'Buy' ){
   }
 }
 if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
+  
   let data= {
     area:this.areaSend,
     ResOrCom:this.property,
@@ -250,6 +260,7 @@ if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Rent' ){
   }
 }
 if(this.property == 'Commercial' && this.myform.get('type')?.value == 'Buy' ){
+  
   let data= {
     area:this.areaSend,
     ResOrCom:this.property,

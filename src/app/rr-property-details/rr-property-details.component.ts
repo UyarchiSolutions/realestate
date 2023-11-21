@@ -281,11 +281,12 @@ export class RrPropertyDetailsComponent implements OnInit {
     this.ofv=null
     
     if(typeof(total) == 'number') {
+      this.floorarraygenerate(total);
       this.tfv = total + ' Floors';
     }else{
       this.tfv = total;
     }
-    this.floorarraygenerate(total);
+    
   }
 
   floorarray: any = [];

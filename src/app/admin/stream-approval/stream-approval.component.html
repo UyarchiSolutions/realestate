@@ -66,8 +66,10 @@
    <tr *ngFor="let v of data,index as i">
     <td (click)="viewStream(v._id)">{{v.streamName}}</td>
     <td><span><p>{{v.streamingDate_time | date:'dd/MM/YYYY'}}</p>,<p>{{v.streamingDate_time| date:'shortTime'}}</p></span></td>
-    <td ><span><p>{{v.posts.HouseOrCommercialType}}</p>><p>{{v.posts.Type}}</p></span></td>
-    <td>{{v.posts.propertType}}</td>
+    <!-- <td ><span><p>{{v.posts.HouseOrCommercialType}}</p>><p>{{v.posts.Type}}</p></span></td> -->
+    <td>--</td>
+    <!-- <td>{{v.posts.propertType}}</td> -->
+    <td>--</td>
     <td>{{v.createdAt |date:'dd/MM/YYYY' }}</td>
     <td>{{v.adminApprove}}</td>
     <td>

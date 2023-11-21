@@ -121,13 +121,13 @@
         </tr>
 
       <tr *ngFor="let v of data, index as i">
-        <td>{{v.planeName}}</td>
+        <td>{{v.planName}}</td>
         <td>{{v.userType}}</td>
         <td>{{v.createdAt|date:'dd-MM-YYYY' }}</td>
-        <td>{{v.no_of_Stream}}</td>
-        <td>{{v.No_of_participants_Limit}}</td>
-        <td>{{v.Chat_Needed}}</td>
-        <td>25</td>
+        <td>{{v.numberofStream}}</td>
+        <td>{{v.numberOfParticipants}}</td>
+        <td>{{v.chat_Option}}</td>
+        <td>--</td>
         <td><p *ngIf="v.active == true">Active</p>
         <p *ngIf="v.active !== true">Inactive</p>
         

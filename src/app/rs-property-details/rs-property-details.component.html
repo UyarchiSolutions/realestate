@@ -219,13 +219,16 @@
                   <span *ngIf="!ofv && !data.floorNo" style="opacity: 0.5"
                     >On Floors</span
                   >
-                  
+                  <span
+                    [innerText]="data.floorNo"
+                    *ngIf="!ofv && data.floorNo"
+                  ></span>
                 </p>
                 <ul class="dropdown-menu select-filed-options">
                   <li>
                     <a
                       class="dropdown-item"
-                      (click)="onFloorv('Groud Floor', 0)"
+                      (click)="onFloorv('Ground Floor',0)"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                       >Ground Floor</a
@@ -234,7 +237,7 @@
 
                   <li
                     *ngFor="let floor of numarray"
-                    (click)="onFloorv(floor, floor)"
+                    (click)="onFloorv(floor,floor)"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >

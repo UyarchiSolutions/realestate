@@ -52,16 +52,17 @@ export class RrLocationDetailsComponent implements OnInit {
       console.log(params);
       this.id = params['id'];
       console.log(this.id, 'this is id from rrp');
-      navigator.geolocation.getCurrentPosition((position: any) => {
-        this.latitude = position.coords.latitude;
-        this.longtitude = position.coords.longitude;
-        this.rrlocform.patchValue({
-          lat: this.latitude,
-          long: this.longtitude,
-        });
-      });
+   
     });
     this.updateform();
+    navigator.geolocation.getCurrentPosition((position: any) => {
+      this.latitude = position.coords.latitude;
+      this.longtitude = position.coords.longitude;
+      this.rrlocform.patchValue({
+        lat: this.latitude,
+        long: this.longtitude,
+      });
+    });
   }
 
   OnSubmit() {
@@ -237,12 +238,6 @@ export class RrLocationDetailsComponent implements OnInit {
 
         let address = res[0].address_components;
         let area = address.find((component: any) => {
-          if (component.types.includes('locality')) {
-            console.log(component.types.includes('locality'), 'locality');
-
-            return component.types.includes('locality');
-          }
-
           if (component.types.includes('sublocality_level_1')) {
             console.log(
               component.types.includes('sublocality_level_1'),
@@ -251,6 +246,13 @@ export class RrLocationDetailsComponent implements OnInit {
 
             return component.types.includes('sublocality_level_1');
           }
+          if (component.types.includes('locality')) {
+            console.log(component.types.includes('locality'), 'locality');
+
+            return component.types.includes('locality');
+          }
+
+         
         }).long_name;
         console.log(area, 'area', 'inside res');
         this.area = area;
@@ -306,12 +308,6 @@ export class RrLocationDetailsComponent implements OnInit {
         });
         let address = res[0].address_components;
         let area = address.find((component: any) => {
-          if (component.types.includes('locality')) {
-            console.log(component.types.includes('locality'), 'locality');
-
-            return component.types.includes('locality');
-          }
-
           if (component.types.includes('sublocality_level_1')) {
             console.log(
               component.types.includes('sublocality_level_1'),
@@ -320,6 +316,20 @@ export class RrLocationDetailsComponent implements OnInit {
 
             return component.types.includes('sublocality_level_1');
           }
+          if (component.types.includes('locality')) {
+            console.log(component.types.includes('locality'), 'locality');
+
+            return component.types.includes('locality');
+          }
+          
+          // if (component.types.includes('sublocality_level_1')) {
+          //   console.log(
+          //     component.types.includes('sublocality_level_1'),
+          //     'sublocality_level_1'
+          //   );
+
+          //   return component.types.includes('sublocality_level_1');
+          // }
         }).long_name;
         console.log(area, 'area', 'inside res');
         this.area = area;

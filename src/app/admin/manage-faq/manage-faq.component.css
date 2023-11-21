@@ -73,6 +73,12 @@ table tr td span button svg{
   overflow: hidden;
  
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}
 /* popup */
 /* popup */
 .popup-parent{

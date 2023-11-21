@@ -9,12 +9,14 @@
 
 <div class="property-type">
     <div class="dropdown" style="width: 100% !important;">
-        <button class="btn btn-secondary propery-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button style="display: flex;
+        align-items: center;
+        gap: 25px;" class="btn btn-secondary propery-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
        <p *ngIf="!showProp"> Property type</p> <p *ngIf="showProp" [ngStyle]="{'display': showProp? 'auto':'none' }">{{showProp}}</p> <svg style="margin-left: 70px;" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z" fill="#473B32"/>
             </svg>
         </button>
-        <ul class="dropdown-menu">
+        <ul style="cursor: pointer;" class="dropdown-menu">
           <li><a class="dropdown-item" (click)="sendType(1,'Commercial > Rent')" >Commercial > Rent</a></li>
           <li><a class="dropdown-item" (click)="sendType(2,'Commercial > Sale')">Commercial > Sale</a></li>
           <li><a class="dropdown-item" (click)="sendType(3,'Residential > Rent')">Residential > Rent</a></li>
@@ -33,14 +35,15 @@
 </div>
 
     <div class="sort-by">
-        <div class="dropdown">
-            <button class="btn btn-secondary sort-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown" >
+            <button style="    display: flex;
+            gap: 25px;" class="btn btn-secondary sort-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
              Sort By<svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.4 0V14.1176H24L19.2 20L14.4 14.1176H18V0H20.4ZM10.8 16.4706V18.8235H0V16.4706H10.8ZM13.2 8.23529V10.5882H0V8.23529H13.2ZM13.2 0V2.35294H0V0H13.2Z" fill="#473B32"/>
                 </svg>
                 
             </button>
-            <ul class="dropdown-menu">
+            <ul style="cursor: pointer;" class="dropdown-menu">
               <li><a class="dropdown-item" (click)="sortStatus('active')" >Active</a></li>
               <li><a class="dropdown-item" (click)="sortStatus('Inactive')">Inactive</a></li>
               <li><a class="dropdown-item" >Expired</a></li>

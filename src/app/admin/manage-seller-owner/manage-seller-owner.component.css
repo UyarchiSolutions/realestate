@@ -4,6 +4,12 @@
     display: flex;
     justify-content: space-between;
 }
+.tb-heading td{
+    color: black;
+}
+.tb-heading path{
+    stroke: var(--bgBlue);
+}
 .page-sidebar{
     width: 15%;
     min-height: 100%;

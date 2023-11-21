@@ -38,8 +38,9 @@
                    </div>
                   
                  <button  type="submit" (click)="popup()">Set Alert</button>
-                 <!-- <P *ngIf="firstform.get('type').invalid && submitted" class="redtext">Error: Select the type</P>
-                 <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P> -->
+                 <p style="color: red;
+                 font-size: 13px;" *ngIf="myform.get('type').invalid && submitted" class="redtext"> Select the type</p>
+                 <!-- <P *ngIf=" (property != 'Residential' && property != 'Commercial') && submitted " class="redtext">Error: Select the property</P>  -->
                 </form>
             </div>
         </div>
@@ -56,7 +57,7 @@
             </svg>
             Edit Alert</span>
     </div>
-    <div class="streams-container"  >
+    <div class="streams-container" *ngIf="popValue.length > 0" >
         <ng-container  *ngFor="let v of popValue;index as i" >
             <carousel-streams
             [all]="{
@@ -140,7 +141,7 @@
            
     </table> -->
     <nav  *ngIf="popValue == ''">
-        <h1>You will get updates soon!</h1>
+        <h1 style="text-align: center;">You will get updates soon!</h1>
     </nav>
 
 </ng-container>
