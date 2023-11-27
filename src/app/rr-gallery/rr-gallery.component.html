@@ -43,7 +43,7 @@
         </p>
         <!-- *ngIf=" submited && (!data.image || imagePreview.length == 0 )" -->
         <p *ngIf="errmsg" style="color: red">{{ errmsg }}</p>
-
+      
         <div class="image-gallery">
           <div
             class="images"
@@ -71,7 +71,7 @@
             </div>
           </div>
         </div>
-
+        <p *ngIf="backImgError" style="color: red" >{{backImgError}}</p>
         <div class="upload-video" style="position: relative;">
           <label 
             >Video :<span class="red">*</span></label

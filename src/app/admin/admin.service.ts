@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  } from '@angular/common/http';
 import { Env } from '../environment.dev';
+import { ReturnStatement } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,9 @@ export class AdminService {
   }
   disable_report_notification(id:any){
     return this.http.get(this.baseApi+'/v1/BuyerSeller/Disable/Reported/Property/'+id)
+  }
+  report_remove(id:any){
+    return this.http.get(this.baseApi+'/v1/BuyerSeller/Repoer/Remove/'+id)
   }
   remove_post(id:any){
    

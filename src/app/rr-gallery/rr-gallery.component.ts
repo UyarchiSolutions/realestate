@@ -138,6 +138,7 @@ export class RrGalleryComponent implements OnInit {
   async submit() {
    
     this.submited=true;
+    this. backImgError=false
     console.log( (this.videoSrc && this.imagePreview.length > 0) ,
     (this.data.image != ''  && this.data.videos.length > 0 )
    , (this.imagePreview.length > 0 && this.data.videos.length  > 0 )
@@ -149,24 +150,43 @@ export class RrGalleryComponent implements OnInit {
     if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
     || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
     {
-    await this.uploadimg();
-    let data={
-      routeLink:this.routerlink,
-    }
-    this.service.formput(this.id,data);
+   
     const formdata = new FormData();
-    formdata.append('video', this.selectedfile);
-
-    console.log('uploaded');
-    this.service.uploadvid(this.id, formdata).subscribe((res: any) => {
-     
-      var postdata = {
-        id: this.id,
-      };
-      var queryString = new URLSearchParams(postdata).toString();
-      this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
+    const images = this.imageform.get('images') as FormArray;
+    console.log(images.value);
+    const files: Array<File> = images.value;
+    for (let i = 0; i < files.length; i++) {
+      if (files[i] != null) {
+        formdata.append('image', files[i], files[i]['name']);
+      }
+      console.log(formdata);
+    }
+    this.service.uploadimg(this.id, formdata).subscribe((res: any) => {
+      console.log(res,'res image')
+      let data={
+        routeLink:this.routerlink,
+      }
+      this.service.formput(this.id,data).subscribe((res:any)=>{
+        const formdata = new FormData();
+        formdata.append('video', this.selectedfile);
+    
+        console.log('uploaded');
+        this.service.uploadvid(this.id, formdata).subscribe((res: any) => {
+         
+          var postdata = {
+            id: this.id,
+          };
+          var queryString = new URLSearchParams(postdata).toString();
+          this.router.navigateByUrl('/start-posting/residentaial-rent-details?' + queryString);
+        });
+    
+      });
+    },(error:any)=>{
+      this.backImgError= error.error.message
+      console.log(error.error.message)
     });
-
+   
+   
   }
   }
   async uploadvid() {
@@ -193,17 +213,39 @@ export class RrGalleryComponent implements OnInit {
       }
       console.log(formdata);
     }
-    this.service.uploadimg(this.id, formdata).subscribe((res: any) => {});
+    this.service.uploadimg(this.id, formdata).subscribe((res: any) => {
+      console.log(res,'res image')
+    });
   }
+  backImgError:any
   async  routetopreview(){
     this.submited=true;
-   
+   this. backImgError=false
 
     if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
     || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))
     {
-    await  this.uploadimg();
-    await  this.uploadvid();
+      const formdata = new FormData();
+      const images = this.imageform.get('images') as FormArray;
+      console.log(images.value);
+      const files: Array<File> = images.value;
+      for (let i = 0; i < files.length; i++) {
+        if (files[i] != null) {
+          formdata.append('image', files[i], files[i]['name']);
+        }
+        console.log(formdata);
+      }
+      this.service.uploadimg(this.id, formdata).subscribe((res: any) => {
+        console.log(res,'res image')
+         this.uploadvid();
+
+      },(error:any)=>{
+        alert('hiiid')
+        alert(error.error.message)
+        this.backImgError= error.error.message
+        console.log(error.error.message)
+      });
+   
     }
   }
   back(count: any) {
