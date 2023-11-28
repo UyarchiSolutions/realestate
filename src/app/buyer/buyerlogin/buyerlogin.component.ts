@@ -45,6 +45,7 @@ export class BuyerloginComponent {
   display: any = false;
   notfound = false;
   Emailnotfound=false;
+  deActive:any
   submitted() {
     
     this.emailSubmit = true;
@@ -70,6 +71,9 @@ export class BuyerloginComponent {
         if (error.error.message == "Email not Registered") {
           this.Emailnotfound = true
         }
+        if (error.error.message == "Account has been inactive / deactivated") {
+          this.deActive = "Account has been Deactivated"
+         }
       })
     }
 
@@ -92,6 +96,7 @@ export class BuyerloginComponent {
    errormsg(){
     this.Emailnotfound = false;
     this.notfound=false;
+    this.deActive=''
    }
    show1:boolean=false;
    show2:boolean=false;

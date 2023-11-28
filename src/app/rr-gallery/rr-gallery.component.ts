@@ -138,7 +138,7 @@ export class RrGalleryComponent implements OnInit {
   async submit() {
    
     this.submited=true;
-    this. backImgError=false
+    this. backImgError=''
     console.log( (this.videoSrc && this.imagePreview.length > 0) ,
     (this.data.image != ''  && this.data.videos.length > 0 )
    , (this.imagePreview.length > 0 && this.data.videos.length  > 0 )
@@ -220,7 +220,7 @@ export class RrGalleryComponent implements OnInit {
   backImgError:any
   async  routetopreview(){
     this.submited=true;
-   this. backImgError=false
+   this. backImgError=''
 
     if( (this.videoSrc && this.imagePreview.length > 0) || (this.data.image != ''  && this.data.videos.length > 0 )
     || (this.imagePreview.length > 0 &&this.data.videos.length  > 0) || (this.data.image != '' && this.videoSrc))

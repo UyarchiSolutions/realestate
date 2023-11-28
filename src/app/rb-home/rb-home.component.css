@@ -699,8 +699,9 @@ position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
-    height: 94%;
+    gap: 20px;
+    /* background-color: red; */
+    height: 600px;
     overflow: scroll;
     padding-bottom: 30px;
 }

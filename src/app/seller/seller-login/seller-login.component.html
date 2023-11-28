@@ -98,7 +98,7 @@
           <p  *ngIf="emailSubmit&&loginForm.get('password')?.invalid && !notfound" >Password is required !</p>
           <p *ngIf="Emailnotfound">Enter a Registered Email Id </p>
           <p *ngIf="notfound">Please Enter a Valid Password </p>
-
+          <p *ngIf="deActive">{{deActive}}</p>
         </div>
         <p class="forgot-password" (click)="forgot()">Forgot Password !</p>
 

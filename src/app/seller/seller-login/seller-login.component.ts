@@ -39,6 +39,7 @@ export class SellerLoginComponent {
   display:any=false;
   Emailnotfound =false;
   notfound=false;
+  deActive:any
   submitted(){
     console.log('working');
     this.emailSubmit=true;
@@ -62,6 +63,9 @@ export class SellerLoginComponent {
           this.Emailnotfound = true;
           // this.loginForm.get('email')?.reset();
         }
+        if (error.error.message == "Account has been inactive / deactivated") {
+          this.deActive = "Account has been Deactivated"
+         }
       })
     }
 
@@ -85,6 +89,7 @@ export class SellerLoginComponent {
   errormsg(){
     this.Emailnotfound = false;
     this.notfound=false;
+    this.deActive=''
     this.emailSubmit=false;
    }
    routeTohost(){

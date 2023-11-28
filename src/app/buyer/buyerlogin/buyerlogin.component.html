@@ -116,6 +116,7 @@
           </p>
           <p *ngIf="notfound">Please Enter a Valid Password</p>
           <p *ngIf="Emailnotfound">Enter a Registered Email Id</p>
+          <p *ngIf="deActive">{{deActive}}</p>
         </div>
 
         <p class="forgot-password" (click)="forgotPass()">Forgot Password !</p>
