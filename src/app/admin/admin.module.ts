@@ -23,6 +23,10 @@ import { CommercialSaleComponent } from './admin-property-view/commercial-sale/c
 import { CommercialRentComponent } from './admin-property-view/commercial-rent/commercial-rent.component';
 import { AgmCoreModule } from '@agm/core';
 import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
+import { ManageDemoPostComponent } from './demo/manage-demo-post/manage-demo-post.component';
+import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.component';
+import { AddPostComponent } from './demo/add-post/add-post.component';
+import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
     ResidentialRentComponent,
     ResidentialSaleComponent,
     CommercialSaleComponent,
-    CommercialRentComponent
+    CommercialRentComponent,
+    ManageDemoPostComponent,
+    AddDemoUserComponent,
+    AddPostComponent,
+    AddPostPropComponent
 
   ],
   imports: [

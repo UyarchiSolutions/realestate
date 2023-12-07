@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="page-forms">
+ <h3 class="title">
+    Add Demo User
+ </h3>
+
+ <div class="plan-forms" [formGroup]="myform" >
+    <div>
+        <p>User Name:</p>
+        <input type="text" placeholder="Enter User Name" formControlName="userName" />
+    </div>
+    
+    <div class="err" *ngIf="submitted">
+        <p *ngIf="submitted && myform.get('userName')?.invalid">User Name is Required !</p>
+    </div>
+    <div>
+        <p>Email Id:</p>
+        <input type="text" placeholder="Enter Email Id" formControlName="mail" />
+    </div>
+    
+    <div class="err" *ngIf="submitted">
+        <p *ngIf=" Formcontrol.mail.errors?.['required']">Email is required!</p>
+        <p *ngIf=" Formcontrol.mail.errors?.['pattern']">Enter a valid Email!</p>
+    </div>
+    <div>
+        <p>Mobile Number:</p>
+        <input type="tel" maxlength="10" placeholder="Enter Mobile Number" formControlName="mobileNumber" />
+    </div>
+    
+    <div class="err" *ngIf="submitted">
+        <p *ngIf="Formcontrol.mobileNumber.errors?.['required']">Mobile Number is required!</p>
+        <p *ngIf="Formcontrol.mobileNumber.errors?.['pattern']">Enter a valid Number!</p>
+    </div>
+    <div>
+        <p>Location:</p>
+        <input type="text" placeholder="Enter Location" formControlName="location" />
+    </div>
+    
+    <div class="err" *ngIf="submitted">
+        <p *ngIf="submitted && myform.get('location')?.invalid">Location is Required !</p>
+    </div>
+   
+
+    <div class="btns" style="margin-top: 20px;">
+        <button (click)="submit()">Submit</button>
+    </div>
+</div>
+</div> 

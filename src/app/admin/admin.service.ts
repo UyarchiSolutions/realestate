@@ -12,7 +12,18 @@ export class AdminService {
   streamBase:any= Env.baseAPi+'/v1/requestStream/';
   baseApi = Env.baseAPi
   constructor(private http:HttpClient) { }
-
+  add_demo_user(body:any){
+    return this.http.post(this.baseApi+'/v1/demo/user',body);
+  }
+  add_demo_post(body:any){
+    return this.http.post(this.baseApi+'/v1/demo/post',body)
+  }
+  get_demo_users(){
+    return this.http.get(this.baseApi+"/v1/demo/getUsers");
+  }
+  demo_img(img:any,id:any){
+    return this.http.put(this.baseApi+'/v1/demo/image/'+id,img)
+  }
   get_All_user(type:any,range:any,page:any,role:any){
     return this.http.get(this.baseURL+`getBuyers_And_Owners/`+type+`/${page}/${range}?role=${role}`)
   }

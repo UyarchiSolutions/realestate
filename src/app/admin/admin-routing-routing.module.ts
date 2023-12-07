@@ -14,11 +14,21 @@ import { ResidentialRentComponent } from './admin-property-view/residential-rent
 import { ResidentialSaleComponent } from './admin-property-view/residential-sale/residential-sale.component';
 import { CommercialRentComponent } from './admin-property-view/commercial-rent/commercial-rent.component';
 import { CommercialSaleComponent } from './admin-property-view/commercial-sale/commercial-sale.component';
+import { ManageDemoPostComponent } from './demo/manage-demo-post/manage-demo-post.component';
+import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.component';
+import { AddPostComponent } from './demo/add-post/add-post.component';
+import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 
 const routes: Routes = [
   { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
       { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
       { path: 'manage-post', component: ManagePostComponent },
+      { path: 'manage-demo-post', children:[
+        {path:'',component:ManageDemoPostComponent },
+        {path:'add-user',component:AddDemoUserComponent},
+        {path:'add-post',component:AddPostComponent},
+        {path:'property',component:AddPostPropComponent},
+      ]  },
       { path: 'stream-approval',children:[
         {path:'',component: StreamApprovalComponent },
         {path:'stream-view',component:ResidentialRentStreamComponent},
