@@ -18,16 +18,20 @@ import { ManageDemoPostComponent } from './demo/manage-demo-post/manage-demo-pos
 import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.component';
 import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
+import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
 
 const routes: Routes = [
   { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
       { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
       { path: 'manage-post', component: ManagePostComponent },
       { path: 'manage-demo-post', children:[
-        {path:'',component:ManageDemoPostComponent },
+        { path: '', component: ManageDemoPostComponent },
         {path:'add-user',component:AddDemoUserComponent},
         {path:'add-post',component:AddPostComponent},
         {path:'property',component:AddPostPropComponent},
+        {path:'manage-property',component:ManageDemoUserPostsComponent},
+        
+      
       ]  },
       { path: 'stream-approval',children:[
         {path:'',component: StreamApprovalComponent },

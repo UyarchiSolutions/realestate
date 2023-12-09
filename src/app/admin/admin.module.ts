@@ -27,6 +27,7 @@ import { ManageDemoPostComponent } from './demo/manage-demo-post/manage-demo-pos
 import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.component';
 import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
+import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.compone
     ManageDemoPostComponent,
     AddDemoUserComponent,
     AddPostComponent,
-    AddPostPropComponent
+    AddPostPropComponent,
+    ManageDemoUserPostsComponent
 
   ],
   imports: [

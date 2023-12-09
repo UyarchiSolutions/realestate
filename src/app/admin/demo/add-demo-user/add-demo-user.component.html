@@ -41,7 +41,12 @@
         <p *ngIf="submitted && myform.get('location')?.invalid">Location is Required !</p>
     </div>
    
-
+    <div class="err" *ngIf="submitted">
+        <p *ngIf="submitted && myform.get('location')?.invalid">Location is Required !</p>
+    </div>
+    <div class="err" *ngIf="errMsg" >
+        <p >{{errMsg}}</p>
+    </div>
     <div class="btns" style="margin-top: 20px;">
         <button (click)="submit()">Submit</button>
     </div>

@@ -97,7 +97,7 @@ border: none;
    
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  .page-forms input[type="tel"] {
+  .page-forms input[type="number"] {
     display: block;
     width: 330px;
     padding: 0.375rem 0.75rem;

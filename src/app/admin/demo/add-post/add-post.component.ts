@@ -3,6 +3,7 @@ import { FormGroup, FormControl ,Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../admin.service';
 import { HtmlTagDefinition } from '@angular/compiler';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-add-post',
@@ -39,11 +40,16 @@ export class AddPostComponent {
         console.log('text uploaded')
         let formdata = new FormData
         formdata.append('image',this.selectedImg)
-        this.service.demo_img(formdata,res._id).subscribe((res:any)=>{
+        this.service.demo_img(formdata,res._id).subscribe((res2:any)=>{
           console.log('img upload')
-          this.router.navigateByUrl('/admin/manage-demo-post/property')
+        let data ={
+          id:res._id,
+          user:this.userName
+        }
+        let query = new URLSearchParams(data).toString()
+          this.router.navigateByUrl('/admin/manage-demo-post/property?'+query)
         })
-       
+        console.log('img upload2')
       })
     }
   }

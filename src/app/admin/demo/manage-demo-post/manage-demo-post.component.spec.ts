@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageDemoPostComponent } from './manage-demo-post.component';
+import { ManageDemoPostComponent } from './manage-demo-user.component';
 
 describe('ManageDemoPostComponent', () => {
   let component: ManageDemoPostComponent;

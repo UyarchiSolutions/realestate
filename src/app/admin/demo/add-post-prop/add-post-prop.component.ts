@@ -1,73 +1,132 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../admin.service';
 
 @Component({
   selector: 'app-add-post-prop',
   templateUrl: './add-post-prop.component.html',
-  styleUrls: ['./add-post-prop.component.css']
+  styleUrls: ['./add-post-prop.component.css'],
 })
 export class AddPostPropComponent {
-  constructor(private service:AdminService,private router: Router) {}
+  constructor(
+    private service: AdminService,
+    private router: Router,
+    private arouter: ActivatedRoute,
+    private fb:FormBuilder
+  ) {}
+  userName:any
+  id:any
   ngOnInit(): void {
- 
+    this.arouter.queryParams.subscribe((res: any) => {
+      this.userName = res['user'];
+      this.id= res['id'];
+      
+    });
+    this.myform = this.fb.group({
+      category: new FormControl('', Validators.required),
+      postType: new FormControl('', Validators.required),
+      propertyType: new FormControl('', [Validators.required]),
+      priceExp: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+     
+      furnitionStatus: new FormControl('', Validators.required),
+      bhkBuilding:new FormControl('',Validators.required),
+      Description: new FormControl('', Validators.required),
+      finish : new FormControl(true),
+    });
   }
   submitted: boolean = false;
-  myform = new FormGroup({
-    newsPaper: new FormControl('', Validators.required),
-    Edition: new FormControl('', Validators.required),
-    dateOfAd: new FormControl('',[Validators.required]),
-    userId: new FormControl('eae4ae53-e590-481f-9c7f-387b66914f4c'),
-   
-  });
-  selectedImg:any
+  myform!: FormGroup
+  selectedImg: any;
   submit() {
-   
-    this.submitted=true
-    console.log(this.myform.valid && this.imageform.valid,this.myform.valid , this.imageform.valid)
-    if(this.myform.valid && this.imageform.valid){
-      this.service.add_demo_post(this.myform.value).subscribe((res:any)=>{
-        console.log('text uploaded')
-        let formdata = new FormData
-        formdata.append('image',this.selectedImg)
-        this.service.demo_img(formdata,res._id).subscribe((res:any)=>{
-          console.log('img upload')
-          this.router.navigateByUrl('/admin/manage-demo-post/property')
+    this.submitted = true;
+    console.log(
+      this.myform.valid && this.imageform.valid,
+      this.myform.value,
+      this.imageform.valid
+    );
+    if (this.myform.valid && this.imagePreview.length > 0){
+      const formdata = new FormData();
+      const images = this.imageform.get('images') as FormArray;
+      console.log(images.value  )
+      const files: Array<File> =images.value;
+      for (let i = 0; i < files.length; i++) {
+        if(files[i] !=null){
+        formdata.append('imageArr', files[i], files[i]['name']);
+        }
+        console.log(formdata);
+      }
+      this.service.demo_img_grp(formdata,this.id).subscribe((res:any)=>{
+        console.log(res,'image uploade');
+        this.service.update_demo_post(this.id,this.myform.value).subscribe((res:any)=>{
+          console.log(res,'text uploade')
+          this.submitted=false
+          this.router.navigateByUrl('/admin/manage-demo-post')
         })
-       
       })
+     
+    }
+  }
+  Tenatshow=false
+  showTenat(v:any){
+    if(v.target.value == 'Rent'){
+     this.Tenatshow = true
+      this.myform.addControl('tenantType', new FormControl('', Validators.required));
+    }else{
+      this.Tenatshow = false
+      this.myform.removeControl('tenantType');
     }
   }
   get Formcontrol() {
     return this.myform.controls;
   }
-  imageform = new FormGroup({
-    image: new FormControl('',Validators.required)
-  })
-  imagePreview:any
-  onFileSelect(e: any): void {
-    this.imageform.get('image')?.reset()
-    this.imagePreview = null;
-  
-    const file = e.target.files[0];
-  
-    if (file) {
-       this.imageform.get('image')?.setValue(file);
+  imageform : any = this.fb.group({
+    images:this.fb.array([
+      this.fb.control(null),
+      this.fb.control(null),
+      this.fb.control(null),
+      this.fb.control(null),
+      this.fb.control(null)
      
-       this.selectedImg = file
+    ])
+  })
+  errmsg:any
+  imagePreview: string[]=[];
+  onFileselect(e:any){
+    
+    this.imageform.get('images').reset();
+    this.imagePreview= [];
+    const files = e.target.files;
+    if (files.length <= 5) {
+      this.errmsg ='';
+    for(let i=0;i < files.length && i<=5;i++){
+      const file = files[i];
+   
+     const images = this.imageform.get('images') as FormArray;
+     images.at(i).setValue(file);
+
       const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
+      reader.onload= () =>{
+        this.imagePreview[i] = reader.result as string;
+
         console.log(this.imagePreview);
-      };
+
+      }
       reader.readAsDataURL(file);
     }
+  }else {
+    e.target.value = '';
+    this.errmsg = 'Upload 5 images only';
+    return;
   }
-  removeimg(input:HTMLInputElement){
-    input.value=''
-    this.imagePreview = ''
-    this.selectedImg=''
-    this.imageform.get('image')?.setValue(null);
+
+  }
+  removeimg(index: number) {
+    console.log('remove working');
+        this.imageform.get('images').get(index.toString()).setValue(null);
+        this.imagePreview.splice(index,1);
+        const input= document.getElementById('imginpt') as HTMLInputElement;
+       input.value = '';
   }
 }

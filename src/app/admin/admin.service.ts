@@ -18,11 +18,17 @@ export class AdminService {
   add_demo_post(body:any){
     return this.http.post(this.baseApi+'/v1/demo/post',body)
   }
+  update_demo_post(id:any,body:any){
+    return this.http.put(this.baseApi+'/v1/demo/post/'+id,body)
+  }
   get_demo_users(){
     return this.http.get(this.baseApi+"/v1/demo/getUsers");
   }
   demo_img(img:any,id:any){
     return this.http.put(this.baseApi+'/v1/demo/image/'+id,img)
+  }
+  demo_img_grp(img:any,id:any){
+    return this.http.put(this.baseApi+'/v1/demo/image/group/'+id,img)
   }
   get_All_user(type:any,range:any,page:any,role:any){
     return this.http.get(this.baseURL+`getBuyers_And_Owners/`+type+`/${page}/${range}?role=${role}`)

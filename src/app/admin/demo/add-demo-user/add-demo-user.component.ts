@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-demo-user.component.css'],
 })
 export class AddDemoUserComponent implements OnInit {
+  errMsg:any
   constructor(private service:AdminService,private router: Router) {}
   ngOnInit(): void {}
   submitted: boolean = false;
@@ -30,6 +31,8 @@ export class AddDemoUserComponent implements OnInit {
     if(this.myform.valid){
       this.service.add_demo_user(this.myform.value).subscribe((res:any)=>{
         this.router.navigateByUrl('/admin/manage-demo-post')
+      },error =>{
+        this.errMsg = error.error.message
       })
     }
   }

@@ -1,8 +1,10 @@
 <app-header></app-header>
 
 <div class="page-forms">
-  <div class="title"> <h3 style="font-weight: 600;" >Add Demo Post</h3><sub> For {{userName}}</sub></div>
- 
+  <div class="title">
+    <h3 style="font-weight: 600">Add Demo Post</h3>
+    <sub> For {{ userName }}</sub>
+  </div>
 
   <div class="plan-forms" [formGroup]="myform">
     <div class="rad">
@@ -31,7 +33,6 @@
         formControlName="newsPaper"
         [class.err]="submitted && myform.get('newsPaper')?.invalid"
         placeholder="Enter News Paper"
-      
       />
     </div>
 
@@ -58,13 +59,17 @@
 
     <div>
       <p>Upload clip:</p>
-      <label for="img-upd"   [class.err]="submitted && !imagePreview" class="img-lab">Choose Image</label><sub>.jpg </sub>
+      <label
+        for="img-upd"
+        [class.err]="submitted && !imagePreview"
+        class="img-lab"
+        >Choose Image</label
+      ><sub>.jpg </sub>
       <input
         #imginpt
         accept="image/gif, image/jpeg, image/png"
         (change)="onFileSelect($event)"
         style="display: none"
-      
         type="file"
         id="img-upd"
       />
@@ -82,10 +87,8 @@
       </div>
     </div>
 
-
-
     <div class="btns">
-      <button (click)="submit()">Submit</button>
+      <button style="margin-bottom: 50px" (click)="submit()">Submit</button>
     </div>
   </div>
 </div>

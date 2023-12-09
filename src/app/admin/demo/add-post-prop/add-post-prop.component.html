@@ -1,67 +1,123 @@
 <app-header></app-header>
 
 <div class="page-forms">
-  <h3 class="title">Add Demo Post</h3>
+  <div class="title">
+    <h3 style="font-weight: 600">Add Demo Post</h3>
+    <sub> For {{ userName }}</sub>
+  </div>
 
   <div class="plan-forms" [formGroup]="myform">
     <div class="rad">
-      <p>Add Type:</p>
+      <p>Post Type:</p>
       <input
         type="radio"
         id="Cand"
-        name="userType"
-        value="Seller"
+        name="postType"
+        formControlName="postType"
+        value="Sale"
         style="margin-left: 60px"
+        (change)="showTenat($event)"
       />
-      <label for="Cand" style="padding-left: 5px">Online</label>
+      <label for="Cand" style="padding-left: 5px">Sale</label>
       <input
         type="radio"
         id="Emp"
-        name="userType"
-        value="Buyer"
+        name="postType"
+        formControlName="postType"
+        value="Rent"
+        style="margin-left: 50px"
+        (change)="showTenat($event)"
+      />
+      <label for="Emp" style="padding-left: 5px">Rent</label>
+    </div>
+    <div class="rad">
+      <p>Category:</p>
+      <input
+        type="radio"
+        id="Cand1"
+        name="category"
+        formControlName="category"
+        value="Commercial"
+        style="margin-left: 60px"
+      />
+      <label for="Cand1" style="padding-left: 5px">Commercial</label>
+      <input
+        type="radio"
+        id="Emp1"
+        name="category"
+        formControlName="category"
+        value="Residential"
         style="margin-left: 50px"
       />
-      <label for="Emp" style="padding-left: 5px">Offline</label>
+      <label for="Emp1" style="padding-left: 5px">Residential</label>
     </div>
     <div>
-      <p>News Paper :</p>
+      <p>Property Type :</p>
       <input
         type="text"
-        formControlName="newsPaper"
-        [class.err]="submitted && myform.get('newsPaper')?.invalid"
-        placeholder="Enter News Paper"
+        formControlName="propertyType"
+        [class.err]="submitted && myform.get('propertyType')?.invalid"
+        placeholder="Enter Property Type"
       
       />
     </div>
 
     <div>
-      <p>Edition:</p>
+      <p>BHK / Building Type:</p>
       <input
         type="text"
-        [class.err]="submitted && myform.get('Edition')?.invalid"
-        placeholder="Enter Edition"
-        formControlName="Edition"
+        [class.err]="submitted && myform.get('bhkBuilding')?.invalid"
+        placeholder="Enter BHK / Building Type"
+        formControlName="bhkBuilding"
+      />
+    </div>
+    <div>
+      <p>Price Expectation:</p>
+      <input
+        type="number"
+        [class.err]="submitted && myform.get('priceExp')?.invalid"
+        placeholder="Enter Price Expectation"
+        formControlName="priceExp"
+      />
+    </div>
+    <div>
+      <p>Location:</p>
+      <input
+        type="text"
+        [class.err]="submitted && myform.get('location')?.invalid"
+        placeholder="Enter location"
+        formControlName="location"
+      />
+    </div>
+    <div *ngIf="Tenatshow">
+      <p>Tenat Type:</p>
+      <input
+        type="text"
+        [class.err]="submitted && myform.get('tenantType')?.invalid"
+        placeholder="Enter Tenat Type"
+        formControlName="tenantType"
+      />
+    </div>
+    <div>
+      <p>Furnishing Status:</p>
+      <input
+        type="text"
+        [class.err]="submitted && myform.get('furnitionStatus')?.invalid"
+        placeholder="Enter Furnishing Status"
+        formControlName="furnitionStatus"
       />
     </div>
 
-    <div>
-      <p>Date of Ad:</p>
-      <input
-        type="date"
-        maxlength="10"
-        placeholder="Enter Mobile Number"
-        formControlName="dateOfAd"
-        [class.err]="submitted && myform.get('dateOfAd')?.invalid"
-      />
-    </div>
 
     <div>
-      <p>Upload clip:</p>
-      <label for="img-upd"   [class.err]="submitted && !imagePreview" class="img-lab">Choose Image</label><sub>.jpg </sub>
+      <p>Upload Photo:</p>
+      <label for="img-upd"   [class.err]="submitted && imagePreview.length ==0" class="img-lab">Choose Image</label><sub>.jpg </sub>
       <input
+      [multiple]="5"
         #imginpt
+        id="imginpt"
         accept="image/gif, image/jpeg, image/png"
-        (change)="onFileSelect($event)"
+        (change)="onFileselect($event)"
         style="display: none"
       
         type="file"
@@ -69,18 +125,30 @@
       />
     </div>
 
-    <div class="image-gallery" *ngIf="imagePreview">
-      <div class="images">
-        <img [src]="imagePreview" width="200px" height="150ox" />
+
+    <div class="image-gallery">
+      <div
+        class="images"
+        *ngFor="let preview of imagePreview; let i = index"
+      >
+        <img [src]="preview" width="200px" height="150ox" />
         <div class="when-hover">
           <img
             src="../../assets/images/image-remove-btn.png"
-            (click)="removeimg(imginpt)"
+            (click)="removeimg(i)"
           />
         </div>
       </div>
     </div>
-
+    <div>
+      <p>Description:</p>
+      <input
+        type="text"
+        [class.err]="submitted && myform.get('Description')?.invalid"
+        placeholder="Enter Description"
+        formControlName="Description"
+      />
+    </div>
 
 
     <div class="btns">

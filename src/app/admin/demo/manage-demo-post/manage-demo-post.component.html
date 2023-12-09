@@ -107,8 +107,9 @@
             <path
               d="M1 0H17C17.5523 0 18 0.44772 18 1V17C18 17.5523 17.5523 18 17 18H1C0.44772 18 0 17.5523 0 17V1C0 0.44772 0.44772 0 1 0ZM2 2V16H16V2H2ZM8 8V4H10V8H14V10H10V14H8V10H4V8H8Z"
               fill="white"
-            /></svg>
-          </a>
+            />
+          </svg>
+        </a>
       </div>
       <!-- <div class="sort-by">
         <div class="dropdown">
@@ -268,8 +269,14 @@
         </tr>
 
         <tr *ngFor="let v of data; index as i">
-          <td>{{ v.createdAt | date : "dd-MM-YYYY" }}</td>
-          <td>{{ v.userName }}</td>
+          <td
+           
+          >
+            {{ v.createdAt | date : "dd-MM-YYYY" }}
+          </td>
+          <td  
+          ><a class="user-name"  [routerLink]="['manage-property']"
+          [queryParams]="{ id: v._id, user: v.userName }"  >{{ v.userName }}</a></td>
           <td>{{ v.mobileNumber }}</td>
           <td>{{ v.mail }}</td>
 
@@ -278,17 +285,25 @@
             <p *ngIf="v.active !== true">Inactive</p>
           </td>
           <td>
-            <button [routerLink]="['add-post']" [queryParams]="{'id':v._id,'user': v.userName}" class="add-post"><svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              [routerLink]="['add-post']"
+              [queryParams]="{ id: v._id, user: v.userName }"
+              class="add-post"
             >
-              <path
-                d="M1 0H17C17.5523 0 18 0.44772 18 1V17C18 17.5523 17.5523 18 17 18H1C0.44772 18 0 17.5523 0 17V1C0 0.44772 0.44772 0 1 0ZM2 2V16H16V2H2ZM8 8V4H10V8H14V10H10V14H8V10H4V8H8Z"
-                fill="white"
-              /></svg> Add Post</button>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 0H17C17.5523 0 18 0.44772 18 1V17C18 17.5523 17.5523 18 17 18H1C0.44772 18 0 17.5523 0 17V1C0 0.44772 0.44772 0 1 0ZM2 2V16H16V2H2ZM8 8V4H10V8H14V10H10V14H8V10H4V8H8Z"
+                  fill="white"
+                />
+              </svg>
+              Add Post
+            </button>
           </td>
           <!-- <td>
                 <button *ngIf="v.active !== true" (click)="changeActive(v._id,v.active)" class="active-btn"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
