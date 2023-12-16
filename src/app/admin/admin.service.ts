@@ -30,6 +30,12 @@ export class AdminService {
   demo_img_grp(img:any,id:any){
     return this.http.put(this.baseApi+'/v1/demo/image/group/'+id,img)
   }
+  demo_user_posts(id:any){
+    return this.http.get(this.baseApi+'/v1/demo/get/my/post?id='+id)
+  }
+  demo_stream_details(id:any){
+    return this.http.get(this.baseApi+'/v2/demostream/getStreamDetails/'+id)
+  }
   get_All_user(type:any,range:any,page:any,role:any){
     return this.http.get(this.baseURL+`getBuyers_And_Owners/`+type+`/${page}/${range}?role=${role}`)
   }

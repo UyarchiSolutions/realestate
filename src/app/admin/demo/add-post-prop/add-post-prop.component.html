@@ -55,6 +55,7 @@
       <p>Property Type :</p>
       <input
         type="text"
+        name="propertyType"
         formControlName="propertyType"
         [class.err]="submitted && myform.get('propertyType')?.invalid"
         placeholder="Enter Property Type"
@@ -63,18 +64,30 @@
     </div>
 
     <div>
-      <p>BHK / Building Type:</p>
+      <p>BHK or Building Type:</p>
       <input
         type="text"
+        name="bhkBuilding"
         [class.err]="submitted && myform.get('bhkBuilding')?.invalid"
-        placeholder="Enter BHK / Building Type"
+        placeholder="Enter BHK or Building Type "
         formControlName="bhkBuilding"
+      />
+    </div>
+    <div>
+      <p>Sqft:</p>
+      <input
+        type="text"
+        name="sqft"
+        [class.err]="submitted && myform.get('sqft')?.invalid"
+        placeholder="Enter sqft "
+        formControlName="sqft"
       />
     </div>
     <div>
       <p>Price Expectation:</p>
       <input
         type="number"
+        name="priceExp"
         [class.err]="submitted && myform.get('priceExp')?.invalid"
         placeholder="Enter Price Expectation"
         formControlName="priceExp"
@@ -84,6 +97,7 @@
       <p>Location:</p>
       <input
         type="text"
+        name="location"
         [class.err]="submitted && myform.get('location')?.invalid"
         placeholder="Enter location"
         formControlName="location"
@@ -93,6 +107,7 @@
       <p>Tenat Type:</p>
       <input
         type="text"
+        name="tenantType"
         [class.err]="submitted && myform.get('tenantType')?.invalid"
         placeholder="Enter Tenat Type"
         formControlName="tenantType"
@@ -102,6 +117,7 @@
       <p>Furnishing Status:</p>
       <input
         type="text"
+        name="furnitionStatus"
         [class.err]="submitted && myform.get('furnitionStatus')?.invalid"
         placeholder="Enter Furnishing Status"
         formControlName="furnitionStatus"
@@ -142,12 +158,15 @@
     </div>
     <div>
       <p>Description:</p>
-      <input
+      <textarea
         type="text"
+        name="Description"
         [class.err]="submitted && myform.get('Description')?.invalid"
         placeholder="Enter Description"
         formControlName="Description"
-      />
+      
+        cols="30"
+      ></textarea>
     </div>
 
 

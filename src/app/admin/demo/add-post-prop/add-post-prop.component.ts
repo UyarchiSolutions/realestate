@@ -33,6 +33,7 @@ export class AddPostPropComponent {
       furnitionStatus: new FormControl('', Validators.required),
       bhkBuilding:new FormControl('',Validators.required),
       Description: new FormControl('', Validators.required),
+      sqft: new FormControl('', Validators.required),
       finish : new FormControl(true),
     });
   }

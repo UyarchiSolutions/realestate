@@ -35,7 +35,14 @@
 .input-options label{
     white-space: nowrap;
 }
-.form div>select,.form div>input,textarea{
+textarea{
+  width: 35%;
+    background: none;
+    border: none;
+    height: 76px;
+    border-bottom: solid rgba(128, 128, 128, 0.345) 1px;
+}
+.form div>select,.form div>input{
     width: 60%;
     background: none;
     border: none;
@@ -144,7 +151,10 @@ border: none;
       outline: 0;
       box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     } */
-    
+    textarea:focus-visible{
+      border: none;
+      border-bottom: black solid 0.5px;
+    }
     .page-forms select:focus {
       color: #212529;
       background-color: #fff;
