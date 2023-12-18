@@ -208,7 +208,7 @@
         </tr>
 
         <tr *ngFor="let v of Alldata; index as i">
-          <td>{{ v.updatedAt | date : "short" }}</td>
+          <td>{{ v.updatedAt | date : "dd/MM/YYYY" }} - {{ v.updatedAt | date : "HH:mm a" }}</td>
           <td class="user-name" (click)="assignData(i, show)">
             {{ v.category }} > {{ v.postType }}
           </td>
@@ -233,12 +233,12 @@
             {{ v.linkstatus }}
           </td>
           <td class="buttons">
-            <button class="add-stream">Add Stream</button>
+            <button class="add-stream" (click)="addStream(v._id)">Add Stream</button>
           </td>
         </tr>
       </table>
 
-      <div class="pagenation-section">
+      <!-- <div class="pagenation-section">
         <div class="pagenation">
           <div
             class="prev"
@@ -285,7 +285,7 @@
             </svg>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -426,14 +426,15 @@
                 <h5>{{ data.furnitionStatus }}</h5>
               </td>
               <td>
-                <p>Tenat Type</p>
+                <p>Tenant Type</p>
                 <h5>{{ data.tenantType ? data.tenantType : "--" }}</h5>
               </td>
             </tr>
             <tr>
-              <td colspan="3" style="align-items: baseline; padding: 10px">
+              <td colspan="3" style="align-items: baseline; padding: 10px ;width: 780px;">
                 <h5>Description</h5>
-                <p>{{ data.Description }}</p>
+                <p style="word-wrap: break-word;
+                width: 750px;">{{ data.Description }}</p>
               </td>
             </tr>
           </table>
@@ -547,7 +548,7 @@
         </tr>
   <tr *ngIf="streamData.length == 0"><h3>No Stream Found</h3></tr>
   <ng-container  *ngIf="streamData" >
-        <tr *ngFor="let v of streamData; index as i">
+        <tr *ngFor="let v of streamData; index as i" [routerLink]="['stream-details']">
           <td>{{ v.streamName }}</td>
           <td>{{ v.createdDate | date : "short" }}</td>
           <td>{{ v.streamDate | date : "short" }}</td>
@@ -572,3 +573,4 @@
   
   </div>
 </div>
+

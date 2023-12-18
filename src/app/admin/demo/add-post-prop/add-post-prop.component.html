@@ -104,12 +104,12 @@
       />
     </div>
     <div *ngIf="Tenatshow">
-      <p>Tenat Type:</p>
+      <p>Tenant Type:</p>
       <input
         type="text"
         name="tenantType"
         [class.err]="submitted && myform.get('tenantType')?.invalid"
-        placeholder="Enter Tenat Type"
+        placeholder="Enter Tenant Type"
         formControlName="tenantType"
       />
     </div>

@@ -75,5 +75,10 @@ assignStream(id:any,show:HTMLButtonElement){
     show.click()
   })
 }
+  addStream(id:any){
+    this.service.demo_request_new_stream(id).subscribe((res:any)=>{
+      alert("Stream added successfully")
+    })
+  }
 
 }
