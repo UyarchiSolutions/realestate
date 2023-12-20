@@ -74,6 +74,7 @@
     </div>
 
     <div class="main-content-table">
+      <div class="table-back">
       <table>
         <tr class="tb-heading">
           <td>
@@ -234,10 +235,12 @@
           </td>
           <td class="buttons">
             <button class="add-stream" (click)="addStream(v._id)">Add Stream</button>
+            <button class="copy" (click)="copy_now_new(v._id)" [style.color]=" copy_success && v._id == chooseId ? 'white':''" >{{copy_success && v._id == chooseId ?'Copied' : 'Copy link' }}</button>
           </td>
         </tr>
       </table>
 
+</div>
       <!-- <div class="pagenation-section">
         <div class="pagenation">
           <div
@@ -396,7 +399,7 @@
             </tr>
             <tr class="line-3">
               <td>
-                <h5>Rent Expectation</h5>
+                <h5>Price Expectation</h5>
                 <p>{{ data.priceExp }}</p>
               </td>
               <td>
@@ -446,13 +449,12 @@
 
 <!-- Modal -->
 <div
-  class="modal fade"
+  class="modal"
   id="stream"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
+  
 >
   <div class="modal-dialog modal-xl">
+    <div class="modal-content">
     <div class="main-content-header">Streams</div>
     <div class="table-back">
       <table style="width: 100%">
@@ -549,7 +551,7 @@
   <tr *ngIf="streamData.length == 0"><h3>No Stream Found</h3></tr>
   <ng-container  *ngIf="streamData" >
         <tr *ngFor="let v of streamData; index as i" [routerLink]="['stream-details']">
-          <td>{{ v.streamName }}</td>
+          <td>Property Live {{i + 1}} </td>
           <td>{{ v.createdDate | date : "short" }}</td>
           <td>{{ v.streamDate | date : "short" }}</td>
   
@@ -570,7 +572,7 @@
   
       </table>
     </div>
-  
+    </div>
   </div>
 </div>
 

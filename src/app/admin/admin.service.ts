@@ -36,6 +36,12 @@ export class AdminService {
   demo_stream_details(id:any){
     return this.http.get(this.baseApi+'/v2/demostream/getStreamDetails/'+id)
   }
+  demo_request_new_stream(id:any){
+    let data ={
+      post:id
+    }
+    return this.http.post(this.baseApi+'/v2/demostream/one/more/time',data)
+  }
   get_All_user(type:any,range:any,page:any,role:any){
     return this.http.get(this.baseURL+`getBuyers_And_Owners/`+type+`/${page}/${range}?role=${role}`)
   }

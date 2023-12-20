@@ -2,7 +2,7 @@
 
 <div class="page-forms">
   <div class="title">
-    <h3 style="font-weight: 600">Add Demo Post</h3>
+    <h3 style="font-weight: 600">Add Source</h3>
     <sub> For {{ userName }}</sub>
   </div>
 
@@ -76,7 +76,7 @@
     <div>
       <p>Sqft:</p>
       <input
-        type="text"
+        type="number"
         name="sqft"
         [class.err]="submitted && myform.get('sqft')?.invalid"
         placeholder="Enter sqft "
@@ -127,7 +127,7 @@
 
     <div>
       <p>Upload Photo:</p>
-      <label for="img-upd"   [class.err]="submitted && imagePreview.length ==0" class="img-lab">Choose Image</label><sub>.jpg </sub>
+      <label for="img-upd"   [class.err]="submitted && imagePreview.length ==0" class="img-lab">Choose Image</label><sub>.jpg.png (Max 5 Image) </sub>
       <input
       [multiple]="5"
         #imginpt
@@ -155,6 +155,10 @@
           />
         </div>
       </div>
+    </div>
+    <div>
+      <p></p>
+      <p *ngIf="errmsg" style="color: red;">{{errmsg}}</p>
     </div>
     <div>
       <p>Description:</p>

@@ -28,6 +28,7 @@ import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.compone
 import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
+import { StreamDetailsComponent } from './demo/stream-details/stream-details.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/mana
     AddDemoUserComponent,
     AddPostComponent,
     AddPostPropComponent,
-    ManageDemoUserPostsComponent
+    ManageDemoUserPostsComponent,
+    StreamDetailsComponent
 
   ],
   imports: [

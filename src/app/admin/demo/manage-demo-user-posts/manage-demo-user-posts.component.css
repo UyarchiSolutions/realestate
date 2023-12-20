@@ -1,4 +1,4 @@
-.buttons span{
+.buttons {
     display: flex;
     max-width: fit-content;
     align-items: center;
@@ -6,10 +6,19 @@
 .buttons span button:nth-child(2){
  margin-left: 10px;
 }
+.copy{
+  background-color: #55e055;
+  /* color: white; */
+  font-weight: 500;
+  border-radius: 10px;
+  margin-left: 10px;
+}
 table tr td{
  max-width: fit-content !important;
 }
 .tb-heading{
+  position: sticky;
+  top: 0;
     background-color: rgba(222, 228, 240, 1) !important;
 }
 .tb-heading td{
@@ -235,7 +244,10 @@ width: 100%;
         border-radius: 10px;
     }
     .table-back{
-      min-height: 310px;
+      height: 510px;
       background-color: var(--bgligthBlue);
-      height: auto;
+      overflow: scroll;
     }
+    ::-webkit-scrollbar {
+      display: none;
+  }

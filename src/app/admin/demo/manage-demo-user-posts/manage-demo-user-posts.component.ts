@@ -66,6 +66,16 @@ copy_now() {
     this.copy_success = false;
   }, 2000);
 }
+chooseId:any
+copy_now_new(id:any) {
+  this.copy_success = true;
+  this.chooseId = id
+  navigator.clipboard.writeText('https://seller.indiapropertyexpo.live/stream/' + id);
+
+  setTimeout(() => {
+    this.copy_success = false;
+  }, 2000);
+}
 streamData:any=[]
 assignStream(id:any,show:HTMLButtonElement){
   console.log(id)
@@ -78,6 +88,7 @@ assignStream(id:any,show:HTMLButtonElement){
   addStream(id:any){
     this.service.demo_request_new_stream(id).subscribe((res:any)=>{
       alert("Stream added successfully")
+      this.get_details(this.id)
     })
   }
 

@@ -22,36 +22,49 @@ import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/mana
 
 const routes: Routes = [
   { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
-      { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
-      { path: 'manage-post', component: ManagePostComponent },
-      { path: 'manage-demo-post', children:[
-        { path: '', component: ManageDemoPostComponent },
-        {path:'add-user',component:AddDemoUserComponent},
-        {path:'add-post',component:AddPostComponent},
-        {path:'property',component:AddPostPropComponent},
-        {path:'manage-property',component:ManageDemoUserPostsComponent},
-        
-      
-      ]  },
-      { path: 'stream-approval',children:[
-        {path:'',component: StreamApprovalComponent },
-        {path:'stream-view',component:ResidentialRentStreamComponent},
-      ] },
-      { path: 'manage-plan', children:[
-        {path:'', component: ManagePlanComponent},
-        {path:'add-plan', component: AddPlanComponent},
-      ]  },
-      { path: 'manage-faq', component: ManageFaqComponent },
-      { path: 'manage-enquiry', component: ManageEnquiryComponent },
-      { path: 'reported-posts', component: ReportedPostComponent },
-      { path: 'residential-rent', component: ResidentialRentComponent },
-      { path: 'residential-sale', component: ResidentialSaleComponent },
-      { path: 'commercial-rent', component: CommercialRentComponent },
-      { path: 'commercial-sale', component: CommercialSaleComponent },
+  { path: 'manage-buyer-tenant', component: ManageBuyerTenantComponent },
+  { path: 'manage-post', component: ManagePostComponent },
+  {
+    path: 'manage-demo-post',
+    children: [
+      { path: '', component: ManageDemoPostComponent },
+      { path: 'add-user', component: AddDemoUserComponent },
+      { path: 'add-post', component: AddPostComponent },
+      { path: 'property', component: AddPostPropComponent },
+      {
+        path: 'manage-property',
+        children: [
+          { path: '', component: ManageDemoUserPostsComponent },
+          {path:'stream-details',component:StreamApprovalComponent}
+        ],
+      },
+    ],
+  },
+  {
+    path: 'stream-approval',
+    children: [
+      { path: '', component: StreamApprovalComponent },
+      { path: 'stream-view', component: ResidentialRentStreamComponent },
+    ],
+  },
+  {
+    path: 'manage-plan',
+    children: [
+      { path: '', component: ManagePlanComponent },
+      { path: 'add-plan', component: AddPlanComponent },
+    ],
+  },
+  { path: 'manage-faq', component: ManageFaqComponent },
+  { path: 'manage-enquiry', component: ManageEnquiryComponent },
+  { path: 'reported-posts', component: ReportedPostComponent },
+  { path: 'residential-rent', component: ResidentialRentComponent },
+  { path: 'residential-sale', component: ResidentialSaleComponent },
+  { path: 'commercial-rent', component: CommercialRentComponent },
+  { path: 'commercial-sale', component: CommercialSaleComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingRoutingModule { }
+export class AdminRoutingRoutingModule {}
