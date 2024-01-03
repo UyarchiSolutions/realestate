@@ -35,10 +35,10 @@
    </div>
     </div>
     <div class="negotiable">
-        <input type="checkbox" formControlName="ExpectedpricetNegotiable"  [value]="true"><label>Negotiable</label>
+        <input type="checkbox" formControlName="ExpectedpricetNegotiable" id="ExpectedpricetNegotiable"  [value]="true"><label for="ExpectedpricetNegotiable">Negotiable</label>
     
     
-        <input type="checkbox" formControlName="CurrentlyInLoan" [value]="true" ><label>Currently In Loan</label>
+        <input type="checkbox" formControlName="CurrentlyInLoan" id="CurrentlyInLoan" [value]="true" ><label for="CurrentlyInLoan">Currently In Loan</label>
     </div>
     <p class="redtext" *ngIf="priceform.get('MonthlyRentFrom').errors?.required&& submitted">Expected Price is required!</p>
  

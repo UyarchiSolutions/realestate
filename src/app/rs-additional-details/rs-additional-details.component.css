@@ -75,8 +75,9 @@ justify-content: space-between;
 }
 
 label{
-    width: 25% !important;
+    /* width: 25% !important; */
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .form  select,input{
@@ -135,9 +136,9 @@ label{
 margin: 10px 0 !important;
     display: flex;
 }
-.questions div label{
+/* .questions div label{
     width: 50% !important;
-}
+} */
 .answer-select{
     width: 50% !important;
 

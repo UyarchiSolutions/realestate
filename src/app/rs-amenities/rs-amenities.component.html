@@ -1,404 +1,739 @@
 <header-with-profile></header-with-profile>
 <div class="container">
-
-
-
-    <div class="sidebar">
-      <seller-admin-sidebar></seller-admin-sidebar>
-    </div>
-    <div class="main">
- 
-        <nav>
-            <p class="navbar-links" (click)="back(0)">Property details</p>
-            <p class="navbar-links " (click)="back(1)">Location Details</p>
-            <p class="navbar-links" (click)="back(2)">Price Details</p>
-            <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
-            <p class="navbar-links" (click)="back(4)">Gallery</p>
-            <p class="navbar-links" (click)="back(5)">Additional Details </p>
-        </nav>
-
-
-
-<div class="Location-details">
-    <h2>Amenities</h2>
-
-
-
-
-    <div class="form">
-       
-        <div>
-            <label>Power Backup :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="pb" *ngIf="pb" ></p>
-            <p [innerText]="data.powerBackup" *ngIf="!pb && data.powerBackup"></p>
-            <p *ngIf="!pb && !data.powerBackup" style="opacity: 0.5;">Power Backup </p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="powerbv('Full')" >Full</a></li>
-              <li><a class="dropdown-item" (click)="powerbv('Partial')">Partial</a></li>
-              <li><a class="dropdown-item" (click)="powerbv('None')">None</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" pb == null && submited">Select Power Backup Type</p>
-        <div>
-            <label>Furnishing Status :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="fsv" *ngIf="fsv" ></p>
-            <p [innerText]="data.furnishingStatus" *ngIf="!fsv && data.furnishingStatus"></p>
-            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5;">Furnishing Status</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="furstav('Fully Furnished')" >Fully Furnished</a></li>
-              <li><a class="dropdown-item" (click)="furstav('Semi Furnished')">Semi Furnished</a></li>
-              <li><a class="dropdown-item" (click)="furstav('UnFurnished')">UnFurnished</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" fsv == null && submited">Select Furnishing Status Type</p>
-        <div>
-            <label>Water Supply :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="wsv" *ngIf="wsv" ></p>
-            <p [innerText]="data.waterSupply" *ngIf="!wsv && data.waterSupply"></p>
-            <p *ngIf="!wsv  && !data.waterSupply" style="opacity: 0.5;">Water Supply</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="wassupv('Bore well')" >Bore well</a></li>
-              <li><a class="dropdown-item" (click)="wassupv('Corporation')">Corporation</a></li>
-              <li><a class="dropdown-item" (click)="wassupv('Both')">Both</a></li>
-            </ul>
-          </div>
-        </div>
-        <p class="redtext"  *ngIf=" wsv == null && submited">Select Water Supply Type</p>
-        
-        <div>
-            <label>Bathroom :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="brv" *ngIf="brv" ></p>
-            <p [innerText]="data.bathRoomCount" *ngIf="!brv && data.bathRoomCount "></p> 
-            <p *ngIf="!brv && !data.bathRoomCount " style="opacity: 0.5;">No of Bathroom</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="bathrv('1 Bathroom',1)" >1 Bathroom</a></li>
-              <li><a class="dropdown-item" (click)="bathrv('2 Bathroom',2)" >2 Bathroom</a></li>
-              <li><a class="dropdown-item" (click)="bathrv('3 Bathroom',3)" >3 Bathroom</a></li>
-              <li><a class="dropdown-item" (click)="bathrv('4 Bathroom',4)" >4 Bathroom</a></li>
-              <li><a class="dropdown-item" (click)="bathrv('5+ Bathroom',5)" >5+ Bathroom</a></li>
-             
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" brv == null && submited">Select Bathroom Count</p> 
-        <div>
-            <label>Bathroom Type :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="btv" *ngIf="btv" ></p> 
-            <p [innerText]="data.bathRoomType"  *ngIf="!btv && data.bathRoomType "></p> 
-            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5;">Bathroom Type</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="bathTv('Attached')" >Attached</a></li>
-              <li><a class="dropdown-item" (click)="bathTv('Common')">Common</a></li>
-              <li><a class="dropdown-item" (click)="bathTv('Both')">Both</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" btv == null && submited">Select Bathroom Type</p> 
-        <div>
-            <label>Toilet Type :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="ttv" *ngIf="ttv" ></p> 
-            <p [innerHTML]="data.toiletType" *ngIf="!ttv && data.toiletType"></p>
-            <p *ngIf="!ttv && !data.toiletType" style="opacity: 0.5;">Toilet Type</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="toilTv('Indian')" >Indian</a></li>
-              <li><a class="dropdown-item" (click)="toilTv('Western')">Western</a></li>
-              <li><a class="dropdown-item" (click)="toilTv('Both')">Both</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" ttv == null && submited">Select Toilet Type</p> 
-        <div>
-            <label>Balconies :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="bv" *ngIf="bv" ></p>
-            <p [innerHTML]="data.balconyCount" *ngIf="!bv && data.balconyCount"></p>
-            <p *ngIf="!bv && !data.balconyCount" style="opacity: 0.5;">Balconies</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="balTv('None')" >None</a></li>
-              <li><a class="dropdown-item" (click)="balTv('1 Balcony')" >1 Balcony</a></li>
-              <li><a class="dropdown-item" (click)="balTv('2 Balcony')" >2 Balcony</a></li>
-              <li><a class="dropdown-item" (click)="balTv('3 Balcony')" >3 Balcony</a></li>
-              <li><a class="dropdown-item" (click)="balTv('4 Balcony')" >4 Balcony</a></li>
-              <li><a class="dropdown-item" (click)="balTv('5+ Balcony')" >5+ Balcony</a></li>
-            
-            </ul>
-          </div>
-        </div>
-
-        <p class="redtext"  *ngIf=" bv == null && submited">Select Balcony Count</p> 
-       
-        <div class="non-veg-allowed gated-security">
-            <label>Gated Security:<span class="red">*</span></label>
-            <div>
-                <div>
-                    <input type="radio" name="gs" (click)="gsallowed('yes')" [checked]="data.gate_Security == 'yes'">
-                    <label for="">Yes</label>
-                </div>
-                <div>
-                    <input type="radio" name="gs" (click)="gsallowed('no')" [checked]="data.gate_Security == 'no'">
-                    <label for="">No</label>
-                </div>
-            </div>
-        </div>
-        <p class="redtext"  *ngIf=" gs == null && submited">Select Gated Security</p> 
-       
-        <div>
-            <label>Kitchen Type :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="kitty" *ngIf="kitty" ></p>
-            <p [innerText]="data.kitchenType" *ngIf="!kitty && data.kitchenType"></p>
-             <p *ngIf="!kitty && !data.kitchenType" style="opacity: 0.5;">Kitchen Type</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="kitchenType('Modular')" >Modular</a></li>
-              <li><a class="dropdown-item" (click)="kitchenType('Covered')" >Covered</a></li>
-              <li><a class="dropdown-item" (click)="kitchenType('Open Shelves')" >Open Shelves</a></li>
-             
-           
-            </ul>
-          </div>
-        </div>
-        <p class="redtext"  *ngIf=" kitty == null && submited">Select Kitchen Type</p> 
-        <div>
-            <label>Parking :<span class="red">*</span></label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        
-            <p [innerHTML]="pv" *ngIf="pv" ></p>
-            <p [innerText]="data.parkingFacilities" *ngIf="!pv && data.parkingFacilities"></p>
-             <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5;">Parking</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="parkTv('Car')" >Car</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('Bike')" >Bike</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('Both')" >Both</a></li>
-              <li><a class="dropdown-item" (click)="parkTv('None')" >None</a></li>
-           
-            </ul>
-          </div>
-        </div>
-        <p class="redtext"  *ngIf=" pv == null && submited">Select Parking Type</p> 
-
-  <div class="flooring-type-section">
-    <label>
-        Floooring Type :
-    </label>
-    <div class="flooring-type">
-        
-        <div >
-            <label>Kitchen :</label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
-        
-            <p [innerHTML]="kv" *ngIf="kv" ></p>
-            <p [innerText]="data.kitchen" *ngIf="!kv && data.kitchen"></p>
-            <p *ngIf="!kv && !data.kitchen" style="opacity: 0.5;">Select</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="floor('Virtrified Tiles')" >Virtrified Tiles</a></li>
-              <li><a class="dropdown-item" (click)="floor('Mosaic')" >Mosaic</a></li>
-              <li><a class="dropdown-item" (click)="floor('Marble/Granite')" >Marble/Granite</a></li>
-              <li><a class="dropdown-item" (click)="floor('Wooden')" >Wooden</a></li>
-              <li><a class="dropdown-item" (click)="floor('Cement')" >Cement</a></li>
-           
-           
-            </ul>
-          </div>
-        </div>
-      
-        <div >
-            <label>Hall Floor :</label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
-        
-            <p [innerHTML]="hfv" *ngIf="hfv" ></p> 
-            <p [innerText]="data.hall_FLoor" *ngIf=" !hfv && data.hall_FLoor"></p>
-            <p *ngIf="!hfv && !data.hall_FLoor" style="opacity: 0.5;">Select</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="floor1('Virtrified Tiles')" >Virtrified Tiles</a></li>
-              <li><a class="dropdown-item" (click)="floor1('Mosaic')" >Mosaic</a></li>
-              <li><a class="dropdown-item" (click)="floor1('Marble/Granite')" >Marble/Granite</a></li>
-              <li><a class="dropdown-item" (click)="floor1('Wooden')" >Wooden</a></li>
-              <li><a class="dropdown-item" (click)="floor1('Cement')" >Cement</a></li>
-        
-           
-           
-            </ul>
-          </div>
-        </div>
-        <div >
-            <label>Bedroom :</label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
-        
-            <p [innerHTML]="bev" *ngIf="bev" ></p> 
-            <p [innerText]="data.bedRoom" *ngIf="!bev  && data.bedRoom"></p>
-            <p *ngIf="!bev && !data.bedRoom" style="opacity: 0.5;">Select</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="floor2('Virtrified Tiles')" >Virtrified Tiles</a></li>
-              <li><a class="dropdown-item" (click)="floor2('Mosaic')" >Mosaic</a></li>
-              <li><a class="dropdown-item" (click)="floor2('Marble/Granite')" >Marble/Granite</a></li>
-              <li><a class="dropdown-item" (click)="floor2('Wooden')" >Wooden</a></li>
-              <li><a class="dropdown-item" (click)="floor2('Cement')" >Cement</a></li>
-           
-           
-           
-            </ul>
-          </div>
-        </div>
-      
-        <div >
-            <label>Bathroom :</label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
-        
-            <p [innerHTML]="barv" *ngIf="barv" ></p>
-            <p [innerHTML]="data.bathRoom" *ngIf="!barv && data.bathRoom"></p>
-             <p *ngIf="!barv && !data.bathRoom" style="opacity: 0.5;">Select</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="floor3('Virtrified Tiles')" >Virtrified Tiles</a></li>
-              <li><a class="dropdown-item" (click)="floor3('Mosaic')" >Mosaic</a></li>
-              <li><a class="dropdown-item" (click)="floor3('Marble/Granite')" >Marble/Granite</a></li>
-              <li><a class="dropdown-item" (click)="floor3('Wooden')" >Wooden</a></li>
-              <li><a class="dropdown-item" (click)="floor3('Cement')" >Cement</a></li>
-           
-           
-            </ul>
-          </div>
-        </div>
-       
-        <div *ngIf="!(bv == 'None' || bv==null)">
-            <label>Balcony :</label>
-       
-          <div class="dropdown select-field"  type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important;">
-        
-            <p [innerHTML]="balv" *ngIf="balv" ></p>
-            <p [innerHTML]="data.balCony" *ngIf="!balv && data.balCony"></p>
-            <p *ngIf="!balv && !data.balCony " style="opacity: 0.5;">Select</p>
-          
-            <ul class="dropdown-menu select-filed-options" >
-    
-              <li><a class="dropdown-item" (click)="floor4('Virtrified Tiles')" >Virtrified Tiles</a></li>
-              <li><a class="dropdown-item" (click)="floor4('Mosaic')" >Mosaic</a></li>
-              <li><a class="dropdown-item" (click)="floor4('Marble/Granite')" >Marble/Granite</a></li>
-              <li><a class="dropdown-item" (click)="floor4('Wooden')" >Wooden</a></li>
-              <li><a class="dropdown-item" (click)="floor4('Cement')" >Cement</a></li>
-              
-           
-           
-            </ul>
-          </div>
-        </div>
-    </div>
-  </div> 
-
-  <div >
-    <label>Amenities :</label>
-    <div style="width: 50%; flex-direction: column;margin: 0 !important;">
- <input type="text" value="Choose amenities" readonly="readonly" style="cursor: pointer;width: 100%;" (click)="show(1)">
- <div class="selected-amenities"  *ngIf="showami"  >
-
-<p *ngFor="let amt of amenities" >{{amt}}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path (click)="deleteAmit(amt)" fill-rule="evenodd" clip-rule="evenodd" d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z" fill="#616161"/>
-    </svg>
-    </p>
+  <div class="sidebar">
+    <seller-admin-sidebar></seller-admin-sidebar>
   </div>
-    
-</div>
-</div>
+  <div class="main">
+    <nav>
+      <p class="navbar-links" (click)="back(0)">Property details</p>
+      <p class="navbar-links" (click)="back(1)">Location Details</p>
+      <p class="navbar-links" (click)="back(2)">Price Details</p>
+      <p class="navbar-links nav-active" (click)="back(3)">Amenities</p>
+      <p class="navbar-links" (click)="back(4)">Gallery</p>
+      <p class="navbar-links" (click)="back(5)">Additional Details</p>
+    </nav>
 
+    <div class="Location-details">
+      <h2>Amenities</h2>
 
-<div class="save-continue">
-    <button type="submit" (click)="submit()" *ngIf="!data.final">Save & Continue</button>
-</div>
+      <div class="form">
+        <div>
+          <label>Power Backup :<span class="red">*</span></label>
 
-<div class="save-continue">
-    <button type="button" (click)="routetopreview()"  *ngIf="data.final">Save </button>
-</div>
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="pb" *ngIf="pb"></p>
+            <p
+              [innerText]="data.powerBackup"
+              *ngIf="!pb && data.powerBackup"
+            ></p>
+            <p *ngIf="!pb && !data.powerBackup" style="opacity: 0.5">
+              Power Backup
+            </p>
 
-</div>
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="powerbv('Full')">Full</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="powerbv('Partial')"
+                  >Partial</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="powerbv('None')">None</a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-</div>
-    
+        <p class="redtext" *ngIf="pb == null && submited">
+          Select Power Backup Type
+        </p>
+        <div>
+          <label>Furnishing Status :<span class="red">*</span></label>
 
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="fsv" *ngIf="fsv"></p>
+            <p
+              [innerText]="data.furnishingStatus"
+              *ngIf="!fsv && data.furnishingStatus"
+            ></p>
+            <p *ngIf="!fsv && !data.furnishingStatus" style="opacity: 0.5">
+              Furnishing Status
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="furstav('Fully Furnished')"
+                  >Fully Furnished</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="furstav('Semi Furnished')"
+                  >Semi Furnished</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="furstav('UnFurnished')"
+                  >UnFurnished</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="redtext" *ngIf="fsv == null && submited">
+          Select Furnishing Status Type
+        </p>
+        <div>
+          <label>Water Supply :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="wsv" *ngIf="wsv"></p>
+            <p
+              [innerText]="data.waterSupply"
+              *ngIf="!wsv && data.waterSupply"
+            ></p>
+            <p *ngIf="!wsv && !data.waterSupply" style="opacity: 0.5">
+              Water Supply
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="wassupv('Bore well')"
+                  >Bore well</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="wassupv('Corporation')"
+                  >Corporation</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="wassupv('Both')">Both</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="redtext" *ngIf="wsv == null && submited">
+          Select Water Supply Type
+        </p>
+
+        <div>
+          <label>Bathroom :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="brv" *ngIf="brv"></p>
+            <p
+              [innerText]="data.bathRoomCount"
+              *ngIf="!brv && data.bathRoomCount"
+            ></p>
+            <p *ngIf="!brv && !data.bathRoomCount" style="opacity: 0.5">
+              No of Bathroom
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="bathrv('1 Bathroom', 1)"
+                  >1 Bathroom</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathrv('2 Bathroom', 2)"
+                  >2 Bathroom</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathrv('3 Bathroom', 3)"
+                  >3 Bathroom</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathrv('4 Bathroom', 4)"
+                  >4 Bathroom</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathrv('5+ Bathroom', 5)"
+                  >5+ Bathroom</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="redtext" *ngIf="brv == null && submited">
+          Select Bathroom Count
+        </p>
+        <div>
+          <label>Bathroom Type :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="btv" *ngIf="btv"></p>
+            <p
+              [innerText]="data.bathRoomType"
+              *ngIf="!btv && data.bathRoomType"
+            ></p>
+            <p *ngIf="!btv && !data.bathRoomType" style="opacity: 0.5">
+              Bathroom Type
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="bathTv('Attached')"
+                  >Attached</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathTv('Common')">Common</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="bathTv('Both')">Both</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="redtext" *ngIf="btv == null && submited">
+          Select Bathroom Type
+        </p>
+        <div>
+          <label>Toilet Type :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="ttv" *ngIf="ttv"></p>
+            <p
+              [innerHTML]="data.toiletType"
+              *ngIf="!ttv && data.toiletType"
+            ></p>
+            <p *ngIf="!ttv && !data.toiletType" style="opacity: 0.5">
+              Toilet Type
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="toilTv('Indian')">Indian</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="toilTv('Western')">Western</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="toilTv('Both')">Both</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="redtext" *ngIf="ttv == null && submited">
+          Select Toilet Type
+        </p>
+        <div>
+          <label>Balconies :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="bv" *ngIf="bv"></p>
+            <p
+              [innerHTML]="data.balconyCount"
+              *ngIf="!bv && data.balconyCount"
+            ></p>
+            <p *ngIf="!bv && !data.balconyCount" style="opacity: 0.5">
+              Balconies
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li><a class="dropdown-item" (click)="balTv('None')">None</a></li>
+              <li>
+                <a class="dropdown-item" (click)="balTv('1 Balcony')"
+                  >1 Balcony</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="balTv('2 Balcony')"
+                  >2 Balcony</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="balTv('3 Balcony')"
+                  >3 Balcony</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="balTv('4 Balcony')"
+                  >4 Balcony</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="balTv('5+ Balcony')"
+                  >5+ Balcony</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="redtext" *ngIf="bv == null && submited">
+          Select Balcony Count
+        </p>
+
+        <div class="non-veg-allowed gated-security">
+          <label>Gated Security:<span class="red">*</span></label>
+          <div>
+            <div>
+              <input
+                type="radio"
+                name="gs"
+                (click)="gsallowed('yes')"
+                [checked]="data.gate_Security == 'yes'"
+                id="Gated-Security-yes"
+              />
+              <label for="Gated-Security-yes">Yes</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="gs"
+                (click)="gsallowed('no')"
+                [checked]="data.gate_Security == 'no'"
+                id="Gated-Security-no"
+              />
+              <label for="Gated-Security-no">No</label>
+            </div>
+          </div>
+        </div>
+        <p class="redtext" *ngIf="gs == null && submited">
+          Select Gated Security
+        </p>
+
+        <div>
+          <label>Kitchen Type :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="kitty" *ngIf="kitty"></p>
+            <p
+              [innerText]="data.kitchenType"
+              *ngIf="!kitty && data.kitchenType"
+            ></p>
+            <p *ngIf="!kitty && !data.kitchenType" style="opacity: 0.5">
+              Kitchen Type
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li>
+                <a class="dropdown-item" (click)="kitchenType('Modular')"
+                  >Modular</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="kitchenType('Covered')"
+                  >Covered</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="kitchenType('Open Shelves')"
+                  >Open Shelves</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="redtext" *ngIf="kitty == null && submited">
+          Select Kitchen Type
+        </p>
+        <div>
+          <label>Parking :<span class="red">*</span></label>
+
+          <div
+            class="dropdown select-field"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <p [innerHTML]="pv" *ngIf="pv"></p>
+            <p
+              [innerText]="data.parkingFacilities"
+              *ngIf="!pv && data.parkingFacilities"
+            ></p>
+            <p *ngIf="!pv && !data.parkingFacilities" style="opacity: 0.5">
+              Parking
+            </p>
+
+            <ul class="dropdown-menu select-filed-options">
+              <li><a class="dropdown-item" (click)="parkTv('Car')">Car</a></li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('Bike')">Bike</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('Both')">Both</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="parkTv('None')">None</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="redtext" *ngIf="pv == null && submited">
+          Select Parking Type
+        </p>
+
+        <div class="flooring-type-section">
+          <label> Floooring Type : </label>
+          <div class="flooring-type">
+            <div>
+              <label>Kitchen :</label>
+
+              <div
+                class="dropdown select-field"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 100% !important"
+              >
+                <p [innerHTML]="kv" *ngIf="kv"></p>
+                <p [innerText]="data.kitchen" *ngIf="!kv && data.kitchen"></p>
+                <p *ngIf="!kv && !data.kitchen" style="opacity: 0.5">Select</p>
+
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a class="dropdown-item" (click)="floor('Virtrified Tiles')"
+                      >Virtrified Tiles</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor('Mosaic')"
+                      >Mosaic</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor('Marble/Granite')"
+                      >Marble/Granite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor('Wooden')"
+                      >Wooden</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor('Cement')"
+                      >Cement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <label>Hall Floor :</label>
+
+              <div
+                class="dropdown select-field"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 100% !important"
+              >
+                <p [innerHTML]="hfv" *ngIf="hfv"></p>
+                <p
+                  [innerText]="data.hall_FLoor"
+                  *ngIf="!hfv && data.hall_FLoor"
+                ></p>
+                <p *ngIf="!hfv && !data.hall_FLoor" style="opacity: 0.5">
+                  Select
+                </p>
+
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="floor1('Virtrified Tiles')"
+                      >Virtrified Tiles</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor1('Mosaic')"
+                      >Mosaic</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor1('Marble/Granite')"
+                      >Marble/Granite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor1('Wooden')"
+                      >Wooden</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor1('Cement')"
+                      >Cement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <label>Bedroom :</label>
+
+              <div
+                class="dropdown select-field"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 100% !important"
+              >
+                <p [innerHTML]="bev" *ngIf="bev"></p>
+                <p [innerText]="data.bedRoom" *ngIf="!bev && data.bedRoom"></p>
+                <p *ngIf="!bev && !data.bedRoom" style="opacity: 0.5">Select</p>
+
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="floor2('Virtrified Tiles')"
+                      >Virtrified Tiles</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor2('Mosaic')"
+                      >Mosaic</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor2('Marble/Granite')"
+                      >Marble/Granite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor2('Wooden')"
+                      >Wooden</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor2('Cement')"
+                      >Cement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <label>Bathroom :</label>
+
+              <div
+                class="dropdown select-field"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 100% !important"
+              >
+                <p [innerHTML]="barv" *ngIf="barv"></p>
+                <p
+                  [innerHTML]="data.bathRoom"
+                  *ngIf="!barv && data.bathRoom"
+                ></p>
+                <p *ngIf="!barv && !data.bathRoom" style="opacity: 0.5">
+                  Select
+                </p>
+
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="floor3('Virtrified Tiles')"
+                      >Virtrified Tiles</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor3('Mosaic')"
+                      >Mosaic</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor3('Marble/Granite')"
+                      >Marble/Granite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor3('Wooden')"
+                      >Wooden</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor3('Cement')"
+                      >Cement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div *ngIf="!(bv == 'None' || bv == null)">
+              <label>Balcony :</label>
+
+              <div
+                class="dropdown select-field"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width: 100% !important"
+              >
+                <p [innerHTML]="balv" *ngIf="balv"></p>
+                <p [innerHTML]="data.balCony" *ngIf="!balv && data.balCony"></p>
+                <p *ngIf="!balv && !data.balCony" style="opacity: 0.5">
+                  Select
+                </p>
+
+                <ul class="dropdown-menu select-filed-options">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="floor4('Virtrified Tiles')"
+                      >Virtrified Tiles</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor4('Mosaic')"
+                      >Mosaic</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor4('Marble/Granite')"
+                      >Marble/Granite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor4('Wooden')"
+                      >Wooden</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="floor4('Cement')"
+                      >Cement</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label>Amenities :</label>
+          <div style="width: 50%; flex-direction: column; margin: 0 !important">
+            <input
+              type="text"
+              value="Choose amenities"
+              readonly="readonly"
+              style="cursor: pointer; width: 100%"
+              (click)="show(1)"
+            />
+            <div class="selected-amenities" *ngIf="showami">
+              <p *ngFor="let amt of amenities">
+                {{ amt
+                }}<svg  (click)="deleteAmit(amt)"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                   
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.0024 2.99952C11.5539 2.44643 11.5526 1.551 10.9995 0.999521C10.4464 0.448045 9.551 0.449353 8.99952 1.00244L6.00732 4.00341L3.00196 0.998045C2.44967 0.44576 1.55424 0.44576 1.00196 0.998045C0.44967 1.55033 0.449668 2.44576 1.00195 2.99805L4.01024 6.00633L1.01122 9.01414C0.459741 9.56723 0.46105 10.4627 1.01414 11.0141C1.56723 11.5656 2.46266 11.5643 3.01414 11.0112L6.01024 8.00634L9.00196 10.998C9.55424 11.5503 10.4497 11.5503 11.002 10.998C11.5542 10.4458 11.5542 9.55033 11.002 8.99805L8.00732 6.00341L11.0024 2.99952Z"
+                    fill="#616161"
+                  />
+                </svg>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="save-continue">
+          <button type="submit" (click)="submit()" *ngIf="!data.final">
+            Save & Continue
+          </button>
+        </div>
+
+        <div class="save-continue">
+          <button type="button" (click)="routetopreview()" *ngIf="data.final">
+            Save
+          </button>
+        </div>
+      </div>
     </div>
-    
+  </div>
 
-    
-    <div class="ad"></div>
-    
-    
-    </div>
-
-
-    <!-- amenities popup -->
-   <div   class="popup" *ngIf="showModal===1">
-<div class="dummy" (click)="close()">
+  <div class="ad"></div>
 </div>
-<div class="popup-container rr-con">
+
+<!-- amenities popup -->
+<div class="popup" *ngIf="showModal === 1">
+  <div class="dummy" (click)="close()"></div>
+  <div class="popup-container rr-con">
     <p>Amenities</p>
     <div *ngFor="let item of Amenities; index as i">
-<span><input type="checkbox"   (change)="updateAmit($event)" value="{{item}}"  [checked]="is_chckked(item)" ><p>{{item}}</p></span>
+      <span>
+        <label for="{{ item }}" class="multi-check-box">
+          <input
+            type="checkbox"
+            (change)="updateAmit($event)"
+            value="{{ item }}"
+            [checked]="is_chckked(item)"
+            id="{{ item }}"
+          />
+          {{ item }}
+        </label></span
+      >
     </div>
-    
-<div class="save-btn">
-    <button (click)="close()">Save</button>
+
+    <div class="save-btn">
+      <button (click)="close()">Save</button>
+    </div>
+  </div>
 </div>
 
-</div>
-
-    </div>
-
-    <seller-footer></seller-footer>
+<seller-footer></seller-footer>

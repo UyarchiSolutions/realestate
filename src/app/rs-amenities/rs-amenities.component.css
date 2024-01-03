@@ -75,8 +75,9 @@ justify-content: space-between;
 }
 
 label{
-    width: 25% !important;
+    /* width: 25% !important; */
     margin-top: 10px;
+    cursor: pointer;
 }
 .negotiable label{
     margin-top: 0 !important;
@@ -313,4 +314,11 @@ z-index: 5;
     font-size: 0.8rem;
     padding: 0;
     margin-left: 435px;
+}
+.multi-check-box{
+    display: flex;
+    align-items: center;
+}
+.multi-check-box input{
+    margin-right: 5px;
 }
