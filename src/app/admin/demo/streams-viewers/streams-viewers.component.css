@@ -1,0 +1,14 @@
+.property-type {
+  display: flex;
+}
+.main-content-header {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 13px;
+}
+.tb-heading {
+  background-color: #dee4f0 !important;
+  color: #394867 !important;
+  border-bottom: none !important;
+  font-weight: bold;
+}

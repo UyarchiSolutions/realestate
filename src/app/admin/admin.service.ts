@@ -156,6 +156,12 @@ export class AdminService {
     );
   }
 
+  getStreamVIewer(id: any) {
+    return this.http.get(
+      this.baseApi + '/v2/demostream/getViewAndIntrestedUsersByStream/' + id
+    );
+  }
+
   calculateDistance(
     lat1: number,
     lon1: number,

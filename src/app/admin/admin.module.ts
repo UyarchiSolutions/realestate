@@ -29,7 +29,7 @@ import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
 import { StreamDetailsComponent } from './demo/stream-details/stream-details.component';
-
+import { StreamsViewersComponent } from './demo/streams-viewers/streams-viewers.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +55,8 @@ import { StreamDetailsComponent } from './demo/stream-details/stream-details.com
     AddPostComponent,
     AddPostPropComponent,
     ManageDemoUserPostsComponent,
-    StreamDetailsComponent
-
+    StreamDetailsComponent,
+    StreamsViewersComponent,
   ],
   imports: [
     AdminRoutingRoutingModule,
@@ -69,7 +69,6 @@ import { StreamDetailsComponent } from './demo/stream-details/stream-details.com
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
     }),
-    
-  ]
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

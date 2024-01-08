@@ -19,6 +19,7 @@ import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.compone
 import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
+import { StreamsViewersComponent } from './demo/streams-viewers/streams-viewers.component';
 
 const routes: Routes = [
   { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
@@ -35,7 +36,11 @@ const routes: Routes = [
         path: 'manage-property',
         children: [
           { path: '', component: ManageDemoUserPostsComponent },
-          {path:'stream-details',component:StreamApprovalComponent}
+          {
+            path: 'viewers',
+            component: StreamsViewersComponent,
+          },
+          { path: 'stream-details', component: StreamApprovalComponent },
         ],
       },
     ],
