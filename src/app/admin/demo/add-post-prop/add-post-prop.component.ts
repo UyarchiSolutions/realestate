@@ -9,6 +9,7 @@ import { AdminService } from '../../admin.service';
   styleUrls: ['./add-post-prop.component.css'],
 })
 export class AddPostPropComponent {
+class: any;
   constructor(
     private service: AdminService,
     private router: Router,
@@ -26,11 +27,11 @@ export class AddPostPropComponent {
     this.myform = this.fb.group({
       category: new FormControl('', Validators.required),
       postType: new FormControl('', Validators.required),
-      propertyType: new FormControl('', [Validators.required]),
+      propertyType: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]),
       priceExp: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
      
-      furnitionStatus: new FormControl('', Validators.required),
+      furnitionStatus: new FormControl(null, Validators.required),
       bhkBuilding:new FormControl('',Validators.required),
       Description: new FormControl('', Validators.required),
       sqft: new FormControl('', Validators.required),
