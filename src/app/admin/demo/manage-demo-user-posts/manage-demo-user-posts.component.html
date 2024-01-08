@@ -201,7 +201,7 @@
             ></button>
             <td>{{ v.priceExp | currency : "INR" : true : "0.0-0" }}</td>
             <td class="user-name" (click)="assignStream(v._id, showstream)">
-              Stream {{ v.Number_of_streams }}
+              Property Live {{ v.Number_of_streams }}
             </td>
             <button
               data-bs-toggle="modal"
@@ -456,7 +456,7 @@
               Stream Date & Time
             </td>
 
-            <td>
+            <!-- <td>
               <svg
                 width="16"
                 height="16"
@@ -472,7 +472,7 @@
                 />
               </svg>
               Stream Status
-            </td>
+            </td> -->
             <td>
               <svg
                 width="16"
@@ -502,10 +502,9 @@
               <td>Property Live {{ i + 1 }}</td>
               <td>{{ v.createdDate | date : "short" }}</td>
               <td>{{ v.streamDate | date : "short" }}</td>
-
-              <td>
+              <!--<td>
                 {{ v.status }}
-              </td>
+              </td> -->
               <td>
                 {{ v.linkStatus }}
               </td>
