@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="main-container">
+  <div class="page-sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="main-content">
+    <div class="main">
+      <div class="main-div">
+        <div class="main-containers">
+          <div class="main-title">
+            <div
+              class="page-title"
+              style="text-align: center; font-size: 18px; font-weight: bold"
+            >
+              <span>Completed Stream</span>
+            </div>
+          </div>
+
+          <div class="main-containers">
+            <div class="row" style="margin: 0">
+              <div class="col-3">
+                <div class="stream-list">
+                  <h4 style="text-align: center">Video List</h4>
+                  <ul class="" class="stream-record" *ngIf="complated != null">
+                    <li
+                      [ngClass]="
+                        complated._id == item._id ? 'active_button' : ''
+                      "
+                      *ngFor="let item of cloud; index as i"
+                    >
+                      Video - {{ i + 1 }}
+                      <button
+                        *ngIf="complated._id != item._id"
+                        class="btn btn-primary"
+                        (click)="play_video(item)"
+                      >
+                        Play
+                      </button>
+                      <span
+                        style="width: 54px; height: 26px; overflow: hidden"
+                        *ngIf="complated._id == item._id"
+                      >
+                        <span class="loader"></span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="vidioplayer">
+                  <app-video-hls
+                    *ngIf="complated != null"
+                    [urlDate]="complated.videoLink_mp4"
+                    url="https://streamingupload.s3.ap-south-1.amazonaws.com/f9651b2dc7234d07a507499fcb1c7f1d/99202/432d5bfe1e49c54df2ed77a40cf3a638_020dce56-34ab-4ca9-9cbf-8e969fe30827.m3u8"
+                  ></app-video-hls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

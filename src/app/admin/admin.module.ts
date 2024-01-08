@@ -29,6 +29,8 @@ import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
 import { StreamDetailsComponent } from './demo/stream-details/stream-details.component';
+import { ViewCompletedStreamComponent } from './demo/completed-stream/view-completed-stream/view-completed-stream.component';
+import { VideoHlsComponent } from './demo/completed-stream/video-hls/video-hls.component';
 
 
 @NgModule({
@@ -55,7 +57,8 @@ import { StreamDetailsComponent } from './demo/stream-details/stream-details.com
     AddPostComponent,
     AddPostPropComponent,
     ManageDemoUserPostsComponent,
-    StreamDetailsComponent
+    StreamDetailsComponent,
+    ViewCompletedStreamComponent, VideoHlsComponent
 
   ],
   imports: [
@@ -69,7 +72,7 @@ import { StreamDetailsComponent } from './demo/stream-details/stream-details.com
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyARM6-Qr_hsR53GExv9Gmu9EtFTV5ZuDX4',
     }),
-    
+
   ]
 })
 export class AdminModule { }

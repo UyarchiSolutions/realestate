@@ -19,6 +19,7 @@ import { AddDemoUserComponent } from './demo/add-demo-user/add-demo-user.compone
 import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
+import { ViewCompletedStreamComponent } from './demo/completed-stream/view-completed-stream/view-completed-stream.component';
 
 const routes: Routes = [
   { path: 'manage-seller-owner', component: ManageSellerOwnerComponent },
@@ -35,7 +36,9 @@ const routes: Routes = [
         path: 'manage-property',
         children: [
           { path: '', component: ManageDemoUserPostsComponent },
-          {path:'stream-details',component:StreamApprovalComponent}
+          { path: 'stream-details', component: StreamApprovalComponent },
+          { path: 'completed', component: ViewCompletedStreamComponent },
+
         ],
       },
     ],
@@ -67,4 +70,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingRoutingModule {}
+export class AdminRoutingRoutingModule { }
