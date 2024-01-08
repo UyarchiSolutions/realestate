@@ -4,7 +4,7 @@ import { Env } from '../environment.dev';
 import { ReturnStatement } from '@angular/compiler';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   baseURL: any = Env.baseAPi + '/v1/BuyerSeller/';

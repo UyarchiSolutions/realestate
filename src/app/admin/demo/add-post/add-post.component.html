@@ -9,80 +9,44 @@
   <div class="plan-forms" [formGroup]="myform">
     <div class="rad">
       <p>Add Type:</p>
-      <input
-        type="radio"
-        id="Cand"
-        name="userType"
-        value="Seller"
-        style="margin-left: 60px"
-      />
+      <input type="radio" id="Cand" name="userType" value="Seller" style="margin-left: 60px" formControlName="adtype"
+        [class.err]="submitted && myform.get('adtype')?.invalid" />
       <label for="Cand" style="padding-left: 5px">Online</label>
-      <input
-        type="radio"
-        id="Emp"
-        name="userType"
-        value="Buyer"
-        style="margin-left: 50px"
-      />
+      <input type="radio" id="Emp" name="userType" value="Buyer" style="margin-left: 50px" formControlName="adtype"
+        [class.err]="submitted && myform.get('adtype')?.invalid" />
       <label for="Emp" style="padding-left: 5px">Offline</label>
     </div>
+    <b [class.errtxt]="submitted && myform.get('adtype')?.invalid" *ngIf="submitted && myform.get('adtype')?.invalid" >Select Ad Type</b>
     <div>
       <p>News Paper :</p>
-      <input
-        type="text"
-        formControlName="newsPaper"
-        [class.err]="submitted && myform.get('newsPaper')?.invalid"
-        placeholder="Enter News Paper"
-      />
+      <input type="text" formControlName="newsPaper" [class.err]="submitted && myform.get('newsPaper')?.invalid"
+        placeholder="Enter News Paper" />
     </div>
 
     <div>
       <p>Edition:</p>
-      <input
-        type="text"
-        [class.err]="submitted && myform.get('Edition')?.invalid"
-        placeholder="Enter Edition"
-        formControlName="Edition"
-      />
+      <input type="text" [class.err]="submitted && myform.get('Edition')?.invalid" placeholder="Enter Edition"
+        formControlName="Edition" />
     </div>
 
     <div>
       <p>Date of Ad:</p>
-      <input
-        type="date"
-        maxlength="10"
-        placeholder="Enter Mobile Number"
-        formControlName="dateOfAd"
-        [class.err]="submitted && myform.get('dateOfAd')?.invalid"
-      />
+      <input type="date" maxlength="10" placeholder="Enter Mobile Number" formControlName="dateOfAd"
+        [class.err]="submitted && myform.get('dateOfAd')?.invalid" />
     </div>
 
     <div>
       <p>Upload Image:</p>
-      <label
-        for="img-upd"
-        [class.err]="submitted && !imagePreview"
-        class="img-lab"
-        >Choose Image</label
-      ><sub>.jpg </sub>
-      <input
-        #imginpt
-        accept="image/gif, image/jpeg, image/png"
-        (change)="onFileSelect($event)"
-        style="display: none"
-        type="file"
-        id="img-upd"
-      />
+      <label for="img-upd" [class.err]="submitted && !imagePreview" class="img-lab">Choose Image</label><sub>.jpg </sub>
+      <input #imginpt accept="image/gif, image/jpeg, image/png" (change)="onFileSelect($event)" style="display: none"
+        type="file" id="img-upd" />
     </div>
 
     <div class="image-gallery" *ngIf="imagePreview">
       <div class="images">
         <img [src]="imagePreview" width="200px" height="150ox" />
         <div class="when-hover">
-          <img
-            src="../../assets/images/image-remove-btn.png"
-            (click)="removeimg(imginpt)"
-          />
+          <img src="../../assets/images/image-remove-btn.png" (click)="removeimg(imginpt)" />
         </div>
       </div>
     </div>

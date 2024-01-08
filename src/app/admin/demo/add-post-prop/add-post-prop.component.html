@@ -30,6 +30,8 @@
       />
       <label for="Emp" style="padding-left: 5px">Rent</label>
     </div>
+    <b [class.errtxt]="submitted && myform.get('postType')?.invalid" *ngIf="submitted && myform.get('postType')?.invalid"> Select Post Type </b>
+
     <div class="rad">
       <p>Category:</p>
       <input
@@ -51,6 +53,8 @@
       />
       <label for="Emp1" style="padding-left: 5px">Residential</label>
     </div>
+    <b [class.errtxt]="submitted && myform.get('category')?.invalid" *ngIf="submitted && myform.get('category')?.invalid"> Select Category Type </b>
+
     <div>
       <p>Property Type :</p>
       <input
@@ -115,13 +119,19 @@
     </div>
     <div>
       <p>Furnishing Status:</p>
-      <input
+      <!-- <input
         type="text"
         name="furnitionStatus"
         [class.err]="submitted && myform.get('furnitionStatus')?.invalid"
         placeholder="Enter Furnishing Status"
         formControlName="furnitionStatus"
-      />
+      /> -->
+      <select [class.err]="submitted && myform.get('furnitionStatus')?.invalid" placeholder="Enter Furnishing Status" class="sele" formControlName="furnitionStatus">
+        <option [ngValue]="null" selected disa>Select Furnishing Status</option>
+        <option value="UnFurnished">UnFurnished</option>
+        <option value="Semi Furnished">Semi Furnished</option>
+        <option value="Fully Furnished">Fully Furnished</option>
+      </select>
     </div>
 
 
