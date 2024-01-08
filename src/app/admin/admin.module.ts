@@ -29,6 +29,8 @@ import { AddPostComponent } from './demo/add-post/add-post.component';
 import { AddPostPropComponent } from './demo/add-post-prop/add-post-prop.component';
 import { ManageDemoUserPostsComponent } from './demo/manage-demo-user-posts/manage-demo-user-posts.component';
 import { StreamDetailsComponent } from './demo/stream-details/stream-details.component';
+import { ViewCompletedStreamComponent } from './demo/completed-stream/view-completed-stream/view-completed-stream.component';
+import { VideoHlsComponent } from './demo/completed-stream/video-hls/video-hls.component';
 import { StreamsViewersComponent } from './demo/streams-viewers/streams-viewers.component';
 
 @NgModule({
@@ -56,6 +58,8 @@ import { StreamsViewersComponent } from './demo/streams-viewers/streams-viewers.
     AddPostPropComponent,
     ManageDemoUserPostsComponent,
     StreamDetailsComponent,
+    ViewCompletedStreamComponent,
+    VideoHlsComponent,
     StreamsViewersComponent,
   ],
   imports: [

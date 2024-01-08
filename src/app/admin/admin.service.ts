@@ -21,8 +21,8 @@ export class AdminService {
   update_demo_post(id: any, body: any) {
     return this.http.put(this.baseApi + '/v1/demo/post/' + id, body);
   }
-  get_demo_users(key: any) {
-    return this.http.get(this.baseApi + '/v1/demo/getUsers?key=' + key);
+  get_demo_users(data: any) {
+    return this.http.get(this.baseApi + '/v1/demo/getUsers?key=' + data);
   }
   demo_img(img: any, id: any) {
     return this.http.put(this.baseApi + '/v1/demo/image/' + id, img);
@@ -187,5 +187,11 @@ export class AdminService {
 
   degreesToRadians(degrees: number): number {
     return (degrees * Math.PI) / 180;
+  }
+
+  get_cloud(id: any) {
+    return this.http.get(
+      this.baseApi + '/v2/demostream/get/cloud/records?id=' + id
+    );
   }
 }
